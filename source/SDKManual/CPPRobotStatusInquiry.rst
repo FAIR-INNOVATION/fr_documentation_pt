@@ -1,0 +1,804 @@
+机器人状态查询
+===============
+
+.. toctree:: 
+    :maxdepth: 5
+
+获取当前关节位置(角度)
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取当前关节位置(角度)
+    * @param  [in] flag 0-阻塞，1-非阻塞
+    * @param  [out] jPos 六个关节位置，单位deg
+    * @return  错误码
+    */
+    errno_t  GetActualJointPosDegree(uint8_t flag, JointPos *jPos);
+
+获取关节反馈速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取关节反馈速度-deg/s
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] speed 六个关节速度
+     * @return  错误码 
+     */ 
+    errno_t  GetActualJointSpeedsDegree(uint8_t flag, float speed[6]);
+
+获取关节反馈加速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取关节反馈加速度-deg/s^2
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] acc 六个关节加速度
+     * @return  错误码 
+     */ 
+    errno_t  GetActualJointAccDegree(uint8_t flag, float acc[6]);   
+
+获取TCP指令合速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取TCP指令合速度
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] tcp_speed 线性速度
+     * @param  [out] ori_speed 姿态速度
+     * @return  错误码 
+     */
+    errno_t  GetTargetTCPCompositeSpeed(uint8_t flag, float *tcp_speed, float *ori_speed);
+
+获取TCP反馈合速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取TCP反馈合速度
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] tcp_speed 线性速度
+     * @param  [out] ori_speed 姿态速度
+     * @return  错误码 
+     */ 
+    errno_t  GetActualTCPCompositeSpeed(uint8_t flag, float *tcp_speed, float *ori_speed);
+
+获取TCP指令速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取TCP指令速度
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] speed [x,y,z,rx,ry,rz]速度
+     * @return  错误码 
+     */ 
+    errno_t  GetTargetTCPSpeed(uint8_t flag, float speed[6]);
+
+获取TCP反馈速度
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  获取TCP反馈速度
+     * @param  [in] flag 0-阻塞，1-非阻塞
+     * @param  [out] speed [x,y,z,rx,ry,rz]速度
+     * @return  错误码 
+     */ 
+    errno_t  GetActualTCPSpeed(uint8_t flag, float speed[6]);
+
+获取当前工具位姿
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取当前工具位姿
+    * @param  [in] flag  0-阻塞，1-非阻塞
+    * @param  [out] desc_pos  工具位姿
+    * @return  错误码
+    */
+    errno_t  GetActualTCPPose(uint8_t flag, DescPose *desc_pos);
+
+获取当前工具坐标系编号
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取当前工具坐标系编号
+    * @param  [in] flag  0-阻塞，1-非阻塞
+    * @param  [out] id  工具坐标系编号
+    * @return  错误码
+    */
+    errno_t  GetActualTCPNum(uint8_t flag, int *id);
+
+获取当前工件坐标系编号
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取当前工件坐标系编号
+    * @param  [in] flag  0-阻塞，1-非阻塞
+    * @param  [out] id  工件坐标系编号
+    * @return  错误码
+    */
+    errno_t  GetActualWObjNum(uint8_t flag, int *id);  
+
+获取当前末端法兰位姿
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取当前末端法兰位姿
+    * @param  [in] flag  0-阻塞，1-非阻塞
+    * @param  [out] desc_pos  法兰位姿
+    * @return  错误码
+    */
+    errno_t  GetActualToolFlangePose(uint8_t flag, DescPose *desc_pos);  
+
+获取当前关节转矩
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取当前关节转矩
+    * @param  [in] flag 0-阻塞，1-非阻塞
+    * @param  [out] torques 关节转矩
+    * @return  错误码
+    */
+    errno_t  GetJointTorques(uint8_t flag, float torques[6]);
+
+获取系统时间
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  获取系统时间
+    * @param  [out] t_ms 单位ms
+    * @return  错误码
+    */
+    errno_t  GetSystemClock(float *t_ms);
+
+查询机器人运动是否完成
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  查询机器人运动是否完成
+    * @param  [out]  state  0-未完成，1-完成
+    * @return  错误码
+    */   
+    errno_t  GetRobotMotionDone(uint8_t *state);
+
+查询机器人运动队列缓存长度
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  查询机器人运动队列缓存长度
+     * @param  [out]  len  缓存长度
+     * @return  错误码
+     */ 
+    errno_t  GetMotionQueueLength(int *len);
+
+获取机器人急停状态
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取机器人急停状态
+    * @param [out] state 急停状态，0-非急停，1-急停
+    * @return 错误码 
+    */
+    errno_t GetRobotEmergencyStopState(uint8_t *state);
+
+获取SDK与机器人的通讯状态
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取SDK与机器人的通讯状态
+    * @param [out] state 通讯状态，0-通讯正常，1-通讯异常
+    */
+    errno_t GetSDKComState(int *state);
+
+获取安全停止信号
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取安全停止信号
+    * @param [out] si0_state 安全停止信号SI0，0-无效，1-有效
+    * @param [out] si1_state 安全停止信号SI1，0-无效，1-有效
+    */
+    errno_t GetSafetyStopState(uint8_t *si0_state, uint8_t *si1_state);
+
+获取机器人关节驱动器温度(℃)
+++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v2.1.5.0
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取机器人关节驱动器温度(℃)
+    * @return 错误码
+    */
+    errno_t GetJointDriverTemperature(double temperature[]);
+
+获取机器人关节驱动器扭矩(Nm)
+++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v2.1.5.0
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取机器人关节驱动器扭矩(Nm)
+    * @return 错误码
+    */
+    errno_t GetJointDriverTorque(double torque[]);
+        
+获取机器人实时状态结构体
+++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v2.1.3.0
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取机器人实时状态结构体
+    * @param [out] pkg 机器人实时状态结构体
+    * @return 错误码
+    */
+    errno_t GetRobotRealTimeState(ROBOT_STATE_PKG *pkg);
+
+机器人状态查询代码示例
++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos: 
+
+    int TestGetStatus(void)
+    {
+      ROBOT_STATE_PKG pkg = {};
+      FRRobot robot;
+      robot.LoggerInit();
+      robot.SetLoggerLevel(1);
+      int rtn = robot.RPC("192.168.58.2");
+      if (rtn != 0)
+      {
+        return -1;
+      }
+      robot.SetReConnectParam(true, 30000, 500);
+      float yangle, zangle;
+      robot.GetRobotInstallAngle(&yangle, &zangle);
+      printf("yangle:%f,zangle:%f\n", yangle, zangle);
+      JointPos j_deg = {};
+      robot.GetActualJointPosDegree(0, &j_deg);
+      printf("joint pos deg:%f,%f,%f,%f,%f,%f\n", j_deg.jPos[0], j_deg.jPos[1], j_deg.jPos[2], j_deg.jPos[3], j_deg.jPos[4], j_deg.jPos[5]);
+      float jointSpeed[6] = { 0.0 };
+      robot.GetActualJointSpeedsDegree(0, jointSpeed);
+      printf("joint speeds deg:%f,%f,%f,%f,%f,%f\n", jointSpeed[0], jointSpeed[1], jointSpeed[2], jointSpeed[3], jointSpeed[4], jointSpeed[5]);
+      float jointAcc[6] = { 0.0 };
+      robot.GetActualJointAccDegree(0, jointAcc);
+      printf("joint acc deg:%f,%f,%f,%f,%f,%f\n", jointAcc[0], jointAcc[1], jointAcc[2], jointAcc[3], jointAcc[4], jointAcc[5]);
+      float tcp_speed = 0.0;
+      float ori_speed = 0.0;
+      robot.GetTargetTCPCompositeSpeed(0, &tcp_speed, &ori_speed);
+      printf("GetTargetTCPCompositeSpeed tcp %f; ori %f\n", tcp_speed, ori_speed);
+      robot.GetActualTCPCompositeSpeed(0, &tcp_speed, &ori_speed);
+      printf("GetActualTCPCompositeSpeed tcp %f; ori %f\n", tcp_speed, ori_speed);
+      float targetSpeed[6] = { 0.0 };
+      robot.GetTargetTCPSpeed(0, targetSpeed);
+      printf("GetTargetTCPSpeed %f,%f,%f,%f,%f,%f\n", targetSpeed[0], targetSpeed[1], targetSpeed[2], targetSpeed[3], targetSpeed[4], targetSpeed[5]);
+      float actualSpeed[6] = { 0.0 };
+      robot.GetActualTCPSpeed(0, actualSpeed);
+      printf("GetTargetTCPSpeed %f,%f,%f,%f,%f,%f\n", actualSpeed[0], actualSpeed[1], actualSpeed[2], actualSpeed[3], actualSpeed[4], actualSpeed[5]);
+      DescPose tcp = {};
+      robot.GetActualTCPPose(0, &tcp);
+      printf("tcp pose:%f,%f,%f,%f,%f,%f\n", tcp.tran.x, tcp.tran.y, tcp.tran.z, tcp.rpy.rx, tcp.rpy.ry, tcp.rpy.rz);
+      DescPose flange = {};
+      robot.GetActualToolFlangePose(0, &flange);
+      printf("flange pose:%f,%f,%f,%f,%f,%f\n", flange.tran.x, flange.tran.y, flange.tran.z, flange.rpy.rx, flange.rpy.ry, flange.rpy.rz);
+      int id = 0;
+      robot.GetActualTCPNum(0, &id);
+      printf("tcp num:%d\n", id);
+      robot.GetActualWObjNum(0, &id);
+      printf("wobj num:%d\n", id);
+      float jtorque[6] = { 0.0 };
+      robot.GetJointTorques(0, jtorque);
+      printf("torques:%f,%f,%f,%f,%f,%f\n", jtorque[0], jtorque[1], jtorque[2], jtorque[3], jtorque[4], jtorque[5]);
+      float t_ms = 0.0;
+      robot.GetSystemClock(&t_ms);
+      printf("system clock:%f\n", t_ms);
+      int config = 0;
+      robot.GetRobotCurJointsConfig(&config);
+      printf("joint config:%d\n", config);
+      uint8_t motionDone = 0;
+      robot.GetRobotMotionDone(&motionDone);
+      printf("GetRobotMotionDone :%d\n", motionDone);
+      int len = 0;
+      robot.GetMotionQueueLength(&len);
+      printf("GetMotionQueueLength :%d\n", len);
+      uint8_t emergState = 0;
+      robot.GetRobotEmergencyStopState(&emergState);
+      printf("GetRobotEmergencyStopState :%d\n", emergState);
+      int comstate = 0;
+      robot.GetSDKComState(&comstate);
+      printf("GetSDKComState :%d\n", comstate);
+      uint8_t si0_state, si1_state;
+      robot.GetSafetyStopState(&si0_state, &si1_state);
+      printf("GetSafetyStopState :%d %d\n", si0_state, si1_state);
+      double temp[6] = { 0.0 };
+      robot.GetJointDriverTemperature(temp);
+      printf("Temperature:%f,%f,%f,%f,%f,%f\n", temp[0], temp[1], temp[2], temp[3], temp[4], temp[5]);
+      double torque[6] = { 0.0 };
+      robot.GetJointDriverTorque(torque);
+      printf("torque:%f,%f,%f,%f,%f,%f\n", torque[0], torque[1], torque[2], torque[3], torque[4], torque[5]);
+      robot.GetRobotRealTimeState(&pkg);
+      robot.CloseRPC();
+      return 0;
+    }
+
+逆运动学求解
++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  逆运动学求解
+    * @param  [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
+    * @param  [in] desc_pos 笛卡尔位姿
+    * @param  [in] config 关节空间配置，[-1]-参考当前关节位置解算，[0~7]-依据特定关节空间配置求解
+    * @param  [out] joint_pos 关节位置
+    * @return  错误码
+    */
+    errno_t  GetInverseKin(int type, DescPose *desc_pos, int config, JointPos *joint_pos);
+
+逆运动学求解(参考位置)
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  逆运动学求解，参考指定关节位置求解
+    * @param  [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
+    * @param  [in] desc_pos 笛卡尔位姿
+    * @param  [in] joint_pos_ref 参考关节位置
+    * @param  [out] joint_pos 关节位置
+    * @return  错误码
+    */   
+    errno_t  GetInverseKinRef(int type, DescPose *desc_pos, JointPos *joint_pos_ref, JointPos *joint_pos);
+
+逆运动学求解，笛卡尔空间包含扩展轴位置
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 逆运动学求解，笛卡尔空间包含扩展轴位置
+    * @param [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
+    * @param [in] desc_pos 笛卡尔位姿
+    * @param [in] exaxis 扩展轴位置
+    * @param [in] tool 工具号
+    * @param [in] workPiece 工件号
+    * @param [out] joint_pos 关节位置
+    * @return 错误码
+    */
+    errno_t GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, JointPos& joint_pos);
+
+逆运动学求解包含扩展轴位置代码示例
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int TestInverseKinExaxis()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return 0;
+        }
+        robot.SetReConnectParam(true, 30000, 500);
+        DescPose desc(99.957, -0.002, 29.994, -176.569, -6.757, -167.462);
+        ExaxisPos exaxis(100.0, 0.0, 0.0, 0.0);
+        JointPos jointPos = {};
+        DescPose offsetPos = {};
+        robot.GetRobotRealTimeState(&pkg);
+        int toolnum = pkg.tool;
+        int workPcsNum = pkg.user;
+        robot.GetInverseKinExaxis(0, desc, exaxis, toolnum, workPcsNum, jointPos);
+        printf("GetInverseKinExaxis joint is %f, %f, %f, %f, %f, %f\n", jointPos.jPos[0], jointPos.jPos[1], jointPos.jPos[2], jointPos.jPos[3], jointPos.jPos[4], jointPos.jPos[5]);
+        robot.ExtAxisMove(exaxis, 100, -1);
+        robot.MoveJ(&jointPos, &desc, toolnum, workPcsNum, 100.0, 100.0, 100.0, &exaxis, -1, 0, &offsetPos);
+        robot.CloseRPC();
+        robot.Sleep(9999999);
+        return 0;
+    }
+
+获取逆运动学是否有解
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  逆运动学求解，参考指定关节位置判断是否有解
+    * @param  [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
+    * @param  [in] desc_pos 笛卡尔位姿
+    * @param  [in] joint_pos_ref 参考关节位置
+    * @param  [out] result 0-无解，1-有解
+    * @return  错误码
+    */   
+    errno_t  GetInverseKinHasSolution(int type, DescPose *desc_pos, JointPos *joint_pos_ref, uint8_t *result);
+
+正运动学求解
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  正运动学求解
+    * @param  [in] joint_pos 关节位置
+    * @param  [out] desc_pos 笛卡尔位姿
+    * @return  错误码
+    */
+    errno_t  GetForwardKin(JointPos *joint_pos, DescPose *desc_pos);
+
+机器人正逆运动学计算代码示例
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int TestInverseKin(void)
+    {
+      ROBOT_STATE_PKG pkg = {};
+      FRRobot robot;
+      robot.LoggerInit();
+      robot.SetLoggerLevel(1);
+      int rtn = robot.RPC("192.168.58.2");
+      if (rtn != 0)
+      {
+        return -1;
+      }
+      robot.SetReConnectParam(true, 30000, 500);
+      JointPos j1(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
+      DescPose desc_pos1(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
+      JointPos inverseRtn = {};
+      robot.GetInverseKin(0, &desc_pos1, -1, &inverseRtn);
+      printf("dcs1 GetInverseKin rtn is %f %f %f %f %f %f \n", inverseRtn.jPos[0], inverseRtn.jPos[1], inverseRtn.jPos[2], inverseRtn.jPos[3], inverseRtn.jPos[4], inverseRtn.jPos[5]);
+      robot.GetInverseKinRef(0, &desc_pos1, &j1, &inverseRtn);
+      printf("dcs1 GetInverseKinRef rtn is %f %f %f %f %f %f \n", inverseRtn.jPos[0], inverseRtn.jPos[1], inverseRtn.jPos[2], inverseRtn.jPos[3], inverseRtn.jPos[4], inverseRtn.jPos[5]);
+      uint8_t hasResut = 0;
+      robot.GetInverseKinHasSolution(0, &desc_pos1, &j1, &hasResut);
+      printf("dcs1 GetInverseKinRef result %d\n", hasResut);
+      DescPose forwordResult = {};
+      robot.GetForwardKin(&j1, &forwordResult);
+      printf("jpos1 forwordResult rtn is %f %f %f %f %f %f \n", forwordResult.tran.x, forwordResult.tran.y, forwordResult.tran.z, forwordResult.rpy.rx, forwordResult.rpy.ry, forwordResult.rpy.rz);
+      robot.CloseRPC();
+      return 0;
+    }
+
+查询机器人示教管理点位数据
+++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  查询机器人示教管理点位数据
+     * @param  [in]  name  点位名
+     * @param  [out]  data   点位数据
+     * @return  错误码
+     */ 
+    errno_t  GetRobotTeachingPoint(char name[64], float data[20]);
+
+获取机器人DH参数补偿值
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. versionadded:: C++SDK-v2.1.1.0
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取机器人DH参数补偿值
+    * @param [out] dhCompensation 机器人DH参数补偿值(mm) [cmpstD1,cmpstA2,cmpstA3,cmpstD4,cmpstD5,cmpstD6]
+    * @return 错误码
+    */
+    errno_t GetDHCompensation(double dhCompensation[6]);
+
+获取控制箱SN码
++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v2.2.1-3.8.1
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取控制箱SN码
+    * @param [out] SNCode 控制箱SN码
+    * @return 错误码
+    */
+    errno_t GetRobotSN(std::string& SNCode);
+
+查询机器人示教管理点位数据代码示例
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int TestGetTeachPoint(void)
+    {
+      ROBOT_STATE_PKG pkg = {};
+      FRRobot robot;
+      robot.LoggerInit();
+      robot.SetLoggerLevel(1);
+      int rtn = robot.RPC("192.168.58.2");
+      if (rtn != 0)
+      {
+        return -1;
+      }
+      robot.SetReConnectParam(true, 30000, 500);
+      char name[64] = "P1";
+      float data[20] = { 0 };
+      rtn = robot.GetRobotTeachingPoint(name, data);
+      printf(" %d name is: %s \n", rtn, name);
+      for (int i = 0; i < 20; i++)
+      {
+        printf("data is: %f \n", data[i]);
+      }
+      int que_len = 0;
+      rtn = robot.GetMotionQueueLength(&que_len);
+      printf("GetMotionQueueLength rtn is: %d, queue length is: %d \n", rtn, que_len);
+      double dh[6] = { 0 };
+      int retval = 0;
+      retval = robot.GetDHCompensation(dh);
+      cout << "retval is: " << retval << endl;
+      cout << "dh is: " << dh[0] << " " << dh[1] << " " << dh[2] << " " << dh[3] << " " << dh[4] << " " << dh[5] << endl;
+      string SN = "";
+      robot.GetRobotSN(SN);
+      cout << "robot SN is " << SN << endl;
+      robot.CloseRPC();
+      return 0;
+    }
+
+根据编号获取工具坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 根据编号获取工具坐标系
+    * @param [in] id 工具坐标系编号
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetToolCoordWithID(int id, DescPose& coord);
+
+根据编号获取工件坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 根据编号获取工件坐标系
+    * @param [in] id 工件坐标系编号
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetWObjCoordWithID(int id, DescPose& coord);
+    
+根据编号获取外部工具坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 根据编号获取外部工具坐标系
+    * @param [in] id 外部工具坐标系编号
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetExToolCoordWithID(int id, DescPose& coord);
+    
+根据编号获取扩展轴坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 根据编号获取扩展轴坐标系
+    * @param [in] id 外部工具坐标系编号
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetExAxisCoordWithID(int id, DescPose& coord);
+
+根据编号获取负载质量及质心
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 根据编号获取负载质量及质心
+    * @param [in] id 负载编号
+    * @param [out] weight 负载质量
+    * @param [out] cog 负载质心
+    * @return 错误码
+    */
+    errno_t GetTargetPayloadWithID(int id, double& weight, DescTran& cog);
+    
+获取当前工具坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+    
+    /**
+    * @brief 获取当前工具坐标系
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetCurToolCoord(DescPose& coord);
+        
+获取当前工件坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取当前工件坐标系
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetCurWObjCoord(DescPose& coord);
+            
+获取当前外部工具坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取当前外部工具坐标系
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetCurExToolCoord(DescPose& coord);
+                
+获取当前扩展轴坐标系
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief 获取当前扩展轴坐标系
+    * @param [out] coord 坐标系数值
+    * @return 错误码
+    */
+    errno_t GetCurExAxisCoord(DescPose& coord);
+
+获取机器人坐标系及负载代码示例
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.8.6
+    
+.. code-block:: c++
+    :linenos:
+
+    int TestCoord()
+    {
+      ROBOT_STATE_PKG pkg = {};
+      FRRobot robot;
+      robot.LoggerInit();
+      robot.SetLoggerLevel(1);
+      int rtn = robot.RPC("192.168.58.2");
+      if (rtn != 0)
+      {
+        return 0;
+      }
+      robot.SetReConnectParam(true, 30000, 500);
+      int id = 1;
+      DescPose toolCoord = {};
+      DescPose extoolCoord = {};
+      DescPose wobjCoord = {};
+      DescPose exAxisCoord = {};
+      robot.GetToolCoordWithID(id, toolCoord);
+      printf("GetToolCoordWithID %d, %f %f %f %f %f %f\n", id, 
+        toolCoord.tran.x, toolCoord.tran.y, toolCoord.tran.z,
+        toolCoord.rpy.rx, toolCoord.rpy.ry, toolCoord.rpy.rz);
+      robot.GetWObjCoordWithID(id, wobjCoord);
+      printf("GetWObjCoordWithID %d, %f %f %f %f %f %f\n", id,
+        wobjCoord.tran.x, wobjCoord.tran.y, wobjCoord.tran.z,
+        wobjCoord.rpy.rx, wobjCoord.rpy.ry, wobjCoord.rpy.rz);
+      
+      robot.GetExToolCoordWithID(id, extoolCoord);
+      printf("GetExToolCoordWithID %d, %f %f %f %f %f %f\n", id,
+        extoolCoord.tran.x, extoolCoord.tran.y, extoolCoord.tran.z,
+        extoolCoord.rpy.rx, extoolCoord.rpy.ry, extoolCoord.rpy.rz);
+      
+      robot.GetExAxisCoordWithID(id, exAxisCoord);
+      printf("GetExAxisCoordWithID %d, %f %f %f %f %f %f\n", id,
+        exAxisCoord.tran.x, exAxisCoord.tran.y, exAxisCoord.tran.z,
+        exAxisCoord.rpy.rx, exAxisCoord.rpy.ry, exAxisCoord.rpy.rz);
+      double weight = 0.0;
+      DescTran cog = {};
+      robot.GetTargetPayloadWithID(id, weight, cog);
+      printf("GetTargetPayloadWithID %d, %f %f %f %f\n", id, weight,
+        cog.x, cog.y, cog.z);
+      robot.GetCurToolCoord(toolCoord);
+      printf("GetCurToolCoord %f %f %f %f %f %f\n",
+        toolCoord.tran.x, toolCoord.tran.y, toolCoord.tran.z,
+        toolCoord.rpy.rx, toolCoord.rpy.ry, toolCoord.rpy.rz);
+      robot.GetCurWObjCoord(wobjCoord);
+      printf("GetCurWObjCoord %f %f %f %f %f %f\n",
+        wobjCoord.tran.x, wobjCoord.tran.y, wobjCoord.tran.z,
+        wobjCoord.rpy.rx, wobjCoord.rpy.ry, wobjCoord.rpy.rz);
+      robot.GetCurExToolCoord(extoolCoord);
+      printf("GetExToolCoordWithID %f %f %f %f %f %f\n",
+        extoolCoord.tran.x, extoolCoord.tran.y, extoolCoord.tran.z,
+        extoolCoord.rpy.rx, extoolCoord.rpy.ry, extoolCoord.rpy.rz);
+      robot.GetCurExAxisCoord(exAxisCoord);
+      printf("GetCurExAxisCoord %f %f %f %f %f %f\n",
+        exAxisCoord.tran.x, exAxisCoord.tran.y, exAxisCoord.tran.z,
+        exAxisCoord.rpy.rx, exAxisCoord.rpy.ry, exAxisCoord.rpy.rz);
+      float weightT = 0.0;
+      DescTran cogT = {};
+      robot.GetTargetPayload(0, &weightT);
+      robot.GetTargetPayloadCog(0, &cogT);
+      printf("GetTargetPayload %f %f %f %f\n", weightT,
+        cogT.x, cogT.y, cogT.z);
+      DescPose coordSet(0,1,2,3,4,5);
+      robot.SetToolCoord(1, &coordSet, 0, 0, 1, 0);
+      robot.SetWObjCoord(1, &coordSet, 0);
+      robot.SetLoadWeight(1, 1.3);
+      DescTran cog = {};
+      cog.x = 10;
+      cog.y = 20;
+      cog.z = 30;
+      robot.SetLoadCoord(1, &cog);
+      DescPose etcp(0, 0, 100, 0, 0, 0);
+      DescPose etool(0, 0, 50, 0, 0, 0);
+      rtn = robot.SetExToolCoord(1, &etcp, &etool);
+      printf("SetExToolCoord rtn is %d\n", rtn);
+      robot.ExtAxisActiveECoordSys(1, 1, coordSet, 1);
+      robot.CloseRPC();
+      return 0;
+    }
