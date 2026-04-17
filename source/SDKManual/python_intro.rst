@@ -1,21 +1,21 @@
 Python
 ============
 
-本文档为Python版本的二次开发接口文档。
+Este documento é a documentação da interface de desenvolvimento secundário para a versão Python.
 
 .. important::
 
-    机器人参数单位说明：机器人位置单位为毫米(mm)，姿态单位为度(°)。
+    Explicação das unidades de parâmetros do robô: A unidade de posição do robô é milímetros (mm), e a unidade de postura é graus (°).
 
 .. important:: 
 
-    1)	非特别说明的代码示例中都默认机器人已经正常开机使能；
-    2)	文档中的所有代码示例都默认在机器人的工作空间内没有任何干涉；
-    3)	实际使用测试时请采用现场机器人的数据使用。
+    1) Nos exemplos de código não especificados de outra forma, assume-se que o robô já está normalmente ligado e habilitado;
+    2) Todos os exemplos de código neste documento assumem que não há interferência dentro do espaço de trabalho do robô;
+    3) Ao usar e testar na prática, use os dados do robô no local.
 
 .. note:: 
     
-    当前文档适用于SDK-v2.0.0版本，向下兼容v1.x版本。
+    Este documento é aplicável à versão SDK-v2.0.0 e é compatível com versões anteriores à v1.x.
 
 
 .. toctree:: 

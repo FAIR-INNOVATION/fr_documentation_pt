@@ -1,164 +1,164 @@
-自定义协议从站指令
-===========================
+Instruções do Escravo de Protocolo Personalizado
+============================================================
 
 .. toctree:: 
    :maxdepth: 6
 
-概述
+Visão Geral
 -------------------
 
-为了便于PLC通过不同的工业总线协议（CC-Link IEF Basic、Profinet、Ethernet/IP和EtherCAT）对机器人进行运动控制，在集成式mini控制箱上增加FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EC-RJ-V10板卡设备。
+Para facilitar o controle de movimento do robô por um CLP através de diferentes protocolos de barramento industrial (CC-Link IEF Basic, Profinet, Ethernet/IP e EtherCAT), as placas FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, FRJ-PCIeN-EIP/CC/PN-RJ-V10 e FRJ-PCIeN-EC-RJ-V10 foram adicionadas ao mini painel de controle integrado.
 
-环境配置
+Configuração do Ambiente
 --------------------------
 
-板卡型号、软件版本描述如下：
+Os modelos das placas e as versões de software são descritos abaixo:
 
 .. list-table:: 
    :widths: 20 50 30
    :header-rows: 1
    :align: center
 
-   * - **协议类型**
-     - **板卡型号**
-     - **机器人软件版本**
+   * - **Tipo de Protocolo**
+     - **Modelo da Placa**
+     - **Versão do Software do Robô**
 
    * - CC-Link IEF Basic
-     - FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EIP/CC/PN-RJ-V10板卡
-     - V3.8.0及以上
+     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.0 ou superior
 
    * - Profinet
-     - FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EIP/CC/PN-RJ-V10板卡
-     - V3.8.0及以上
+     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.0 ou superior
 
    * - Ethernet/IP
-     - FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EIP/CC/PN-RJ-V10板卡
-     - V3.8.0及以上
+     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.0 ou superior
 
    * - EtherCAT
-     - FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡、FRJ-PCIeN-EC-RJ-V10板卡
-     - V3.8.4.1及以上
+     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EC-RJ-V10
+     - V3.8.4.1 ou superior
 
-FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡硬件环境搭建
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração do Ambiente de Hardware para a Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 将FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡安装到集成式mini控制箱，如图所示。
+1. Instale a placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10 no mini painel de controle integrado, conforme mostrado.
 
 .. image:: custom_protocol_slave/001.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-1 FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡安装
+.. centered:: Figura 17.2-1 Instalação da Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
 
 .. image:: custom_protocol_slave/002.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-2 FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡网口
+.. centered:: Figura 17.2-2 Porta Ethernet da Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
 
-2. 机器人控制箱和PLC接线如下图所示。
+2. A fiação entre o painel de controle do robô e o CLP é mostrada nas figuras abaixo.
 
 .. image:: custom_protocol_slave/003.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-3 控制箱&三菱PLC接线图
+.. centered:: Figura 17.2-3 Diagrama de Fiação do Painel de Controle & CLP Mitsubishi
 
 .. image:: custom_protocol_slave/004.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-4 控制箱&西门子PLC接线图
+.. centered:: Figura 17.2-4 Diagrama de Fiação do Painel de Controle & CLP Siemens
 
 .. image:: custom_protocol_slave/005.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-5 控制箱&欧姆龙PLC接线图
+.. centered:: Figura 17.2-5 Diagrama de Fiação do Painel de Controle & CLP Omron
 
 .. image:: custom_protocol_slave/006.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-6 控制箱&欧姆龙PLC接线图
+.. centered:: Figura 17.2-6 Diagrama de Fiação do Painel de Controle & CLP Omron
 
 .. note:: 
-    1：机器人控制箱（板卡网口）；
-    2：交换机；
-    3：笔记本PC；
-    4：三菱PLC（CC-Link IEF Basic网口）；
-    5：西门子PLC（Profinet网口）；
-    6：欧姆龙PLC（Ethernet/IP网口）；
-    7：欧姆龙PLC（EtherCAT网口）；
+    1: Painel de controle do robô (porta Ethernet da placa);
+    2: Switch;
+    3: Notebook PC;
+    4: CLP Mitsubishi (porta Ethernet CC-Link IEF Basic);
+    5: CLP Siemens (porta Ethernet Profinet);
+    6: CLP Omron (porta Ethernet Ethernet/IP);
+    7: CLP Omron (porta Ethernet EtherCAT);
 
-.. important:: 当协议切换为EtherCAT总线时，板卡的网口需要区分为EtherCAT_IN和EtherCAT_OUT，此时，欧姆龙PLC的EtherCAT网口需要与板卡的EtherCAT_IN网口通过一根网线直连。
+.. important:: Quando o protocolo é alterado para o barramento EtherCAT, as portas Ethernet da placa precisam ser diferenciadas em EtherCAT_IN e EtherCAT_OUT. Neste caso, a porta Ethernet EtherCAT do CLP Omron deve ser diretamente conectada à porta EtherCAT_IN da placa com um cabo Ethernet.
 
-FRJ-PCIeN板卡硬件环境搭建
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração do Ambiente de Hardware para a Placa FRJ-PCIeN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 将板卡安装到集成式mini控制箱，如图所示。
+1. Instale a placa no mini painel de controle integrado, conforme mostrado.
 
 .. image:: custom_protocol_slave/044.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-7 FRJ-PCIeN板卡网口
+.. centered:: Figura 17.2-7 Portas Ethernet da Placa FRJ-PCIeN
 
-2. 机器人控制箱和PLC接线如下图所示。
+2. A fiação entre o painel de controle do robô e o CLP é mostrada nas figuras abaixo.
 
 .. image:: custom_protocol_slave/003.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-8 控制箱&三菱PLC接线图
+.. centered:: Figura 17.2-8 Diagrama de Fiação do Painel de Controle & CLP Mitsubishi
 
 .. image:: custom_protocol_slave/004.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-9 控制箱&西门子PLC接线图
+.. centered:: Figura 17.2-9 Diagrama de Fiação do Painel de Controle & CLP Siemens
 
 .. image:: custom_protocol_slave/005.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-10 控制箱&汇川PLC接线图
+.. centered:: Figura 17.2-10 Diagrama de Fiação do Painel de Controle & CLP Inovance
 
 .. note:: 
-    1：机器人控制箱（板卡网口）；
-    2：交换机；
-    3：笔记本PC；
-    4：三菱PLC（CC-Link IEF Basic网口）；
-    5：西门子PLC（Profinet网口）；
-    6：汇川PLC（Ethernet/IP）；
+    1: Painel de controle do robô (porta Ethernet da placa);
+    2: Switch;
+    3: Notebook PC;
+    4: CLP Mitsubishi (porta Ethernet CC-Link IEF Basic);
+    5: CLP Siemens (porta Ethernet Profinet);
+    6: CLP Inovance (Ethernet/IP);
 
-3. FRJ-PCIeN板卡进行协议切换时，需进行固件升级。在进行固件升级时，需将连接板卡PC的IP地址修为“192.168.0.xxx”，然后打开“网关工具集”软件->选择需要连接的PC网卡设备->点击右下角“开始”按钮->点击右上角“搜索”按钮，搜索板卡设备。
+3. Ao alternar o protocolo na placa FRJ-PCIeN, é necessária uma atualização de firmware. Durante a atualização de firmware, o endereço IP do PC conectado à placa deve ser alterado para “192.168.0.xxx”. Em seguida, abra o software “Gateway Tool Set” -> selecione o dispositivo de placa de rede do PC a ser conectado -> clique no botão “Iniciar” no canto inferior direito -> clique no botão “Pesquisar” no canto superior direito para procurar o dispositivo da placa.
 
 .. image:: custom_protocol_slave/045.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-11 连接板卡设备
+.. centered:: Figura 17.2-11 Conectando ao Dispositivo da Placa
 
-4. 点击左下角“升级”按钮->选中板卡设备->点击右上角“…”按钮，选择需要的协议固件->点击“升级”按钮，等待固件升级完成即可。
+4. Clique no botão “Atualizar” no canto inferior esquerdo -> selecione o dispositivo da placa -> clique no botão “…” no canto superior direito para selecionar o firmware do protocolo desejado -> clique no botão “Atualizar” e aguarde a conclusão da atualização do firmware.
 
 .. image:: custom_protocol_slave/046.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-12 板卡协议切换
+.. centered:: Figura 17.2-12 Alternância de Protocolo da Placa
 
-.. note:: 板卡进行协议切换后，板卡的IP地址会进行改变，具体如下表所示。
+.. note:: Após a alternância do protocolo, o endereço IP da placa será alterado, conforme mostrado na tabela abaixo.
 
-.. centered:: 表格 17.2-1 板卡IP地址
+.. centered:: Tabela 17.2-1 Endereços IP da Placa
 
 .. list-table:: 
    :widths: 20 80
    :header-rows: 1
    :align: center
 
-   * - **协议**
-     - **IP地址**
+   * - **Protocolo**
+     - **Endereço IP**
 
    * - CC-Link IEF Basic
      - 192.168.0.113
@@ -169,143 +169,143 @@ FRJ-PCIeN板卡硬件环境搭建
    * - Profinet
      - 192.168.0.2
 
-当协议配置为CC-Link IEF Basic时，控制器会将板卡IP修改为“192.168.0.113”。
+Quando o protocolo é configurado como CC-Link IEF Basic, o controlador alterará o IP da placa para “192.168.0.113”.
 
-当协议配置为Ethernet/IP时，控制器会将板卡IP修改为“192.168.0.112”。
+Quando o protocolo é configurado como Ethernet/IP, o controlador alterará o IP da placa para “192.168.0.112”.
 
-当协议切换为Profinet时，并且从站设备名称与主站一致时，主站会自动配置从站的 IP 地址。
+Quando o protocolo é alterado para Profinet e o nome do dispositivo escravo corresponde ao do mestre, o mestre configurará automaticamente o endereço IP do escravo.
 
-5. FRJ-PCIeN-EC-RJ-V10板卡固件升级
+5. Atualização de Firmware da Placa FRJ-PCIeN-EC-RJ-V10
 
-网址输入192.169.58.2进入机器人界面，点击 “初始设置”->“外设”->“板卡通讯”界面，可以获取到FRJ-PCIeN-EC-RJ-V10板卡固件版本号。选择待升级的bin文件，点击上传，等待固件升级成功后，重启控制箱即可。
+Insira o URL 192.169.58.2 para acessar a interface do robô. Clique em “Configurações Iniciais” -> “Periféricos” -> “Comunicação com Placa” para obter o número da versão do firmware da placa FRJ-PCIeN-EC-RJ-V10. Selecione o arquivo .bin a ser atualizado, clique em “Enviar” e, após a conclusão bem-sucedida da atualização do firmware, reinicie o painel de controle.
 
 .. image:: custom_protocol_slave/064.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-13 板卡固件升级
+.. centered:: Figura 17.2-13 Atualização de Firmware da Placa
 
-.. note:: 1、仅V3.9.2及以上版本支持Ethercat协议固件升级；2、升级Ethercat协议固件需卸载已运行的开放协议。
+.. note:: 1. Apenas as versões V3.9.2 e superiores suportam a atualização de firmware do protocolo Ethercat; 2. Para atualizar o firmware do protocolo Ethercat, é necessário descarregar o protocolo aberto em execução.
 
-软件环境搭建
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração do Ambiente de Software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 浏览器IP输入192.168.58.2，账号为admin，密码为123，点击“登录”，进入机器人控制箱Web界面。
+1. Insira o IP 192.168.58.2 no navegador, o nome de usuário é admin e a senha é 123. Clique em “Login” para acessar a interface web do painel de controle do robô.
 
 .. image:: teaching_pendant_software/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-14 Web登录界面
+.. centered:: Figura 17.2-14 Interface de Login Web
 
-2. 点击系统设置->关于界面，点击软件升级按钮，选择software.tar.gz文件，上传升级包。
+2. Clique em Configurações do Sistema -> Sobre e, em seguida, clique no botão “Atualização de Software”. Selecione o arquivo software.tar.gz e faça o upload do pacote de atualização.
 
 .. image:: custom_protocol_slave/008.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-15 软件升级
+.. centered:: Figura 17.2-15 Atualização de Software
 
-.. note:: QX控制箱web版本需要3.8.0及以上，LA控制箱web版本需要3.8.0及以上。
+.. note:: A versão web do painel de controle QX precisa ser 3.8.0 ou superior, e a versão web do painel de controle LA precisa ser 3.8.0 ou superior.
 
-3. 点击右上角扩展按钮，切换“本地模式”->“远程模式”。
+3. Clique no botão de expansão no canto superior direito para alternar de “Modo Local” para “Modo Remoto”.
 
 .. image:: custom_protocol_slave/010.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 17.2-16 切换远程模式
+.. centered:: Figura 17.2-16 Alternar para Modo Remoto
 
-4. 选择控制器从站协议，以及是否需要自启动功能，点击“设置”按钮。注意：切换不同的协议，需要先点击“卸载”按钮，再进行其他协议的配置。
+4. Selecione o protocolo escravo do controlador e a necessidade da função de autoinicialização. Clique no botão “Definir”. Observe: para alternar entre diferentes protocolos, é necessário primeiro clicar no botão “Descarregar” antes de configurar outro protocolo.
 
 .. image:: custom_protocol_slave/011.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.2-17 配置通讯协议
+.. centered:: Figura 17.2-17 Configurar Protocolo de Comunicação
 
-.. note:: 切换不同的协议，需要重启控制箱再进行协议的配置。
+.. note:: Para alternar entre diferentes protocolos, é necessário reiniciar o painel de controle antes de configurar o protocolo.
 
-PLC环境搭建
+Configuração do Ambiente do CLP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-实现各协议从站指令所搭建的测试环境如下表所示，其中包括各协议中所使用PLC的型号，固件版本及测试软件。
+O ambiente de teste para implementar as instruções escravas de cada protocolo é mostrado na tabela abaixo, incluindo os modelos de CLP usados, a versão do firmware e o software de teste.
 
 .. list-table:: 
    :widths: 100 100 100 100 100
    :header-rows: 1
    :align: center
 
-   * - 协议
-     - 品牌
-     - 型号
-     - 固件
-     - 软件
+   * - Protocolo
+     - Marca
+     - Modelo
+     - Firmware
+     - Software
   
    * - Profinet
-     - 西门子
+     - Siemens
      - CPU 1515-2 PN
      - 6ES75152AM020AB0
      - TIA Portal V17
   
    * - CC-Link IEF Basic
-     - 三菱
+     - Mitsubishi
      - FX5S-30TR/DS
      - 30MR/ES V1.3
      - GX Works3 V1.097B
   
    * - Ethernet/IP
-     - 欧姆龙
+     - Omron
      - MX102-1100
      - V1.3
      - Sysmac Studio V1.50
   
    * - EtherCAT
-     - 汇川
+     - Inovance
      - Easy521-0808TN
      - /
      - AutoShop 4.10.2.4
 
-西门子Profinet
+Siemens Profinet
 ++++++++++++++++++++++++++++++++++
 
-1. GSD文件（XML文件）导入
+1. Importação do Arquivo GSD (Arquivo XML)
 
-打开西门子编程软件TIA Portal V17，新建PLC工程，选择“设备与网络”，右侧“硬件目录”选择双击6ES7 515-2AM02-0AB0添加PLC模块。
+Abra o software de programação Siemens TIA Portal V17, crie um novo projeto CLP e selecione “Dispositivos e Redes”. No “Catálogo de Hardware” à direita, clique duas vezes em 6ES7 515-2AM02-0AB0 para adicionar o módulo CLP.
 
 .. image:: custom_protocol_slave/012.png
    :width: 6in
    :align: center
 
-在 TIA PORTAL 软件中菜单栏选择“选项”->“管理通用站描述文件(GSD)”可安装或删除已经安装完成的 GSD 文件。
+Na barra de menu do software TIA PORTAL, selecione “Opções” -> “Gerenciar arquivos de descrição de estação geral (GSD)” para instalar ou remover arquivos GSD já instalados.
 
 .. image:: custom_protocol_slave/013.png
    :width: 6in
    :align: center
 
-以安装FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡 GSD 文件为例，如上选择“管理通用站描述文件(GSD)”，出现“管理通用站描述文件”窗口。
+Usando a instalação do arquivo GSD da placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10 como exemplo, selecione “Gerenciar arquivos de descrição de estação geral (GSD)” conforme acima. A janela “Gerenciar arquivos de descrição de estação geral” será exibida.
 
-从“源路径”选择要安装 GSD 文件的文件夹，从所显示 GSD 文件的列表中选择要安装的一个或者多个文件，单击“安装”按钮。如下图所示。
+Selecione a pasta onde o arquivo GSD a ser instalado está localizado em “Caminho de origem”. Na lista de arquivos GSD exibida, selecione um ou mais arquivos para instalar e clique no botão “Instalar”, conforme mostrado abaixo.
 
 .. image:: custom_protocol_slave/014.png
    :width: 6in
    :align: center
 
-安装成功后，可在硬件目录下，其它现场设备找到安装的 GSD 文件的设备，如下图所示。
+Após a instalação bem-sucedida, o dispositivo do arquivo GSD instalado pode ser encontrado em “Outros dispositivos de campo” no catálogo de hardware, conforme mostrado abaixo.
 
 .. image:: custom_protocol_slave/015.png
    :width: 4in
    :align: center
 
-2. 运行程序
+2. Executar Programa
 
-打开工程“QNXtest”。
+Abra o projeto “QNXtest”.
 
 .. image:: custom_protocol_slave/016.png
    :width: 6in
    :align: center
 
-编译程序：左侧项目树双击进入“设备和网络”，右击“PLC_1”模块，下拉菜单选择编译，单机“硬件和软件（仅更改）”。编译完成后将在软件视图下方提示“编译完成”。
+Compilar o programa: na árvore do projeto à esquerda, clique duas vezes para entrar em “Dispositivos e Redes”. Clique com o botão direito no módulo “PLC_1”, selecione “Compilar” no menu suspenso e escolha “Hardware e Software (somente alterações)”. Após a compilação, a mensagem “Compilação concluída” será exibida na parte inferior da visualização do software.
 
 .. image:: custom_protocol_slave/017.png
    :width: 6in
@@ -315,13 +315,13 @@ PLC环境搭建
    :width: 6in
    :align: center
 
-下载程序到设备：左侧项目树双击进入“设备和网络”，右击“PLC_1”模块，下拉菜单选择“下载到设备”，单机“硬件和软件（仅更改）”。
+Baixar o programa para o dispositivo: na árvore do projeto à esquerda, clique duas vezes para entrar em “Dispositivos e Redes”. Clique com o botão direito no módulo “PLC_1”, selecione “Baixar para dispositivo” no menu suspenso e escolha “Hardware e Software (somente alterações)”.
 
 .. image:: custom_protocol_slave/019.png
    :width: 6in
    :align: center
 
-搜索并下载设备：弹窗后如下图配置PG/PC接口类型，点击开始搜索，选择需要下载程序的设备，点击下载。
+Pesquisar e baixar o dispositivo: após a janela pop-up, configure o tipo de interface PG/PC conforme mostrado, clique em “Iniciar pesquisa”, selecione o dispositivo para o qual o programa será baixado e clique em “Baixar”.
 
 .. image:: custom_protocol_slave/020.png
    :width: 6in
@@ -331,201 +331,201 @@ PLC环境搭建
    :width: 6in
    :align: center
 
-三菱CC-Link IEF Basic
+Mitsubishi CC-Link IEF Basic
 ++++++++++++++++++++++++++++++++++
 
-1. CC-Link IEF Basic设置
+1. Configuração CC-Link IEF Basic
 
-开启使用CC-Link IEF Basic：左侧导航菜单栏选择“以太网端口”，设置PLC ip地址，保证与FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡地址同网段。点击“CC-Link IEF Basic使用有无”，选择 “使用”。
+Habilitar o uso do CC-Link IEF Basic: no menu de navegação à esquerda, selecione “Porta Ethernet”. Defina o endereço IP do CLP, garantindo que esteja no mesmo segmento de rede que o endereço da placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10. Clique em “Usar CC-Link IEF Basic” e selecione “Usar”.
 
 .. image:: custom_protocol_slave/022.png
    :width: 6in
    :align: center
 
-CC-Link IEF Basic 网络配置设置：同样在CC-Link IEF Basic设置，选择“网络配置设置”，模块选择FRH-PCIeN-EC/EIP/CC/PN-RJ-V10板卡CIFX Digital I/O模块。拖拽到视图左下方，完成硬件配置。
+Configuração da rede CC-Link IEF Basic: ainda nas configurações do CC-Link IEF Basic, selecione “Configuração de Rede”. Selecione o módulo CIFX Digital I/O da placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10. Arraste-o para o canto inferior esquerdo da visualização para concluir a configuração de hardware.
 
 .. image:: custom_protocol_slave/023.png
    :width: 6in
    :align: center
 
-CC-Link IEF Basic 刷新设置：同样在CC-Link IEF Basic设置，点击刷新设置，自定义传输设置：256字节接收，256字节发送。
+Configuração de atualização CC-Link IEF Basic: ainda nas configurações do CC-Link IEF Basic, clique em “Configuração de Atualização”. Defina as configurações de transferência personalizadas: 256 bytes de recepção, 256 bytes de transmissão.
 
 .. image:: custom_protocol_slave/024.png
    :width: 6in
    :align: center
 
-2. 程序下载
+2. Download do Programa
 
-打开测试程序后，点击“在线”→“写入至可编程控制器”进入下载界面。
+Após abrir o programa de teste, clique em “Online” → “Gravar no controlador programável” para entrar na interface de download.
 
 .. image:: custom_protocol_slave/025.png
    :width: 6in
    :align: center
 
-打开下载界面后，点击左上方“参数+程序”，再点击右下角“执行”进行下载，等待下载完成。
+Após abrir a interface de download, clique em “Parâmetros + Programa” no canto superior esquerdo e, em seguida, clique em “Executar” no canto inferior direito para iniciar o download. Aguarde a conclusão.
 
 .. image:: custom_protocol_slave/026.png
    :width: 6in
    :align: center
 
-汇川EtherCAT
+Inovance EtherCAT
 ++++++++++++++++++++++++++++++++++
 
-1. XML文件导入
+1. Importação do Arquivo XML
 
-打开汇川编程软件AutoShop，新建PLC工程，右侧工具箱栏选择“EtheCATDevices”：
+Abra o software de programação Inovance AutoShop, crie um novo projeto CLP e, na barra de ferramentas à direita, selecione “EtheCATDevices”:
 
 .. image:: custom_protocol_slave/052.png
    :width: 6in
    :align: center
 
-鼠标左键点击“EtheCATDevices”后，右键弹出“导入设备XML”对话框，左键确定，找到放置板卡XML文件的文件夹。
+Clique com o botão esquerdo em “EtheCATDevices” e, em seguida, com o botão direito para abrir a caixa de diálogo “Importar XML do dispositivo”. Clique em “OK”, encontre a pasta onde o arquivo XML da placa está localizado e selecione-o.
 
-导入成功后“EtherCAT Devices”目录下会出现板卡的名称，这时关闭工程重新打开后完成XML文件导入流程。
+Após a importação bem-sucedida, o nome da placa aparecerá no diretório “EtherCAT Devices”. Feche o projeto e reabra-o para concluir o processo de importação do arquivo XML.
 
 .. image:: custom_protocol_slave/053.png
    :width: 6in
    :align: center
 
-2. XML文件导入
+2. Configuração do Mapeamento de E/S
 
-左侧工具栏双击变量表，新建输入为256字节的数组，软元件地址为D0。新建输出为256字节的数组，软元件地址为D200。
+Na barra de ferramentas à esquerda, clique duas vezes em “Tabela de Variáveis”. Crie uma nova matriz de entrada de 256 bytes com o endereço do dispositivo D0. Crie uma nova matriz de saída de 256 bytes com o endereço do dispositivo D200.
 
 .. image:: custom_protocol_slave/054.png
    :width: 6in
    :align: center
 
-左侧工具栏“EtherCAT”下双击“Xone-PCIe-ECATs”，在弹出对话框中单击 “I/O功能映射”，单击方框进行变量地址绑定，在弹出对话框中单击“变量表”，在选择需要对应的输入\输出，单击确定，其他地址按顺序绑定操作同上。
+Na barra de ferramentas à esquerda, em “EtherCAT”, clique duas vezes em “Xone-PCIe-ECATs”. Na caixa de diálogo pop-up, clique em “Mapeamento de Funções de E/S”. Clique na caixa para vincular o endereço da variável. Na caixa de diálogo pop-up, clique em “Tabela de Variáveis”, selecione a entrada/saída correspondente desejada e clique em “OK”. Repita a operação para vincular outros endereços em ordem.
 
 .. image:: custom_protocol_slave/055.png
    :width: 6in
    :align: center
 
-3. 程序下载
+3. Download do Programa
 
-打开测试程序，将PLC IP地址改为“192.168.0.88”，默认是“192.168.1.88”。
+Abra o programa de teste. Altere o endereço IP do CLP para “192.168.0.88” (o padrão é “192.168.1.88”).
 
 .. image:: custom_protocol_slave/056.png
    :width: 6in
    :align: center
 
-点击“修改IP/设备名”进入IP修改设置界面，将IP地址和网关修改为“192.168.0.88”：
+Clique em “Modificar IP/Nome do Dispositivo” para entrar na interface de configuração de modificação de IP. Altere o endereço IP e o gateway para “192.168.0.88”:
 
 .. image:: custom_protocol_slave/057.png
    :width: 6in
    :align: center
 
-点击“修改IP”，弹出对话框后点击“是”确认，修改IP地址成功。
+Clique em “Modificar IP”. Após a caixa de diálogo pop-up, clique em “Sim” para confirmar. O endereço IP será modificado com sucesso.
 
 .. image:: custom_protocol_slave/058.png
    :width: 6in
    :align: center
 
-通讯成功，下载PLC程序。
+Após a comunicação bem-sucedida, baixe o programa CLP.
 
 .. image:: custom_protocol_slave/059.png
    :width: 6in
    :align: center
 
-HMI设置（CC-Link IEF Basic仿真）
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração da IHM (Simulação CC-Link IEF Basic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 登录HMI界面后使能“Enable Task”建立PLC与控制器通信连接。
+1. Após fazer login na interface da IHM, habilite “Enable Task” para estabelecer a conexão de comunicação entre o CLP e o controlador.
 
 .. image:: custom_protocol_slave/027.png
    :width: 6in
    :align: center
 
-2. 点击01_MC_EnableRobot界面后再点击“EnableRobot”使能机器人，使用过程中如有报错，点击“Reset”复位。
+2. Clique na interface 01_MC_EnableRobot e, em seguida, clique em “EnableRobot” para habilitar o robô. Se houver algum erro durante o uso, clique em “Reset” para reiniciar.
 
 .. image:: custom_protocol_slave/028.png
    :width: 6in
    :align: center
 
-3. 点击“02_MC_ToolData”进入工具信息界面，左边输入参数后点击WriteToolData写入工具信息；右边点击ReadToolData读取现有工具信息。
+3. Clique em “02_MC_ToolData” para entrar na interface de informações da ferramenta. Insira os parâmetros à esquerda e clique em WriteToolData para gravar as informações da ferramenta; à direita, clique em ReadToolData para ler as informações da ferramenta existentes.
    
 .. image:: custom_protocol_slave/029.png
    :width: 6in
    :align: center
 
-4. 点击“03_MC_FrameData”进入工件信息界面，左边输入参数后点击WriteFrameData写入工件信息；右边点击ReadFrameData读取现有工件信息。
+4. Clique em “03_MC_FrameData” para entrar na interface de informações da peça. Insira os parâmetros à esquerda e clique em WriteFrameData para gravar as informações da peça; à direita, clique em ReadFrameData para ler as informações da peça existentes.
    
 .. image:: custom_protocol_slave/030.png
    :width: 6in
    :align: center
 
-5. 点击“04_MC_LoadData”进入负载信息界面，左边输入参数后点击WriteLoadData写入负载信息；右边点击ReadLoadData读取现有负载信息。
+5. Clique em “04_MC_LoadData” para entrar na interface de informações de carga. Insira os parâmetros à esquerda e clique em WriteLoadData para gravar as informações de carga; à direita, clique em ReadLoadData para ler as informações de carga existentes.
    
 .. image:: custom_protocol_slave/031.png
    :width: 6in
    :align: center
 
-6. 点击“05_MC_RobotReferenceDynamics”进入机器人最大速度和最大加速度界面，左边输入参数后点击WriteRobotRefD写入最大速度和最大加速度信息；右边点击ReadRobotRefD读取最大速度和最大加速度信息。
+6. Clique em “05_MC_RobotReferenceDynamics” para entrar na interface de velocidade máxima e aceleração máxima do robô. Insira os parâmetros à esquerda e clique em WriteRobotRefD para gravar as informações de velocidade máxima e aceleração máxima; à direita, clique em ReadRobotRefD para ler as informações de velocidade máxima e aceleração máxima.
    
 .. image:: custom_protocol_slave/032.png
    :width: 6in
    :align: center
 
-7. 点击“06_MC_Robot DefaultDynamics”进入机器人默认速度和默认加速度界面，左边输入参数后点击WriteRobotDefD写入默认速度和默认加速度信息；右边点击ReadRobotDefD读取默认速度和默认加速度信息。
+7. Clique em “06_MC_Robot DefaultDynamics” para entrar na interface de velocidade padrão e aceleração padrão do robô. Insira os parâmetros à esquerda e clique em WriteRobotDefD para gravar as informações de velocidade padrão e aceleração padrão; à direita, clique em ReadRobotDefD para ler as informações de velocidade padrão e aceleração padrão.
    
 .. image:: custom_protocol_slave/033.png
    :width: 6in
    :align: center
 
-8. 点击“07_MC_RobotSwLimits”进入坐标限位界面，左边输入最大限位和最小限位参数值后点击WriteRobotSwLimits写入限位参数信息；右边点击ReadRobotSwLimits读取现有限位参数信息。
+8. Clique em “07_MC_RobotSwLimits” para entrar na interface de limites de coordenadas. Insira os valores máximos e mínimos de limite à esquerda e clique em WriteRobotSwLimits para gravar as informações dos parâmetros de limite; à direita, clique em ReadRobotSwLimits para ler as informações dos parâmetros de limite existentes.
    
 .. image:: custom_protocol_slave/034.png
    :width: 6in
    :align: center
 
-9. 点击“08_MC_ReadActualPosition”进入读取实际位置界面，点击读取ReadPosition读取现有位置信息。
+9. Clique em “08_MC_ReadActualPosition” para entrar na interface de leitura de posição real. Clique em ReadPosition para ler as informações de posição existentes.
    
 .. image:: custom_protocol_slave/035.png
    :width: 6in
    :align: center
 
-10. 点击“09_MC_MoveLinearAbsolute”进入线性运动界面，输入坐标参数后点击MoveLinearAbsolute使机器人以目标位置线性移动。
+10. Clique em “09_MC_MoveLinearAbsolute” para entrar na interface de movimento linear. Insira os parâmetros de coordenadas e clique em MoveLinearAbsolute para mover o robô linearmente para a posição alvo.
    
 .. image:: custom_protocol_slave/036.png
    :width: 6in
    :align: center
 
-11. 点击“10_MC_MoveAxesAbsolute”进入轴坐标运动界面，输入坐标参数后点击MoveAxesAbsolute使机器人以输入的轴坐标为终点向目标位置移动。
+11. Clique em “10_MC_MoveAxesAbsolute” para entrar na interface de movimento de coordenadas de eixo. Insira os parâmetros de coordenadas e clique em MoveAxesAbsolute para mover o robô para a posição alvo usando as coordenadas de eixo inseridas como ponto final.
    
 .. image:: custom_protocol_slave/037.png
    :width: 6in
    :align: center
 
-12. 点击“11_MC_MoveDirectAbsolute”进入直接运动界面，输入坐标参数后点击MoveDirectAbsolute使机器人以输入参数为终点直接向目标位置移动。
+12. Clique em “11_MC_MoveDirectAbsolute” para entrar na interface de movimento direto. Insira os parâmetros de coordenadas e clique em MoveDirectAbsolute para mover o robô diretamente para a posição alvo usando os parâmetros inseridos como ponto final.
    
 .. image:: custom_protocol_slave/038.png
    :width: 6in
    :align: center
 
-13. 点击“12_MC_Groups”进入直接运动操作界面，其中，点击GroupInterrupt可以使机器人在运动过程中中断移动，点击GroupContinue使机器人继续向目标位置移动。点击GroupStop停止（结束）正在进行的位置移动动作。如在过程中触犯报警或错误，点击GroupReset复位机器人错误。
+13. Clique em “12_MC_Groups” para entrar na interface de operação de movimento direto. Aqui, clicar em GroupInterrupt pode interromper o movimento do robô durante o processo; clicar em GroupContinue faz o robô continuar a se mover para a posição alvo. Clique em GroupStop para parar (finalizar) a ação de movimento de posição em andamento. Se um alarme ou erro for acionado durante o processo, clique em GroupReset para reiniciar o erro do robô.
    
 .. image:: custom_protocol_slave/039.png
    :width: 6in
    :align: center
 
-14. 点击“13_MC_PositionConversion”进入位置换算界面，XtoJ1可进行笛卡尔位姿到关节角度的转换，J1toX可进行关节角度到笛卡尔位姿的转换。
+14. Clique em “13_MC_PositionConversion” para entrar na interface de conversão de posição. XtoJ1 pode converter pose cartesiana para ângulos de junta; J1toX pode converter ângulos de junta para pose cartesiana.
    
 .. image:: custom_protocol_slave/040.png
    :width: 6in
    :align: center
 
-15. 点击“14_MC_GroupJog”进入机器人点动界面，配置完毕后下拉坐标轴选择需要点动的轴，再选择轴的旋转方向。点击JogMove进行点动。右边MC_ChangeSpeedOverride可调整机械臂的移动速度。
+15. Clique em “14_MC_GroupJog” para entrar na interface de controle ponto a ponto do robô. Após a configuração, selecione o eixo a ser movido no menu suspenso e, em seguida, a direção de rotação do eixo. Clique em JogMove para realizar o movimento ponto a ponto. À direita, MC_ChangeSpeedOverride pode ajustar a velocidade de movimento do braço robótico.
    
 .. image:: custom_protocol_slave/041.png
    :width: 6in
    :align: center
 
-HMI设置（Profinet仿真）
+Configuração da IHM (Simulação Profinet)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 打开程序后单击选择项目树中的“HMI_1[ktp700 Basic PN]”，之后在菜单栏中点击“在线”→“仿真”→“启动”。等待软件编译并仿真。
+1. Após abrir o programa, clique para selecionar “HMI_1[ktp700 Basic PN]” na árvore do projeto. Em seguida, na barra de menu, clique em “Online” → “Simulação” → “Iniciar”. Aguarde o software compilar e simular.
 
-2. 仿真后功能与威纶通屏幕（CC-Link IEF Basic）内容一致。可参考上述内容设置。
+2. Após a simulação, as funções são as mesmas da tela Weintek (CC-Link IEF Basic). Consulte as instruções acima para a configuração.
    
 .. image:: custom_protocol_slave/042.png
    :width: 6in
@@ -535,43 +535,43 @@ HMI设置（Profinet仿真）
    :width: 6in
    :align: center
 
-机器人从站模式相关操作说明
----------------------------------------------------------
+Instruções de Operação Relacionadas ao Modo Escravo do Robô
+-----------------------------------------------------------------------
 
-加载从站模式
+Carregar o Modo Escravo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Step 1**：打开WebApp，进入初始设置->外设->板卡通讯->手动配置。
+**Passo 1**: Abra o WebApp e vá para Configurações Iniciais -> Periféricos -> Comunicação com Placa -> Configuração Manual.
 
 .. image:: custom_protocol_slave/047.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.3-1 板卡通讯手动配置
+.. centered:: Figura 17.3-1 Configuração Manual da Comunicação com a Placa
 
-首先，对FRJ-PCIeN板卡IP地址进行配置，如不填写，则板卡按照默认IP: 192.168.0.100进行启动配置。目前IP配置仅适用于EIP、CC-Link IEF Basic协议，PN协议由PLC主站扫描从站设备分配IP。
+Primeiro, configure o endereço IP da placa FRJ-PCIeN. Se não for preenchido, a placa será iniciada com o IP padrão: 192.168.0.100. Atualmente, a configuração de IP se aplica apenas aos protocolos EIP e CC-Link IEF Basic. Para o protocolo PN, o IP é atribuído pelo mestre CLP ao escanear o dispositivo escravo.
 
-.. note:: 页面上更改IP地址后，需要加载从站模式方可生效。
+.. note:: Após alterar o endereço IP na página, é necessário carregar o modo escravo para que a alteração entre em vigor.
 
-依次选择DI、DO、AO所需映射功能（见附录一），各参数意义如下：
+Selecione sequencialmente as funções de mapeamento necessárias para DI, DO, AO (consulte o Apêndice I). O significado de cada parâmetro é o seguinte:
 
-- DI为机器人控制：机器人从站接受外部信号输入，执行映射的功能；
+- DI é o controle do robô: o escravo do robô recebe sinais de entrada externos e executa as funções mapeadas;
   
-- DO为机器人状态输出：机器人从站反馈状态信号至主站；
+- DO é a saída de status do robô: o escravo do robô envia sinais de status de volta ao mestre;
   
-- AO为机器人状态反馈：机器人从站反馈状态数据至主站，AO0~AO15为有符号整形(int16)，AO16~AO31为单精度浮点数(float)。
+- AO é o feedback de status do robô: o escravo do robô envia dados de status de volta ao mestre. AO0 a AO15 são inteiros com sinal (int16), AO16 a AO31 são números de ponto flutuante de precisão simples (float).
 
-**Step 2**：点击“配置”按钮，生成开放协议lua文件。
+**Passo 2**: Clique no botão “Configurar” para gerar o arquivo lua de protocolo aberto.
 
 .. image:: custom_protocol_slave/048.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.3-2 设备操作及状态
+.. centered:: Figura 17.3-2 Operação e Status do Dispositivo
 
-.. note:: 开放协议lua文件支持下载，可在自动配置界面导入开放协议lua文件。
+.. note:: O arquivo lua de protocolo aberto suporta download. O arquivo lua de protocolo aberto pode ser importado na interface de configuração automática.
 
-生成程序示例如下：
+Um exemplo do programa gerado é mostrado abaixo:
 
 .. code-block:: console
    :linenos:
@@ -658,50 +658,50 @@ HMI设置（Profinet仿真）
       sleep_ms(10)
    end
 
-**Step 3**：点击加载按钮，加载机器人从站模式。
+**Passo 3**: Clique no botão “Carregar” para carregar o modo escravo do robô.
 
 .. image:: custom_protocol_slave/049.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.3-3 加载从站模式
+.. centered:: Figura 17.3-3 Carregar Modo Escravo
 
-.. note:: 机器人从站模式加载成功后，支持开机自启动功能。如需使用远程模式，请先卸载从站模式。
+.. note:: Após carregar com sucesso o modo escravo do robô, a função de autoinicialização é suportada. Se o modo remoto for necessário, descarregue o modo escravo primeiro.
 
-**Step 4**：点击右侧状态栏按钮，监控DI、DO、AI、AO交互信息，各参数介绍如下：
+**Passo 4**: Clique no botão da barra de status à direita para monitorar as informações de interação de DI, DO, AI e AO. As introduções dos parâmetros são as seguintes:
 
-- CtrlDO为主站设备控制机器人控制箱DO的信号输入值；
+- CtrlDO é o valor de entrada do sinal de controle do DO do painel de controle do robô pelo dispositivo mestre;
   
-- DI为外部主站控制信号输入值；
+- DI é o valor de entrada do sinal de controle do mestre externo;
   
-- DO为机器人从站反馈信号输出值；
+- DO é o valor de saída do sinal de feedback do escravo do robô;
   
-- AI为外部主站输入值，AI0~AI15为int16类型，AI16~AI31为float类型；
+- AI é o valor de entrada do mestre externo. AI0 a AI15 são do tipo int16, AI16 a AI31 são do tipo float;
   
-- AO为机器人从站输出值，AO0~AO15为int16类型，AO16~AO31为float类型。
+- AO é o valor de saída do escravo do robô. AO0 a AO15 são do tipo int16, AO16 a AO31 são do tipo float.
 
 .. image:: custom_protocol_slave/050.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.3-4 DI、DO、AI、AO交互信息
+.. centered:: Figura 17.3-4 Informações de Interação DI, DO, AI, AO
 
-**Step 5**：加载完成后，可通过示教程序->通讯指令->板卡生成板卡lua指令，实现设置从站DO、AO，获取从站DI、AI，等待从站DI、AI。
+**Passo 5**: Após o carregamento, as instruções lua da placa podem ser geradas através de Programas de Ensinamento -> Instruções de Comunicação -> Placa, para implementar a configuração de DO, AO do escravo, obtenção de DI, AI do escravo e espera por DI, AI do escravo.
 
 .. image:: custom_protocol_slave/051.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 17.3-5 板卡生成板卡lua指令
+.. centered:: Figura 17.3-5 Gerar Instruções Lua da Placa
 
-:download:`附件一：从站模式地址映射表 <../_static/_doc/控制箱从站模式地址对照表.xlsx>`
+:download:`Apêndice I: Tabela de Mapeamento de Endereços do Modo Escravo <../_static/_doc/Control box slave mode address comparison table.xlsx>`
 
-板卡通讯周期配置
+Configuração do Ciclo de Comunicação da Placa
 ---------------------------------------------------------
 
-通过上位机可以配置板卡的通讯周期，当前仅提供PN协议固件，后续兼容EIP、CClink ie basic、ECAT协议。
+O ciclo de comunicação da placa pode ser configurado através do host. Atualmente, apenas o firmware do protocolo PN é fornecido. A compatibilidade com os protocolos EIP, CClink ie basic e ECAT será adicionada posteriormente.
 
-(1) 将PC（Win11系统）网口与板卡网口直连，打开Device Assistant v1.1.0，双击“以太网”，点击左上角“刷新”按钮，可以扫描到当前连接的板卡设备。
+(1) Conecte diretamente a porta Ethernet do PC (sistema Win11) à porta Ethernet da placa. Abra o Device Assistant v1.1.0. Clique duas vezes em “Ethernet” e, em seguida, clique no botão “Atualizar” no canto superior esquerdo para escanear os dispositivos da placa atualmente conectados.
 
 .. image:: custom_protocol_slave/060.png
    :width: 6in
@@ -711,22 +711,22 @@ HMI设置（Profinet仿真）
    :width: 6in
    :align: center
 
-(2) 在固件更新界面，上传新版本PN固件，点击“更新”按钮，左下角提示“升级成功”打印即可。
+(2) Na interface de atualização de firmware, faça o upload da nova versão do firmware PN, clique no botão “Atualizar”. A mensagem “Atualização bem-sucedida” será exibida no canto inferior esquerdo.
 
 .. image:: custom_protocol_slave/062.png
    :width: 6in
    :align: center
 
-(3) 输入需要的通讯周期（支持1~100ms），点击“设置”按钮，左下角提示“周期设置成功”打印即可。
+(3) Insira o ciclo de comunicação desejado (suporta 1~100ms), clique no botão “Definir”. A mensagem “Configuração do ciclo bem-sucedida” será exibida no canto inferior esquerdo.
 
 .. image:: custom_protocol_slave/063.png
    :width: 6in
    :align: center
 
-附录
+Apêndice
 -------------------
 
-指令列表
+Lista de Instruções
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
@@ -734,83 +734,83 @@ HMI设置（Profinet仿真）
    :header-rows: 1
    :align: center
 
-   * - 命令码
-     - 指令描述
+   * - Código do Comando
+     - Descrição da Instrução
 
    * - 0x1000
-     - 机器人使能
+     - Habilitar robô
 
    * - 0x1001
-     - 重置所有错误
+     - Redefinir todos os erros
 
    * - 0x1002
-     - 机器人停止运动
+     - Parar movimento do robô
 
    * - 0x1003
-     - 读取实际位置
+     - Ler posição real
 
    * - 0x1004
-     - 设置机器人速度
+     - Definir velocidade do robô
 
    * - 0x1005
-     - 机器人继续运动
+     - Continuar movimento do robô
 
    * - 0x1006
-     - 机器人暂停运动
+     - Pausar movimento do robô
 
    * - 0x1007
-     - 根据joint位置计算出笛卡尔位置
+     - Calcular posição cartesiana a partir da posição da junta
 
    * - 0x1008
-     - 根据笛卡尔位置计算出joint位置
+     - Calcular posição da junta a partir da posição cartesiana
 
    * - 0x2000
-     - 写工具信息
+     - Gravar informações da ferramenta
 
    * - 0x2001
-     - 读工具信息
+     - Ler informações da ferramenta
 
    * - 0x2002
-     - 写工件信息
+     - Gravar informações da peça
 
    * - 0x2003
-     - 读工件信息
+     - Ler informações da peça
 
    * - 0x2004
-     - 写负载信息
+     - Gravar informações de carga
 
    * - 0x2005
-     - 读负载信息
+     - Ler informações de carga
 
    * - 0x2006
-     - 写reference dynamic信息
+     - Gravar informações de dinâmica de referência
 
    * - 0x2007
-     - 读reference dynamic信息
+     - Ler informações de dinâmica de referência
 
    * - 0x2008
-     - 写default dynamic信息
+     - Gravar informações de dinâmica padrão
 
    * - 0x2009
-     - 读default dynamic信息
+     - Ler informações de dinâmica padrão
 
    * - 0x2010
-     - 写软限位信息
+     - Gravar informações de limites suaves
 
    * - 0x2011
-     - 读软限位信息
+     - Ler informações de limites suaves
 
    * - 0x3000
-     - MoveAxes（基于关节角度）
+     - MoveAxes (com base no ângulo da junta)
 
    * - 0x3001
      - MoveLinear
 
    * - 0x3002
-     - MoveDirect（基于笛卡尔坐标系）
+     - MoveDirect (com base no sistema de coordenadas cartesiano)
 
    * - 0x3003
-     - jog运动
+     - Movimento Jog
 
    * - 0x3004
-     - jog停止
+     - Parar movimento Jog

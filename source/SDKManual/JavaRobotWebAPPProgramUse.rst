@@ -1,116 +1,116 @@
-机器人WebAPP程序使用
-======================
+Uso do Programa WebAPP do Robô
+=======================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-设置开机自动加载默认的作业程序
-+++++++++++++++++++++++++++++++++++
+Definir carregamento automático do programa de trabalho padrão na inicialização
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置开机自动加载默认的作业程序
-    * @param  [in] flag  0-开机不自动加载默认程序，1-开机自动加载默认程序
-    * @param  [in] program_name 作业程序名及路径，如"/fruser/movej.lua"，其中"/fruser/"为QX固定路径，"/usr/local/etc/controller/lua/"为LA固定路径
-    * @return  错误码
+    * @brief Define o carregamento automático do programa de trabalho padrão na inicialização
+    * @param [in] flag 0-não carregar automaticamente o programa padrão na inicialização, 1-carregar automaticamente o programa padrão na inicialização
+    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @return Código de erro
     */
-    int LoadDefaultProgConfig(int flag, String program_name); 
+    int LoadDefaultProgConfig(int flag, String program_name);
 
-加载指定的作业程序
-+++++++++++++++++++++++++++++++++++
+Carregar o programa de trabalho especificado
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  加载指定的作业程序
-    * @param  [in] program_name 作业程序名及路径，如"/fruser/movej.lua"，其中"/fruser/"为QX固定路径，"/usr/local/etc/controller/lua/"为LA固定路径
-    * @return  错误码
+    * @brief Carrega o programa de trabalho especificado
+    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @return Código de erro
     */
-    int ProgramLoad(String program_name); 
+    int ProgramLoad(String program_name);
 
-获取已加载的作业程序名
-+++++++++++++++++++++++++++++++++++
+Obter o nome do programa de trabalho carregado
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取已加载的作业程序名
-    * @param  [out] program_name program_name[0]:作业程序名及路径，如"/fruser/movej.lua"，其中"/fruser/"为QX固定路径，"/usr/local/etc/controller/lua/"为LA固定路径
-    * @return  错误码
+    * @brief Obtém o nome do programa de trabalho carregado
+    * @param [out] program_name program_name[0]: Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @return Código de erro
     */
-    int GetLoadedProgram(String[] program_name); 
+    int GetLoadedProgram(String[] program_name);
 
-获取当前机器人作业程序的执行行号
-+++++++++++++++++++++++++++++++++++
+Obter o número da linha atual de execução do programa de trabalho do robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取当前机器人作业程序执行的行号
-    * @param  [out] List[0]:错误码; List[1]:int line 行号
-    * @return  错误码
-    */   
+    * @brief Obtém o número da linha atual de execução do programa de trabalho do robô
+    * @param [out] List[0]: código de erro; List[1]: int line Número da linha
+    * @return Código de erro
+    */
     List<Integer> GetCurrentLine();
 
-运行当前加载的作业程序
-+++++++++++++++++++++++++++++++++++
+Executar o programa de trabalho atualmente carregado
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  运行当前加载的作业程序
-    * @return  错误码
+    * @brief Executa o programa de trabalho atualmente carregado
+    * @return Código de erro
     */
     int ProgramRun();
 
-暂停当前运行的作业程序
-+++++++++++++++++++++++++++++++++++
+Pausar o programa de trabalho atualmente em execução
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  暂停当前运行的作业程序
-    * @return  错误码
-    */ 
+    * @brief Pausa o programa de trabalho atualmente em execução
+    * @return Código de erro
+    */
     int PauseMotion();
 
-恢复当前暂停的作业程序
-+++++++++++++++++++++++++++++++++++
+Retomar o programa de trabalho atualmente pausado
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  恢复当前暂停的作业程序
-    * @return  错误码
-    */ 
-    int ResumeMotion(); 
+    * @brief Retoma o programa de trabalho atualmente pausado
+    * @return Código de erro
+    */
+    int ResumeMotion();
 
-终止当前运行的作业程序
-+++++++++++++++++++++++++++++++++++
+Terminar o programa de trabalho atualmente em execução
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  终止当前运行的作业程序
-    * @return  错误码
-    */ 
-    int StopMotion();   
+    * @brief Termina o programa de trabalho atualmente em execução
+    * @return Código de erro
+    */
+    int StopMotion();
 
-获取机器人作业程序执行状态
-+++++++++++++++++++++++++++++++++++
+Obter o estado de execução do programa de trabalho do robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取机器人作业程序执行状态
-    * @param   [out] state 1-程序停止或无程序运行，2-程序运行中，3-程序暂停
-    * @return  错误码
+    * @brief Obtém o estado de execução do programa de trabalho do robô
+    * @param [out] state 1-programa parado ou nenhum programa em execução, 2-programa em execução, 3-programa pausado
+    * @return Código de erro
     */
     public int GetProgramState(int[] state)
 
-机器人LUA程序操作代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operação de Programa LUA do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -118,8 +118,8 @@
     {
         String program_name = "/fruser/Text1.lua";
         String[] loaded_name = new String[]{""};
-        int[] state=new int[]{0};
-        List<Integer> line=new ArrayList<>();
+        int[] state = new int[]{0};
+        List<Integer> line = new ArrayList<>();
 
         robot.Mode(0);
         robot.LoadDefaultProgConfig(0, program_name);
@@ -129,7 +129,7 @@
         robot.ProgramPause();
         robot.GetProgramState(state);
         System.out.println("program state:"+ state[0]);
-        line=robot.GetCurrentLine();
+        line = robot.GetCurrentLine();
         System.out.println("current line:"+ line);
         robot.GetLoadedProgram(loaded_name);
         System.out.println("program name:"+ loaded_name[0]);
@@ -143,68 +143,68 @@
         return 0;
     }
 
-下载Lua程序
+Baixar Programa Lua
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    /** 
-    * @brief 下载作业程序
-    * @param [in] fileName 要下载的lua文件名"test.lua"或"test.tar.gz"
-    * @param [in] savePath 保存文件本地路径“D://Down/”
-    * @return 错误码 
+    /**
+    * @brief Baixa programa de trabalho
+    * @param [in] fileName Nome do arquivo Lua a ser baixado "test.lua" ou "test.tar.gz"
+    * @param [in] savePath Caminho local para salvar o arquivo "D://Down/"
+    * @return Código de erro
     */
     int LuaDownLoad(String fileName, String savePath);
 
-删除Lua程序
+Excluir Programa Lua
 +++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    /** 
-    * @brief 删除作业程序
-    * @param [in] fileName 要删除的作业程序名"test.lua"
-    * @return 错误码 
+    /**
+    * @brief Exclui programa de trabalho
+    * @param [in] fileName Nome do programa de trabalho a ser excluído "test.lua"
+    * @return Código de erro
     */
     int LuaDelete(String fileName);
 
-获取当前所有lua文件名称
-+++++++++++++++++++++++++++++++++++
+Obter todos os nomes de arquivos Lua atuais
+++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    /** 
-    * @brief 获取当前所有lua文件名称
-    * @param [out] luaNames 作业程序名称列表
-    * @return 错误码 
+    /**
+    * @brief Obtém todos os nomes de arquivos Lua atuais
+    * @param [out] luaNames Lista de nomes dos programas de trabalho
+    * @return Código de erro
     */
     int GetLuaList(List<String> luaNames);
 
-上传Lua程序
+Enviar Programa Lua
 +++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    /** 
-    * @brief 上传作业程序
-    * @param [in] filePath 本地lua文件路径名 ".../test.lua"或".../test.tar.gz"
-    * @param [out] errStr 错误信息
-    * @return 错误码 
+    /**
+    * @brief Envia programa de trabalho
+    * @param [in] filePath Caminho do arquivo Lua local ".../test.lua" ou ".../test.tar.gz"
+    * @param [out] errStr Mensagem de erro
+    * @return Código de erro
     */
     int LuaUpload(String filePath, String errStr);
 
-机器人LUA文件上传下载代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Envio e Download de Arquivo LUA do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestLUAUpDownLoad(Robot robot)
     {
-        List<String> luaNames=new ArrayList<>();
+        List<String> luaNames = new ArrayList<>();
         int rtn = robot.GetLuaList(luaNames);
         System.out.println("res is: "+rtn);
         System.out.println("size is: "+luaNames.size());
-        for (int it =1; it < luaNames.size(); it++)
+        for (int it = 1; it < luaNames.size(); it++)
         {
             System.out.println(luaNames.get(it));
         }
@@ -212,7 +212,7 @@
         rtn = robot.LuaDownLoad("test.lua", "D://zDOWN/");
         System.out.println("LuaDownLoad rtn is:"+rtn);
 
-        rtn = robot.LuaUpload("D://zUP/XG.lua","");
+        rtn = robot.LuaUpload("D://zUP/XG.lua", "");
         System.out.println("LuaUpload rtn is:"+ rtn);
 
         rtn = robot.LuaDelete("XG.lua");

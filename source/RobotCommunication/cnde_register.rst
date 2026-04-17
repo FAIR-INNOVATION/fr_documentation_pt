@@ -1,106 +1,106 @@
-机器人输入输出寄存器
-=========================
+Registradores de Entrada e Saída do Robô
+===================================================
 
-CNDE客户端与机器人可通过输入输出寄存器进行数据交互，具体包括两个过程：
+O cliente CNDE e o robô podem trocar dados através de registradores de entrada e saída. Especificamente, isso inclui dois processos:
 
-①CNDE客户端输入配置中包含输入寄存器，在输入数据时修改输入寄存器数值，机器人LUA程序中添加读输入寄存器指令，执行LUA程序即可读取到CNDE客户端修改的输入寄存器数值。
+① A configuração de entrada do cliente CNDE inclui registradores de entrada. Ao modificar os valores dos registradores de entrada durante a entrada de dados, o robô pode ler os valores dos registradores de entrada modificados pelo cliente CNDE adicionando uma instrução de leitura de registrador de entrada ao programa LUA e executando o programa LUA.
 
-②机器人LUA程序中添加写输出寄存器指令，执行LUA程序将数值写入输出寄存器，CNDE客户端输出配置中包含输出寄存器，启动机器人CNDE状态反馈，客户端接收CNDE输出数据即可读取到LUA程序中写入的输出寄存器数值。
+② Uma instrução de escrita de registrador de saída é adicionada ao programa LUA do robô. Ao executar o programa LUA, o valor é escrito no registrador de saída. A configuração de saída do cliente CNDE inclui registradores de saída. Quando o cliente inicia o feedback de estado CNDE do robô e recebe os dados de saída CNDE, ele pode ler o valor do registrador de saída escrito no programa LUA.
 
-读输入寄存器
-~~~~~~~~~~~~~~~~~~
+Ler Registradores de Entrada
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-打开WebApp，依次点击“示教程序”、“程序编程”，新建用户程序“testReg.lua”。
+Abra o WebApp, clique sequencialmente em "Programa de Ensino", "Programação de Programa" e crie um novo programa de usuário "testReg.lua".
 
 .. image:: cnde/012.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-1 新建“testReg.lua”程序
+.. centered:: Figura 4-1 Criar um novo programa "testReg.lua"
 
-点击“变量”，在右侧指令添加框中选择“输入寄存器变量读取”，选择变量类型为“int”，寄存器起始索引为0，寄存器数量为3，点击“添加”按钮和“应用”按钮。
+Clique em "Variável". Na caixa de adição de instruções à direita, selecione "Leitura de Variável de Registrador de Entrada". Selecione o tipo de variável como "int", o índice inicial do registrador como 0 e o número de registradores como 3. Clique nos botões "Adicionar" e "Aplicar".
 
 .. image:: cnde/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-2 添加读取输入寄存器指令
+.. centered:: Figura 4-2 Adicionar instrução para ler registradores de entrada
 
-此时“testReg.lua”中已经添加一条读取“int”型输入寄存器指令。
+Neste momento, uma instrução para ler registradores de entrada do tipo "int" foi adicionada ao "testReg.lua".
 
 .. image:: cnde/014.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-3 读取“int”型输入寄存器指令添加
+.. centered:: Figura 4-3 Adição da instrução para ler registradores de entrada do tipo "int"
 
-点击切换模式按钮，切换至程序可编辑模式，在读取输入寄存器指令前增加三个lua程序变量，用于接收读取到的三个输入寄存器值。
+Clique no botão "Alternar Modo" para alternar para o modo de edição de programa. Antes da instrução de leitura do registrador de entrada, adicione três variáveis de programa Lua para receber os três valores de registrador de entrada lidos.
 
 .. image:: cnde/015.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-4 添加读取输入寄存器数值
+.. centered:: Figura 4-4 Adicionar leitura de valores de registradores de entrada
 
-同样的方式，可分别添加“bit”型和“double”型寄存器数据读取。
+Da mesma forma, a leitura de dados de registradores dos tipos "bit" e "double" pode ser adicionada.
 
 .. image:: cnde/016.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-5 添加“bit”型“double”型输入寄存器读取
+.. centered:: Figura 4-5 Adicionar leitura de registradores de entrada dos tipos "bit" e "double"
 
-保存上述程序并将机器人切换到自动模式，执行该程序，输入寄存器数值将被读取至lua程序变量中。
+Salve o programa acima, alterne o robô para o modo automático e execute o programa. Os valores dos registradores de entrada serão lidos nas variáveis do programa Lua.
 
-写输出寄存器
-~~~~~~~~~~~~~~~~~~~~~~
+Escrever Registradores de Saída
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-打开WebApp，依次点击“示教程序”、“程序编程”，新建用户程序“testReg.lua”。
+Abra o WebApp, clique sequencialmente em "Programa de Ensino", "Programação de Programa" e crie um novo programa de usuário "testReg.lua".
 
 .. image:: cnde/017.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-6 新建“testReg.lua”程序 
+.. centered:: Figura 4-6 Criar um novo programa "testReg.lua"
 
-点击“变量”，在右侧指令添加框中选择“输出寄存器变量写入”，选择变量类型为“int”，寄存器起始索引为0，寄存器数量为2，寄存器值为“18,55”，点击“添加”按钮；再次选择“输出寄存器变量读取”选择变量类型为“int”，寄存器起始索引为0，寄存器数量为2，点击“添加”和“应用”按钮。
+Clique em "Variável". Na caixa de adição de instruções à direita, selecione "Escrita de Variável de Registrador de Saída". Selecione o tipo de variável como "int", o índice inicial do registrador como 0, o número de registradores como 2 e o valor do registrador como "18,55". Clique no botão "Adicionar". Em seguida, selecione novamente "Leitura de Variável de Registrador de Saída". Selecione o tipo de variável como "int", o índice inicial do registrador como 0 e o número de registradores como 2. Clique nos botões "Adicionar" e "Aplicar".
 
 .. image:: cnde/018.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-7 添加读写输出寄存器指令
+.. centered:: Figura 4-7 Adicionar instruções de leitura e escrita de registradores de saída
 
-此时“testReg.lua”中已经添加“int”型输出寄存器写和读指令。
+Neste momento, as instruções de escrita e leitura de registradores de saída do tipo "int" foram adicionadas ao "testReg.lua".
 
 .. image:: cnde/019.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-8 “int”型输出寄存器写和读指令添加
+.. centered:: Figura 4-8 Adição das instruções de escrita e leitura de registradores de saída do tipo "int"
 
-点击切换模式按钮，切换至程序可编辑模式，在读取输出寄存器指令前增加两个lua程序变量，用于接收读取到的两个输出寄存器值。
+Clique no botão "Alternar Modo" para alternar para o modo de edição de programa. Antes da instrução de leitura do registrador de saída, adicione duas variáveis de programa Lua para receber os dois valores de registrador de saída lidos.
 
 .. image:: cnde/020.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-9 添加读取输入寄存器数值
+.. centered:: Figura 4-9 Adicionar leitura de valores de registradores de entrada
 
-保存上述程序并将机器人切换到自动模式，执行该程序，此时LUA程序变量“intValue1”和“intValue2”的值分别为18和55。“bit”、“double”型寄存器操作与“int”型寄存器相同。
+Salve o programa acima, alterne o robô para o modo automático e execute o programa. Neste momento, os valores das variáveis Lua "intValue1" e "intValue2" serão 18 e 55, respectivamente. As operações com registradores dos tipos "bit" e "double" são as mesmas que com registradores do tipo "int".
 
-CNDE输入输出寄存器交互应用
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aplicação de Interação com Registradores de Entrada e Saída CNDE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: cnde/021.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 4-10 输入、输出寄存器数据交互
+.. centered:: Figura 4-10 Interação de Dados com Registradores de Entrada e Saída
 
-机器人和CNDE客户端通过输入、输出寄存器的数据交互场景包括但不限于有以下几种类型：
+Os cenários de interação de dados entre o robô e o cliente CNDE através de registradores de entrada e saída incluem, mas não se limitam aos seguintes tipos:
 
-①输入寄存器控制机器人运动；CNDE客户端进行机器人目标位置规划，将机器人目标位置写入输入寄存器中；在机器人LUA程序中读取输入寄存器数值获得机器人目标位置，再通过PTP、LIN、ServoJ等运动指令控制机器人运动到目标位置，LUA示例程序如下：
+① Registradores de entrada controlam o movimento do robô: O cliente CNDE planeja a posição alvo do robô e escreve a posição alvo do robô nos registradores de entrada. O programa LUA do robô lê os valores dos registradores de entrada para obter a posição alvo do robô e, em seguida, usa instruções de movimento como PTP, LIN, ServoJ, etc., para controlar o movimento do robô até a posição alvo. Um exemplo de programa LUA é o seguinte:
 
 .. code-block:: lua
     :linenos:
@@ -116,7 +116,7 @@ CNDE输入输出寄存器交互应用
         end	
     end
 
-②输入寄存器控制机器人动作：CNDE客户端向某个输入寄存器写入不同的数值，进而控制机器人进行不同的动作，机器人LUA程序中循环获取对应输入寄存器数值，根据寄存器数值不同，进行不同的动作，示例程序如下：
+② Registradores de entrada controlam as ações do robô: O cliente CNDE escreve valores diferentes em um registrador de entrada para controlar o robô a executar ações diferentes. O programa LUA do robô obtém o valor do registrador de entrada correspondente em um loop e executa ações diferentes com base no valor do registrador. Um exemplo de programa é o seguinte:
 
 .. code-block:: lua
     :linenos:
@@ -138,7 +138,7 @@ CNDE输入输出寄存器交互应用
         end
     end
 
-③机器人在运行过程中向输出寄存器写入当前程序状态，CNDE客户端通过读取输出寄存器状态，实现对机器人程序运行的监控，示例程序如下：
+③ Durante a operação do robô, ele escreve o estado atual do programa nos registradores de saída. O cliente CNDE lê o estado dos registradores de saída para monitorar a execução do programa do robô. Um exemplo de programa é o seguinte:
 
 .. code-block:: lua
     :linenos:

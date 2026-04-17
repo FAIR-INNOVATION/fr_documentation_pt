@@ -1,73 +1,70 @@
-前言
-=======
+Prefácio
+===============
 
 .. toctree:: 
 	:maxdepth: 5
 
-首先，非常感谢您选购我们公司的FR系列协作机器人产品。我们的产品是经过多次精心设计和测试，以确保能够满足您各方面的需求。
+Em primeiro lugar, muito obrigado por adquirir o nosso produto, o robô colaborativo da série FR. Nosso produto foi projetado e testado várias vezes para garantir que possa atender às suas necessidades em todos os aspectos.
 
-请您仔细阅读本产品用户手册，以确保您能够正确地使用我们的产品并获得最佳的使用体验。如果您在使用过程中遇到任何问题，请参阅使用手册中的故障排除部分，或与我们的售后人员联系。我们非常感谢您的支持和信任，期待为您提供更好的服务和产品。
+Pedimos que leia atentamente este manual do usuário para garantir que você possa usar nosso produto corretamente e obter a melhor experiência de uso. Se encontrar qualquer problema durante o uso, consulte a seção de solução de problemas do manual ou entre em contato com nossa equipe de suporte pós-venda. Agradecemos muito pelo seu apoio e confiança e estamos ansiosos para oferecer a você melhores serviços e produtos.
 
-箱子里面装的什么
-------------------
+O que vem na caixa
+-----------------------------
 
-当您订购一个FR系列协作机器人后，您会收到一个箱子。里面包含：
+Quando você encomenda um robô colaborativo da série FR, receberá uma caixa contendo:
 
-- **协作机器人一台**
-- **按钮盒一个**
-- **控制箱一个（含控制箱线缆一根）**
+- **Um robô colaborativo**
+- **Um painel de botões**
+- **Uma caixa de controle (incluindo um cabo para a caixa de controle)**
 
-.. important:: FARINO配套的电源线仅供FARINO机器人使用。无法用于除机器人以外的电气设备上。
+.. important:: O cabo de alimentação fornecido pela FARINO é exclusivo para uso com robôs FARINO. Não deve ser usado em outros equipamentos elétricos.
 
-重要安全说明
------------------
+Instruções de Segurança Importantes
+--------------------------------------------------
 
-机器人是一种涉及人身安全的设备，因此每次安装机器人后都必须执行安全评估。您必须遵守第1章中的所有安全说明。
+Um robô é um equipamento que envolve segurança pessoal. Portanto, uma avaliação de segurança deve ser realizada sempre após a instalação do robô. Você deve cumprir todas as instruções de segurança descritas no Capítulo 1.
 
-如何使用本手册
-------------------
+Como Usar Este Manual
+-----------------------------
 
-本手册包含机器人安装编程的指导信息。手册包括：
+Este manual contém informações de orientação para a instalação e programação do robô. O manual inclui:
 
--  **硬件安装部分**：机器人的机械安装和电气安装
--  **示教器软件解析部分**：机器人示教及编程
+-  **Seção de Instalação de Hardware**: Instalação mecânica e elétrica do robô
+-  **Seção de Análise do Software do Painel de Ensinamento**: Ensinamento e programação do robô
 
-本手册面向的机器人集成商，集成商应接受过基本的机械电气培训，并熟悉初级编程概念。
+Este manual é direcionado aos integradores de robôs, que devem ter recebido treinamento básico em mecânica e elétrica e estar familiarizados com conceitos básicos de programação.
 
-遵循的相关标准
------------------
+Padrões Relevantes Seguidos
+---------------------------------------
 
 .. list-table::
    :widths: 30 70
    :header-rows: 0
    :align: center
 
-   * - **标准**
-     - **定义**
+   * - **Padrão**
+     - **Definição**
 
    * - 2006/42/EC:2006
-     - Machinery Directive:  Directive 2006/42/EC of the European Parliament and of the Council of 17 May 2006 on machinery, and amending Directive
-       95/16/EC(recast)
+     - Diretiva de Máquinas: Diretiva 2006/42/EC do Parlamento Europeu e do Conselho de 17 de maio de 2006 sobre máquinas e que altera a Diretiva 95/16/EC (reformulada)
 
    * - 2004/108/EC:2004
-     - EMC Directive:  Directive 2004/108/EC of the European Parliament and of the Council of 15 December 2004 on the approximation of the laws of the Member
-       States relating to electromagnetic compatibility and  repealing Directive 89/336/EEC
+     - Diretiva EMC: Diretiva 2004/108/EC do Parlamento Europeu e do Conselho de 15 de dezembro de 2004 sobre a aproximação das leis dos Estados-Membros relativas à compatibilidade eletromagnética e que revoga a Diretiva 89/336/EEC
 
    * - EN ISO 13850:2008
-     - Safety of machinery:  Emergency stop - Principles for design
+     - Segurança de máquinas: Parada de emergência - Princípios para projeto
 
    * - EN ISO 13849-1:2008
-     - Safety of machinery:  Safety-related parts of control systems - Part 1: General principles of design
+     - Segurança de máquinas: Partes de sistemas de controle relacionadas à segurança - Parte 1: Princípios gerais de projeto
 
    * - EN ISO 13849-2:2012
-     - Safety of machinery:  Safety-related parts of control systems - Part 2: Validation
+     - Segurança de máquinas: Partes de sistemas de controle relacionadas à segurança - Parte 2: Validação
 
    * - EN ISO 12100:2010
-     - Safety of machinery:  General principles of design, risk assessment and risk reduction
+     - Segurança de máquinas: Princípios gerais de projeto, avaliação de risco e redução de risco
 
    * - EN ISO 10218-1:2011
-     - Industrial robots:  Safety  Note: Content equivalent to ANSI/RIA R.15.06-2012, Part 1
+     - Robôs industriais: Segurança  Nota: Conteúdo equivalente ao ANSI/RIA R.15.06-2012, Parte 1
 
    * - ISO/TS 15066: 2016
-     - Safety requirements for collaborative industrial robot  Robots and robotic devices —Collaborative robots
-
+     - Requisitos de segurança para robôs industriais colaborativos  Robôs e dispositivos robóticos — Robôs colaborativos

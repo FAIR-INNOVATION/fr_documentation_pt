@@ -1,125 +1,125 @@
-机器人常用设置
-=================
+Configurações Comuns do Robô
+===================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-设置工具参考点-六点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta - Método dos Seis Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief 设置工具参考点-六点法
-     * @param [in] point_num 点编号,范围[1~6] 
-     * @return 错误码
+     * @brief Define o ponto de referência da ferramenta - método dos seis pontos
+     * @param [in] point_num Número do ponto, intervalo [1~6]
+     * @return Código de erro
      */
     errno_t SetToolPoint(int point_num);
 
-计算工具坐标系
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief  计算工具坐标系
-     * @param [out] tcp_pose 工具坐标系
-     * @return 错误码
+     * @brief  Calcula o sistema de coordenadas da ferramenta
+     * @param [out] tcp_pose Sistema de coordenadas da ferramenta
+     * @return Código de erro
      */
     errno_t ComputeTool(DescPose *tcp_pose);
 
-设置工具参考点-四点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta - Método dos Quatro Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief 设置工具参考点-四点法
-     * @param [in] point_num 点编号,范围[1~4] 
-     * @return 错误码
+     * @brief Define o ponto de referência da ferramenta - método dos quatro pontos
+     * @param [in] point_num Número do ponto, intervalo [1~4]
+     * @return Código de erro
      */
     errno_t SetTcp4RefPoint(int point_num);
 
-计算工具坐标系
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief  计算工具坐标系
-     * @param [out] tcp_pose 工具坐标系
-     * @return 错误码
+     * @brief  Calcula o sistema de coordenadas da ferramenta
+     * @param [out] tcp_pose Sistema de coordenadas da ferramenta
+     * @return Código de erro
      */
     errno_t ComputeTcp4(DescPose *tcp_pose);
 
-根据点位信息计算工具坐标系
-+++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta com Base em Informações de Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
     :linenos:
 
     /**
-	 * @brief 根据点位信息计算工具坐标系
-	 * @param [in] method 计算方法；0-四点法；1-六点法
-	 * @param [in] pos 关节位置组，四点法时数组长度为4个，六点法时数组长度为6个
-	 * @param [out] coord 工具坐标系结果
-	 * @return 错误码
+     * @brief Calcula o sistema de coordenadas da ferramenta com base em informações de pontos
+     * @param [in] method Método de cálculo; 0-método dos quatro pontos; 1-método dos seis pontos
+     * @param [in] pos Grupo de posições das juntas, comprimento do array é 4 para o método dos quatro pontos e 6 para o método dos seis pontos
+     * @param [out] coord Resultado do sistema de coordenadas da ferramenta
+     * @return Código de erro
     */
-	errno_t ComputeToolCoordWithPoints(int method, JointPos pos[], DescPose& coord);
+    errno_t ComputeToolCoordWithPoints(int method, JointPos pos[], DescPose& coord);
 
-设置工具坐标系
-++++++++++++++++++++++++++++++++++
-.. versionchanged:: C++SDK-v2.1.5.0
-
-.. code-block:: c++
-    :linenos:
-
-	/**
-	 * @brief  设置工具坐标系
-	 * @param  [in] id 坐标系编号，范围[0~14]
-	 * @param  [in] coord  工具中心点相对于末端法兰中心位姿
-	 * @param  [in] type  0-工具坐标系，1-传感器坐标系
-	 * @param  [in] install 安装位置，0-机器人末端，1-机器人外部
-	 * @param  [in] toolID 工具ID
-	 * @param  [in] loadNum 负载编号
-	 * @return  错误码
-	 */
-	errno_t SetToolCoord(int id, DescPose *coord, int type, int install, int toolID, int loadNum);
-
-设置工具坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Ferramenta
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
     :linenos:
 
     /**
-	 * @brief  设置工具坐标系列表
-	 * @param  [in] id 坐标系编号，范围[0~14]
-	 * @param  [in] coord  工具中心点相对于末端法兰中心位姿
-	 * @param  [in] type  0-工具坐标系，1-传感器坐标系
-	 * @param  [in] install 安装位置，0-机器人末端，1-机器人外部
-	 * @param  [in] loadNum 负载编号
-	 * @return  错误码
-	 */
-	errno_t SetToolList(int id, DescPose *coord, int type, int install, int loadNum);
+     * @brief  Define o sistema de coordenadas da ferramenta
+     * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+     * @param  [in] coord  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
+     * @param  [in] type  0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas do sensor
+     * @param  [in] install Posição de instalação, 0-extremidade do robô, 1-externo ao robô
+     * @param  [in] toolID ID da ferramenta
+     * @param  [in] loadNum Número da carga
+     * @return  Código de erro
+     */
+    errno_t SetToolCoord(int id, DescPose *coord, int type, int install, int toolID, int loadNum);
 
-获取当前工具坐标系
-++++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Ferramenta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionchanged:: C++SDK-v2.1.5.0
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取当前工具坐标系
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] desc_pos 工具坐标系位姿
-    * @return  错误码
+     * @brief  Define a lista de sistemas de coordenadas da ferramenta
+     * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+     * @param  [in] coord  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
+     * @param  [in] type  0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas do sensor
+     * @param  [in] install Posição de instalação, 0-extremidade do robô, 1-externo ao robô
+     * @param  [in] loadNum Número da carga
+     * @return  Código de erro
+     */
+    errno_t SetToolList(int id, DescPose *coord, int type, int install, int loadNum);
+
+Obter Sistema de Coordenadas da Ferramenta Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief  Obtém o sistema de coordenadas da ferramenta atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose do sistema de coordenadas da ferramenta
+    * @return  Código de erro
     */
     errno_t  GetTCPOffset(uint8_t flag, DescPose *desc_pos);
 
-机器人工具坐标系操作代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -186,64 +186,64 @@
          return 0;
      }
 
-设置外部工具参考点-六点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta Externa - Método dos Seis Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief 设置外部工具参考点-六点法
-     * @param [in] point_num 点编号,范围[1~4] 
-     * @return 错误码
+     * @brief Define o ponto de referência da ferramenta externa - método dos seis pontos
+     * @param [in] point_num Número do ponto, intervalo [1~4]
+     * @return Código de erro
      */
     errno_t SetExTCPPoint(int point_num);
 
-计算外部工具坐标系
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta Externa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief  计算外部工具坐标系
-     * @param [out] tcp_pose 外部工具坐标系
-     * @return 错误码
+     * @brief  Calcula o sistema de coordenadas da ferramenta externa
+     * @param [out] tcp_pose Sistema de coordenadas da ferramenta externa
+     * @return Código de erro
      */
-    errno_t ComputeExTCF(DescPose *tcp_pose);  
+    errno_t ComputeExTCF(DescPose *tcp_pose);
 
-设置外部工具坐标系
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Ferramenta Externa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.2.0
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置外部工具坐标系
-    * @param  [in] id 坐标系编号，范围[0~14]
-    * @param  [in] etcp  工具中心点相对末端法兰中心位姿
-    * @param  [in] etool  待定
-    * @return  错误码
+    * @brief  Define o sistema de coordenadas da ferramenta externa
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
+    * @param  [in] etool  Pendente
+    * @return  Código de erro
     */
     errno_t  SetExToolCoord(int id, DescPose *etcp, DescPose *etool);
 
-设置外部工具坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.2.0
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置外部工具坐标系列表
-    * @param  [in] id 坐标系编号，范围[0~14]
-    * @param  [in] etcp  工具中心点相对末端法兰中心位姿
-    * @param  [in] etool  待定
-    * @return  错误码
+    * @brief  Define a lista de sistemas de coordenadas da ferramenta externa
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
+    * @param  [in] etool  Pendente
+    * @return  Código de erro
     */
     errno_t  SetExToolList(int id, DescPose *etcp, DescPose *etool);
 
-机器人外部工具坐标系操作代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta Externa do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -284,98 +284,98 @@
        return 0;
     }
 
-设置工件参考点-三点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Peça - Método dos Três Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief 设置工件参考点-三点法
-     * @param [in] point_num 点编号,范围[1~3] 
-     * @return 错误码
+     * @brief Define o ponto de referência da peça - método dos três pontos
+     * @param [in] point_num Número do ponto, intervalo [1~3]
+     * @return Código de erro
      */
     errno_t SetWObjCoordPoint(int point_num);
 
-计算工件坐标系
-++++++++++++++++++++++++++++++++++
-.. versionchanged:: C++SDK-v2.1.5.0
-
-.. code-block:: c++
-    :linenos:
-
-	/**
-	 * @brief  计算工件坐标系
-	 * @param [in] method 计算方法 0：原点-x轴-z轴  1：原点-x轴-xy平面
-	 * @param [in] refFrame 参考坐标系
-	 * @param [out] wobj_pose 工件坐标系
-	 * @return 错误码
-	 */
-	errno_t ComputeWObjCoord(int method, int refFrame, DescPose *wobj_pose);
-
-设置工件坐标系
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Peça
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
     :linenos:
 
     /**
-	 * @brief  设置工件坐标系
-	 * @param  [in] id 坐标系编号，范围[0~14]
-	 * @param  [in] coord  工件坐标系相对于末端法兰中心位姿
-	 * @param  [in] refFrame 参考坐标系
-	 * @return  错误码
-	 */
-	errno_t SetWObjCoord(int id, DescPose *coord, int refFrame);
+     * @brief  Calcula o sistema de coordenadas da peça
+     * @param [in] method Método de cálculo 0: origem-eixo x-eixo z  1: origem-eixo x-plano xy
+     * @param [in] refFrame Sistema de coordenadas de referência
+     * @param [out] wobj_pose Sistema de coordenadas da peça
+     * @return Código de erro
+     */
+    errno_t ComputeWObjCoord(int method, int refFrame, DescPose *wobj_pose);
 
-设置工件坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Peça
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.5.0
-    
+
 .. code-block:: c++
     :linenos:
 
-	/**
-	 * @brief  设置工件坐标系列表
-	 * @param  [in] id 坐标系编号，范围[0~14]
-	 * @param  [in] coord  工件坐标系相对于末端法兰中心位姿
-	 * @param  [in] refFrame 参考坐标系
-	 * @return  错误码
-	 */
-	errno_t SetWObjList(int id, DescPose *coord, int refFrame);
+    /**
+     * @brief  Define o sistema de coordenadas da peça
+     * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+     * @param  [in] coord  Pose do sistema de coordenadas da peça em relação ao centro do flange da extremidade
+     * @param  [in] refFrame Sistema de coordenadas de referência
+     * @return  Código de erro
+     */
+    errno_t SetWObjCoord(int id, DescPose *coord, int refFrame);
 
-根据点位信息计算工件坐标系
-+++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Peça
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionchanged:: C++SDK-v2.1.5.0
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief  Define a lista de sistemas de coordenadas da peça
+     * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+     * @param  [in] coord  Pose do sistema de coordenadas da peça em relação ao centro do flange da extremidade
+     * @param  [in] refFrame Sistema de coordenadas de referência
+     * @return  Código de erro
+     */
+    errno_t SetWObjList(int id, DescPose *coord, int refFrame);
+
+Calcular Sistema de Coordenadas da Peça com Base em Informações de Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
     :linenos:
 
     /**
-	 * @brief 根据点位信息计算工件坐标系
-	 * @param [in] method 计算方法；0：原点-x轴-z轴  1：原点-x轴-xy平面
-	 * @param [in] pos 三个TCP位置组
-	 * @param [in] refFrame 参考坐标系
-	 * @param [out] coord 工具坐标系结果
-	 * @return 错误码
+     * @brief Calcula o sistema de coordenadas da peça com base em informações de pontos
+     * @param [in] method Método de cálculo; 0: origem-eixo x-eixo z  1: origem-eixo x-plano xy
+     * @param [in] pos Grupo de três posições TCP
+     * @param [in] refFrame Sistema de coordenadas de referência
+     * @param [out] coord Resultado do sistema de coordenadas da ferramenta
+     * @return Código de erro
     */
-	errno_t ComputeWObjCoordWithPoints(int method, DescPose pos[], int refFrame, DescPose& coord);
+    errno_t ComputeWObjCoordWithPoints(int method, DescPose pos[], int refFrame, DescPose& coord);
 
-获取当前工件坐标系
-++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas da Peça Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取当前工件坐标系
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] desc_pos 工件坐标系位姿
-    * @return  错误码
-    */   
+    * @brief  Obtém o sistema de coordenadas da peça atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose do sistema de coordenadas da peça
+    * @return  Código de erro
+    */
     errno_t  GetWObjOffset(uint8_t flag, DescPose *desc_pos);
 
-机器人工件坐标系操作代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Operações do Sistema de Coordenadas da Peça do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -421,164 +421,164 @@
          return 0;
      }
 
-设置全局速度
+Definir Velocidade Global
 ++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置全局速度
-    * @param  [in]  vel  速度百分比，范围[0~100]
-    * @return  错误码
+    * @brief  Define a velocidade global
+    * @param  [in]  vel  Percentagem de velocidade, intervalo [0~100]
+    * @return  Código de erro
     */
     errno_t  SetSpeed(int vel);
 
-设置机器人加速度
+Definir Aceleração do Robô
 +++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-	/**
-	 * @brief 设置机器人加速度
-	 * @param [in] acc 机器人加速度百分比
-	 * @return 错误码
-	 */
-	errno_t SetOaccScale(double acc);
+    /**
+     * @brief Define a aceleração do robô
+     * @param [in] acc Percentagem de aceleração do robô
+     * @return Código de erro
+     */
+    errno_t SetOaccScale(double acc);
 
-获取机器人默认速度
+Obter Velocidade Padrão do Robô
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取机器人默认速度
-    * @param  [out]  vel  速度，单位mm/s
-    * @return  错误码
-    */   
+    * @brief  Obtém a velocidade padrão do robô
+    * @param  [out]  vel  Velocidade, em mm/s
+    * @return  Código de erro
+    */
     errno_t  GetDefaultTransVel(float *vel);
-    
-设置末端负载重量
-++++++++++++++++++++++++++++++++++
+
+Definir Peso da Carga na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
     :linenos:
 
     /**
-	 * @brief  设置末端负载重量
-	 * @param  [in] loadNum 负载编号
-	 * @param  [in] weight  负载重量，单位kg
-	 * @return  错误码
+     * @brief  Define o peso da carga na extremidade
+     * @param  [in] loadNum Número da carga
+     * @param  [in] weight  Peso da carga, em kg
+     * @return  Código de erro
     */
     errno_t SetLoadWeight(int loadNum = 0, float weight);
 
-设置末端负载质心坐标
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Coordenadas do Centro de Massa da Carga na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v3.8.6
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置末端负载质心坐标
-    * @param [in] loadNum 负载编号
-    * @param [in] coord 质心坐标，单位mm
-    * @return 错误码
+    * @brief Define as coordenadas do centro de massa da carga na extremidade
+    * @param [in] loadNum Número da carga
+    * @param [in] coord Coordenadas do centro de massa, em mm
+    * @return Código de erro
     */
     errno_t SetLoadCoord(int loadNum, DescTran* coord);
 
-获取当前负载的重量
+Obter Peso da Carga Atual
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取当前负载的重量
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] weight 负载重量，单位kg
-    * @return  错误码
+    * @brief  Obtém o peso da carga atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] weight Peso da carga, em kg
+    * @return  Código de erro
     */
     errno_t  GetTargetPayload(uint8_t flag, float *weight);
 
-获取当前负载的质心
-++++++++++++++++++++++++++++++++++++
+Obter Centro de Massa da Carga Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取当前负载的质心
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] cog 负载质心，单位mm
-    * @return  错误码
-    */   
+    * @brief  Obtém o centro de massa da carga atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] cog Centro de massa da carga, em mm
+    * @return  Código de erro
+    */
     errno_t  GetTargetPayloadCog(uint8_t flag, DescTran *cog);
 
-设置机器人安装方式
-+++++++++++++++++++++++++++++++
+Definir Modo de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置机器人安装方式
-    * @param  [in] install  安装方式，0-正装，1-侧装，2-倒装
-    * @return  错误码
+    * @brief  Define o modo de instalação do robô
+    * @param  [in] install  Modo de instalação, 0-montagem normal, 1-montagem lateral, 2-montagem invertida
+    * @return  Código de erro
     */
-    errno_t  SetRobotInstallPos(uint8_t install);   
+    errno_t  SetRobotInstallPos(uint8_t install);
 
-设置机器人安装角度
-+++++++++++++++++++++++++++++++
+Definir Ângulo de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置机器人安装角度，自由安装
-    * @param  [in] yangle  倾斜角
-    * @param  [in] zangle  旋转角
-    * @return  错误码
+    * @brief  Define o ângulo de instalação do robô, instalação livre
+    * @param  [in] yangle  Ângulo de inclinação
+    * @param  [in] zangle  Ângulo de rotação
+    * @return  Código de erro
     */
     errno_t  SetRobotInstallAngle(double yangle, double zangle);
 
-获取机器人安装角度
-+++++++++++++++++++++++++++++++++
+Obter Ângulo de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取机器人安装角度
-    * @param  [out] yangle 倾斜角
-    * @param  [out] zangle 旋转角
-    * @return  错误码
+    * @brief  Obtém o ângulo de instalação do robô
+    * @param  [out] yangle Ângulo de inclinação
+    * @param  [out] zangle Ângulo de rotação
+    * @return  Código de erro
     */
     errno_t  GetRobotInstallAngle(float *yangle, float *zangle);
 
-设置系统变量值
-++++++++++++++++++++++++++++++++++
+Definir Valor de Variável do Sistema
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置系统变量值
-    * @param  [in]  id  变量编号，范围[1~20]
-    * @param  [in]  value 变量值
-    * @return  错误码
+    * @brief  Define o valor da variável do sistema
+    * @param  [in]  id  Número da variável, intervalo [1~20]
+    * @param  [in]  value Valor da variável
+    * @return  Código de erro
     */
     errno_t  SetSysVarValue(int id, float value);
 
-获取系统变量值
-+++++++++++++++++++++++++++++++++
+Obter Valor de Variável do Sistema
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  获取系统变量值
-    * @param  [in] id 系统变量编号，范围[1~20]
-    * @param  [out] value  系统变量值
-    * @return  错误码
+    * @brief  Obtém o valor da variável do sistema
+    * @param  [in] id Número da variável do sistema, intervalo [1~20]
+    * @param  [out] value  Valor da variável do sistema
+    * @return  Código de erro
     */
     errno_t  GetSysVarValue(int id, float *value);
 
-机器人常用设置代码示例
-+++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Configurações Comuns do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -637,68 +637,68 @@
          return 0;
      }
 
-关节摩擦力补偿开关
-++++++++++++++++++++++++++++++++
+Chave de Compensação de Atrito das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  关节摩擦力补偿开关
-    * @param  [in]  state  0-关，1-开
-    * @return  错误码
+    * @brief  Chave de compensação de atrito das juntas
+    * @param  [in]  state  0-desligar, 1-ligar
+    * @return  Código de erro
     */
     errno_t  FrictionCompensationOnOff(uint8_t state);
 
-设置关节摩擦力补偿系数-正装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Normal
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-正装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Define o coeficiente de compensação de atrito das juntas - montagem normal
+    * @param  [in]  coeff Coeficientes de compensação das seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     errno_t  SetFrictionValue_level(float coeff[6]);
 
-设置关节摩擦力补偿系数-侧装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Lateral
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-侧装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Define o coeficiente de compensação de atrito das juntas - montagem lateral
+    * @param  [in]  coeff Coeficientes de compensação das seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     errno_t  SetFrictionValue_wall(float coeff[6]);
 
-设置关节摩擦力补偿系数-倒装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Invertida
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-倒装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Define o coeficiente de compensação de atrito das juntas - montagem invertida
+    * @param  [in]  coeff Coeficientes de compensação das seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     errno_t  SetFrictionValue_ceiling(float coeff[6]);
 
-设置关节摩擦力补偿系数-自由安装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Instalação Livre
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-自由安装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Define o coeficiente de compensação de atrito das juntas - instalação livre
+    * @param  [in]  coeff Coeficientes de compensação das seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     errno_t  SetFrictionValue_freedom(float coeff[6]);
 
-机器人设置关节摩擦力补偿代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Configuração de Compensação de Atrito das Juntas do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -733,32 +733,32 @@
        return 0;
     }
 
-查询机器人错误码
+Consultar Código de Erro do Robô
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-     * @brief  查询机器人错误码
-     * @param  [out]  maincode  主错误码
-     * @param  [out]  subcode   子错误码
-     * @return  错误码
-     */ 
+     * @brief  Consulta o código de erro do robô
+     * @param  [out]  maincode  Código de erro principal
+     * @param  [out]  subcode   Código de erro secundário
+     * @return  Código de erro
+     */
     errno_t  GetRobotErrorCode(int *maincode, int *subcode);
 
-错误状态清除
+Limpar Estado de Erro
 ++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  错误状态清除
-    * @return  错误码
+    * @brief  Limpa o estado de erro
+    * @return  Código de erro
     */
     errno_t  ResetAllError();
 
-机器人故障状态获取及清除错误代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Obter Estado de Falha e Limpar Erro do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -786,35 +786,35 @@
        return 0;
     }
 
-设置宽电压控制箱温度及风扇电流监控参数
+Definir Parâmetros de Monitoramento de Temperatura e Corrente da Ventoinha da Caixa de Controle de Larga Tensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置宽电压控制箱温度及风扇电流监控参数
-    * @param [in] enable 0-不使能监测；1-使能监测
-    * @param [in] period 监测周期(s),范围1-100
-    * @return 错误码
+    * @brief Define os parâmetros de monitoramento de temperatura e corrente da ventoinha da caixa de controle de larga tensão
+    * @param [in] enable 0-desativar monitoramento; 1-ativar monitoramento
+    * @param [in] period Período de monitoramento (s), intervalo 1-100
+    * @return Código de erro
     */
     errno_t SetWideBoxTempFanMonitorParam(int enable, int period);
-    
-获取宽电压控制箱温度及风扇电流监控参数
+
+Obter Parâmetros de Monitoramento de Temperatura e Corrente da Ventoinha da Caixa de Controle de Larga Tensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取宽电压控制箱温度及风扇电流监控参数
-    * @param [out] enable 0-不使能监测；1-使能监测
-    * @param [out] period 监测周期(s),范围1-100
-    * @return 错误码
+    * @brief Obtém os parâmetros de monitoramento de temperatura e corrente da ventoinha da caixa de controle de larga tensão
+    * @param [out] enable 0-desativar monitoramento; 1-ativar monitoramento
+    * @param [out] period Período de monitoramento (s), intervalo 1-100
+    * @return Código de erro
     */
     errno_t GetWideBoxTempFanMonitorParam(int &enable, int &period);
-    
-宽电压控制箱温度和风扇电流状态获取代码示例
+
+Exemplo de Código para Obter Estado de Temperatura e Corrente da Ventoinha da Caixa de Controle de Larga Tensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -860,65 +860,65 @@
          robot.Sleep(2000);
          return 0;
      }
-         
-计算焦点标定结果
+
+Calcular Resultado da Calibração do Foco
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 计算焦点标定结果
-    * @param [in] pointNum 标定点个数
-    * @param [out] resultPos 标定结果XYZ
-    * @param [out] accuracy 标定精度误差
-    * @return 错误码
+    * @brief Calcula o resultado da calibração do foco
+    * @param [in] pointNum Número de pontos de calibração
+    * @param [out] resultPos Resultado da calibração XYZ
+    * @param [out] accuracy Erro de precisão da calibração
+    * @return Código de erro
     */
     errno_t ComputeFocusCalib(int pointNum, DescTran& resultPos, float& accuracy);
-         
-设置焦点坐标
+
+Definir Coordenadas do Foco
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置焦点坐标
-    * @param [in] pos 焦点坐标XYZ
-    * @return 错误码
+    * @brief Define as coordenadas do foco
+    * @param [in] pos Coordenadas do foco XYZ
+    * @return Código de erro
     */
     errno_t SetFocusPosition(DescTran pos);
-         
-开启焦点跟随
+
+Iniciar Rastreamento do Foco
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 开启焦点跟随
-    * @param [in] kp 比例参数，默认50.0
-    * @param [in] kpredict 前馈参数，默认19.0
-    * @param [in] aMax 最大角加速度限制，默认1440°/s^2
-    * @param [in] vMax 最大角速度限制，默认180°/s
-    * @param [in] type 锁定X轴指向(0-参考输入矢量；1-水平；2-垂直)
-    * @return 错误码
+    * @brief Inicia o rastreamento do foco
+    * @param [in] kp Parâmetro proporcional, padrão 50.0
+    * @param [in] kpredict Parâmetro feedforward, padrão 19.0
+    * @param [in] aMax Limite máximo de aceleração angular, padrão 1440°/s^2
+    * @param [in] vMax Limite máximo de velocidade angular, padrão 180°/s
+    * @param [in] type Travar a direção do eixo X (0-vetor de entrada de referência; 1-horizontal; 2-vertical)
+    * @return Código de erro
     */
     errno_t FocusStart(double kp, double kpredict, double aMax, double vMax, int type);
-         
-停止焦点跟随
+
+Parar Rastreamento do Foco
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 停止焦点跟随
-    * @return 错误码
+    * @brief Para o rastreamento do foco
+    * @return Código de erro
     */
     errno_t FocusEnd();
 
-机器人焦点跟随代码示例
+Exemplo de Código de Rastreamento do Foco do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -985,91 +985,90 @@
       return 0;
     }
 
-关节扭矩传感器灵敏度标定功能开启
+Ativar Função de Calibração de Sensibilidade do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 关节扭矩传感器灵敏度标定功能开启
-    * @param [in] status 0-关闭；1-开启
-    * @return  错误码
+    * @brief Ativa a função de calibração de sensibilidade do sensor de torque das juntas
+    * @param [in] status 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     errno_t JointSensitivityEnable(int status);
 
-关节扭矩传感器灵敏度数据采集
+Coleta de Dados de Sensibilidade do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 关节扭矩传感器灵敏度数据采集
-    * @return 错误码
+    * @brief Coleta de dados de sensibilidade do sensor de torque das juntas
+    * @return Código de erro
     */
     errno_t JointSensitivityCollect();
-    
 
-获取关节扭矩传感器灵敏度标定结果
+Obter Resultado da Calibração de Sensibilidade do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取关节扭矩传感器灵敏度标定结果
-    * @param [out] calibResult j1~j6关节灵敏度[0-1]
-    * @param [out] linearityn j1~j6关节线性度[0-1]
-    * @return 错误码
+    * @brief Obtém o resultado da calibração de sensibilidade do sensor de torque das juntas
+    * @param [out] calibResult Sensibilidade das juntas j1~j6 [0-1]
+    * @param [out] linearityn Linearidade das juntas j1~j6 [0-1]
+    * @return Código de erro
     */
     errno_t JointSensitivityCalibration(double calibResult[6], double linearity[6]);
 
-获取关节扭矩传感器迟滞误差
+Obter Erro de Histerese do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取关节扭矩传感器迟滞误差
-    * @param [out] hysteresisError j1~j6关节迟滞误差
-    * @return 错误码
+    * @brief Obtém o erro de histerese do sensor de torque das juntas
+    * @param [out] hysteresisError Erro de histerese das juntas j1~j6
+    * @return Código de erro
     */
     errno_t JointHysteresisError(double hysteresisError[6]);
-    
-获取关节扭矩传感器重复精度
+
+Obter Repetibilidade do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
-    
+
     /**
-    * @brief 获取关节扭矩传感器重复精度
-    * @param [out] repeatability j1~j6关节扭矩传感器重复精度
-    * @return 错误码
+    * @brief Obtém a repetibilidade do sensor de torque das juntas
+    * @param [out] repeatability Repetibilidade do sensor de torque das juntas j1~j6
+    * @return Código de erro
     */
     errno_t JointRepeatability(double repeatability[6]);
-    
-设置关节力传感器参数
+
+Definir Parâmetros do Sensor de Força das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置关节力传感器参数
-    * @param [in] M J1-J6质量系数[0.001 ~ 10]
-    * @param [in] B J1-J6阻尼系数[0.001 ~ 10]
-    * @param [in] K J1-J6刚度系数[0.001 ~ 10]
-    * @param [in] threshold 力控制阈值，Nm
-    * @param [in] sensitivity 灵敏度,Nm/V,[0 ~ 10]
-    * @param [in] setZeroFlag 功能开启标志位；0-关闭；1-开启；2-位置1记录零点；3-位置2记录零点
-    * @return 错误码
+    * @brief Define os parâmetros do sensor de força das juntas
+    * @param [in] M Coeficiente de massa J1-J6 [0.001 ~ 10]
+    * @param [in] B Coeficiente de amortecimento J1-J6 [0.001 ~ 10]
+    * @param [in] K Coeficiente de rigidez J1-J6 [0.001 ~ 10]
+    * @param [in] threshold Limiar de controle de força, Nm
+    * @param [in] sensitivity Sensibilidade, Nm/V, [0 ~ 10]
+    * @param [in] setZeroFlag Flag de ativação da função; 0-desativar; 1-ativar; 2-registrar ponto zero na posição 1; 3-registrar ponto zero na posição 2
+    * @return Código de erro
     */
     errno_t SetAdmittanceParams(double M[6], double B[6], double K[6], double threshold[6], double sensitivity[6], int setZeroFlag);
 
-关节扭矩传感器灵敏度自动标定代码示例
+Exemplo de Código para Calibração Automática de Sensibilidade do Sensor de Torque das Juntas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -1187,9 +1186,9 @@
         printf("JointSensitivityCalibration rtn is %d\n", rtn);
         rtn = robot.JointSensitivityEnable(0);
         printf("JointSensitivityEnable rtn is %d\n", rtn);
-        printf("jointSensor Calib result is %f %f %f %f %f %f\njointSensor linearity is %f %f %f %f %f %f\n", 
-            calibResult[0], calibResult[1], calibResult[2], 
-            calibResult[3], calibResult[4], calibResult[5], 
+        printf("jointSensor Calib result is %f %f %f %f %f %f\njointSensor linearity is %f %f %f %f %f %f\n",
+            calibResult[0], calibResult[1], calibResult[2],
+            calibResult[3], calibResult[4], calibResult[5],
             linearity[0], linearity[1], linearity[2],
             linearity[3], linearity[4], linearity[5]);
         double hysteresisError[6] = { 0.0 };
@@ -1211,41 +1210,41 @@
         printf("SetAdmittanceParams rtn is %d\n", rtn);
         robot.CloseRPC();
     }
-    
-获取机器人8个从站端口错误帧数
+
+Obter Número de Quadros com Erro nas 8 Portas Escravas do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取机器人8个从站端口错误帧数
-    * @param [out] inRecvErr 输入接收错误帧数 
-    * @param [out] inCRCErr 输入CRC错误帧数 
-    * @param [out] inTransmitErr 输入转发错误帧数 
-    * @param [out] inLinkErr 输入链接错误帧数 
-    * @param [out] outRecvErr 输出接收错误帧数
-    * @param [out] outCRCErr 输出CRC错误帧数
-    * @param [out] outTransmitErr 输出转发错误帧数
-    * @param [out] outLinkErr 输出链接错误帧数
-    * @return 错误码
+    * @brief Obtém o número de quadros com erro nas 8 portas escravas do robô
+    * @param [out] inRecvErr Número de quadros com erro de receção de entrada
+    * @param [out] inCRCErr Número de quadros com erro CRC de entrada
+    * @param [out] inTransmitErr Número de quadros com erro de transmissão de entrada
+    * @param [out] inLinkErr Número de quadros com erro de ligação de entrada
+    * @param [out] outRecvErr Número de quadros com erro de receção de saída
+    * @param [out] outCRCErr Número de quadros com erro CRC de saída
+    * @param [out] outTransmitErr Número de quadros com erro de transmissão de saída
+    * @param [out] outLinkErr Número de quadros com erro de ligação de saída
+    * @return Código de erro
     */
     errno_t GetSlavePortErrCounter(int inRecvErr[8], int inCRCErr[8], int inTransmitErr[8], int inLinkErr[8], int outRecvErr[8], int outCRCErr[8], int outTransmitErr[8], int outLinkErr[8]);
 
-从站端口错误帧清零
+Limpar Quadros com Erro nas Portas Escravas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 从站端口错误帧清零
-    * @param [in] slaveID 从站编号0~7
-    * @return 错误码
+    * @brief Limpa os quadros com erro nas portas escravas
+    * @param [in] slaveID ID da escrava 0~7
+    * @return Código de erro
     */
     errno_t SlavePortErrCounterClear(int slaveID);
-    
-获取从站端口错误帧代码示例
+
+Exemplo de Código para Obter Quadros com Erro nas Portas Escravas
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -1263,7 +1262,7 @@
             return 0;
         }
         robot.SetReConnectParam(true, 30000, 500);
-        int inRecvErr[8] = {0.0}; 
+        int inRecvErr[8] = {0.0};
         int inCRCErr[8] = { 0.0 };
         int inTransmitErr[8] = { 0.0 };
         int inLinkErr[8] = { 0.0 };
@@ -1317,33 +1316,33 @@
         return 0;
     }
 
-设置各轴速度前馈系数
+Definir Coeficiente de Feedforward de Velocidade por Eixo
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置各轴速度前馈系数
-    * @param [in] radio 各轴速度前馈系数
-    * @return 错误码
+    * @brief Define o coeficiente de feedforward de velocidade por eixo
+    * @param [in] radio Coeficiente de feedforward de velocidade por eixo
+    * @return Código de erro
     */
     errno_t SetVelFeedForwardRatio(double radio[6]);
 
-获取各轴速度前馈系数
+Obter Coeficiente de Feedforward de Velocidade por Eixo
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取各轴速度前馈系数
-    * @param [out] radio 各轴速度前馈系数
-    * @return 错误码
+    * @brief Obtém o coeficiente de feedforward de velocidade por eixo
+    * @param [out] radio Coeficiente de feedforward de velocidade por eixo
+    * @return Código de erro
     */
     errno_t GetVelFeedForwardRatio(double radio[6]);
 
-机器人速度前馈系数代码示例
+Exemplo de Código do Coeficiente de Feedforward de Velocidade do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -1370,96 +1369,96 @@
         return 0;
     }
 
-光电传感器TCP标定-计算工具RPY
+Calibração TCP do Sensor Fotoelétrico - Calcular RPY da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-计算工具RPY
-    * @param [in] Btool 机器人笛卡尔位置
-    * @param [in] Etool 当前工具坐标系数值
-    * @param [in] senser 当前传感器坐标系数值(暂未开放)
-    * @param [in] radius 圆周运动半径mm(暂未开放)
-    * @param [in] dz 沿基座标系z轴负方向运动距离；当dz = 10000时，函数直接返回工具RPY
-    * @param [out] TCPRPY 工具RPY数值
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico - calcular RPY da ferramenta
+    * @param [in] Btool Posição cartesiana do robô
+    * @param [in] Etool Valor atual do sistema de coordenadas da ferramenta
+    * @param [in] senser Valor atual do sistema de coordenadas do sensor (não disponível no momento)
+    * @param [in] radius Raio do movimento circular mm (não disponível no momento)
+    * @param [in] dz Distância de movimento na direção negativa do eixo z do sistema de coordenadas base; quando dz = 10000, a função retorna diretamente o RPY da ferramenta
+    * @param [out] TCPRPY Valor RPY da ferramenta
+    * @return Código de erro
     */
     errno_t TCPComputeRPY(DescPose Btool, DescPose Etool, DescPose sensor, double radius, double dz, Rpy& TCPRPY);
 
-光电传感器TCP标定-计算工具XYZ
+Calibração TCP do Sensor Fotoelétrico - Calcular XYZ da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-计算工具XYZ
-    * @param [in] select 0-计算工具TCP；1-计算传感器原点；2-计算传感器姿态；3-直接返回工具TCP；4-记录当前工件坐标系和工具坐标系
-    * @param [in] originDirection 0-X方向；1-Y方向；2-Z方向
-    * @param [in] pos1 机器人笛卡尔位置1
-    * @param [in] pos2 机器人笛卡尔位置2
-    * @param [in] pos3 机器人笛卡尔位置3
-    * @param [in] pos4 机器人笛卡尔位置4
-    * @param [out] TCP 工具XYZ数值
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico - calcular XYZ da ferramenta
+    * @param [in] select 0-calcular TCP da ferramenta; 1-calcular origem do sensor; 2-calcular postura do sensor; 3-retornar diretamente o TCP da ferramenta; 4-registrar o sistema de coordenadas atual da peça e da ferramenta
+    * @param [in] originDirection 0-Direção X; 1-Direção Y; 2-Direção Z
+    * @param [in] pos1 Posição cartesiana do robô 1
+    * @param [in] pos2 Posição cartesiana do robô 2
+    * @param [in] pos3 Posição cartesiana do robô 3
+    * @param [in] pos4 Posição cartesiana do robô 4
+    * @param [out] TCP Valor XYZ da ferramenta
+    * @return Código de erro
     */
     errno_t TCPComputeXYZ(int select, double originDirection, DescTran pos1, DescTran pos2, DescTran pos3, DescTran pos4, DescTran& TCP);
 
-光电传感器TCP标定-开始记录末端法兰中心位置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP do Sensor Fotoelétrico - Iniciar Gravação da Posição do Centro do Flange da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-开始记录末端法兰中心位置
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico - iniciar gravação da posição do centro do flange da extremidade
+    * @return Código de erro
     */
     errno_t TCPRecordFlangePosStart();
 
-光电传感器TCP标定-停止记录末端法兰中心位置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP do Sensor Fotoelétrico - Parar Gravação da Posição do Centro do Flange da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-停止记录末端法兰中心位置
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico - parar gravação da posição do centro do flange da extremidade
+    * @return Código de erro
     */
     errno_t TCPRecordFlangePosEnd();
 
-光电传感器TCP标定-获取末端工具中心点位置
+Calibração TCP do Sensor Fotoelétrico - Obter Posição do Centro da Ponta da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-获取末端工具中心点位置
-    * @param [out] TCP 工具中心点位置(x,y,z)
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico - obter posição do centro da ponta da ferramenta
+    * @param [out] TCP Posição do centro da ponta da ferramenta (x, y, z)
+    * @return Código de erro
     */
     errno_t TCPGetRecordFlangePos(DescTran& TCP);
 
-光电传感器TCP标定
+Calibração TCP do Sensor Fotoelétrico
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定
-    * @param [in] luaPath 自动标定lua程序路径：QX版本机器人-"/fruser/FR_CalibrateTheToolTcp.lua";LA版本机器人-"/usr/local/etc/controller/lua/FR_CalibrateTheToolTcp.lua"
-    * @param [in] offsetX 示教点偏移(x,y,z)mm
-    * @param [out] TCP 标定后的工具坐标系(x,y,z,rx,ry,rz)
-    * @return 错误码
+    * @brief Calibração TCP do sensor fotoelétrico
+    * @param [in] luaPath Caminho do programa lua para calibração automática: para robôs da versão QX - "/fruser/FR_CalibrateTheToolTcp.lua"; para robôs da versão LA - "/usr/local/etc/controller/lua/FR_CalibrateTheToolTcp.lua"
+    * @param [in] offsetX Deslocamento do ponto de ensino (x, y, z) mm
+    * @param [out] TCP Sistema de coordenadas da ferramenta calibrado (x, y, z, rx, ry, rz)
+    * @return Código de erro
     */
     errno_t PhotoelectricSensorTCPCalibration(std::string luaPath, DescTran offset, DescPose& TCP);
 
-光电传感器TCP标定代码示例
+Exemplo de Código para Calibração TCP do Sensor Fotoelétrico
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++

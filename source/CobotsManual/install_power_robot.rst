@@ -1,270 +1,275 @@
-机器人安装上电
-===================
+Instalação e Alimentação do Robô
+===========================================
 
 .. toctree:: 
    :maxdepth: 6
 
-安装机器人手臂
-----------------
+Instalando o Braço Robótico
+----------------------------------
 
-协作机器人安装在安装座上时，使用合规数量螺栓（强度不低于8.8级）将机器人拧紧固定在安装座上；建议安装座上使用两个合规销孔配合销钉进行机器人定位，以提高机器人安装精度，防止因为碰撞等使机器人发生移动。当机器人有较高运行精度要求时，请务必增加销钉对机器人进行定位。
+Ao instalar o robô colaborativo em uma base de montagem, use a quantidade correta de parafusos (com resistência não inferior a classe 8.8) para fixar o robô firmemente na base. Recomenda-se o uso de dois furos de pino na base, combinados com pinos, para posicionar o robô. Isso aumenta a precisão da instalação e evita o movimento do robô devido a colisões. Quando o robô tem altos requisitos de precisão de operação, certifique-se de adicionar pinos para posicioná-lo.
 
-.. centered:: 表格 1.1-1 机器人安装零件标准
+.. centered:: Tabela 1.1-1 Padrões das Peças de Instalação do Robô
 
 .. list-table::
    :widths: 80 50 50 50
    :header-rows: 0
    :align: center
 
-   * - **协作机器人型号**
-     - **螺栓**
-     - **螺栓扭矩**
-     - **销孔规格**
+   * - **Modelo do Robô Colaborativo**
+     - **Parafuso**
+     - **Torque do Parafuso**
+     - **Especificação do Furo do Pino**
 
    * - FR3
-     - 4颗M6
-     - ≥10Nm
+     - 4 parafusos M6
+     - ≥10 Nm
      - φ5mm
 
    * - FR3-WMS
-     - 4颗M6
-     - ≥10Nm
+     - 4 parafusos M6
+     - ≥10 Nm
      - φ5mm
 
    * - FR3-WML
-     - 4颗M6
-     - ≥10Nm
+     - 4 parafusos M6
+     - ≥10 Nm
      - φ5mm
 
    * - FR3-C
-     - 4颗M6
-     - ≥10Nm
+     - 4 parafusos M6
+     - ≥10 Nm
      - φ5mm
 
+   * - FR5-C
+     - 4 parafusos M6
+     - ≥10Nm
+     - φ5mm
+   
    * - FR5
-     - 4颗M8
-     - ≥20Nm
+     - 4 parafusos M8
+     - ≥20 Nm
      - φ8mm
 
    * - FR10
-     - 4颗M8
-     - ≥25Nm
+     - 4 parafusos M8
+     - ≥25 Nm
      - φ8mm
 
    * - FR16
-     - 4颗M8
-     - ≥25Nm
+     - 4 parafusos M8
+     - ≥25 Nm
      - φ8mm
 
    * - FR20
-     - 6颗M10
-     - ≥45Nm
+     - 6 parafusos M10
+     - ≥45 Nm
      - φ8mm
 
    * - FR30
-     - 6颗M10
-     - ≥45Nm
+     - 6 parafusos M10
+     - ≥45 Nm
      - φ8mm
 
    * - FR30L
-     - 6颗M10
-     - ≥45Nm
+     - 6 parafusos M10
+     - ≥45 Nm
      - φ8mm
 
 .. important:: 
-   推荐机器人安装座满足以下几个要求，以保证机器人安装牢固、稳定：
+   Recomenda-se que a base de montagem do robô atenda aos seguintes requisitos para garantir uma instalação firme e estável:
    
-   （1）机器人安装座需要足够牢固且有足够的承载能力，应该至少能承载5倍的机器人重量，至少能承受10倍的1轴扭矩。
+   (1) A base de montagem do robô deve ser suficientemente robusta e ter capacidade de carga adequada. Deve ser capaz de suportar pelo menos 5 vezes o peso do robô e pelo menos 10 vezes o torque do eixo 1.
 
-   （2）机器人安装座应表面平整，以保证与机器人接触面紧密接触；
+   (2) A superfície da base de montagem do robô deve ser plana para garantir contato firme com a superfície de montagem do robô.
 
-   （3）机器人安装座应刚度足够强壮，固定牢固，不会和机器人发生共振；
+   (3) A base de montagem do robô deve ser rígida o suficiente e firmemente fixada para não ressoar com o robô.
 
-   （4）机器人和其他部件同时运动时，安装座与其他运动部件应隔离开，不要固定在一起避免运动过程中的振动干扰；
+   (4) Quando o robô e outros componentes se movem simultaneamente, a base de montagem deve ser isolada de outros componentes móveis. Não os fixe juntos para evitar interferência de vibração durante o movimento.
 
-   （5）如果机器人安装在移动平台或者外部轴上，移动平台或者外部轴的加速度应尽量低；
+   (5) Se o robô estiver montado em uma plataforma móvel ou eixo externo, a aceleração da plataforma móvel ou eixo externo deve ser a mais baixa possível.
 
-连接控制箱
-----------------
+Conectando o Painel de Controle
+---------------------------------------
 
-本系列机器人可以配置三种不同电源输入的控制箱，控制箱电源输入信息详见控制箱铭牌信息。机器人需要电气接地。机械手控制系统的外部连线均使用可插拔可快速安装的插头进行连接。
+Esta série de robôs pode ser configurada com três tipos diferentes de painéis de controle quanto à entrada de energia. Consulte a placa de identificação do painel de controle para informações detalhadas sobre a entrada de energia. O robô requer aterramento elétrico. As conexões externas do sistema de controle do manipulador usam conectores plugáveis para instalação rápida.
 
-A. 30-60VDC
-B. 176-264VAC~50-60Hz
-C. 100-240VAC~50-60HZ
+A. 30-60 VCC
+B. 176-264 VCA~50-60 Hz
+C. 100-240 VCA~50-60 Hz
 
-.. note:: 交流输入的控制箱区分窄电压和宽电压两个版本，控制箱接线端子和外形一致，单独通过外形不能区分，请通过控制箱铭牌进行确认，确认无误后再上电运行。
+.. note:: Os painéis de controle com entrada CA têm duas versões: uma de tensão estreita e outra de ampla tensão. Os terminais de fiação e a aparência dos painéis de controle são idênticos. Eles não podem ser diferenciados apenas pela aparência. Por favor, verifique a placa de identificação do painel de controle e confirme antes de ligar.
 
-协作机器人接线面板如下图表：
+O painel de fiação do robô colaborativo é mostrado na figura abaixo:
 
 .. image:: installation/037.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 1.2-1 控制箱接线面板
+.. centered:: Figura 1.2-1 Painel de Fiação do Painel de Controle
 
-按钮盒接口默认为示教器控制端口，IP地址为192.168.58.2，使用网线连接按钮盒接口与电脑，电脑IP地址设为192.168.58.10或与之同一网段，打开谷歌浏览器输入192.168.58.2即可访问示教器页面。
+A interface do painel de botões é, por padrão, a porta de controle do painel de ensinamento, com o endereço IP 192.168.58.2. Use um cabo de rede para conectar a interface do painel de botões a um computador. Defina o endereço IP do computador para 192.168.58.10 ou para o mesmo segmento de rede. Abra o navegador Google Chrome e digite 192.168.58.2 para acessar a página do painel de ensinamento.
 
-认识按钮盒及末端LED
----------------------
+Conhecendo o Painel de Botões e o LED da Extremidade
+---------------------------------------------------------------
 
-按钮盒
-~~~~~~~~~
+Painel de Botões
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-60按钮盒(POE)(BX01)
-++++++++++++++++++++++++++++++
+Painel de Botões 60 (POE)(BX01)
++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: installation/058.png
-	:align: center
-	:width: 6in
+   :align: center
+   :width: 6in
 
-.. centered:: 图表 1.3-1 60按钮盒（POE）
+.. centered:: Figura 1.3-1 Painel de Botões 60 (POE)
 
-60按钮盒(POE)(BX02)-V1.0
-++++++++++++++++++++++++++++++
+Painel de Botões 60 (POE)(BX02)-V1.0
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: installation/059.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 1.3-2 控制箱接线面板
+.. centered:: Figura 1.3-2 Painel de Fiação do Painel de Controle
 
-.. centered:: 表格 1.3-1 控制箱接线面板按键说明
+.. centered:: Tabela 1.3-1 Descrição dos Botões do Painel de Fiação do Painel de Controle
 
 .. list-table::
    :widths: 50 200
    :header-rows: 0
    :align: center
 
-   * - **按键名**
-     - **功能**
+   * - **Nome do Botão**
+     - **Função**
 
-   * - 急停开关
-     - 当按下急停开关，机器人进入紧急停止状态
+   * - Botão de Parada de Emergência
+     - Quando pressionado, o robô entra em estado de parada de emergência.
 
-   * - 开始停止
-     - 开始/停止运行程序
+   * - Iniciar/Parar
+     - Inicia/para a execução do programa.
 
-   * - 网口
-     - 连接web示教器
+   * - Porta de Rede
+     - Conecta ao painel de ensinamento web.
 
-   * - 关机
-     - 暂未启用
+   * - Desligar
+     - Temporariamente não ativado.
 
-   * - 记录点
-     - 记录示教点
+   * - Registrar Ponto
+     - Registra um ponto de ensinamento.
 
-   * - 示教模式
-     - 进入/退出搭配示教器状态
+   * - Modo de Ensinamento
+     - Entra/sai do modo de ensinamento.
 
-   * - 运行模式
-     - 自动/手动模式切换
+   * - Modo de Operação
+     - Alterna entre os modos automático e manual.
 
-   * - 拖动模式
-     - 进入/退出拖动模式
+   * - Modo de Arrasto
+     - Entra/sai do modo de arrasto.
 
-60按钮盒(POE)(BX02)-V2.0
-+++++++++++++++++++++++++++++++++++
+Painel de Botões 60 (POE)(BX02)-V2.0
+++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: installation/079.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 1.3-3 控制箱接线面板
+.. centered:: Figura 1.3-3 Painel de Fiação do Painel de Controle
 
-.. centered:: 表格 1.3-2 控制箱接线面板按键说明
+.. centered:: Tabela 1.3-2 Descrição dos Botões do Painel de Fiação do Painel de Controle
 
 .. list-table::
    :widths: 50 200
    :header-rows: 0
    :align: center
 
-   * - **按键名**
-     - **功能**
+   * - **Nome do Botão**
+     - **Função**
 
-   * - 急停开关
-     - 当按下急停开关，机器人进入紧急停止状态
+   * - Botão de Parada de Emergência
+     - Quando pressionado, o robô entra em estado de parada de emergência.
 
-   * - 开始停止
-     - 开始/停止运行程序
+   * - Iniciar/Parar
+     - Inicia/para a execução do programa.
 
-   * - 网口
-     - 连接web示教器
+   * - Porta de Rede
+     - Conecta ao painel de ensinamento web.
 
-   * - IP复位
-     - 重置网口IP
+   * - Reset de IP
+     - Redefine o IP da porta de rede.
 
-   * - 记录点
-     - 记录示教点
+   * - Registrar Ponto
+     - Registra um ponto de ensinamento.
 
-   * - 一键清除
-     - 清除所有可恢复的报错
+   * - Limpeza com um Toque
+     - Limpa todos os erros recuperáveis.
 
-   * - 运行模式
-     - 自动/手动模式切换
+   * - Modo de Operação
+     - Alterna entre os modos automático e manual.
 
-   * - 拖动模式
-     - 进入/退出拖动模式
+   * - Modo de Arrasto
+     - Entra/sai do modo de arrasto.
 
-末端LED
-~~~~~~~~~
+LED da Extremidade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. centered:: 表格 1.3-3 末端LED定义
+.. centered:: Tabela 1.3-3 Definição do LED da Extremidade
 
 .. list-table::
    :widths: 120 100
    :header-rows: 0
    :align: center
 
-   * - **功能**
-     - **LED颜色**
+   * - **Função**
+     - **Cor do LED**
 
-   * - 通信未建立时
-     - “灭”“红”“绿”“蓝”交替
+   * - Quando a comunicação não está estabelecida
+     - Alterna entre "apagado", "vermelho", "verde", "azul"
 
-   * - 自动模式
-     - 蓝色长亮
+   * - Modo Automático
+     - Azul fixo
 
-   * - 手动模式
-     - 绿色长亮
+   * - Modo Manual
+     - Verde fixo
 
-   * - 拖动模式
-     - 白青色长亮
+   * - Modo de Arrasto
+     - Azul esverdeado (ciano) fixo
 
-   * - 按钮盒记录点（仅在使用按钮盒时）
-     - 紫色闪烁两下
+   * - Registro de ponto pelo painel de botões (apenas ao usar o painel de botões)
+     - Pisca roxo duas vezes
 
-   * - 进入未搭配按钮盒状态（仅在使用按钮盒时）
-     - 青蓝色闪烁两下
+   * - Entrando no estado sem painel de botões (apenas ao usar o painel de botões)
+     - Pisca azul esverdeado (ciano) duas vezes
 
-   * - 开始运行（仅在使用按钮盒时）
-     - 蓝色闪烁两下
+   * - Início da execução (apenas ao usar o painel de botões)
+     - Pisca azul duas vezes
 
-   * - 停止运行（仅在使用按钮盒时）
-     - 红色闪烁两下
+   * - Parada da execução (apenas ao usar o painel de botões)
+     - Pisca vermelho duas vezes
 
-   * - 报错（仅在使用按钮盒时）
-     - 红色长亮
+   * - Erro (apenas ao usar o painel de botões)
+     - Vermelho fixo
 
-   * - 校零完成
-     - 白青色闪烁三下
+   * - Calibração do zero concluída
+     - Pisca azul esverdeado (ciano) três vezes
 
-   * - 去使能
-     - 黄色闪烁两下
+   * - Desabilitação
+     - Pisca amarelo duas vezes
 
-上电使能
-----------------
+Habilitando Após Ligar
+------------------------------
 
-上电前，请确认按钮盒急停按钮处理松开状态，按下控制箱红色开关按钮上电，使能成功后末端LED灯处于绿色常亮状态。
+Antes de ligar, verifique se o botão de parada de emergência do painel de botões está na posição de liberado. Pressione o botão vermelho no painel de controle para ligar. Após a habilitação bem-sucedida, o LED da extremidade ficará verde fixo.
 
-电源关闭
-----------------
+Desligando a Alimentação
+------------------------------
 
 .. important:: 
-  在使用本设备时，请务必确保在关闭电源之前，停止所有运行中的程序，停用状态查询功能，确认运行状态处于“Stopped”。这一操作旨在保护设备及存储数据的安全，避免因突然断电而导致的数据丢失或系统损坏。
+   Ao usar este equipamento, certifique-se de parar todos os programas em execução, desativar as funções de consulta de status e confirmar que o estado de operação está "Parado" antes de desligar a alimentação. Esta operação visa proteger o equipamento e a segurança dos dados armazenados, evitando perda de dados ou danos ao sistema devido a uma interrupção repentina de energia.
 
 .. image:: installation/078.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 1.5-1 关闭电源按钮
+.. centered:: Figura 1.5-1 Botão de Desligar

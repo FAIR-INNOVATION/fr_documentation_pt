@@ -2,36 +2,29 @@
     :maxdepth: 6
     :numbered: 5
 
-宣传册
+Brochuras
 --------------
-    :download:`法奥意威公司简介 <_static/_doc/法奥意威公司简介.pdf>`
 
-    :download:`法奥意威产品手册 <_static/_doc/FAIRINO产品手册.pdf>`
+    :download:`Catálogo de Produtos FAIRINO <_static/_doc/FAIRINO Product Catalogue.pdf>`
 
-    :download:`法奥意威生态产品手册 <_static/_doc/FAIRINO生态产品手册.pdf>`
+    :download:`Catálogo de Produtos Ecológicos FAIRINO <_static/_doc/FAIRINO Accessories Ecosystem.pdf>`
 
-    :download:`法奥意威医疗行业案例 <_static/_doc/法奥意威医疗行业案例.pdf>`
-
-    :download:`法奥意威焊接宣传册 <_static/_doc/法奥意威焊接宣传册.pdf>`
-
-    :download:`法奥意威码垛宣传册 <_static/_doc/法奥意威码垛宣传册.pdf>`
-
-资质认证
+Certificações de Qualidade
 ---------------------------------
-    :download:`法奥意威ISO9001质量认证证书 <_static/_doc/法奥意威ISO9001质量认证证书.pdf>`
+    :download:`Certificado de Qualidade ISO9001 da FAIRINO <_static/_doc/FAIRINO ISO9001 Quality Certification.pdf>`
     
-    :download:`法奥意威ISO14001环境管理体系认证证书 <_static/_doc/法奥意威ISO14001环境管理体系认证证书.pdf>`
+    :download:`Certificado de Sistema de Gestão Ambiental ISO14001 da FAIRINO <_static/_doc/FAIRINO_ISO14001_Environmental_Management_System_Certification.pdf>`
     
-    :download:`法奥意威ISO45001职业健康安全管理认证证书 <_static/_doc/法奥意威ISO45001职业健康安全管理认证证书.pdf>`
+    :download:`Certificado de Sistema de Gestão de Saúde e Segurança Ocupacional ISO45001 da FAIRINO <_static/_doc/FAIRINO_ISO45001_Occupational_Health_and_Safety_Management_System_Certification.pdf>`
 
-机器人认证证书：
+Certificados de Robôs:
 
 .. list-table::
    :widths: 24 4 4 4 4 4 4 4 4 4 24
    :header-rows: 0
-   :class: sheet-center
+   :class: sheet-center-auto
 
-   * - **证书/机型**
+   * - **Certificado/Modelo**
      - **FR3**
      - **FR3-C**
      - **FR3-WML**
@@ -41,9 +34,9 @@
      - **FR16**
      - **FR20**
      - **FR30**
-     - **下载**
+     - **Download**
 
-   * - **高防护IP65测试证书**
+   * - **Certificado de Teste de Alta Proteção IP65**
      - ✅
      - ✅
      - ✅
@@ -53,9 +46,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/高防护IP65测试认证.zip>`
+     - :download:`Download <_static/_doc/High protection IP65 test certification certificate.zip>`
 
-   * - **NSF证书**
+   * - **Certificado NSF**
      - ✅
      - ✅
      - ✅
@@ -65,9 +58,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/NSF认证.zip>`
+     - :download:`Download <_static/_doc/NSF Certification Certificate.zip>`
 
-   * - **碰撞力测试证书**
+   * - **Certificado de Teste de Força de Colisão**
      - ✅
      - ✅
      - ✅
@@ -77,9 +70,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/碰撞力测试认证证书.zip>`
+     - :download:`Download <_static/_doc/Crash force test certification.zip>`
 
-   * - **RoHS测试证书**
+   * - **Certificado RoHS**
      - ✅
      - ✅
      - ✅
@@ -89,9 +82,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/ROHS认证证书(FR3-FR30).pdf>`
+     - :download:`Download <_static/_doc/ROHS Certification (FR3-FR30).pdf>`
 
-   * - **防爆证书**
+   * - **Certificado à Prova de Explosão**
      - ✅
      - ✅
      - ✅
@@ -101,9 +94,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/防爆认证.zip>`
+     - :download:`Download <_static/_doc/Explosion-proof certification.zip>`
 
-   * - **CE-EMC证书**
+   * - **Certificado CE-EMC**
      - ✅
      - ✅
      - ✅
@@ -113,9 +106,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/CE-EMC认证.pdf>`
+     - :download:`Download <_static/_doc/CE-EMC certification.pdf>`
 
-   * - **CE-MD证书**
+   * - **Certificado CE-MD**
      - ✅
      - ✅
      - ✅
@@ -125,9 +118,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/CE-MD认证证书.zip>`
+     - :download:`Download <_static/_doc/CE-MD certification.zip>`
 
-   * - **功能安全证书**
+   * - **Certificado de Segurança Funcional**
      - ✅
      - ✅
      - ✅
@@ -137,9 +130,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/功能安全认证证书.zip>`
+     - :download:`Download <_static/_doc/Functional safety certification.zip>`
 
-   * - **KCs证书**
+   * - **Certificados KCs**
      - ✅
      - ✅
      - ✅
@@ -149,9 +142,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/KCs证书.zip>`
+     - :download:`Download <_static/_doc/KCs Certification.zip>`
 
-   * - **SEMI证书**
+   * - **Certificado SEMI**
      - ✅
      - ✅
      - ✅
@@ -161,9 +154,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/SEMI认证证书.pdf>`
+     - :download:`Download <_static/_doc/SEMI Certification.pdf>`
 
-   * - **NRTL工业机器人证书**
+   * - **Certificado NRTL para Robôs Industriais**
      - ✅
      - ✅
      - ✅
@@ -173,9 +166,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/FR3-30工业机器人NRTL认证证书.pdf>`
+     - :download:`Download <_static/_doc/FR3-30 Industrial Robot NRTL Certification.pdf>`
 
-   * - **NRTL协作机器人证书**
+   * - **Certificado NRTL para Robôs Colaborativos**
      - ✅
      - ✅
      - ✅
@@ -185,9 +178,9 @@
      - ✅
      - ✅
      - ✅
-     - :download:`下载 <_static/_doc/NRTL协作机器人认证证书.pdf>`
+     - :download:`Download <_static/_doc/NRTL Collaborative Robot certification.pdf>`
 
-   * - **洁净机器人CLASS3证书**
+   * - **Certificado de Robô Limpo CLASSE 3**
      - ✅
      - ✅
      - ✅
@@ -197,167 +190,154 @@
      - ✅
      - --
      - --
-     - :download:`下载 <_static/_doc/洁净机器人CLASS3证书（FR3-FR16）.pdf>`
-    
-   * - **CR证书**
-     - --
-     - --
-     - --
-     - --
-     - ✅
-     - --
-     - --
-     - --
-     - --
-     - :download:`下载 <_static/_doc/法奥意威CR证书.pdf>`
+     - :download:`Download <_static/_doc/Cleaning Robot CLASS3 Certificate(FR3-FR16).pdf>`
 
-控制箱认证证书：
+Certificados do Painel de Controle:
 
 .. list-table::
    :widths: 45 125 35
    :header-rows: 0
    :class: sheet-center
 
-   * - **认证证书**
-     - **产品型号**
-     - **下载**
-   * - **控制箱CE(MD+EMC)证书**
+   * - **Certificado**
+     - **Modelo do Produto**
+     - **Download**
+   * - **Certificado CE (MD+EMC) do Painel de Controle**
      - FRC100-AC-2000-A, FRC100-AC-5000-A
-     - :download:`下载 <_static/_doc/FRC100-AC-x000-A版本控制箱CE(MD+EMC)证书.pdf>`
+     - :download:`Download <_static/_doc/FRC100-AC-x000-A version control box CE (MD+EMC) certificate.pdf>`
 
-零部件认证证书：
+Certificados de Componentes:
 
 .. list-table::
    :widths: 45 125 35
    :header-rows: 0
    :class: sheet-center
 
-   * - **认证证书**
-     - **产品型号**
-     - **下载**
-   * - **电机证书**
+   * - **Certificado**
+     - **Modelo do Produto**
+     - **Download**
+   * - **Certificado do Motor**
      - FR60-100, FR60-200, FR80-470, FR130-960, FR130-1500
-     - :download:`下载 <_static/_doc/零部件-电机认证.pdf>`
-   * - **驱动器证书**
+     - :download:`Download <_static/_doc/Parts-Motor Certification.pdf>`
+   * - **Certificado do Driver**
      - FR01-SD6-14, FR01-SD6-17, FR01-SD8-25, FR01-SD13-32, FR01-SD13-40
-     - :download:`下载 <_static/_doc/零部件-驱动器认证.pdf>`
-   * - **电源证书**
+     - :download:`Download <_static/_doc/Parts-Driver Certification.pdf>`
+   * - **Certificado da Fonte de Alimentação**
      - FRP-800-4824
-     - :download:`下载 <_static/_doc/零部件-电源认证.pdf>`
-   * - **核心板证书**
+     - :download:`Download <_static/_doc/Parts-Power Supply Certification.pdf>`
+   * - **Certificado da Placa Principal**
      - PETREL
-     - :download:`下载 <_static/_doc/零部件-核心板认证.pdf>`
+     - :download:`Download <_static/_doc/Parts-Core Board Certification.pdf>`
 
-二次开发
+Desenvolvimento Secundário
 ---------------------------------
-    :download:`FAIRINO ROS1 <https://gitee.com/fair-innovation/frcobot_ros/repository/archive/master.zip>`
+    :download:`FAIRINO ROS1 <https://github.com/FAIR-INNOVATION/frcobot_ros/archive/refs/heads/master.zip>`
 
-    :download:`FAIRINO ROS2 <https://gitee.com/fair-innovation/frcobot_ros2/repository/archive/master.zip>`
+    :download:`FAIRINO ROS2 <https://github.com/FAIR-INNOVATION/frcobot_ros2/archive/refs/heads/main.zip>`
 
-本体 & 尺寸图纸
+Desenhos do Robô & Dimensões
 ---------------------------------
-    :download:`FR3图纸 <_static/_doc/FR3图纸.zip>`
+    :download:`Desenhos FR3 <_static/_doc/FR3 Drawings.zip>`
     
-    :download:`FR5图纸 <_static/_doc/FR5图纸.zip>`
+    :download:`Desenhos FR5 <_static/_doc/FR5 Drawings.zip>`
 
-    :download:`FR10图纸 <_static/_doc/FR10图纸.zip>`
+    :download:`Desenhos FR10 <_static/_doc/FR10 Drawings.zip>`
 
-    :download:`FR16图纸 <_static/_doc/FR16图纸.zip>`
+    :download:`Desenhos FR16 <_static/_doc/FR16 Drawings.zip>`
 
-    :download:`FR20图纸 <_static/_doc/FR20图纸.zip>`
+    :download:`Desenhos FR20 <_static/_doc/FR20 Drawings.zip>`
 
-    :download:`FR30图纸 <_static/_doc/FR30图纸.zip>`
+    :download:`Desenhos FR30 <_static/_doc/FR30 Drawings.zip>`
 
-2D CAD文件
+Arquivos CAD 2D
 ---------------------------------
-    :download:`FRCobots-V6.0 DWG格式 <_static/_doc/FRCobots-V6.0 DWG Models.zip>`
+    :download:`Modelos DWG FRCobots-V6.0 <_static/_doc/FRCobots-V6.0 DWG Models.zip>`
 
-    :download:`mini控制箱2kw(直流+交流) DWG格式 <_static/_doc/mini控制箱2kw(直流+交流) DWG.zip>`
+    :download:`Formato DWG do Mini Painel de Controle 2kW (DC+AC) <_static/_doc/Mini Control Box 2kW (DC+AC) DWG.zip>`
 
-    :download:`控制箱5kw(直流+交流) DWG格式 <_static/_doc/控制箱5kw(直流+交流) DWG.zip>`
+    :download:`Formato DWG do Painel de Controle 5kW (DC+AC) <_static/_doc/Control Box 5kW (DC+AC) DWG.zip>`
 
-    :download:`示教器 DWG格式 <_static/_doc/示教器DWG.zip>`
+    :download:`Formato DWG do Teach Pendant <_static/_doc/Teach Pendant DWG.zip>`
 
-    :download:`按钮盒 DWG格式 <_static/_doc/按钮盒DWG.zip>`
+    :download:`Formato DWG da Caixa de Botões <_static/_doc/Button Box DWG.zip>`
 
-3D 模型
+Modelos 3D
 ---------------------------------
-    :download:`FRCobots-V5.0 STEP模型 <_static/_doc/FRCobots-V5.0 STEP Models.zip>`
+    :download:`Modelos STEP FRCobots-V5.0 <_static/_doc/FRCobots-V5.0 STEP Models.zip>`
 
-    :download:`FRCobots-V6.0 STEP模型 <_static/_doc/FRCobots-V6.0 STEP Models.zip>`
+    :download:`Modelos STEP FRCobots-V6.0 <_static/_doc/FRCobots-V6.0 STEP Models.zip>`
 
-    :download:`mini控制箱2kw(直流+交流) STEP模型 <_static/_doc/mini控制箱2kw(直流+交流).zip>`
+    :download:`Modelo STEP do Mini Painel de Controle 2kW (DC+AC) <_static/_doc/Mini control box 2kw (DC+AC).zip>`
 
-    :download:`控制箱5kw(直流+交流) STEP模型 <_static/_doc/控制箱5kw(直流+交流).zip>`
+    :download:`Modelo STEP do Painel de Controle 5kW (DC+AC) <_static/_doc/Control box 5kw (DC+AC).zip>`
 
-    :download:`示教器 STEP模型 <_static/_doc/示教器.zip>`
+    :download:`Modelo STEP do Teach Pendant <_static/_doc/Teaching Pendant.zip>`
 
-    :download:`按钮盒 STEP模型 <_static/_doc/按钮盒.zip>`
+    :download:`Modelo STEP da Caixa de Botões <_static/_doc/Button Box.zip>`
 
-    :download:`码垛工作站 STEP模型 <_static/_doc/码垛.zip>`
+    :download:`Modelo STEP da Estação de Paletização <_static/_doc/Palletizing.zip>`
 
-    :download:`分拣工作站 STEP模型 <_static/_doc/分拣.zip>`
+    :download:`Modelo STEP da Estação de Separação <_static/_doc/Sorting.zip>`
 
-    :download:`星火计划教育工作平台 STEP模型 <_static/_doc/星火计划.zip>`
+    :download:`Modelo STEP da Plataforma de Educação Projeto Faísca <_static/_doc/Spark Project.zip>`
 
-    :download:`智能焊接工作站 STEP模型 <_static/_doc/智能焊接.zip>`
+    :download:`Modelo STEP da Estação de Soldagem Inteligente <_static/_doc/Intelligent welding.zip>`
 
-    :download:`Envelope Diagram STEP Model <_static/_doc/Envelope Diagram.zip>`
+    :download:`Modelo STEP do Diagrama de Envelope <_static/_doc/Envelope Diagram.zip>`
 
 FAIRINO SimMachine
 -----------------------
 
-    :download:`FAIRINO SimMachine VMware <https://pan.baidu.com/s/1cUNpZXLiE-hZMUWp2l-eAA?pwd=z1ak>`
+    :download:`FAIRINO SimMachine VMware <https://drive.google.com/file/d/1LrLXn2-ZZ7U_xr9wJbOi9bEkIgrADDCd/view?usp=drive_link>`
     
-    :download:`FAIRINO SimMachine Docker <https://pan.baidu.com/s/11GcY1cFqcHWcqfOSUSv0UA?pwd=ksmb>`
-    
-    :download:`FAIRINO_SimMachine_Software <https://pan.baidu.com/s/1RlWHGXaGyRnL_nXiOX3MNg?pwd=5b7n>`
+    :download:`FAIRINO SimMachine Docker <https://drive.google.com/file/d/1bI1a0SchyKqW_CrazZIszCSSvfNqBB_E/view?usp=drive_link>`
 
-码垛机frcap
+    :download:`FAIRINO_SimMachine_Software <https://drive.google.com/file/d/1soPuHNmdXhjnlKY48PSUP2Qind7v4QQk/view?usp=sharing>`
+
+FRCap do Palletizer
 ---------------------------------
-    :download:`码垛机Palletizer-v2.2.0 <_static/_doc/Palletizer-v2.2.0.zip>`
+    :download:`Palletizer-v2.2.0 <_static/_doc/Palletizer-v2.2.0.zip>`
 
 CPP SDK
 ---------------------------------
 
-    最新版本：:download:`FAIRINO CPP SDK-v2 <https://gitee.com/fair-innovation/fairino-cpp-sdk/repository/archive/master.zip>`
+    Versão mais recente: :download:`FAIRINO CPP SDK-v2 <https://github.com/FAIR-INNOVATION/fairino-cpp-sdk/archive/refs/heads/main.zip>`
 
-    \ `历史版本 <https://gitee.com/fair-innovation/fairino-cpp-sdk/tags>`__\
+    \ `Versões anteriores <https://github.com/FAIR-INNOVATION/fairino-cpp-sdk/releases>`__\
 
 C# SDK
 ---------------------------------
 
-    最新版本：:download:`FAIRINO C# SDK-v1 <https://gitee.com/fair-innovation/fairino-csharp-sdk/repository/archive/master.zip>`
+    Versão mais recente: :download:`FAIRINO C# SDK-v1 <https://github.com/FAIR-INNOVATION/fairino-csharp-sdk/archive/refs/heads/main.zip>`
 
-    \ `历史版本 <https://gitee.com/fair-innovation/fairino-csharp-sdk/tags>`__\
+    \ `Versões anteriores <https://github.com/FAIR-INNOVATION/fairino-csharp-sdk/releases>`__\
 
 Python SDK
 ---------------------------------
 
-    最新版本：:download:`FAIRINO Python SDK-v2 <https://gitee.com/fair-innovation/fairino-python-sdk/repository/archive/master.zip>`
+    Versão mais recente: :download:`FAIRINO Python SDK-v2 <https://github.com/FAIR-INNOVATION/fairino-python-sdk/archive/refs/heads/main.zip>`
 
-    \ `历史版本 <https://gitee.com/fair-innovation/fairino-python-sdk/tags>`__\
+    \ `Versões anteriores <https://github.com/FAIR-INNOVATION/fairino-python-sdk/releases>`__\
 
 Java SDK
 ---------------------------------
 
-    最新版本：:download:`FAIRINO Java SDK-v1 <https://gitee.com/fair-innovation/fairino-java-sdk/repository/archive/master.zip>`
+    Versão mais recente: :download:`FAIRINO Java SDK-v1 <https://github.com/FAIR-INNOVATION/fairino-java-sdk/archive/refs/heads/main.zip>`
 
-    \ `历史版本 <https://gitee.com/fair-innovation/fairino-java-sdk/tags>`__\
+    \ `Versões anteriores <https://github.com/FAIR-INNOVATION/fairino-java-sdk/releases>`__\
 
-状态反馈协议
+Protocolo de Feedback de Estado
 ---------------------------------
 
-    :download:`机器人控制器8083端口状态反馈 <_static/_doc/机器人控制器8083端口状态反馈用户手册.pdf>`
+    :download:`Manual do Usuário do Feedback de Estado na Porta 8083 do Controlador do Robô <_static/_doc/Robot 8083 Port Status Feedback User Manual.pdf>`
 
-通讯指令协议
+Protocolo de Instruções de Comunicação
+----------------------------------------------
+
+    :download:`Manual do Usuário do Protocolo de Instruções de Comunicação do Controlador do Robô Colaborativo <_static/_doc/Collaborative Robot Controller Communication Command Protocol User Manual.pdf>`
+
+Download do Software do Robô
 ---------------------------------
-
-    :download:`机器人控制器通讯指令协议 <_static/_doc/协作机器人控制器通讯指令协议用户手册.pdf>`
-
-机器人软件下载
----------------------------------
-    :download:`FAIRINO-CobotSoftware-QX-V3.9.3.1-20260304.zip <https://pan.baidu.com/s/113XJS-Ds8Lag_YBygea5yg?pwd=q8xf>`
+    :download:`FAIRINO-CobotSoftware-QX-V3.9.4-20260408.zip <https://drive.google.com/file/d/16UvnZWLZt_az4jyGxW_T40lo2MxTx2fc/view?usp=drive_link>`
     
-    :download:`FAIRINO-CobotSoftware-LA-V3.9.3.1-20260304.zip <https://pan.baidu.com/s/1h0a5PuEVrprZA5G11-2Cfw?pwd=atdx>`
-
+    :download:`FAIRINO-CobotSoftware-LA-V3.9.4-20260408.zip <https://drive.google.com/file/d/1C8CFtdEeeyujgpSO1N-rS5DNfqlptywR/view?usp=drive_link>`

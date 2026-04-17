@@ -1,36 +1,36 @@
-机器人手动示教
-===================
+Ensinamento Manual do Robô
+===============================
 
-手动示教并记录示教点
---------------------
+Ensinamento Manual e Registro de Pontos de Ensinamento
+------------------------------------------------------------
 
-手动示教包含两种方式：
+O ensinamento manual inclui dois métodos:
 
-- 1、按住末端拖动按钮进行拖动示教；
-- 2、在三维模拟机器人->三维对象操作中进行点动。
+- 1. Manter pressionado o botão de arrasto na extremidade para realizar o ensinamento por arrasto.
+- 2. Realizar o movimento ponto a ponto no robô 3D simulado -> operações com objetos 3D.
 
-示教到目标位置后，即可在“机器人配套功能”->“示教点记录”中保存示教点。保存示教点时，该示教点的坐标系为当前机器人应用的坐标系。
+Após ensinar a posição desejada, salve o ponto de ensinamento em “Funções Complementares do Robô” -> “Registro de Pontos de Ensinamento”. Ao salvar um ponto de ensinamento, o sistema de coordenadas do ponto é o sistema de coordenadas atualmente aplicado pelo robô.
 
 .. image:: teaching_pendant_software/056.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4.1‑1 手动示教
+.. centered:: Figura 4.1‑1 Ensinamento Manual
 
-查看示教点信息
---------------------
+Visualizando Informações dos Pontos de Ensinamento
+------------------------------------------------------------
 
-点击“示教程序”->“示教点”可显示所有保存的示教点信息，当前点位模式分为“系统模式”和“点位表模式”。
+Clique em “Programas de Ensinamento” -> “Pontos de Ensinamento” para exibir todos os pontos de ensinamento salvos. O modo de ponto atual é dividido em “Modo de Sistema” e “Modo de Tabela de Pontos”.
 
-在该界面中可对示教点文件导入和导出，选中一个示教点后点击“删除”按钮即可将该点信息删除，示教点x,y,z,rx,ry,rz和v数值可进行修改，输入修改值，勾选左侧勾选兰，点击上方修改即可修改示教点信息。
+Nesta interface, você pode importar e exportar arquivos de pontos de ensinamento. Selecione um ponto de ensinamento e clique no botão “Excluir” para removê-lo. Os valores x, y, z, rx, ry, rz e v do ponto de ensinamento podem ser modificados. Insira o novo valor, marque a caixa de seleção à esquerda e clique em “Modificar” na parte superior para alterar as informações do ponto de ensinamento.
 
-点击“开始运行”按钮，进行局部示教点的单点运行，将机器人移动到该点的位置。此外，用户可以通过名称搜索示教点。
+Clique no botão “Iniciar Execução” para executar um único ponto de ensinamento local, movendo o robô para a posição desse ponto. Além disso, o usuário pode pesquisar pontos de ensinamento pelo nome.
 
 .. image:: points/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4.2‑1 示教管理界面
+.. centered:: Figura 4.2‑1 Interface de Gerenciamento de Ensinamento
 
 .. important:: 
-    示教点x,y,z,rx,ry,rz的修改值不应超过机器人的工作范围。
+    Os valores modificados para x, y, z, rx, ry, rz do ponto de ensinamento não devem exceder a área de trabalho do robô.

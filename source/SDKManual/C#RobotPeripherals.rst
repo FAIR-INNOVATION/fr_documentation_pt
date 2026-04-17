@@ -1,196 +1,196 @@
-机器人外设
-============
+Periféricos do Robô
+========================
 
 .. toctree:: 
     :maxdepth: 5
 
-配置夹爪
+Configurar Garra
 ++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  配置夹爪
-    * @param  [in] company  夹爪厂商，待定
-    * @param  [in] device  设备号，暂不使用，默认为0
-    * @param  [in] softvesion  软件版本号，暂不使用，默认为0
-    * @param  [in] bus 设备挂在末端总线位置，暂不使用，默认为0
-    * @return  错误码
+    * @brief  Configura a garra
+    * @param  [in] company  Fabricante da garra, a definir
+    * @param  [in] device  Número do dispositivo, não usado no momento, padrão 0
+    * @param  [in] softvesion  Número da versão do software, não usado no momento, padrão 0
+    * @param  [in] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+    * @return  Código de erro
     */
     int SetGripperConfig(int company, int device, int softvesion, int bus);
 
-获取夹爪配置
-++++++++++++++++++++++++++
+Obter Configuração da Garra
+++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪配置
-    * @param  [in] company  夹爪厂商，待定
-    * @param  [in] device  设备号，暂不使用，默认为0
-    * @param  [in] softvesion  软件版本号，暂不使用，默认为0
-    * @param  [in] bus 设备挂在末端总线位置，暂不使用，默认为0
-    * @return  错误码
+    * @brief  Obtém a configuração da garra
+    * @param  [in] company  Fabricante da garra, a definir
+    * @param  [in] device  Número do dispositivo, não usado no momento, padrão 0
+    * @param  [in] softvesion  Número da versão do software, não usado no momento, padrão 0
+    * @param  [in] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+    * @return  Código de erro
     */
     int GetGripperConfig(int *company, int *device, int *softvesion, int *bus);
 
-激活夹爪
+Ativar Garra
 ++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  激活夹爪
-    * @param  [in] index  夹爪编号
-    * @param  [in] act  0-复位，1-激活
-    * @return  错误码
+    * @brief  Ativa a garra
+    * @param  [in] index  Número da garra
+    * @param  [in] act  0-reset, 1-ativar
+    * @return  Código de erro
     */
     int ActGripper(int index, byte act); 
 
-控制夹爪
+Controlar Garra
 ++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  控制夹爪
-    * @param  [in] index  夹爪编号
-    * @param  [in] pos  位置百分比，范围[0~100]
-    * @param  [in] vel  速度百分比，范围[0~100]
-    * @param  [in] force  力矩百分比，范围[0~100]
-    * @param  [in] max_time  最大等待时间，范围[0~30000]，单位ms
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [in] type 夹爪类型，0-平行夹爪；1-旋转夹爪
-    * @param  [in] rotNum 旋转圈数
-    * @param  [in] rotVel 旋转速度百分比[0-100]
-    * @param  [in] rotTorque 旋转力矩百分比[0-100]
-    * @return  错误码
+    * @brief  Controla a garra
+    * @param  [in] index  Número da garra
+    * @param  [in] pos  Porcentagem de posição, faixa [0~100]
+    * @param  [in] vel  Porcentagem de velocidade, faixa [0~100]
+    * @param  [in] force  Porcentagem de torque, faixa [0~100]
+    * @param  [in] max_time  Tempo máximo de espera, faixa [0~30000], unidade ms
+    * @param  [in] block  0-bloqueado, 1-não bloqueado
+    * @param  [in] type  Tipo de garra, 0-garra paralela; 1-garra rotativa
+    * @param  [in] rotNum  Número de rotações
+    * @param  [in] rotVel  Porcentagem de velocidade de rotação [0-100]
+    * @param  [in] rotTorque  Porcentagem de torque de rotação [0-100]
+    * @return  Código de erro
     */
     int MoveGripper(int index, int pos, int vel, int force, int max_time, byte block, int type, double rotNum, int rotVel, int rotTorque);
 
-获取夹爪运动状态
-++++++++++++++++++++++++++
+Obter Estado de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪运动状态
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] staus  0-运动未完成，1-运动完成
-    * @return  错误码
+    * @brief  Obtém o estado de movimento da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] status  0-movimento não concluído, 1-movimento concluído
+    * @return  Código de erro
     */
     int GetGripperMotionDone(ref int fault, ref int status); 
 
-获取夹爪激活状态
-++++++++++++++++++++++++++
+Obter Estado de Ativação da Garra
+++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪激活状态
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] status  bit0~bit15对应夹爪编号0~15，bit=0为未激活，bit=1为激活
-    * @return  错误码
+    * @brief  Obtém o estado de ativação da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] status  bit0~bit15 correspondem aos números das garras 0~15, bit=0 não ativado, bit=1 ativado
+    * @return  Código de erro
     */
     int GetGripperActivateStatus(ref int fault, ref int status);
 
-获取夹爪位置
+Obter Posição da Garra
 ++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪位置
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] position  位置百分比，范围0~100%
-    * @return  错误码
+    * @brief  Obtém a posição da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] position  Porcentagem de posição, faixa 0~100%
+    * @return  Código de erro
     */
     int GetGripperCurPosition(ref int fault, ref int position);
 
-获取夹爪速度
-++++++++++++++++++++++++++
+Obter Velocidade da Garra
+++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪速度
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] speed  速度百分比，范围0~100%
-    * @return  错误码
+    * @brief  Obtém a velocidade da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] speed  Porcentagem de velocidade, faixa 0~100%
+    * @return  Código de erro
     */
     int GetGripperCurSpeed(ref int fault, ref int speed);
      
-获取夹爪电流
-++++++++++++++++++++++++++
+Obter Corrente da Garra
+++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪电流
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] current  电流百分比，范围0~100%
-    * @return  错误码
+    * @brief  Obtém a corrente da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] current  Porcentagem de corrente, faixa 0~100%
+    * @return  Código de erro
     */
     int GetGripperCurCurrent(ref int fault, ref int current);
 
-获取夹爪电压
-++++++++++++++++++++++++++
+Obter Tensão da Garra
+++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪电压
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] voltage  电压,单位0.1V
-    * @return  错误码
+    * @brief  Obtém a tensão da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] voltage  Tensão, unidade 0.1V
+    * @return  Código de erro
     */
     int GetGripperVoltage(ref int fault, ref int voltage);
 
-获取夹爪温度
-++++++++++++++++++++++++++
+Obter Temperatura da Garra
+++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取夹爪温度
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] temp  温度，单位℃
-    * @return  错误码
+    * @brief  Obtém a temperatura da garra
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] temp  Temperatura, unidade ℃
+    * @return  Código de erro
     */
     int GetGripperTemp(ref int fault, ref int temp);
 
-计算预抓取点-视觉
-++++++++++++++++++++++++++
+Calcular Ponto de Pré-Captura - Visão
+++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 计算预抓取点-视觉 
-    * @param [in] desc_pos 抓取点笛卡尔位姿 
-    * @param [in] zlength z轴偏移量 
-    * @param [in] zangle 绕z轴旋转偏移量
-    * @param [out] pre_pos 预抓取点
-    * @return 错误码 
+    * @brief Calcula o ponto de pré-captura - Visão 
+    * @param [in] desc_pos Pose cartesiana do ponto de captura 
+    * @param [in] zlength Deslocamento no eixo Z 
+    * @param [in] zangle Deslocamento de rotação em torno do eixo Z
+    * @param [out] pre_pos Ponto de pré-captura
+    * @return Código de erro 
     */ 
     int ComputePrePick(DescPose desc_pos, double zlength, double zangle, ref DescPose pre_pos);
 
-计算撤退点-视觉
-++++++++++++++++++++++++++
+Calcular Ponto de Retirada - Visão
+++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 计算撤退点-视觉 
-    * @param [in] desc_pos 撤退点笛卡尔位姿 
-    * @param [in] zlength z轴偏移量 
-    * @param [in] zangle 绕z轴旋转偏移量
-    * @param [out] post_pos 撤退点
-    * @return 错误码 
+    * @brief Calcula o ponto de retirada - Visão 
+    * @param [in] desc_pos Pose cartesiana do ponto de retirada 
+    * @param [in] zlength Deslocamento no eixo Z 
+    * @param [in] zangle Deslocamento de rotação em torno do eixo Z
+    * @param [out] post_pos Ponto de retirada
+    * @return Código de erro 
     */ 
     int ComputePostPick(DescPose desc_pos, double zlength, double zangle, ref DescPose post_pos);
 
-机器人夹爪操作代码示例
-++++++++++++++++++++++++++
+Exemplo de Código para Operações com a Garra do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -270,47 +270,47 @@
 
     }
 
-获取旋转夹爪的旋转圈数
-++++++++++++++++++++++++++
+Obter Número de Rotações da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转圈数
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] num  旋转圈数
-    * @return  错误码
+    * @brief  Obtém o número de rotações da garra rotativa
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] num  Número de rotações
+    * @return  Código de erro
     */
     int GetGripperRotNum(ref UInt16 fault, ref double num);
 
-获取旋转夹爪的旋转速度百分比
-++++++++++++++++++++++++++++++
+Obter Porcentagem de Velocidade de Rotação da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转速度百分比
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] speed  旋转速度百分比
-    * @return  错误码
+    * @brief  Obtém a porcentagem de velocidade de rotação da garra rotativa
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] speed  Porcentagem de velocidade de rotação
+    * @return  Código de erro
     */
     int GetGripperRotSpeed(ref UInt16 fault, ref int speed);
 
-获取旋转夹爪的旋转力矩百分比
-++++++++++++++++++++++++++++++
+Obter Porcentagem de Torque de Rotação da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转力矩百分比
-    * @param  [out] fault  0-无错误，1-有错误
-    * @param  [out] torque  旋转力矩百分比
-    * @return  错误码
+    * @brief  Obtém a porcentagem de torque de rotação da garra rotativa
+    * @param  [out] fault  0-sem erro, 1-com erro
+    * @param  [out] torque  Porcentagem de torque de rotação
+    * @return  Código de erro
     */
     int GetGripperRotTorque(ref UInt16 fault, ref int torque);
 
-获取旋转夹爪状态代码示例
-++++++++++++++++++++++++++
+Exemplo de Código para Obter Estado da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -332,194 +332,194 @@
         return 0;
     }
 
-传动带启动、停止
-+++++++++++++++++++++++++++++
+Iniciar/Parar Esteira Transportadora
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 传动带启动、停止 
-    * @param [in] status 状态，1-启动，0-停止
-    * @return 错误码 
+    * @brief Inicia/para a esteira transportadora 
+    * @param [in] status Estado, 1-iniciar, 0-parar
+    * @return Código de erro 
     */ 
     int ConveyorStartEnd(byte status); 
 
-记录IO检测点
-+++++++++++++++++++++++++++++
+Registrar Ponto de Detecção IO
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 记录IO检测点 
-    * @return 错误码 
+    * @brief Registra o ponto de detecção IO 
+    * @return Código de erro 
     */ 
     int ConveyorPointIORecord(); 
 
-记录A点
+Registrar Ponto A
 +++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 记录A点 
-    * @return 错误码 
+    * @brief Registra o ponto A 
+    * @return Código de erro 
     */ 
     int ConveyorPointARecord();
 
-记录参考点
-+++++++++++++++++++++++++++++
+Registrar Ponto de Referência
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 记录参考点 
-    * @return 错误码 
+    * @brief Registra o ponto de referência 
+    * @return Código de erro 
     */ 
     int ConveyorRefPointRecord(); 
 
-记录B点
+Registrar Ponto B
 +++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 记录B点 
-    * @return 错误码 
+    * @brief Registra o ponto B 
+    * @return Código de erro 
     */ 
     int ConveyorPointBRecord();
 
-传送带工件IO检测
-+++++++++++++++++++++++++++++
+Detecção IO de Peça na Esteira
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 传送带工件IO检测 
-    * @param [in] max_t 最大检测时间，单位ms
-    * @return 错误码 
+    * @brief Detecção IO de peça na esteira 
+    * @param [in] max_t Tempo máximo de detecção, unidade ms
+    * @return Código de erro 
     */ 
     int ConveyorIODetect(int max_t);
 
-获取物体当前位置
-+++++++++++++++++++++++++++++
+Obter Posição Atual do Objeto
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取物体当前位置 
-    * @param [in] mode 1-跟踪抓取，2-跟踪运动，3-TPD跟踪
-    * @return 错误码 
+    * @brief Obtém a posição atual do objeto 
+    * @param [in] mode 1-captura com rastreamento, 2-movimento com rastreamento, 3-rastreamento TPD
+    * @return Código de erro 
     */ 
     int ConveyorGetTrackData(int mode);
 
-传动带跟踪开始
-+++++++++++++++++++++++++++++
+Iniciar Rastreamento da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 传动带跟踪开始 
-    * @param [in] status 状态，1-启动，0-停止
-    * @return 错误码 
+    * @brief Inicia o rastreamento da esteira 
+    * @param [in] status Estado, 1-iniciar, 0-parar
+    * @return Código de erro 
     */
     int ConveyorTrackStart(byte status);
 
-传动带跟踪停止
-+++++++++++++++++++++++++++++
+Parar Rastreamento da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 传动带跟踪停止 
-    * @return 错误码 
+    * @brief Para o rastreamento da esteira 
+    * @return Código de erro 
     */
     int ConveyorTrackEnd();
 
-传动带参数配置
-+++++++++++++++++++++++++++++
+Configurar Parâmetros da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 传动带参数配置
-    * @param [in] para[0] 编码器通道 1~2
-    * @param [in] para[1] 编码器转一圈的脉冲数
-    * @param [in] para[2] 编码器转一圈传送带行走距离
-    * @param [in] para[3] 工件坐标系编号 针对跟踪运动功能选择工件坐标系编号，跟踪抓取、TPD跟踪设为0
-    * @param [in] para[4] 是否配视觉  0 不配  1 配
-    * @param [in] para[5] 速度比  针对传送带跟踪抓取选项（1-100）  其他选项默认为1 
-    * @param [in] followType 跟踪运动类型，0-跟踪运动；1-追检运动
-    * @param [in] startDis 追检抓取需要设置， 跟踪起始距离， -1：自动计算(工件到达机器人下方后自动追检)，单位mm， 默认值0
-    * @param [in] endDis 追检抓取需要设置，跟踪终止距离， 单位mm， 默认值100
-    * @return 错误码
+    * @brief Configura os parâmetros da esteira
+    * @param [in] para[0] Canal do encoder 1~2
+    * @param [in] para[1] Número de pulsos do encoder por rotação
+    * @param [in] para[2] Distância percorrida pela esteira por rotação do encoder
+    * @param [in] para[3] Número do sistema de coordenadas da peça (para movimento de rastreamento, escolha o número do sistema de coordenadas; para captura com rastreamento e rastreamento TPD, defina como 0)
+    * @param [in] para[4] Se usa visão 0-não usa 1-usa
+    * @param [in] para[5] Relação de velocidade (para a opção de captura com rastreamento da esteira [1-100]; para outras opções, padrão 1)
+    * @param [in] followType Tipo de movimento de rastreamento, 0-movimento de rastreamento; 1-movimento de verificação
+    * @param [in] startDis Necessário para captura com verificação, distância inicial de rastreamento, -1: cálculo automático (a verificação começa automaticamente quando a peça chega abaixo do robô), unidade mm, valor padrão 0
+    * @param [in] endDis Necessário para captura com verificação, distância final de rastreamento, unidade mm, valor padrão 100
+    * @return Código de erro
     */
     int ConveyorSetParam(int encChannel, int resolution, double lead, int wpAxis, int vision, double speedRadio, int followType, int startDis=0, int endDis=100);
 
-设置传动带抓取点补偿
-+++++++++++++++++++++++++++++
+Definir Compensação do Ponto de Captura da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置传动带抓取点补偿 
-    * @param [in] cmp 补偿位置 double[3]{x, y, z}
-    * @return 错误码 
+    * @brief Define a compensação do ponto de captura da esteira 
+    * @param [in] cmp Compensação de posição double[3]{x, y, z}
+    * @return Código de erro 
     */
     int ConveyorCatchPointComp(double[] cmp);
 
-传送带跟踪直线运动
-+++++++++++++++++++++++++++++
+Movimento Linear com Rastreamento da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 传送带跟踪直线运动 
-    * @param [in] name 运动点名称
-    * @param [in] tool 工具坐标号，范围[0~14] 
-    * @param [in] wobj 工件坐标号，范围[0~14] 
-    * @param [in] vel 速度百分比，范围[0~100] 
-    * @param [in] acc 加速度百分比，范围[0~100],暂不开放 
-    * @param [in] ovl 速度缩放因子，范围[0~100] 
-    * @param [in] blendR [-1.0]-运动到位(阻塞)，[0~1000.0]-平滑半径(非阻塞)，单位mm  
-    * @return 错误码 
+    * @brief Movimento linear com rastreamento da esteira 
+    * @param [in] name Nome do ponto de movimento
+    * @param [in] tool Número da ferramenta, faixa [0~14] 
+    * @param [in] wobj Número da peça, faixa [0~14] 
+    * @param [in] vel Porcentagem de velocidade, faixa [0~100] 
+    * @param [in] acc Porcentagem de aceleração, faixa [0~100], temporariamente não disponível 
+    * @param [in] ovl Fator de escala de velocidade, faixa [0~100] 
+    * @param [in] blendR [-1.0]-movimento concluído (bloqueado), [0~1000.0]-raio de suavização (não bloqueado), unidade mm  
+    * @return Código de erro 
     */
     int ConveyorTrackMoveL(string name, int tool, int wobj, float vel, float acc, float ovl, float blendR);
 
-传送带通讯输入检测
-+++++++++++++++++++++++++++++
+Detecção de Entrada de Comunicação da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 传送带通讯输入检测
-    * @param [in] timeout 等待超时时间ms
-    * @return 错误码
+    * @brief Detecção de entrada de comunicação da esteira
+    * @param [in] timeout Tempo limite de espera ms
+    * @return Código de erro
     */
     int ConveyorComDetect(int timeout);
 
-传送带通讯输入检测触发
-+++++++++++++++++++++++++++++
+Acionamento da Detecção de Entrada de Comunicação da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 传送带通讯输入检测触发
-    * @return 错误码
+    * @brief Acionamento da detecção de entrada de comunicação da esteira
+    * @return Código de erro
     */
     int ConveyorComDetectTrigger();
 
-传送带通讯输入检测触发示例程序
-+++++++++++++++++++++++++++++++++++
+Exemplo de Programa de Acionamento da Detecção de Entrada de Comunicação da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     private void button3_Click(object sender, EventArgs e)
     {
 
-        // 禁用按钮防止重复点击
+        // Desabilita o botão para evitar cliques repetidos
         button3.Enabled = false;
 
-        // 在后台线程中执行耗时操作
+        // Executa a operação demorada em uma thread em segundo plano
         Thread conveyorThread = new Thread(ConveyorTest);
         conveyorThread.IsBackground = true;
         conveyorThread.Start();
@@ -527,7 +527,7 @@
 
     private void button4_Click(object sender, EventArgs e)
     {
-        // 获取用户输入
+        // Obtém a entrada do usuário
         string input = texBox.Text;
         Console.WriteLine($"please input a number to trigger:{input}");
     
@@ -538,7 +538,7 @@
 
     private void ConveyorTest()
     {
-        // 使用Invoke来更新UI线程上的控件
+        // Usa Invoke para atualizar os controles na thread da UI
         this.Invoke((MethodInvoker)delegate {
             Console.WriteLine("开始传送带测试...");
         });
@@ -559,31 +559,31 @@
         ExaxisPos exaxisPos = new ExaxisPos(0, 0, 0, 0);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
 
-        // 移动到安全位置
+        // Move para posição segura
         retval = robot.MoveL(homejointPos, homePose, 1, 1, 100, 100, 100, -1, exaxisPos, 0, 0, offdese, 1, 1);
         Console.WriteLine($"MoveL 到安全位置返回值: {retval}");
 
-        // 传送带检测
+        // Detecção da esteira
         retval = robot.ConveryComDetect(1000 * 10);
         Console.WriteLine($"ConveyorComDetect 返回值: {retval}");
 
-        // 获取跟踪数据
+        // Obtém dados de rastreamento
         retval = robot.ConveyorGetTrackData(2);
         Console.WriteLine($"ConveyorGetTrackData 返回值: {retval}");
 
-        // 开始跟踪
+        // Inicia rastreamento
         retval = robot.ConveyorTrackStart(2);
         Console.WriteLine($"ConveyorTrackStart 返回值: {retval}");
 
-        // 移动到起始位置
+        // Move para posição inicial
         robot.MoveL(startjointPos, startdescPose, 1, 1, 100, 100, 100, -1, exaxisPos, 0, 0, offdese, 1, 1);
         robot.MoveL(startjointPos, startdescPose, 1, 1, 100, 100, 100, -1, exaxisPos, 0, 0, offdese, 1, 1);
 
-        // 结束跟踪
+        // Encerra rastreamento
         retval = robot.ConveyorTrackEnd();
         Console.WriteLine($"ConveyorTrackEnd 返回值: {retval}");
 
-        // 返回安全位置
+        // Retorna à posição segura
         robot.MoveL(homejointPos, homePose, 1, 1, 100, 100, 100, -1, exaxisPos, 0, 0, offdese, 1, 1);
 
         this.Invoke((MethodInvoker)delegate {
@@ -592,8 +592,8 @@
         });
     }
 
-机器人传送带操作示例程序
-++++++++++++++++++++++++++++++++++++
+Exemplo de Programa de Operação da Esteira do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -656,66 +656,66 @@
         Console.WriteLine($"MoveGripper: rtn  {rtn}");
     }
 
-末端传感器配置
-+++++++++++++++++++++++++++++
+Configurar Sensor de Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  末端传感器配置
-    * @param  [in] idCompany 厂商，18-JUNKONG；25-HUIDE
-    * @param  [in] idDevice 类型，0-JUNKONG/RYR6T.V1.0
-    * @param  [in] idSoftware 软件版本，0-J1.0/HuiDe1.0(暂未开放)
-    * @param  [in] idBus 挂载位置，1-末端1号口；2-末端2号口...8-末端8号口(暂未开放)
-    * @return  错误码
+    * @brief  Configura o sensor de extremidade
+    * @param  [in] idCompany Fabricante, 18-JUNKONG；25-HUIDE
+    * @param  [in] idDevice Tipo, 0-JUNKONG/RYR6T.V1.0
+    * @param  [in] idSoftware Versão do software, 0-J1.0/HuiDe1.0 (temporariamente não disponível)
+    * @param  [in] idBus Posição de montagem, 1-porta 1 da extremidade; 2-porta 2 da extremidade...8-porta 8 da extremidade (temporariamente não disponível)
+    * @return  Código de erro
     */
     int AxleSensorConfig(int idCompany, int idDevice, int idSoftware, int idBus);
 
-获取末端传感器配置
-+++++++++++++++++++++++++++++
+Obter Configuração do Sensor de Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取末端传感器配置
-    * @param  [out] idCompany 厂商，18-JUNKONG；25-HUIDE
-    * @param  [out] idDevice 类型，0-JUNKONG/RYR6T.V1.0
-    * @return  错误码
+    * @brief  Obtém a configuração do sensor de extremidade
+    * @param  [out] idCompany Fabricante, 18-JUNKONG；25-HUIDE
+    * @param  [out] idDevice Tipo, 0-JUNKONG/RYR6T.V1.0
+    * @return  Código de erro
     */
     int AxleSensorConfigGet(ref int idCompany, ref int idDevice);
 
-末端传感器激活
-+++++++++++++++++++++++++++++
+Ativar Sensor de Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  末端传感器激活
-    * @param  [in] actFlag 0-复位；1-激活
-    * @return  错误码
+    * @brief  Ativa o sensor de extremidade
+    * @param  [in] actFlag 0-reset; 1-ativar
+    * @return  Código de erro
     */
     int AxleSensorActivate(int actFlag);
 
-末端传感器寄存器写入
-+++++++++++++++++++++++++++++
+Escrita no Registrador do Sensor de Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  末端传感器寄存器写入
-    * @param  [in] devAddr  设备地址编号 0-255
-    * @param  [in] regHAddr 寄存器地址高8位
-    * @param  [in] regLAddr 寄存器地址低8位
-    * @param  [in] regNum  寄存器个数 0-255
-    * @param  [in] data1 写入寄存器数值1
-    * @param  [in] data2 写入寄存器数值2
-    * @param  [in] isNoBlock 0-阻塞；1-非阻塞
-    * @return  错误码
+    * @brief  Escrita no registrador do sensor de extremidade
+    * @param  [in] devAddr  Endereço do dispositivo 0-255
+    * @param  [in] regHAddr 8 bits altos do endereço do registrador
+    * @param  [in] regLAddr 8 bits baixos do endereço do registrador
+    * @param  [in] regNum  Número de registradores 0-255
+    * @param  [in] data1 Valor 1 a ser escrito no registrador
+    * @param  [in] data2 Valor 2 a ser escrito no registrador
+    * @param  [in] isNoBlock 0-bloqueado; 1-não bloqueado
+    * @return  Código de erro
     */
      int AxleSensorRegWrite(int devAddr, int regHAddr, int regLAddr, int regNum, int data1, int data2, int isNoBlock);
 
-末端传感器代码示例
-+++++++++++++++++++++++++++++
+Exemplo de Código do Sensor de Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -736,36 +736,36 @@
         Console.WriteLine("AxleSensorRegWrite rtn is " + rtn);   
     }
 
-获取机器人外设协议
-+++++++++++++++++++++++++++++
+Obter Protocolo de Periféricos do Robô
++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取机器人外设协议
-    * @param [out] protocol 机器人外设协议号 4096-扩展轴控制卡；4097-ModbusSlave；4098-ModbusMaster
-    * @return 错误码 
+    * @brief Obtém o protocolo de periféricos do robô
+    * @param [out] protocol Número do protocolo de periféricos do robô 4096-placa de controle do eixo de extensão; 4097-ModbusSlave; 4098-ModbusMaster
+    * @return Código de erro 
     */
     int GetExDevProtocol(ref int protocol);
 
-设置机器人外设协议
-+++++++++++++++++++++++++++++
+Definir Protocolo de Periféricos do Robô
++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置机器人外设协议
-    * @param [in] protocol 机器人外设协议号 4096-扩展轴控制卡；4097-ModbusSlave；4098-ModbusMaster
-    * @return 错误码 
+    * @brief Define o protocolo de periféricos do robô
+    * @param [in] protocol Número do protocolo de periféricos do robô 4096-placa de controle do eixo de extensão; 4097-ModbusSlave; 4098-ModbusMaster
+    * @return Código de erro 
     */
     int SetExDevProtocol(int protocol);
 
-设置机器人外设协议示例程序
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Programa para Definir Protocolo de Periféricos do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -778,185 +778,185 @@
       Console.WriteLine("GetExDevProtocol rtn " + rtn + " protocol is: " + protocol);
     }
 
-获取末端通讯参数
+Obter Parâmetros de Comunicação da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取末端通讯参数
-    * @param param 末端通讯参数
-    * @return  错误码
+    * @brief Obtém os parâmetros de comunicação da extremidade
+    * @param param Parâmetros de comunicação da extremidade
+    * @return  Código de erro
     */
     int GetAxleCommunicationParam(ref AxleComParam getParam);
 
-设置末端通讯参数
+Definir Parâmetros de Comunicação da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置末端通讯参数
-    * @param param  末端通讯参数
-    * @return  错误码
+    * @brief Define os parâmetros de comunicação da extremidade
+    * @param param  Parâmetros de comunicação da extremidade
+    * @return  Código de erro
     */
     int SetAxleCommunicationParam(AxleComParam param);
 
-设置末端文件传输类型
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Tipo de Transferência de Arquivo da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置末端文件传输类型
-    * @param type 1-MCU升级文件；2-LUA文件
-    * @return  错误码
+    * @brief Define o tipo de transferência de arquivo da extremidade
+    * @param type 1-arquivo de atualização MCU; 2-arquivo LUA
+    * @return  Código de erro
     */
     int SetAxleFileType(int type);
 
-设置启用末端LUA执行
+Ativar Execução LUA na Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置启用末端LUA执行
-    * @param enable 0-不启用；1-启用
-    * @return  错误码
+    * @brief Ativa a execução LUA na extremidade
+    * @param enable 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     int SetAxleLuaEnable(int enable);
 
-末端LUA文件异常错误恢复
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Recuperação de Erro de Arquivo LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 末端LUA文件异常错误恢复
-    * @param status 0-不恢复；1-恢复
-    * @return  错误码
+    * @brief Recuperação de erro de arquivo LUA na extremidade
+    * @param status 0-não recuperar; 1-recuperar
+    * @return  Código de erro
     */
     int SetRecoverAxleLuaErr(int status);
 
-获取末端LUA执行使能状态
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Estado de Ativação da Execução LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取末端LUA执行使能状态
-    * @param [out] status 0-未使能；1-已使能
-    * @return  错误码
+    * @brief Obtém o estado de ativação da execução LUA na extremidade
+    * @param [out] status 0-desativado; 1-ativado
+    * @return  Código de erro
     */
     int GetAxleLuaEnableStatus(ref int status);
 
-设置末端LUA末端设备启用类型
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置末端LUA末端设备启用类型
-    * @param [in] forceSensorEnable 力传感器启用状态，0-不启用；1-启用
-    * @param [in] gripperEnable 夹爪启用状态，0-不启用；1-启用
-    * @param [in] IOEnable IO设备启用状态，0-不启用；1-启用
-    * @return  错误码
+    * @brief Define o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
+    * @param [in] forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
+    * @param [in] gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
+    * @param [in] IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     int SetAxleLuaEnableDeviceType(int forceSensorEnable, int gripperEnable, int IOEnable);
 
-获取末端LUA末端设备启用类型
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取末端LUA末端设备启用类型
-    * @param [out] forceSensorEnable 力传感器启用状态，0-不启用；1-启用
-    * @param [out] gripperEnable 夹爪启用状态，0-不启用；1-启用
-    * @param [out] IOEnable IO设备启用状态，0-不启用；1-启用
-    * @return  错误码
+    * @brief Obtém o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
+    * @param [out] forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
+    * @param [out] gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
+    * @param [out] IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     int GetAxleLuaEnableDeviceType(ref int forceSensorEnable, ref int gripperEnable, ref int IOEnable);
 
-获取当前配置的末端设备
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Dispositivo de Extremidade Atualmente Configurado
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取当前配置的末端设备
-    * @param [out] forceSensorEnable 力传感器启用设备编号 0-未启用；1-启用
-    * @param [out] gripperEnable 夹爪启用设备编号，0-不启用；1-启用
-    * @param [out] IODeviceEnable IO设备启用设备编号，0-不启用；1-启用
-    * @return  错误码
+    * @brief Obtém o dispositivo de extremidade atualmente configurado
+    * @param [out] forceSensorEnable Número do dispositivo do sensor de força ativado 0-desativado; 1-ativado
+    * @param [out] gripperEnable Número do dispositivo da garra ativado, 0-desativar; 1-ativar
+    * @param [out] IODeviceEnable Número do dispositivo IO ativado, 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     int GetAxleLuaEnableDevice(ref int[] forceSensorEnable, ref int[] gripperEnable, ref int[] IODeviceEnable);
 
-设置启用夹爪动作控制功能
+Ativar Função de Controle de Movimento da Garra
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置启用夹爪动作控制功能
-    * @param [in] id 夹爪设备编号
-    * @param [in] func func[0]-夹爪使能；func[1]-夹爪初始化；2-位置设置；3-速度设置；4-力矩设置；6-读夹爪状态；7-读初始化状态；8-读故障码；9-读位置；10-读速度；11-读力矩
-    * @return  错误码
+    * @brief Ativa a função de controle de movimento da garra
+    * @param [in] id Número do dispositivo da garra
+    * @param [in] func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+    * @return  Código de erro
     */
     int SetAxleLuaGripperFunc(int id, int[] func);
 
-获取启用夹爪动作控制功能
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Função de Controle de Movimento da Garra Ativada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取启用夹爪动作控制功能
-    * @param [in] id 夹爪设备编号
-    * @param [out] func func[0]-夹爪使能；func[1]-夹爪初始化；2-位置设置；3-速度设置；4-力矩设置；6-读夹爪状态；7-读初始化状态；8-读故障码；9-读位置；10-读速度；11-读力矩
-    * @return  错误码
+    * @brief Obtém a função de controle de movimento da garra ativada
+    * @param [in] id Número do dispositivo da garra
+    * @param [out] func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+    * @return  Código de erro
     */
     int GetAxleLuaGripperFunc(int id, ref int[] func);
 
-机器人Ethercat从站文件写入
+Escrita de Arquivo no Escravo Ethercat do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 机器人Ethercat从站文件写入
-    * @param [in] type 从站文件类型，1-升级从站文件；2-升级从站配置文件
-    * @param [in] slaveID 从站号
-    * @param [in] fileName 上传文件名
-    * @return  错误码
+    * @brief Escrita de arquivo no escravo Ethercat do robô
+    * @param [in] type Tipo de arquivo do escravo, 1-arquivo de atualização do escravo; 2-arquivo de configuração do escravo
+    * @param [in] slaveID Número do escravo
+    * @param [in] fileName Nome do arquivo a ser enviado
+    * @return  Código de erro
     */
     int SlaveFileWrite(int type, int slaveID, string fileName);
 
-上传末端Lua开放协议文件
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Enviar Arquivo de Protocolo Aberto LUA da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 上传末端Lua开放协议文件
-    * @param filePath 本地lua文件路径名 ".../AXLE_LUA_End_DaHuan.lua"
-    * @return 错误码 
+    * @brief Envia arquivo de protocolo aberto LUA da extremidade
+    * @param filePath Caminho do arquivo lua local ".../AXLE_LUA_End_DaHuan.lua"
+    * @return Código de erro 
     */
     int AxleLuaUpload(string filePath);
 
-机器人Ethercat从站进入boot模式
+Entrar no Modo Boot do Escravo Ethercat do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 机器人Ethercat从站进入boot模式
-    * @return  错误码
+    * @brief Entrar no modo boot do escravo Ethercat do robô
+    * @return  Código de erro
     */
     int SetSysServoBootMode();
 
-机器人末端LUA文件操作代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Operações com Arquivos LUA da Extremidade do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -1023,7 +1023,7 @@
         }
     }
 
-获取SmartTool按钮状态
+Obter Estado dos Botões do SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
     
@@ -1031,14 +1031,14 @@
     :linenos:
 
     /**
-    * @brief 获取SmartTool按钮状态
-    * @param [out] state SmartTool手柄按钮状态;(bit0:0-通信正常；1-通信掉线；bit1-撤销操作；bit2-清空程序；
-        bit3-A键；bit4-B键；bit5-C键；bit6-D键；bit7-E键；bit8-IO键；bit9-手自动；bit10开始)
-    * @return 错误码
+    * @brief Obtém o estado dos botões do SmartTool
+    * @param [out] state Estado dos botões do SmartTool; (bit0:0-comunicação normal; 1-comunicação perdida; bit1-operação de desfazer; bit2-limpar programa;
+        bit3-tecla A；bit4-tecla B；bit5-tecla C；bit6-tecla D；bit7-tecla E；bit8-tecla IO；bit9-manual/automático；bit10-iniciar)
+    * @return Código de erro
     */
     int GetSmarttoolBtnState(ref int state);
 
-代码示例
+Exemplo de Código
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
     
@@ -1060,7 +1060,7 @@
 
     }
 
-上传开放协议的Lua文件
+Enviar Arquivo Lua de Protocolo Aberto
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1068,14 +1068,13 @@
     :linenos:
 
     /**
-    * @brief 上传开放协议的Lua文件
-    * @param  filePath 本地开放协议lua文件路径名
-    * @return 错误码
+    * @brief Envia arquivo Lua de protocolo aberto
+    * @param  filePath Caminho do arquivo lua de protocolo aberto local
+    * @return Código de erro
     */
     public int OpenLuaUpload(string filePath)
 
-
-获取从站板卡参数
+Obter Parâmetros da Placa Escrava
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1083,15 +1082,15 @@
     :linenos:
 
     /**
-    * @brief  获取从站板卡参数
+    * @brief  Obtém os parâmetros da placa escrava
     * @param  type  0-Ethercat，1-CClink, 3-Ethercat, 4-EIP
-    * @param  version  协议版本
-    * @param  connState  0-未连接 1-已连接
-    * @return  错误码
+    * @param  version  Versão do protocolo
+    * @param  connState  0-desconectado 1-conectado
+    * @return  Código de erro
     */
     public int GetFieldBusConfig(int[] type, int[] version, int[] connState)
 
-写入从站DO
+Escrever DO no Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1099,15 +1098,15 @@
     :linenos:
 
     /**
-    * @brief  写入从站DO
-    * @param   DOIndex  DO编号
-    * @param   wirteNum  写入的数量
-    * @param   status 写入的数值，最多写8个
-    * @return  错误码
+    * @brief  Escreve DO no escravo
+    * @param   DOIndex  Número do DO
+    * @param   wirteNum  Número a ser escrito
+    * @param   status Valor a ser escrito, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveWriteDO(int DOIndex, int wirteNum, int[] status)
 
-写入从站AO
+Escrever AO no Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1115,15 +1114,15 @@
     :linenos:
 
     /**
-    * @brief  写入从站AO
-    * @param  AOIndex  AO编号
-    * @param  wirteNum  写入的数量
-    * @param  status 写入的数值，最多写8个
-    * @return  错误码
+    * @brief  Escreve AO no escravo
+    * @param  AOIndex  Número do AO
+    * @param  wirteNum  Número a ser escrito
+    * @param  status Valor a ser escrito, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveWriteAO(int AOIndex, int wirteNum, int[] status)
 
-读取从站DI
+Ler DI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1131,15 +1130,15 @@
     :linenos:
 
     /**
-    * @brief  读取从站DI
-    * @param  DOIndex  DI编号
-    * @param  readNum  读取的数量
-    * @param  status 读取到的数值，最多读8个
-    * @return  错误码
+    * @brief  Lê DI do escravo
+    * @param  DOIndex  Número do DI
+    * @param  readNum  Número a ser lido
+    * @param  status Valor lido, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveReadDI(int DOIndex, int readNum, int[] status)
 
-读取从站AI
+Ler AI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1147,15 +1146,15 @@
     :linenos:
 
     /**
-    * @brief  读取从站AI
-    * @param  AIIndex  AI编号
-    * @param  readNum  读取的数量
-    * @param  status 读取到的数值，最多读8个
-    * @return  错误码
+    * @brief  Lê AI do escravo
+    * @param  AIIndex  Número do AI
+    * @param  readNum  Número a ser lido
+    * @param  status Valor lido, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveReadAI(int AIIndex, int readNum, double[] status)
 
-等待扩展DI输入
+Aguardar Entrada DI de Extensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1163,15 +1162,15 @@
     :linenos:
 
     /**
-    * @brief 等待扩展DI输入
-    * @param  DIIndex DI编号
-    * @param  status 0-低电平；1-高电平
-    * @param  waitMs 最大等待时间(ms)
-    * @return 错误码
+    * @brief Aguarda entrada DI de extensão
+    * @param  DIIndex Número do DI
+    * @param  status 0-nível baixo；1-nível alto
+    * @param  waitMs Tempo máximo de espera (ms)
+    * @return Código de erro
     */
     public int FieldBusSlaveWaitDI(int DIIndex, int status, int waitMs)
 
-等待扩展AI输入
+Aguardar Entrada AI de Extensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1179,17 +1178,17 @@
     :linenos:
 
     /**
-    * @brief 等待扩展AI输入
-    * @param  AIIndex AI编号
-    * @param  waitType 0-大于；1-小于
-    * @param  value AI值
-    * @param  waitMs 最大等待时间(ms)
-    * @return 错误码
+    * @brief Aguarda entrada AI de extensão
+    * @param  AIIndex Número do AI
+    * @param  waitType 0-maior que；1-menor que
+    * @param  value Valor do AI
+    * @param  waitMs Tempo máximo de espera (ms)
+    * @return Código de erro
     */
     public int FieldBusSlaveWaitAI(int AIIndex, int waitType, double value, int waitMs)
 
-从站模式相关接口指令代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Interfaces de Instrução do Modo Escravo
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -1243,7 +1242,7 @@
         Console.WriteLine($"FieldBusSlaveWaitAI result is {ret}"); 
     }
 
-控制阵列式吸盘
+Controlar Matriz de Ventosas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1251,15 +1250,15 @@
     :linenos:
 
     /**
-    * @brief 控制阵列式吸盘
-    * @param  slaveID 从站号
-    * @param  len 长度
-    * @param  ctrlValue 控制值 1-按最大真空度吸取 2-按设定真空度吸取 3-停止吸取
-    * @return 错误码
+    * @brief Controla a matriz de ventosas
+    * @param  slaveID Número do escravo
+    * @param  len Comprimento
+    * @param  ctrlValue Valor de controle 1-sucção com vácuo máximo 2-sucção com vácuo definido 3-parar sucção
+    * @return Código de erro
     */
     public int SetSuckerCtrl(int slaveID, int len, int[] ctrlValue)
 
-获取阵列式吸盘状态
+Obter Estado da Matriz de Ventosas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1267,16 +1266,16 @@
     :linenos:
 
     /**
-    * @brief 获取阵列式吸盘状态
-    * @param  slaveID 从站号
-    * @param  state 吸附状态 0-释放物体 1-检测到工件吸附成功 2-没有吸附到物体 3-物体脱离
-    * @param  pressValue 当前真空度 单位kpa
-    * @param  error 吸盘当前的错误码
-    * @return 错误码
+    * @brief Obtém o estado da matriz de ventosas
+    * @param  slaveID Número do escravo
+    * @param  state Estado de sucção 0-objeto solto 1-objeto detectado e sucção bem-sucedida 2-objeto não detectado 3-objeto desprendido
+    * @param  pressValue Vácuo atual unidade kPa
+    * @param  error Código de erro atual da ventosa
+    * @return Código de erro
     */
     public int GetSuckerState(int slaveID, int[] state, int[] pressValue, int[] error)
 
-等待吸盘状态
+Aguardar Estado da Ventosa
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
@@ -1284,16 +1283,16 @@
     :linenos:
 
     /**
-    * @brief 等待吸盘状态
-    * @param  slaveID 从站号
-    * @param  state 吸附状态 0-释放物体 1-检测到工件吸附成功 2-没有吸附到物体 3-物体脱离
-    * @param  ms 等待最大时间
-    * @return 错误码
+    * @brief Aguarda o estado da ventosa
+    * @param  slaveID Número do escravo
+    * @param  state Estado de sucção 0-objeto solto 1-objeto detectado e sucção bem-sucedida 2-objeto não detectado 3-objeto desprendido
+    * @param  ms Tempo máximo de espera
+    * @return Código de erro
     */
     public int WaitSuckerState(int slaveID, int state, int ms)
 
-阵列式吸盘控制指令代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Instruções de Controle da Matriz de Ventosas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -1339,7 +1338,7 @@
         robot.CloseRPC();
     }
 
-激光外设打开关闭函数
+Função de Ligar/Desligar Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1348,14 +1347,14 @@
 
 
     /**
-     * @brief 激光外设打开关闭函数
-     * @param [in] OnOff 0-关闭 1-打开
-     * @param [in] weldId 焊缝ID 默认为0
-     * @return 错误码
+     * @brief Função de ligar/desligar periférico laser
+     * @param [in] OnOff 0-desligar 1-ligar
+     * @param [in] weldId ID da solda, padrão 0
+     * @return Código de erro
      */
     public int LaserTrackingLaserOnOff(int OnOff, int weldId)
     
-激光跟踪开始结束函数
+Função de Iniciar/Parar Rastreamento a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1364,14 +1363,14 @@
 
     
     /**
-     * @brief 激光跟踪开始结束函数
-     * @param [in] OnOff 0-结束 1-开始
-     * @param [in] coordId 激光外设工具坐标系编号
-     * @return 错误码
+     * @brief Função de iniciar/parar rastreamento a laser
+     * @param [in] OnOff 0-parar 1-iniciar
+     * @param [in] coordId Número do sistema de coordenadas da ferramenta do periférico laser
+     * @return Código de erro
      */
     public int LaserTrackingTrackOnOff(int OnOff, int coordId)
 
-激光寻位-固定反向
+Busca de Posição a Laser - Direção Fixa
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1380,17 +1379,17 @@
 
 
     /**
-     * @brief 激光寻位-固定反向
+     * @brief Busca de posição a laser - Direção Fixa
      * @param [in] direction 0-x+ 1-x- 2-y+ 3-y- 4-z+ 5-z-
-     * @param [in] vel 速度 单位%
-     * @param [in] distance 最大寻位距离 单位mm
-     * @param [in] timeout 寻位超时时间 单位ms
-     * @param [in] posSensorNum 激光标定的工具坐标编号
-     * @return 错误码
+     * @param [in] vel Velocidade unidade %
+     * @param [in] distance Distância máxima de busca unidade mm
+     * @param [in] timeout Tempo limite de busca unidade ms
+     * @param [in] posSensorNum Número do sistema de coordenadas da ferramenta calibrado para o laser
+     * @return Código de erro
      */
     public int LaserTrackingSearchStart_xyz(int direction, int vel, int distance, int timeout, int posSensorNum)
     
-激光寻位-任意方向
+Busca de Posição a Laser - Direção Arbitrária
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1399,17 +1398,17 @@
 
 
     /**
-     * @brief 激光寻位-任意方向
-     * @param [in] directionPoint 寻位输入的点的xyz左边
-     * @param [in] vel 速度 单位%
-     * @param [in] distance 最大寻位距离 单位mm
-     * @param [in] timeout 寻位超时时间 单位ms
-     * @param [in] posSensorNum 激光标定的工具坐标编号
-     * @return 错误码
+     * @brief Busca de posição a laser - Direção Arbitrária
+     * @param [in] directionPoint Coordenadas xyz do ponto de entrada da busca
+     * @param [in] vel Velocidade unidade %
+     * @param [in] distance Distância máxima de busca unidade mm
+     * @param [in] timeout Tempo limite de busca unidade ms
+     * @param [in] posSensorNum Número do sistema de coordenadas da ferramenta calibrado para o laser
+     * @return Código de erro
      */
     public int LaserTrackingSearchStart_point(DescTran directionPoint, int vel, int distance, int timeout, int posSensorNum)
    
-激光寻位结束
+Fim da Busca de Posição a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1418,12 +1417,12 @@
 
 
     /**
-    * @brief  激光寻位结束
-    * @return 错误码
+    * @brief  Fim da busca de posição a laser
+    * @return Código de erro
     */
     public int LaserTrackingSearchStop()
 
-激光IP配置
+Configuração de IP do Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1432,15 +1431,15 @@
 
 
     /**
-     * @brief 激光IP配置
-     * @param [in] ip 激光外设的ip地址
-     * @param [in] port 激光外设的端口号
-     * @return 错误码
+     * @brief Configuração de IP do laser
+     * @param [in] ip Endereço IP do periférico laser
+     * @param [in] port Número da porta do periférico laser
+     * @return Código de erro
      */
     public int LaserTrackingSensorConfig(string ip, int port)
 
-激光外设采样周期配置
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configuração do Período de Amostragem do Periférico Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1448,13 +1447,13 @@
 
 
     /**
-     * @brief 激光外设采样周期配置
-     * @param [in] period 激光外设采样周期 单位ms
-     * @return 错误码
+     * @brief Configuração do período de amostragem do periférico laser
+     * @param [in] period Período de amostragem do periférico laser unidade ms
+     * @return Código de erro
      */
     public int LaserTrackingSensorSamplePeriod(int period)
 
-激光外设驱动加载
+Carregar Driver do Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1463,13 +1462,13 @@
 
 
     /**
-     * @brief 激光外设驱动加载
-     * @param [in] type 激光外设驱动的协议类型 101-睿牛 102-创想 103-全视 104-同舟 105-奥太
-     * @return 错误码
+     * @brief Carregar driver do periférico laser
+     * @param [in] type Tipo de protocolo do driver do periférico laser 101-Ruiniu 102-Chuangxiang 103-Quanshi 104-Tongzhou 105-Aotai
+     * @return Código de erro
      */
     public int LoadPosSensorDriver(int type)
 
-激光外设驱动卸载
+Descarregar Driver do Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1478,12 +1477,12 @@
 
 
     /**
-     * @brief 激光外设驱动卸载
-     * @return 错误码
+     * @brief Descarregar driver do periférico laser
+     * @return Código de erro
      */
     public int UnLoadPosSensorDriver()
 
-激光焊缝轨迹记录
+Gravação da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1492,14 +1491,14 @@
 
 
     /**
-     * @brief 激光焊缝轨迹记录
-     * @param [in] status 0-停止记录 1-实时跟踪  2-开始记录
-     * @param [in] delayTime 延时时间 单位ms
-     * @return 错误码
+     * @brief Gravação da trajetória da solda a laser
+     * @param [in] status 0-parar gravação 1-rastreamento em tempo real 2-iniciar gravação
+     * @param [in] delayTime Tempo de atraso unidade ms
+     * @return Código de erro
      */
     public int LaserSensorRecord1(int status, int delayTime)
 
-激光焊缝轨迹复现
+Reprodução da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1508,14 +1507,14 @@
 
 
     /**
-     * @brief 激光焊缝轨迹复现
-     * @param [in] delayTime 延时时间 单位ms
-     * @param [in] speed 速度 单位%
-     * @return 错误码
+     * @brief Reprodução da trajetória da solda a laser
+     * @param [in] delayTime Tempo de atraso unidade ms
+     * @param [in] speed Velocidade unidade %
+     * @return Código de erro
      */
     public int LaserSensorReplay(int delayTime, double speed)
 
-激光跟踪复现
+Reprodução do Rastreamento a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1524,33 +1523,33 @@
 
 
     /**
-     * @brief 激光跟踪复现
-     * @return 错误码
+     * @brief Reprodução do rastreamento a laser
+     * @return Código de erro
      */
     public int MoveLTR()
 
-激光焊缝轨迹记录及复现
+Gravação e Reprodução da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 激光焊缝轨迹记录及复现
-    * @param [in] delayMode 模式 0-延时时间 1-延时距离
-    * @param [in] delayTime 延时时间 单位ms
-    * @param [in] delayDisExAxisNum 扩展轴编号
-    * @param [in] delayDis 延时距离 单位mm
-    * @param [in] sensitivePara 补偿灵敏系数
-    * @param [in] trackMode 定点跟踪类型。0-扩展轴异步运动；1-机器人
-    * @param [in] triggerMode 定点跟踪触发方式。0-跟踪时长；1-IO
-    * @param [in] runTime 机器人定点跟踪时长(s)
-    * @param [in] speed 速度 单位%
-    * @return 错误码
+    * @brief Gravação e reprodução da trajetória da solda a laser
+    * @param [in] delayMode Modo de atraso 0-tempo de atraso 1-distância de atraso
+    * @param [in] delayTime Tempo de atraso unidade ms
+    * @param [in] delayDisExAxisNum Número do eixo de extensão
+    * @param [in] delayDis Distância de atraso unidade mm
+    * @param [in] sensitivePara Coeficiente de sensibilidade de compensação
+    * @param [in] trackMode Tipo de rastreamento pontual. 0-movimento assíncrono do eixo de extensão；1-robô
+    * @param [in] triggerMode Modo de acionamento do rastreamento pontual. 0-duração do rastreamento；1-IO
+    * @param [in] runTime Duração do rastreamento pontual do robô (s)
+    * @param [in] speed Velocidade unidade %
+    * @return Código de erro
     */
     public int LaserSensorRecordandReplay(int delayMode, int delayTime, int delayDisExAxisNum,double delayDis, double sensitivePara, int trackMode, int triggerMode,double runTime, double speed)
     
-运动到焊缝记录的起点
+Mover para o Início da Gravação da Solda
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1559,14 +1558,14 @@
 
 
     /**
-     * @brief 运动到焊缝记录的起点
+     * @brief Mover para o início da gravação da solda
      * @param [in] moveType 0-PTP 1-LIN
-     * @param [in] ovl 速度 单位%
-     * @return 错误码
+     * @param [in] ovl Velocidade unidade %
+     * @return Código de erro
      */
     public int MoveToLaserRecordStart(int moveType, double ovl)
 
-运动到焊缝记录的终点
+Mover para o Fim da Gravação da Solda
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1575,14 +1574,14 @@
 
 
     /**
-     * @brief 运动到焊缝记录的终点
+     * @brief Mover para o fim da gravação da solda
      * @param [in] moveType 0-PTP 1-LIN
-     * @param [in] ovl 速度 单位%
-     * @return 错误码
+     * @param [in] ovl Velocidade unidade %
+     * @return Código de erro
      */
     public int MoveToLaserRecordEnd(int moveType, double ovl)
 
-运动到激光传感器寻位点
+Mover para o Ponto de Busca do Sensor a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -1591,19 +1590,19 @@
 
 
     /**
-     * @brief 运动到激光传感器寻位点
-     * @param [in] moveFlag 运动类型：0-PTP；1-LIN
-     * @param [in] ovl 速度缩放因子，0-100
-     * @param [in] dataFlag 焊缝缓存数据选择：0-执行规划数据；1-执行记录数据
-     * @param [in] plateType 板材类型：0-波纹板；1-瓦楞板；2-围栏板；3-油桶；4-波纹甲壳钢
-     * @param [in] trackOffectType 激光传感器偏移类型：0-不偏移；1-基坐标系偏移；2-工具坐标系偏移；3-激光传感器原始数据偏移
-     * @param [in] offset 偏移量
-     * @return 错误码
+     * @brief Mover para o ponto de busca do sensor a laser
+     * @param [in] moveFlag Tipo de movimento: 0-PTP；1-LIN
+     * @param [in] ovl Fator de escala de velocidade, 0-100
+     * @param [in] dataFlag Seleção de dados de cache da solda: 0-executar dados planejados；1-executar dados gravados
+     * @param [in] plateType Tipo de placa: 0-placa ondulada；1-placa corrugada；2-placa de cerca；3-barril de óleo；4-aço de casco ondulado
+     * @param [in] trackOffectType Tipo de deslocamento do sensor a laser: 0-sem deslocamento；1-deslocamento no sistema de coordenadas base；2-deslocamento no sistema de coordenadas da ferramenta；3-deslocamento com base nos dados brutos do sensor a laser
+     * @param [in] offset Valor de deslocamento
+     * @return Código de erro
      */
     public int MoveToLaserSeamPos(int moveFlag, double ovl, int dataFlag, int plateType, int trackOffectType, DescPose offset)
     
-获取激光传感器寻位点坐标信息
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Informações de Coordenadas do Ponto de Busca do Sensor a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1611,20 +1610,20 @@
 
 
     /**
-     * @brief 获取激光传感器寻位点坐标信息
-     * @param [in] trackOffectType 激光传感器偏移类型：0-不偏移；1-基坐标系偏移；2-工具坐标系偏移；3-激光传感器原始数据偏移
-     * @param [in] offset 偏移量
-     * @param [out] jPos 关节位置[°]
-     * @param [out] descPos 笛卡尔位置[mm]
-     * @param [out] tool 工具坐标系
-     * @param [out] user 工件坐标系
-     * @param [out] exaxis 扩展轴位置[mm]
-     * @return 错误码
+     * @brief Obter informações de coordenadas do ponto de busca do sensor a laser
+     * @param [in] trackOffectType Tipo de deslocamento do sensor a laser: 0-sem deslocamento；1-deslocamento no sistema de coordenadas base；2-deslocamento no sistema de coordenadas da ferramenta；3-deslocamento com base nos dados brutos do sensor a laser
+     * @param [in] offset Valor de deslocamento
+     * @param [out] jPos Posição articular [°]
+     * @param [out] descPos Posição cartesiana [mm]
+     * @param [out] tool Sistema de coordenadas da ferramenta
+     * @param [out] user Sistema de coordenadas da peça
+     * @param [out] exaxis Posição do eixo de extensão [mm]
+     * @return Código de erro
      */
     public int GetLaserSeamPos(int trackOffectType, DescPose offset, ref JointPos jPos, ref DescPose descPos, ref int tool, ref int user, ref ExaxisPos exaxis)
 
-激光外设传感器参数配置及调试代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Configuração e Depuração de Parâmetros do Periférico Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1645,8 +1644,8 @@
         robot.LaserTrackingLaserOnOff(1, 0);
     }
 
-激光轨迹扫描及轨迹复现的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Digitalização e Reprodução de Trajetória a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1689,8 +1688,8 @@
                 
     }
 
-激光寻位及实时跟踪的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Busca de Posição e Rastreamento em Tempo Real a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1732,8 +1731,8 @@
         }
     }
 
-扩展轴与机器人同步进行激光跟踪的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Rastreamento a Laser Síncrono com Eixo de Extensão e Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
@@ -1778,37 +1777,37 @@
         }     
     }
 
-末端透传功能打开关闭
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Ativar/Desativar Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 开启末端通用透传功能
-    * @param [in] 使能，0-关闭，1-开启
-    * @return 错误码
+    * @brief Ativa/desativa a função de passagem direta na extremidade
+    * @param [in] enable, 0-desativar, 1-ativar
+    * @return Código de erro
     */
     public int SetAxleGenComEnable(int mode)
 
-末端透传功能非周期数据收发
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Transmissão e Recepção de Dados Aperiódicos na Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 末端发送非周期数据并等待应答
-    * @param [in]  len_snd，发送的长度
-    * @param [in]  sndBuff[]，发送数据
-    * @param [in]  len_rcv，选择接受的长度
-    * @param [out]  rcvBuff[]，应答的数据
-    * @return 错误码
+    * @brief Envia dados aperiódicos na extremidade e aguarda resposta
+    * @param [in] len_snd, comprimento do envio
+    * @param [in] sndBuff[], dados a serem enviados
+    * @param [in] len_rcv, comprimento da recepção selecionada
+    * @param [out] rcvBuff[], dados de resposta
+    * @return Código de erro
     */
     public int SndRcvAxleGenComCmdData(int len_snd, int[] sndBuff, int len_rcv, ref int[] rcvdata)
 
-基于末端透传功能倍益康艾灸头非周期数据通信代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Comunicação de Dados Aperiódicos do Cabeçote de Moxabustão Beiyikang Baseado na Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
@@ -1834,13 +1833,13 @@
         ExaxisPos exaxisPos = new ExaxisPos(0, 0, 0, 0);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
 
-        //开启末端透传功能
+        // Ativar função de passagem direta na extremidade
         robot.SetAxleGenComEnable(1);
         robot.SetAxleLuaEnable(1);
 
         while(cnt<=10)
         { 
-            //读取版本号
+            // Ler número da versão
             ret = robot.SndRcvAxleGenComCmdData(5, version, 10, ref rcvdata);
             Console.WriteLine($" hard version : {rcvdata[4]},hard code:{rcvdata[5]}, soft version:{rcvdata[6]} {rcvdata[7]}, soft code:{rcvdata[8]}");
             if (ret != 0)
@@ -1848,16 +1847,16 @@
                 break;
             }
             Thread.Sleep(1000);
-            //读取艾灸头在位状态
+            // Ler estado de presença do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, state, 6, ref rcvdata);
             Console.WriteLine($" state : {rcvdata[4]}");
             Thread.Sleep(1000);
-            //开启艾灸头激光
+            // Ativar laser do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, led_on, 6, ref rcvdata);
             Console.WriteLine($"led on rcv data is: {rcvdata[0]},{rcvdata[1]}, {rcvdata[2]}, {rcvdata[3]}, {rcvdata[4]}, {rcvdata[5]}");
             robot.MoveJ(p1Joint, p1Desc, 0, 0, 100, 100, 100, exaxisPos, -1, 0, offdese);
             Thread.Sleep(4000);
-            //关闭艾灸头激光
+            // Desativar laser do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, led_off, 6, ref rcvdata);
             Console.WriteLine($"led off rcv data is: {rcvdata[0]},{rcvdata[1]}, {rcvdata[2]}, {rcvdata[3]}, {rcvdata[4]}, {rcvdata[5]}");
             robot.MoveJ(p2Joint, p2Desc, 0, 0, 100, 100, 100, exaxisPos, -1, 0, offdese);
@@ -1868,46 +1867,46 @@
 
     }
 
-下载开放协议Lua文件
+Download do Arquivo Lua de Protocolo Aberto
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 下载开放协议Lua文件
-    * @param [in] fileName 开放协议文件名称“CtrlDev_XXX.lua”
-    * @param [in] savePath 开放协议保存文件路径
-    * @return 错误码
+    * @brief Download do arquivo Lua de protocolo aberto
+    * @param [in] fileName Nome do arquivo de protocolo aberto "CtrlDev_XXX.lua"
+    * @param [in] savePath Caminho para salvar o arquivo de protocolo aberto
+    * @return Código de erro
     */
     public int OpenLuaDownload(string fileName, string savePath)
     
-删除开放协议Lua文件
+Excluir Arquivo Lua de Protocolo Aberto
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 删除开放协议Lua文件
-    * @param [in] fileName 要删除的开放协议lua文件名“CtrlDev_XXX.lua”
-    * @return 错误码
+    * @brief Excluir arquivo Lua de protocolo aberto
+    * @param [in] fileName Nome do arquivo lua de protocolo aberto a ser excluído "CtrlDev_XXX.lua"
+    * @return Código de erro
     */
     public int OpenLuaDelete(string fileName)
         
-删除所有开放协议Lua文件
+Excluir Todos os Arquivos Lua de Protocolo Aberto
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 删除所有开放协议Lua文件
-    * @return 错误码
+    * @brief Excluir todos os arquivos Lua de protocolo aberto
+    * @return Código de erro
     */
     public int AllOpenLuaDelete()
 
-开放协议Lua文件操作的SDK代码示例
+Exemplo de Código SDK para Operações com Arquivos Lua de Protocolo Aberto
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: c#
@@ -1917,37 +1916,37 @@
     {
         int rtn;
 
-        // 上传 Lua 文件到机器人
+        // Upload do arquivo Lua para o robô
         rtn = robot.OpenLuaUpload("D://zUP/openlua/CtrlDev_WELDING_A.lua");
         Console.WriteLine($"OpenLuaUpload rtn is {rtn}");
         rtn = robot.OpenLuaUpload("D://zUP/openlua/CtrlDev_SWDPOLISH.lua");
         Console.WriteLine($"OpenLuaUpload rtn is {rtn}");
 
-        // 从机器人下载 Lua 文件
+        // Download do arquivo Lua do robô
         rtn = robot.OpenLuaDownload("CtrlDev_WELDING_A.lua", "D://zDOWN/");
         Console.WriteLine($"OpenLuaDownload rtn is {rtn}");
         rtn = robot.OpenLuaDownload("CtrlDev_SWDPOLISH.lua", "D://zDOWN/");
         Console.WriteLine($"OpenLuaDownload rtn is {rtn}");
 
-        // 设置控制开放协议 Lua 名称
+        // Definir nome do Lua de protocolo aberto de controle
         rtn = robot.SetCtrlOpenLUAName(0, "CtrlDev_WELDING_A.lua");
         Console.WriteLine($"SetCtrlOpenLUAName rtn is {rtn}");
         rtn = robot.SetCtrlOpenLUAName(1, "CtrlDev_SWDPOLISH.lua");
         Console.WriteLine($"SetCtrlOpenLUAName rtn is {rtn}");
 
-        // 获取控制开放协议 Lua 名称
+        // Obter nome do Lua de protocolo aberto de controle
         string[] name = new string[4];
         rtn = robot.GetCtrlOpenLUAName(ref name);
         Console.WriteLine($"ctrl open lua names : {name[0]}, {name[1]}, {name[2]}, {name[3]}");
 
-        // 加载和卸载开放协议 Lua
+        // Carregar e descarregar protocolo aberto Lua
         rtn = robot.LoadCtrlOpenLUA(1);
         Console.WriteLine($"LoadCtrlOpenLUA rtn is {rtn}");
         robot.Sleep(2000);
         rtn = robot.UnloadCtrlOpenLUA(1);
         Console.WriteLine($"UnloadCtrlOpenLUA rtn is {rtn}");
 
-        // 删除指定 Lua 文件和所有 Lua 文件
+        // Excluir arquivo Lua específico e todos os arquivos Lua
         rtn = robot.OpenLuaDelete("CtrlDev_WELDING_A.lua");
         Console.WriteLine($"OpenLuaDelete rtn is {rtn}");
         rtn = robot.AllOpenLuaDelete();

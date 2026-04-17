@@ -1,74 +1,73 @@
-创建向导
+Assistente de Criação
 =========================
 
 .. toctree:: 
    :maxdepth: 6
 
-“创建向导”为FRCap-Tools中的一个工具，通过该工具您可以通过输入少量的参数方便快捷的初始化一个FRCap项目。
+O "Assistente de Criação" é uma ferramenta dentro do FRCap-Tools que permite inicializar um projeto FRCap de forma rápida e conveniente, inserindo apenas alguns parâmetros.
 
-参数配置
--------------
+Configuração de Parâmetros
+---------------------------------
 
-创建FRCap主要需要两类参数，FRCap的基础信息和各级配置。下面将会分别进行说明。
+A criação de um FRCap requer principalmente dois tipos de parâmetros: as informações básicas do FRCap e as configurações em cada nível. Elas serão explicadas separadamente abaixo.
 
-基础信息
-++++++++++++++++
+Informações Básicas
+++++++++++++++++++++++++++++++++++
 
-基础信息中包含了“插件名称”、“插件作者”和“插件描述”。
+As informações básicas incluem "Nome do Plugin", "Autor do Plugin" e "Descrição do Plugin".
 
-插件名称：
+Nome do Plugin:
 
-- 必填项；
-- 不限制输入字符和字符长度, 不允许输入空格；
-- 建议名称最好不要超过7个CKJ字符（汉语、日语、韩语等）或者10个全大写拉丁字母或者14个全小写拉丁字母（英语、法语等）;
-- 推荐的例子：
+- Obrigatório;
+- Não há restrições quanto aos caracteres inseridos ou comprimento, mas espaços não são permitidos;
+- Recomenda-se que o nome não ultrapasse 7 caracteres CJK (Chinês, Japonês, Coreano, etc.), ou 10 letras latinas maiúsculas, ou 14 letras latinas minúsculas (Inglês, Francês, etc.);
+- Exemplos recomendados:
 
-  - 码垛机Palletizer；
-  - 打磨工艺软件；
-  - Device Config；
-  - HELLO FRCAP。
+  - Palletizer
+  - Software de Processo de Lixamento
+  - Device Config
+  - HELLO FRCAP
 
-插件作者：
+Autor do Plugin:
 
-- 必填项；
-- 不限制输入字符和字符长度，例如可以输入您个人姓名、公司名称等；
-- 推荐的例子：
+- Obrigatório;
+- Sem restrições de caracteres ou comprimento. Por exemplo, pode ser seu nome pessoal, nome da empresa, etc.;
+- Exemplos recomendados:
 
   - Zhang San
   - Franklin Peter
   - FAIR Innovation (Suzhou) Robot Systems Co., Ltd.
 
-插件描述：
+Descrição do Plugin:
 
-- 非必填项；
-- 不限制输入字符和字符长度，简要描述您的插件即可。
+- Opcional;
+- Sem restrições de caracteres ou comprimento. Basta uma breve descrição do seu plugin.
 
-高级配置
----------
+Configuração Avançada
+---------------------------
 
-插件类型：
+Tipo de Plugin:
 
-- 必填项；
-- 类型选项分别是“配置”和“应用”。
-- “配置”推荐用于实现设置参数、按钮操作等相对简单的配置及控制操作的FRCap。导入后在WebApp中的“辅助应用”->“FRCap”中使用。
-- “应用”推荐实现复杂工艺场景的FRCap，例如码垛场景、焊接工艺等行业应用。导入后直接在WebApp中的“辅助应用”下使用。
+- Obrigatório;
+- As opções de tipo são "Configuração" e "Aplicação".
+- "Configuração" é recomendado para FRCaps que realizam operações de configuração e controle relativamente simples, como definir parâmetros ou ações de botões. Após a importação, são usados em "Aplicações Auxiliares" -> "FRCap" no WebApp.
+- "Aplicação" é recomendado para FRCaps de cenários de processo complexos, como aplicações industriais de paletização, processos de soldagem, etc. Após a importação, são usados diretamente em "Aplicações Auxiliares" no WebApp.
 
-插件图标：
+Ícone do Plugin:
 
-- 非必填项；
-- 图标可以上传公司Logo或者任何您想使用的图标，注意使用版权，因任何原因导致的版权问题本公司概不负责；
-- 若您未上传图标，导出的FRCap项目中默认使用本公司“FAIRINO”Logo图标，您可以在项目文件夹下的public文件夹下进行替换修改。该图标仅供初始化示意，请勿直接在任何商业场景下使用“FAIRINO”Logo。
+- Opcional;
+- Você pode enviar o logotipo da empresa ou qualquer ícone que desejar usar. Preste atenção aos direitos autorais. A empresa não se responsabiliza por quaisquer problemas de direitos autorais decorrentes do uso do ícone.
+- Se você não enviar um ícone, o projeto FRCap exportado usará o logotipo "FAIRINO" da empresa por padrão. Você pode substituí-lo na pasta `public` do diretório do projeto. Este ícone é apenas para ilustração inicial. Por favor, não use o logotipo "FAIRINO" diretamente em nenhum cenário comercial.
 
-
-下载
+Download
 -------------
-以上所有的参数配置完成后且创建FRCap成功后，将跳转至下载页面。您需要确认名称无误即可将创建好的FRCap项目下载至本地计算机进行后续开发工作和构建使用。
+Após a configuração de todos os parâmetros acima e a criação bem-sucedida do FRCap, a página será redirecionada para a página de download. Você precisa confirmar que o nome está correto e, em seguida, pode baixar o projeto FRCap criado para o seu computador local para desenvolvimento posterior e construção.
 
-下载的插件为“.tar.gz”压缩格式。
+O plugin baixado está no formato compactado ".tar.gz".
 
-在Windows系统我们推荐使用7-Zip软件解压。
+No sistema Windows, recomendamos o uso do software 7-Zip para descompactar.
 
-在Linux系统可以在终端使用以下指令进行解压。
+No sistema Linux, você pode usar o seguinte comando no terminal para descompactar.
 
 .. code-block:: c++
    :linenos:

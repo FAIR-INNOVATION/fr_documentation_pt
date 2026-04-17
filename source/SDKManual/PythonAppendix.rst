@@ -1,150 +1,150 @@
-附录
+Apêndice
 =================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-源码下载
+Download do Código Fonte
 ------------------------------------------------
 
-在法奥文档(https://fairino-doc-zhs.readthedocs.io/latest/)中找到“资料下载”模块，点击“Python SDK”按钮，在右侧页面中点击“FAIRINO Python SDK”，等待浏览器下载完成。
+Na documentação FAIRINO (https://fairino-doc-pt.readthedocs.io/latest/), encontre o módulo "Download de Materiais", clique no botão "Python SDK" e, na página à direita, clique em "FAIRINO Python SDK" e aguarde o download ser concluído pelo navegador.
 
 .. image:: image/025.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.1‑1 Python SDK源码下载
+.. centered:: Figura 16.1‑1 Download do código fonte do Python SDK
 
-下载并解压Python SDK。工程目录如下图所示。其中windows文件夹为windows系统下Python SDK；linux文件夹为Linux系统下Python SDK。
+Baixe e descompacte o Python SDK. O diretório do projeto é mostrado na figura abaixo. A pasta windows contém o Python SDK para sistema Windows; a pasta linux contém o Python SDK para sistema Linux.
 
 .. image:: image/026.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.1‑2 Python SDK文件结示例图
+.. centered:: Figura 16.1‑2 Exemplo da estrutura de arquivos do Python SDK
 
-以windows系统为例，打开windows文件夹，目录如下图所示，example文件为测试示例，fairino文件为Python SDK源码，libfairino为库文件。
+Usando o sistema Windows como exemplo, abra a pasta windows. O diretório é mostrado na figura abaixo. A pasta example contém exemplos de teste, a pasta fairino contém o código fonte do Python SDK e libfairino contém os arquivos de biblioteca.
 
 .. image:: image/027.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.1‑3 windows系统Python SDK文件结示例图
+.. centered:: Figura 16.1‑3 Exemplo da estrutura de arquivos do Python SDK no sistema Windows
 
-使用Pycharm软件打开windows文件，结构如下图所示。
+Abra a pasta windows com o software Pycharm. A estrutura é mostrada na figura abaixo.
 
 .. image:: image/028.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 16.1‑4 Pycharm中项目文件结示例图
- 
-源码编译
-----------------------------------------
-Python动态库生成根据系统类型和python版本的不同会生成不同的动态库，例如windows平台下生成库文件后缀为“.pyd”，linux平台下生成库文件后缀为“.so”，并且不同python版本生成的动态库不能混用，所以在生成动态库前需确定好python版本，使用平台等问题。本手册以python3.10、windows11、ubuntu22.04版本进行编译说明。
+.. centered:: Figura 16.1‑4 Exemplo da estrutura de arquivos do projeto no Pycharm
 
-Windows平台Python SDK编译
+Compilação do Código Fonte
+----------------------------------------
+A geração da biblioteca dinâmica Python depende do tipo de sistema e da versão do Python, resultando em diferentes bibliotecas dinâmicas. Por exemplo, no Windows, o sufixo do arquivo de biblioteca gerado é ".pyd"; no Linux, o sufixo é ".so". Além disso, bibliotecas dinâmicas geradas para diferentes versões do Python não podem ser misturadas. Portanto, antes de gerar a biblioteca dinâmica, é necessário determinar a versão do Python, a plataforma a ser usada, etc. Este manual fornece instruções de compilação para Python 3.10, Windows 11 e Ubuntu 22.04.
+
+Compilação do Python SDK no Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-首先使用pycharm打开下载好的Python SDK文件，并打开setup.py文件；
+Primeiro, abra o arquivo Python SDK baixado com o Pycharm e abra o arquivo setup.py;
 
 .. image:: image/029.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑1 打开项目文件
+.. centered:: Figura 16.2‑1 Abrir o arquivo do projeto
 
-然后点击右下角选择python解释器，本次以python3.10为例；
+Em seguida, clique no canto inferior direito para selecionar o interpretador Python. Este exemplo usa Python 3.10;
 
 .. image:: image/030.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑2 选择python版本
- 
-右键fairino文件夹，点击“打开于”，再点击“终端”；
+.. centered:: Figura 16.2‑2 Selecionar a versão do Python
+
+Clique com o botão direito na pasta fairino, clique em "Abrir no" e depois em "Terminal";
 
 .. image:: image/031.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑3 打开终端
+.. centered:: Figura 16.2‑3 Abrir o terminal
 
-然后在终端界面输入“python setup.py build_ext --inplace”，并点击“回车”生成Python SDK动态库；
+Em seguida, digite "python setup.py build_ext --inplace" na interface do terminal e pressione "Enter" para gerar a biblioteca dinâmica do Python SDK;
 
 .. image:: image/032.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑4 运行动态库生成指令
+.. centered:: Figura 16.2‑4 Executar o comando de geração da biblioteca dinâmica
 
-动态库生成完成后在fairino文件夹下生成有Robot.c和Robot.cp310-win_amd64.pyd，其中Robot.c为将Robot.py转换为C语言文件；Robot.cp310-win_amd64.pyd为Python SDK动态库，其中“cp310”表示适用python3.10版本，“win_amd64”表示适用windows平台
+Após a conclusão da geração da biblioteca dinâmica, os arquivos Robot.c e Robot.cp310-win_amd64.pyd são gerados na pasta fairino. Robot.c é o arquivo Robot.py convertido para linguagem C; Robot.cp310-win_amd64.pyd é a biblioteca dinâmica do Python SDK, onde "cp310" indica compatibilidade com Python 3.10 e "win_amd64" indica compatibilidade com a plataforma Windows.
 
 .. image:: image/033.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑5 生成.pyd动态库
- 
-Linux平台Python SDK编译
+.. centered:: Figura 16.2‑5 Arquivo .pyd da biblioteca dinâmica gerado
+
+Compilação do Python SDK no Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-首先查看python版本，本手册中使用pyenv工具管理linux系统下python版本，运行“pyenv versions”命令，查看当前python版本；
+Primeiro, verifique a versão do Python. Este manual usa a ferramenta pyenv para gerenciar versões do Python no sistema Linux. Execute o comando "pyenv versions" para verificar a versão atual do Python;
 
 .. image:: image/034.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑6 查看python版本
+.. centered:: Figura 16.2‑6 Verificar a versão do Python
 
-然后切换目标python版本，以python3.10为例，运行“pyenv global 3.10.3”命令，切换python3.10版本；
+Em seguida, alterne para a versão alvo do Python. Usando Python 3.10 como exemplo, execute o comando "pyenv global 3.10.3" para alternar para a versão Python 3.10;
 
 .. image:: image/035.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑7 选择python版本
+.. centered:: Figura 16.2‑7 Selecionar a versão do Python
 
-切换至Robot.py文件同级目录下，运行“cd /home/fairino/fairino-python-sdk-master/fairino-python-sdk-master/linux/fairino”命令，切换目录到Robot.py下。
+Mude para o diretório onde o arquivo Robot.py está localizado. Execute o comando "cd /home/fairino/fairino-python-sdk-master/fairino-python-sdk-master/linux/fairino" para navegar até o diretório do Robot.py.
 
 .. image:: image/036.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑8 切换至Robot.py文件同级目录
+.. centered:: Figura 16.2‑8 Navegar até o diretório do arquivo Robot.py
 
-确认python版本，运行“python --version”命令，查看当前python版本；
+Confirme a versão do Python. Execute o comando "python --version" para verificar a versão atual do Python;
 
 .. image:: image/037.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑9 查看python版本
- 
-在终端界面输入“python setup.py build_ext --inplace”，并点击“回车”生成Python SDK动态库；
+.. centered:: Figura 16.2‑9 Verificar a versão do Python
+
+Digite "python setup.py build_ext --inplace" na interface do terminal e pressione "Enter" para gerar a biblioteca dinâmica do Python SDK;
 
 .. image:: image/038.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑10 运行动态库生成指令
+.. centered:: Figura 16.2‑10 Executar o comando de geração da biblioteca dinâmica
 
-动态库生成完成后在fairino文件夹下生成有Robot.c和Robot.cpython-310-x86_64-linux-gnu.so，其中Robot.c为将Robot.py转换为C语言文件，“Robot.cpython-310-x86_64-linux-gnu.so”为Python SDK动态库，其中“python-310”表示适用python3.10版本，“linux-gnu”表示适用Linux平台
+Após a conclusão da geração da biblioteca dinâmica, os arquivos Robot.c e Robot.cpython-310-x86_64-linux-gnu.so são gerados na pasta fairino. Robot.c é o arquivo Robot.py convertido para linguagem C; "Robot.cpython-310-x86_64-linux-gnu.so" é a biblioteca dinâmica do Python SDK, onde "python-310" indica compatibilidade com Python 3.10 e "linux-gnu" indica compatibilidade com a plataforma Linux.
 
 .. image:: image/039.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑11 生成.so动态库
+.. centered:: Figura 16.2‑11 Arquivo .so da biblioteca dinâmica gerado
 
-注意事项
+Observações
 ----------------------------------
 
-可能遇到的问题
+Possíveis Problemas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-版本对应
+Correspondência de Versões
 ++++++++++++++++++++++++++++++
-python动态库依赖生成环境与python版本，所以在使用python动态库是需要检查动态库与系统类型是否一致，动态库与python版本是否一致
+A biblioteca dinâmica Python depende do ambiente de geração e da versão do Python. Portanto, ao usar a biblioteca dinâmica Python, é necessário verificar se a biblioteca dinâmica é compatível com o tipo de sistema e se a biblioteca dinâmica é compatível com a versão do Python.
 
-错误码
+Códigos de Erro
 ++++++++++++++++++++++++++++++
-当返回值为0时代表运行正常，若返回值不为0时请查看错误码对照表。
+Quando o valor de retorno é 0, significa que a execução está normal. Se o valor de retorno não for 0, consulte a tabela de códigos de erro.

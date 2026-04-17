@@ -1,29 +1,27 @@
-WebApp中使用FRCap
+Usando FRCap no WebApp
 =========================
 
 .. toctree:: 
    :maxdepth: 6
 
-FRCap管理
--------------
-在WebApp中依次选择“系统设置”->“FRCap管理”。页面功能区包含：
+Gerenciamento de FRCap
+-------------------------
+No WebApp, selecione sequencialmente "Configurações do Sistema" -> "Gerenciamento de FRCap". A área funcional da página inclui:
 
-1. FRCap导入：点击“导入”按钮上传；
-
-2. 后台管理：包含“创建向导”和“后台管理”工具；
-
-3. FRCaps信息列表及操作。
+1. Importação de FRCap: Clique no botão "Importar" para fazer o upload;
+2. Gerenciamento de Backend: Inclui as ferramentas "Assistente de Criação" e "Gerenciamento de Backend";
+3. Lista de informações dos FRCaps e operações.
 
 .. image:: frcap_pictures/002.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6-1  FRCap管理页面功能区
+.. centered:: Figura 6-1 Áreas Funcionais da Página de Gerenciamento de FRCap
 
-配置类使用
--------------
-配置类FRCap使用路径为机器人WebApp中“辅助应用”->“FRCap”->“[FRCap名称]”。
+Uso do Tipo Configuração
+-------------------------------
+O caminho de uso para FRCaps do tipo configuração é "Aplicações Auxiliares" -> "FRCap" -> "[Nome do FRCap]" no WebApp do robô.
 
-应用类使用
--------------
-应用类FRCap使用路径为机器人WebApp中“辅助应用”->“[FRCap名称]”。
+Uso do Tipo Aplicação
+-------------------------------
+O caminho de uso para FRCaps do tipo aplicação é "Aplicações Auxiliares" -> "[Nome do FRCap]" no WebApp do robô.

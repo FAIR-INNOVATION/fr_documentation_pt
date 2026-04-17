@@ -1,177 +1,177 @@
-数据结构说明
-==========================
+Descrição das Estruturas de Dados
+============================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-控制器状态反馈数据包
-~~~~~~~~~~~~~~~~~~~~~~~~
+Pacote de Dados de Retroalimentação de Estado do Controlador
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. versionadded:: python SDK-v2.1.7
-    
-.. csv-table:: 
+
+.. csv-table::
     :header-rows: 1
-    :name: 控制器状态反馈数据包
+    :name: Pacote de dados de retroalimentação de estado do controlador
     :widths: 20 30
 
-    "变量","含义"
-    "program_state","程序运行状态，1-停止；2-运行；3-暂停"
-    "robot_state","机器人运动状态，1-停止；2-运行；3-暂停；4-拖动"
-    "main_code","主故障码"
-    "sub_code",	子故障码"
-    "robot_mode","机器人模式，0-自动模式；1-手动模式"
-    "jt_cur_pos[i]","关节当前位置,单位deg,i:0~5"
-    "tl_cur_pos[i]","工具当前位姿,单位deg&mm,i:0~5"
-    "flange_cur_pos[i]","末端法兰当前位姿,单位deg&mm,i:0~5"
-    "actual_qd[i]","机器人当前关节速度,单位deg/s,i:0~5"
-    "actual_qdd[i]","机器人当前关节加速度,单位deg/s^2,i:0~5"
-    "target_TCP_CmpSpeed[i]","机器人TCP合成指令速度,单位mm/s&deg/s,i:0~1"
-    "target_TCP_Speed[i]","机器人TCP指令速度,单位mm/s&deg/s,i:0~5"
-    "actual_TCP_CmpSpeed[i]","机器人TCP合成实际速度,单位mm/s&deg/s,i:0~1"
-    "actual_TCP_Speed[i]","机器人TCP实际速度,单位mm/s&deg/s,i:0~5"
-    "jt_cur_tor[i]","当前扭矩,单位N·m ,i:0~5"
-    "tool","应用的工具坐标系编号"
-    "user","应用的工件坐标系编号"
-    "cl_dgt_output_h","控制箱数字量IO输出15-8"
-    "cl_dgt_output_l","控制箱数字量IO输出7-0"
-    "tl_dgt_output_l","工具数字量IO输出7-0，仅bit0-bit1有效"
-    "dgt_input_h","控制箱数字量IO输入15-8"
-    "cl_dgt_input_l","控制箱数字量IO输入7-0"
-    "tl_dgt_input_l","工具数字量IO输入7-0，仅bit0-bit1有效"
-    "cl_analog_input[i]","控制箱模拟量输入,i:0~2"
-    "tl_anglog_input","工具模拟量输入"
-    "ft_sensor_raw_data","力矩传感器原始数据,单位N&Nm,i:0~5"
-    "ft_sensor_data","力矩传感器数据,单位N&Nm,i:0~5"
-    "ft_sensor_active","力矩传感器激活状态，0-复位，1-激活"
-    "EmergencyStop","急停标志,0-急停未按下,1-急停按下"
-    "motion_done","运动到位信号,1-到位，0-未到位"
-    "gripper_motiondone","夹爪运动完成信号,1-完成，0-未完成 "
-    "mc_queue_len","运动指令队列长度"
-    "collisionState","碰撞检测,1-碰撞，0-无碰撞 "
-    "trajectory_pnum","轨迹点编号"
-    "safety_stop0_state","安全停止信号SI0"
-    "safety_stop1_state","安全停止信号SI1"
-    "gripper_fault_id","错误夹爪号"
-    "gripper_fault","夹爪故障"
-    "gripper_active","夹爪激活状态，0-未激活，1-激活"
-    "gripper_position","夹爪位置(百分比)"
-    "gripper_speed","夹爪速度(百分比)"
-    "gripper_current","夹爪电流(百分比)"
-    "gripper_tmp","夹爪温度,单位℃"
-    "gripper_voltage","夹爪电压,单位V"
-    "auxState.servoId","485扩展轴,伺服驱动器ID号,i:0~3"
-    "auxState.servoErrCode","485扩展轴,伺服驱动器故障码,i:0~3"
-    "auxState.servoState","485扩展轴,伺服驱动器状态,i:0~3"
-    "auxState.servoPos","485扩展轴,伺服当前位置,i:0~3"
-    "auxState.servoVel","485扩展轴,伺服当前速度,i:0~3"
-    "auxState.servoTorque","485扩展轴,伺服当前转矩,i:0~3"
-    "extAxisStatus[i].pos","UDP扩展轴,位置,i:0~3"
-    "extAxisStatus[i].vel","UDP扩展轴,速度,i:0~3"
-    "extAxisStatus[i].errorCode","UDP扩展轴,故障码,i:0~3"
-    "extAxisStatus[i].ready","UDP扩展轴,伺服准备好,i:0~3"
-    "extAxisStatus[i].inPos","UDP扩展轴,伺服到位,i:0~3"
-    "extAxisStatus[i].alarm","UDP扩展轴,伺服报警,i:0~3"
-    "extAxisStatus[i].flerr","UDP扩展轴,跟随误差,i:0~3"
-    "extAxisStatus[i].nlimit","UDP扩展轴,到负限位,i:0~3"
-    "extAxisStatus[i].pLimit","UDP扩展轴,到正限位,i:0~3"
-    "extAxisStatus[i].mdbsOffLine","UDP扩展轴,驱动器485总线掉线"
-    "extAxisStatus[i].mdbsTimeout","UDP扩展轴,控制卡与控制箱485通信超时"
-    "extAxisStatus[i].homingStatus","UDP扩展轴,回零状态"
-    "extDIState","扩展数字输入状态"
-    "extDOState","扩展数字输出状态"
-    "extAIState","扩展模拟输入状态"
-    "extAOState","扩展模拟输出状态"
-    "rbtEnableState","机器人使能状态"
-    "jointDriverTorque","关节驱动器当前扭矩"
-    "jointDriverTemperature","关节驱动器当前温度"
-    "year","年"
-    "mouth","月"
-    "day","日"
-    "hour","小时"
-    "minute","分"
-    "second","秒"
-    "millisecond","毫秒"
-    "softwareUpgradeState","机器人软件升级状态"
-    "endLuaErrCode","末端LUA运行状态"
-    "cl_analog_output[i]","控制箱模拟量输出,i:0~1"
-    "tl_analog_output","工具模拟量输出"
-    "gripperRotNum","旋转夹爪当前旋转圈数"
-    "gripperRotSpeed","旋转夹爪当前旋转速度百分比"
-    "gripperRotTorque","旋转夹爪当前旋转力矩百分比"
-    "weldingBreakOffState","焊接中断状态"
-    "jt_tgt_tor","关节指令力矩"
-    "smartToolState","SmartTool手柄按钮状态"
-    "wideVoltageCtrlBoxTemp","宽电压控制箱温度"
-    "wideVoltageCtrlBoxFanCurrent","宽电压控制箱风扇电流(ma)"
-    "toolCoord[i]","工具坐标系,i:0~5"
-    "wobjCoord[i]","工件坐标系,i:0~5"
-    "extoolCoord[i]","外部工具坐标系,i:0~5"
-    "exAxisCoord[i]","扩展轴坐标系,i:0~5"
-    "load","负载质量"
-    "loadCog[i]","负载质心,i:0~2"
-    "lastServoTarget[i]","队列中最后一个ServoJ目标位置,i:0~5"
-    "servoJCmdNum","ServoJ指令计数"
+    "Variável","Significado"
+    "program_state","Estado de execução do programa, 1-parado; 2-em execução; 3-pausado"
+    "robot_state","Estado de movimento do robô, 1-parado; 2-em movimento; 3-pausado; 4-arrasto"
+    "main_code","Código de falha principal"
+    "sub_code","Código de falha secundário"
+    "robot_mode","Modo do robô, 0-modo automático; 1-modo manual"
+    "jt_cur_pos[i]","Posições atuais das juntas, em graus, i:0~5"
+    "tl_cur_pos[i]","Pose atual da ferramenta, em graus e mm, i:0~5"
+    "flange_cur_pos[i]","Pose atual do flange da extremidade, em graus e mm, i:0~5"
+    "actual_qd[i]","Velocidades atuais das juntas do robô, em graus/s, i:0~5"
+    "actual_qdd[i]","Acelerações atuais das juntas do robô, em graus/s², i:0~5"
+    "target_TCP_CmpSpeed[i]","Velocidade de comando sintética do TCP do robô, em mm/s e graus/s, i:0~1"
+    "target_TCP_Speed[i]","Velocidade de comando do TCP do robô, em mm/s e graus/s, i:0~5"
+    "actual_TCP_CmpSpeed[i]","Velocidade real sintética do TCP do robô, em mm/s e graus/s, i:0~1"
+    "actual_TCP_Speed[i]","Velocidade real do TCP do robô, em mm/s e graus/s, i:0~5"
+    "jt_cur_tor[i]","Torques atuais, em N·m, i:0~5"
+    "tool","Número do sistema de coordenadas da ferramenta aplicado"
+    "user","Número do sistema de coordenadas da peça aplicado"
+    "cl_dgt_output_h","Saída digital da caixa de controle 15-8"
+    "cl_dgt_output_l","Saída digital da caixa de controle 7-0"
+    "tl_dgt_output_l","Saída digital da ferramenta 7-0, apenas bits 0-1 são válidos"
+    "dgt_input_h","Entrada digital da caixa de controle 15-8"
+    "cl_dgt_input_l","Entrada digital da caixa de controle 7-0"
+    "tl_dgt_input_l","Entrada digital da ferramenta 7-0, apenas bits 0-1 são válidos"
+    "cl_analog_input[i]","Entrada analógica da caixa de controle, i:0~2"
+    "tl_anglog_input","Entrada analógica da ferramenta"
+    "ft_sensor_raw_data","Dados brutos do sensor de torque, em N e Nm, i:0~5"
+    "ft_sensor_data","Dados do sensor de torque, em N e Nm, i:0~5"
+    "ft_sensor_active","Estado de ativação do sensor de torque, 0-reset, 1-ativado"
+    "EmergencyStop","Sinalizador de parada de emergência, 0-parada de emergência não pressionada, 1-parada de emergência pressionada"
+    "motion_done","Sinal de movimento concluído, 1-concluído, 0-não concluído"
+    "gripper_motiondone","Sinal de movimento concluído da garra, 1-concluído, 0-não concluído"
+    "mc_queue_len","Comprimento da fila de instruções de movimento"
+    "collisionState","Detecção de colisão, 1-colisão, 0-sem colisão"
+    "trajectory_pnum","Número do ponto de trajetória"
+    "safety_stop0_state","Sinal de parada de segurança SI0"
+    "safety_stop1_state","Sinal de parada de segurança SI1"
+    "gripper_fault_id","Número da garra com falha"
+    "gripper_fault","Falha da garra"
+    "gripper_active","Estado de ativação da garra, 0-não ativada, 1-ativada"
+    "gripper_position","Posição da garra (percentagem)"
+    "gripper_speed","Velocidade da garra (percentagem)"
+    "gripper_current","Corrente da garra (percentagem)"
+    "gripper_tmp","Temperatura da garra, em °C"
+    "gripper_voltage","Tensão da garra, em V"
+    "auxState.servoId","Eixo estendido 485, número de ID do servo driver, i:0~3"
+    "auxState.servoErrCode","Eixo estendido 485, código de falha do servo driver, i:0~3"
+    "auxState.servoState","Eixo estendido 485, estado do servo driver, i:0~3"
+    "auxState.servoPos","Eixo estendido 485, posição atual do servo, i:0~3"
+    "auxState.servoVel","Eixo estendido 485, velocidade atual do servo, i:0~3"
+    "auxState.servoTorque","Eixo estendido 485, torque atual do servo, i:0~3"
+    "extAxisStatus[i].pos","Eixo estendido UDP, posição, i:0~3"
+    "extAxisStatus[i].vel","Eixo estendido UDP, velocidade, i:0~3"
+    "extAxisStatus[i].errorCode","Eixo estendido UDP, código de falha, i:0~3"
+    "extAxisStatus[i].ready","Eixo estendido UDP, servo pronto, i:0~3"
+    "extAxisStatus[i].inPos","Eixo estendido UDP, servo no lugar, i:0~3"
+    "extAxisStatus[i].alarm","Eixo estendido UDP, alarme do servo, i:0~3"
+    "extAxisStatus[i].flerr","Eixo estendido UDP, erro de seguimento, i:0~3"
+    "extAxisStatus[i].nlimit","Eixo estendido UDP, limite negativo atingido, i:0~3"
+    "extAxisStatus[i].pLimit","Eixo estendido UDP, limite positivo atingido, i:0~3"
+    "extAxisStatus[i].mdbsOffLine","Eixo estendido UDP, driver offline no barramento 485"
+    "extAxisStatus[i].mdbsTimeout","Eixo estendido UDP, tempo limite de comunicação 485 entre placa de controle e caixa de controle"
+    "extAxisStatus[i].homingStatus","Eixo estendido UDP, estado de retorno à origem"
+    "extDIState","Estado de entrada digital estendida"
+    "extDOState","Estado de saída digital estendida"
+    "extAIState","Estado de entrada analógica estendida"
+    "extAOState","Estado de saída analógica estendida"
+    "rbtEnableState","Estado de habilitação do robô"
+    "jointDriverTorque","Torque atual do driver articular"
+    "jointDriverTemperature","Temperatura atual do driver articular"
+    "year","Ano"
+    "mouth","Mês"
+    "day","Dia"
+    "hour","Hora"
+    "minute","Minuto"
+    "second","Segundo"
+    "millisecond","Milissegundo"
+    "softwareUpgradeState","Estado de atualização de software do robô"
+    "endLuaErrCode","Estado de execução do LUA da extremidade"
+    "cl_analog_output[i]","Saída analógica da caixa de controle, i:0~1"
+    "tl_analog_output","Saída analógica da ferramenta"
+    "gripperRotNum","Número atual de rotações da garra rotativa"
+    "gripperRotSpeed","Percentagem da velocidade atual de rotação da garra rotativa"
+    "gripperRotTorque","Percentagem do torque atual de rotação da garra rotativa"
+    "weldingBreakOffState","Estado de interrupção da soldagem"
+    "jt_tgt_tor","Torque de comando das juntas"
+    "smartToolState","Estado do botão do SmartTool"
+    "wideVoltageCtrlBoxTemp","Temperatura da caixa de controle de larga tensão"
+    "wideVoltageCtrlBoxFanCurrent","Corrente da ventoinha da caixa de controle de larga tensão (mA)"
+    "toolCoord[i]","Sistema de coordenadas da ferramenta, i:0~5"
+    "wobjCoord[i]","Sistema de coordenadas da peça, i:0~5"
+    "extoolCoord[i]","Sistema de coordenadas da ferramenta externa, i:0~5"
+    "exAxisCoord[i]","Sistema de coordenadas do eixo estendido, i:0~5"
+    "load","Massa da carga"
+    "loadCog[i]","Centro de massa da carga, i:0~2"
+    "lastServoTarget[i]","Última posição alvo do ServoJ na fila, i:0~5"
+    "servoJCmdNum","Contagem de instruções ServoJ"
 
-伺服控制器状态
-~~~~~~~~~~~~~~~~~~~~~~~~
+Estado do Controlador Servo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. versionadded:: python SDK-v2.1.3
-    
-.. csv-table:: 
+
+.. csv-table::
     :header-rows: 1
-    :name: 伺服控制器状态
+    :name: Estado do controlador servo
     :widths: 20 30
 
-    "变量","含义"
-    "servoId","伺服驱动器ID号"
-    "servoErrCode","伺服驱动器故障码"
-    "servoState","伺服驱动器状态"
-    "servoPos","伺服当前位置"
-    "servoVel","伺服当前速度"
-    "servoTorque","伺服当前转矩"
+    "Variável","Significado"
+    "servoId","Número de ID do servo driver"
+    "servoErrCode","Código de falha do servo driver"
+    "servoState","Estado do servo driver"
+    "servoPos","Posição atual do servo"
+    "servoVel","Velocidade atual do servo"
+    "servoTorque","Torque atual do servo"
 
-扩展轴状态
-~~~~~~~~~~~~~~~~~~~~~~~~
+Estado do Eixo Estendido
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. versionadded:: python SDK-v2.1.3
-    
-.. csv-table:: 
+
+.. csv-table::
     :header-rows: 1
-    :name: 扩展轴状态
+    :name: Estado do eixo estendido
     :widths: 20 30
 
-    "变量","含义"
-    "pos","扩展轴位置"
-    "vel","扩展轴速度"
-    "errorCode","扩展轴故障码"
-    "ready","伺服准备好"
-    "inPos","伺服到位"
-    "alarm","伺服报警"
-    "flerr","跟随误差"
-    "nlimit","到负限位"
-    "pLimit","到正限位"
-    "mdbsOffLine","驱动器485总线掉线"
-    "mdbsTimeout","控制卡与控制箱485通信超时"
-    "homingStatus","扩展轴回零状态"
+    "Variável","Significado"
+    "pos","Posição do eixo estendido"
+    "vel","Velocidade do eixo estendido"
+    "errorCode","Código de falha do eixo estendido"
+    "ready","Servo pronto"
+    "inPos","Servo no lugar"
+    "alarm","Alarme do servo"
+    "flerr","Erro de seguimento"
+    "nlimit","Limite negativo atingido"
+    "pLimit","Limite positivo atingido"
+    "mdbsOffLine","Driver offline no barramento 485"
+    "mdbsTimeout","Tempo limite de comunicação 485 entre placa de controle e caixa de controle"
+    "homingStatus","Estado de retorno à origem do eixo estendido"
 
-焊接中断状态
-~~~~~~~~~~~~~~~~~~~~~~~~
+Estado de Interrupção da Soldagem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. versionadded:: python SDK-v2.1.3
-    
-.. csv-table:: 
+
+.. csv-table::
     :header-rows: 1
-    :name: 焊接中断状态
+    :name: Estado de interrupção da soldagem
     :widths: 20 30
 
-    "变量","含义"
-    "breakOffState","焊接中断状态"
-    "weldArcState","焊接电弧中断状态"
+    "Variável","Significado"
+    "breakOffState","Estado de interrupção da soldagem"
+    "weldArcState","Estado de interrupção do arco de soldagem"
 
-代码示例
+Exemplo de Código
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
     :linenos:
 
     from fairino import Robot
-    # 与机器人控制器建立连接，连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
     print("program_state:", robot.robot_state_pkg.program_state)
     print("robot_state:", robot.robot_state_pkg.robot_state)
@@ -277,23 +277,23 @@
     print("auxState.servoVel:", robot.robot_state_pkg.auxState.servoVel)
     print("auxState.servoTorque:", robot.robot_state_pkg.auxState.servoTorque)
     for i in range(4):
-        print("extAxisStatus.pos:", i,robot.robot_state_pkg.extAxisStatus[i].pos)
-        print("extAxisStatus.vel:", i,robot.robot_state_pkg.extAxisStatus[i].vel)
-        print("extAxisStatus.errorCode:", i,robot.robot_state_pkg.extAxisStatus[i].errorCode)
-        print("extAxisStatus.ready:", i,robot.robot_state_pkg.extAxisStatus[i].ready)
-        print("extAxisStatus.inPos:", i,robot.robot_state_pkg.extAxisStatus[i].inPos)
-        print("extAxisStatus.alarm:", i,robot.robot_state_pkg.extAxisStatus[i].alarm)
-        print("extAxisStatus.flerr:", i,robot.robot_state_pkg.extAxisStatus[i].flerr)
-        print("extAxisStatus.nlimit:", i,robot.robot_state_pkg.extAxisStatus[i].nlimit)
-        print("extAxisStatus.pLimit:", i,robot.robot_state_pkg.extAxisStatus[i].pLimit)
-        print("extAxisStatus.mdbsOffLine:", i,robot.robot_state_pkg.extAxisStatus[i].mdbsOffLine)
-        print("extAxisStatus.mdbsTimeout:", i,robot.robot_state_pkg.extAxisStatus[i].mdbsTimeout)
-        print("extAxisStatus.homingStatus:", i,robot.robot_state_pkg.extAxisStatus[i].homingStatus)
+        print("extAxisStatus.pos:", i, robot.robot_state_pkg.extAxisStatus[i].pos)
+        print("extAxisStatus.vel:", i, robot.robot_state_pkg.extAxisStatus[i].vel)
+        print("extAxisStatus.errorCode:", i, robot.robot_state_pkg.extAxisStatus[i].errorCode)
+        print("extAxisStatus.ready:", i, robot.robot_state_pkg.extAxisStatus[i].ready)
+        print("extAxisStatus.inPos:", i, robot.robot_state_pkg.extAxisStatus[i].inPos)
+        print("extAxisStatus.alarm:", i, robot.robot_state_pkg.extAxisStatus[i].alarm)
+        print("extAxisStatus.flerr:", i, robot.robot_state_pkg.extAxisStatus[i].flerr)
+        print("extAxisStatus.nlimit:", i, robot.robot_state_pkg.extAxisStatus[i].nlimit)
+        print("extAxisStatus.pLimit:", i, robot.robot_state_pkg.extAxisStatus[i].pLimit)
+        print("extAxisStatus.mdbsOffLine:", i, robot.robot_state_pkg.extAxisStatus[i].mdbsOffLine)
+        print("extAxisStatus.mdbsTimeout:", i, robot.robot_state_pkg.extAxisStatus[i].mdbsTimeout)
+        print("extAxisStatus.homingStatus:", i, robot.robot_state_pkg.extAxisStatus[i].homingStatus)
     for i in range(8):
-        print("extDIState:",i, robot.robot_state_pkg.extDIState[i])
-        print("extDOState:", i,robot.robot_state_pkg.extDOState[i])
+        print("extDIState:", i, robot.robot_state_pkg.extDIState[i])
+        print("extDOState:", i, robot.robot_state_pkg.extDOState[i])
     for i in range(4):
-        print("extAIState:", i,robot.robot_state_pkg.extAIState[i])
+        print("extAIState:", i, robot.robot_state_pkg.extAIState[i])
         print("extAOState:", robot.robot_state_pkg.extAOState[i])
     print("rbtEnableState:", robot.robot_state_pkg.rbtEnableState)
     print("jointDriverTorque0:", robot.robot_state_pkg.jointDriverTorque[0])

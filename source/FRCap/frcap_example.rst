@@ -1,39 +1,39 @@
-FRCap案例
+Casos de FRCap
 =========================
 
 .. toctree:: 
    :maxdepth: 6
 
-FAIRINO Palletizer（码垛机）
------------------------------
+FAIRINO Palletizer (Empilhador)
+-----------------------------------------
 
-将项目中的build文件夹下的“码垛机Palletizer.plugin”在WebApp中上传注册启用后即可使用。
+Após fazer o upload, registrar e ativar o arquivo "Palletizer.plugin" (Empilhador) localizado na pasta `build` do projeto no WebApp, ele estará pronto para uso.
 
 .. image:: frcap_pictures/011.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.1 码垛FRCap使用
+.. centered:: Figura 7.1 Uso do FRCap de Empilhamento
 
-码垛工件配置
-+++++++++++++++
+Configuração da Peça para Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：palletizing_config_box。 
+Nome da instrução: palletizing_config_box. 
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  int length 工件长度
-   * @param  int width 工件速度
-   * @param  int height 工件高度
-   * @param  int payload 工件负载
-   * @param  string grip_point工件抓取点
+   * @param  int length Comprimento da peça
+   * @param  int width Largura da peça
+   * @param  int height Altura da peça
+   * @param  int payload Carga da peça
+   * @param  string grip_point Ponto de agarramento da peça
    * /
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -49,7 +49,7 @@ FAIRINO Palletizer（码垛机）
       }
    } 
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -59,25 +59,25 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */
 
-码垛托盘配置
-+++++++++++++++
+Configuração do Palete para Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：palletizing_config_pallet。
+Nome da instrução: palletizing_config_pallet.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  int front 托盘前边
-   * @param  int side 托盘侧边
-   * @param  int height 托盘高度
-   * @param  int left_pallet 左托盘启用
-   * @param  int right_pallet 右托盘启用
+   * @param  int front Frente do palete
+   * @param  int side Lateral do palete
+   * @param  int height Altura do palete
+   * @param  int left_pallet Habilitar palete esquerdo
+   * @param  int right_pallet Habilitar palete direito
    */
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -93,7 +93,7 @@ FAIRINO Palletizer（码垛机）
          }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -103,28 +103,28 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */ 
 
-码垛高级配置
-+++++++++++++++
+Configuração Avançada para Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：palletizing_advanced_cfg。
+Nome da instrução: palletizing_advanced_cfg.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  string height 码垛抓取点抬升高度
-   * @param  string x1 码垛渐进点1：x 方向偏移,单位mm
-   * @param  string y1 码垛渐进点1：y 方向偏移,单位mm
-   * @param  string z1 码垛渐进点1：z 方向偏移,单位mm
-   * @param  string x2 码垛渐进点2：x 方向偏移,单位mm
-   * @param  string y2 码垛渐进点2：y 方向偏移,单位mm
-   * @param  string z2 码垛渐进点2：z 方向偏移,单位mm
-   * @param  string time 吸料等待时间,单位 ms
+   * @param  string height Altura de elevação do ponto de agarramento do empilhamento
+   * @param  string x1 Ponto de aproximação 1 do empilhamento: deslocamento na direção x, unidade mm
+   * @param  string y1 Ponto de aproximação 1 do empilhamento: deslocamento na direção y, unidade mm
+   * @param  string z1 Ponto de aproximação 1 do empilhamento: deslocamento na direção z, unidade mm
+   * @param  string x2 Ponto de aproximação 2 do empilhamento: deslocamento na direção x, unidade mm
+   * @param  string y2 Ponto de aproximação 2 do empilhamento: deslocamento na direção y, unidade mm
+   * @param  string z2 Ponto de aproximação 2 do empilhamento: deslocamento na direção z, unidade mm
+   * @param  string time Tempo de espera para sucção, unidade ms
    */ 
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -143,7 +143,7 @@ FAIRINO Palletizer（码垛机）
          }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -153,24 +153,24 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */
 
-码垛设备尺寸配置
-+++++++++++++++++
+Configuração das Dimensões do Equipamento de Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：palletizing_config_device。
+Nome da instrução: palletizing_config_device.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  int x 左托盘右上角点相对于机器人基座标系坐标轴的x方向绝对值
-   * @param  int y 左托盘右上角点相对于机器人基座标系坐标轴的y方向绝对值
-   * @param  int z 左托盘右上角点相对于机器人基座标系坐标轴的z方向绝对值
-   * @param  int angle 机器人安装时的旋转角度
+   * @param  int x Valor absoluto na direção x do ponto do canto superior direito do palete esquerdo em relação ao sistema de coordenadas base do robô
+   * @param  int y Valor absoluto na direção y do ponto do canto superior direito do palete esquerdo em relação ao sistema de coordenadas base do robô
+   * @param  int z Valor absoluto na direção z do ponto do canto superior direito do palete esquerdo em relação ao sistema de coordenadas base do robô
+   * @param  int angle Ângulo de rotação durante a instalação do robô
    */ 
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -185,7 +185,7 @@ FAIRINO Palletizer（码垛机）
       }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -195,30 +195,30 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */
 
-码垛模式配置
-+++++++++++++++
+Configuração do Padrão de Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：palletizing_config_pattern。
+Nome da instrução: palletizing_config_pattern.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  int layers 码垛层数
-   * @param  int box_gap 工件像素点间隔，单位：mm
-   * @param  string sequence 码垛工作模式
-   * @param  int pattern_b_enable 模式b是否开启，1：开启，0：不开启
-   * @param  string left_pattern_a 左工位模式a笛卡尔坐标
-   * @param  string left_pattern_b 左工位模式b笛卡尔坐标
-   * @param  string right_pattern_a 右工位模式a笛卡尔坐标
-   * @param  string right_pattern_b 右工位模式b笛卡尔坐标
-   * @param  string origin_pattern_a 初始模式a笛卡尔坐标
-   * @param  string origin_pattern_b 初始模式b笛卡尔坐标
+   * @param  int layers Número de camadas do empilhamento
+   * @param  int box_gap Espaçamento entre os pontos da peça, unidade: mm
+   * @param  string sequence Sequência do modo de trabalho do empilhamento
+   * @param  int pattern_b_enable Se o padrão b está ativado, 1: ativado, 0: desativado
+   * @param  string left_pattern_a Coordenadas cartesianas do padrão a para o posto esquerdo
+   * @param  string left_pattern_b Coordenadas cartesianas do padrão b para o posto esquerdo
+   * @param  string right_pattern_a Coordenadas cartesianas do padrão a para o posto direito
+   * @param  string right_pattern_b Coordenadas cartesianas do padrão b para o posto direito
+   * @param  string origin_pattern_a Coordenadas cartesianas do padrão a inicial
+   * @param  string origin_pattern_b Coordenadas cartesianas do padrão b inicial
    */
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -239,7 +239,7 @@ FAIRINO Palletizer（码垛机）
       }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -249,23 +249,23 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */
 
-码垛程序生成
-+++++++++++++++
+Geração do Programa de Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：generate_palletizing_program。
+Nome da instrução: generate_palletizing_program.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /**
-   * @param  string palletizing_name 码垛名称
-   * @param  string depalletizing_name 拆垛名称
-   * @param  string flag 码垛或者拆垛程序是否生成，0-不生成，1生成
+   * @param  string palletizing_name Nome do empilhamento
+   * @param  string depalletizing_name Nome do desempilhamento
+   * @param  string flag Se o programa de empilhamento ou desempilhamento será gerado, 0-não gerar, 1-gerar
    */ 
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -279,7 +279,7 @@ FAIRINO Palletizer（码垛机）
       }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -289,21 +289,21 @@ FAIRINO Palletizer（码垛机）
    * @return status:404 "fail"
    */
 
-获取码垛配方
-+++++++++++++++
+Obter Receita de Empilhamento
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：get_palletizing_formula。
+Nome da instrução: get_palletizing_formula.
 
-指令参数：
+Parâmetros da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
-   * @param  string name 码垛配方名称
+   * @param  string name Nome da receita de empilhamento
    */ 
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -315,25 +315,25 @@ FAIRINO Palletizer（码垛机）
       }
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
    * @return status:200 
-   * @param  object box_config 工件配置
-   * @param  object pallet_config 托盘配置
-   * @param  object device_config 安装设备位置
-   * @param  object pattern_config 模式配置
-   * @param  object program_config 程序生成配置
-   * @param  object lefttransitionpoint 左过渡点笛卡尔坐标
-   * @param  object righttransitionpoint 右过渡点笛卡尔坐标
-   * @param  object advanced_config 高级配置
+   * @param  object box_config Configuração da peça
+   * @param  object pallet_config Configuração do palete
+   * @param  object device_config Posição do equipamento instalado
+   * @param  object pattern_config Configuração do padrão
+   * @param  object program_config Configuração da geração do programa
+   * @param  object lefttransitionpoint Coordenadas cartesianas do ponto de transição esquerdo
+   * @param  object righttransitionpoint Coordenadas cartesianas do ponto de transição direito
+   * @param  object advanced_config Configuração avançada
    * @return status:404 "fail"
    */
 
-指令反馈案例：
+Exemplo de retorno da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -408,14 +408,14 @@ FAIRINO Palletizer（码垛机）
       }
    }
 
-获取码垛已有配方名称列表
-++++++++++++++++++++++++++++
+Obter Lista de Nomes de Receitas de Empilhamento Existentes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-指令名称：get_palletizing_formula_list。
+Nome da instrução: get_palletizing_formula_list.
 
-指令参数：无。
+Parâmetros da instrução: Nenhum.
 
-指令案例：
+Exemplo da instrução:
 
 .. code-block:: c++
    :linenos:
@@ -424,22 +424,20 @@ FAIRINO Palletizer（码垛机）
       cmd: "get_palletizing_formula_list"
    }
 
-指令反馈：
+Retorno da instrução:
 
 .. code-block:: c++
    :linenos:
 
    /** 
    * @return status:200 
-   * @param  Array ${name} 码垛名称列表
+   * @param  Array ${name} Lista de nomes de empilhamentos
    * @return status:404 "fail"
    */
 
-指令反馈案例：
+Exemplo de retorno da instrução:
 
 .. code-block:: c++
    :linenos:
 
    ["palletizing1"]
-
-

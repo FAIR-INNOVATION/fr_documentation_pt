@@ -1,162 +1,161 @@
-快速启动机器人
-===================
+Início Rápido do Robô
+===========================
 
 .. toctree:: 
    :maxdepth: 5
 
-安装机器人手臂和控制箱
-----------------------------
+Instalando o Braço do Robô e o Painel de Controle
+--------------------------------------------------------------------
 
-根据 3.硬件安装 中的 3.5 和 3.6 安装连接机器人手臂和控制箱。
+Instale e conecte o braço do robô e o painel de controle de acordo com as seções 3.5 e 3.6 em 3. Instalação de Hardware.
 
--  开箱取出机器人手臂，使用4颗强度不低于8.8级强度的M8螺栓安装机器人手臂。将机器人手臂安装在一个坚固且防震的表面，若用铝板固定，铝板厚度不小于16mm，若用铁板固定，铁板厚度不小于8mm；
+-  Retire o braço do robô da embalagem. Use 4 parafusos M8 com resistência não inferior à classe 8.8 para instalar o braço do robô. Instale o braço do robô em uma superfície resistente e sem vibrações. Se usar uma placa de alumínio para fixação, a espessura da placa não deve ser inferior a 16 mm; se usar uma placa de aço, a espessura não deve ser inferior a 8 mm.
 
--  将控制箱放置在其支脚上；
+-  Coloque o painel de controle sobre seus pés de apoio.
 
--  将机器人手臂本体重载线缆连接到控制箱重载接口；
+-  Conecte o cabo de carga pesada do corpo do robô ao conector de carga pesada do painel de controle.
 
--  将按钮盒航空插头插到控制箱示教器接口；
+-  Conecte o conector circular da caixa de botões à interface do painel de ensinamento do painel de controle.
 
--  确保控制箱电源按钮关闭情况下（按钮打到0）将电源线接到电源插口；
+-  Certifique-se de que o botão de energia do painel de controle esteja desligado (botão na posição 0) antes de conectar o cabo de alimentação à tomada.
 
--  插上电源控制箱插头。
+-  Conecte o plugue do cabo de alimentação ao painel de controle.
 
 .. warning:: 
-   （1）如果机器人没有安全地放置在坚固的表面上，机器人有可能会倾倒并造成伤害。
+   (1) Se o robô não estiver colocado com segurança em uma superfície resistente, ele pode tombar e causar ferimentos.
    
-   （2）不要快速对控制箱电源进行开关操作，建议控制箱电源开关OFF 到再次ON之间的时间大于1分钟。
+   (2) Não ligue e desligue a alimentação do painel de controle rapidamente. Recomenda-se que o intervalo entre desligar e religar a alimentação do painel de controle seja superior a 1 minuto.
 
-示教器启动控制机器人
----------------------------
+Iniciando e Controlando o Robô com o Painel de Ensinamento
+---------------------------------------------------------------------------------
 
-控制箱连接机器人手臂、示教盒和任何周边设备的物理电气输入/输出端。必须打开控制箱才能给机器人手臂通电。
+O painel de controle conecta o braço do robô, a caixa de ensinamento e as entradas/saídas físicas de qualquer equipamento periférico. O painel de controle deve ser ligado para energizar o braço do robô.
 
--  按下控制箱的电源按钮开启控制箱；
+-  Pressione o botão de energia do painel de controle para ligá-lo.
 
--  启动机器人后，此时机器人为手动模式且未使能，若需要在手动模式下操作机器人，需要按压示教器上三位使能开关OFF（放开）⇒ ON ⇒ OFF（按压），当开关处于 ON 状态时，拖动或控制机器人运动。
+-  Após a inicialização do robô, ele estará no modo manual e não habilitado. Para operar o robô no modo manual, é necessário pressionar o interruptor de habilitação de 3 posições no painel de ensinamento na sequência OFF (soltar) ⇒ ON (pressionar) ⇒ OFF (soltar). Quando o interruptor estiver no estado ON, o robô pode ser arrastado ou controlado.
 
--  若无需在手动模式操作机器人，可用示教器上钥匙开关旋转按钮切换机器人工作模式：自动、手动、自定义；
+-  Se não for necessário operar o robô no modo manual, use o botão seletor com chave no painel de ensinamento para alternar o modo de operação do robô: automático, manual, personalizado.
 
--  当切换机器人手动状态时，应检查安全空间内外是否存在异常并谨慎操作机器运行；
+-  Ao alternar para o modo manual do robô, verifique se há anomalias dentro e fora da área de segurança e opere com cautela.
 
--  当切换机器人自动状态时，应检查安全措施并恢复到正常状态下并谨慎操作机器运行；
+-  Ao alternar para o modo automático do robô, verifique as medidas de segurança, restaure o estado normal e opere com cautela.
 
--  当无法正常打开示教器时，请查看设备连接是否正常。
+-  Se o painel de ensinamento não iniciar normalmente, verifique se as conexões do equipamento estão corretas.
 
-按钮盒控制机器人运动
-----------------------
+Controlando o Movimento do Robô com a Caixa de Botões
+----------------------------------------------------------
 
-参照 3.硬件安装 的 3.6.3.末端LED定义 来控制机器人。现有按钮盒分为60按钮盒(POE)(BX01)、60按钮盒(POE)(BX02)-V1.0、60按钮盒(POE)(BX02)-V2.0，以60按钮盒(POE)(BX01)为例，操作步骤如下。
+Controle o robô consultando a seção 3.6.3. Definição do LED da Extremidade em 3. Instalação de Hardware. As caixas de botões disponíveis são a Caixa de Botões 60 (POE)(BX01), Caixa de Botões 60 (POE)(BX02)-V1.0 e Caixa de Botões 60 (POE)(BX02)-V2.0. Usando a Caixa de Botões 60 (POE)(BX01) como exemplo, os passos de operação são os seguintes.
 
-未搭配示教器
-~~~~~~~~~~~~~~~
+Modo Sem Painel de Ensinamento
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  **Step1**：打开机器人控制箱电源开关，启动机器人，等待末端LED长显绿色后，方可操作机器人如下图：
+-  **Step1**: Ligue o interruptor de energia do painel de controle do robô para iniciá-lo. Aguarde até que o LED da extremidade fique verde fixo antes de operar o robô, conforme mostrado na figura:
 
 .. figure:: quick_start_robot/001.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-1 末端LED绿色示意图
+.. centered:: Figura 4.3-1 Diagrama do LED da Extremidade Verde
 
--  **Step2**：长按按钮盒“按键2”，进入未搭配示教器模式，末端LED青蓝色闪烁三下，如下图：
+-  **Step2**: Pressione e segure o “Botão 2” na caixa de botões para entrar no modo sem painel de ensinamento. O LED da extremidade piscará em azul esverdeado (ciano) três vezes, conforme mostrado na figura:
 
 .. figure:: quick_start_robot/002.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-2 末端LED青蓝色示意图
+.. centered:: Figura 4.3-2 Diagrama do LED da Extremidade Azul Esverdeado (Ciano)
 
--  **Step3**：长按按钮盒“按键1”切换机器人到拖动模式，此时末端LED为白青色，如图表4.3-3。移动机器人至任意位置，长按“按键1”退出拖动模式，短按按钮盒“按键2”记录P1点，末端LED紫色闪烁三下，如图表4.3-4。
+-  **Step3**: Pressione e segure o “Botão 1” na caixa de botões para alternar o robô para o modo de arrasto. Neste momento, o LED da extremidade estará azul esverdeado (ciano), conforme Figura 4.3-3. Mova o robô para qualquer posição. Pressione e segure o “Botão 1” para sair do modo de arrasto. Pressione rapidamente o “Botão 2” para registrar o ponto P1. O LED da extremidade piscará em roxo três vezes, conforme Figura 4.3-4.
 
--  **Step4**：移动机器人，短按按钮盒“按键2”记录P2点，末端LED紫色闪烁三下，如图表4.3-4。
+-  **Step4**: Mova o robô. Pressione rapidamente o “Botão 2” para registrar o ponto P2. O LED da extremidade piscará em roxo três vezes, conforme Figura 4.3-4.
 
 .. figure:: quick_start_robot/003.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-3 末端LED白青色示意图
+.. centered:: Figura 4.3-3 Diagrama do LED da Extremidade Azul Esverdeado (Ciano)
 
 .. figure:: quick_start_robot/004.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-4 末端LED紫色示意图
+.. centered:: Figura 4.3-4 Diagrama do LED da Extremidade Roxo
 
--  **Step5**：长按按钮盒“按键1”退出拖动模式，此时为手动模式，末端LED为绿色，如图表4.3-5。短按“按键1”切换机器人到自动模式，此时末端LED为蓝色，如图表4.3-6。
+-  **Step5**: Pressione e segure o “Botão 1” para sair do modo de arrasto. O robô estará agora no modo manual, com o LED da extremidade verde, conforme Figura 4.3-5. Pressione rapidamente o “Botão 1” para alternar o robô para o modo automático. O LED da extremidade ficará azul, conforme Figura 4.3-6.
 
--  **Step6**：短按按钮盒“按键3”运行该程序，末端LED蓝色闪烁两下，如图表4.3-6。
+-  **Step6**: Pressione rapidamente o “Botão 3” na caixa de botões para executar o programa. O LED da extremidade piscará em azul duas vezes, conforme Figura 4.3-6.
 
 .. figure:: quick_start_robot/005.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-5 末端LED绿色示意图
+.. centered:: Figura 4.3-5 Diagrama do LED da Extremidade Verde
 
 .. figure:: quick_start_robot/006.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-6 末端LED蓝色示意图
+.. centered:: Figura 4.3-6 Diagrama do LED da Extremidade Azul
 
--  **Step7**：短按按钮盒“按键3”停止运行该程序，末端LED红色闪烁三下，如下图：
+-  **Step7**: Pressione rapidamente o “Botão 3” para parar a execução do programa. O LED da extremidade piscará em vermelho três vezes, conforme mostrado na figura:
 
 .. figure:: quick_start_robot/007.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-7 末端LED红色示意图
+.. centered:: Figura 4.3-7 Diagrama do LED da Extremidade Vermelho
 
-搭配示教器
-~~~~~~~~~~~~~~
+Modo Com Painel de Ensinamento
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  **Step1**：启动机器人，等待末端LED绿色停止闪烁，方可操作机器人。
+-  **Step1**: Inicie o robô. Aguarde até que o LED da extremidade pare de piscar em verde antes de operar o robô.
 
--  **Step2**：打开示教器进入到程序编辑界面。
+-  **Step2**: Ligue o painel de ensinamento e acesse a interface de edição de programas.
 
--  **Step3**：选择空白模板新建一个程序文件。
+-  **Step3**: Selecione um modelo em branco para criar um novo arquivo de programa.
 
--  **Step4**：短按按钮盒按键1切换机器人到手动模式，此时末端LED为绿色。
+-  **Step4**: Pressione rapidamente o Botão 1 na caixa de botões para alternar o robô para o modo manual. O LED da extremidade ficará verde.
 
--  **Step5**：长按按钮盒按键1切换机器人到拖动模式，此时末端LED为白青色，移动机器人至任意位置，短按按钮盒按键2记录P1点，末端LED紫色闪烁三下，手动添加“PTP(p1,100,-1,0)”指令到程序文件中。
+-  **Step5**: Pressione e segure o Botão 1 na caixa de botões para alternar o robô para o modo de arrasto. O LED da extremidade ficará azul esverdeado (ciano). Mova o robô para qualquer posição. Pressione rapidamente o Botão 2 para registrar o ponto P1. O LED da extremidade piscará em roxo três vezes. Adicione manualmente a instrução “PTP(p1,100,-1,0)” ao arquivo de programa.
 
 .. figure:: quick_start_robot/008.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-8 记录并添加点P1
+.. centered:: Figura 4.3-8 Registrar e Adicionar o Ponto P1
 
--  **Step6**：移动机器人，短按按钮盒按键2记录P2点，末端LED紫色闪烁三下，手动添加“PTP(p2,100,-1,0)”指令到程序中。
+-  **Step6**: Mova o robô. Pressione rapidamente o Botão 2 para registrar o ponto P2. O LED da extremidade piscará em roxo três vezes. Adicione manualmente a instrução “PTP(p2,100,-1,0)” ao programa.
 
 .. figure:: quick_start_robot/009.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 4.3-9 记录并添加点P2  
+.. centered:: Figura 4.3-9 Registrar e Adicionar o Ponto P2  
 
--  **Step7**：保存程序文件内容。
+-  **Step7**: Salve o conteúdo do arquivo de programa.
 
--  **Step8**：长按按钮盒按键1退出拖动模式，此时为手动模式，末端LED为绿色，短按按钮盒按键1切换机器人到自动模式，此时末端LED为蓝色。
+-  **Step8**: Pressione e segure o Botão 1 para sair do modo de arrasto. O robô estará agora no modo manual, com o LED da extremidade verde. Pressione rapidamente o Botão 1 para alternar o robô para o modo automático. O LED da extremidade ficará azul.
 
--  **Step9**：短按按钮盒按键3运行该程序，末端LED蓝色闪烁两下。
+-  **Step9**: Pressione rapidamente o Botão 3 para executar o programa. O LED da extremidade piscará em azul duas vezes.
 
+Controlando o Movimento do Robô com o Painel de Ensinamento
+------------------------------------------------------------------------------
 
-示教器控制机器人运动
-------------------------
+Clique no botão “Programas de Ensinamento” no menu de primeiro nível à esquerda do painel de ensinamento e, em seguida, clique em “Programação de Programa” para entrar na interface de programação de ensinamento. Esta interface é usada principalmente para escrever e modificar programas de ensinamento do robô.
 
-点击示教器左侧一级菜单中的“示教程序”按钮，点击其子菜单“程序编程”进入程序示教界面，该界面中主要实现机器人示教程序的编写以及修改。
-
-点击“新建”图标按钮后，用户命名该文件，并选择一个模板作为该新建文件的内容，点击新建即可创建成功并打开该程序文件。
+Após clicar no ícone “Novo”, o usuário nomeia o arquivo e seleciona um modelo como conteúdo para o novo arquivo. Clicar em “Novo” cria o arquivo e o abre.
 
 .. figure:: quick_start_robot/010.png
    :align: center
    :width: 6in
    
-.. centered:: 图表 4.4-1 示教程序运行示意图
+.. centered:: Figura 4.4-1 Diagrama de Execução do Programa de Ensinamento
 
 .. warning:: 
-   您的头和躯干不能位于机器人可接触到的范围（工作区）。请不要将您的手指放在机器人可抓住的地方。
+   Sua cabeça e tronco não devem estar dentro da área de alcance do robô (espaço de trabalho). Não coloque os dedos onde o robô possa agarrá-los.
 
 .. important:: 
-   - 不要让机器人移到自身或其他物体中，因为这会对机器人造成损害。
-   - 这只是一个快速启动指南，教您如何轻松地使用FR协作机器人。该指南的前提是环境安全无害，用户谨慎小心。请不要将速度或者加速度上调至默认值之上。在使机器人进入操作之前，始终进行风险评估。
+   - Não permita que o robô se mova contra si mesmo ou contra outros objetos, pois isso pode danificá-lo.
+   - Este é apenas um guia de início rápido para ensinar como usar o robô colaborativo FR com facilidade. Este guia pressupõe um ambiente seguro e um usuário cuidadoso. Não aumente a velocidade ou aceleração acima dos valores padrão. Sempre realize uma avaliação de risco antes de colocar o robô em operação.

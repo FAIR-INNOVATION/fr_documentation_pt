@@ -1,113 +1,113 @@
-数据结构说明
-================
+Descrição das Estruturas de Dados
+================================================
 
 .. toctree:: 
     :maxdepth: 5
 
-关节位置数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Posição das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 关节位置数据类型 
+    * @brief Tipo de dados para posição das juntas
     */  
     struct JointPos
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jPos;   /* 六个关节位置，单位deg */
+        public double[] jPos;   /* Posições das seis juntas, unidade deg */
     }
 
-笛卡尔空间位置数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Posição no Espaço Cartesiano
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 笛卡尔空间位置数据类型
+    * @brief Tipo de dados para posição no espaço cartesiano
     */
     struct DescTran
     {
-        public double x;    /* x轴坐标，单位mm  */
-        public double y;    /* y轴坐标，单位mm  */
-        public double z;    /* z轴坐标，单位mm  */
+        public double x;    /* Coordenada do eixo X, unidade mm  */
+        public double y;    /* Coordenada do eixo Y, unidade mm  */
+        public double z;    /* Coordenada do eixo Z, unidade mm  */
     }
 
-欧拉角姿态数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Postura em Ângulos de Euler
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 欧拉角姿态数据类型
+    * @brief Tipo de dados para postura em ângulos de Euler
     */
     struct Rpy
     {
-    public double rx;   /* 绕固定轴X旋转角度，单位：deg  */
-    public double ry;   /* 绕固定轴Y旋转角度，单位：deg  */
-    public double rz;   /* 绕固定轴Z旋转角度，单位：deg  */
+    public double rx;   /* Ângulo de rotação em torno do eixo X fixo, unidade: deg  */
+    public double ry;   /* Ângulo de rotação em torno do eixo Y fixo, unidade: deg  */
+    public double rz;   /* Ângulo de rotação em torno do eixo Z fixo, unidade: deg  */
     }
 
-笛卡尔空间位姿数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Pose no Espaço Cartesiano
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    *@brief 笛卡尔空间位姿类型
+    *@brief Tipo de dados para pose no espaço cartesiano
     */
     struct DescPose
     {
-        public DescTran tran;     /* 笛卡尔空间位置  */
-        public Rpy rpy;			/* 笛卡尔空间姿态  */
+        public DescTran tran;     /* Posição no espaço cartesiano  */
+        public Rpy rpy;			/* Postura no espaço cartesiano  */
     }
 
-扩展轴位置数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Posição dos Eixos Extensores
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 扩展轴位置数据类型
+    * @brief Tipo de dados para posição dos eixos extensores
     */
     struct ExaxisPos
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public double[] ePos;   /* 四个扩展轴位置，单位mm */
+        public double[] ePos;   /* Posições dos quatro eixos extensores, unidade mm */
     }
 
-力矩传感器数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para o Sensor de Força/Torque
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 力传感器的受力分量和力矩分量
+    * @brief Componentes de força e torque do sensor de força
     */
     struct ForceTorque
     {
-        public double fx;  /* 沿x轴受力分量，单位N  */
-        public double fy;  /* 沿y轴受力分量，单位N  */
-        public double fz;  /* 沿z轴受力分量，单位N  */
-        public double tx;  /* 绕x轴力矩分量，单位Nm */
-        public double ty;  /* 绕y轴力矩分量，单位Nm */
-        public double tz;  /* 绕z轴力矩分量，单位Nm */
+        public double fx;  /* Componente de força ao longo do eixo X, unidade N  */
+        public double fy;  /* Componente de força ao longo do eixo Y, unidade N  */
+        public double fz;  /* Componente de força ao longo do eixo Z, unidade N  */
+        public double tx;  /* Componente de torque em torno do eixo X, unidade Nm */
+        public double ty;  /* Componente de torque em torno do eixo Y, unidade Nm */
+        public double tz;  /* Componente de torque em torno do eixo Z, unidade Nm */
     }
 
-螺旋参数数据类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Parâmetros da Espiral
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     public struct SpiralParam
     {
-        public int circle_num;           /* 螺旋圈数  */
-        public float circle_angle;         /* 螺旋倾角  */
-        public float rad_init;             /* 螺旋初始半径，单位mm  */
-        public float rad_add;              /* 半径增量  */
-        public float rotaxis_add;          /* 转轴方向增量  */
-        public uint rot_direction;  /* 旋转方向，0-顺时针，1-逆时针  */
-        public int velAccMode;      // 速度加速度参数模式：0-角速度恒定；1-线速度恒定
+        public int circle_num;           /* Número de voltas da espiral  */
+        public float circle_angle;         /* Ângulo de inclinação da espiral  */
+        public float rad_init;             /* Raio inicial da espiral, unidade mm  */
+        public float rad_add;              /* Incremento do raio  */
+        public float rotaxis_add;          /* Incremento na direção do eixo de rotação  */
+        public uint rot_direction;  /* Direção de rotação, 0-horário, 1-anti-horário  */
+        public int velAccMode;      // Modo do parâmetro de velocidade/aceleração: 0-velocidade angular constante; 1-velocidade linear constante
         public SpiralParam(int num, float angle, float initRad, float addRad, float axisAdd, uint direction, int mode)
         {
             circle_num = num;
@@ -120,161 +120,161 @@
         }
     }
 
-扩展轴状态类型
-+++++++++++++++++++++++++++
+Tipo de Dados para Estado do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  扩展轴状态类型
+    * @brief  Tipo de dados para estado do eixo extensor
     */
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ROBOT_AUX_STATE
     {
-        public byte servoId;           //伺服驱动器ID号
-        public int servoErrCode;       //伺服驱动器故障码
-        public int servoState;         //伺服驱动器状态
-        public double servoPos;        //伺服当前位置
-        public float servoVel;         //伺服当前速度
-        public float servoTorque;      //伺服当前转矩
+        public byte servoId;           // Número de ID do servo driver
+        public int servoErrCode;       // Código de falha do servo driver
+        public int servoState;         // Estado do servo driver
+        public double servoPos;        // Posição atual do servo
+        public float servoVel;         // Velocidade atual do servo
+        public float servoTorque;      // Torque atual do servo
     }
 
-焊接中断状态
-+++++++++++++++++++++++++++
+Estado de Interrupção da Soldagem
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct WELDING_BREAKOFF_STATE
     {
-        public byte breakOffState;  // 焊接中断状态
-        public byte weldArcState;   // 焊接电弧中断状态
+        public byte breakOffState;  // Estado de interrupção da soldagem
+        public byte weldArcState;   // Estado de interrupção do arco de soldagem
     }
 
-机器人状态反馈结构体类型
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Tipo de Estrutura de Feedback de Estado do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.4  Web-3.8.3
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  机器人状态反馈结构体类型
+    * @brief  Tipo de estrutura de feedback de estado do robô
     */
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ROBOT_STATE_PKG
     {
-        public UInt16 frame_head;           //帧头 0x5A5A
-        public byte frame_cnt;              //帧计数
-        public UInt16 data_len;             //数据长度  5
-        public byte program_state;          //程序运行状态，1-停止；2-运行；3-暂停
-        public byte robot_state;            //机器人运动状态，1-停止；2-运行；3-暂停；4-拖动  7
-        public int main_code;               //主故障码
-        public int sub_code;                //子故障码
-        public byte robot_mode;             //机器人模式，0-自动模式；1-手动模式 16
+        public UInt16 frame_head;           // Cabeçalho do quadro 0x5A5A
+        public byte frame_cnt;              // Contagem do quadro
+        public UInt16 data_len;             // Comprimento dos dados  5
+        public byte program_state;          // Estado de execução do programa, 1-parado; 2-executando; 3-pausado
+        public byte robot_state;            // Estado de movimento do robô, 1-parado; 2-executando; 3-pausado; 4-arrastando  7
+        public int main_code;               // Código de falha principal
+        public int sub_code;                // Código de falha secundário
+        public byte robot_mode;             // Modo do robô, 0-modo automático; 1-modo manual 16
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jt_cur_pos;                             //关节当前位置
+        public double[] jt_cur_pos;                             // Posição atual das juntas
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] tl_cur_pos;                             //工具当前位姿
+        public double[] tl_cur_pos;                             // Pose atual da ferramenta
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] flange_cur_pos;                         //末端法兰当前位姿
+        public double[] flange_cur_pos;                         // Pose atual da flange da extremidade
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] actual_qd;                              //机器人当前关节速度
+        public double[] actual_qd;                              // Velocidade atual das juntas do robô
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] actual_qdd;                             //机器人当前关节加速度  16 + 8 * 6 * 5 = 256
+        public double[] actual_qdd;                             // Aceleração atual das juntas do robô  16 + 8 * 6 * 5 = 256
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public double[] target_TCP_CmpSpeed;                    //机器人TCP合成指令速度                        
+        public double[] target_TCP_CmpSpeed;                    // Velocidade linear combinada do TCP do robô (comando)                        
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] target_TCP_Speed;                       //机器人TCP指令速度                        
+        public double[] target_TCP_Speed;                       // Velocidade do TCP do robô (comando)                        
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public double[] actual_TCP_CmpSpeed;                    //机器人TCP合成实际速度                     
+        public double[] actual_TCP_CmpSpeed;                    // Velocidade linear combinada real do TCP do robô                     
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] actual_TCP_Speed;                       //机器人TCP实际速度                     
+        public double[] actual_TCP_Speed;                       // Velocidade real do TCP do robô                     
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jt_cur_tor;                             //当前扭矩       
-        public int tool;                        //工具号
-        public int user;                        //工件号
-        public byte cl_dgt_output_h;            //数字输出15-8
-        public byte cl_dgt_output_l;            //数字输出7-0
-        public byte tl_dgt_output_l;            //工具数字输出7-0(仅bit0-bit1有效)
-        public byte cl_dgt_input_h;             //数字输入15-8
-        public byte cl_dgt_input_l;             //数字输入7-0
-        public byte tl_dgt_input_l;             //工具数字输入7-0(仅bit0-bit1有效)                  
+        public double[] jt_cur_tor;                             // Torque atual       
+        public int tool;                        // Número da ferramenta
+        public int user;                        // Número da peça
+        public byte cl_dgt_output_h;            // Saída digital 15-8
+        public byte cl_dgt_output_l;            // Saída digital 7-0
+        public byte tl_dgt_output_l;            // Saída digital da ferramenta 7-0 (apenas bits 0-1 são válidos)
+        public byte cl_dgt_input_h;             // Entrada digital 15-8
+        public byte cl_dgt_input_l;             // Entrada digital 7-0
+        public byte tl_dgt_input_l;             // Entrada digital da ferramenta 7-0 (apenas bits 0-1 são válidos)                  
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public UInt16[] cl_analog_input;        //控制箱模拟量输入
-        public UInt16 tl_anglog_input;          //工具模拟量输入                            
+        public UInt16[] cl_analog_input;        // Entrada analógica do painel de controle
+        public UInt16 tl_anglog_input;          // Entrada analógica da ferramenta                            
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] ft_sensor_raw_data;     //力/扭矩传感器原始数据
+        public double[] ft_sensor_raw_data;     // Dados brutos do sensor de força/torque
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] ft_sensor_data;         //力/扭矩传感器数据                          
-        public byte ft_sensor_active;           //力/扭矩传感器激活状态， 0-复位，1-激活
-        public byte EmergencyStop;              //急停标志
-        public int motion_done;                 //到位信号
-        public byte gripper_motiondone;         //夹爪运动完成信号
-        public int mc_queue_len;                //运动队列长度
-        public byte collisionState;             //碰撞检测，1-碰撞；0-无碰撞
-        public int trajectory_pnum;             //轨迹点编号
-        public byte safety_stop0_state;  /* 安全停止信号SI0 */
-        public byte safety_stop1_state;  /* 安全停止信号SI1 */
-        public byte gripper_fault_id;    /* 错误夹爪号 */             
-        public UInt16 gripper_fault;     /* 夹爪故障 */
-        public UInt16 gripper_active;    /* 夹爪激活状态 */
-        public byte gripper_position;    /* 夹爪位置 */
-        public byte gripper_speed;       /* 夹爪速度 */
-        public byte gripper_current;     /* 夹爪电流 */
-        public int gripper_tmp;          /* 夹爪温度 */
-        public int gripper_voltage;      /* 夹爪电压 */                 
-        public ROBOT_AUX_STATE auxState; /* 485扩展轴状态 */          
+        public double[] ft_sensor_data;         // Dados do sensor de força/torque                          
+        public byte ft_sensor_active;           // Estado de ativação do sensor de força/torque, 0-reset, 1-ativado
+        public byte EmergencyStop;              // Flag de parada de emergência
+        public int motion_done;                 // Sinal de movimento concluído
+        public byte gripper_motiondone;         // Sinal de movimento da garra concluído
+        public int mc_queue_len;                // Comprimento da fila de movimento
+        public byte collisionState;             // Detecção de colisão, 1-colisão; 0-sem colisão
+        public int trajectory_pnum;             // Número do ponto da trajetória
+        public byte safety_stop0_state;  /* Sinal de parada de segurança SI0 */
+        public byte safety_stop1_state;  /* Sinal de parada de segurança SI1 */
+        public byte gripper_fault_id;    /* Número da garra com falha */             
+        public UInt16 gripper_fault;     /* Falha da garra */
+        public UInt16 gripper_active;    /* Estado de ativação da garra */
+        public byte gripper_position;    /* Posição da garra */
+        public byte gripper_speed;       /* Velocidade da garra */
+        public byte gripper_current;     /* Corrente da garra */
+        public int gripper_tmp;          /* Temperatura da garra */
+        public int gripper_voltage;      /* Tensão da garra */                 
+        public ROBOT_AUX_STATE auxState; /* Estado do eixo extensor 485 */          
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public EXT_AXIS_STATUS[] extAxisStatus;  /* UDP扩展轴状态 */
+        public EXT_AXIS_STATUS[] extAxisStatus;  /* Estado do eixo extensor UDP */
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-        public UInt16[] extDIState;        //扩展DI输入
+        public UInt16[] extDIState;        // Entrada DI de extensão
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-        public UInt16[] extDOState;        //扩展DO输出
+        public UInt16[] extDOState;        // Saída DO de extensão
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public UInt16[] extAIState;        //扩展AI输入
+        public UInt16[] extAIState;        // Entrada AI de extensão
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public UInt16[] extAOState;        //扩展AO输出
-        public int rbtEnableState;       //机器人使能状态--robot enable state
+        public UInt16[] extAOState;        // Saída AO de extensão
+        public int rbtEnableState;       // Estado de habilitação do robô
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jointDriverTorque;               //关节驱动器扭矩
+        public double[] jointDriverTorque;               // Torque do driver da junta
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jointDriverTemperature;          //关节驱动器温度
-        public ROBOT_TIME robotTime;     //机器人系统时间
-        public int softwareUpgradeState; //软件升级状态  0-空闲中或上传升级包中；1~100：升级完成百分比；-1:升级软件失败；-2：校验失败；-3：版本校验失败；-4：解压失败；-5：用户配置升级失败；-6：外设配置升级失败；-7：扩展轴配置升级失败；-8：机器人配置升级失败；-9：DH参数配置升级失败
-        public UInt16 endLuaErrCode;    //末端LUA运行状态 
+        public double[] jointDriverTemperature;          // Temperatura do driver da junta
+        public ROBOT_TIME robotTime;     // Tempo do sistema do robô
+        public int softwareUpgradeState; // Estado da atualização de software  0-ocioso ou enviando pacote de atualização; 1~100: porcentagem de conclusão da atualização; -1: falha na atualização do software; -2: falha na verificação; -3: falha na verificação de versão; -4: falha na descompactação; -5: falha na atualização da configuração do usuário; -6: falha na atualização da configuração do periférico; -7: falha na atualização da configuração do eixo extensor; -8: falha na atualização da configuração do robô; -9: falha na atualização da configuração dos parâmetros DH
+        public UInt16 endLuaErrCode;    // Estado de execução do LUA da extremidade 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public  UInt16[] cl_analog_output;  //控制箱模拟量输出				  Control box analog output
-        public UInt16 tl_analog_output;     //工具模拟量输出				  Tool analog output
-        public float gripperRotNum;           //旋转夹爪当前旋转圈数			  The current number of turns of the rotating clamp
-        public byte gripperRotSpeed;       //旋转夹爪当前旋转速度百分比	  Percentage of the current rotation speed of the rotary clamp
-        public byte gripperRotTorque;	   //旋转夹爪当前旋转力矩百分比	  Percentage of the current rotating torque of the rotating clamp
-        public WELDING_BREAKOFF_STATE weldingBreakOffState;//焊接中断状态
+        public  UInt16[] cl_analog_output;  // Saída analógica do painel de controle
+        public UInt16 tl_analog_output;     // Saída analógica da ferramenta
+        public float gripperRotNum;           // Número atual de rotações da garra rotativa
+        public byte gripperRotSpeed;       // Percentual atual da velocidade de rotação da garra rotativa
+        public byte gripperRotTorque;	   // Percentual atual do torque de rotação da garra rotativa
+        public WELDING_BREAKOFF_STATE weldingBreakOffState;// Estado de interrupção da soldagem
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] jt_tgt_tor;//关节指令力矩
-        public int smartToolState; //SmartTool手柄按钮状态
-        public float wideVoltageCtrlBoxTemp;        //宽电压控制箱温度
-        public UInt16 wideVoltageCtrlBoxFanVel;   //宽电压控制箱风扇电流（mA）
+        public double[] jt_tgt_tor;// Torque de comando da junta
+        public int smartToolState; // Estado do botão da SmartTool
+        public float wideVoltageCtrlBoxTemp;        // Temperatura do painel de controle de tensão ampla
+        public UInt16 wideVoltageCtrlBoxFanVel;   // Corrente do ventilador do painel de controle de tensão ampla (mA)
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] toolCoord;         //工具坐标系
+        public double[] toolCoord;         // Sistema de coordenadas da ferramenta
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] wobjCoord;         //工件坐标系
+        public double[] wobjCoord;         // Sistema de coordenadas da peça
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] extoolCoord;        //外部工具坐标系
+        public double[] extoolCoord;        // Sistema de coordenadas da ferramenta externa
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] exAxisCoord;          //扩展轴坐标系
-        public double load;                   //负载质量
+        public double[] exAxisCoord;          // Sistema de coordenadas do eixo extensor
+        public double load;                   // Massa da carga
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public double[] loadCog;           //负载质心
+        public double[] loadCog;           // Centro de massa da carga
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public double[] lastServoTarget;//队列中最后一个servoJ目标位置
+        public double[] lastServoTarget;// Última posição alvo do servoJ na fila
 
-        public int servoJCmdNum;// servoJ指令计数
-        public UInt16 check_sum;         /* 和校验 */                     
+        public int servoJCmdNum;// Contagem de comandos servoJ
+        public UInt16 check_sum;         /* Checksum */                     
     }

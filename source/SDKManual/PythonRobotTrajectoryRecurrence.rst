@@ -1,71 +1,71 @@
-机器人轨迹复现
-=================
+Reprodução de Trajetória do Robô
+===================================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-设置轨迹记录参数
-++++++++++++++++++++
-.. csv-table:: 
+Definir Parâmetros de Gravação de Trajetória
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTPDParam(name, period_ms, type=1,di_choose=0, do_choose=0)``"
-    "描述", "设置轨迹记录参数"
-    "必选参数", "- ``name``：轨迹名；
-    - ``period_ms``：采样周期，固定值，2ms 或 4ms 或 8ms;"
-    "默认参数", "- ``type``：数据类型，1-关节位置；
-    - ``di_choose``：DI 选择,bit0~bit7 对应控制箱 DI0~DI7，bit8~bit9 对应末端DI0~DI1，0-不选择，1-选择 默认0;
-    - ``do_choose``：DO 选择,bit0~bit7 对应控制箱 DO0~DO7，bit8~bit9 对应末端 DO0~DO1，0-不选择，1-选择 默认0"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTPDParam(name, period_ms, type=1, di_choose=0, do_choose=0)``"
+    "Descrição", "Define os parâmetros de gravação de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória;
+    - ``period_ms``: Período de amostragem, valor fixo, 2ms ou 4ms ou 8ms;"
+    "Parâmetros padrão", "- ``type``: Tipo de dado, 1-posição articular;
+    - ``di_choose``: Seleção DI, bits 0~7 correspondem a DI0~DI7 da caixa de controle, bits 8~9 correspondem a DI0~DI1 da extremidade, 0-não selecionar, 1-selecionar, padrão 0;
+    - ``do_choose``: Seleção DO, bits 0~7 correspondem a DO0~DO7 da caixa de controle, bits 8~9 correspondem a DO0~DO1 da extremidade, 0-não selecionar, 1-selecionar, padrão 0"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-开始轨迹记录
-++++++++++++++++++
-.. csv-table:: 
+Iniciar Gravação de Trajetória
+++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTPDStart(name, period_ms, type=1,di_choose=0, do_choose=0)``"
-    "描述", "开始轨迹记录"
-    "必选参数", "- ``name``：轨迹名；
-    - ``period_ms``：采样周期，固定值，2ms或4ms或8ms；"
-    "默认参数", "- ``type``：数数据类型，1-关节位置 默认1;
-    - ``di_choose``：DI 选择,bit0~bit7 对应控制箱 DI0~DI7，bit8~bit9 对应末端DI0~DI1，0-不选择，1-选择 默认0;
-    - ``do_choose``：DO 选择,bit0~bit7 对应控制箱 DO0~DO7，bit8~bit9 对应末端 DO0~DO1，0-不选择，1-选择 默认0"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTPDStart(name, period_ms, type=1, di_choose=0, do_choose=0)``"
+    "Descrição", "Inicia a gravação de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória;
+    - ``period_ms``: Período de amostragem, valor fixo, 2ms ou 4ms ou 8ms;"
+    "Parâmetros padrão", "- ``type``: Tipo de dado, 1-posição articular, padrão 1;
+    - ``di_choose``: Seleção DI, bits 0~7 correspondem a DI0~DI7 da caixa de controle, bits 8~9 correspondem a DI0~DI1 da extremidade, 0-não selecionar, 1-selecionar, padrão 0;
+    - ``do_choose``: Seleção DO, bits 0~7 correspondem a DO0~DO7 da caixa de controle, bits 8~9 correspondem a DO0~DO1 da extremidade, 0-não selecionar, 1-selecionar, padrão 0"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-停止轨迹记录
-++++++++++++++
-.. csv-table:: 
+Parar Gravação de Trajetória
+++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetWebTPDStop()``"
-    "描述", "停止轨迹记录"
-    "必选参数", "无"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetWebTPDStop()``"
+    "Descrição", "Para a gravação de trajetória"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-删除轨迹记录
-+++++++++++++++
-.. csv-table:: 
+Excluir Gravação de Trajetória
++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTPDDelete(name)``"
-    "描述", "删除轨迹记录"
-    "必选参数", "- ``name``:轨迹名"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTPDDelete(name)``"
+    "Descrição", "Exclui a gravação de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-代码示例
-+++++++++++++++
+Exemplo de Código
++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:
 
     from fairino import Robot
     import time
-    # 与机器人控制器建立连接，连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
     type = 1
     name = "tpd2025"
@@ -83,53 +83,53 @@
     robot.DragTeachSwitch(0)
     robot.CloseRPC()
 
-轨迹预加载
-+++++++++++++++++
-.. csv-table:: 
+Pré-carregamento de Trajetória
++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``LoadTPD(name)``"
-    "描述", "轨迹预加载"
-    "必选参数", "- ``name``:轨迹名"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``LoadTPD(name)``"
+    "Descrição", "Pré-carregamento de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-轨迹复现
-++++++++++++
-.. csv-table:: 
+Reprodução de Trajetória
+++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``MoveTPD(name,blend,ovl)``"
-    "描述", "轨迹复现"
-    "必选参数", "- ``name``:轨迹名
-    - ``blend``：是否平滑，0-不平滑，1-平滑
-    - ``ovl``：速度缩放因子，范围[0~100]"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``MoveTPD(name, blend, ovl)``"
+    "Descrição", "Reprodução de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória
+    - ``blend``: Se suaviza, 0-não suaviza, 1-suaviza
+    - ``ovl``: Fator de escala de velocidade, intervalo [0~100]"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-获取轨迹起始位姿
-+++++++++++++++++
-.. csv-table:: 
+Obter Pose Inicial da Trajetória
++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``GetTPDStartPose(name)``"
-    "描述", "获取轨迹起始位姿"
-    "必选参数", "- ``name``:轨迹名"
-    "默认参数", "无"
-    "返回值", "- 错误码 成功-0  失败- errcode
-    - ``desc_pose=[x,y,z,rx,ry,rz]``：轨迹起始位姿"
+    "Protótipo", "``GetTPDStartPose(name)``"
+    "Descrição", "Obtém a pose inicial da trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro: sucesso-0, falha-código de erro
+    - ``desc_pose=[x,y,z,rx,ry,rz]``: Pose inicial da trajetória"
 
-机器人TPD轨迹记录代码示例
-++++++++++++++++++++++++++++++
+Exemplo de Código de Gravação de Trajetória TPD do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:
 
     from fairino import Robot
     import time
-    # 与机器人控制器建立连接，连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
     type = 1
     name = "tpd2025"
@@ -140,7 +140,7 @@
     blend = 0
     rtn = robot.LoadTPD(name)
     print(f"LoadTPD rtn is: {rtn}")
-    error,start_pose = robot.GetTPDStartPose(name)
+    error, start_pose = robot.GetTPDStartPose(name)
     print(f"start pose, xyz is: {start_pose[0]},{start_pose[1]},{start_pose[2]}. "
           f"rpy is: {start_pose[3]},{start_pose[4]},{start_pose[5]}")
     robot.MoveCart(start_pose, 0, 0, 100, 100)
@@ -151,203 +151,203 @@
     robot.SetTPDDelete(name)
     robot.CloseRPC()
 
-轨迹预处理
-++++++++++++
-.. csv-table:: 
+Pré-processamento de Trajetória
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``LoadTrajectoryJ(name,ovl,opt=1)``"
-    "描述", "轨迹预处理"
-    "必选参数", "- ``name``:轨迹名,如：/fruser/traj/trajHelix_aima_1.txt;
-    - ``ovl``：速度缩放百分比，范围[0~100];"
-    "默认参数", "- ``opt``：1-控制点，默认为1"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``LoadTrajectoryJ(name, ovl, opt=1)``"
+    "Descrição", "Pré-processamento de trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória, ex: /fruser/traj/trajHelix_aima_1.txt;
+    - ``ovl``: Percentagem de escala de velocidade, intervalo [0~100];"
+    "Parâmetros padrão", "- ``opt``: 1-ponto de controle, padrão 1"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-轨迹复现
-++++++++++++
-.. csv-table:: 
+Reprodução de Trajetória
+++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``MoveTrajectoryJ()``"
-    "描述", "轨迹复现"
-    "必选参数", "无"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``MoveTrajectoryJ()``"
+    "Descrição", "Reprodução de trajetória"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-获取轨迹起始位姿
-++++++++++++++++++++
-.. csv-table:: 
+Obter Pose Inicial da Trajetória
+++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``GetTrajectoryStartPose(name)``"
-    "描述", "获取轨迹起始位姿"
-    "必选参数", "``name``:轨迹名"
-    "默认参数", "无"       
-    "返回值", "- 错误码 成功-0  失败- errcode
-    - ``desc_pose=[x,y,z,rx,ry,rz]``：轨迹起始位姿"
+    "Protótipo", "``GetTrajectoryStartPose(name)``"
+    "Descrição", "Obtém a pose inicial da trajetória"
+    "Parâmetros obrigatórios", "- ``name``: Nome da trajetória"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro: sucesso-0, falha-código de erro
+    - ``desc_pose=[x,y,z,rx,ry,rz]``: Pose inicial da trajetória"
 
-获取轨迹点编号
-++++++++++++++++++++
-.. csv-table:: 
+Obter Número do Ponto de Trajetória
+++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``GetTrajectoryPointNum()``"
-    "描述", "获取轨迹点编号"
-    "必选参数", "无"
-    "默认参数", "无"
-    "返回值", "- 错误码 成功-0  失败- errcode
-    - ``pnum``：轨迹点编号"
+    "Protótipo", "``GetTrajectoryPointNum()``"
+    "Descrição", "Obtém o número do ponto de trajetória"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro: sucesso-0, falha-código de erro
+    - ``pnum``: Número do ponto de trajetória"
 
-设置轨迹运行中的速度
-++++++++++++++++++++
-.. csv-table:: 
+Definir Velocidade Durante a Execução da Trajetória
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJSpeed(ovl)``"
-    "描述", "设置轨迹运行中的速度"
-    "必选参数", "``ovl``:速度缩放百分比，范围[0~100]"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJSpeed(ovl)``"
+    "Descrição", "Define a velocidade durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``ovl``: Percentagem de escala de velocidade, intervalo [0~100]"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的力和扭矩
-+++++++++++++++++++++++++
-.. csv-table:: 
+Definir Força e Torque Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJForceTorque(ft)``"
-    "描述", "设置轨迹运行中的力和扭矩"
-    "必选参数", "``ft=[fx,fy,fz,tx,ty,tz]``:单位N和Nm"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJForceTorque(ft)``"
+    "Descrição", "Define a força e o torque durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``ft=[fx,fy,fz,tx,ty,tz]``: Unidades N e Nm"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的沿x方向的力
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Força na Direção X Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJForceFx(fx)``"
-    "描述", "设置轨迹运行中的沿x方向的力"
-    "必选参数", "``ft``:沿x方向的力，单位N"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJForceFx(fx)``"
+    "Descrição", "Define a força na direção X durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``ft``: Força na direção X, unidade N"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的沿y方向的力
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Força na Direção Y Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJForceFx(fy)``"
-    "描述", "设置轨迹运行中的沿y方向的力"
-    "必选参数", "``fy``:沿y方向的力，单位N"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJForceFx(fy)``"
+    "Descrição", "Define a força na direção Y durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``fy``: Força na direção Y, unidade N"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的沿z方向的力
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Força na Direção Z Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJForceFx(fz)``"
-    "描述", "设置轨迹运行中的沿z方向的力"
-    "必选参数", "``fz``:沿z方向的力，单位N"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJForceFx(fz)``"
+    "Descrição", "Define a força na direção Z durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``fz``: Força na direção Z, unidade N"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的绕x轴的扭矩
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Torque em Torno do Eixo X Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJTorqueTx(tx)``"
-    "描述", "设置轨迹运行中的绕x轴的扭矩"
-    "必选参数", "``tx``:绕x轴的扭矩，单位Nm"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJTorqueTx(tx)``"
+    "Descrição", "Define o torque em torno do eixo X durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``tx``: Torque em torno do eixo X, unidade Nm"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的绕y轴的扭矩
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Torque em Torno do Eixo Y Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJTorqueTx(ty)``"
-    "描述", "设置轨迹运行中的绕y轴的扭矩"
-    "必选参数", "``ty``:绕y轴的扭矩，单位Nm"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJTorqueTx(ty)``"
+    "Descrição", "Define o torque em torno do eixo Y durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``ty``: Torque em torno do eixo Y, unidade Nm"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-设置轨迹运行中的绕z轴的扭矩
-+++++++++++++++++++++++++++
-.. csv-table:: 
+Definir Torque em Torno do Eixo Z Durante a Execução da Trajetória
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``SetTrajectoryJTorqueTx(tz)``"
-    "描述", "设置轨迹运行中的绕z轴的扭矩"
-    "必选参数", "- ``tz``:绕z轴的扭矩，单位Nm"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``SetTrajectoryJTorqueTx(tz)``"
+    "Descrição", "Define o torque em torno do eixo Z durante a execução da trajetória"
+    "Parâmetros obrigatórios", "- ``tz``: Torque em torno do eixo Z, unidade Nm"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-上传轨迹J文件
-+++++++++++++++++++++++++++
+Upload de Arquivo de Trajetória J
++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.7
 
-.. csv-table:: 
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``TrajectoryJUpLoad(filePath)``"
-    "描述", "上传轨迹J文件"
-    "必选参数", "- ``filePath``:上传轨迹文件的全路径名，C://test/testJ.txt"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``TrajectoryJUpLoad(filePath)``"
+    "Descrição", "Upload de arquivo de trajetória J"
+    "Parâmetros obrigatórios", "- ``filePath``: Caminho completo do arquivo de trajetória para upload, C://test/testJ.txt"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-删除轨迹J文件
-+++++++++++++++++++++++++++
+Excluir Arquivo de Trajetória J
++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.7
 
-.. csv-table:: 
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``TrajectoryJDelete(filePath)``"
-    "描述", "删除轨迹J文件"
-    "必选参数", "- ``filePath``:删除轨迹文件的全路径名，C://test/testJ.txt"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``TrajectoryJDelete(filePath)``"
+    "Descrição", "Exclui arquivo de trajetória J"
+    "Parâmetros obrigatórios", "- ``filePath``: Caminho completo do arquivo de trajetória para exclusão, C://test/testJ.txt"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-机器人轨迹J文件复现代码示例
-+++++++++++++++++++++++++++
+Exemplo de Código de Reprodução de Arquivo de Trajetória J do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:
 
     from fairino import Robot
     import time
-    # 与机器人控制器建立连接，连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
     rtn = robot.TrajectoryJUpLoad("D://zUP/traj.txt")
     print(f"Upload TrajectoryJ A {rtn}")
     traj_file_name = "/fruser/traj/traj.txt"
     rtn = robot.LoadTrajectoryJ(traj_file_name, 100, 1)
     print(f"LoadTrajectoryJ {traj_file_name}, rtn is: {rtn}")
-    rtn,traj_start_pose = robot.GetTrajectoryStartPose(traj_file_name)
+    rtn, traj_start_pose = robot.GetTrajectoryStartPose(traj_file_name)
     print(f"GetTrajectoryStartPose is: {rtn}")
     print(f"desc_pos:{traj_start_pose[0]},{traj_start_pose[1]},{traj_start_pose[2]},"
           f"{traj_start_pose[3]},{traj_start_pose[4]},{traj_start_pose[5]}")
     time.sleep(1)
     robot.SetSpeed(50)
     robot.MoveCart(traj_start_pose, 0, 0, 50, 100, 100)
-    rtn,traj_num = robot.GetTrajectoryPointNum()
+    rtn, traj_num = robot.GetTrajectoryPointNum()
     print(f"GetTrajectoryStartPose rtn is: {rtn}, traj num is: {traj_num}")
     rtn = robot.SetTrajectoryJSpeed(50.0)
     print(f"SetTrajectoryJSpeed is: {rtn}")
@@ -371,50 +371,50 @@
     print(f"MoveTrajectoryJ rtn is: {rtn}")
     robot.CloseRPC()
 
-轨迹预处理(轨迹前瞻)
-+++++++++++++++++++++++++++
+Pré-processamento de Trajetória (Antecipação de Trajetória)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.1.4
 
-.. csv-table:: 
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``LoadTrajectoryLA(name, mode, errorLim, type, precision, vamx, amax, jmax, flag)``"
-    "描述", "轨迹预处理(轨迹前瞻)"
-    "必选参数", "- ``name``:轨迹文件名
-    - ``mode``：采样模式，0-不进行采样；1-等数据间隔采样；2-等误差限制采样
-    - ``errorLim``:误差限制，使用直线拟合生效
-    - ``type``:平滑方式，0-贝塞尔平滑
-    - ``precision``:平滑精度，使用贝塞尔平滑时生效
-    - ``vamx``:设定的最大速度，mm/s
-    - ``amax``:设定的最大加速度，mm/s2
-    - ``jmax``:设定的最大加加速度，mm/s3
-    - ``flag``:匀速前瞻开启开关 0-不开启；1-开启"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``LoadTrajectoryLA(name, mode, errorLim, type, precision, vamx, amax, jmax, flag)``"
+    "Descrição", "Pré-processamento de trajetória (antecipação de trajetória)"
+    "Parâmetros obrigatórios", "- ``name``: Nome do arquivo de trajetória
+    - ``mode``: Modo de amostragem, 0-sem amostragem; 1-amostragem por intervalo igual de dados; 2-amostragem por limite de erro igual
+    - ``errorLim``: Limite de erro, ativo ao usar aproximação linear
+    - ``type``: Modo de suavização, 0-suavização de Bézier
+    - ``precision``: Precisão de suavização, ativo ao usar suavização de Bézier
+    - ``vamx``: Velocidade máxima definida, mm/s
+    - ``amax``: Aceleração máxima definida, mm/s²
+    - ``jmax``: Jerk máximo definido, mm/s³
+    - ``flag``: Interruptor de ativação da antecipação de velocidade constante, 0-não ativar; 1-ativar"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-轨迹复现(轨迹前瞻)
-+++++++++++++++++++++++++++
+Reprodução de Trajetória (Antecipação de Trajetória)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.1.0
 
-.. csv-table:: 
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``MoveTrajectoryLA()``"
-    "描述", "轨迹复现(轨迹前瞻)"
-    "必选参数", "无"
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Protótipo", "``MoveTrajectoryLA()``"
+    "Descrição", "Reprodução de trajetória (antecipação de trajetória)"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-轨迹复现(轨迹前瞻)代码示例
-+++++++++++++++++++++++++++
+Exemplo de Código de Reprodução de Trajetória (Antecipação de Trajetória)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:
 
     from fairino import Robot
     import time
-    # 与机器人控制器建立连接，连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
     rtn = robot.TrajectoryJUpLoad("D://zUP/traj.txt")
     print(f"Upload TrajectoryJ A {rtn}")
@@ -431,24 +431,24 @@
     print(f"MoveTrajectoryLA rtn is: {rtn}")
     robot.CloseRPC()
 
-运动到TPD轨迹记录起点
+Mover para o Ponto Inicial da Gravação da Trajetória TPD
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. csv-table:: 
+.. csv-table::
     :stub-columns: 1
     :widths: 10 30
 
-    "原型", "``MoveToTPDStart(name, moveType, ovl)``"
-    "描述", "运动到TPD轨迹记录起点"
-    "必选参数", "
-    - ``name``:轨迹文件名
-    - ``moveType``：运动类型；0-PTP; 1-LIN
-    - ``ovl``:速度缩放百分比，范围[0~100]
+    "Protótipo", "``MoveToTPDStart(name, moveType, ovl)``"
+    "Descrição", "Mover para o ponto inicial da gravação da trajetória TPD"
+    "Parâmetros obrigatórios", "
+    - ``name``: Nome do arquivo de trajetória
+    - ``moveType``: Tipo de movimento; 0-PTP; 1-LIN
+    - ``ovl``: Percentagem de escala de velocidade, intervalo [0~100]
     "
-    "默认参数", "无"
-    "返回值", "错误码 成功-0  失败- errcode"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-运动到TPD轨迹记录起点的SDK代码示例
+Exemplo de Código SDK para Mover para o Ponto Inicial da Gravação da Trajetória TPD
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:
@@ -457,7 +457,7 @@
     from fairino import Robot
     from ctypes import sizeof
     # A connection is established with the robot controller. A successful connection returns a robot object
-    # 与机器人控制器建立连接,连接成功返回一个机器人对象
+    # Estabelece conexão com o controlador do robô. Uma conexão bem-sucedida retorna um objeto robô
     robot = Robot.RPC('192.168.58.2')
     import time
 
@@ -488,7 +488,7 @@
         rtn, start_pose = robot.GetTPDStartPose(name)
         print(f"start pose, xyz is: {start_pose[0]},{start_pose[1]},{start_pose[2]}. rpy is: {start_pose[3]},{start_pose[4]},{start_pose[5]}")
         # robot.MoveCart(desc_pos=start_pose, tool=0, user=0, vel=100, acc=100, ovl=ovl, blendT=-1, config=-1)
-        #time.sleep(1)
+        # time.sleep(1)
 
         rtn = robot.MoveToTPDStart(name, 0, 100)
         print(f"MoveToTPDStart rtn is: {rtn}")

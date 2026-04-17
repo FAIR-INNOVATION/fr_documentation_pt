@@ -1,241 +1,241 @@
-扩展轴
-=================
+Eixos Extensores
+===========================
 
 .. toctree:: 
     :maxdepth: 5
 
-设置485扩展轴参数
-++++++++++++++++++++++++++++++++++
+Configurar Parâmetros do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴参数
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] servoCompany 伺服驱动器厂商，1-戴纳泰克
-    * @param [in] servoModel 伺服驱动器型号，1-FD100-750C
-    * @param [in] servoSoftVersion 伺服驱动器软件版本，1-V1.0
-    * @param [in] servoResolution 编码器分辨率
-    * @param [in] axisMechTransRatio 机械传动比
-    * @return 错误码 
+    * @brief Configurar parâmetros do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] servoCompany Fabricante do servo driver, 1-Dynatect
+    * @param [in] servoModel Modelo do servo driver, 1-FD100-750C
+    * @param [in] servoSoftVersion Versão do software do servo driver, 1-V1.0
+    * @param [in] servoResolution Resolução do codificador
+    * @param [in] axisMechTransRatio Relação de transmissão mecânica
+    * @return Código de erro
     */
     int AuxServoSetParam(int servoId, int servoCompany, int servoModel, int servoSoftVersion, int servoResolution, double axisMechTransRatio);
-    
-获取485扩展轴配置参数
-++++++++++++++++++++++++++++++++++
+
+Obter Parâmetros de Configuração do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取485扩展轴配置参数
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [out] servoCompany 伺服驱动器厂商，1-戴纳泰克
-    * @param [out] servoModel 伺服驱动器型号，1-FD100-750C
-    * @param [out] servoSoftVersion 伺服驱动器软件版本，1-V1.0
-    * @param [out] servoResolution 编码器分辨率
-    * @param [out] axisMechTransRatio 机械传动比
-    * @return 错误码 
+    * @brief Obter parâmetros de configuração do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [out] servoCompany Fabricante do servo driver, 1-Dynatect
+    * @param [out] servoModel Modelo do servo driver, 1-FD100-750C
+    * @param [out] servoSoftVersion Versão do software do servo driver, 1-V1.0
+    * @param [out] servoResolution Resolução do codificador
+    * @param [out] axisMechTransRatio Relação de transmissão mecânica
+    * @return Código de erro
     */
     int AuxServoGetParam(int servoId, ref int servoCompany, ref int servoModel, ref int servoSoftVersion, ref int servoResolution, ref double axisMechTransRatio);
-    
-设置485扩展轴使能/去使能
-++++++++++++++++++++++++++++++++++
+
+Habilitar/Desabilitar Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴使能/去使能
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] status 使能状态，0-去使能， 1-使能
-    * @return 错误码 
+    * @brief Habilitar/Desabilitar eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] status Estado de habilitação, 0-desabilitar, 1-habilitar
+    * @return Código de erro
     */
     int AuxServoEnable(int servoId, int status);
-        
-设置485扩展轴控制模式
-++++++++++++++++++++++++++++++++++
+
+Definir Modo de Controle do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴控制模式
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] mode 控制模式，0-位置模式，1-速度模式
-    * @return 错误码 
+    * @brief Definir modo de controle do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] mode Modo de controle, 0-modo posição, 1-modo velocidade
+    * @return Código de erro
     */
     int AuxServoSetControlMode(int servoId, int mode);
 
-设置485扩展轴目标位置(位置模式)
-++++++++++++++++++++++++++++++++++
+Definir Posição Alvo do Eixo Extensor 485 (Modo Posição)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴目标位置(位置模式)
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] pos 目标位置，mm或°
-    * @param [in] speed 目标速度，mm/s或°/s
-    * @return 错误码 
+    * @brief Definir posição alvo do eixo extensor 485 (modo posição)
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] pos Posição alvo, mm ou °
+    * @param [in] speed Velocidade alvo, mm/s ou °/s
+    * @return Código de erro
     */
     int AuxServoSetTargetPos(int servoId, double pos, double speed);
 
-设置485扩展轴目标速度(速度模式)
-++++++++++++++++++++++++++++++++++
+Definir Velocidade Alvo do Eixo Extensor 485 (Modo Velocidade)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴目标速度(速度模式)
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] speed 目标速度，mm/s或°/s
-    * @return 错误码 
+    * @brief Definir velocidade alvo do eixo extensor 485 (modo velocidade)
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] speed Velocidade alvo, mm/s ou °/s
+    * @return Código de erro
     */
     int AuxServoSetTargetSpeed(int servoId, double speed);
-    
-设置485扩展轴目标转矩(力矩模式)--暂未开放
-++++++++++++++++++++++++++++++++++++++++++++
+
+Definir Torque Alvo do Eixo Extensor 485 (Modo Torque) -- Temporariamente não disponível
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴目标转矩(力矩模式)--暂未开放
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] torque 目标力矩，Nm
-    * @return 错误码 
+    * @brief Definir torque alvo do eixo extensor 485 (modo torque) -- Temporariamente não disponível
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] torque Torque alvo, Nm
+    * @return Código de erro
     */
     int AuxServoSetTargetTorque(int servoId, double torque);
 
-设置485扩展轴回零
-++++++++++++++++++++++++++++++++++
+Definir Homing do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置485扩展轴回零
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [in] mode 回零模式，1-当前位置回零；2-负限位回零；3-正限位回零
-    * @param [in] searchVel 回零速度，mm/s或°/s
-    * @param [in] latchVel 箍位速度，mm/s或°/s
-    * @return 错误码 
+    * @brief Definir homing do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [in] mode Modo de homing, 1-homing na posição atual; 2-homing no limite negativo; 3-homing no limite positivo
+    * @param [in] searchVel Velocidade de busca do zero, mm/s ou °/s
+    * @param [in] latchVel Velocidade de fixação, mm/s ou °/s
+    * @return Código de erro
     */
     int AuxServoHoming(int servoId, int mode, double searchVel, double latchVel);
-        
-清除485扩展轴错误信息
-++++++++++++++++++++++++++++++++++++++++++++
+
+Limpar Informações de Erro do Eixo Extensor 485
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 清除485扩展轴错误信息
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @return 错误码 
+    * @brief Limpar informações de erro do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @return Código de erro
     */
     int AuxServoClearError(int servoId);
 
-获取485扩展轴伺服状态
-++++++++++++++++++++++++++++++++++++++++++++
+Obter Status do Servo do Eixo Extensor 485
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
 
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取485扩展轴伺服状态
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @param [out] servoErrCode 伺服驱动器故障码
-    * @param [out] servoState 伺服驱动器状态  bit0:0-未使能；1-使能;  bit1:0-未运动；1-正在运动;  bit2 0-正限位未触发；1-正限位触发；bit3 0-负限位未触发；1-负限位触发；bit4 0-未定位完成；1-定位完成；  bit5：0-未回零；1-回零完成
-    * @param [out] servoPos 伺服当前位置 mm或°
-    * @param [out] servoSpeed 伺服当前速度 mm/s或°/s
-    * @param [out] servoTorque 伺服当前转矩Nm
-    * @return 错误码 
+    * @brief Obter status do servo do eixo extensor 485
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @param [out] servoErrCode Código de falha do servo driver
+    * @param [out] servoState Estado do servo driver  bit0:0-desabilitado; 1-habilitado;  bit1:0-parado; 1-em movimento;  bit2 0-limite positivo não acionado; 1-limite positivo acionado; bit3 0-limite negativo não acionado; 1-limite negativo acionado; bit4 0-posicionamento não concluído; 1-posicionamento concluído;  bit5: 0-homing não concluído; 1-homing concluído
+    * @param [out] servoPos Posição atual do servo mm ou °
+    * @param [out] servoSpeed Velocidade atual do servo mm/s ou °/s
+    * @param [out] servoTorque Torque atual do servo Nm
+    * @return Código de erro
     */
     int AuxServoGetStatus(int servoId, ref int servoErrCode, ref int servoState, ref double servoPos, ref double servoSpeed, ref double servoTorque);
-    
-设置状态反馈中485扩展轴数据轴号
-++++++++++++++++++++++++++++++++++++++++++++
+
+Definir Número do Eixo de Dados do Eixo Extensor 485 no Feedback de Estado
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.6
-    
+
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置状态反馈中485扩展轴数据轴号
-    * @param [in] servoId 伺服驱动器ID，范围[1-15],对应从站ID 
-    * @return 错误码 
+    * @brief Definir número do eixo de dados do eixo extensor 485 no feedback de estado
+    * @param [in] servoId ID do servo driver, intervalo [1-15], correspondente ao ID do escravo
+    * @return Código de erro
     */
     int AuxServosetStatusID(int servoId);
 
-设置485扩展轴运动加减速度
-+++++++++++++++++++++++++++++++
+Definir Aceleração/Desaceleração de Movimento do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置485扩展轴运动加减速度
-    * @param [in] acc 485扩展轴运动加速度
-    * @param [in] dec 485扩展轴运动减速度
-    * @return  错误码
+    * @brief Definir aceleração/desaceleração de movimento do eixo extensor 485
+    * @param [in] acc Aceleração do movimento do eixo extensor 485
+    * @param [in] dec Desaceleração do movimento do eixo extensor 485
+    * @return   Código de erro
     */
     int AuxServoSetAcc(double acc, double dec);
 
-设置485扩展轴急停加减速度
-+++++++++++++++++++++++++++++++
+Definir Aceleração/Desaceleração de Parada de Emergência do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置485扩展轴急停加减速度
-    * @param [in] acc 485扩展轴急停加速度
-    * @param [in] dec 485扩展轴急停减速度
-    * @return  错误码
+    * @brief Definir aceleração/desaceleração de parada de emergência do eixo extensor 485
+    * @param [in] acc Aceleração da parada de emergência do eixo extensor 485
+    * @param [in] dec Desaceleração da parada de emergência do eixo extensor 485
+    * @return   Código de erro
     */
     int AuxServoSetEmergencyStopAcc(double acc, double dec);
 
-获取485扩展轴运动加减速度
-+++++++++++++++++++++++++++++++
+Obter Aceleração/Desaceleração de Movimento do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 获取485扩展轴运动加减速度
-    * @param [out] acc 485扩展轴运动加速度
-    * @param [out] dec 485扩展轴运动减速度
-    * @return  错误码
+    * @brief Obter aceleração/desaceleração de movimento do eixo extensor 485
+    * @param [out] acc Aceleração do movimento do eixo extensor 485
+    * @param [out] dec Desaceleração do movimento do eixo extensor 485
+    * @return   Código de erro
     */
     int AuxServoGetAcc(ref double acc, ref double dec);
 
-获取485扩展轴急停加减速度
-+++++++++++++++++++++++++++++++++++
+Obter Aceleração/Desaceleração de Parada de Emergência do Eixo Extensor 485
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 获取485扩展轴急停加减速度
-    * @param [out] acc 485扩展轴急停加速度
-    * @param [out] dec 485扩展轴急停减速度
-    * @return  错误码
+    * @brief Obter aceleração/desaceleração de parada de emergência do eixo extensor 485
+    * @param [out] acc Aceleração da parada de emergência do eixo extensor 485
+    * @param [out] dec Desaceleração da parada de emergência do eixo extensor 485
+    * @return   Código de erro
     */
     int AuxServoGetEmergencyStopAcc(ref double acc, ref double dec);
 
-扩展轴控制代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Controle do Eixo Extensor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
 
 .. code-block:: c#
@@ -329,232 +329,232 @@
         robot.AuxServoSetTargetSpeed(1, 0, 80);
     }
 
-UDP扩展轴通讯参数配置
-++++++++++++++++++++++++++++++++++
+Configurar Parâmetros de Comunicação UDP do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief UDP扩展轴通讯参数配置
-    * @param [in] ip PLC IP地址
-    * @param [in] port	端口号
-    * @param [in] period	通讯周期(ms，默认为2，请勿修改此参数)
-    * @param [in] lossPkgTime	丢包检测时间(ms)
-    * @param [in] lossPkgNum	丢包次数
-    * @param [in] disconnectTime	通讯断开确认时长
-    * @param [in] reconnectEnable	通讯断开自动重连使能 0-不使能 1-使能
-    * @param [in] reconnectPeriod	重连周期间隔(ms)
-    * @param [in] reconnectNum	重连次数
-    * @param [in] selfConnect 断电重启是否自动建立连接；0-不建立连接；1-建立连接
-    * @return 错误码
+    * @brief Configurar parâmetros de comunicação UDP do eixo extensor
+    * @param [in] ip Endereço IP do PLC
+    * @param [in] port Número da porta
+    * @param [in] period Período de comunicação (ms, padrão é 2, não modifique este parâmetro)
+    * @param [in] lossPkgTime Tempo de detecção de perda de pacotes (ms)
+    * @param [in] lossPkgNum Número de perdas de pacotes
+    * @param [in] disconnectTime Duração para confirmar desconexão da comunicação
+    * @param [in] reconnectEnable Habilitar reconexão automática em caso de desconexão 0-desabilitar 1-habilitar
+    * @param [in] reconnectPeriod Intervalo do período de reconexão (ms)
+    * @param [in] reconnectNum Número de tentativas de reconexão
+    * @param [in] selfConnect Estabelecer conexão automaticamente após reinicialização por falta de energia; 0-não estabelecer; 1-estabelecer
+    * @return Código de erro
     */
     int ExtDevSetUDPComParam(std::string ip, int port, int period, int lossPkgTime, int lossPkgNum, int disconnectTime, int reconnectEnable, int reconnectPeriod, int reconnectNum, int selfConnect);
-         
-获取UDP扩展轴通讯参数配置
-++++++++++++++++++++++++++++++++++
+
+Obter Parâmetros de Configuração de Comunicação UDP do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 获取UDP扩展轴通讯参数
-    * @param [out] ip PLC IP地址
-    * @param [out] port	端口号
-    * @param [out] period	通讯周期(ms，默认为2，请勿修改此参数)
-    * @param [out] lossPkgTime	丢包检测时间(ms)
-    * @param [out] lossPkgNum	丢包次数
-    * @param [out] disconnectTime	通讯断开确认时长
-    * @param [out] reconnectEnable	通讯断开自动重连使能 0-不使能 1-使能
-    * @param [out] reconnectPeriod	重连周期间隔(ms)
-    * @param [out] reconnectNum	重连次数
-    * @param [out] selfConnect 重启控制箱后是否自动重连；0-不重连；1-重连
-    * @return 错误码
+    * @brief Obter parâmetros de comunicação UDP do eixo extensor
+    * @param [out] ip Endereço IP do PLC
+    * @param [out] port Número da porta
+    * @param [out] period Período de comunicação (ms, padrão é 2, não modifique este parâmetro)
+    * @param [out] lossPkgTime Tempo de detecção de perda de pacotes (ms)
+    * @param [out] lossPkgNum Número de perdas de pacotes
+    * @param [out] disconnectTime Duração para confirmar desconexão da comunicação
+    * @param [out] reconnectEnable Habilitar reconexão automática em caso de desconexão 0-desabilitar 1-habilitar
+    * @param [out] reconnectPeriod Intervalo do período de reconexão (ms)
+    * @param [out] reconnectNum Número de tentativas de reconexão
+    * @param [out] selfConnect Reconectar automaticamente após reiniciar a caixa de controle; 0-não reconectar; 1-reconectar
+    * @return Código de erro
     */
     public int ExtDevGetUDPComParam(ref string ip, ref int port, ref int period, ref int lossPkgTime, ref int lossPkgNum, ref int disconnectTime, ref int reconnectEnable, ref int reconnectPeriod, ref int reconnectNum, ref int selfConnect)
-        
-加载UDP通信
-++++++++++++++++++++++++++++++++++
+
+Carregar Comunicação UDP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 加载UDP通信
-    * @return 错误码
+    * @brief Carregar comunicação UDP
+    * @return Código de erro
     */
     int ExtDevLoadUDPDriver();
 
-卸载UDP通信
-++++++++++++++++++++++++++++++++++
+Descarregar Comunicação UDP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 卸载UDP通信
-    * @return 错误码
+    * @brief Descarregar comunicação UDP
+    * @return Código de erro
     */
     int ExtDevUnloadUDPDriver();
 
-UDP扩展轴通信异常断开后恢复连接
-++++++++++++++++++++++++++++++++++
+Restaurar Conexão Após Desconexão Anormal da Comunicação UDP do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴通信异常断开后恢复连接
-    * @return 错误码
+    * @brief Restaurar conexão após desconexão anormal da comunicação UDP do eixo extensor
+    * @return Código de erro
     */
     int ExtDevUDPClientComReset();
 
-UDP扩展轴通信异常断开后关闭通讯
-++++++++++++++++++++++++++++++++++
+Fechar Comunicação Após Desconexão Anormal da Comunicação UDP do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴通信异常断开后关闭通讯
-    * @return 错误码
+    * @brief Fechar comunicação após desconexão anormal da comunicação UDP do eixo extensor
+    * @return Código de erro
     */
     int ExtDevUDPClientComClose();
 
-UDP扩展轴参数配置
-++++++++++++++++++++++++++++++++++
+Configurar Parâmetros do Eixo Extensor UDP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴参数配置
-    * @param [in] axisID 轴号
-    * @param [in] axisType 扩展轴类型 0-平移；1-旋转
-    * @param [in] axisDirection 扩展轴方向 0-正向；1-方向 
-    * @param [in] axisMax 扩展轴最大位置 mm
-    * @param [in] axisMin 扩展轴最小位置 mm
-    * @param [in] axisVel 速度mm/s
-    * @param [in] axisAcc 加速度mm/s2
-    * @param [in] axisLead 导程mm
-    * @param [in] encResolution 编码器分辨率
-    * @param [in] axisOffect焊缝起始点扩展轴偏移量
-    * @param [in] axisCompany 驱动器厂家 1-禾川；2-汇川；3-松下
-    * @param [in] axisModel 驱动器型号 1-禾川-SV-XD3EA040L-E，2-禾川-SV-X2EA150A-A，1-汇川-SV620PT5R4I，1-松下-MADLN15SG，2-松下-MSDLN25SG，3-松下-MCDLN35SG
-    * @param [in] axisEncType 编码器类型  0-增量；1-绝对值
-    * @return 错误码
+    * @brief Configurar parâmetros do eixo extensor UDP
+    * @param [in] axisID Número do eixo
+    * @param [in] axisType Tipo de eixo extensor 0-translação; 1-rotação
+    * @param [in] axisDirection Direção do eixo extensor 0-positiva; 1-negativa
+    * @param [in] axisMax Posição máxima do eixo extensor mm
+    * @param [in] axisMin Posição mínima do eixo extensor mm
+    * @param [in] axisVel Velocidade mm/s
+    * @param [in] axisAcc Aceleração mm/s2
+    * @param [in] axisLead Passo mm
+    * @param [in] encResolution Resolução do codificador
+    * @param [in] axisOffect Deslocamento do eixo extensor no ponto de início da solda
+    * @param [in] axisCompany Fabricante do driver 1-Hokuyo; 2-Inovance; 3-Panasonic
+    * @param [in] axisModel Modelo do driver 1-Hokuyo-SV-XD3EA040L-E, 2-Hokuyo-SV-X2EA150A-A, 1-Inovance-SV620PT5R4I, 1-Panasonic-MADLN15SG, 2-Panasonic-MSDLN25SG, 3-Panasonic-MCDLN35SG
+    * @param [in] axisEncType Tipo de codificador 0-incremental; 1-absoluto
+    * @return Código de erro
     */
     int ExtAxisParamConfig(int axisID, int axisType, int axisDirection, double axisMax, double axisMin, double axisVel, double axisAcc, double axisLead, long encResolution, double axisOffect, int axisCompany, int axisModel, int axisEncType);
 
-设置扩展轴安装位置
-++++++++++++++++++++++++++++++++++
+Definir Posição de Instalação do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展轴安装位置
-    * @param [in] installType 0-机器人安装在外部轴上，1-机器人安装在外部轴外
-    * @return 错误码
+    * @brief Definir posição de instalação do eixo extensor
+    * @param [in] installType 0-robô instalado no eixo externo, 1-robô instalado fora do eixo externo
+    * @return Código de erro
     */
     int SetRobotPosToAxis(int installType);
 
-设置扩展轴系统DH参数配置
-++++++++++++++++++++++++++++++++++
+Definir Configuração de Parâmetros DH do Sistema do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展轴系统DH参数配置
-    * @param [in]  axisConfig 外部轴构型，0-单自由度直线滑轨，1-两自由度L型变位机，2-三自由度，3-四自由度，4-单自由度变位机
-    * @param [in]  axisDHd1 外部轴DH参数d1 mm
-    * @param [in]  axisDHd2 外部轴DH参数d2 mm
-    * @param [in]  axisDHd3 外部轴DH参数d3 mm
-    * @param [in]  axisDHd4 外部轴DH参数d4 mm
-    * @param [in]  axisDHa1 外部轴DH参数11 mm
-    * @param [in]  axisDHa2 外部轴DH参数a2 mm
-    * @param [in]  axisDHa3 外部轴DH参数a3 mm
-    * @param [in]  axisDHa4 外部轴DH参数a4 mm
-    * @return 错误码
+    * @brief Definir configuração de parâmetros DH do sistema do eixo extensor
+    * @param [in]  axisConfig Configuração do eixo externo, 0-trilho deslizante linear 1 DOF, 1-posicionador L de 2 DOF, 2-3 DOF, 3-4 DOF, 4-posicionador de 1 DOF
+    * @param [in]  axisDHd1 Parâmetro DH do eixo externo d1 mm
+    * @param [in]  axisDHd2 Parâmetro DH do eixo externo d2 mm
+    * @param [in]  axisDHd3 Parâmetro DH do eixo externo d3 mm
+    * @param [in]  axisDHd4 Parâmetro DH do eixo externo d4 mm
+    * @param [in]  axisDHa1 Parâmetro DH do eixo externo a1 mm
+    * @param [in]  axisDHa2 Parâmetro DH do eixo externo a2 mm
+    * @param [in]  axisDHa3 Parâmetro DH do eixo externo a3 mm
+    * @param [in]  axisDHa4 Parâmetro DH do eixo externo a4 mm
+    * @return Código de erro
     */
     int SetAxisDHParaConfig(int axisConfig, double axisDHd1, double axisDHd2, double axisDHd3, double axisDHd4, double axisDHa1, double axisDHa2, double axisDHa3, double axisDHa4);
 
-UDP扩展轴使能
-++++++++++++++++++++++++++++++++++++++
+Habilitar Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴使能
-    * @param [in] axisID 轴号[1-4]
-    * @param [in] status 0-去使能；1-使能
-    * @return 错误码
+    * @brief Habilitar eixo extensor UDP
+    * @param [in] axisID Número do eixo[1-4]
+    * @param [in] status 0-desabilitar; 1-habilitar
+    * @return Código de erro
     */
     int ExtAxisServoOn(int axisID, int status);
 
-UDP扩展轴回零
-++++++++++++++++++++++++++++++++++++++
+Homing do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴回零
-    * @param [in] axisID 轴号[1-4]
-    * @param [in] mode 回零方式 0-当前位置回零，1-负限位回零，2-正限位回零
-    * @param [in] searchVel 寻零速度(mm/s)
-    * @param [in] latchVel 寻零箍位速度(mm/s)
-    * @return 错误码
+    * @brief Homing do eixo extensor UDP
+    * @param [in] axisID Número do eixo[1-4]
+    * @param [in] mode Modo de homing 0-homing na posição atual, 1-homing no limite negativo, 2-homing no limite positivo
+    * @param [in] searchVel Velocidade de busca do zero (mm/s)
+    * @param [in] latchVel Velocidade de fixação do zero (mm/s)
+    * @return Código de erro
     */
     int ExtAxisSetHoming(int axisID, int mode, double searchVel, double latchVel);
 
-UDP扩展轴点动开始
-++++++++++++++++++++++++++++++++++++++
+Iniciar Jog do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴点动开始
-    * @param [in] axisID 轴号[1-4]
-    * @param [in] direction 转动方向 0-反向；1-正向
-    * @param [in] vel 速度(mm/s)
-    * @param [in] acc 加速度 (mm/s2)
-    * @param [in] maxDistance 最大点动距离
-    * @return 错误码
+    * @brief Iniciar jog do eixo extensor UDP
+    * @param [in] axisID Número do eixo[1-4]
+    * @param [in] direction Direção de rotação 0-reversa; 1-direta
+    * @param [in] vel Velocidade (mm/s)
+    * @param [in] acc Aceleração (mm/s2)
+    * @param [in] maxDistance Distância máxima de jog
+    * @return Código de erro
     */
     int ExtAxisStartJog(int axisID, int direction, double vel, double acc, double maxDistance);
-    
-UDP扩展轴点动停止
-++++++++++++++++++++++++++++++++++++++
+
+Parar Jog do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴点动停止
-    * @param [in] axisID 轴号[1-4]
-    * @return 错误码
+    * @brief Parar jog do eixo extensor UDP
+    * @param [in] axisID Número do eixo[1-4]
+    * @return Código de erro
     */
     int ExtAxisStopJog(int axisID);
 
-UDP扩展轴配置与点动代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Configuração e Jog do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -610,111 +610,111 @@ UDP扩展轴配置与点动代码示例
         robot.ExtDevUnloadUDPDriver();
     }
 
-设置扩展轴坐标系参考点-四点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência do Sistema de Coordenadas do Eixo Extensor - Método dos Quatro Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展轴坐标系参考点-四点法
-    * @param [in]  pointNum 点编号[1-4]
-    * @return 错误码
+    * @brief Definir ponto de referência do sistema de coordenadas do eixo extensor - método dos quatro pontos
+    * @param [in]  pointNum Número do ponto[1-4]
+    * @return Código de erro
     */
     int ExtAxisSetRefPoint(int pointNum);
 
-计算扩展轴坐标系-四点法
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas do Eixo Extensor - Método dos Quatro Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 计算扩展轴坐标系-四点法
-    * @param [out]  coord 坐标系值
-    * @return 错误码
+    * @brief Calcular sistema de coordenadas do eixo extensor - método dos quatro pontos
+    * @param [out]  coord Valor do sistema de coordenadas
+    * @return Código de erro
     */
     int ExtAxisComputeECoordSys(DescPose& coord);
 
-应用扩展轴坐标系
-++++++++++++++++++++++++++++++++++
+Aplicar Sistema de Coordenadas do Eixo Extensor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 应用扩展轴坐标系
-    * @param [in]  applyAxisId 扩展轴编号 bit0-bit3对应扩展轴编号1-4，如应用扩展轴1和3，则是 0b 0000 0101；也就是5
-    * @param [in]  axisCoordNum 扩展轴坐标系编号
-    * @param [in]  coord 坐标系值
-    * @param [in]  calibFlag 标定标志 0-否，1-是
-    * @return 错误码
+    * @brief Aplicar sistema de coordenadas do eixo extensor
+    * @param [in]  applyAxisId ID do eixo extensor a ser aplicado bit0-bit3 correspondem aos números dos eixos extensores 1-4, por exemplo, aplicar eixos extensores 1 e 3, então é 0b 0000 0101; ou seja, 5
+    * @param [in]  axisCoordNum Número do sistema de coordenadas do eixo extensor
+    * @param [in]  coord Valor do sistema de coordenadas
+    * @param [in]  calibFlag Flag de calibração 0-não, 1-sim
+    * @return Código de erro
     */
     int ExtAxisActiveECoordSys(int applyAxisId, int axisCoordNum, DescPose coord, int calibFlag);
 
-设置标定参考点在变位机末端坐标系下位姿
-++++++++++++++++++++++++++++++++++++++
+Definir Pose do Ponto de Referência de Calibração no Sistema de Coordenadas da Extremidade do Posicionador
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置标定参考点在变位机末端坐标系下位姿
-    * @param [in] pos 位姿值
-    * @return 错误码
+    * @brief Definir pose do ponto de referência de calibração no sistema de coordenadas da extremidade do posicionador
+    * @param [in] pos Valor da pose
+    * @return Código de erro
     */
     int SetRefPointInExAxisEnd(DescPose pos);
 
-变位机坐标系参考点设置
-++++++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência do Sistema de Coordenadas do Posicionador
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 变位机坐标系参考点设置
-    * @param [in]  pointNum 点编号[1-4]
-    * @return 错误码
+    * @brief Definir ponto de referência do sistema de coordenadas do posicionador
+    * @param [in]  pointNum Número do ponto[1-4]
+    * @return Código de erro
     */
     int PositionorSetRefPoint(int pointNum);
 
-变位机坐标系计算-四点法
-++++++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas do Posicionador - Método dos Quatro Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 变位机坐标系计算-四点法
-    * @param [out] coord 坐标系值
-    * @return 错误码
+    * @brief Calcular sistema de coordenadas do posicionador - método dos quatro pontos
+    * @param [out] coord Valor do sistema de coordenadas
+    * @return Código de erro
     */
     int PositionorComputeECoordSys(DescPose& coord);
 
-获取扩展轴坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas do Eixo Extensor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取扩展轴坐标系
-    * @param [out] coord 扩展轴坐标系
-    * @return 错误码
+    * @brief Obter sistema de coordenadas do eixo extensor
+    * @param [out] coord Sistema de coordenadas do eixo extensor
+    * @return Código de erro
     */
     int ExtAxisGetCoord(ref DescPose coord);
 
-扩展轴坐标系标定代码示例
+Exemplo de Código de Calibração do Sistema de Coordenadas do Eixo Extensor
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.3  Web-3.8.2
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -824,24 +824,24 @@ UDP扩展轴配置与点动代码示例
         Console.WriteLine("ExtAxisActiveECoordSys rtn is " + rtn);
     }
 
-UDP扩展轴运动
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Movimento do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴运动
-    * @param [in] pos 目标位置
-    * @param [in] ovl 速度百分比
-    * @param [in] blend 平滑参数(mm或ms)
-    * @return 错误码
+    * @brief Movimento do eixo extensor UDP
+    * @param [in] pos Posição alvo
+    * @param [in] ovl Percentual de velocidade
+    * @param [in] blend Parâmetro de suavização (mm ou ms)
+    * @return Código de erro
     */
     int ExtAxisMove(ExaxisPos pos, double ovl, double blend=-1);
 
-UDP扩展轴运动代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Movimento do Eixo Extensor UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -856,32 +856,32 @@ UDP扩展轴运动代码示例
         robot.ExtAxisMove(axisPos, 50);
     }
 
-UDP扩展轴与机器人关节运动同步运动
-++++++++++++++++++++++++++++++++++++++
+Movimento Síncrono do Eixo Extensor UDP com Movimento de Junta do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴与机器人关节运动同步运动
-    * @param [in] joint_pos 目标关节位置,单位deg
-    * @param [in] desc_pos 目标笛卡尔位姿
-    * @param [in] tool 工具坐标号，范围[0~14]
-    * @param [in] user 工件坐标号，范围[0~14]
-    * @param [in] vel 速度百分比，范围[0~100]
-    * @param [in] acc 加速度百分比，范围[0~100],暂不开放
-    * @param [in] ovl 速度缩放因子，范围[0~100]
-    * @param [in] epos 扩展轴位置，单位mm
-    * @param [in] blendT [-1.0]-运动到位(阻塞)，[0~500.0]-平滑时间(非阻塞)，单位ms
-    * @param [in] offset_flag  0-不偏移，1-基坐标系/工件坐标系偏移，2-工具坐标系偏移
-    * @param [in] offset_pos  位姿偏移量
-    * @return  错误码
+    * @brief Movimento síncrono do eixo extensor UDP com movimento de junta do robô
+    * @param [in] joint_pos Posição de junta alvo, unidade deg
+    * @param [in] desc_pos Pose cartesiana alvo
+    * @param [in] tool Número da coordenada da ferramenta, intervalo [0~14]
+    * @param [in] user Número da coordenada da peça, intervalo [0~14]
+    * @param [in] vel Percentual de velocidade, intervalo [0~100]
+    * @param [in] acc Percentual de aceleração, intervalo [0~100], temporariamente não disponível
+    * @param [in] ovl Fator de escala de velocidade, intervalo [0~100]
+    * @param [in] epos Posição do eixo extensor, unidade mm
+    * @param [in] blendT [-1.0]-movimento até o fim (bloqueante), [0~500.0]-tempo de suavização (não bloqueante), unidade ms
+    * @param [in] offset_flag  0-sem deslocamento, 1-deslocamento no sistema de coordenadas base/peça, 2-deslocamento no sistema de coordenadas da ferramenta
+    * @param [in] offset_pos  Quantidade de deslocamento da pose
+    * @return  Código de erro
     */
     int ExtAxisSyncMoveJ(JointPos joint_pos, DescPose desc_pos, int tool, int user, float vel, float acc, float ovl, ExaxisPos epos, float blendT, byte offset_flag, DescPose offset_pos);
 
-代码示例
-++++++++++++++++++++++++++++++++++++++
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -891,87 +891,87 @@ UDP扩展轴与机器人关节运动同步运动
         Robot robot = new Robot();
         robot.RPC("192.168.58.2");
 
-        //1.标定并应用机器人工具坐标系，您可以使用四点法或六点法进行工具坐标系的标定和应用，涉及工具坐标系标定的接口如下：
-        //    int SetToolPoint(int point_num);  //设置工具参考点-六点法
-        //    int ComputeTool(ref DescPose tcp_pose);  //计算工具坐标系
-        //    int SetTcp4RefPoint(int point_num);    //设置工具参考点-四点法
-        //    int ComputeTcp4(ref DescPose tcp_pose);   //计算工具坐标系-四点法
-        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //设置应用工具坐标系
-        //    int SetToolList(int id, DescPose coord, int type, int install);   //设置应用工具坐标系列表
+        //1. Calibre e aplique o sistema de coordenadas da ferramenta do robô. Você pode usar o método de quatro pontos ou seis pontos para calibrar e aplicar o sistema de coordenadas da ferramenta. As interfaces envolvidas na calibração do sistema de coordenadas da ferramenta são as seguintes:
+        //    int SetToolPoint(int point_num);  //Definir ponto de referência da ferramenta - método de seis pontos
+        //    int ComputeTool(ref DescPose tcp_pose);  //Calcular sistema de coordenadas da ferramenta
+        //    int SetTcp4RefPoint(int point_num);    //Definir ponto de referência da ferramenta - método de quatro pontos
+        //    int ComputeTcp4(ref DescPose tcp_pose);   //Calcular sistema de coordenadas da ferramenta - método de quatro pontos
+        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //Definir e aplicar sistema de coordenadas da ferramenta
+        //    int SetToolList(int id, DescPose coord, int type, int install);   //Definir e aplicar lista de sistemas de coordenadas da ferramenta
 
-        //2.设置UDP通信参数，并加载UDP通信
+        //2. Defina os parâmetros de comunicação UDP e carregue a comunicação UDP
         robot.ExtDevSetUDPComParam("192.168.58.88", 2021, 2, 100, 3, 100, 1, 100, 10);
         robot.ExtDevLoadUDPDriver();
 
-        //3.设置扩展轴参数，包括扩展轴类型、扩展轴驱动器参数、扩展轴DH参数
-        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //单轴变位机及DH参数
-        robot.SetRobotPosToAxis(1);  //扩展轴安装位置
-        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //伺服驱动器参数，本示例为单轴变位机，因此只需要设置一个驱动器参数，若您选择包含多个轴的扩展轴类型，需要每一个轴设置驱动器参数
+        //3. Defina os parâmetros do eixo extensor, incluindo o tipo de eixo extensor, parâmetros do driver do eixo extensor, parâmetros DH do eixo extensor
+        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //Posicionador de eixo único e parâmetros DH
+        robot.SetRobotPosToAxis(1);  //Posição de instalação do eixo extensor
+        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //Parâmetros do servo driver. Este exemplo é para um posicionador de eixo único, portanto, apenas um parâmetro de driver precisa ser definido. Se você escolher um tipo de eixo extensor que inclui vários eixos, precisa definir os parâmetros do driver para cada eixo.
 
-        //4.设置所选的轴使能、回零
+        //4. Habilite o eixo selecionado e execute o homing
         robot.ExtAxisServoOn(1, 0);
         robot.ExtAxisSetHoming(1, 0, 20, 3);
 
-        //5.进行扩展轴坐标系标定及应用(注意：变位机和直线滑轨的标定接口不同，以下时变位机的标定接口)
-        DescPose pos = new DescPose(/* 输入您的标定点坐标 */);
+        //5. Calibre e aplique o sistema de coordenadas do eixo extensor (Nota: As interfaces de calibração para posicionadores e trilhos deslizantes lineares são diferentes. Abaixo estão as interfaces para posicionadores)
+        DescPose pos = new DescPose(/* Insira as coordenadas do seu ponto de calibração */);
         robot.SetRefPointInExAxisEnd(pos);
-        robot.PositionorSetRefPoint(1); /*您需要通过四个不同位置的点来标定扩展轴，因此需要调用此接口4次才能完成标定 */
+        robot.PositionorSetRefPoint(1); /* Você precisa calibrar o eixo extensor usando pontos em quatro posições diferentes, portanto, precisa chamar esta interface 4 vezes para completar a calibração */
         DescPose coord = new DescPose( );
-        robot.PositionorComputeECoordSys(ref coord); //计算扩展轴标定结果
-        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //将标定结果应用到扩展轴坐标系
+        robot.PositionorComputeECoordSys(ref coord); //Calcular o resultado da calibração do eixo extensor
+        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //Aplicar o resultado da calibração ao sistema de coordenadas do eixo extensor
 
-        //6.在扩展轴上标定工件坐标系，您需要用到以下接口
+        //6. Calibre o sistema de coordenadas da peça no eixo extensor. Você precisará usar as seguintes interfaces
         //int SetWObjCoordPoint(int point_num);
         //int ComputeWObjCoord(int method, ref DescPose wobj_pose);
         //int SetWObjCoord(int id, DescPose coord);
         //int SetWObjList(int id, DescPose coord);
 
-        //7.记录您的同步关节运动起始点
-        DescPose startdescPose = new DescPose(/*输入您的坐标*/);
-        JointPos startjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos startexaxisPos = new ExaxisPos(/* 输入您的扩展轴起始点坐标 */);
+        //7. Registre o ponto de início do seu movimento de junta síncrono
+        DescPose startdescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos startjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos startexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto de início do seu eixo extensor */);
 
-        //8.记录您的同步关节运动终点坐标
-        DescPose enddescPose = new DescPose(/*输入您的坐标*/);
-        JointPos endjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos endexaxisPos = new ExaxisPos(/* 输入您的扩展轴终点坐标 */);
+        //8. Registre as coordenadas do ponto final do seu movimento de junta síncrono
+        DescPose enddescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos endjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos endexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto final do seu eixo extensor */);
 
-        //9.编写同步运动程序
-        //运动到起始点，假设应用的工具坐标系、工件坐标系都是1
+        //9. Escreva o programa de movimento síncrono
+        //Mova para o ponto de início, assumindo que os sistemas de coordenadas da ferramenta e da peça aplicados são ambos 1
         robot.ExtAxisMove(startexaxisPos, 20);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
         robot.MoveJ(startjointPos, startdescPose, 1, 1, 100, 100, 100, startexaxisPos, 0, 0, offdese);
 
-        //开始同步运动
+        //Iniciar movimento síncrono
         robot.ExtAxisSyncMoveJ(endjointPos, enddescPose, 1, 1, 100, 100, 100, endexaxisPos, -1, 0, offdese);
     }
 
-UDP扩展轴与机器人直线运动同步运动
-++++++++++++++++++++++++++++++++++++++
+Movimento Síncrono do Eixo Extensor UDP com Movimento Linear do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴与机器人直线运动同步运动
-    * @param [in] joint_pos  目标关节位置,单位deg
-    * @param [in] desc_pos   目标笛卡尔位姿
-    * @param [in] tool  工具坐标号，范围[0~14]
-    * @param [in] user  工件坐标号，范围[0~14]
-    * @param [in] vel  速度百分比，范围[0~100]
-    * @param [in] acc  加速度百分比，范围[0~100],暂不开放
-    * @param [in] ovl  速度缩放因子，范围[0~100]
-    * @param [in] blendR [-1.0]-运动到位(阻塞)，[0~1000.0]-平滑半径(非阻塞)，单位mm
-    * @param [in] epos  扩展轴位置，单位mm
-    * @param [in] offset_flag  0-不偏移，1-基坐标系/工件坐标系偏移，2-工具坐标系偏移
-    * @param [in] offset_pos  位姿偏移量
-    * @return 错误码
+    * @brief Movimento síncrono do eixo extensor UDP com movimento linear do robô
+    * @param [in] joint_pos  Posição de junta alvo, unidade deg
+    * @param [in] desc_pos   Pose cartesiana alvo
+    * @param [in] tool  Número da coordenada da ferramenta, intervalo [0~14]
+    * @param [in] user  Número da coordenada da peça, intervalo [0~14]
+    * @param [in] vel  Percentual de velocidade, intervalo [0~100]
+    * @param [in] acc  Percentual de aceleração, intervalo [0~100], temporariamente não disponível
+    * @param [in] ovl  Fator de escala de velocidade, intervalo [0~100]
+    * @param [in] blendR [-1.0]-movimento até o fim (bloqueante), [0~1000.0]-raio de suavização (não bloqueante), unidade mm
+    * @param [in] epos  Posição do eixo extensor, unidade mm
+    * @param [in] offset_flag  0-sem deslocamento, 1-deslocamento no sistema de coordenadas base/peça, 2-deslocamento no sistema de coordenadas da ferramenta
+    * @param [in] offset_pos  Quantidade de deslocamento da pose
+    * @return Código de erro
     */
     int ExtAxisSyncMoveL(JointPos joint_pos, DescPose desc_pos, int tool, int user, float vel, float acc, float ovl, float blendR, ExaxisPos epos, int offset_flag, DescPose offset_pos);
 
-代码示例
-++++++++++++++++++++++++++++++++++++++
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -981,96 +981,96 @@ UDP扩展轴与机器人直线运动同步运动
         Robot robot = new Robot();
         robot.RPC("192.168.58.2");
 
-    //1.标定并应用机器人工具坐标系，您可以使用四点法或六点法进行工具坐标系的标定和应用，涉及工具坐标系标定的接口如下：
-        //    int SetToolPoint(int point_num);  //设置工具参考点-六点法
-        //    int ComputeTool(ref DescPose tcp_pose);  //计算工具坐标系
-        //    int SetTcp4RefPoint(int point_num);    //设置工具参考点-四点法
-        //    int ComputeTcp4(ref DescPose tcp_pose);   //计算工具坐标系-四点法
-        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //设置应用工具坐标系
-        //    int SetToolList(int id, DescPose coord, int type, int install);   //设置应用工具坐标系列表
+    //1. Calibre e aplique o sistema de coordenadas da ferramenta do robô. Você pode usar o método de quatro pontos ou seis pontos para calibrar e aplicar o sistema de coordenadas da ferramenta. As interfaces envolvidas na calibração do sistema de coordenadas da ferramenta são as seguintes:
+        //    int SetToolPoint(int point_num);  //Definir ponto de referência da ferramenta - método de seis pontos
+        //    int ComputeTool(ref DescPose tcp_pose);  //Calcular sistema de coordenadas da ferramenta
+        //    int SetTcp4RefPoint(int point_num);    //Definir ponto de referência da ferramenta - método de quatro pontos
+        //    int ComputeTcp4(ref DescPose tcp_pose);   //Calcular sistema de coordenadas da ferramenta - método de quatro pontos
+        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //Definir e aplicar sistema de coordenadas da ferramenta
+        //    int SetToolList(int id, DescPose coord, int type, int install);   //Definir e aplicar lista de sistemas de coordenadas da ferramenta
 
-        //2.设置UDP通信参数，并加载UDP通信
+        //2. Defina os parâmetros de comunicação UDP e carregue a comunicação UDP
         robot.ExtDevSetUDPComParam("192.168.58.88", 2021, 2, 100, 3, 100, 1, 100, 10);
         robot.ExtDevLoadUDPDriver();
 
-        //3.设置扩展轴参数，包括扩展轴类型、扩展轴驱动器参数、扩展轴DH参数
-        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //单轴变位机及DH参数
-        robot.SetRobotPosToAxis(1);  //扩展轴安装位置
-        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //伺服驱动器参数，本示例为单轴变位机，因此只需要设置一个驱动器参数，若您选择包含多个轴的扩展轴类型，需要每一个轴设置驱动器参数
+        //3. Defina os parâmetros do eixo extensor, incluindo o tipo de eixo extensor, parâmetros do driver do eixo extensor, parâmetros DH do eixo extensor
+        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //Posicionador de eixo único e parâmetros DH
+        robot.SetRobotPosToAxis(1);  //Posição de instalação do eixo extensor
+        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //Parâmetros do servo driver. Este exemplo é para um posicionador de eixo único, portanto, apenas um parâmetro de driver precisa ser definido. Se você escolher um tipo de eixo extensor que inclui vários eixos, precisa definir os parâmetros do driver para cada eixo.
 
-        //4.设置所选的轴使能、回零
+        //4. Habilite o eixo selecionado e execute o homing
         robot.ExtAxisServoOn(1, 0);
         robot.ExtAxisSetHoming(1, 0, 20, 3);
 
-        //5.进行扩展轴坐标系标定及应用
-        DescPose pos = new DescPose(/* 输入您的标定点坐标 */);
+        //5. Calibre e aplique o sistema de coordenadas do eixo extensor
+        DescPose pos = new DescPose(/* Insira as coordenadas do seu ponto de calibração */);
         robot.SetRefPointInExAxisEnd(pos);
-        robot.PositionorSetRefPoint(1); /*您需要通过四个不同位置的点来标定扩展轴，因此需要调用此接口4次才能完成标定 */
+        robot.PositionorSetRefPoint(1); /* Você precisa calibrar o eixo extensor usando pontos em quatro posições diferentes, portanto, precisa chamar esta interface 4 vezes para completar a calibração */
         DescPose coord = new DescPose();
-        robot.PositionorComputeECoordSys(ref coord); //计算扩展轴标定结果
-        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //将标定结果应用到扩展轴坐标系
+        robot.PositionorComputeECoordSys(ref coord); //Calcular o resultado da calibração do eixo extensor
+        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //Aplicar o resultado da calibração ao sistema de coordenadas do eixo extensor
 
-        //6.在扩展轴上标定工件坐标系，您需要用到以下接口
+        //6. Calibre o sistema de coordenadas da peça no eixo extensor. Você precisará usar as seguintes interfaces
         //int SetWObjCoordPoint(int point_num);
         //int ComputeWObjCoord(int method, ref DescPose wobj_pose);
         //int SetWObjCoord(int id, DescPose coord);
         //int SetWObjList(int id, DescPose coord);
 
-        //7.记录您的同步直线运动起始点
-        DescPose startdescPose = new DescPose(/*输入您的坐标*/);
-        JointPos startjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos startexaxisPos = new ExaxisPos(/* 输入您的扩展轴起始点坐标 */);
+        //7. Registre o ponto de início do seu movimento linear síncrono
+        DescPose startdescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos startjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos startexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto de início do seu eixo extensor */);
 
-        //8.记录您的同步直线运动终点坐标
-        DescPose enddescPose = new DescPose(/*输入您的坐标*/);
-        JointPos endjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos endexaxisPos = new ExaxisPos(/* 输入您的扩展轴终点坐标 */);
+        //8. Registre as coordenadas do ponto final do seu movimento linear síncrono
+        DescPose enddescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos endjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos endexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto final do seu eixo extensor */);
 
-        //9.编写同步运动程序
-        //运动到起始点，假设应用的工具坐标系、工件坐标系都是1
+        //9. Escreva o programa de movimento síncrono
+        //Mova para o ponto de início, assumindo que os sistemas de coordenadas da ferramenta e da peça aplicados são ambos 1
         robot.ExtAxisMove(startexaxisPos, 20);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
         robot.MoveJ(startjointPos, startdescPose, 1, 1, 100, 100, 100, startexaxisPos, 0, 0, offdese);
 
-        //开始同步运动
+        //Iniciar movimento síncrono
         robot.ExtAxisSyncMoveL(endjointPos, enddescPose, 1, 1, 100, 100, 100, 0, endexaxisPos, 0, offdese);
     }
-    
-UDP扩展轴与机器人圆弧运动同步运动
-++++++++++++++++++++++++++++++++++++++
+
+Movimento Síncrono do Eixo Extensor UDP com Movimento de Arco do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief UDP扩展轴与机器人圆弧运动同步运动
-    * @param [in] joint_pos_p  路径点关节位置,单位deg
-    * @param [in] desc_pos_p   路径点笛卡尔位姿
-    * @param [in] ptool  工具坐标号，范围[0~14]
-    * @param [in] puser  工件坐标号，范围[0~14]
-    * @param [in] pvel  速度百分比，范围[0~100]
-    * @param [in] pacc  加速度百分比，范围[0~100],暂不开放
-    * @param [in] epos_p  中间点扩展轴位置，单位mm
-    * @param [in] poffset_flag  0-不偏移，1-基坐标系/工件坐标系偏移，2-工具坐标系偏移
-    * @param [in] offset_pos_p  位姿偏移量
-    * @param [in] joint_pos_t  目标点关节位置,单位deg
-    * @param [in] desc_pos_t   目标点笛卡尔位姿
-    * @param [in] ttool  工具坐标号，范围[0~14]
-    * @param [in] tuser  工件坐标号，范围[0~14]
-    * @param [in] tvel  速度百分比，范围[0~100]
-    * @param [in] tacc  加速度百分比，范围[0~100],暂不开放
-    * @param [in] epos_t  扩展轴位置，单位mm
-    * @param [in] toffset_flag  0-不偏移，1-基坐标系/工件坐标系偏移，2-工具坐标系偏移
-    * @param [in] offset_pos_t  位姿偏移量	 
-    * @param [in] ovl  速度缩放因子，范围[0~100]
-    * @param [in] blendR [-1.0]-运动到位(阻塞)，[0~1000.0]-平滑半径(非阻塞)，单位mm
-    * @return 错误码
+    * @brief Movimento síncrono do eixo extensor UDP com movimento de arco do robô
+    * @param [in] joint_pos_p  Posição de junta do ponto de caminho, unidade deg
+    * @param [in] desc_pos_p   Pose cartesiana do ponto de caminho
+    * @param [in] ptool  Número da coordenada da ferramenta, intervalo [0~14]
+    * @param [in] puser  Número da coordenada da peça, intervalo [0~14]
+    * @param [in] pvel  Percentual de velocidade, intervalo [0~100]
+    * @param [in] pacc  Percentual de aceleração, intervalo [0~100], temporariamente não disponível
+    * @param [in] epos_p  Posição do eixo extensor no ponto intermediário, unidade mm
+    * @param [in] poffset_flag  0-sem deslocamento, 1-deslocamento no sistema de coordenadas base/peça, 2-deslocamento no sistema de coordenadas da ferramenta
+    * @param [in] offset_pos_p  Quantidade de deslocamento da pose
+    * @param [in] joint_pos_t  Posição de junta do ponto alvo, unidade deg
+    * @param [in] desc_pos_t   Pose cartesiana do ponto alvo
+    * @param [in] ttool  Número da coordenada da ferramenta, intervalo [0~14]
+    * @param [in] tuser  Número da coordenada da peça, intervalo [0~14]
+    * @param [in] tvel  Percentual de velocidade, intervalo [0~100]
+    * @param [in] tacc  Percentual de aceleração, intervalo [0~100], temporariamente não disponível
+    * @param [in] epos_t  Posição do eixo extensor, unidade mm
+    * @param [in] toffset_flag  0-sem deslocamento, 1-deslocamento no sistema de coordenadas base/peça, 2-deslocamento no sistema de coordenadas da ferramenta
+    * @param [in] offset_pos_t  Quantidade de deslocamento da pose	 
+    * @param [in] ovl  Fator de escala de velocidade, intervalo [0~100]
+    * @param [in] blendR [-1.0]-movimento até o fim (bloqueante), [0~1000.0]-raio de suavização (não bloqueante), unidade mm
+    * @return Código de erro
     */
     int ExtAxisSyncMoveC(JointPos joint_pos_p, DescPose desc_pos_p, int ptool, int puser, float pvel, float pacc, ExaxisPos epos_p, int poffset_flag, DescPose offset_pos_p, JointPos joint_pos_t, DescPose desc_pos_t, int ttool, int tuser, float tvel, float tacc, ExaxisPos epos_t, int toffset_flag, DescPose offset_pos_t, float ovl, float blendR);
-    
-代码示例
-++++++++++++++++++++++++++++++++++++++
+
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -1080,196 +1080,196 @@ UDP扩展轴与机器人圆弧运动同步运动
         Robot robot = new Robot();
         robot.RPC("192.168.58.2");
 
-    //1.标定并应用机器人工具坐标系，您可以使用四点法或六点法进行工具坐标系的标定和应用，涉及工具坐标系标定的接口如下：
-        //    int SetToolPoint(int point_num);  //设置工具参考点-六点法
-        //    int ComputeTool(ref DescPose tcp_pose);  //计算工具坐标系
-        //    int SetTcp4RefPoint(int point_num);    //设置工具参考点-四点法
-        //    int ComputeTcp4(ref DescPose tcp_pose);   //计算工具坐标系-四点法
-        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //设置应用工具坐标系
-        //    int SetToolList(int id, DescPose coord, int type, int install);   //设置应用工具坐标系列表
+    //1. Calibre e aplique o sistema de coordenadas da ferramenta do robô. Você pode usar o método de quatro pontos ou seis pontos para calibrar e aplicar o sistema de coordenadas da ferramenta. As interfaces envolvidas na calibração do sistema de coordenadas da ferramenta são as seguintes:
+        //    int SetToolPoint(int point_num);  //Definir ponto de referência da ferramenta - método de seis pontos
+        //    int ComputeTool(ref DescPose tcp_pose);  //Calcular sistema de coordenadas da ferramenta
+        //    int SetTcp4RefPoint(int point_num);    //Definir ponto de referência da ferramenta - método de quatro pontos
+        //    int ComputeTcp4(ref DescPose tcp_pose);   //Calcular sistema de coordenadas da ferramenta - método de quatro pontos
+        //    int SetToolCoord(int id, DescPose coord, int type, int install);  //Definir e aplicar sistema de coordenadas da ferramenta
+        //    int SetToolList(int id, DescPose coord, int type, int install);   //Definir e aplicar lista de sistemas de coordenadas da ferramenta
 
-        //2.设置UDP通信参数，并加载UDP通信
+        //2. Defina os parâmetros de comunicação UDP e carregue a comunicação UDP
         robot.ExtDevSetUDPComParam("192.168.58.88", 2021, 2, 100, 3, 100, 1, 100, 10);
         robot.ExtDevLoadUDPDriver();
 
-        //3.设置扩展轴参数，包括扩展轴类型、扩展轴驱动器参数、扩展轴DH参数
-        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //单轴变位机及DH参数
-        robot.SetRobotPosToAxis(1);  //扩展轴安装位置
-        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //伺服驱动器参数，本示例为单轴变位机，因此只需要设置一个驱动器参数，若您选择包含多个轴的扩展轴类型，需要每一个轴设置驱动器参数
+        //3. Defina os parâmetros do eixo extensor, incluindo o tipo de eixo extensor, parâmetros do driver do eixo extensor, parâmetros DH do eixo extensor
+        robot.SetAxisDHParaConfig(4, 200, 200, 0, 0, 0, 0, 0, 0); //Posicionador de eixo único e parâmetros DH
+        robot.SetRobotPosToAxis(1);  //Posição de instalação do eixo extensor
+        robot.ExtAxisParamConfig(1, 0, 1, 100, -100, 10, 10, 12, 131072, 0, 1, 0, 0); //Parâmetros do servo driver. Este exemplo é para um posicionador de eixo único, portanto, apenas um parâmetro de driver precisa ser definido. Se você escolher um tipo de eixo extensor que inclui vários eixos, precisa definir os parâmetros do driver para cada eixo.
 
-        //4.设置所选的轴使能、回零
+        //4. Habilite o eixo selecionado e execute o homing
         robot.ExtAxisServoOn(1, 0);
         robot.ExtAxisSetHoming(1, 0, 20, 3);
 
-        //5.进行扩展轴坐标系标定及应用
-        DescPose pos = new DescPose(/* 输入您的标定点坐标 */);
+        //5. Calibre e aplique o sistema de coordenadas do eixo extensor
+        DescPose pos = new DescPose(/* Insira as coordenadas do seu ponto de calibração */);
         robot.SetRefPointInExAxisEnd(pos);
-        robot.PositionorSetRefPoint(1); /*您需要通过四个不同位置的点来标定扩展轴，因此需要调用此接口4次才能完成标定 */
+        robot.PositionorSetRefPoint(1); /* Você precisa calibrar o eixo extensor usando pontos em quatro posições diferentes, portanto, precisa chamar esta interface 4 vezes para completar a calibração */
         DescPose coord = new DescPose();
-        robot.PositionorComputeECoordSys(ref coord); //计算扩展轴标定结果
-        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //将标定结果应用到扩展轴坐标系
+        robot.PositionorComputeECoordSys(ref coord); //Calcular o resultado da calibração do eixo extensor
+        robot.ExtAxisActiveECoordSys(1, 1, coord, 1);  //Aplicar o resultado da calibração ao sistema de coordenadas do eixo extensor
 
-        //6.在扩展轴上标定工件坐标系，您需要用到以下接口
+        //6. Calibre o sistema de coordenadas da peça no eixo extensor. Você precisará usar as seguintes interfaces
         //int SetWObjCoordPoint(int point_num);
         //int ComputeWObjCoord(int method, ref DescPose wobj_pose);
         //int SetWObjCoord(int id, DescPose coord);
         //int SetWObjList(int id, DescPose coord);
 
-        //7.记录您的同步圆弧运动起始点
-        DescPose startdescPose = new DescPose(/*输入您的坐标*/);
-        JointPos startjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos startexaxisPos = new ExaxisPos(/* 输入您的扩展轴起始点坐标 */);
+        //7. Registre o ponto de início do seu movimento de arco síncrono
+        DescPose startdescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos startjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos startexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto de início do seu eixo extensor */);
 
-        //8.记录您的同步圆弧运动终点坐标
-        DescPose enddescPose = new DescPose(/*输入您的坐标*/);
-        JointPos endjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos endexaxisPos = new ExaxisPos(/* 输入您的扩展轴终点坐标 */);
+        //8. Registre as coordenadas do ponto final do seu movimento de arco síncrono
+        DescPose enddescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos endjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos endexaxisPos = new ExaxisPos(/* Insira as coordenadas do ponto final do seu eixo extensor */);
 
-        //8.记录您的同步圆弧运动中间点坐标
-        DescPose middescPose = new DescPose(/*输入您的坐标*/);
-        JointPos midjointPos = new JointPos(/*输入您的坐标*/);
-        ExaxisPos midexaxisPos = new ExaxisPos(/* 输入机器人圆弧中间点时的扩展轴坐标 */);
+        //8. Registre as coordenadas do ponto intermediário do seu movimento de arco síncrono
+        DescPose middescPose = new DescPose(/* Insira suas coordenadas */);
+        JointPos midjointPos = new JointPos(/* Insira suas coordenadas */);
+        ExaxisPos midexaxisPos = new ExaxisPos(/* Insira a coordenada do eixo extensor quando o robô estiver no ponto intermediário do arco */);
 
-        //9.编写同步运动程序
-        //运动到起始点，假设应用的工具坐标系、工件坐标系都是1
+        //9. Escreva o programa de movimento síncrono
+        //Mova para o ponto de início, assumindo que os sistemas de coordenadas da ferramenta e da peça aplicados são ambos 1
         robot.ExtAxisMove(startexaxisPos, 20);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
         robot.MoveJ(startjointPos, startdescPose, 1, 1, 100, 100, 100, startexaxisPos, 0, 0, offdese);
 
-        //开始同步运动
+        //Iniciar movimento síncrono
         robot.ExtAxisSyncMoveC(midjointPos, middescPose, 1, 1, 100, 100, midexaxisPos, 0, offdese, endjointPos, enddescPose, 1, 1, 100, 100, endexaxisPos, 0, offdese, 100, 0);
     }
 
-设置扩展DO
-++++++++++++++++++++++++++++++++++++++
+Definir DO de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展DO
-    * @param [in] DONum DO编号
-    * @param [in] bOpen 开关 true-开；false-关
-    * @param [in] smooth 是否平滑
-    * @param [in] block 是否阻塞
-    * @return 错误码
+    * @brief Definir DO de extensão
+    * @param [in] DONum Número do DO
+    * @param [in] bOpen Estado true-ligar; false-desligar
+    * @param [in] smooth Suavizar ou não
+    * @param [in] block Bloquear ou não
+    * @return Código de erro
     */
     int SetAuxDO(int DONum, bool bOpen, bool smooth, bool block);
-        
-设置扩展AO
-++++++++++++++++++++++++++++++++++++++
+
+Definir AO de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展AO
-    * @param [in] AONum AO编号 
-    * @param [in] value 模拟量值[0-4095]
-    * @param [in] block 是否阻塞
-    * @return 错误码
+    * @brief Definir AO de extensão
+    * @param [in] AONum Número do AO
+    * @param [in] value Valor analógico [0-4095]
+    * @param [in] block Bloquear ou não
+    * @return Código de erro
     */
     int SetAuxAO(int AONum, double value, bool block);
-            
-设置扩展DI输入滤波时间
-++++++++++++++++++++++++++++++++++++++
+
+Definir Tempo de Filtragem de Entrada DI de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展DI输入滤波时间
-    * @param [in] filterTime 滤波时间(ms)
-    * @return 错误码
+    * @brief Definir tempo de filtragem de entrada DI de extensão
+    * @param [in] filterTime Tempo de filtragem (ms)
+    * @return Código de erro
     */
     int SetAuxDIFilterTime(int filterTime);
 
-设置扩展AI输入滤波时间
-++++++++++++++++++++++++++++++++++++++
+Definir Tempo de Filtragem de Entrada AI de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 设置扩展AI输入滤波时间
-    * @param [in] filterTime 滤波时间(ms)
-    * @return 错误码
+    * @brief Definir tempo de filtragem de entrada AI de extensão
+    * @param [in] filterTime Tempo de filtragem (ms)
+    * @return Código de erro
     */
     int SetAuxAIFilterTime(int filterTime);
 
-等待扩展DI输入
-++++++++++++++++++++++++++++++++++++++
+Aguardar Entrada DI de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 等待扩展DI输入
-    * @param [in] DINum DI编号
-    * @param [in] bOpen 开关 0-关；1-开
-    * @param [in] time 最大等待时间(ms)
-    * @param [in] errorAlarm 是否继续运动
-    * @return 错误码
+    * @brief Aguardar entrada DI de extensão
+    * @param [in] DINum Número do DI
+    * @param [in] bOpen Estado 0-desligado; 1-ligado
+    * @param [in] time Tempo máximo de espera (ms)
+    * @param [in] errorAlarm Continuar movimento ou não
+    * @return Código de erro
     */
     int WaitAuxDI(int DINum, bool bOpen, int time, bool errorAlarm);
-    
-等待扩展AI输入
-++++++++++++++++++++++++++++++++++++++
+
+Aguardar Entrada AI de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 等待扩展AI输入
-    * @param [in] AINum AI编号
-    * @param [in] sign 0-大于；1-小于
-    * @param [in] value AI值
-    * @param [in] time 最大等待时间(ms)
-    * @param [in] errorAlarm 是否继续运动
-    * @return 错误码
+    * @brief Aguardar entrada AI de extensão
+    * @param [in] AINum Número do AI
+    * @param [in] sign 0-maior que; 1-menor que
+    * @param [in] value Valor do AI
+    * @param [in] time Tempo máximo de espera (ms)
+    * @param [in] errorAlarm Continuar movimento ou não
+    * @return Código de erro
     */
     int WaitAuxAI(int AINum, int sign, int value, int time, bool errorAlarm);
-        
-获取扩展DI值
-++++++++++++++++++++++++++++++++++++++
+
+Obter Valor DI de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 获取扩展DI值
-    * @param [in] DINum DI编号
-    * @param [in] isNoBlock 是否阻塞
-    * @param [out] isOpen 0-关；1-开
-    * @return 错误码
+    * @brief Obter valor DI de extensão
+    * @param [in] DINum Número do DI
+    * @param [in] isNoBlock Bloquear ou não
+    * @param [out] isOpen 0-desligado; 1-ligado
+    * @return Código de erro
     */
     int GetAuxDI(int DINum, bool isNoBlock, bool& isOpen);
-            
-获取扩展AI值
-+++++++++++++++++++++++
+
+Obter Valor AI de Extensão
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
 
 .. code-block:: C#
     :linenos:
 
     /**
-    * @brief 获取扩展AI值
-    * @param [in] AINum AI编号
-    * @param [in] isNoBlock 是否阻塞
-    * @param [in] value 输入值
-    * @return 错误码
+    * @brief Obter valor AI de extensão
+    * @param [in] AINum Número do AI
+    * @param [in] isNoBlock Bloquear ou não
+    * @param [in] value Valor de entrada
+    * @return Código de erro
     */
     int GetAuxAI(int AINum, bool isNoBlock, int& value);
 
-扩展IO代码示例
-++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de E/S de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: C#
     :linenos:
@@ -1316,80 +1316,80 @@ UDP扩展轴与机器人圆弧运动同步运动
         robot.WaitAuxAI(1, 1, 132, 1000, false);
     }
 
-可移动装置使能
-+++++++++++++++++++++++++++++
+Habilitar Dispositivo Móvel
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.9
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 可移动装置使能
-    * @param enable false-去使能；true-使能
-    * @return 错误码
+    * @brief Habilitar dispositivo móvel
+    * @param enable false-desabilitar; true-habilitar
+    * @return Código de erro
     */
     int TractorEnable(bool enable);
 
-可移动装置停止运动
-+++++++++++++++++++++++++++++
+Parar Movimento do Dispositivo Móvel
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.9
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 可移动装置停止运动
-    * @return 错误码
+    * @brief Parar movimento do dispositivo móvel
+    * @return Código de erro
     */
     int TractorStop();
 
-可移动装置回零
-+++++++++++++++++++++++++++++
+Homing do Dispositivo Móvel
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.9
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 可移动装置回零
-    * @return 错误码
+    * @brief Homing do dispositivo móvel
+    * @return Código de erro
     */
     int  TractorHoming();
 
-可移动装置直线运动
-+++++++++++++++++++++++++++++
+Movimento Linear do Dispositivo Móvel
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.9
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 可移动装置直线运动
-    * @param distance 直线运动距离（mm）
-    * @param vel 直线运动速度百分比（0-100）
-    * @return 错误码
+    * @brief Movimento linear do dispositivo móvel
+    * @param distance Distância do movimento linear (mm)
+    * @param vel Percentual de velocidade do movimento linear (0-100)
+    * @return Código de erro
     */
     int TractorMoveL(double distance, double vel);
 
-可移动装置圆弧运动
-+++++++++++++++++++++++++++++
+Movimento de Arco do Dispositivo Móvel
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.9
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 可移动装置圆弧运动
-    * @param radio 圆弧运动半径（mm）
-    * @param angle 圆弧运动角度（°）
-    * @param vel 直线运动速度百分比（0-100）
-    * @return 错误码
+    * @brief Movimento de arco do dispositivo móvel
+    * @param radio Raio do movimento de arco (mm)
+    * @param angle Ângulo do movimento de arco (°)
+    * @param vel Percentual de velocidade do movimento linear (0-100)
+    * @return Código de erro
     */
     int TractorMoveC(double radio, double angle, double vel);
 
-代码示例
-++++++++++++++++++++++++++++++++++++
-    
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c#
     :linenos:
 
@@ -1426,8 +1426,8 @@ UDP扩展轴与机器人圆弧运动同步运动
         robot.TractorStop();    
     }
 
-设置扩展轴与机器人同步运动策略
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Estratégia de Movimento Síncrono entre Eixo Extensor e Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
 .. code-block:: c#
@@ -1435,14 +1435,14 @@ UDP扩展轴与机器人圆弧运动同步运动
 
 
     /**
-    * @brief 设置扩展轴与机器人同步运动策略
-    * @param strategy 策略；0-以机器人为主；1-扩展轴与机器人同步
-    * @return 错误码
+    * @brief Definir estratégia de movimento síncrono entre eixo extensor e robô
+    * @param strategy Estratégia; 0-com o robô como principal; 1-eixo extensor e robô síncronos
+    * @return Código de erro
     */
     int SetExAxisRobotPlan(int strategy)
 
-设置扩展轴与机器人同步运动策略代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Definição de Estratégia de Movimento Síncrono entre Eixo Extensor e Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
 .. code-block:: c#
@@ -1474,15 +1474,15 @@ UDP扩展轴与机器人圆弧运动同步运动
         Thread.Sleep(8000);
     }
 
-UDP扩展轴定位完成时间设置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Tempo de Conclusão de Posicionamento do Eixo Extensor UDP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief UDP扩展轴定位完成时间设置
-    * @param [in] time 定位完成时间[ms]
-    * @return 错误码
+    * @brief Definir tempo de conclusão de posicionamento do eixo extensor UDP
+    * @param [in] time Tempo de conclusão de posicionamento [ms]
+    * @return Código de erro
     */
     public int SetExAxisCmdDoneTime(double time)

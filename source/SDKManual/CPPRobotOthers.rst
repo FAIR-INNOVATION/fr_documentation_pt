@@ -1,51 +1,51 @@
-其他接口
-=================
+Outras Interfaces
+=====================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-获取SSH公钥
+Obter Chave Pública SSH
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取SSH公钥
-    * @param [out] keygen 公钥
-    * @return 错误码
+    * @brief Obtém a chave pública SSH
+    * @param [out] keygen Chave pública
+    * @return Código de erro
     */
     errno_t GetSSHKeygen(char keygen[1024]);
 
-下发SCP指令
+Enviar Comando SCP
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 下发SCP指令
-    * @param [in] mode 0-上传（上位机->控制器），1-下载（控制器->上位机）
-    * @param [in] sshname 上位机用户名
-    * @param [in] sship 上位机ip地址
-    * @param [in] usr_file_url 上位机文件路径
-    * @param [in] robot_file_url 机器人控制器文件路径
-    * @return 错误码
+    * @brief Envia comando SCP
+    * @param [in] mode 0-envio (computador host -> controlador), 1-download (controlador -> computador host)
+    * @param [in] sshname Nome de usuário do computador host
+    * @param [in] sship Endereço IP do computador host
+    * @param [in] usr_file_url Caminho do arquivo no computador host
+    * @param [in] robot_file_url Caminho do arquivo no controlador do robô
+    * @return Código de erro
     */
     errno_t SetSSHScpCmd(int mode, char sshname[32], char sship[32], char usr_file_url[128], char robot_file_url[128]);
 
-计算指定路径下文件的MD5值
-+++++++++++++++++++++++++++++++++++++++++++++
+Calcular o Valor MD5 de um Arquivo em um Caminho Especificado
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 计算指定路径下文件的MD5值
-    * @param [in] file_path 文件路径包含文件名，默认Traj文件夹路径为:"/fruser/traj/",如"/fruser/traj/trajHelix_aima_1.txt"
-    * @param [out] md5 文件MD5值
-    * @return 错误码
+    * @brief Calcula o valor MD5 de um arquivo em um caminho especificado
+    * @param [in] file_path Caminho do arquivo incluindo o nome do arquivo, o caminho padrão da pasta Traj é: "/fruser/traj/", ex: "/fruser/traj/trajHelix_aima_1.txt"
+    * @param [out] md5 Valor MD5 do arquivo
+    * @return Código de erro
     */
     errno_t ComputeFileMD5(char file_path[256], char md5[256]);
 
-机器人SSH、MD5指令代码示例
+Exemplo de Código de Comandos SSH e MD5 do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
@@ -85,37 +85,37 @@
       return 0;
     }
 
-设置机器人 20004 端口反馈周期
-++++++++++++++++++++++++++++++++++++++++++
+Definir Período de Feedback da Porta 20004 do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置机器人 20004 端口反馈周期
-    * @param [in] period 机器人 20004 端口反馈周期(ms)
-    * @return 错误码
+    * @brief Define o período de feedback da porta 20004 do robô
+    * @param [in] period Período de feedback da porta 20004 do robô (ms)
+    * @return Código de erro
     */
     errno_t SetRobotRealtimeStateSamplePeriod(int period);
 
-获取机器人 20004 端口反馈周期
-++++++++++++++++++++++++++++++++++++++++++
+Obter Período de Feedback da Porta 20004 do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取机器人 20004 端口反馈周期
-    * @param [out] period 机器人 20004 端口反馈周期(ms)
-    * @return 错误码
+    * @brief Obtém o período de feedback da porta 20004 do robô
+    * @param [out] period Período de feedback da porta 20004 do robô (ms)
+    * @return Código de erro
     */
     errno_t GetRobotRealtimeStateSamplePeriod(int& period);
 
-机器人20004端口状态反馈周期配置代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+Exemplo de Código de Configuração do Período de Feedback de Estado da Porta 20004 do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
@@ -140,39 +140,38 @@
       return 0;
     }
 
-
-机器人软件升级
+Atualização de Software do Robô
 ++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 机器人软件升级
-    * @param [in] filePath 软件升级包全路径
-    * @param [in] block 是否阻塞至升级完成 true:阻塞；false:非阻塞
-    * @return 错误码
+    * @brief Atualização de software do robô
+    * @param [in] filePath Caminho completo do pacote de atualização de software
+    * @param [in] block Se bloqueia até a conclusão da atualização true: bloqueante; false: não bloqueante
+    * @return Código de erro
     */
     errno_t SoftwareUpgrade(std::string filePath, bool block);
 
-获取机器人软件升级状态
-++++++++++++++++++++++++++++++++++++++++++
+Obter Estado da Atualização de Software do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取机器人软件升级状态
-    * @param [out] state 机器人软件包升级状态(0-空闲中或上传升级包中；1~100：升级完成百分比；-1:升级软件失败；-2：校验失败；-3：版本校验失败；-4：解压失败；-5：用户配置升级失败；-6：外设配置升级失败；-7：扩展轴配置升级失败；-8：机器人配置升级失败；-9：DH参数配置升级失败)
-    * @return 错误码
+    * @brief Obtém o estado da atualização de software do robô
+    * @param [out] state Estado da atualização do pacote de software do robô (0-ocioso ou enviando pacote de atualização; 1~100: porcentagem de conclusão da atualização; -1: falha na atualização do software; -2: falha na verificação; -3: falha na verificação da versão; -4: falha na descompactação; -5: falha na atualização da configuração do usuário; -6: falha na atualização da configuração do periférico; -7: falha na atualização da configuração do eixo estendido; -8: falha na atualização da configuração do robô; -9: falha na atualização da configuração dos parâmetros DH)
+    * @return Código de erro
     */
     errno_t GetSoftwareUpgradeState(int &state);
 
-机器人软件升级代码示例
-+++++++++++++++++++++++++++++++++++++++
-    
+Exemplo de Código de Atualização de Software do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
@@ -200,7 +199,7 @@
       return 0;
     }
 
-下载点位表数据库
+Download do Banco de Dados da Tabela de Pontos
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
@@ -209,14 +208,14 @@
     :linenos:
 
     /**
-    * @brief 下载点位表数据库
-    * @param [in] pointTableName 要下载的点位表名称    pointTable1.db
-    * @param [in] saveFilePath 下载点位表的存储路径   C://test/
-    * @return 错误码
+    * @brief Download do banco de dados da tabela de pontos
+    * @param [in] pointTableName Nome da tabela de pontos a ser baixada    pointTable1.db
+    * @param [in] saveFilePath Caminho de armazenamento para download da tabela de pontos   C://test/
+    * @return Código de erro
     */
     errno_t PointTableDownLoad(const std::string &pointTableName, const std::string &saveFilePath);
 
-上传点位表数据库
+Upload do Banco de Dados da Tabela de Pontos
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
@@ -225,13 +224,13 @@
     :linenos:
 
     /**
-    * @brief 上传点位表数据库
-    * @param [in] pointTableFilePath 上传点位表的全路径名   C://test/pointTable1.db
-    * @return 错误码
+    * @brief Upload do banco de dados da tabela de pontos
+    * @param [in] pointTableFilePath Caminho completo do arquivo da tabela de pontos para upload   C://test/pointTable1.db
+    * @return Código de erro
     */
     errno_t PointTableUpLoad(const std::string &pointTableFilePath);
 
-点位表更新lua文件
+Atualização do Arquivo Lua da Tabela de Pontos
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
@@ -240,16 +239,16 @@
     :linenos:
 
     /**
-    * @brief 点位表更新lua文件
-    * @param [in] pointTableName 要切换的点位表名称   "pointTable1.db",当点位表为空，即""时，表示将lua程序更新为未应用点位表的初始程序
-    * @param [in] luaFileName 要更新的lua文件名称   "testPointTable.lua"
-    * @param [out] errorStr 切换点位表错误信息
-    * @return 错误码
+    * @brief Atualização do arquivo Lua da tabela de pontos
+    * @param [in] pointTableName Nome da tabela de pontos a ser alternada   "pointTable1.db", quando a tabela de pontos estiver vazia, ou seja "", indica que o programa Lua será atualizado para o programa inicial sem aplicação da tabela de pontos
+    * @param [in] luaFileName Nome do arquivo Lua a ser atualizado   "testPointTable.lua"
+    * @param [out] errorStr Mensagem de erro da alternância da tabela de pontos
+    * @return Código de erro
     */
     errno_t PointTableUpdateLua(const std::string &pointTableName, const std::string &luaFileName);
 
-机器人点位表操作代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operação da Tabela de Pontos do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -281,7 +280,7 @@
       return 0;
     }
 
-控制器日志下载
+Download de Logs do Controlador
 +++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.2.1-3.8.1
 
@@ -289,13 +288,13 @@
     :linenos:
 
     /**
-    * @brief 控制器日志下载
-    * @param [in] savePath 保存文件路径"D://zDown/"
-    * @return 错误码
+    * @brief Download de logs do controlador
+    * @param [in] savePath Caminho para salvar o arquivo "D://zDown/"
+    * @return Código de erro
     */
     errno_t RbLogDownload(std::string savePath);
 
-所有数据源下载
+Download de Todas as Fontes de Dados
 +++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.2.1-3.8.1
 
@@ -303,13 +302,13 @@
     :linenos:
 
     /**
-    * @brief 所有数据源下载
-    * @param [in] savePath 保存文件路径"D://zDown/"
-    * @return 错误码
+    * @brief Download de todas as fontes de dados
+    * @param [in] savePath Caminho para salvar o arquivo "D://zDown/"
+    * @return Código de erro
     */
     errno_t AllDataSourceDownload(std::string savePath);
 
-数据备份包下载
+Download do Pacote de Backup de Dados
 +++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.2.1-3.8.1
 
@@ -317,13 +316,13 @@
     :linenos:
 
     /**
-    * @brief 数据备份包下载
-    * @param [in] savePath 保存文件路径"D://zDown/"
-    * @return 错误码
+    * @brief Download do pacote de backup de dados
+    * @param [in] savePath Caminho para salvar o arquivo "D://zDown/"
+    * @return Código de erro
     */
     errno_t DataPackageDownload(std::string savePath);
 
-下载控制器数据代码示例
+Exemplo de Código de Download de Dados do Controlador
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
@@ -351,63 +350,63 @@
       return 0;
     }
 
-设置关节固件升级
+Definir Atualização de Firmware das Juntas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置关节固件升级
-    * @param [in] type 升级文件类型；1-升级固件(使用前需要使机器人进入boot模式)；2-升级从站配置文件(使用前需要去使能机器人)
-    * @param [in] path 本地升级包全路径(D://zUP/XXXXX.bin)
-    * @return 错误码
+    * @brief Define a atualização de firmware das juntas
+    * @param [in] type Tipo de arquivo de atualização; 1-atualização de firmware (necessário colocar o robô em modo boot antes do uso); 2-atualização do arquivo de configuração do escravo (necessário desabilitar o robô antes do uso)
+    * @param [in] path Caminho completo do pacote de atualização local (D://zUP/XXXXX.bin)
+    * @return Código de erro
     */
     errno_t SetJointFirmwareUpgrade(int type, std::string path);
-  
-设置控制箱固件升级
+
+Definir Atualização de Firmware da Caixa de Controle
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置控制箱固件升级
-    * @param [in] type 升级文件类型；1-升级固件(使用前需要使机器人进入boot模式)；2-升级从站配置文件(使用前需要去使能机器人)
-    * @param [in] path 本地升级包全路径(D://zUP/XXXXX.bin)
-    * @return 错误码
+    * @brief Define a atualização de firmware da caixa de controle
+    * @param [in] type Tipo de arquivo de atualização; 1-atualização de firmware (necessário colocar o robô em modo boot antes do uso); 2-atualização do arquivo de configuração do escravo (necessário desabilitar o robô antes do uso)
+    * @param [in] path Caminho completo do pacote de atualização local (D://zUP/XXXXX.bin)
+    * @return Código de erro
     */
     errno_t SetCtrlFirmwareUpgrade(int type, std::string path);
-  
-设置末端固件升级
+
+Definir Atualização de Firmware da Extremidade
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置末端固件升级
-    * @param [in] type 升级文件类型；1-升级固件(使用前需要使机器人进入boot模式)；2-升级从站配置文件(使用前需要去使能机器人)
-    * @param [in] path 本地升级包全路径(D://zUP/XXXXX.bin)
-    * @return 错误码
+    * @brief Define a atualização de firmware da extremidade
+    * @param [in] type Tipo de arquivo de atualização; 1-atualização de firmware (necessário colocar o robô em modo boot antes do uso); 2-atualização do arquivo de configuração do escravo (necessário desabilitar o robô antes do uso)
+    * @param [in] path Caminho completo do pacote de atualização local (D://zUP/XXXXX.bin)
+    * @return Código de erro
     */
     errno_t SetEndFirmwareUpgrade(int type, std::string path);
 
-关节全参数配置文件升级
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Atualização do Arquivo de Configuração de Parâmetros Completos das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 关节全参数配置文件升级(使用前需要去使能机器人)
-    * @param [in] path 本地升级包全路径(D://zUP/XXXXX.bin)
-    * @return 错误码
+    * @brief Atualização do arquivo de configuração de parâmetros completos das juntas (necessário desabilitar o robô antes do uso)
+    * @param [in] path Caminho completo do pacote de atualização local (D://zUP/XXXXX.bin)
+    * @return Código de erro
     */
     errno_t JointAllParamUpgrade(std::string path);
-    
-机器人从站固件升级代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Exemplo de Código de Atualização de Firmware dos Escravos do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -443,79 +442,79 @@
     return 0;
     }
 
-机器人操作系统升级(LA控制箱)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Atualização do Sistema Operacional do Robô (Caixa de Controle LA)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v3.8.6
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 机器人操作系统升级(LA控制箱)
-    * @param [in] filePath 操作系统升级包全路径
-    * @return 错误码
+    * @brief Atualização do sistema operacional do robô (caixa de controle LA)
+    * @param [in] filePath Caminho completo do pacote de atualização do sistema operacional
+    * @return Código de erro
     */
     errno_t KernelUpgrade(std::string filePath);
-        
-获取机器人操作系统升级结果(LA控制箱)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Obter Resultado da Atualização do Sistema Operacional do Robô (Caixa de Controle LA)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v3.8.6
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取机器人操作系统升级结果(LA控制箱)
-    * @param [out] result 升级结果：0:成功；-1:失败
-    * @return 错误码
+    * @brief Obtém o resultado da atualização do sistema operacional do robô (caixa de controle LA)
+    * @param [out] result Resultado da atualização: 0: sucesso; -1: falha
+    * @return Código de erro
     */
     errno_t GetKernelUpgradeResult(int& result);
-        
-机器人MCU日志生成
+
+Geração de Logs MCU do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 机器人MCU日志生成
-    * @return 错误码
+    * @brief Geração de logs MCU do robô
+    * @return Código de erro
     */
     errno_t RobotMCULogCollect();
-        
-设置端口通讯断开时停止机器人运行
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
+Definir Parada da Operação do Robô Quando a Comunicação da Porta For Desconectada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置端口通讯断开时停止机器人运行
-    * @param [in] pordID 端口编号 0-8080；1-8083；2-20002；3-20004
-    * @param [in] enable 0-关闭；1-开启
-    * @param [in] confirmTime 通讯中断确认时长(ms)[0-5000]
-    * @return 错误码
+    * @brief Define a parada da operação do robô quando a comunicação da porta for desconectada
+    * @param [in] pordID Número da porta 0-8080; 1-8083; 2-20002; 3-20004
+    * @param [in] enable 0-desativar; 1-ativar
+    * @param [in] confirmTime Duração de confirmação da interrupção da comunicação (ms)[0-5000]
+    * @return Código de erro
     */
     errno_t SetRobotStopOnComDisc(int pordID, bool enable, int confirmTime);
-        
-获取端口通讯断开时停止机器人运行参数
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
+Obter Parâmetros de Parada da Operação do Robô Quando a Comunicação da Porta For Desconectada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 获取端口通讯断开时停止机器人运行参数
-    * @param [in] pordID 端口编号 0-8080；1-8083；2-20002；3-20004
-    * @param [out] enable 0-关闭；1-开启
-    * @param [out] confirmTime 通讯中断确认时长(ms)[0-5000]
-    * @return 错误码
+    * @brief Obtém os parâmetros de parada da operação do robô quando a comunicação da porta for desconectada
+    * @param [in] pordID Número da porta 0-8080; 1-8083; 2-20002; 3-20004
+    * @param [out] enable 0-desativar; 1-ativar
+    * @param [out] confirmTime Duração de confirmação da interrupção da comunicação (ms)[0-5000]
+    * @return Código de erro
     */
     errno_t GetRobotStopOnComDisc(int pordID, bool &enable, int &confirmTime);
 
-端口通讯断开时停止机器人运行参数代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+Exemplo de Código de Parâmetros de Parada da Operação do Robô Quando a Comunicação da Porta For Desconectada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
@@ -551,35 +550,35 @@
         return 0;
     }
 
-UDP发送指令帧
+Envio de Quadro de Comando via UDP
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief UDP发送指令帧
-    * @param [in] frame 发送数据帧字符串如：/f/bIII20III303III7IIIMode(0)III/b/f
-    * @return 错误码
+    * @brief Envio de quadro de comando via UDP
+    * @param [in] frame String do quadro de dados a ser enviado, ex: /f/bIII20III303III7IIIMode(0)III/b/f
+    * @return Código de erro
     */
     errno_t SendUDPFrame(std::string frame);
 
-设置SDK通过UDP发送指令的执行结果回调函数
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+Definir Função de Retorno de Chamada do Resultado da Execução do Comando Enviado pelo SDK via UDP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置SDK通过UDP发送指令的执行结果回调函数
-    * @param [in] CallBack 回调函数；comType-指令结果通讯回复类型0-TCP，1-UDP；count-指令回复帧计数；cmdID-指令编号；contentLen-数据长度；content-数据内容
-    * @return 错误码
+    * @brief Define a função de retorno de chamada do resultado da execução do comando enviado pelo SDK via UDP
+    * @param [in] CallBack Função de retorno de chamada; comType-Tipo de resposta de comunicação do resultado do comando 0-TCP, 1-UDP; count-Contagem do quadro de resposta do comando; cmdID-Número do comando; contentLen-Comprimento dos dados; content-Conteúdo dos dados
+    * @return Código de erro
     */
     errno_t SetCmdRpyCallback(void (*CallBack)(int comType, int count, int cmdID, int contentLen, std::string content));
 
-UDP指令下发代码示例
+Exemplo de Código de Envio de Comando via UDP
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
 .. code-block:: c++
     :linenos:
 
@@ -628,25 +627,25 @@ UDP指令下发代码示例
         robot.Sleep(1000);
         return 0;
     }
-    
-设置用户自定义机器人末端灯色
+
+Definir Cor da Luz da Extremidade do Robô Personalizada pelo Usuário
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief 设置用户自定义机器人末端灯色
-    * @param [in] r 末端红灯控制；0-灭；1-亮
-    * @param [in] g 末端绿灯控制；0-灭；1-亮
-    * @param [in] b 末端蓝灯控制；0-灭；1-亮
-    * @return 错误码
+    * @brief Define a cor da luz da extremidade do robô personalizada pelo usuário
+    * @param [in] r Controle da luz vermelha da extremidade; 0-apagada; 1-acesa
+    * @param [in] g Controle da luz verde da extremidade; 0-apagada; 1-acesa
+    * @param [in] b Controle da luz azul da extremidade; 0-apagada; 1-acesa
+    * @return Código de erro
     */
     errno_t SetUserLEDColor(bool r, bool g, bool b);
-        
-设置用户自定义机器人末端灯色代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
+Exemplo de Código para Definir Cor da Luz da Extremidade do Robô Personalizada pelo Usuário
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. code-block:: c++
     :linenos:
 

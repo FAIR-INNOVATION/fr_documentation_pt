@@ -1,78 +1,78 @@
-虚拟机-VMware
+Máquina Virtual - VMware
 ===============================================
 
-概述
+Visão Geral
 ------------------
-本手册旨在介绍如何使用 FAIRINO SimMachine 虚拟机。
+Este manual tem como objetivo apresentar como usar a máquina virtual FAIRINO SimMachine.
 
-操作说明
+Instruções de Operação
 ------------------------------------
 
-安装 VMware Workstation
+Instalar o VMware Workstation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-VMware Workstation 演示版本：17.6.3（已安装则跳过此步）。
+Versão de demonstração do VMware Workstation: 17.6.3 (pule esta etapa se já estiver instalado).
 
-在浏览器直接搜索VMware官网或直接点击网址 \ `<https://www.vmware.com>`__\ ，下载安装包后选择默认路径安装即可。
+Pesquise diretamente no navegador pelo site oficial da VMware ou acesse o link \ `<https://www.vmware.com>`__\ , baixe o pacote de instalação e instale-o no caminho padrão.
 
 .. image:: controller_virtual_machine/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-1 VMWare 界面
+.. centered:: Figura 6.2-1 Interface do VMware
 
-打开镜像
+Abrir a Imagem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 下载虚拟机镜像 FAIRINO_SimMachine.zip 并解压
+1. Baixe e descompacte a imagem da máquina virtual FAIRINO_SimMachine.zip
    
-2. 打开 VMware，点击 File->Open。如下图 2-2 所示：
+2. Abra o VMware, clique em File -> Open. Conforme mostrado na Figura 2-2 abaixo:
 
 .. image:: controller_virtual_machine/002.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-2 打开镜像
+.. centered:: Figura 6.2-2 Abrir a Imagem
 
-3. 找到解压后的文件夹，选择 vmx 后缀文件。如下图 2-3 所示：
+3. Localize a pasta descompactada e selecione o arquivo com a extensão .vmx. Conforme mostrado na Figura 2-3 abaixo:
    
 .. image:: controller_virtual_machine/003.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-3 选择文件
+.. centered:: Figura 6.2-3 Selecionar o Arquivo
 
-4. 点击“Power on this virtul machine”打开虚拟机。如下图 2-4 所示：
+4. Clique em “Power on this virtual machine” para iniciar a máquina virtual. Conforme mostrado na Figura 2-4 abaixo:
    
 .. image:: controller_virtual_machine/004.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-4 开启虚拟机
+.. centered:: Figura 6.2-4 Iniciar a Máquina Virtual
 
-5. 在解压文件夹中找到“fr_get_vm_net”双击打开，如下图 2-5 所示，输出内容为虚拟机 IP。如下图 2-6 所示。
+5. Na pasta descompactada, localize e clique duas vezes em “fr_get_vm_net”, conforme mostrado na Figura 2-5 abaixo. O conteúdo exibido será o IP da máquina virtual. Conforme mostrado na Figura 2-6 abaixo.
 
-.. note:: 如遇获取失败，请前往虚拟机中通过执行“ifconfig”命令获取。
+.. note:: Se a obtenção falhar, acesse a máquina virtual e execute o comando “ifconfig” para obter o IP.
       
 .. image:: controller_virtual_machine/005.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-5 fr_get_vm_net.bat
+.. centered:: Figura 6.2-5 fr_get_vm_net.bat
       
 .. image:: controller_virtual_machine/006.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 6.2-6 虚拟机 IP
+.. centered:: Figura 6.2-6 IP da Máquina Virtual
 
-Windows 访问 WebApp
+Acessar o WebApp pelo Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 在得到虚拟机 IP 后，在 Windows 浏览器中直接访问虚拟机 IP 即可进入WebApp，如输入：192.168.182.222，如图 2-7：
+1. Após obter o IP da máquina virtual, acesse diretamente esse IP em um navegador Windows para entrar no WebApp. Por exemplo, digite 192.168.182.222, conforme mostrado na Figura 2-7:
          
 .. image:: controller_virtual_machine/007.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 6.2-7 通过虚拟机 IP 访问 WebApp
+.. centered:: Figura 6.2-7 Acessar o WebApp pelo IP da Máquina Virtual

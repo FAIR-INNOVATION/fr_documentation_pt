@@ -1,9 +1,9 @@
-CNDE数据帧协议格式
-=========================
+Formato do Protocolo do Quadro de Dados CNDE
+===============================================
 
-协作机器人CNDE通讯协议如下，客户端向机器人发送数据及机器人向客户端反馈数据均需要遵循该协议；协议通过帧类型区分不同功能的数据帧，帧类型定义见表2-2；不同类型帧对应不用的数据内容，具体数据内容定义见表3-1 ~ 表3-7。
+O protocolo de comunicação CNDE do robô colaborativo é o seguinte. Tanto os dados enviados do cliente para o robô quanto os dados enviados do robô de volta para o cliente devem seguir este protocolo. O protocolo distingue diferentes tipos de quadros de dados através do tipo de quadro. A definição do tipo de quadro é mostrada na Tabela 2-2. Diferentes tipos de quadro correspondem a diferentes conteúdos de dados. As definições específicas do conteúdo dos dados são mostradas nas Tabelas 3-1 a 3-7.
 
-.. centered:: 表2-1 机器人CNDE数据帧格式
+.. centered:: Tabela 2-1 Formato do Quadro de Dados CNDE do Robô
 
 .. list-table::
    :widths: 20 20 20 20 20 20 20
@@ -11,15 +11,15 @@ CNDE数据帧协议格式
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **帧头**
-     - **帧计数**
-     - **帧类型**
-     - **数据长度**
-     - **内容**
-     - **帧尾**
+   * - **Nome**
+     - **Cabeçalho do Quadro**
+     - **Contador de Quadro**
+     - **Tipo de Quadro**
+     - **Comprimento dos Dados**
+     - **Conteúdo**
+     - **Final do Quadro**
    
-   * - **长度(byte)**
+   * - **Comprimento (byte)**
      - 2
      - 1
      - 1
@@ -27,15 +27,15 @@ CNDE数据帧协议格式
      - --
      - 2
    
-   * - **内容**
+   * - **Conteúdo**
      - 0x5A5A
      - 0 ~ 255
      - 0 ~ 8
-     - “数据内容”的字节个数
-     - 数据帧内容
+     - Número de bytes do "Conteúdo dos Dados"
+     - Conteúdo do quadro de dados
      - 0xA5A5
 
-.. centered:: 表2-2 机器人CNDE数据帧类型
+.. centered:: Tabela 2-2 Tipos de Quadro de Dados CNDE do Robô
 
 .. list-table::
    :widths: 40 20 40
@@ -43,42 +43,42 @@ CNDE数据帧协议格式
    :align: center
    :class: sheet-center
 
-   * - **类型**
-     - **数值**
-     - **数据帧方向**
+   * - **Tipo**
+     - **Valor**
+     - **Direção do Quadro de Dados**
 
-   * - 输入配置帧（控制配置）
+   * - Quadro de Configuração de Entrada (Configuração de Controle)
      - 0x00
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - 输出配置帧（状态配置）
+   * - Quadro de Configuração de Saída (Configuração de Estado)
      - 0x01
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - CNDE输出启动
+   * - Início da Saída CNDE
      - 0x02
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - CNDE输出停止
+   * - Parada da Saída CNDE
      - 0x03
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - 输出数据帧（状态数据）
+   * - Quadro de Dados de Saída (Dados de Estado)
      - 0x04
-     - Robot->Client
+     - Robô -> Cliente
 
-   * - 输入数据帧（控制数据）
+   * - Quadro de Dados de Entrada (Dados de Controle)
      - 0x05
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - 字符提示消息
+   * - Mensagem de Texto
      - 0x06
-     - Client->Robot, Robot->Client
+     - Cliente -> Robô, Robô -> Cliente
 
-   * - 设置机器人CNDE协议版本号
+   * - Definir Número da Versão do Protocolo CNDE do Robô
      - 0x07
-     - Client->Robot
+     - Cliente -> Robô
 
-   * - 获取机器人软固件版本
+   * - Obter Versão de Software e Firmware do Robô
      - 0x08
-     - Client->Robot, Robot->Client
+     - Cliente -> Robô, Robô -> Cliente

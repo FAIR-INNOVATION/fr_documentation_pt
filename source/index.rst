@@ -1,11 +1,13 @@
-欢迎访问法奥文档！
+Bem-vindo à Documentação FAIRINO!
 =========================================
 
 .. figure:: _static/product_matrix.png
     :align: center
     :figclass: align-center
 
-语言切换
+Alternar Idioma
+
+    \ `简体中文 <https://fairino-doc-zhs.readthedocs.io/latest/>`__\
 
     \ `繁體中文 <https://fairino-doc-zht.readthedocs.io/latest/>`__\
 
@@ -19,7 +21,7 @@
 
 .. toctree::
    :maxdepth: 6
-   :caption: 用户手册
+   :caption: Manual do Usuário
 
    CobotsManual/intro
    SDKManual/index
@@ -30,13 +32,12 @@
 
 .. toctree:: 
    :maxdepth: 6
-   :caption: 开放平台
+   :caption: Plataforma Aberta
 
    ROSGuide/index
 
 .. toctree:: 
    :maxdepth: 6
-   :caption: 资料下载
+   :caption: Downloads
 
    download
-

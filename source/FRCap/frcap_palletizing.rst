@@ -1,43 +1,43 @@
-码垛FRCap
-===========
+FRCap de Paletização
+=================================
 
-插件包管理
--------------
+Gerenciamento de Pacotes de Plugins
+-------------------------------------------------
 
-在协作机器人WebApp中“系统设置”->“插件配置”页面，点击“导入”按钮，选择码垛FRCap插件包（名称格式：插件包名称+版本号.plugin，示例：码垛机Palletizer-v0.0.0.plugin）上传。上传成功后列表展示导入成功的码垛FRCap插件包，包括插件启停状态、名称、版本号、描述和作者等。操作栏中可以对码垛FRCap插件包进行“停用”、“启用”和“删除”。
+Na página "Configurações do Sistema" -> "Configuração de Plugins" do WebApp do robô colaborativo, clique no botão "Importar", selecione o pacote do plugin FRCap de paletização (formato do nome: nome_do_pacote_do_plugin + versão.plugin, exemplo: Palletizer-v0.0.0.plugin) e faça o upload. Após o upload bem-sucedido, a lista exibirá o pacote do plugin FRCap de paletização importado com sucesso, incluindo o status de ativação/desativação do plugin, nome, versão, descrição e autor. Na coluna de operações, você pode "Desativar", "Ativar" e "Excluir" o pacote do plugin FRCap de paletização.
 
 .. image:: frcap_pictures/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-1-1 WebApp插件配置界面
+.. centered:: Figura 10-1-1 Interface de Configuração de Plugins do WebApp
 
-第一次成功导入码垛FRCap插件包后，插件包状态为“已停用”，点击“启用”按钮，启用成功后，协作机器人WebApp的“辅助应用”模块增加码垛FRCap插件包开始页面（例如：码垛机Palletizer-v0.0.0.plugin对应的页面模块名称为“码垛机Palletizer”）。点击“开始”按钮进入首页，查看当前已配置的码垛配方，根据需求进行使用。
+Após a primeira importação bem-sucedida do pacote do plugin FRCap de paletização, o status do pacote será "Desativado". Clique no botão "Ativar". Após a ativação bem-sucedida, o módulo "Aplicações Auxiliares" do WebApp do robô colaborativo adicionará a página inicial do pacote do plugin FRCap de paletização (por exemplo: o nome do módulo da página correspondente ao Palletizer-v0.0.0.plugin é "Palletizer"). Clique no botão "Iniciar" para entrar na página inicial, visualizar as receitas de paletização atualmente configuradas e usá-las conforme a necessidade.
 
 .. note:: 
-   如果配方为空，请先新增/导入配方。
+   Se a lista de receitas estiver vazia, adicione/importe uma receita primeiro.
 
 .. image:: frcap_pictures/014.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-1-2 WebApp + 码垛FRCap展示图
+.. centered:: Figura 10-1-2 Exibição do WebApp + FRCap de Paletização
 
 .. image:: frcap_pictures/015.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-1-3 码垛FRCap首页
+.. centered:: Figura 10-1-3 Página Inicial do FRCap de Paletização
 
-配方管理
-------------
-每个配方分为配方名称、配方操作和配方编辑三大区域。操作区按钮依次为：重命名、导出、复制和删除。
+Gerenciamento de Receitas
+------------------------------------
+Cada receita é dividida em três áreas principais: nome da receita, operações da receita e edição da receita. Os botões na área de operações são, respectivamente: Renomear, Exportar, Copiar e Excluir.
 
 .. image:: frcap_pictures/016.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-2-1 配方区域划分
+.. centered:: Figura 10-2-1 Divisão da Área da Receita
 
 .. note:: 
    .. image:: frcap_pictures/045.png
@@ -45,8 +45,8 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**导出配方**
-   | 作用：导出当前配方的数据
+   | Nome: **Exportar Receita**
+   | Função: Exportar os dados da receita atual
 
 .. note:: 
    .. image:: frcap_pictures/046.png
@@ -54,8 +54,8 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**复制配方**
-   | 作用：复制当前配方的数据
+   | Nome: **Copiar Receita**
+   | Função: Copiar os dados da receita atual
 
 .. note:: 
    .. image:: frcap_pictures/047.png
@@ -63,28 +63,28 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**删除配方**
-   | 作用：删除当前配方
+   | Nome: **Excluir Receita**
+   | Função: Excluir a receita atual
 
-获取
+Obter
 ~~~~~~~
-进入码垛插件包首页后，获取当前所有配方。当配方数大于四时，展示配方区域出现滚动条，用户可上下滚动查看配方。
+Após entrar na página inicial do plugin de paletização, obtenha todas as receitas atuais. Quando o número de receitas for maior que quatro, uma barra de rolagem aparecerá na área de exibição das receitas, permitindo que o usuário role para cima e para baixo para visualizá-las.
 
 .. note:: 
-   所有配方名称以“palletizing”开头，例如“palletizing_test1”。
+   Todos os nomes de receitas começam com "palletizing", por exemplo, "palletizing_test1".
 
 .. image:: frcap_pictures/017.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-2-2 配方获取
+.. centered:: Figura 10-2-2 Obtenção de Receitas
 
-新增
-~~~~~~
-在任意配方的操作区，点击“新增”按钮，进入“新增配方”弹窗，输入码垛配方名称，点击“确认”按钮。新增成功后，配方展示区域增加新增的码垛配方。
+Adicionar
+~~~~~~~~~~~~~
+Na área de operações de qualquer receita, clique no botão "Adicionar" para abrir a janela pop-up "Adicionar Receita". Insira o nome da receita de paletização e clique no botão "Confirmar". Após a adição bem-sucedida, a receita de paletização adicionada aparecerá na área de exibição das receitas.
 
 .. note:: 
-   所有配方名称以“palletizing”开头，无需输入“palletizing”，只需要输入“_”以后的名称。例如“palletizing_add”，输入“add”即可。
+   Todos os nomes de receitas começam com "palletizing". Não é necessário digitar "palletizing", apenas digite o nome após o "_". Por exemplo, para "palletizing_add", digite apenas "add".
 
 .. image:: frcap_pictures/018.png
    :width: 6in
@@ -94,47 +94,47 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-3 配方新增
+.. centered:: Figura 10-2-3 Adição de Receita
 
-重命名
+Renomear
 ~~~~~~~~~~
-在任意配方的操作区，击配方名称展示输入框，进入“码垛配方重命名”弹窗，输入码垛配方名称，点击“确认”按钮。重命名成功后，配方展示区域原码垛配方名称被重命名。
+Na área de operações de qualquer receita, clique na área de exibição do nome da receita para abrir a janela pop-up "Renomear Receita de Paletização". Insira o novo nome da receita e clique no botão "Confirmar". Após a renomeação bem-sucedida, o nome da receita original na área de exibição será alterado.
 
 .. note::
-   所有配方名称以“palletizing”开头，无需输入“palletizing”，模态窗自动带出“_”以后的名称。例如“palletizing_rename”，自动带出“rename”。
+   Todos os nomes de receitas começam com "palletizing". Não é necessário digitar "palletizing", a janela modal exibirá automaticamente o nome após o "_". Por exemplo, para "palletizing_rename", a janela exibirá automaticamente "rename".
 
 .. image:: frcap_pictures/020.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-4 配方重命名
+.. centered:: Figura 10-2-4 Renomeação de Receita
 
-导出
-~~~~~~~
-在任意配方的操作区，点击“导出”图标，即可下载当前配方的所有数据。
+Exportar
+~~~~~~~~~~~~~~
+Na área de operações de qualquer receita, clique no ícone "Exportar" para baixar todos os dados da receita atual.
 
 .. image:: frcap_pictures/021.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-5 配方导出
+.. centered:: Figura 10-2-5 Exportação de Receita
 
-复制
+Copiar
 ~~~~~~~~~
-在任意配方的操作区，点击“复制”图标，进入“码垛配方复制”弹窗，输入码垛配方名称，点击“确认”按钮。复制成功后，配方展示区域增加复制的码垛配方。
+Na área de operações de qualquer receita, clique no ícone "Copiar" para abrir a janela pop-up "Copiar Receita de Paletização". Insira o nome da receita e clique no botão "Confirmar". Após a cópia bem-sucedida, a receita copiada aparecerá na área de exibição.
 
 .. note:: 
-   所有配方名称以“palletizing”开头，无需输入“palletizing”，模态窗自动带出“_”以后的名称。例如“palletizing_copy”，自动带出“copy”。
+   Todos os nomes de receitas começam com "palletizing". Não é necessário digitar "palletizing", a janela modal exibirá automaticamente o nome após o "_". Por exemplo, para "palletizing_copy", a janela exibirá automaticamente "copy".
 
 .. image:: frcap_pictures/022.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-6 配方复制
+.. centered:: Figura 10-2-6 Cópia de Receita
 
-删除
+Excluir
 ~~~~~~~~~
-在任意配方的操作区，点击“删除”图标，即可删除当前配方。
+Na área de operações de qualquer receita, clique no ícone "Excluir" para remover a receita atual.
 
 .. image:: frcap_pictures/023.png
    :width: 6in
@@ -144,108 +144,108 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-7 配方删除
+.. centered:: Figura 10-2-7 Exclusão de Receita
 
-编辑
+Editar
 ~~~~~~~~
-任意配方，点击“编辑”按钮，进入当前配方的配置界面。
+Para qualquer receita, clique no botão "Editar" para entrar na interface de configuração da receita atual.
 
 .. image:: frcap_pictures/025.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-8 码垛配方编辑
+.. centered:: Figura 10-2-8 Edição da Receita de Paletização
 
-导入
+Importar
 ~~~~~~~~
-点击“导入”按钮，选择码垛配方压缩包并上传，导入成功后码垛配方增加导入的配方。
+Clique no botão "Importar", selecione o pacote compactado da receita de paletização e faça o upload. Após a importação bem-sucedida, a receita importada será adicionada à lista de receitas.
 
 .. note:: 
-   所有配方压缩包名称以“palletizing”开头，以“.tar.gz”结尾，例如“palletizing_import.tar.gz”。
+   Todos os nomes dos pacotes compactados de receitas começam com "palletizing" e terminam com ".tar.gz", por exemplo, "palletizing_import.tar.gz".
 
 .. image:: frcap_pictures/026.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-9 配方导入
+.. centered:: Figura 10-2-9 Importação de Receita
 
 .. important:: 
-   码垛配方的“新增”、“重命名”和“复制”，输入已经存在的配方名称提示“已有同名配方”。
+   Ao "Adicionar", "Renomear" ou "Copiar" uma receita de paletização, se o nome inserido já existir, uma mensagem "Já existe uma receita com o mesmo nome" será exibida.
 
 .. image:: frcap_pictures/027.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-2-10 配方同名提示
+.. centered:: Figura 10-2-10 Mensagem de Nome de Receita Duplicado
 
-配方配置
-------------
-任意配方的配置界面，显示箱子、托盘、模式和高级配置的基础信息，在对应配置栏中进行具体参数配置。
+Configuração da Receita
+------------------------------------
+A interface de configuração de qualquer receita exibe as informações básicas da caixa, palete, padrão e configurações avançadas. Configure os parâmetros específicos nas seções correspondentes.
 
 .. image:: frcap_pictures/028.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-1 码垛配方编辑界面
+.. centered:: Figura 10-3-1 Interface de Edição da Receita de Paletização
 
-工作站设置
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração da Estação de Trabalho
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-在配方编辑中，可选择是否使用码垛工作站。使用码垛工作站则对应码垛功能使用工作站PLC中I/O信号完成；若选择无码垛工作站，则默认使用控制箱上I/O信号完成码垛功能。
+Na edição da receita, é possível selecionar se deseja usar uma estação de trabalho de paletização. Se uma estação de trabalho de paletização for usada, a função de paletização correspondente usará os sinais I/O do CLP da estação. Se "Nenhuma Estação de Paletização" for selecionado, a função de paletização usará os sinais I/O do painel de controle por padrão.
 
 .. image:: frcap_pictures/076.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-1-1 配方编辑页面
+.. centered:: Figura 10-3-1-1 Página de Edição da Receita
 
-码垛功能I/O接线配置
+Configuração da Conexão I/O para Função de Paletização
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-（1）在选择使用码垛工作站后，点击扩展I/O配置，可根据对应功能及与PLC的I/O接口实际接线，自定义选择码垛功能的I/O信号配置，如下图为码垛工作站默认接线配置。
+(1) Após selecionar o uso da estação de trabalho de paletização, clique em "Configuração de I/O de Extensão". Com base nas funções correspondentes e na conexão real com a interface I/O do CLP, personalize a configuração dos sinais I/O para a função de paletização. A figura abaixo mostra a configuração de conexão padrão da estação de trabalho de paletização.
 
 .. image:: frcap_pictures/077.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-1-2 码垛工作站默认接线配置
+.. centered:: Figura 10-3-1-2 Configuração de Conexão Padrão da Estação de Trabalho de Paletização
 
-（2）若选择不使用码垛工作站，则默认使用控制箱I/O信号，根据对应功能及与控制箱I/O接口的实际接线，自定义选择码垛功能的I/O信号配置，如下图为无码垛工作站（使用控制箱I/O）默认接线配置。
+(2) Se a opção "Não usar estação de trabalho de paletização" for selecionada, os sinais I/O do painel de controle serão usados por padrão. Com base nas funções correspondentes e na conexão real com a interface I/O do painel de controle, personalize a configuração dos sinais I/O para a função de paletização. A figura abaixo mostra a configuração de conexão padrão para a opção "Sem estação de trabalho de paletização (usando I/O do painel de controle)".
 
 .. image:: frcap_pictures/078.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-1-3 无码垛工作站（控制箱I/O）默认接线配置
+.. centered:: Figura 10-3-1-3 Configuração de Conexão Padrão para Sem Estação de Paletização (I/O do Painel de Controle)
 
-码垛功能I/O通讯测试
+Teste de Comunicação I/O para Função de Paletização
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-（1）选择使用码垛工作站时，配置完成工作站码垛工作站扩展I/O信号后，可点击“测试”，对所接线的I/O功能进行测试验证；
- 
+(1) Ao selecionar o uso da estação de trabalho de paletização, após configurar os sinais I/O de extensão da estação, clique em "Teste" para verificar a fiação das funções I/O.
+
 .. image:: frcap_pictures/079.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-1-4 码垛工作站I/O接线测试
+.. centered:: Figura 10-3-1-4 Teste de Conexão I/O da Estação de Trabalho de Paletização
 
-（2）选择无码垛工作站时，配置完成码垛功能对应的控制箱I/O信号后，可点击“测试”，对所接线的I/O功能进行测试验证；
- 
+(2) Ao selecionar "Nenhuma estação de trabalho de paletização", após configurar os sinais I/O do painel de controle correspondentes à função de paletização, clique em "Teste" para verificar a fiação das funções I/O.
+
 .. image:: frcap_pictures/080.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-1-5 无码垛工作站（控制箱I/O）接线测试
+.. centered:: Figura 10-3-1-5 Teste de Conexão para Sem Estação de Paletização (I/O do Painel de Controle)
 
-箱子配置
-~~~~~~~~~~~
+Configuração da Caixa
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-箱子操作
-++++++++++
+Operações com Caixas
+++++++++++++++++++++++++++++++++
 
-箱子可以配置多个不同类型的箱子。
+Vários tipos diferentes de caixas podem ser configurados.
 
-点击“新增”按钮，新增成功后，按当前顺序新增一个箱子。
+Clique no botão "Adicionar". Após a adição bem-sucedida, uma nova caixa será adicionada na ordem atual.
 
 .. image:: frcap_pictures/048.png
    :width: 6in
@@ -255,17 +255,17 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-2 新增箱子
+.. centered:: Figura 10-3-2 Adicionar Caixa
 
-点击箱子名称展示的输入框区域，弹出“箱子重命名”模态窗，输入名称后，点击“确认”按钮确认重命名。
+Clique na área de exibição do nome da caixa para abrir a janela pop-up "Renomear Caixa". Insira o nome e clique no botão "Confirmar" para confirmar a renomeação.
 
 .. image:: frcap_pictures/050.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-3 重命名箱子
+.. centered:: Figura 10-3-3 Renomear Caixa
 
-点击“复制”图标，复制成功后，根据当前箱子名称复制一个箱子。
+Clique no ícone "Copiar". Após a cópia bem-sucedida, uma nova caixa será criada com base no nome da caixa atual.
 
 .. image:: frcap_pictures/051.png
    :width: 6in
@@ -275,12 +275,12 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-4 复制箱子
+.. centered:: Figura 10-3-4 Copiar Caixa
 
-点击“删除”图标，即可删除箱子数据。
+Clique no ícone "Excluir" para remover os dados da caixa.
 
 .. note:: 
-   请勿删除已经在模式配置中配置的箱子。
+   Não exclua caixas que já foram configuradas na configuração do padrão.
 
 .. image:: frcap_pictures/053.png
    :width: 6in
@@ -290,24 +290,24 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-5 删除箱子
+.. centered:: Figura 10-3-5 Excluir Caixa
 
-任意箱子，点击“编辑”按钮，进入配置箱子参数界面。配置成功后，箱子配置状态图表为绿色；配置未完成时，箱子配置状态图标为黄色。
+Para qualquer caixa, clique no botão "Editar" para entrar na interface de configuração dos parâmetros da caixa. Após a configuração bem-sucedida, o ícone de status da configuração da caixa ficará verde; se a configuração estiver incompleta, o ícone ficará amarelo.
 
 .. image:: frcap_pictures/055.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-6 箱子参数配置完成
+.. centered:: Figura 10-3-6 Configuração dos Parâmetros da Caixa Concluída
 
 .. image:: frcap_pictures/056.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-7 箱子参数配置未完成
+.. centered:: Figura 10-3-7 Configuração dos Parâmetros da Caixa Incompleta
 
-箱子参数
-++++++++++
+Parâmetros da Caixa
+++++++++++++++++++++++++++++++++
 
 .. note:: 
    .. image:: frcap_pictures/057.png
@@ -315,8 +315,8 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**上一个箱子**
-   | 作用：切换选择上一个箱子，当选择为第一个箱子时，再次切换选择为最后一个箱子。
+   | Nome: **Caixa Anterior**
+   | Função: Alternar para a caixa anterior. Quando a primeira caixa estiver selecionada, alternar novamente selecionará a última caixa.
 
 .. note:: 
    .. image:: frcap_pictures/058.png
@@ -324,64 +324,64 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**下一个箱子**
-   | 作用：切换选择下一个箱子，当选择为最后一个箱子时，再次切换选择为第一个箱子。
+   | Nome: **Próxima Caixa**
+   | Função: Alternar para a próxima caixa. Quando a última caixa estiver selecionada, alternar novamente selecionará a primeira caixa.
 
-在箱子配置栏中点击“编辑”进入“箱子配置”弹窗，设置箱子的“长”、“宽”、“高”、“负载”和“工件标签朝向，点击“确认”按钮完成箱子信息配置；设置箱子的抓取点（保持抓取点在箱子的中心，吸盘底部与箱子接触时呈现挤压状态），点击“记录”按钮完成设置。
+Na seção de configuração da caixa, clique em "Editar" para abrir a janela pop-up "Configuração da Caixa". Defina o "Comprimento", "Largura", "Altura", "Carga" e "Orientação da Etiqueta da Peça" da caixa e clique no botão "Confirmar" para concluir a configuração das informações da caixa. Defina o ponto de agarramento da caixa (mantenha o ponto de agarramento no centro da caixa; a base da ventosa deve ficar ligeiramente comprimida ao entrar em contato com a caixa) e clique no botão "Registrar" para concluir a configuração.
 
 .. image:: frcap_pictures/029.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-8 箱子配置
+.. centered:: Figura 10-3-8 Configuração da Caixa
 
 .. image:: frcap_pictures/030.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-9 箱子抓取点
+.. centered:: Figura 10-3-9 Ponto de Agarramento da Caixa
 
-.. important:: 必须记录箱子抓取点，否则无法配置箱子的长、宽和高。
+.. important:: O ponto de agarramento da caixa deve ser registrado; caso contrário, o comprimento, a largura e a altura da caixa não poderão ser configurados.
 
-托盘配置
-+++++++++++
-在托盘配置栏中点击“配置”进入“托盘配置”弹窗，设置托盘“前边”、“侧边”和“高度”，接着设置工位过渡点，点击“确认配置”完成托盘信息设置。
+Configuração do Palete
++++++++++++++++++++++++++++++++++
+Na seção de configuração do palete, clique em "Configurar" para abrir a janela pop-up "Configuração do Palete". Defina a "Frente", a "Lateral" e a "Altura" do palete. Em seguida, defina os pontos de transição da estação de trabalho e clique em "Confirmar Configuração" para concluir a configuração das informações do palete.
 
 .. image:: frcap_pictures/031.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-10 托盘配置
+.. centered:: Figura 10-3-10 Configuração do Palete
 
 .. image:: frcap_pictures/032.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-11 左工位过渡点
+.. centered:: Figura 10-3-11 Ponto de Transição da Estação Esquerda
 
 .. image:: frcap_pictures/033.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-12 右工位过渡点
+.. centered:: Figura 10-3-12 Ponto de Transição da Estação Direita
 
-.. important:: 必须记录工位过渡点，否则无法生成的程序无法保存。
+.. important:: Os pontos de transição da estação de trabalho devem ser registrados; caso contrário, o programa gerado não poderá ser salvo.
 
-模式配置
-~~~~~~~~~~
+Configuração do Padrão
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-模式操作
-++++++++++
+Operações com Padrões
+++++++++++++++++++++++++++++++
 
-在模式配置中选择箱子时，可以选择相同高度不同长宽的箱子。在模式展示区域分为：模式添加（配置码垛垛型）和码垛层数配置。
+Na configuração do padrão, ao selecionar uma caixa, você pode selecionar caixas com a mesma altura, mas comprimento e largura diferentes. A área de exibição do padrão é dividida em: Adição de Padrão (configuração do padrão de empilhamento) e Configuração do Número de Camadas do Empilhamento.
 
 .. image:: frcap_pictures/059.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-13 模式展示区域
+.. centered:: Figura 10-3-13 Área de Exibição do Padrão
 
-点击“新增”按钮，新增成功后，按当前顺序新增一种模式。
+Clique no botão "Adicionar". Após a adição bem-sucedida, um novo padrão será adicionado na ordem atual.
 
 .. image:: frcap_pictures/060.png
    :width: 6in
@@ -391,17 +391,17 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-14 新增模式
+.. centered:: Figura 10-3-14 Adicionar Padrão
 
-在模式添加区域的任意模式，点击模式名称展示的输入框区域，弹出“模式重命名”模态窗，输入名称后，点击“确认”按钮确认重命名。
+Para qualquer padrão na área de adição de padrões, clique na área de exibição do nome do padrão para abrir a janela pop-up "Renomear Padrão". Insira o nome e clique no botão "Confirmar" para confirmar a renomeação.
 
 .. image:: frcap_pictures/062.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-15 重命名模式
+.. centered:: Figura 10-3-15 Renomear Padrão
 
-在模式添加区域的任意模式，点击“复制”图标，复制成功后，根据当前模式名称复制一种模式。
+Para qualquer padrão na área de adição de padrões, clique no ícone "Copiar". Após a cópia bem-sucedida, um novo padrão será criado com base no nome do padrão atual.
 
 .. image:: frcap_pictures/063.png
    :width: 6in
@@ -411,9 +411,9 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-16 复制模式
+.. centered:: Figura 10-3-16 Copiar Padrão
 
-在模式添加区域的任意模式，点击“删除”图标，即可删除当前模式数据。
+Para qualquer padrão na área de adição de padrões, clique no ícone "Excluir" para remover os dados do padrão atual.
 
 .. image:: frcap_pictures/065.png
    :width: 6in
@@ -423,32 +423,32 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-17 删除模式
+.. centered:: Figura 10-3-17 Excluir Padrão
 
-在模式添加区域的任意模式，点击“编辑”按钮，进入“模式配置”模态窗，配置当前模式的码垛垛型。配置成功后，箱子配置状态图表为绿色；配置未完成时，箱子配置状态图标为黄色。
+Para qualquer padrão na área de adição de padrões, clique no botão "Editar" para abrir a janela pop-up "Configuração do Padrão" e configurar o padrão de empilhamento para o padrão atual. Após a configuração bem-sucedida, o ícone de status da configuração da caixa ficará verde; se a configuração estiver incompleta, o ícone ficará amarelo.
 
 .. image:: frcap_pictures/067.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-18 模式参数配置完成
+.. centered:: Figura 10-3-18 Configuração dos Parâmetros do Padrão Concluída
 
 .. image:: frcap_pictures/068.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-19 模式参数配置未完成
+.. centered:: Figura 10-3-19 Configuração dos Parâmetros do Padrão Incompleta
 
-在码垛层数配置区域，展示码垛层数和排序。点击“编辑”按钮，进入“垛型序列配置”模态窗，输入“码垛层数”，选择每一层的模式，点击“确认”按钮完成配置。
+Na área de configuração do número de camadas do empilhamento, exiba o número de camadas e a ordenação. Clique no botão "Editar" para abrir a janela pop-up "Configuração da Sequência de Padrões". Insira o "Número de Camadas do Empilhamento", selecione o padrão para cada camada e clique no botão "Confirmar" para concluir a configuração.
 
 .. image:: frcap_pictures/069.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-20 码垛层数配置
+.. centered:: Figura 10-3-20 Configuração do Número de Camadas do Empilhamento
 
-模式参数
-++++++++++
+Parâmetros do Padrão
+++++++++++++++++++++++++++++++
 
 .. note:: 
    .. image:: frcap_pictures/057.png
@@ -456,8 +456,8 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**上一种模式**
-   | 作用：切换选择上一种模式，当选择为第一种模式时，再次切换选择为最后一种模式。
+   | Nome: **Padrão Anterior**
+   | Função: Alternar para o padrão anterior. Quando o primeiro padrão estiver selecionado, alternar novamente selecionará o último padrão.
 
 .. note:: 
    .. image:: frcap_pictures/058.png
@@ -465,44 +465,44 @@
       :height: 0.5in
       :align: left
 
-   | 名称：**下一种模式**
-   | 作用：切换选择下一种模式，当选择为最后一种模式时，再次切换选择为第一种模式。
+   | Nome: **Próximo Padrão**
+   | Função: Alternar para o próximo padrão. Quando o último padrão estiver selecionado, alternar novamente selecionará o primeiro padrão.
 
-在模式配置栏中点击“配置”进入“模式配置”弹窗。主要分为模式选择、箱子操作和垛型模拟四个区域。
+Na seção de configuração do padrão, clique em "Configurar" para abrir a janela pop-up "Configuração do Padrão". Ela é dividida principalmente em quatro áreas: Seleção do Padrão, Operações com Caixas e Simulação do Padrão.
 
 .. image:: frcap_pictures/040.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-21 模式配置
+.. centered:: Figura 10-3-21 Configuração do Padrão
 
 .. important:: 
-   添加箱子时，箱子之间有碰撞时工件背景颜色变红，此时以上操作无法进行。如需操作，请调整箱子为无碰撞。
+   Ao adicionar caixas, se houver colisão entre elas, o fundo da peça ficará vermelho e as operações acima não poderão ser realizadas. Para prosseguir, ajuste as caixas para que não haja colisão.
 
-弹窗头部选择模式，在箱子操作区域选择箱子添加该模式下的箱子，可选择一键添加，默认无箱子间隔铺满居中托盘。自定义设置箱子间隔，可以单个添加也可以批量添加，点击“确认”完成模式信息设置。当选择的箱子高度不一致时，无法完成配置，并提示“箱子类型高度不一致，不可被添加在同一模式”。
+No cabeçalho da janela pop-up, selecione o padrão. Na área de operações com caixas, selecione a caixa a ser adicionada ao padrão. Você pode adicionar caixas com um clique (padrão: sem espaçamento entre caixas, centralizado no palete). Personalize o espaçamento entre as caixas. As caixas podem ser adicionadas individualmente ou em lote. Clique em "Confirmar" para concluir a configuração das informações do padrão. Quando as alturas das caixas selecionadas forem diferentes, a configuração não poderá ser concluída e uma mensagem "As alturas dos tipos de caixa são diferentes e não podem ser adicionadas ao mesmo padrão" será exibida.
 
 .. image:: frcap_pictures/070.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-22 选择的箱子高度不一致的提示
+.. centered:: Figura 10-3-22 Mensagem de Alturas de Caixa Diferentes
 
-选择参考模式（无法选中已选择的模式），对比查看当前模式配置情况是否能在该参考模式的基础上码垛，方便客户直观的查看不同模式下的箱子垛型。
+Selecione um padrão de referência (não é possível selecionar o padrão já escolhido) para comparar e verificar se a configuração do padrão atual pode ser empilhada com base nesse padrão de referência, facilitando a visualização do padrão de empilhamento sob diferentes configurações.
 
 .. important:: 
-   码垛方向：以右托盘为例，右下角为最远处，从右下角竖向或者横向摆放一排工件，再向上一排横向或竖向摆放工件，以此类推（Web页面已标注码垛方向，请注意查看）。左托盘依据右托盘模式镜像放置工件。
+   Direção do Empilhamento: Tomando o palete direito como exemplo, o canto inferior direito é o ponto mais distante. Disponha uma fileira de peças vertical ou horizontalmente a partir do canto inferior direito e, em seguida, disponha a próxima fileira horizontal ou verticalmente, e assim por diante (a direção do empilhamento está marcada na página web; preste atenção para visualizá-la). O palete esquerdo posiciona as peças como uma imagem espelhada do padrão do palete direito.
 
-高级配置
-~~~~~~~~~~~
-在高级配置栏中点击“配置”进入“高级配置”弹窗。配置项如下：
+Configurações Avançadas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Na seção de configurações avançadas, clique em "Configurar" para abrir a janela pop-up "Configurações Avançadas". Os itens de configuração são os seguintes:
 
 .. image:: frcap_pictures/041.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-23 高级配置
+.. centered:: Figura 10-3-23 Configurações Avançadas
 
-1) 码垛设备尺寸：码垛工作台的尺寸。
+1) Dimensões do Equipamento de Paletização: Dimensões da mesa de trabalho de paletização.
 
 .. image:: frcap_pictures/074.png
    :width: 6in
@@ -512,141 +512,141 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-24 码垛工作台
+.. centered:: Figura 10-3-24 Mesa de Trabalho de Paletização
 
 .. important::
-   X、Y、Z为左托盘右上角或者右托盘左上角点相对于机器人基坐标系坐标值的绝对值，Angle为机器人安装时的旋转角度，推荐安装时为0。
+   X, Y, Z são os valores absolutos do ponto do canto superior direito do palete esquerdo ou do canto superior esquerdo do palete direito em relação ao sistema de coordenadas base do robô. Angle é o ângulo de rotação durante a instalação do robô. Recomenda-se que seja 0.
 
-2) 取料抬升高度：用户自定义取料成功后，从抓取点取料成功后抬升的高度。
+2) Altura de Elevação da Coleta: Altura personalizada definida pelo usuário para elevar a peça após uma coleta bem-sucedida no ponto de agarramento.
 
-3) 取料等待时间：用户自定义监控吸料后负压到位信号的等待时间，未到位时重复吸取动作。
+3) Tempo de Espera da Coleta: Tempo de espera personalizado definido pelo usuário para monitorar o sinal de vácuo no local após a sucção. Se o sinal não for recebido, a ação de sucção será repetida.
 
-4) 第一/二次偏移距离：用户自定义配置机器人倾斜堆放至目标点的偏移距离。
-
-.. note::
-   第一次偏移参数Z必须大于箱子高度，否则在堆放过程中会与已经放置的箱子发生碰撞。
-
-5) 隔板配置：设置隔板尺寸“长”、“宽”和“高”以及选择隔板的启停。
+4) Primeira/Segunda Distância de Deslocamento: Distância de deslocamento personalizada definida pelo usuário para que o robô coloque a peça inclinada no ponto alvo.
 
 .. note::
-   当开启隔板功能后，配方管理展示高级配置的内容显示隔板配置的基本参数。
+   O parâmetro Z do primeiro deslocamento deve ser maior que a altura da caixa; caso contrário, haverá colisão com as caixas já colocadas durante o empilhamento.
+
+5) Configuração da Placa Separadora: Defina as dimensões da placa separadora ("Comprimento", "Largura" e "Altura") e selecione a ativação/desativação da placa separadora.
+
+.. note::
+   Quando a função de placa separadora é ativada, o conteúdo das configurações avançadas exibido no gerenciamento de receitas mostrará os parâmetros básicos da placa separadora.
 
 .. image:: frcap_pictures/034.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-25 隔板配置
+.. centered:: Figura 10-3-25 Configuração da Placa Separadora
 
 .. image:: frcap_pictures/071.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-26 配方管理——高级配置显示隔板配置
+.. centered:: Figura 10-3-26 Gerenciamento de Receitas — Exibição da Placa Separadora nas Configurações Avançadas
 
-接着设置隔板过渡点，隔板过渡点为三个，设置目的是抓取隔板后大致规划一个运动路径，避免发生碰撞而无法完成放置隔板的动作。
+Em seguida, defina os pontos de transição da placa separadora. Existem três pontos de transição. O objetivo é planejar aproximadamente um caminho de movimento após agarrar a placa separadora para evitar colisões que possam impedir a ação de colocação.
 
-.. note:: 过渡点1从箱子抓取点开始运动一段距离后示教；过渡点2从过渡点1开始运动一段距离开始示教，也可以成为过渡中间点；过渡点3从过渡点2开始运动一段距离，为隔板放置前的最后一个点位。
+.. note:: O ponto de transição 1 é ensinado após o robô se mover uma certa distância a partir do ponto de agarramento da caixa. O ponto de transição 2 é ensinado após o robô se mover uma certa distância a partir do ponto de transição 1 (pode ser um ponto intermediário). O ponto de transição 3 é ensinado após o robô se mover uma certa distância a partir do ponto de transição 2, sendo o último ponto antes da colocação da placa separadora.
 
 .. image:: frcap_pictures/035.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-27 隔板过渡点1（以右工位为例）
+.. centered:: Figura 10-3-27 Ponto de Transição 1 da Placa Separadora (exemplo com estação direita)
 
 .. image:: frcap_pictures/036.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-28 隔板过渡点2（以右工位为例）
+.. centered:: Figura 10-3-28 Ponto de Transição 2 da Placa Separadora (exemplo com estação direita)
 
 .. image:: frcap_pictures/037.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-29 隔板过渡点3（以右工位为例）
+.. centered:: Figura 10-3-29 Ponto de Transição 3 da Placa Separadora (exemplo com estação direita)
 
-接着设置抓取点（保持抓取点在隔板的中心，吸盘底部与隔板接触时呈现挤压状态）和放置点，点击“确认”完成隔板信息设置。
+Em seguida, defina o ponto de agarramento (mantenha o ponto de agarramento no centro da placa separadora; a base da ventosa deve ficar ligeiramente comprimida ao entrar em contato com a placa) e o ponto de colocação. Clique em "Confirmar" para concluir a configuração das informações da placa separadora.
 
 .. image:: frcap_pictures/038.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-30 隔板抓取点（以右工位为例）
+.. centered:: Figura 10-3-30 Ponto de Agarramento da Placa Separadora (exemplo com estação direita)
 
 .. image:: frcap_pictures/039.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 10-3-31 隔板放置点（以右工位为例）
+.. centered:: Figura 10-3-31 Ponto de Colocação da Placa Separadora (exemplo com estação direita)
 
-6) 升降轴：用户自定义配置升降轴启停、通讯参数（IP地址、端口号和通讯周期）、开始升降的层号以及选择升降轴的启停。
+6) Eixo de Elevação: O usuário personaliza a ativação/desativação do eixo de elevação, os parâmetros de comunicação (endereço IP, número da porta e período de comunicação), o número da camada para iniciar a elevação e a ativação/desativação do eixo de elevação.
 
 .. note::
-   - 升降轴工作时每次抬升的高度为箱子的高度。
-   - 当开启升降轴功能后，首页展示高级配置的内容显示升降轴测试的按钮，点击“测试”按钮可以进入“升降轴测试”弹窗，对升降轴进行加载通讯、上升和下降的准确性测试，避免直接使用出现无法工作和误差较大的问题。
+   - Quando o eixo de elevação está funcionando, a altura elevada a cada vez é a altura da caixa.
+   - Quando a função do eixo de elevação é ativada, o conteúdo das configurações avançadas exibido na página inicial mostrará um botão "Teste do Eixo de Elevação". Clique no botão "Teste" para abrir a janela pop-up "Teste do Eixo de Elevação" e testar a precisão do carregamento da comunicação, subida e descida do eixo de elevação, evitando problemas de funcionamento ou erros significativos quando usado diretamente.
 
 .. image:: frcap_pictures/042.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-32 升降轴配置
+.. centered:: Figura 10-3-32 Configuração do Eixo de Elevação
 
 .. image:: frcap_pictures/072.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 10-3-33 配方管理——高级配置显示升降轴
+.. centered:: Figura 10-3-33 Gerenciamento de Receitas — Exibição do Eixo de Elevação nas Configurações Avançadas
 
 .. image:: frcap_pictures/073.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-3-34 升降轴测试
+.. centered:: Figura 10-3-34 Teste do Eixo de Elevação
 
-程序生成
-------------
-在配方展示下方查看“程序生成”，根据配方及需求选择配方。当左右工位都选择配方时，需要选择启动优先级；当只选择左工位或右工位配方时，无需选择启动优先级。输入程序名称后，点击“生成”按钮。
+Geração do Programa
+----------------------------
+Visualize a "Geração do Programa" na parte inferior da exibição das receitas. Selecione a receita com base na receita e nas necessidades. Quando as receitas são selecionadas para ambas as estações esquerda e direita, a prioridade de inicialização precisa ser escolhida. Quando apenas a receita da estação esquerda ou direita é selecionada, a prioridade de inicialização não precisa ser escolhida. Após inserir o nome do programa, clique no botão "Gerar".
 
-.. note:: 所有程序名称以“palletizing”开头，无需输入“palletizing”，只需要输入“_”以后的名称。例如“palletizing_program”，输入“program”即可。
+.. note:: Todos os nomes de programa começam com "palletizing". Não é necessário digitar "palletizing", apenas digite o nome após o "_". Por exemplo, para "palletizing_program", digite apenas "program".
 
 .. image:: frcap_pictures/043.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-4-1 程序生成——左右工位同时选择配方
+.. centered:: Figura 10-4-1 Geração do Programa — Receitas selecionadas para ambas as estações esquerda e direita
 
 .. image:: frcap_pictures/081.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-4-2 程序生成——左工位选择配方，右工位不选择配方
+.. centered:: Figura 10-4-2 Geração do Programa — Receita selecionada para a estação esquerda, nenhuma receita para a estação direita
 
 .. important:: 
-    1. 如果左工位或右工位未选择码垛配方，则代表该工位不启用。
-    2. 生成程序成功后，务必在程序示教中将所有子程序和主程序手动保存。
-    3. 拆垛程序以“de”开头，例如码垛程序为“palletizing_program”，拆垛程序则为“depalletizing_program”。
-    4. 当运行左右工位都配置配方的程序时，同时接收到左右工件到位信号后，根据设置的优先级进行工作。
+    1. Se nenhuma receita de paletização for selecionada para a estação esquerda ou direita, isso significa que a estação não está ativada.
+    2. Após a geração bem-sucedida do programa, certifique-se de salvar manualmente todos os subprogramas e o programa principal no ensino de programa.
+    3. Os programas de desempilhamento começam com "de". Por exemplo, se o programa de empilhamento for "palletizing_program", o programa de desempilhamento será "depalletizing_program".
+    4. Ao executar um programa com receitas configuradas para ambas as estações, após receber simultaneamente os sinais de peça no local das estações esquerda e direita, o trabalho será realizado de acordo com a prioridade definida.
 
-单取料点程序
+Programa com Ponto Único de Coleta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-单取料点程序有两种以下情况：
+Existem duas situações para o programa com ponto único de coleta:
 
-(1) 左右工位选择相同的配方；
-(2) 左工位和右工位选择不同配方，但是配方中配置的箱子抓取点位姿相同。
+(1) A mesma receita é selecionada para as estações esquerda e direita.
+(2) Receitas diferentes são selecionadas para as estações esquerda e direita, mas a pose do ponto de agarramento da caixa configurada nas receitas é a mesma.
 
 .. image:: frcap_pictures/082.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-4-3 单取料点箱子抓取点
+.. centered:: Figura 10-4-3 Ponto de Agarramento da Caixa para Ponto Único de Coleta
 
-双取料点程序
+Programa com Pontos Duplos de Coleta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-双取料点程序配置，需要左工位和右工位选择不同配方，且配方中配置的箱子抓取点位姿不同。
+A configuração do programa com pontos duplos de coleta requer que receitas diferentes sejam selecionadas para as estações esquerda e direita, e que as poses dos pontos de agarramento da caixa configuradas nas receitas sejam diferentes.
 
 .. image:: frcap_pictures/083.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 10-4-4 双取料点箱子抓取点
+.. centered:: Figura 10-4-4 Pontos de Agarramento da Caixa para Pontos Duplos de Coleta

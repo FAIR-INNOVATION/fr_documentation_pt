@@ -1,119 +1,119 @@
-机器人常用设置
-=================
+Configurações Comuns do Robô
+=====================================
 
 .. toctree:: 
     :maxdepth: 5
 
-设置工具参考点-六点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta - Método dos Seis Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置工具参考点-六点法 
-    * @param [in] point_num 点编号,范围[1~6] 
-    * @return 错误码 
+    * @brief Definir ponto de referência da ferramenta - método dos seis pontos
+    * @param [in] point_num Número do ponto, intervalo [1~6]
+    * @return Código de erro
     */ 
     int SetToolPoint(int point_num); 
 
-计算工具坐标系--六点法
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta - Método dos Seis Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 计算工具坐标系
-    * @param [out] tcp_pose 工具坐标系
-    * @return 错误码 
+    * @brief Calcular sistema de coordenadas da ferramenta
+    * @param [out] tcp_pose Sistema de coordenadas da ferramenta
+    * @return Código de erro
     */ 
     int ComputeTool(ref DescPose tcp_pose); 
 
-设置工具参考点-四点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta - Método dos Quatro Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置工具参考点-四点法 
-    * @param [in] point_num 点编号,范围[1~4] 
-    * @return 错误码 
+    * @brief Definir ponto de referência da ferramenta - método dos quatro pontos
+    * @param [in] point_num Número do ponto, intervalo [1~4]
+    * @return Código de erro
     */ 
     int SetTcp4RefPoint(int point_num);
 
-计算工具坐标系-四点法
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta - Método dos Quatro Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 计算工具坐标系
-    * @param [out] tcp_pose 工具坐标系
-    * @return 错误码 
+    * @brief Calcular sistema de coordenadas da ferramenta
+    * @param [out] tcp_pose Sistema de coordenadas da ferramenta
+    * @return Código de erro
     */ 
     int ComputeTcp4(ref DescPose tcp_pose);
 
-设置工具坐标系
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Ferramenta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置工具坐标系
-    * @param  [in] id 坐标系编号，范围[0~14]
-    * @param  [in] coord  工具中心点相对于末端法兰中心位姿
-    * @param  [in] type  0-工具坐标系，1-传感器坐标系
-    * @param  [in] install 安装位置，0-机器人末端，1-机器人外部
-    * param   [in] toolID 工具ID
-    * @param  [in] loadNum 负载编号
-    * @return  错误码
+    * @brief  Definir sistema de coordenadas da ferramenta
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] coord  Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param  [in] type  0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas do sensor
+    * @param  [in] install Posição de instalação, 0-extremidade do robô, 1-externo ao robô
+    * param   [in] toolID ID da ferramenta
+    * @param  [in] loadNum Número da carga
+    * @return  Código de erro
     */
     int SetToolCoord(int id, DescPose coord, int type, int install,int toolID, int loadNum);
 
-根据点位信息计算工具坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta com Base em Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 根据点位信息计算工具坐标系
-    * @param [in] method 计算方法；0-四点法；1-六点法
-    * @param [in] pos 关节位置组，四点法时数组长度为4个，六点法时数组长度为6个
-    * @return 错误码
+    * @brief Calcular sistema de coordenadas da ferramenta com base em pontos
+    * @param [in] method Método de cálculo; 0-método dos quatro pontos; 1-método dos seis pontos
+    * @param [in] pos Grupo de posições de junta, comprimento do array é 4 para o método dos quatro pontos e 6 para o método dos seis pontos
+    * @return Código de erro
     */
 
     int ComputeToolCoordWithPoints(int method, JointPos[] pos, ref DescPose coordRtn)  
 
-设置工具坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Ferramenta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置工具坐标系列表
-    * @param  [in] id 坐标系编号，范围[0~14]
-    * @param  [in] coord  工具中心点相对于末端法兰中心位姿
-    * @param  [in] type  0-工具坐标系，1-传感器坐标系
-    * @param  [in] install 安装位置，0-机器人末端，1-机器人外部
-    * @param  [in] loadNum 负载编号
-    * @return  错误码
+    * @brief  Definir lista de sistemas de coordenadas da ferramenta
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] coord  Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param  [in] type  0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas do sensor
+    * @param  [in] install Posição de instalação, 0-extremidade do robô, 1-externo ao robô
+    * @param  [in] loadNum Número da carga
+    * @return  Código de erro
     */
     int SetToolList(int id, DescPose coord, int type, int install, int loadNum);  
 
-获取当前工具坐标系
-++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas da Ferramenta Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前工具坐标系
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] desc_pos 工具坐标系位姿
-    * @return  错误码
+    * @brief  Obter sistema de coordenadas da ferramenta atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose do sistema de coordenadas da ferramenta
+    * @return  Código de erro
     */
     int GetTCPOffset(byte flag, ref DescPose desc_pos); 
 
-机器人工具坐标系操作代码示例
-++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operações do Sistema de Coordenadas da Ferramenta do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -179,74 +179,74 @@
         Console.WriteLine($"GetTCPOffset    {rtn}  coord is {coordRtn.tran.x} {coordRtn.tran.y} {coordRtn.tran.z} {coordRtn.rpy.rx} {coordRtn.rpy.ry} {coordRtn.rpy.rz}");
     }
 
-设置外部工具坐标参考点-三点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência da Ferramenta Externa - Método dos Três Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置外部工具参考点-三点法 
-    * @param [in] point_num 点编号,范围[1~3] 
-    * @return 错误码 
+    * @brief Definir ponto de referência da ferramenta externa - método dos três pontos
+    * @param [in] point_num Número do ponto, intervalo [1~3]
+    * @return Código de erro
     */ 
     int SetExTCPPoint(int point_num); 
 
-计算外部工具坐标系-三点法
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Ferramenta Externa - Método dos Três Pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
     
     /** 
-    * @brief 计算外部工具坐标系-三点法
-    * @param [out] tcp_pose 外部工具坐标系
-    * @return 错误码 
+    * @brief Calcular sistema de coordenadas da ferramenta externa - método dos três pontos
+    * @param [out] tcp_pose Sistema de coordenadas da ferramenta externa
+    * @return Código de erro
     */ 
     int ComputeExTCF(ref DescPose tcp_pose); 
 
-设置外部工具坐标系
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Ferramenta Externa
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置外部工具坐标系 
-    * @param [in] id 坐标系编号，范围[0~14] 
-    * @param [in] etcp 工具中心点相对末端法兰中心位姿 
-    * @param [in] etool 待定 
-    * @return 错误码 
+    * @brief Definir sistema de coordenadas da ferramenta externa
+    * @param [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param [in] etcp Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param [in] etool A definir
+    * @return Código de erro
     */
     int SetExToolCoord(int id, DescPose etcp, DescPose etool); 
 
-设置外部工具坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置外部工具坐标系列表
-    * @param  [in] id 坐标系编号，范围[0~14] 
-    * @param  [in] etcp  工具中心点相对末端法兰中心位姿
-    * @param  [in] etool  待定
-    * @return  错误码
+    * @brief  Definir lista de sistemas de coordenadas da ferramenta externa
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param  [in] etool  A definir
+    * @return  Código de erro
     */
     int SetExToolList(int id, DescPose etcp, DescPose etool); 
 
-根据点位信息计算工件坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Peça com Base em Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 根据点位信息计算工件坐标系
-    * @param [in] method 计算方法；0：原点-x轴-z轴  1：原点-x轴-xy平面
-    * @param [in] pos 三个TCP位置组
-    * @param [in] refFrame 参考坐标系
-    * @return 错误码
+    * @brief Calcular sistema de coordenadas da peça com base em pontos
+    * @param [in] method Método de cálculo; 0: origem-eixo X-eixo Z  1: origem-eixo X-plano XY
+    * @param [in] pos Três posições TCP
+    * @param [in] refFrame Sistema de coordenadas de referência
+    * @return Código de erro
     */
     int ComputeWObjCoordWithPoints(int method, DescPose[] pos, int refFrame, ref DescPose coordRtn)
 
-机器人外部工具坐标系操作代码示例
-++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operações do Sistema de Coordenadas da Ferramenta Externa do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -280,75 +280,75 @@
         robot.SetExToolList(1,  coordRtn,  offdese);
     }
 
-设置工件坐标系参考点-三点法
-++++++++++++++++++++++++++++++++++
+Definir Ponto de Referência do Sistema de Coordenadas da Peça - Método dos Três Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 设置工件参考点-三点法 
-    * @param [in] point_num 点编号,范围[1~3]  
-    * @return 错误码 
+    * @brief Definir ponto de referência da peça - método dos três pontos
+    * @param [in] point_num Número do ponto, intervalo [1~3]  
+    * @return Código de erro
     */ 
     int SetWObjCoordPoint(int point_num); 
 
-计算工件坐标系
-++++++++++++++++++++++++++++++++++
+Calcular Sistema de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  计算工件坐标系
-    * @param [in] method 计算方法 0：原点-x轴-z轴  1：原点-x轴-xy平面
-    * @param [in] refFrame 参考坐标系
-    * @param [out] wobj_pose 工件坐标系
-    * @return 错误码
+    * @brief  Calcular sistema de coordenadas da peça
+    * @param [in] method Método de cálculo 0: origem-eixo X-eixo Z  1: origem-eixo X-plano XY
+    * @param [in] refFrame Sistema de coordenadas de referência
+    * @param [out] wobj_pose Sistema de coordenadas da peça
+    * @return Código de erro
     */
     int ComputeWObjCoord(int method, int refFrame, ref DescPose wobj_pose); 
 
-设置工件坐标系
-++++++++++++++++++++++++++++++++++
+Definir Sistema de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置工件坐标系
-    * @param  [in] id 坐标系编号，范围[1~15]
-    * @param  [in] coord  工件坐标系相对于末端法兰中心位姿
-    * @param  [in] refFrame 参考坐标系
-    * @return  错误码
+    * @brief  Definir sistema de coordenadas da peça
+    * @param  [in] id Número do sistema de coordenadas, intervalo [1~15]
+    * @param  [in] coord  Pose do sistema de coordenadas da peça em relação ao centro da flange da extremidade
+    * @param  [in] refFrame Sistema de coordenadas de referência
+    * @return  Código de erro
     */
     int SetWObjCoord(int id, DescPose coord, int refFrame);
 
-设置工件坐标系列表
-++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置工件坐标系列表
-    * @param  [in] id 坐标系编号，范围[0~14] 
-    * @param  [in] coord  工件坐标系相对于末端法兰中心位姿
-    * @param  [in] refFrame 参考坐标系
-    * @return  错误码
+    * @brief  Definir lista de sistemas de coordenadas da peça
+    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param  [in] coord  Pose do sistema de coordenadas da peça em relação ao centro da flange da extremidade
+    * @param  [in] refFrame Sistema de coordenadas de referência
+    * @return  Código de erro
     */    
     int SetWObjList(int id, DescPose coord, int refFrame);
 
-获取当前工件坐标系
-++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas da Peça Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前工件坐标系
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] desc_pos 工件坐标系位姿
-    * @return  错误码
+    * @brief  Obter sistema de coordenadas da peça atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose do sistema de coordenadas da peça
+    * @return  Código de erro
     */   
     int GetWObjOffset(byte flag, ref DescPose desc_pos); 
 
-机器人工件坐标系操作代码示例
-++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operações do Sistema de Coordenadas da Peça do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -392,159 +392,159 @@
         Console.WriteLine($"GetWObjOffset                   {rtn}  coord is {coordRtn.tran.x} {coordRtn.tran.y} {coordRtn.tran.z} {coordRtn.rpy.rx} {coordRtn.rpy.ry} {coordRtn.rpy.rz}");   
     } 
 
-设置全局速度
-++++++++++++++++++++++++++++++++++
+Definir Velocidade Global
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置全局速度
-    * @param  [in]  vel  速度百分比，范围[0~100]
-    * @return  错误码
+    * @brief  Definir velocidade global
+    * @param  [in]  vel  Percentual de velocidade, intervalo [0~100]
+    * @return  Código de erro
     */
     int SetSpeed(int vel); 
 
-设置机器人加速度
+Definir Aceleração do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置机器人加速度
-    * @param [in] acc 机器人加速度百分比
-    * @return 错误码
+    * @brief Definir aceleração do robô
+    * @param [in] acc Percentual de aceleração do robô
+    * @return Código de erro
     */
     int SetOaccScale(double acc)
 
-获取机器人默认速度
-++++++++++++++++++++++++++++++++++++
+Obter Velocidade Padrão do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取机器人默认速度
-    * @param  [out]  vel  速度，单位mm/s
-    * @return  错误码
+    * @brief  Obter velocidade padrão do robô
+    * @param  [out]  vel  Velocidade, unidade mm/s
+    * @return  Código de erro
     */   
     int GetDefaultTransVel(ref double vel); 
 
-设置末端负载重量
-++++++++++++++++++++++++++++++++++
+Definir Peso da Carga na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置末端负载重量
-    * @param  [in] loadNum 负载编号
-    * @param  [in] weight  负载重量，单位kg
-    * @return  错误码
+    * @brief  Definir peso da carga na extremidade
+    * @param  [in] loadNum Número da carga
+    * @param  [in] weight  Peso da carga, unidade kg
+    * @return  Código de erro
     */
     int SetLoadWeight(int loadNum, float weight)
 
-设置末端负载质心坐标
-+++++++++++++++++++++++++++++++
+Definir Coordenadas do Centro de Massa da Carga na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置末端负载质心坐标
-    * @param  [in] coord 质心坐标，单位mm
-    * @return  错误码
+    * @brief  Definir coordenadas do centro de massa da carga na extremidade
+    * @param  [in] coord Coordenadas do centro de massa, unidade mm
+    * @return  Código de erro
     */
     int SetLoadCoord(DescTran coord); 
 
-获取当前负载的重量
-++++++++++++++++++++++++++++++++++++
+Obter Peso da Carga Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前负载的重量
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] weight 负载重量，单位kg
-    * @return  错误码
+    * @brief  Obter peso da carga atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] weight Peso da carga, unidade kg
+    * @return  Código de erro
     */
     int GetTargetPayload(byte flag, ref double weight); 
 
-获取当前负载的质心
-++++++++++++++++++++++++++++++++++++
+Obter Centro de Massa da Carga Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前负载的质心
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] cog 负载质心，单位mm
-    * @return  错误码
+    * @brief  Obter centro de massa da carga atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] cog Centro de massa da carga, unidade mm
+    * @return  Código de erro
     */   
     int GetTargetPayloadCog(byte flag, ref DescTran cog);
 
-设置机器人安装方式
-+++++++++++++++++++++++++++++++
+Definir Método de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置机器人安装方式
-    * @param  [in] install  安装方式，0-正装，1-侧装，2-倒装
-    * @return  错误码
+    * @brief  Definir método de instalação do robô
+    * @param  [in] install  Método de instalação, 0-montagem padrão (chão), 1-montagem na parede, 2-montagem invertida (teto)
+    * @return  Código de erro
     */
     int SetRobotInstallPos(byte install); 
 
-设置机器人安装角度
-+++++++++++++++++++++++++++++++
+Definir Ângulo de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置机器人安装角度，自由安装
-    * @param  [in] yangle  倾斜角
-    * @param  [in] zangle  旋转角
-    * @return  错误码
+    * @brief  Definir ângulo de instalação do robô (instalação livre)
+    * @param  [in] yangle  Ângulo de inclinação
+    * @param  [in] zangle  Ângulo de rotação
+    * @return  Código de erro
     */
     int SetRobotInstallAngle(double yangle, double zangle); 
 
-获取机器人安装角度
-+++++++++++++++++++++++++++++++++
+Obter Ângulo de Instalação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取机器人安装角度
-    * @param  [out] yangle 倾斜角
-    * @param  [out] zangle 旋转角
-    * @return  错误码
+    * @brief  Obter ângulo de instalação do robô
+    * @param  [out] yangle Ângulo de inclinação
+    * @param  [out] zangle Ângulo de rotação
+    * @return  Código de erro
     */
     int GetRobotInstallAngle(ref double yangle, ref double zangle); 
 
-设置系统变量值
-++++++++++++++++++++++++++++++++++
+Definir Valor de Variável do Sistema
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置系统变量值
-    * @param  [in]  id  变量编号，范围[1~20]
-    * @param  [in]  value 变量值
-    * @return  错误码
+    * @brief  Definir valor de variável do sistema
+    * @param  [in]  id  Número da variável, intervalo [1~20]
+    * @param  [in]  value Valor da variável
+    * @return  Código de erro
     */
     int SetSysVarValue(int id, double value); 
 
-获取系统变量值
-+++++++++++++++++++++++++++++++++
+Obter Valor de Variável do Sistema
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取系统变量值
-    * @param  [in] id 系统变量编号，范围[1~20]
-    * @param  [out] value  系统变量值
-    * @return  错误码
+    * @brief  Obter valor de variável do sistema
+    * @param  [in] id Número da variável do sistema, intervalo [1~20]
+    * @param  [out] value  Valor da variável do sistema
+    * @return  Código de erro
     */
     int GetSysVarValue(int id, ref double value); 
 
-机器人常用设置代码示例
-++++++++++++++++++++++++++++++
+Exemplo de Código de Configurações Comuns do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -601,68 +601,68 @@
         Console.WriteLine($"GetRobotInstallAngle x:  {anglex};  y:  {angley}");
     }
 
-关节摩擦力补偿开关
-++++++++++++++++++++++++++++++++
+Interruptor de Compensação de Atrito das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 关节摩擦力补偿开关 
-    * @param [in] state 0-关，1-开 
-    * @return 错误码 
+    * @brief Interruptor de compensação de atrito das juntas
+    * @param [in] state 0-desligado, 1-ligado
+    * @return Código de erro
     */ 
     int FrictionCompensationOnOff(byte state); 
 
-设置关节摩擦力补偿系数-正装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Padrão (Chão)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-正装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Definir coeficiente de compensação de atrito das juntas - montagem padrão (chão)
+    * @param  [in]  coeff Coeficientes de compensação para as seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     int SetFrictionValue_level(double[] coeff);
 
-设置关节摩擦力补偿系数-侧装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem na Parede
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-侧装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Definir coeficiente de compensação de atrito das juntas - montagem na parede
+    * @param  [in]  coeff Coeficientes de compensação para as seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     int SetFrictionValue_wall(double[] coeff); 
 
-设置关节摩擦力补偿系数-倒装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Invertida (Teto)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-倒装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Definir coeficiente de compensação de atrito das juntas - montagem invertida (teto)
+    * @param  [in]  coeff Coeficientes de compensação para as seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     int SetFrictionValue_ceiling(double[] coeff);
 
-设置关节摩擦力补偿系数-自由安装
-++++++++++++++++++++++++++++++++
+Definir Coeficiente de Compensação de Atrito das Juntas - Instalação Livre
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  设置关节摩擦力补偿系数-自由安装
-    * @param  [in]  coeff 六个关节补偿系数，范围[0~1]
-    * @return  错误码
+    * @brief  Definir coeficiente de compensação de atrito das juntas - instalação livre
+    * @param  [in]  coeff Coeficientes de compensação para as seis juntas, intervalo [0~1]
+    * @return  Código de erro
     */
     int SetFrictionValue_freedom(double[] coeff);
-       
-机器人设置关节摩擦力补偿代码示例
-++++++++++++++++++++++++++++++++++
+
+Exemplo de Código de Configuração de Compensação de Atrito das Juntas do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -689,32 +689,32 @@
         Console.WriteLine($"SetFrictionValue_freedom rtn is {rtn}");
     }
 
-查询机器人错误码
-++++++++++++++++++++++++++++++++++++
+Consultar Código de Erro do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 查询机器人错误码 
-    * @param [out] maincode   主错误码
-    * @param [out] subcode    子错误码
-    * @return 错误码 
+    * @brief Consultar código de erro do robô
+    * @param [out] maincode   Código de erro principal
+    * @param [out] subcode    Código de erro secundário
+    * @return Código de erro
     */ 
     int GetRobotErrorCode(ref int maincode, ref int subcode);
 
-错误状态清除
-++++++++++++++++++++++++++++++++
+Limpar Estado de Erro
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  错误状态清除
-    * @return  错误码
+    * @brief  Limpar estado de erro
+    * @return  Código de erro
     */
     int ResetAllError(); 
 
-机器人故障状态获取及清除错误代码示例
-++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Obtenção de Estado de Falha e Limpeza de Erro do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -732,40 +732,40 @@
         Console.WriteLine($"robot maincode is{maincode};  subcode is{subcode}");
     }
 
-设置宽电压控制箱温度及风扇转速监控参数
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Parâmetros de Monitoramento de Temperatura e Velocidade do Ventilador para Painel de Controle de Tensão Ampla
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.4  Web-3.8.3
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置宽电压控制箱温度及风扇转速监控参数
-    * @param [in] enable 0-不使能监测；1-使能监测
-    * @param [in] period 监测周期(s),范围1-100
-    * @return 错误码
+    * @brief Definir parâmetros de monitoramento de temperatura e velocidade do ventilador para painel de controle de tensão ampla
+    * @param [in] enable 0-desabilitar monitoramento; 1-habilitar monitoramento
+    * @param [in] period Período de monitoramento (s), intervalo 1-100
+    * @return Código de erro
     */
     int SetWideBoxTempFanMonitorParam(int enable, int period);
 
-获取宽电压控制箱温度及风扇转速监控参数
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Parâmetros de Monitoramento de Temperatura e Velocidade do Ventilador para Painel de Controle de Tensão Ampla
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.4  Web-3.8.3
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取宽电压控制箱温度及风扇转速监控参数
-    * @param [out] enable 0-不使能监测；1-使能监测
-    * @param [out] period 监测周期(s),范围1-100
-    * @return 错误码
+    * @brief Obter parâmetros de monitoramento de temperatura e velocidade do ventilador para painel de controle de tensão ampla
+    * @param [out] enable 0-desabilitar monitoramento; 1-habilitar monitoramento
+    * @param [out] period Período de monitoramento (s), intervalo 1-100
+    * @return Código de erro
     */
     int GetWideBoxTempFanMonitorParam(ref int enable, ref int period);
 
-代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.4  Web-3.8.3
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -797,70 +797,70 @@
         }
     }
 
-设置焦点标定点
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Ponto de Calibração de Foco
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置焦点标定点
-    * @param [in] pointNum 焦点标定点编号 1-8
-    * @param [in] point 标定点坐标
-    * @return 错误码
+    * @brief Definir ponto de calibração de foco
+    * @param [in] pointNum Número do ponto de calibração de foco 1-8
+    * @param [in] point Coordenadas do ponto de calibração
+    * @return Código de erro
     */
     int SetFocusCalibPoint(int pointNum, DescPose point);
 
-设置焦点坐标
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Posição do Foco
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置焦点坐标
-    * @param [in] pos 焦点坐标XYZ
-    * @return 错误码
+    * @brief Definir posição do foco
+    * @param [in] pos Coordenadas XYZ do foco
+    * @return Código de erro
     */
     int SetFocusPosition(DescTran pos);
 
-开启焦点跟随
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Iniciar Rastreamento de Foco
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 开启焦点跟随
-    * @param [in] kp 比例参数，默认50.0
-    * @param [in] kpredict 前馈参数，默认19.0
-    * @param [in] aMax 最大角加速度限制，默认1440°/s^2
-    * @param [in] vMax 最大角速度限制，默认180°/s
-    * @param [in] type 锁定X轴指向(0-参考输入矢量；1-水平；2-垂直)
-    * @return 错误码
+    * @brief Iniciar rastreamento de foco
+    * @param [in] kp Parâmetro proporcional, padrão 50.0
+    * @param [in] kpredict Parâmetro de feedforward, padrão 19.0
+    * @param [in] aMax Limite máximo de aceleração angular, padrão 1440°/s^2
+    * @param [in] vMax Limite máximo de velocidade angular, padrão 180°/s
+    * @param [in] type Direção de apontamento do eixo X bloqueado (0-vetor de entrada de referência; 1-horizontal; 2-vertical)
+    * @return Código de erro
     */
     int FocusStart(double kp, double kpredict, double aMax, double vMax, int type);
 
-停止焦点跟随
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Parar Rastreamento de Foco
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 停止焦点跟随
-    * @return 错误码
+    * @brief Parar rastreamento de foco
+    * @return Código de erro
     */
     int FocusEnd();
 
-焦点跟随代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Rastreamento de Foco
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.5  Web-3.8.4
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -919,96 +919,96 @@
         robot.FocusEnd();
     }
 
-关节扭矩传感器灵敏度标定功能开启
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Ativação da Função de Calibração de Sensibilidade do Sensor de Torque de Junta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 关节扭矩传感器灵敏度标定功能开启
-    * @param [in] status 0-关闭；1-开启
-    * @return  错误码
+    * @brief Ativação da função de calibração de sensibilidade do sensor de torque de junta
+    * @param [in] status 0-desligado; 1-ligado
+    * @return   Código de erro
     */
     public int JointSensitivityEnable(int status);
 
-关节扭矩传感器灵敏度数据采集
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Coleta de Dados de Sensibilidade do Sensor de Torque de Junta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 关节扭矩传感器灵敏度数据采集
-    * @return 错误码
+    * @brief Coleta de dados de sensibilidade do sensor de torque de junta
+    * @return Código de erro
     */
     public int JointSensitivityCollect();
 
-获取关节扭矩传感器灵敏度标定结果
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Resultado da Calibração de Sensibilidade do Sensor de Torque de Junta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取关节扭矩传感器灵敏度标定结果
-    * @param [out] calibResult j1~j6关节灵敏度[0-1]
-    * @param [out] linearityn j1~j6关节线性度[0-1]
-    * @return 错误码
+    * @brief Obter resultado da calibração de sensibilidade do sensor de torque de junta
+    * @param [out] calibResult Sensibilidade das juntas j1~j6 [0-1]
+    * @param [out] linearityn Linearidade das juntas j1~j6 [0-1]
+    * @return Código de erro
     */
     public int JointSensitivityCalibration(double calibResult[6], double linearity[6]);
 
-获取关节扭矩传感器迟滞误差
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Erro de Histerese do Sensor de Torque de Junta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取关节扭矩传感器迟滞误差
-    * @param [out] hysteresisError j1~j6关节迟滞误差
-    * @return 错误码
+    * @brief Obter erro de histerese do sensor de torque de junta
+    * @param [out] hysteresisError Erro de histerese das juntas j1~j6
+    * @return Código de erro
     */
     public int JointHysteresisError(ref double[] hysteresisError);
-    
-获取关节扭矩传感器重复精度
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Obter Repetibilidade do Sensor de Torque de Junta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
     
     /**
-    * @brief 获取关节扭矩传感器重复精度
-    * @param [out] repeatability j1~j6关节扭矩传感器重复精度
-    * @return 错误码
+    * @brief Obter repetibilidade do sensor de torque de junta
+    * @param [out] repeatability Repetibilidade do sensor de torque de junta para j1~j6
+    * @return Código de erro
     */
     public int JointRepeatability(ref double[] repeatability);
-    
-设置关节力传感器参数
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Definir Parâmetros do Sensor de Força de Junta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置关节力传感器参数
-    * @param [in] M J1-J6质量系数[0.001 ~ 10]
-    * @param [in] B J1-J6阻尼系数[0.001 ~ 10]
-    * @param [in] K J1-J6刚度系数[0.001 ~ 10]
-    * @param [in] threshold 力控制阈值，Nm
-    * @param [in] sensitivity 灵敏度,Nm/V,[0 ~ 10]
-    * @param [in] setZeroFlag 功能开启标志位；0-关闭；1-开启；2-位置1记录零点；3-位置2记录零点
-    * @return 错误码
+    * @brief Definir parâmetros do sensor de força de junta
+    * @param [in] M Coeficientes de massa J1-J6 [0.001 ~ 10]
+    * @param [in] B Coeficientes de amortecimento J1-J6 [0.001 ~ 10]
+    * @param [in] K Coeficientes de rigidez J1-J6 [0.001 ~ 10]
+    * @param [in] threshold Limite de controle de força, Nm
+    * @param [in] sensitivity Sensibilidade, Nm/V, [0 ~ 10]
+    * @param [in] setZeroFlag Flag de ativação da função; 0-desligado; 1-ligado; 2-registrar ponto zero na posição 1; 3-registrar ponto zero na posição 2
+    * @return Código de erro
     */
     public int SetAdmittanceParams(double[] M, double[] B, double[] K, double[] threshold, double[] sensitivity, int setZeroFlag);
 
-关节扭矩传感器灵敏度自动标定代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Calibração Automática de Sensibilidade do Sensor de Torque de Junta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -1080,45 +1080,45 @@
         return 0;
     }
 
-获取机器人8个从站端口错误帧数
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Número de Quadros de Erro nas 8 Portas Escravas do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取机器人8个从站端口错误帧数
-    * @param [out] inRecvErr 输入接收错误帧数 
-    * @param [out] inCRCErr 输入CRC错误帧数 
-    * @param [out] inTransmitErr 输入转发错误帧数 
-    * @param [out] inLinkErr 输入链接错误帧数 
-    * @param [out] outRecvErr 输出接收错误帧数
-    * @param [out] outCRCErr 输出CRC错误帧数
-    * @param [out] outTransmitErr 输出转发错误帧数
-    * @param [out] outLinkErr 输出链接错误帧数
-    * @return 错误码
+    * @brief Obter número de quadros de erro nas 8 portas escravas do robô
+    * @param [out] inRecvErr Número de erros de recepção de entrada 
+    * @param [out] inCRCErr Número de erros CRC de entrada 
+    * @param [out] inTransmitErr Número de erros de transmissão de entrada 
+    * @param [out] inLinkErr Número de erros de link de entrada 
+    * @param [out] outRecvErr Número de erros de recepção de saída
+    * @param [out] outCRCErr Número de erros CRC de saída
+    * @param [out] outTransmitErr Número de erros de transmissão de saída
+    * @param [out] outLinkErr Número de erros de link de saída
+    * @return Código de erro
     */
     public int GetSlavePortErrCounter(ref int[] inRecvErr,ref int[] inCRCErr,ref int[] inTransmitErr,ref int[] inLinkErr,ref int[] outRecvErr,ref int[] outCRCErr,ref int[] outTransmitErr,ref int[] outLinkErr);
 
-从站端口错误帧清零
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Limpar Contadores de Erro de Porta Escrava
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 从站端口错误帧清零
-    * @param [in] slaveID 从站编号0~7
-    * @return 错误码
+    * @brief Limpar contadores de erro de porta escrava
+    * @param [in] slaveID Número do escravo 0~7
+    * @return Código de erro
     */
     public int SlavePortErrCounterClear(int slaveID);
 
-获取从站端口错误帧代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Obtenção de Quadros de Erro de Porta Escrava
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -1188,38 +1188,38 @@
         robot.CloseRPC();
     }
 
-设置各轴速度前馈系数
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Coeficiente de Feedforward de Velocidade para Cada Eixo
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置各轴速度前馈系数
-    * @param [in] radio 各轴速度前馈系数
-    * @return 错误码
+    * @brief Definir coeficiente de feedforward de velocidade para cada eixo
+    * @param [in] radio Coeficientes de feedforward de velocidade para cada eixo
+    * @return Código de erro
     */
     public int SetVelFeedForwardRatio(double radio[6]);
 
-获取各轴速度前馈系数
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Coeficiente de Feedforward de Velocidade para Cada Eixo
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取各轴速度前馈系数
-    * @param [out] radio 各轴速度前馈系数
-    * @return 错误码
+    * @brief Obter coeficiente de feedforward de velocidade para cada eixo
+    * @param [out] radio Coeficientes de feedforward de velocidade para cada eixo
+    * @return Código de erro
     */
     public int GetVelFeedForwardRatio(ref double radio[6]);
 
-获取从站端口错误帧代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Definição de Coeficiente de Feedforward de Velocidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.9  Web-3.8.7
-    
+
 .. code-block:: c#
     :linenos:
 
@@ -1233,108 +1233,108 @@
         Console.WriteLine($" {getRadio[0]:F6} {getRadio[1]:F6} {getRadio[2]:F6} {getRadio[3]:F6} {getRadio[4]:F6} {getRadio[5]:F6}");
     }
 
-光电传感器TCP标定-计算工具RPY
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico - Calcular RPY da Ferramenta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-计算工具RPY
-    * @param [in] Btool 机器人笛卡尔位置
-    * @param [in] Etool 当前工具坐标系数值
-    * @param [in] senser 当前传感器坐标系数值(暂未开放)
-    * @param [in] radius 圆周运动半径mm(暂未开放)
-    * @param [in] dz 沿基座标系z轴负方向运动距离；当dz = 10000时，函数直接返回工具RPY
-    * @param [out] TCPRPY 工具RPY数值
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico - Calcular RPY da ferramenta
+    * @param [in] Btool Posição cartesiana do robô
+    * @param [in] Etool Valor atual do sistema de coordenadas da ferramenta
+    * @param [in] senser Valor atual do sistema de coordenadas do sensor (temporariamente não disponível)
+    * @param [in] radius Raio do movimento circular mm (temporariamente não disponível)
+    * @param [in] dz Distância de movimento na direção negativa do eixo Z do sistema de coordenadas base; quando dz = 10000, a função retorna diretamente o RPY da ferramenta
+    * @param [out] TCPRPY Valores RPY da ferramenta
+    * @return Código de erro
     */
     public int TCPComputeRPY(DescPose Btool, DescPose Etool, DescPose sensor, double radius, double dz, out Rpy TCPRPY);
 
-光电传感器TCP标定-计算工具XYZ
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico - Calcular XYZ da Ferramenta
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-计算工具XYZ
-    * @param [in] select 0-计算工具TCP；1-计算传感器原点；2-计算传感器姿态；3-直接返回工具TCP；4-记录当前工件坐标系和工具坐标系
-    * @param [in] originDirection 0-X方向；1-Y方向；2-Z方向
-    * @param [in] pos1 机器人笛卡尔位置1
-    * @param [in] pos2 机器人笛卡尔位置2
-    * @param [in] pos3 机器人笛卡尔位置3
-    * @param [in] pos4 机器人笛卡尔位置4
-    * @param [out] TCP 工具XYZ数值
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico - Calcular XYZ da ferramenta
+    * @param [in] select 0-calcular TCP da ferramenta; 1-calcular origem do sensor; 2-calcular postura do sensor; 3-retornar diretamente o TCP da ferramenta; 4-registrar o sistema de coordenadas da peça e da ferramenta atuais
+    * @param [in] originDirection 0-Direção X; 1-Direção Y; 2-Direção Z
+    * @param [in] pos1 Posição cartesiana do robô 1
+    * @param [in] pos2 Posição cartesiana do robô 2
+    * @param [in] pos3 Posição cartesiana do robô 3
+    * @param [in] pos4 Posição cartesiana do robô 4
+    * @param [out] TCP Valores XYZ da ferramenta
+    * @return Código de erro
     */
     public int TCPComputeXYZ(int select, double originDirection, DescTran pos1, DescTran pos2,DescTran pos3, DescTran pos4, out DescTran TCP);
 
-光电传感器TCP标定-开始记录末端法兰中心位置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico - Iniciar Registro da Posição do Centro da Flange da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-开始记录末端法兰中心位置
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico - Iniciar registro da posição do centro da flange da extremidade
+    * @return Código de erro
     */
     errno_t TCPRecordFlangePosStart();
 
-光电传感器TCP标定-停止记录末端法兰中心位置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico - Parar Registro da Posição do Centro da Flange da Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-停止记录末端法兰中心位置
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico - Parar registro da posição do centro da flange da extremidade
+    * @return Código de erro
     */
     public int TCPRecordFlangePosEnd();
 
-光电传感器TCP标定-获取末端工具中心点位置
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico - Obter Posição do Ponto Central da Ferramenta na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定-获取末端工具中心点位置
-    * @param [out] TCP 工具中心点位置(x,y,z)
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico - Obter posição do ponto central da ferramenta na extremidade
+    * @param [out] TCP Posição do ponto central da ferramenta (x, y, z)
+    * @return Código de erro
     */
     public int TCPGetRecordFlangePos(out DescTran TCP);
 
-光电传感器TCP标定
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Calibração TCP com Sensor Fotoelétrico
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 光电传感器TCP标定
-    * @param [in] luaPath 自动标定lua程序路径：QX版本机器人-"/fruser/FR_CalibrateTheToolTcp.lua";LA版本机器人-"/usr/local/etc/controller/lua/FR_CalibrateTheToolTcp.lua"
-    * @param [in] offsetX 示教点偏移(x,y,z)mm
-    * @param [out] TCP 标定后的工具坐标系(x,y,z,rx,ry,rz)
-    * @return 错误码
+    * @brief Calibração TCP com sensor fotoelétrico
+    * @param [in] luaPath Caminho do programa lua de calibração automática: Robô versão QX-"/fruser/FR_CalibrateTheToolTcp.lua"; Robô versão LA-"/usr/local/etc/controller/lua/FR_CalibrateTheToolTcp.lua"
+    * @param [in] offsetX Deslocamento do ponto de ensinamento (x, y, z) mm
+    * @param [out] TCP Sistema de coordenadas da ferramenta calibrado (x, y, z, rx, ry, rz)
+    * @return Código de erro
     */
     public int PhotoelectricSensorTCPCalibration(string luaPath, DescTran offset, out DescPose TCP);
 
-光电传感器TCP标定代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Calibração TCP com Sensor Fotoelétrico
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     public void TestPhotoelectricSensorTCPCalib()
     {
-        ROBOT_STATE_PKG pkg =new ROBOT_STATE_PKG();
-        DescTran offset = new DescTran( 10.0, 10.0, 3.0 );
+        ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
+        DescTran offset = new DescTran(10.0, 10.0, 3.0);
         DescPose TCP = new DescPose();
         int rtn = robot.PhotoelectricSensorTCPCalibration("/fruser/FR_CalibrateTheToolTcp.lua", offset, out TCP);
-        Console.WriteLine($"PhotoelectricSensorTCPCalibration : {rtn}");
-        Console.WriteLine($"工具TCP坐标: X={TCP.tran.x:F3}, Y={TCP.tran.y:F3}, Z={TCP.tran.z:F3}");
-        Console.WriteLine($"工具RPY姿态: RX={TCP.rpy.rx:F3}, RY={TCP.rpy.ry:F3}, RZ={TCP.rpy.rz:F3}");
+        Console.WriteLine($"PhotoelectricSensorTCPCalibration: {rtn}");
+        Console.WriteLine($"Coordenadas TCP da ferramenta: X={TCP.tran.x:F3}, Y={TCP.tran.y:F3}, Z={TCP.tran.z:F3}");
+        Console.WriteLine($"Postura RPY da ferramenta: RX={TCP.rpy.rx:F3}, RY={TCP.rpy.ry:F3}, RZ={TCP.rpy.rz:F3}");
     }

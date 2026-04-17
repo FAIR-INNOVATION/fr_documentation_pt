@@ -1,33 +1,33 @@
-后台管理
-=========================
+Gerenciamento de Backend
+==============================
 
 .. toctree:: 
    :maxdepth: 6
 
-后台升级
--------------
-在本文档的“软件下载”部分中，可以下载到最新的FRCap后台系统升级包。将下载的升级包上传成功后台即进行自动升级。
+Atualização do Backend
+-----------------------------
+O pacote de atualização mais recente do sistema de backend do FRCap pode ser baixado na seção "Download de Software" deste documento. Após o upload bem-sucedido do pacote de atualização baixado, o backend será atualizado automaticamente.
 
-升级成功如下图所示。
+A atualização bem-sucedida é mostrada na figura abaixo.
 
 .. image:: frcap_pictures/008.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 4-1  FRCap后台系统升级成功
+.. centered:: Figura 4-1 Atualização Bem-sucedida do Sistema de Backend do FRCap
 
-.. note:: 升级成功后需要重新启动机器人控制箱才会生效。
+.. note:: Após a atualização bem-sucedida, é necessário reiniciar o painel de controle do robô para que as alterações tenham efeito.
 
-模块版本
--------------
+Versões dos Módulos
+-----------------------------
 
-第一版初始的FRCap后台系统各模块版本：
+As versões iniciais dos módulos do sistema de backend do FRCap na primeira edição são:
 
-- Node.js：v20.10.0。
-- FRCapSys：v1.0.0。
-- FRCap：v0.0.1。
-- FRCapTools：v1.0.0。
+- Node.js: v20.10.0.
+- FRCapSys: v1.0.0.
+- FRCap: v0.0.1.
+- FRCapTools: v1.0.0.
 
-具体版本更新内容请查看版本更新说明。
+Para conteúdo específico das atualizações de versão, consulte as notas de versão.
 
-.. note:: Node.js目前暂不会随版本进行升级。
+.. note:: O Node.js não será atualizado com as versões por enquanto.

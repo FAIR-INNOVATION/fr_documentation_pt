@@ -1,49 +1,49 @@
-WebApp 访问登录
-===================
+WebApp Acesso e Login
+===========================
 
 .. toctree:: 
    :maxdepth: 6
 
-访问登录WebApp界面
---------------------
+Acessar a Interface WebApp
+------------------------------------
 
-1. 开启控制箱并将网线连接PC；
-2. PC打开chrome浏览器访问目标网址192.168.58.2；
-3. 输入用户名和密码点击登录即可登录WebApp。
+1. Ligue a caixa de controle e conecte o cabo de rede ao PC;
+2. No PC, abra o navegador Chrome e acesse o endereço de destino 192.168.58.2;
+3. Insira o nome de usuário e a senha e clique em login para acessar o WebApp.
 
-初始用户名为admin，密码为123。
+O nome de usuário inicial é admin e a senha é 123.
 
 .. figure:: teaching_pendant_software/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 2.1‑1 登录界面
+.. centered:: Figura 2.1‑1 Interface de Login
 
-简单认识WebApp界面
---------------------
+Conhecendo Brevemente a Interface WebApp
+--------------------------------------------------------
 
-登录成功后系统进入“初始界面”，主要包含：
+Após o login bem-sucedido, o sistema entra na “Interface Inicial”, que inclui principalmente:
 
-1. 法奥LOGO；
-2. 菜单栏缩放按钮；
-3. 菜单栏；
-4. 机器人控制区
-5. 机器人状态区；
-6. 三维模拟机器人——三维场景操作；
-7. 三维模拟机器人——机器人本体操作；
-8. 机器人配套功能；
-9. 机器人及配套功能状态。
+1. Logotipo da FAIRINO;
+2. Botão de recolher/expandir o menu;
+3. Barra de menu;
+4. Área de controle do robô;
+5. Área de status do robô;
+6. Robô 3D simulado — operações da cena 3D;
+7. Robô 3D simulado — operações do robô;
+8. Funções complementares do robô;
+9. Status do robô e funções complementares.
 
-如下图系统初始界面示意图所示：
+Conforme ilustrado no diagrama da interface inicial do sistema abaixo:
 
 .. image:: teaching_pendant_software/002.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 2.2‑1 系统初始界面示意图
+.. centered:: Figura 2.2‑1 Diagrama da Interface Inicial do Sistema
 
-控制区
-~~~~~~~~~
+Área de Controle
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: 
    .. image:: teaching_pendant_software/064.png
@@ -51,9 +51,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**打开示教程序按钮**
+   Nome: **Botão Abrir Programa de Ensinamento**
    
-   作用：打开程序编程、图形化编程和节点图编程的示教程序
+   Função: Abrir o programa de ensinamento para programação textual, programação gráfica e programação por gráfico de nós
 
 .. note:: 
    .. image:: teaching_pendant_software/003.png
@@ -61,9 +61,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**使能按钮**
+   Nome: **Botão Habilitar**
    
-   作用：使能机器人
+   Função: Habilitar o robô
 
 .. note:: 
    .. image:: teaching_pendant_software/004.png
@@ -71,9 +71,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**开始按钮**
+   Nome: **Botão Iniciar**
    
-   作用：上传并开始运行示教程序
+   Função: Enviar e iniciar a execução do programa de ensinamento
 
 .. note:: 
    .. image:: teaching_pendant_software/005.png
@@ -81,9 +81,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**停止按钮**
+   Nome: **Botão Parar**
    
-   作用：停止当前示教程序运行
+   Função: Parar a execução do programa de ensinamento atual
 
 .. note:: 
    .. image:: teaching_pendant_software/006.png
@@ -91,15 +91,15 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**暂停/恢复按钮**
+   Nome: **Botão Pausar/Retomar**
    
-   作用：暂停和恢复当前示教程序
+   Função: Pausar e retomar o programa de ensinamento atual
 
 .. important::
-   暂停指令在程序的末尾，无法进行判断
+   O comando de pausa no final do programa não pode ser executado.
 
-状态栏
-~~~~~~~~~~~~
+Barra de Status
+~~~~~~~~~~~~~~~~~~~~
 
 .. note:: 
    .. image:: teaching_pendant_software/011.png
@@ -107,9 +107,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人运行错误状态**
+   Nome: **Estado de Erro de Execução do Robô**
    
-   作用：当前机器人运行有错误，无错误时隐藏
+   Função: Indica que há um erro na execução do robô; fica oculto quando não há erro.
 
 .. note:: 
    .. image:: teaching_pendant_software/007.png
@@ -117,9 +117,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人状态**
+   Nome: **Estado do Robô**
    
-   作用：Stopped-停止，Running-运行，Pause-暂停，Drag-拖动
+   Função: Stopped (Parado), Running (Executando), Pause (Pausado), Drag (Arrastar)
 
 .. note:: 
    .. image:: teaching_pendant_software/010.png
@@ -127,9 +127,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人工具坐标系、工件坐标系、扩展轴坐标系和负载编号**
+   Nome: **Coordenadas da Ferramenta, Peça, Eixo Extensor e Número da Carga**
    
-   作用：左上——当前工具坐标系编号、右上——当前工件坐标系编号、左下——当前扩展轴坐标系编号、右下——当前负载编号
+   Função: Canto superior esquerdo — número atual do sistema de coordenadas da ferramenta; canto superior direito — número atual do sistema de coordenadas da peça; canto inferior esquerdo — número atual do sistema de coordenadas do eixo extensor; canto inferior direito — número atual da carga.
 
 .. note:: 
    .. image:: teaching_pendant_software/009.png
@@ -137,9 +137,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**运行速度百分比**
+   Nome: **Percentual de Velocidade de Execução**
    
-   作用：机器人当前模式运行时速度
+   Função: Velocidade atual do robô ao operar no modo selecionado.
 
 .. note:: 
    .. image:: teaching_pendant_software/012.png
@@ -147,9 +147,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**自动模式**
+   Nome: **Modo Automático**
    
-   作用：机器人自动运行模式，开启手动切自动模式全局速度调整并指定速度时，全局速度会自动调整为指定速度
+   Função: Modo de operação automática do robô. Ao alternar do modo manual para o automático e especificar a velocidade global, ela é ajustada automaticamente para o valor definido.
 
 .. note:: 
    .. image:: teaching_pendant_software/013.png
@@ -157,9 +157,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**手动模式**
+   Nome: **Modo Manual**
    
-   作用：机器人手动模式，进行机器人示教操作
+   Função: Modo manual do robô para realizar operações de ensinamento.
 
 .. note:: 
    .. image:: teaching_pendant_software/065.png
@@ -167,11 +167,11 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人状态折叠/展开按钮**
+   Nome: **Botão Recolher/Expandir Status do Robô**
    
-   作用：折叠/展开工具坐标系、工件坐标系、扩展轴坐标系、负载、机器人拖动状态、本地/远程模式、机器人连接状态、BOOT模式和账户信息内容
+   Função: Recolher/expandir informações sobre sistema de coordenadas da ferramenta, sistema de coordenadas da peça, sistema de coordenadas do eixo extensor, carga, estado de arrasto do robô, modo local/remoto, estado de conexão, modo BOOT e informações da conta.
 
-点击折叠按钮，查看以下状态信息内容。
+Clique no botão recolher para visualizar o conteúdo do status abaixo.
 
 .. note:: 
    .. image:: teaching_pendant_software/008.png
@@ -179,9 +179,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**工具坐标系编号**
+   Nome: **Número do Sistema de Coordenadas da Ferramenta**
    
-   作用：展示当前应用的工具坐标系编号
+   Função: Exibe o número do sistema de coordenadas da ferramenta atualmente em uso.
 
 .. note:: 
    .. image:: teaching_pendant_software/027.png
@@ -189,9 +189,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**工件坐标系编号**
+   Nome: **Número do Sistema de Coordenadas da Peça**
    
-   作用：展示当前应用的工件坐标系编号
+   Função: Exibe o número do sistema de coordenadas da peça atualmente em uso.
    
 .. note:: 
    .. image:: teaching_pendant_software/028.png
@@ -199,9 +199,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**扩展轴坐标系编号**
+   Nome: **Número do Sistema de Coordenadas do Eixo Extensor**
    
-   作用：展示当前应用的扩展轴坐标系编号
+   Função: Exibe o número do sistema de coordenadas do eixo extensor atualmente em uso.
 
 .. note:: 
    .. image:: teaching_pendant_software/066.png
@@ -209,9 +209,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**负载**
+   Nome: **Carga**
    
-   作用：展示当前应用的负载重量和质心坐标X、Y、Z
+   Função: Exibe o peso da carga atual e as coordenadas X, Y, Z do centro de massa.
 
 .. note:: 
    .. image:: teaching_pendant_software/014.png
@@ -219,9 +219,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人拖动状态**
+   Nome: **Estado de Arrasto do Robô**
    
-   作用：当前机器人可拖动
+   Função: Indica que o robô pode ser arrastado atualmente.
 
 .. note:: 
    .. image:: teaching_pendant_software/015.png
@@ -229,9 +229,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人拖动状态**
+   Nome: **Estado de Arrasto do Robô**
    
-   作用：当前机器人不可拖动
+   Função: Indica que o robô não pode ser arrastado atualmente.
 
 .. note:: 
    .. image:: teaching_pendant_software/068.png
@@ -239,9 +239,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人本地模式**
+   Nome: **Modo Local do Robô**
    
-   作用：当前机器人通过控制箱控制
+   Função: Indica que o robô é controlado atualmente pela caixa de controle.
 
 .. note:: 
    .. image:: teaching_pendant_software/067.png
@@ -249,9 +249,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**机器人远程模式**
+   Nome: **Modo Remoto do Robô**
    
-   作用：当前机器人只能通过PLC控制
+   Função: Indica que o robô só pode ser controlado por CLP atualmente.
 
 .. note:: 
    .. image:: teaching_pendant_software/017.png
@@ -259,9 +259,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**连接状态**
+   Nome: **Estado de Conexão**
    
-   作用：机器人已连接
+   Função: Robô conectado.
 
 .. note:: 
    .. image:: teaching_pendant_software/016.png
@@ -269,9 +269,9 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**未连接状态**
+   Nome: **Estado de Desconexão**
    
-   作用：机器人未连接
+   Função: Robô desconectado.
 
 .. note:: 
    .. image:: teaching_pendant_software/018.png
@@ -279,6 +279,6 @@ WebApp 访问登录
       :height: 0.75in
       :align: left
 
-   名称：**账户信息**
+   Nome: **Informações da Conta**
    
-   作用：显示用户名和权限及登出用户
+   Função: Exibe o nome de usuário, permissões e opção para sair da conta.

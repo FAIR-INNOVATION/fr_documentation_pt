@@ -1,169 +1,169 @@
-机器人力控
-============
+Controle de Força do Robô
+====================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-配置力传感器
-+++++++++++++++++++++++
+Configurar Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  配置力传感器
-    * @param  config company:力传感器厂商，17-坤维科技，19-航天十一院，20-ATI传感器，21-中科米点，22-伟航敏芯，23-NBIT，24-鑫精诚(XJC)，26-NSR
-    * @param  config device: 设备号，坤维(0-KWR75B)，航天十一院(0-MCS6A-200-4)，ATI(0-AXIA80-M8)，中科米点(0-MST2010)，伟航敏芯(0-WHC6L-YB-10A)，NBIT(0-XLH93003ACS)，鑫精诚XJC(0-XJC-6F-D82)，NSR(0-NSR-FTSensorA)
-    * @param  config softvesion:软件版本号，暂不使用，默认为0
-    * @param  config bus:设备挂在末端总线位置，暂不使用，默认为0
-    * @return  错误码
+    * @brief Configura o sensor de força
+    * @param config company: Fabricante do sensor de força, 17-Kunwei Technology, 19-Instituto de Pesquisa 11 da Aeroespacial, 20-Sensor ATI, 21-Zhongke Midian, 22-Weihang Minxin, 23-NBIT, 24-Xin Jingcheng (XJC), 26-NSR
+    * @param config device: Número do dispositivo, Kunwei (0-KWR75B), Instituto de Pesquisa 11 (0-MCS6A-200-4), ATI (0-AXIA80-M8), Zhongke Midian (0-MST2010), Weihang Minxin (0-WHC6L-YB-10A), NBIT (0-XLH93003ACS), Xin Jingcheng XJC (0-XJC-6F-D82), NSR (0-NSR-FTSensorA)
+    * @param config softversion: Número da versão do software, não utilizado no momento, padrão 0
+    * @param config bus: Posição do barramento onde o dispositivo está conectado, não utilizado no momento, padrão 0
+    * @return Código de erro
     */
-    int FT_SetConfig(DeviceConfig config); 
+    int FT_SetConfig(DeviceConfig config);
 
-获取力传感器配置 
-+++++++++++++++++++++++
-.. code-block:: Java
-    :linenos:
-
-    /** 
-    * @brief 获取力传感器配置 
-    * @param [out] config company:力传感器厂商，17-坤维科技，19-航天十一院，20-ATI传感器，21-中科米点，22-伟航敏芯
-    * @param [out] config device:设备号，坤维(0-KWR75B)，航天十一院(0-MCS6A-200-4)，ATI(0-AXIA80-M8)，中科米点(0-MST2010)，伟航敏芯(0-WHC6L-YB-10A)
-    * @param [out] config softvesion:软件版本号，暂不使用，默认为0
-    * @param [out] config bus:设备挂在末端总线位置，暂不使用，默认为0
-    * @return 错误码 
-    */ 
-    int FT_GetConfig(DeviceConfig config); 
-
-力传感器激活
-+++++++++++++++++++++++
+Obter Configuração do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  力传感器激活
-    * @param  [in] act  0-复位，1-激活
-    * @return  错误码
+    * @brief Obtém a configuração do sensor de força
+    * @param [out] config company: Fabricante do sensor de força, 17-Kunwei Technology, 19-Instituto de Pesquisa 11 da Aeroespacial, 20-Sensor ATI, 21-Zhongke Midian, 22-Weihang Minxin
+    * @param [out] config device: Número do dispositivo, Kunwei (0-KWR75B), Instituto de Pesquisa 11 (0-MCS6A-200-4), ATI (0-AXIA80-M8), Zhongke Midian (0-MST2010), Weihang Minxin (0-WHC6L-YB-10A)
+    * @param [out] config softversion: Número da versão do software, não utilizado no momento, padrão 0
+    * @param [out] config bus: Posição do barramento onde o dispositivo está conectado, não utilizado no momento, padrão 0
+    * @return Código de erro
     */
-    int FT_Activate(int act); 
+    int FT_GetConfig(DeviceConfig config);
 
-力传感器校零
-+++++++++++++++++++++++
+Ativar Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  力传感器校零
-    * @param  [in] act  0-去除零点，1-零点矫正
-    * @return  错误码
+    * @brief Ativa o sensor de força
+    * @param [in] act 0-reset, 1-ativar
+    * @return Código de erro
     */
-    int FT_SetZero(int act); 
+    int FT_Activate(int act);
 
-设置力传感器参考坐标系
-+++++++++++++++++++++++
+Calibrar Zero do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置力传感器参考坐标系
-    * @param  [in] type  0-工具坐标系，1-基坐标系, 2-自由坐标系
-    * @param  [in] coord  自由坐标系值
-    * @return  错误码
+    * @brief Calibra o zero do sensor de força
+    * @param [in] act 0-remover zero, 1-corrigir zero
+    * @return Código de erro
+    */
+    int FT_SetZero(int act);
+
+Definir Sistema de Coordenadas de Referência do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Define o sistema de coordenadas de referência do sensor de força
+    * @param [in] type 0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas base, 2-sistema de coordenadas livre
+    * @param [in] coord Valor do sistema de coordenadas livre
+    * @return Código de erro
     */
     int FT_SetRCS(int type, DescPose coord);
 
-设置力传感器下负载重量
+Definir Peso da Carga sob o Sensor de Força
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置力传感器下负载重量
-    * @param [in] weight 负载重量 kg
-    * @return 错误码
+    * @brief Define o peso da carga sob o sensor de força
+    * @param [in] weight Peso da carga em kg
+    * @return Código de erro
     */
     int SetForceSensorPayLoad(double weight);
 
-设置力传感器下负载质心
-+++++++++++++++++++++++++++++++++++++++++++++
+Definir Centro de Massa da Carga sob o Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置力传感器下负载质心
-    * @param [in] cog 负载质心 mm
-    * @return 错误码
+    * @brief Define o centro de massa da carga sob o sensor de força
+    * @param [in] cog Centro de massa da carga em mm
+    * @return Código de erro
     */
     int SetForceSensorPayLoadCog(DescTran cog);
 
-获取力传感器下负载重量
+Obter Peso da Carga sob o Sensor de Força
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取力传感器下负载重量
-    * @return List[0]:错误码; List[1] : weight 负载重量 kg
+    * @brief Obtém o peso da carga sob o sensor de força
+    * @return List[0]: código de erro; List[1]: weight Peso da carga em kg
     */
     List<Number> GetForceSensorPayLoad();
 
-获取力传感器下负载质心
-+++++++++++++++++++++++++++++++++++++++++++++
+Obter Centro de Massa da Carga sob o Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取力传感器下负载质心
-    * @param [out] cog 负载质心 mm
-    * @return 错误码
+    * @brief Obtém o centro de massa da carga sob o sensor de força
+    * @param [out] cog Centro de massa da carga em mm
+    * @return Código de erro
     */
     int GetForceSensorPayLoadCog(DescTran cog);
 
-力传感器自动校零
-+++++++++++++++++++++++++++++++++++++++++++++
+Calibração Automática do Zero do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 力传感器自动校零
-    * @param [in] massCenter 传感器质量(kg) 及 质心(mm)
-    * @return 错误码
+    * @brief Calibração automática do zero do sensor de força
+    * @param [in] massCenter Massa do sensor (kg) e centro de massa (mm)
+    * @return Código de erro
     */
     int ForceSensorAutoComputeLoad(MassCenter massCenter);
 
-获取参考坐标系下力/扭矩数据
-+++++++++++++++++++++++++++++++++++++++++++++
+Obter Dados de Força/Torque no Sistema de Coordenadas de Referência
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取参考坐标系下力/扭矩数据
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] ft  力/扭矩，fx,fy,fz,tx,ty,tz
-    * @return  错误码
-    */   
-    int FT_GetForceTorqueRCS(int flag, ForceTorque ft); 
+    * @brief Obtém dados de força/torque no sistema de coordenadas de referência
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] ft Força/torque, fx, fy, fz, tx, ty, tz
+    * @return Código de erro
+    */
+    int FT_GetForceTorqueRCS(int flag, ForceTorque ft);
 
-获取力传感器原始力/扭矩数据
-+++++++++++++++++++++++++++++++++++++++++++++
+Obter Dados Brutos de Força/Torque do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取力传感器原始力/扭矩数据
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] ft  力/扭矩，fx,fy,fz,tx,ty,tz
-    * @return  错误码
-    */   
-    int FT_GetForceTorqueOrigin(int flag, ForceTorque ft); 
+    * @brief Obtém dados brutos de força/torque do sensor de força
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] ft Força/torque, fx, fy, fz, tx, ty, tz
+    * @return Código de erro
+    */
+    int FT_GetForceTorqueOrigin(int flag, ForceTorque ft);
 
-力传感器配置及自动校零代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Configuração e Calibração Automática do Sensor de Força
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestFTInit(Robot robot)
     {
-        DescTran tr1=new DescTran(0,0,0);
+        DescTran tr1 = new DescTran(0,0,0);
         robot.SetForceSensorPayload(0);
         robot.SetForceSensorPayloadCog(tr1);
 
@@ -173,7 +173,7 @@
         int bus = 1;
         int index = 1;
 
-        DeviceConfig con=new DeviceConfig(company,device,softversion,bus);
+        DeviceConfig con = new DeviceConfig(company, device, softversion, bus);
         robot.FT_SetConfig(con);
         robot.Sleep(1000);
         robot.FT_GetConfig(con);
@@ -188,7 +188,7 @@
         robot.FT_SetZero(0);
         robot.Sleep(1000);
 
-        ForceTorque ft=new ForceTorque(0,0,0,0,0,0);
+        ForceTorque ft = new ForceTorque(0,0,0,0,0,0);
         robot.FT_GetForceTorqueOrigin(0, ft);
         robot.FT_SetZero(1);
         robot.Sleep(1000);
@@ -198,83 +198,83 @@
 
         robot.SetForceSensorPayload(0.824);
 
-        DescTran tr=new DescTran(0.778, 2.554, 48.765);
+        DescTran tr = new DescTran(0.778, 2.554, 48.765);
         robot.SetForceSensorPayloadCog(tr);
         List<Number> weight = new ArrayList<>();
         double x = 0, y = 0, z = 0;
-        weight=robot.GetForceSensorPayload();
+        weight = robot.GetForceSensorPayload();
         robot.GetForceSensorPayloadCog(tr);
-        tr.x=0;
-        tr.y=0;
-        tr.z=0;
+        tr.x = 0;
+        tr.y = 0;
+        tr.z = 0;
         robot.SetForceSensorPayload(0);
         robot.SetForceSensorPayloadCog(tr);
 
         double computeWeight = 0;
         DescTran tran = new DescTran();
-        MassCenter mass=new MassCenter();
-        mass.weight=weight.get(1).doubleValue();
-        mass.cog=tran;
+        MassCenter mass = new MassCenter();
+        mass.weight = weight.get(1).doubleValue();
+        mass.cog = tran;
         robot.ForceSensorAutoComputeLoad(mass);
         return 0;
     }
 
-负载重量辨识记录
-+++++++++++++++++++++++
+Registro de Identificação do Peso da Carga
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  负载重量辨识记录
-    * @param  [in] id  传感器坐标系编号，范围[1~14]
-    * @return  错误码
+    * @brief Registro de identificação do peso da carga
+    * @param [in] id Número do sistema de coordenadas do sensor, intervalo [1~14]
+    * @return Código de erro
     */
     int FT_PdIdenRecord(int id);
 
-负载重量辨识计算
-+++++++++++++++++++++++
+Cálculo da Identificação do Peso da Carga
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  负载重量辨识计算
-    * @return  List[0]:错误码; List[1] : double weight  负载重量，单位kg
-    */   
+    * @brief Cálculo da identificação do peso da carga
+    * @return List[0]: código de erro; List[1]: double weight Peso da carga, em kg
+    */
     List<Number> FT_PdIdenCompute();
 
-负载质心辨识记录
-+++++++++++++++++++++++
+Registro de Identificação do Centro de Massa da Carga
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  负载质心辨识记录
-    * @param  [in] id  传感器坐标系编号，范围[1~14]
-    * @param  [in] index 点编号，范围[1~3]
-    * @return  错误码
+    * @brief Registro de identificação do centro de massa da carga
+    * @param [in] id Número do sistema de coordenadas do sensor, intervalo [1~14]
+    * @param [in] index Número do ponto, intervalo [1~3]
+    * @return Código de erro
     */
-    int FT_PdCogIdenRecord(int id, int index); 
+    int FT_PdCogIdenRecord(int id, int index);
 
-负载质心辨识计算
-++++++++++++++++++++++++++++++++++
+Cálculo da Identificação do Centro de Massa da Carga
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  负载质心辨识计算
-    * @param  [out] cog  负载质心，单位mm
-    * @return  错误码
-    */   
+    * @brief Cálculo da identificação do centro de massa da carga
+    * @param [out] cog Centro de massa da carga, em mm
+    * @return Código de erro
+    */
     int FT_PdCogIdenCompute(DescTran cog);
 
-力传感器负载辨识代码示例
-+++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Identificação da Carga do Sensor de Força
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestFTLoadCompute(Robot robot)
     {
-        DescTran tr1=new DescTran(0,0,0);
+        DescTran tr1 = new DescTran(0,0,0);
         robot.SetForceSensorPayload(0);
         robot.SetForceSensorPayloadCog(tr1);
 
@@ -284,7 +284,7 @@
         int bus = 1;
         int index = 1;
 
-        DeviceConfig con=new DeviceConfig(company, device, softversion, bus);
+        DeviceConfig con = new DeviceConfig(company, device, softversion, bus);
         robot.FT_SetConfig(con);
         robot.Sleep(1000);
         robot.FT_GetConfig(con);
@@ -299,7 +299,7 @@
         robot.FT_SetZero(0);
         robot.Sleep(1000);
 
-        ForceTorque ft=new ForceTorque(0,0,0,0,0,0);
+        ForceTorque ft = new ForceTorque(0,0,0,0,0,0);
         robot.FT_GetForceTorqueOrigin(0, ft);
         robot.FT_SetZero(1);
         robot.Sleep(1000);
@@ -311,12 +311,12 @@
         robot.FT_PdIdenRecord(10);
         robot.Sleep(1000);
 
-        List<Number> weight =new ArrayList<>();
-        weight=robot.FT_PdIdenCompute();
+        List<Number> weight = new ArrayList<>();
+        weight = robot.FT_PdIdenCompute();
 
-        DescPose desc_p1=new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
-        DescPose desc_p2=new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
-        DescPose desc_p3=new DescPose(-327.622, 402.230, 320.402, -178.067, 2.127, -46.207);
+        DescPose desc_p1 = new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
+        DescPose desc_p2 = new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
+        DescPose desc_p3 = new DescPose(-327.622, 402.230, 320.402, -178.067, 2.127, -46.207);
 
         robot.MoveCart(desc_p1, 0, 0, 100.0, 100.0, 100.0, -1.0, -1);
         robot.Sleep(1000);
@@ -328,100 +328,100 @@
         robot.Sleep(1000);
         robot.FT_PdCogIdenRecord(10, 3);
         robot.Sleep(1000);
-        DescTran cog=new DescTran(0,0,0);
+        DescTran cog = new DescTran(0,0,0);
         robot.FT_PdCogIdenCompute(cog);
 
         robot.CloseRPC();
         return 0;
     }
 
-碰撞守护
+Proteção contra Colisão
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  碰撞守护
-    * @param  [in] flag 0-关闭碰撞守护，1-开启碰撞守护
-    * @param  [in] sensor_id 力传感器编号
-    * @param  [in] select  选择六个自由度是否检测碰撞，0-不检测，1-检测
-    * @param  [in] ft  碰撞力/扭矩，fx,fy,fz,tx,ty,tz
-    * @param  [in] max_threshold 最大阈值
-    * @param  [in] min_threshold 最小阈值
-    * @note   力/扭矩检测范围：(ft-min_threshold, ft+max_threshold)
-    * @return  错误码
-    */   
-    int FT_Guard(int flag, int sensor_id, Object[] select, ForceTorque ft, Object[] max_threshold, Object[] min_threshold); 
+    * @brief Proteção contra colisão
+    * @param [in] flag 0-desativar proteção contra colisão, 1-ativar proteção contra colisão
+    * @param [in] sensor_id Número do sensor de força
+    * @param [in] select Seleciona quais dos seis graus de liberdade detectam colisão, 0-não detectar, 1-detectar
+    * @param [in] ft Força/torque de colisão, fx, fy, fz, tx, ty, tz
+    * @param [in] max_threshold Limiar máximo
+    * @param [in] min_threshold Limiar mínimo
+    * @note Faixa de detecção de força/torque: (ft - min_threshold, ft + max_threshold)
+    * @return Código de erro
+    */
+    int FT_Guard(int flag, int sensor_id, Object[] select, ForceTorque ft, Object[] max_threshold, Object[] min_threshold);
 
-碰撞守护代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Proteção contra Colisão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static void main(String[] args)
     {
         Robot robot = new Robot();
-        robot.SetReconnectParam(true,20,500);//设置重连次数、间隔
+        robot.SetReconnectParam(true,20,500); // Define parâmetros de reconexão
         robot.LoggerInit(FrLogType.DIRECT, FrLogLevel.INFO, "D://log", 10, 10);
         int rtn = robot.RPC("192.168.58.2");
         if(rtn == 0)
         {
-            System.out.println("rpc连接 success");
+            System.out.println("Conexão RPC bem-sucedida");
         }
         else
         {
-            System.out.println("rpc连接 fail");
-            return ;
+            System.out.println("Falha na conexão RPC");
+            return;
         }
         byte flag = 1;
         byte sensor_id = 8;
-        Object[] select = { 1, 0, 0, 0, 0, 0 };//只启用x轴碰撞守护
+        Object[] select = { 1, 0, 0, 0, 0, 0 }; // Ativa apenas a proteção contra colisão no eixo X
         Object[] max_threshold = { 5.0, 0.01, 0.01, 0.01, 0.01, 0.01 };
         Object[] min_threshold = { 3.0, 0.01, 0.01, 0.01, 0.01, 0.01 };
 
         ForceTorque ft = new ForceTorque(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-        DescPose  desc_p1, desc_p2, desc_p3;
-        desc_p1 = new DescPose(-14.404,-455.283,319.847,-172.935,25.141,-68.097);
-        desc_p2 = new DescPose(-107.999,-599.174,285.939,153.472,12.686,-71.284);
-        desc_p3 = new DescPose(6.586,-704.897,309.638,178.909,-27.759,-70.479);
+        DescPose desc_p1, desc_p2, desc_p3;
+        desc_p1 = new DescPose(-14.404, -455.283, 319.847, -172.935, 25.141, -68.097);
+        desc_p2 = new DescPose(-107.999, -599.174, 285.939, 153.472, 12.686, -71.284);
+        desc_p3 = new DescPose(6.586, -704.897, 309.638, 178.909, -27.759, -70.479);
 
-        int rtn =  robot.FT_Guard(flag, sensor_id, select, ft, max_threshold, min_threshold);
+        int rtn = robot.FT_Guard(flag, sensor_id, select, ft, max_threshold, min_threshold);
         System.out.println("FT_Guard start rtn {rtn}");
         robot.MoveCart(desc_p1, 0, 0, 20, 100.0f, 100.0f, -1.0f, -1);
         robot.MoveCart(desc_p2, 0, 0, 20, 100.0f, 100.0f, -1.0f, -1);
         robot.MoveCart(desc_p3, 0, 0, 20, 100.0f, 100.0f, -1.0f, -1);
     }
 
-恒力控制
+Controle de Força Constante
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  恒力控制
-    * @param  flag 0-关闭恒力控制，1-开启恒力控制
-    * @param  sensor_id 力传感器编号
-    * @param  select  选择六个自由度是否检测碰撞，0-不检测，1-检测
-    * @param  ft  碰撞力/扭矩，fx,fy,fz,tx,ty,tz
-    * @param  ft_pid 力pid参数，力矩pid参数
-    * @param  adj_sign 自适应启停控制，0-关闭，1-开启
-    * @param  ILC_sign ILC启停控制， 0-停止，1-训练，2-实操
-    * @param  max_dis 最大调整距离，单位mm
-    * @param  max_ang 最大调整角度，单位deg
-    * @param  M rx、ry质量参数[0.1-10],默认2
-    * @param  B rx、ry阻尼参数[0.1-50],默认8
-    * @param  threshold rx、ry启动阈值[0-10],默认0.2
-    * @param  adjustCoeff rx、ry力矩调节系数[0-1],默认1
-    * @param  polishRadio 打磨半径，单位mm
-    * @param  filter_Sign 滤波开启标志 0-关；1-开，默认关闭
-    * @param  posAdapt_sign 姿态顺应开启标志 0-关；1-开，默认关闭
-    * @param  isNoBlock 阻塞标志，0-阻塞；1-非阻塞
-    * @return  错误码
+    * @brief Controle de força constante
+    * @param flag 0-desativar controle de força constante, 1-ativar controle de força constante
+    * @param sensor_id Número do sensor de força
+    * @param select Seleciona quais dos seis graus de liberdade detectam colisão, 0-não detectar, 1-detectar
+    * @param ft Força/torque de colisão, fx, fy, fz, tx, ty, tz
+    * @param ft_pid Parâmetros PID de força, parâmetros PID de torque
+    * @param adj_sign Controle de adaptação liga/desliga, 0-desativar, 1-ativar
+    * @param ILC_sign Controle ILC liga/desliga, 0-parar, 1-treinar, 2-praticar
+    * @param max_dis Distância máxima de ajuste, em mm
+    * @param max_ang Ângulo máximo de ajuste, em graus
+    * @param M Parâmetros de massa rx, ry [0.1-10], padrão 2
+    * @param B Parâmetros de amortecimento rx, ry [0.1-50], padrão 8
+    * @param threshold Limiares de ativação rx, ry [0-10], padrão 0.2
+    * @param adjustCoeff Coeficientes de ajuste de torque rx, ry [0-1], padrão 1
+    * @param polishRadio Raio de polimento, em mm
+    * @param filter_Sign Flag de ativação de filtro 0-desativar; 1-ativar, padrão desativado
+    * @param posAdapt_sign Flag de ativação de adaptação de postura 0-desativar; 1-ativar, padrão desativado
+    * @param isNoBlock Flag de bloqueio, 0-bloqueante; 1-não bloqueante
+    * @return Código de erro
     */
-    public int FT_Control(int flag, int sensor_id, int[] select, ForceTorque ft, double[] ft_pid, int adj_sign, int ILC_sign, double max_dis, double max_ang,double[] M,double[] B, double[] threshold, double[] adjustCoeff, double polishRadio,int filter_Sign, int posAdapt_sign, int isNoBlock)
+    public int FT_Control(int flag, int sensor_id, int[] select, ForceTorque ft, double[] ft_pid, int adj_sign, int ILC_sign, double max_dis, double max_ang, double[] M, double[] B, double[] threshold, double[] adjustCoeff, double polishRadio, int filter_Sign, int posAdapt_sign, int isNoBlock)
 
-具有阻尼的恒力控制代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Controle de Força Constante com Amortecimento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -435,12 +435,12 @@
         double max_dis = 1000.0;
         double max_ang = 20;
         ForceTorque ft = new ForceTorque(0.0,0,0,0,0,0);
-        ExaxisPos epos=new ExaxisPos(0, 0, 0, 0);
-        JointPos j1=new JointPos(80.765, -98.795, 106.548, -97.734, -89.999, 94.842);
-        JointPos j2=new JointPos(43.067, -84.429, 92.620, -98.175, -90.011, 57.144);
-        DescPose desc_p1=new DescPose(5.009, -547.463, 262.053, -179.999, -0.019, 75.923);
-        DescPose desc_p2=new DescPose(-347.966, -547.463, 262.048, -180.000, -0.019, 75.923);
-        DescPose offset_pos=new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos epos = new ExaxisPos(0, 0, 0, 0);
+        JointPos j1 = new JointPos(80.765, -98.795, 106.548, -97.734, -89.999, 94.842);
+        JointPos j2 = new JointPos(43.067, -84.429, 92.620, -98.175, -90.011, 57.144);
+        DescPose desc_p1 = new DescPose(5.009, -547.463, 262.053, -179.999, -0.019, 75.923);
+        DescPose desc_p2 = new DescPose(-347.966, -547.463, 262.048, -180.000, -0.019, 75.923);
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
         double[] M = { 2.0, 2.0 };
         double[] B = { 15.0, 15.0 };
         double[] threshold = {1.0, 1.0};
@@ -461,43 +461,43 @@
         }
     }
 
-旋转插入
+Inserção Rotativa
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 旋转插入
-    * @param rcs 参考坐标系，0-工具坐标系，1-基坐标系
-    * @param angVelRot 旋转角速度，单位deg/s
-    * @param ft  力/扭矩阈值，fx,fy,fz,tx,ty,tz，范围[0~100]
-    * @param max_angle 最大旋转角度，单位deg
-    * @param orn 力/扭矩方向，1-沿z轴方向，2-绕z轴方向
-    * @param max_angAcc 最大旋转加速度，单位deg/s^2，暂不使用，默认为0
-    * @param rotorn  旋转方向，1-顺时针，2-逆时针
-    * @param strategy 未检测到力/力矩的处理策略，0-报错；1-警告，继续运动
-    * @return  错误码
+    * @brief Inserção rotativa
+    * @param rcs Sistema de coordenadas de referência, 0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas base
+    * @param angVelRot Velocidade angular de rotação, em graus/s
+    * @param ft Limiar de força/torque, fx, fy, fz, tx, ty, tz, intervalo [0~100]
+    * @param max_angle Ângulo máximo de rotação, em graus
+    * @param orn Direção da força/torque, 1-ao longo do eixo Z, 2-em torno do eixo Z
+    * @param max_angAcc Aceleração angular máxima, em graus/s^2, não utilizado no momento, padrão 0
+    * @param rotorn Direção de rotação, 1-horário, 2-anti-horário
+    * @param strategy Estratégia de tratamento quando força/torque não são detectados, 0-reportar erro; 1-avisar, continuar movimento
+    * @return Código de erro
     */
     public int FT_RotInsertion(int rcs, double angVelRot, double ft, double max_angle, int orn, double max_angAcc, int rotorn, int strategy)
 
-机器人力传感器旋转插入代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Inserção Rotativa com Sensor de Força do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestMove(Robot robot)
     {
-        int rtn=-1;
-        JointPos j1=new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
-        JointPos j2=new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
-        JointPos j3=new JointPos(-29.777, -84.536, 109.275, -114.075, -86.655, 74.257);
-        JointPos j4=new JointPos(-31.154, -95.317, 94.276, -88.079, -89.740, 74.256);
-        DescPose desc_pos1=new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
-        DescPose desc_pos2=new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
-        DescPose desc_pos3=new DescPose(-487.434, 154.362, 308.576, 176.600, 0.268, -14.061);
-        DescPose desc_pos4=new DescPose(-443.165, 147.881, 480.951, 179.511, -0.775, -15.409);
-        DescPose offset_pos=new DescPose(0, 0, 0, 0, 0, 0);
-        ExaxisPos epos=new ExaxisPos(0, 0, 0, 0);
+        int rtn = -1;
+        JointPos j1 = new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
+        JointPos j2 = new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
+        JointPos j3 = new JointPos(-29.777, -84.536, 109.275, -114.075, -86.655, 74.257);
+        JointPos j4 = new JointPos(-31.154, -95.317, 94.276, -88.079, -89.740, 74.256);
+        DescPose desc_pos1 = new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
+        DescPose desc_pos2 = new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
+        DescPose desc_pos3 = new DescPose(-487.434, 154.362, 308.576, 176.600, 0.268, -14.061);
+        DescPose desc_pos4 = new DescPose(-443.165, 147.881, 480.951, 179.511, -0.775, -15.409);
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos epos = new ExaxisPos(0, 0, 0, 0);
         int tool = 0;
         int user = 0;
         double vel = 100.0;
@@ -536,38 +536,38 @@
         return 0;
     }
 
-柔顺控制开启
+Ativar Controle de Compliance
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  柔顺控制开启
-    * @param  [in] p 位置调节系数或柔顺系数
-    * @param  [in] force 柔顺开启力阈值，单位N
-    * @return  错误码
-    */   
+    * @brief Ativa o controle de compliance
+    * @param [in] p Coeficiente de ajuste de posição ou coeficiente de compliance
+    * @param [in] force Limiar de força para ativação do compliance, em N
+    * @return Código de erro
+    */
     int FT_ComplianceStart(double p, double force);
 
-柔顺控制关闭
+Desativar Controle de Compliance
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  柔顺控制关闭
-    * @return  错误码
-    */   
-    int FT_ComplianceStop(); 
+    * @brief Desativa o controle de compliance
+    * @return Código de erro
+    */
+    int FT_ComplianceStop();
 
-柔顺控制代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Controle de Compliance
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestCompliance(Robot robot)
     {
-        DescTran tr1=new DescTran(0,0,0);
+        DescTran tr1 = new DescTran(0,0,0);
         robot.SetForceSensorPayload(0);
         robot.SetForceSensorPayloadCog(tr1);
 
@@ -577,7 +577,7 @@
         int bus = 1;
         int index = 1;
 
-        DeviceConfig con=new DeviceConfig(company, device, softversion, bus);
+        DeviceConfig con = new DeviceConfig(company, device, softversion, bus);
         robot.FT_SetConfig(con);
         robot.Sleep(1000);
         robot.FT_GetConfig(con);
@@ -595,22 +595,21 @@
 
         int flag = 1;
         int sensor_id = 1;
-        Object[] select =new Object[] { 1,1,1,0,0,0 };
-        Object[] ft_pid =new Object[] { 0.0005,0.0,0.0,0.0,0.0,0.0 };
+        Object[] select = new Object[] { 1,1,1,0,0,0 };
+        Object[] ft_pid = new Object[] { 0.0005,0.0,0.0,0.0,0.0,0.0 };
         int adj_sign = 0;
         int ILC_sign = 0;
         double max_dis = 100.0;
         double max_ang = 0.0;
 
-        ForceTorque ft=new ForceTorque(0,0,0,0,0,0);
-        DescPose  offset_pos=new DescPose(0, 0, 0, 0, 0, 0);
-        ExaxisPos epos=new ExaxisPos(0, 0, 0, 0);
+        ForceTorque ft = new ForceTorque(0,0,0,0,0,0);
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos epos = new ExaxisPos(0, 0, 0, 0);
 
-
-        JointPos j1=new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
-        JointPos j2=new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
-        DescPose desc_p1=new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
-        DescPose desc_p2=new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
+        JointPos j1 = new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
+        JointPos j2 = new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
+        DescPose desc_p1 = new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
+        DescPose desc_p2 = new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
 
         ft.fx = -10.0;
         ft.fy = -10.0;
@@ -621,7 +620,7 @@
         int rtn = robot.FT_ComplianceStart(p, force);
 
         int count = 15;
-        while (count>0)
+        while (count > 0)
         {
             robot.MoveL(j1, desc_p1, 0, 0, 100.0, 180.0, 100.0, -1.0,0, epos, 0, 1, offset_pos,0,10);
             robot.MoveL(j2, desc_p2, 0, 0, 100.0, 180.0, 100.0, -1.0,0, epos, 0, 0, offset_pos,0,10);
@@ -635,56 +634,56 @@
         return 0;
     }
 
-负载辨识初始化
+Inicialização da Identificação da Carga
 +++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 负载辨识初始化
-    * @return 错误码
+    * @brief Inicialização da identificação da carga
+    * @return Código de erro
     */
     int LoadIdentifyDynFilterInit();
 
-负载辨识变量初始化
-+++++++++++++++++++++++++++++++++++++++++++++
+Inicialização das Variáveis de Identificação da Carga
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 负载辨识变量初始化
-    * @return 错误码
+    * @brief Inicialização das variáveis de identificação da carga
+    * @return Código de erro
     */
     int LoadIdentifyDynVarInit();
 
-负载辨识主程序
-+++++++++++++++++++++++++++++++++++++++++++++
+Programa Principal de Identificação da Carga
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 负载辨识主程序
-    * @param [in] joint_torque 关节扭矩
-    * @param [in] joint_pos 关节位置
-    * @param [in] t 采样周期
-    * @return 错误码
+    * @brief Programa principal de identificação da carga
+    * @param [in] joint_torque Torque das juntas
+    * @param [in] joint_pos Posição das juntas
+    * @param [in] t Período de amostragem
+    * @return Código de erro
     */
     int LoadIdentifyMain(Object[] joint_torque, Object[] joint_pos, double t);
 
-获取负载辨识结果
-+++++++++++++++++++++++++++++++++++++++++++++
+Obter Resultado da Identificação da Carga
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取负载辨识结果
+    * @brief Obtém o resultado da identificação da carga
     * @param [in] gain
-    * @return List[0]:错误码; List[1] : double weight 负载重量; List[2]: x 负载质心X mm; List[3] : y 负载质心Y mm; List[2]: z 负载质心Z mm
+    * @return List[0]: código de erro; List[1]: double weight Peso da carga; List[2]: x Centro de massa X mm; List[3]: y Centro de massa Y mm; List[4]: z Centro de massa Z mm
     */
     List<Number> LoadIdentifyGetResult(Object[] gain);
 
-机器人负载辨识代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Identificação da Carga do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -698,15 +697,15 @@
 
         JointPos posJ = new JointPos(0,0,0,0,0,0);
         DescPose posDec = new DescPose(0,0,0,0,0,0);
-        List<Number> joint_toq=new ArrayList<>();
-        robot.GetActualJointPosDegree( posJ);
+        List<Number> joint_toq = new ArrayList<>();
+        robot.GetActualJointPosDegree(posJ);
         posJ.J2 = posJ.J2 + 10;
-        joint_toq=robot.GetJointTorques(0);
+        joint_toq = robot.GetJointTorques(0);
 
-        Object[] gain =new Object[] { 0,0.05,0,0,0,0,0,0.02,0,0,0,0 };
+        Object[] gain = new Object[] { 0,0.05,0,0,0,0,0,0.02,0,0,0,0 };
         double weight = 0;
-        DescTran load_pos=new DescTran(0,0,0);
-        List<Number> num=new ArrayList<>();
+        DescTran load_pos = new DescTran(0,0,0);
+        List<Number> num = new ArrayList<>();
         num = robot.LoadIdentifyGetResult(gain);
 
         robot.CloseRPC();
@@ -714,7 +713,7 @@
 
     }
 
-力传感器辅助拖动
+Arrasto Assistido por Sensor de Força
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: Java SDK-v1.0.6-3.8.3
 
@@ -722,104 +721,104 @@
     :linenos:
 
     /**
-    * @brief 力传感器辅助拖动
-    * @param [in] status 控制状态，0-关闭；1-开启
-    * @param [in] asaptiveFlag 自适应开启标志，0-关闭；1-开启
-    * @param [in] interfereDragFlag 干涉区拖动标志，0-关闭；1-开启
-    * @param [in] ingularityConstraintsFlag 奇异点策略，0-规避；1-穿越
-    * @param [in] forceCollisionFlag 辅助拖动时机器人碰撞检测标志；0-关闭；1-开启
-    * @param [in] M 惯性系数
-    * @param [in] B 阻尼系数
-    * @param [in] K 刚度系数
-    * @param [in] F 拖动六维力阈值
-    * @param [in] Fmax 最大拖动力限制 Nm
-    * @param [in] Vmax 最大关节速度限制 °/s
-    * @return 错误码
+    * @brief Arrasto assistido por sensor de força
+    * @param [in] status Estado de controle, 0-desativar; 1-ativar
+    * @param [in] asaptiveFlag Flag de ativação de adaptação, 0-desativar; 1-ativar
+    * @param [in] interfereDragFlag Flag de arrasto em zona de interferência, 0-desativar; 1-ativar
+    * @param [in] ingularityConstraintsFlag Estratégia de ponto singular, 0-evitar; 1-atravessar
+    * @param [in] forceCollisionFlag Flag de detecção de colisão do robô durante arrasto assistido; 0-desativar; 1-ativar
+    * @param [in] M Coeficiente de inércia
+    * @param [in] B Coeficiente de amortecimento
+    * @param [in] K Coeficiente de rigidez
+    * @param [in] F Limiar de força de arrasto 6D
+    * @param [in] Fmax Limite máximo de força de arrasto Nm
+    * @param [in] Vmax Limite máximo de velocidade das juntas °/s
+    * @return Código de erro
     */
-    int EndForceDragControl(int status, int asaptiveFlag, int interfereDragFlag,int ingularityConstraintsFlag, int forceCollisionFlag, Object[] M, Object[] B, Object[] K, Object[] F, double Fmax, double Vmax)
+    int EndForceDragControl(int status, int asaptiveFlag, int interfereDragFlag, int ingularityConstraintsFlag, int forceCollisionFlag, Object[] M, Object[] B, Object[] K, Object[] F, double Fmax, double Vmax)
 
-获取力传感器拖动开关状态
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Estado do Interruptor de Arrasto do Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取力传感器拖动开关状态
-    * @return List[0]:错误码; List[1] : dragState 力传感器辅助拖动控制状态，0-关闭；1-开启; List[1] : sixDimensionalDragState 六维力辅助拖动控制状态，0-关闭；1-开启
+    * @brief Obtém o estado do interruptor de arrasto do sensor de força
+    * @return List[0]: código de erro; List[1]: dragState Estado de controle de arrasto assistido por sensor de força, 0-desativar; 1-ativar; List[2]: sixDimensionalDragState Estado de controle de arrasto assistido por força 6D, 0-desativar; 1-ativar
     */
     List<Integer> GetForceAndTorqueDragState();
 
-报错清除后力传感器自动开启
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Ativação Automática do Sensor de Força Após Limpeza de Erro
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 报错清除后力传感器自动开启
-    * @param [in] status 控制状态，0-关闭；1-开启
-    * @return 错误码
+    * @brief Ativação automática do sensor de força após limpeza de erro
+    * @param [in] status Estado de controle, 0-desativar; 1-ativar
+    * @return Código de erro
     */
     int SetForceSensorDragAutoFlag(int status)
 
-力传感器辅助拖动代码示例
-++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Arrasto Assistido por Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestEndForceDragCtrl(Robot robot)
     {
-        DescTran tr1=new DescTran(0,0,0);
+        DescTran tr1 = new DescTran(0,0,0);
         robot.SetForceSensorPayload(0);
         robot.SetForceSensorPayloadCog(tr1);
 
         robot.SetForceSensorDragAutoFlag(1);
 
-        Object[] M =new Object[] { 15.0, 15.0, 15.0, 0.5, 0.5, 0.1 };
-        Object[] B =new Object[] { 150.0, 150.0, 150.0, 5.0, 5.0, 1.0 };
-        Object[] K =new Object[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-        Object[] F =new Object[] { 10.0, 10.0, 10.0, 1.0, 1.0, 1.0 };
+        Object[] M = new Object[] { 15.0, 15.0, 15.0, 0.5, 0.5, 0.1 };
+        Object[] B = new Object[] { 150.0, 150.0, 150.0, 5.0, 5.0, 1.0 };
+        Object[] K = new Object[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        Object[] F = new Object[] { 10.0, 10.0, 10.0, 1.0, 1.0, 1.0 };
         robot.EndForceDragControl(1, 0, 0, 0, M, B, K, F, 50, 100);
 
         robot.Sleep(10000);
 
         int dragState = 0;
         int sixDimensionalDragState = 0;
-        List<Integer> state=new ArrayList<>();
-        state=robot.GetForceAndTorqueDragState();
+        List<Integer> state = new ArrayList<>();
+        state = robot.GetForceAndTorqueDragState();
 
         robot.EndForceDragControl(0, 0, 0, 0, M, B, K, F, 50, 100);
         return 0;
     }
 
-设置六维力和关节阻抗混合拖动开关及参数
-+++++++++++++++++++++++++++++++++++++++++++++
+Definir Interruptor e Parâmetros do Arrasto Híbrido de Força 6D e Impedância Articular
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置六维力和关节阻抗混合拖动开关及参数
-    * @param [in] status 控制状态，0-关闭；1-开启
-    * @param [in] impedanceFlag 阻抗开启标志，0-关闭；1-开启
-    * @param [in] lamdeGain 拖动增益
-    * @param [in] KGain 刚度增益
-    * @param [in] BGain 阻尼增益
-    * @param [in] dragMaxTcpVel 拖动末端最大线速度限制
-    * @param [in] dragMaxTcpOriVel 拖动末端最大角速度限制
-    * @return 错误码
+    * @brief Define o interruptor e parâmetros do arrasto híbrido de força 6D e impedância articular
+    * @param [in] status Estado de controle, 0-desativar; 1-ativar
+    * @param [in] impedanceFlag Flag de ativação de impedância, 0-desativar; 1-ativar
+    * @param [in] lamdeGain Ganho de arrasto
+    * @param [in] KGain Ganho de rigidez
+    * @param [in] BGain Ganho de amortecimento
+    * @param [in] dragMaxTcpVel Velocidade linear máxima do TCP durante arrasto
+    * @param [in] dragMaxTcpOriVel Velocidade angular máxima do TCP durante arrasto
+    * @return Código de erro
     */
     int ForceAndJointImpedanceStartStop(int status, int impedanceFlag, Object[] lamdeGain, Object[] KGain, Object[] BGain, double dragMaxTcpVel, double dragMaxTcpOriVel);
 
-六维力和关节阻抗混合拖动代码示例
-+++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Arrasto Híbrido de Força 6D e Impedância Articular
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestForceAndJointImpedance(Robot robot)
     {
         robot.DragTeachSwitch(1);
-        Object[] lamdeDain =new Object[] { 3.0, 2.0, 2.0, 2.0, 2.0, 3.0 };
+        Object[] lamdeDain = new Object[] { 3.0, 2.0, 2.0, 2.0, 2.0, 3.0 };
         Object[] KGain = new Object[]{ 0, 0, 0, 0, 0, 0 };
-        Object[] BGain =new Object[] { 150, 150, 150, 5.0, 5.0, 1.0 };
+        Object[] BGain = new Object[] { 150, 150, 150, 5.0, 5.0, 1.0 };
         int rtn = robot.ForceAndJointImpedanceStartStop(1, 0, lamdeDain, KGain, BGain, 1000.0, 180.0);
 
         robot.Sleep(10000);
@@ -831,41 +830,40 @@
         return 0;
     }
 
-阻抗启停控制
+Controle de Ativação/Desativação de Impedância
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 阻抗启停控制
-    * @param [in] status 0：关闭；1-开启
-    * @param [in] workSpace 0-关节空间；1-迪卡尔空间
-    * @param [in] forceThreshold 触发力阈值(N)
-    * @param [in] m 质量参数
-    * @param [in] b 阻尼参数
-    * @param [in] k 刚度参数
-    * @param [in] maxV 最大线速度(mm/s)
-    * @param [in] maxVA 最大线加速度(mm/s2)
-    * @param [in] maxW 最大角速度(°/s)
-    * @param [in] maxWA 最大角加速度(°/s2)
-    * @return 错误码
+    * @brief Controle de ativação/desativação de impedância
+    * @param [in] status 0: desativar; 1-ativar
+    * @param [in] workSpace 0-espaço articular; 1-espaço cartesiano
+    * @param [in] forceThreshold Limiar de força de ativação (N)
+    * @param [in] m Parâmetro de massa
+    * @param [in] b Parâmetro de amortecimento
+    * @param [in] k Parâmetro de rigidez
+    * @param [in] maxV Velocidade linear máxima (mm/s)
+    * @param [in] maxVA Aceleração linear máxima (mm/s²)
+    * @param [in] maxW Velocidade angular máxima (°/s)
+    * @param [in] maxWA Aceleração angular máxima (°/s²)
+    * @return Código de erro
     */
     public int ImpedanceControlStartStop(int status, int workSpace, double[] forceThreshold, double[] m, double[] b, double[] k, double maxV, double maxVA, double maxW, double maxWA)
 
-
-机器人阻抗启停控制代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Controle de Ativação/Desativação de Impedância do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestImpedanceControl(Robot robot)
     {
-        JointPos j1=new JointPos(102.622, -135.990, 120.769, -73.950, -90.848, 35.507);
-        JointPos j2=new JointPos(93.674, -80.062, 82.947, -92.199, -90.967, 26.559);
-        DescPose desc_pos1=new DescPose(136.552, -149.799, 449.532, 179.817, -1.172, 157.123);
-        DescPose desc_pos2=new DescPose(136.540, -561.048, 449.542, 179.819, -1.172, 157.122);
-        DescPose offset_pos=new DescPose(0, 0, 0, 0, 0, 0);
-        ExaxisPos epos=new ExaxisPos(0, 0, 0, 0);
+        JointPos j1 = new JointPos(102.622, -135.990, 120.769, -73.950, -90.848, 35.507);
+        JointPos j2 = new JointPos(93.674, -80.062, 82.947, -92.199, -90.967, 26.559);
+        DescPose desc_pos1 = new DescPose(136.552, -149.799, 449.532, 179.817, -1.172, 157.123);
+        DescPose desc_pos2 = new DescPose(136.540, -561.048, 449.542, 179.819, -1.172, 157.122);
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos epos = new ExaxisPos(0, 0, 0, 0);
         int tool = 0;
         int user = 0;
         double vel = 100.0;
@@ -880,7 +878,7 @@
         int device = 0;
         int softversion = 0;
         int bus = 1;
-        DeviceConfig con=new DeviceConfig(company, device, softversion, bus);
+        DeviceConfig con = new DeviceConfig(company, device, softversion, bus);
         robot.FT_SetConfig(con);
         robot.Sleep(1000);
         robot.FT_GetConfig(con);
@@ -896,7 +894,7 @@
         robot.FT_SetZero(1);
         robot.Sleep(1000);
         double[] forceThreshold = { 30,30,30,5,5,5 };
-        double[] m= { 0.1,0.1,0.1,0.02,0.02,0.02 };
+        double[] m = { 0.1,0.1,0.1,0.02,0.02,0.02 };
         double[] b = { 1,1,1,0.08,0.08,0.08 };
         double[] k = { 0,0,0,0,0,0 };
         int rtn = robot.ImpedanceControlStartStop(1, 1, forceThreshold, m, b, k, 1000, 500, 100, 100);
@@ -913,15 +911,15 @@
         return 0;
     }
 
-开启力矩补偿功能及补偿系数
-+++++++++++++++++++++++++++++++++++++++++++++
+Ativar Função de Compensação de Torque e Coeficientes de Compensação
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 开启力矩补偿功能及补偿系数
-    * @param  status 开关，0-关闭；1-开启
-    * @param  torqueCoeff J1-J6力矩补偿系数[0-1]
-    * @return 错误码
+    * @brief Ativa a função de compensação de torque e coeficientes de compensação
+    * @param status Interruptor, 0-desativar; 1-ativar
+    * @param torqueCoeff Coeficientes de compensação de torque J1-J6 [0-1]
+    * @return Código de erro
     */
     public int SerCoderCompenParams(int status, double[] torqueCoeff)

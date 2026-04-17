@@ -1,70 +1,70 @@
-机器人安全设置
-=================
+Configurações de Segurança do Robô
+===================================================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-设置碰撞等级
+Definir Nível de Colisão
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置碰撞等级
-    * @param  [in]  mode  0-等级，1-百分比
-    * @param  [in]  level 碰撞阈值，等级对应范围[1 - 10对应等级1-10， 100-关闭],百分比对应范围[0~10 对应 0% - 100%]
-    * @param  [in]  config 0-不更新配置文件，1-更新配置文件
-    * @return  错误码
+    * @brief Define o nível de colisão
+    * @param [in] mode 0-nível, 1-percentagem
+    * @param [in] level Limiar de colisão, intervalo do nível [1 - 10 corresponde ao nível 1-10, 100-desativado], intervalo da percentagem [0~10 corresponde a 0% - 100%]
+    * @param [in] config 0-não atualizar arquivo de configuração, 1-atualizar arquivo de configuração
+    * @return Código de erro
     */
-    int SetAnticollision(int mode, Object[] level, int config); 
+    int SetAnticollision(int mode, Object[] level, int config);
 
-设置碰撞后策略
-++++++++++++++++++++++++++++++++
+Definir Estratégia Pós-Colisão
+++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置碰撞后策略
-    * @param  [in] strategy  0-报错停止，1-继续运行
-    * @param  [in] safeTime  安全停止时间[1000 - 2000]ms
-    * @param  [in] safeDistance  安全停止距离[1-150]mm
-    * @param  [in] safetyMargin  j1-j6安全系数[1-10]
-    * @return  错误码  
+    * @brief Define a estratégia pós-colisão
+    * @param [in] strategy 0-parar com erro, 1-continuar execução
+    * @param [in] safeTime Tempo de paragem segura [1000 - 2000]ms
+    * @param [in] safeDistance Distância de paragem segura [1-150]mm
+    * @param [in] safetyMargin Fator de segurança para j1-j6 [1-10]
+    * @return Código de erro
     */
-    int SetCollisionStrategy(int strategy, int safeTime, int safeDistance, int safetyMargin[]); 
+    int SetCollisionStrategy(int strategy, int safeTime, int safeDistance, int safetyMargin[]);
 
-自定义碰撞检测阈值功能开始
-+++++++++++++++++++++++++++++++++++++++++++++
+Iniciar Função de Limiar de Deteção de Colisão Personalizada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.3-3.8.0
 
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  自定义碰撞检测阈值功能开始，设置关节端和TCP端的碰撞检测阈值
-    * @param  [in] flag 1-仅关节检测开启；2-仅TCP检测开启；3-关节和TCP检测同时开启
-    * @param  [in] jointDetectionThreshould 关节碰撞检测阈值 j1-j6
-    * @param  [in] tcpDetectionThreshould  TCP碰撞检测阈值，xyzabc
-    * @param  [in] block 0-非阻塞；1-阻塞
-    * @return  错误码
-    */   
+    * @brief Inicia a função de limiar de deteção de colisão personalizada, define os limiares de deteção de colisão na extremidade da junta e na extremidade do TCP
+    * @param [in] flag 1-apenas deteção da junta ativada; 2-apenas deteção do TCP ativada; 3-deteção da junta e do TCP ativadas simultaneamente
+    * @param [in] jointDetectionThreshould Limiar de deteção de colisão da junta j1-j6
+    * @param [in] tcpDetectionThreshould Limiar de deteção de colisão do TCP, xyzabc
+    * @param [in] block 0-não bloqueante; 1-bloqueante
+    * @return Código de erro
+    */
     public int CustomCollisionDetectionStart(int flag, double[] jointDetectionThreshould, double[] tcpDetectionThreshould, int block);
 
-自定义碰撞检测阈值功能关闭
-+++++++++++++++++++++++++++++++++++++++++++++
+Desativar Função de Limiar de Deteção de Colisão Personalizada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.3-3.8.0
 
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  自定义碰撞检测阈值功能关闭
-    * @return  错误码
-    */   
+    * @brief Desativa a função de limiar de deteção de colisão personalizada
+    * @return Código de erro
+    */
     public int CustomCollisionDetectionEnd();
 
-机器人碰撞等级设置代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Definição do Nível de Colisão do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -81,14 +81,14 @@
         rtn = robot.SetAnticollision(mode, level2, config);
         System.out.println("SetAnticollision mode 1 rtn is :"+ rtn);
 
-        JointPos p1Joint=new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
-        JointPos p2Joint=new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
+        JointPos p1Joint = new JointPos(-11.904, -99.669, 117.473, -108.616, -91.726, 74.256);
+        JointPos p2Joint = new JointPos(-45.615, -106.172, 124.296, -107.151, -91.282, 74.255);
 
-        DescPose p1Desc=new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
-        DescPose p2Desc=new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
+        DescPose p1Desc = new DescPose(-419.524, -13.000, 351.569, -178.118, 0.314, 3.833);
+        DescPose p2Desc = new DescPose(-321.222, 185.189, 335.520, -179.030, -1.284, -29.869);
 
-        ExaxisPos exaxisPos=new ExaxisPos(0.0, 0.0, 0.0, 0.0);
-        DescPose offdese=new DescPose(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        ExaxisPos exaxisPos = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+        DescPose offdese = new DescPose(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         robot.MoveL(p2Joint, p2Desc, 0, 0, 100, 100, 100, 2,0, exaxisPos, 0, 0, offdese,0,10);
         robot.ResetAllError();
         int[] safety = new int[]{ 5,5,5,5,5,5 };
@@ -96,7 +96,7 @@
         System.out.println("SetCollisionStrategy rtn is:"+ rtn);
 
         double[] jointDetectionThreshould = new double[]{ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 };
-        double[] tcpDetectionThreshould =new double[] { 60,60,60,60,60,60 };
+        double[] tcpDetectionThreshould = new double[] { 60,60,60,60,60,60 };
         rtn = robot.CustomCollisionDetectionStart(3, jointDetectionThreshould, tcpDetectionThreshould, 0);
         System.out.println("CustomCollisionDetectionStart rtn is :"+ rtn);
 
@@ -107,64 +107,64 @@
         return 0;
     }
 
-设置正限位
+Definir Limite Positivo
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置正限位
-    * @param  [in] limit 六个关节位置，单位deg
-    * @return  错误码
+    * @brief Define o limite positivo
+    * @param [in] limit Posições das seis juntas, em graus
+    * @return Código de erro
     */
-    int SetLimitPositive(Object[] limit); 
+    int SetLimitPositive(Object[] limit);
 
-设置负限位
+Definir Limite Negativo
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置负限位
-    * @param  [in] limit 六个关节位置，单位deg
-    * @return  错误码
+    * @brief Define o limite negativo
+    * @param [in] limit Posições das seis juntas, em graus
+    * @return Código de erro
     */
-    int SetLimitNegative(Object[] limit); 
+    int SetLimitNegative(Object[] limit);
 
-获取关节软限位角度
-+++++++++++++++++++++++++++++++++++++++++
+Obter Ângulo do Limite Flexível das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取关节软限位角度
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] negative  负限位角度，单位deg
-    * @param  [out] positive  正限位角度，单位deg
-    * @return  错误码
+    * @brief Obtém o ângulo do limite flexível das juntas
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] negative Ângulo do limite negativo, em graus
+    * @param [out] positive Ângulo do limite positivo, em graus
+    * @return Código de erro
     */
-    int GetJointSoftLimitDeg(int flag, Object[] negative, Object[] positive); 
+    int GetJointSoftLimitDeg(int flag, Object[] negative, Object[] positive);
 
-机器人限位设置代码示例
-++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Definição de Limites do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static int TestLimit(Robot robot)
     {
-        Object[] plimit =new Object[] { 170.0,80.0,150.0,80.0,170.0,160.0 };
+        Object[] plimit = new Object[] { 170.0,80.0,150.0,80.0,170.0,160.0 };
         robot.SetLimitPositive(plimit);
-        Object[] nlimit =new Object[] { -170.0,-260.0,-150.0,-260.0,-170.0,-160.0 };
+        Object[] nlimit = new Object[] { -170.0,-260.0,-150.0,-260.0,-170.0,-160.0 };
         robot.SetLimitNegative(nlimit);
 
-        Object[] neg_deg =new Object[] {0, 0 , 0, 0, 0, 0}, pos_deg = new Object[]{0, 0 , 0, 0, 0, 0};
-        robot.GetJointSoftLimitDeg(1,  neg_deg,  pos_deg);
+        Object[] neg_deg = new Object[] {0, 0 , 0, 0, 0, 0}, pos_deg = new Object[]{0, 0 , 0, 0, 0, 0};
+        robot.GetJointSoftLimitDeg(1, neg_deg, pos_deg);
         System.out.println("neg limit deg:"+ neg_deg[0]+","+ neg_deg[1]+","+ neg_deg[2]+","+ neg_deg[3]+","+ neg_deg[4]+","+ neg_deg[5]);
         System.out.println("pos limit deg:"+pos_deg[0]+","+ pos_deg[1]+","+ pos_deg[2]+","+ pos_deg[3]+","+ pos_deg[4]+","+pos_deg[5]);
         return 0;
     }
 
-设置机器人碰撞检测方法
+Definir Método de Deteção de Colisão do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: Java SDK-v1.0.5-3.8.2
 
@@ -172,27 +172,27 @@
     :linenos:
 
     /**
-    * @brief 设置机器人碰撞检测方法
-    * @param [in] method 碰撞检测方法：0-电流模式；1-双编码器；2-电流和双编码器同时开启
-    * @param [in] thresholdMode 碰撞等级阈值方式；0-碰撞等级固定阈值方式；1-自定义碰撞检测阈值
-    * @return 错误码
+    * @brief Define o método de deteção de colisão do robô
+    * @param [in] method Método de deteção de colisão: 0-modo de corrente; 1-duplo encoder; 2-corrente e duplo encoder ativados simultaneamente
+    * @param [in] thresholdMode Modo do limiar de nível de colisão; 0-modo de limiar fixo do nível de colisão; 1-limiar de deteção de colisão personalizado
+    * @return Código de erro
     */
-    int SetCollisionDetectionMethod(int method,int thresholdMode)
+    int SetCollisionDetectionMethod(int method, int thresholdMode)
 
-设置静态下碰撞检测开始关闭
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Ativação/Desativação de Deteção de Colisão em Estática
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置静态下碰撞检测开始关闭
-    * @param  [in] status 0-关闭；1-开启
-    * @return  错误码
+    * @brief Define a ativação/desativação de deteção de colisão em estática
+    * @param [in] status 0-desativar; 1-ativar
+    * @return Código de erro
     */
     public int SetStaticCollisionOnOff(int status)
 
-设置机器人碰撞检测方法代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Definição do Método de Deteção de Colisão do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -210,21 +210,21 @@
         return 0;
     }
 
-关节扭矩功率检测
+Deteção de Torque e Potência das Juntas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 关节扭矩功率检测
-    * @param  [in] status 0-关闭；1-开启
-    * @param  [in] power 设定最大功率(W)
-    * @return  错误码
+    * @brief Deteção de torque e potência das juntas
+    * @param [in] status 0-desativar; 1-ativar
+    * @param [in] power Potência máxima definida (W)
+    * @return Código de erro
     */
     public int SetPowerLimit(int status, double power)
 
-关节扭矩功率检测代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Deteção de Torque e Potência das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -232,11 +232,11 @@
     {
         robot.DragTeachSwitch(1);
         robot.SetPowerLimit(1, 200);
-        List<Number> joint_toq=new ArrayList<>();
-        joint_toq=robot.GetJointTorques(1);
+        List<Number> joint_toq = new ArrayList<>();
+        joint_toq = robot.GetJointTorques(1);
 
         int count = 100;
-        robot.ServoJTStart(); //   #servoJT开始
+        robot.ServoJTStart(); // # início do ServoJT
         int error = 0;
         while (count > 0)
         {
@@ -249,23 +249,23 @@
         robot.CloseRPC();
         return 0;
     }
-    
-设置安全速度参数
+
+Definir Parâmetros de Velocidade Segura
 ++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置安全速度参数
-    * @param enable 0-关；1-手动模式启用；2-所有模式启用(不支持自动限速)
-    * @param maxTCPVel 限制最大TCP速度;[0-1000]mm/s
-    * @param strategy 超速后策略；0-停止报警；1-自动限速；2-停止报警并去使能
-    * @return 错误码
+    * @brief Define os parâmetros de velocidade segura
+    * @param enable 0-desativar; 1-ativar no modo manual; 2-ativar em todos os modos (limitação automática de velocidade não suportada)
+    * @param maxTCPVel Limitar a velocidade máxima do TCP;[0-1000]mm/s
+    * @param strategy Estratégia após excesso de velocidade; 0-parar com alarme; 1-limitação automática de velocidade; 2-parar com alarme e desativar
+    * @return Código de erro
     */
     public int SetVelReducePara(int enable, double maxTCPVel, int strategy)
-        
-设置安全速度参数的SDK代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Exemplo de Código SDK para Definir Parâmetros de Velocidade Segura
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

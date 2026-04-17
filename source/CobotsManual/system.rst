@@ -1,269 +1,269 @@
-系统设置
-===============
+Configurações do Sistema
+============================
 
 .. toctree:: 
    :maxdepth: 6
 
-通用设置
------------------
+Configurações Gerais
+---------------------------------
 
-点击左侧菜单栏“系统设置”，点击二级菜单栏“通用设置”，进入通用设置界面。通用设置可以根据当前电脑时间更新机器人系统时间，以便记录日志内容时间准确。
+Clique no menu “Configurações do Sistema” na barra lateral esquerda e, em seguida, no submenu “Configurações Gerais” para entrar na interface. As configurações gerais permitem atualizar a hora do sistema do robô com base na hora atual do computador, garantindo a precisão do horário nos registros de log.
 
 .. image:: system/028.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑1 时间设置
+.. centered:: Figura 15.1‑1 Configuração de Hora
 
-网络设置可以设置控制器IP，子网掩码，默认网关，DNS服务器和示教器IP(使用我们的FR-HMI示教器情况下该IP有效，在使用FR-HMI示教器情况下需要配置示教器启用状态为启用)，方便客户使用场景。
+As configurações de rede permitem definir o IP do controlador, a máscara de sub-rede, o gateway padrão, o servidor DNS e o IP do painel de ensinamento (este IP é válido ao usar nosso painel de ensinamento FR-HMI; quando o FR-HMI é usado, é necessário definir o estado de ativação do painel de ensinamento como ativado), facilitando o cenário de uso para o cliente.
 
-网络设置
-~~~~~~~~~~~~
+Configurações de Rede
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: system/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1‑2 网络设置示意图
+.. centered:: Figura 15.1‑2 Diagrama de Configurações de Rede
 
--  **设置网卡**：输入需要通信的网卡IP、子网掩码（与IP联动，自动填写）、默认网关、DNS服务器。网卡0网口出厂默认IP：192.168.57.2，网卡1网口出厂默认IP：192.168.58.2。
+-  **Configurar Placa de Rede**: Insira o IP da placa de rede com a qual deseja se comunicar, a máscara de sub-rede (vinculada ao IP, preenchida automaticamente), o gateway padrão e o servidor DNS. O IP padrão de fábrica para a porta da placa de rede 0 é 192.168.57.2, e para a porta da placa de rede 1 é 192.168.58.2.
 
--  **示教器启用**：控制是否启用示教器。默认示教器关闭，无法使用示教器操作设备。点击滑动开关按钮，则启用示教器操作设备。
+-  **Ativar Painel de Ensinamento**: Controla se o painel de ensinamento está ativado. O painel de ensinamento está desativado por padrão, não sendo possível operar o equipamento com ele. Clique no interruptor deslizante para ativar a operação do equipamento pelo painel de ensinamento.
   
--  **访问IP**：选择WebAPP和WebRecovery关联的网卡，示教器启用时，WebAPP默认选择网卡1，网卡0不可选。
+-  **IP de Acesso**: Seleciona a placa de rede associada ao WebAPP e ao WebRecovery. Quando o painel de ensinamento está ativado, o WebAPP seleciona a placa de rede 1 por padrão, e a placa de rede 0 não pode ser selecionada.
   
--  **设置网络**：点击“设置网络”按钮，提示正在配置中。配置完成后，需要重启设备。
+-  **Configurar Rede**: Clique no botão “Configurar Rede”. Uma mensagem de configuração em andamento será exibida. Após a configuração, é necessário reiniciar o dispositivo.
 
-免登录操作
+Operação Sem Login
 ++++++++++++++++++++++++++++++++++++++++++++++
 
-功能概述
+Visão Geral da Função
 ***************************
 
-打开实体示教器未登录操作功能后，可实现以下功能：
+Após ativar a função de operação sem login no painel de ensinamento físico, as seguintes funções podem ser realizadas:
 
-- 用户未登录示教界面时，旋转物理钥匙开关，机器人可切换手动/自动模式，末端灯颜色对应切换；
-- 用户未登录示教界面时，在自动模式下，点击物理启动开关，机器人可开始运行当前加载程序；
-- 用户未登录示教界面时，在自动模式下，点击物理停止开关，机器人可停止运行；
+- Quando o usuário não estiver logado na interface do painel de ensinamento, girar a chave seletora física alterna o robô entre os modos manual/automático, e a cor do LED da extremidade muda correspondentemente.
+- Quando o usuário não estiver logado na interface do painel de ensinamento, no modo automático, pressionar o interruptor de partida físico faz com que o robô comece a executar o programa carregado atualmente.
+- Quando o usuário não estiver logado na interface do painel de ensinamento, no modo automático, pressionar o interruptor de parada físico faz com que o robô pare a execução.
   
-使用说明
+Instruções de Uso
 ***************************
-登录webapp页面，点击“系统设置”，点击“通用设置”，在网络模块-示教器板块中，打开“示教器启用”开关，打开“免登录操作”开关，开启功能后，可在未登录示教器页面时操控物理按钮进行机器人手动/自动模式切换及控制程序运行/停止。该配置断电重启后保持。
+Faça login na página web do robô, clique em “Configurações do Sistema” e, em seguida, em “Configurações Gerais”. No módulo de rede, na seção do painel de ensinamento, ative o interruptor “Ativar Painel de Ensinamento” e ative o interruptor “Operação Sem Login”. Com a função ativada, é possível usar os botões físicos para alternar o robô entre os modos manual/automático e controlar a execução/parada do programa sem estar logado na página do painel de ensinamento. Esta configuração persiste após reinicialização.
 
 .. image:: system/045.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1‑2-1 开启免登陆操作功能
+.. centered:: Figura 15.1‑2-1 Ativar Função de Operação Sem Login
   
-示教器触摸屏校准
-~~~~~~~~~~~~~~~~~~
+Calibração da Tela Sensível ao Toque do Painel de Ensinamento
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-启用示教器后，可对示教器进行校准操作。
+Após ativar o painel de ensinamento, é possível realizar a calibração da tela.
 
 .. image:: system/029.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑3 示教器触摸屏校准
+.. centered:: Figura 15.1‑3 Calibração da Tela Sensível ao Toque do Painel de Ensinamento
   
-外设工控机配置
-~~~~~~~~~~~~~~~~~~
+Configuração do Computador Industrial Periférico
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-启用外设工控机，需要输入IP地址。配置成功后，需要重启控制箱和工控机。
+Para ativar o computador industrial periférico, é necessário inserir um endereço IP. Após a configuração bem-sucedida, o painel de controle e o computador industrial devem ser reiniciados.
 
 .. image:: system/030.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑4 外设工控机配置
+.. centered:: Figura 15.1‑4 Configuração do Computador Industrial Periférico
   
-系统语言
+Idioma do Sistema
 ~~~~~~~~~~~~~~~~~~
 
-语言导入
-++++++++++++++++
+Importação de Idioma
++++++++++++++++++++++++++++++++++
 
-选择语言包进行导入操作（注：导入文件格式为[语言代码].json）。若导入成功，且语言包非系统已有语言，则系统语言新增一条导入的语言包数据。
+Selecione um pacote de idioma para importar (nota: o formato do arquivo de importação é [código do idioma].json). Se a importação for bem-sucedida e o pacote de idioma não existir no sistema, um novo idioma será adicionado com os dados do pacote importado.
 
 .. image:: system/031.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑5 系统语言界面
+.. centered:: Figura 15.1‑5 Interface de Idioma do Sistema
 
-语言导出
-+++++++++++++++++
-选择系统语言，以英文为例，点击“导出”按钮，页面弹出导出的下载文件。
+Exportação de Idioma
+++++++++++++++++++++++++++++++++++
+Selecione um idioma do sistema, usando o inglês como exemplo. Clique no botão “Exportar”. Uma janela pop-up aparecerá para baixar o arquivo.
 
 .. image:: system/035.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1‑6 导出系统语言
+.. centered:: Figura 15.1‑6 Exportar Idioma do Sistema
    
-语言应用
+Aplicação de Idioma
 ++++++++++++++++++++
 
-选择系统语言，点击“应用”按钮来切换系统语言。应用语言成功后，系统自动登出到登录页面，且系统语言同步切换为当前语言语言。以英文为例：
+Selecione um idioma do sistema e clique no botão “Aplicar” para alternar o idioma. Após a aplicação bem-sucedida, o sistema será automaticamente desconectado e redirecionado para a página de login, e o idioma do sistema será alterado para o idioma selecionado. Usando o inglês como exemplo:
 
 .. image:: system/036.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1‑7 语言系统成功后界面
+.. centered:: Figura 15.1‑7 Interface Após a Aplicação Bem-sucedida do Idioma
 
-系统安全模式恢复
-++++++++++++++++++++
+Recuperação do Modo de Segurança do Sistema
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-当系统需要进行版本升降级操作、系统语言包导入异常系统无法正常进入时，需要进入“系统安全模式恢复”界面，具体操作如下：
-1. 进入系统设置 -> 通用设置 -> 网络设置界面，调整WebRecovery访问IP到网卡0位置，并点击“设置网络”。
+Quando o sistema precisa ser atualizado/downgrade ou a importação do pacote de idioma falha e o sistema não consegue iniciar normalmente, é necessário entrar na interface “Recuperação do Modo de Segurança do Sistema”. O procedimento é o seguinte:
+1. Acesse Configurações do Sistema -> Configurações Gerais -> Configurações de Rede. Ajuste o IP de Acesso do WebRecovery para a placa de rede 0 e clique em “Configurar Rede”.
 
 .. image:: system/037.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1‑8 WebRecovery设置网卡界面
+.. centered:: Figura 15.1‑8 Interface de Configuração da Placa de Rede do WebRecovery
 
-2. 网络设置成功后重启控制箱，切换IP地址192.168.57.xxx，并将网线连接到控制箱网卡0。
-3. 登录网址“192.168.57.2:8050”，进入“系统安全模式恢复”界面。
+2. Após a configuração de rede bem-sucedida, reinicie o painel de controle. Altere o endereço IP do PC para 192.168.57.xxx e conecte o cabo de rede à porta da placa de rede 0 do painel de controle.
+3. Acesse a URL “192.168.57.2:8050” para entrar na interface “Recuperação do Modo de Segurança do Sistema”.
 
 .. image:: system/038.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 15.1‑9 系统安全模式恢复界面
+.. centered:: Figura 15.1‑9 Interface de Recuperação do Modo de Segurança do Sistema
 
-- 软件升级包导入：系统软件包升降级；
-- 恢复出厂语言：清除导入应用语言包数据，恢复出厂语言包数据，默认语言设置为英文；
+- Importação do Pacote de Atualização de Software: Atualização/downgrade do pacote de software do sistema.
+- Restaurar Idioma de Fábrica: Limpa os dados do pacote de idioma importado e aplicado, restaura os dados do pacote de idioma de fábrica e define o idioma padrão como inglês.
   
-故障数据
-~~~~~~~~~~~~
+Dados de Falha
+~~~~~~~~~~~~~~~~~~~~~
 
-点击启用“故障数据保存使能”按钮，当控制器发生故障时，会生成故障数据文件，保存故障时刻前后15秒钟的数据。
+Clique no botão “Ativar Salvamento de Dados de Falha”. Quando ocorre uma falha no controlador, um arquivo de dados de falha é gerado, salvando os dados dos 15 segundos antes e depois da falha.
 
-当保存完成后，可在系统设置中选择所有数据源导出，解压error_data.tar.gz即可查看故障数据文件。
+Após o salvamento, é possível exportar todas as fontes de dados em Configurações do Sistema e extrair o arquivo error_data.tar.gz para visualizar os dados de falha.
 
 .. image:: system/039.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 15.1‑10 故障数据
+.. centered:: Figura 15.1‑10 Dados de Falha
   
-超时登出时间设置
-~~~~~~~~~~~~~~~~~
+Configuração do Tempo Limite de Logout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-用户可以设置超时登出时间，若满足时长则自动登出，单位min。
+O usuário pode definir o tempo limite de logout. Se o período for atingido, o sistema será desconectado automaticamente. Unidade: min.
 
 .. image:: system/033.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑11 超时登出时间设置
+.. centered:: Figura 15.1‑11 Configuração do Tempo Limite de Logout
   
-系统设置
-~~~~~~~~~~~~
+Configurações do Sistema
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-系统恢复下恢复出厂设置可以清除用户数据，使机器人恢复到出厂配置。
+Em “Restauração do Sistema”, a opção “Restaurar Padrões de Fábrica” pode limpar os dados do usuário e restaurar o robô às configurações de fábrica.
 
-从站日志生成和控制器日志导出功能为下载控制器一些重要的状态或报错的记录文件，方便排查机器人问题。
+As funções de geração de log do escravo e exportação de log do controlador são usadas para baixar arquivos de registro de estados importantes ou erros do controlador, facilitando a solução de problemas do robô.
 
 .. image:: system/034.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑12 系统设置
+.. centered:: Figura 15.1‑12 Configurações do Sistema
 
-账户设置
----------------
+Configurações de Conta
+---------------------------------
 
-点击二级菜单栏账户设置，进入账户设置界面。账户管理功能仅限管理员可使用。功能分以下三个模块：
+Clique no submenu “Configurações de Conta” para entrar na interface. A função de gerenciamento de contas só está disponível para administradores. A função é dividida nos três módulos a seguir:
 
-用户管理
-~~~~~~~~~~~~
+Gerenciamento de Usuários
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-用户管理页面，用来保存用户信息，可以添加用户的工号、职能等。用户可通过输入用户列表中已有的用户名和密码进行登录操作。
+A página de gerenciamento de usuários é usada para armazenar informações do usuário, permitindo adicionar números de registro, funções, etc. Os usuários podem fazer login usando o nome de usuário e senha existentes na lista de usuários.
 
 .. image:: system/002.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑1 用户管理
+.. centered:: Figura 15.2‑1 Gerenciamento de Usuários
 
--  **新增用户**：点击“新增”按钮，输入工号、姓名、密码并选择职能。
+-  **Adicionar Usuário**: Clique no botão “Adicionar”, insira o número de registro, nome, senha e selecione a função.
 
 .. important::
-   工号最大为10位整数型，工号和密码都有唯一性校验，且密码通过盲文显示。用户新增成功后，可以输入姓名和密码进行重新登录。
+   O número de registro é um inteiro de no máximo 10 dígitos. Tanto o número de registro quanto a senha são verificados quanto à unicidade, e a senha é exibida em caracteres ocultos (braille). Após a adição bem-sucedida do usuário, é possível fazer login novamente com o nome e a senha.
   
 .. image:: system/003.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑2 新增管理
+.. centered:: Figura 15.2‑2 Adicionar Gerenciamento
   
--  **编辑用户**：当存在用户列表时，点击右侧“编辑”按钮，工号和姓名无法修改，可修改密码和职能，密码同样需要唯一性校验。
+-  **Editar Usuário**: Quando existe uma lista de usuários, clique no botão “Editar” à direita. O número de registro e o nome não podem ser alterados. A senha e a função podem ser modificadas, e a senha também deve ser verificada quanto à unicidade.
   
 .. image:: system/004.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑3 编辑用户
+.. centered:: Figura 15.2‑3 Editar Usuário
 
--  **删除用户**：删除方法分为单条删除和批量删除。
+-  **Excluir Usuário**: Os métodos de exclusão são exclusão individual e exclusão em lote.
   
-  1. 点击列表右侧单条“删除”按钮，提示“请再次点击删除按钮以确认删除”，再次点击该列表删除成功。
+  1. Clique no botão “Excluir” à direita de um item na lista. Uma mensagem “Clique novamente no botão excluir para confirmar a exclusão” será exibida. Clicar novamente exclui o item.
 
-  2. 点击左侧复选框，选择需要删除的用户，再点击列表上方批量“删除”按钮两次后删除。
+  2. Marque as caixas de seleção à esquerda para selecionar os usuários a serem excluídos. Clique no botão “Excluir” acima da lista duas vezes para excluí-los.
 
 .. important::
-   初始用户111以及当前登录用户无法删除。
+   O usuário inicial 111 e o usuário atualmente logado não podem ser excluídos.
 
 .. image:: system/002.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑4 删除用户
+.. centered:: Figura 15.2‑4 Excluir Usuário
 
-权限管理
-~~~~~~~~~~~~
+Gerenciamento de Permissões
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. important:: 
-   默认的职能数据（职能代号为1-6）不可以删除，不可修改职能代号，可以修改职能名称和职能描述以及设置职能的权限。
+   Os dados de função padrão (códigos de função 1-6) não podem ser excluídos, nem seus códigos modificados. No entanto, seus nomes e descrições podem ser alterados, bem como as permissões atribuídas.
 
 .. image:: system/006.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑5 权限管理
+.. centered:: Figura 15.2‑5 Gerenciamento de Permissões
 
-默认六个职能，管理员无功能限制，操作员和监视员少部分功能可以使用，ME工程师、PE&PQE工程师和技术员&班组长部分功能限制，管理员无功能限制，具体默认权限如下表所示：
+Existem seis funções padrão. O administrador não tem restrições de função. Operadores e monitores têm acesso a um conjunto limitado de funções. Engenheiros ME, engenheiros PE & PQE, e técnicos & líderes de equipe têm algumas funções restritas. O administrador não tem restrições. As permissões padrão são mostradas na tabela abaixo:
 
 .. important:: 
-   默认权限可修改。
+   As permissões padrão podem ser modificadas.
 
-.. centered:: 表格 15.2‑1 权限详情
+.. centered:: Tabela 15.2‑1 Detalhes das Permissões
 
 .. image:: system/007.png
    :width: 6in
    :align: center
 
--  **新增职能**：点击“新增”按钮，输入职能代号、职能名称和职能描述，点击"保存"按钮，成功后返回列表页面。其中职能代号只能为大于0的整数并且不能和已经存在的职能代号相同，输入项全部为必填。
+-  **Adicionar Função**: Clique no botão “Adicionar”, insira o código da função, o nome da função e a descrição. Clique no botão “Salvar”. Após a criação bem-sucedida, retorne à página de lista. O código da função deve ser um inteiro maior que 0 e não pode ser igual a um código de função existente. Todos os campos são obrigatórios.
 
 .. image:: system/008.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑6 新增职能
+.. centered:: Figura 15.2‑6 Adicionar Função
 
--  **编辑职能名称和描述**：点击表格操作栏中的“编辑”图标，可以修改当前职能的职能名称和职能描述，修改完成后点击下方"保存"按钮确认修改。
+-  **Editar Nome e Descrição da Função**: Clique no ícone “Editar” na coluna de operação da tabela. O nome e a descrição da função atual podem ser modificados. Após as alterações, clique no botão “Salvar” abaixo para confirmar.
 
 .. image:: system/009.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑7 编辑职能
+.. centered:: Figura 15.2‑7 Editar Função
 
--  **设置职能权限**：点击表格操作栏中的“设置”图标，可以设置当前职能的权限，设置完成后点击下方"保存"按钮确实设置。
+-  **Definir Permissões da Função**: Clique no ícone “Definir” na coluna de operação da tabela. As permissões da função atual podem ser configuradas. Após a configuração, clique no botão “Salvar” abaixo para confirmar.
 
 .. image:: system/010.png
    :width: 6in
@@ -273,72 +273,72 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑8 设置职能权限
+.. centered:: Figura 15.2‑8 Definir Permissões da Função
 
--  **删除职能**：点击表格操作栏中的“删除”图标，首先会校验当前职能是否有用户使用，没有用户使用则可以删除当前职能，反之不可以删除。
+-  **Excluir Função**: Clique no ícone “Excluir” na coluna de operação da tabela. Primeiro, será verificado se há algum usuário usando a função. Se não houver, a função pode ser excluída. Caso contrário, não pode ser excluída.
 
 .. image:: system/012.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑9 删除职能
+.. centered:: Figura 15.2‑9 Excluir Função
 
-导入/导出
-~~~~~~~~~~~~
+Importar/Exportar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: system/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.2‑10 账户设置导入/导出
+.. centered:: Figura 15.2‑10 Importar/Exportar Configurações de Conta
 
--  **导入**：点击“导入”按钮，可以批量导入用户管理和权限管理的数据。
+-  **Importar**: Clique no botão “Importar” para importar dados de gerenciamento de usuários e permissões em lote.
 
--  **导出**：点击“导出”按钮，可以批量导出用户管理和权限管理的数据。
+-  **Exportar**: Clique no botão “Exportar” para exportar dados de gerenciamento de usuários e permissões em lote.
 
-关于
+Sobre
 --------------
 
-点击二级菜单栏关于，进入关于界面。该页面展示了机器人的型号和序列号，机器人运行使用的Web版本和控制箱版本，硬件版本和固件版本。
+Clique no submenu “Sobre” para entrar na interface. Esta página exibe o modelo e o número de série do robô, a versão Web e a versão do painel de controle em uso, além das versões de hardware e firmware.
 
 .. image:: system/014.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.3‑1 关于示意图
+.. centered:: Figura 15.3‑1 Diagrama da Interface Sobre
 
-软件升级
+Atualização de Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-操作准备
+Preparação para a Operação
 +++++++++++++++++++++++++++++++
 
-1. 升级前在《系统设置-关于》中查看并确认当前的软件版本。
-2. 软件升级包，下载地址见对应版本的法奥文档《资料下载-机器人软件下载》，解压后，内容包含对应版本软件升级包software.tar.gz。
+1. Antes da atualização, verifique e confirme a versão atual do software em “Configurações do Sistema - Sobre”.
+2. O pacote de atualização de software pode ser baixado no link correspondente na documentação da FAIRINO (seção “Downloads - Download de Software do Robô”) para a versão em questão. Após a descompactação, o conteúdo inclui o pacote de atualização de software correspondente, software.tar.gz.
 
-注意事项
+Precauções
 +++++++++++++++++++++++++++++++
 
-1. 数据备份：建议在升级前执行备份，方法见3.2.1节，以避免因升级异常导致数据丢失。
-2. 版本限制：
+1. Backup de Dados: Recomenda-se fazer backup antes da atualização. Consulte a seção 3.2.1 para o método, a fim de evitar perda de dados devido a anormalidades na atualização.
+2. Restrições de Versão:
 
-.. centered:: 图表 15.3‑1 版本升级限制
+.. centered:: Figura 15.3‑1 Restrições de Atualização de Versão
 
 .. list-table::
    :widths: 50 50
    :header-rows: 0
    :align: center
 
-   * - **当前版本** 
-     - **最高可升级版本**
+   * - **Versão Atual** 
+     - **Versão Máxima para Atualização**
 
-   * - <v3.6.1
+   * - < v3.6.1
      - v3.6.1
 
-   * - v3.6.1-v3.6.4
+   * - v3.6.1 - v3.6.4
      - v3.6.5
 
-   * - v3.6.5-v3.6.8
+   * - v3.6.5 - v3.6.8
      - v3.6.9
 
    * - v3.6.9 - v3.7.4
@@ -348,91 +348,91 @@
      - v3.7.6
 
    * - ≥ v3.7.6
-     - 无限制
+     - Sem restrições
 
-3. 缓存清除：每次升级后（特别是跨版本升级时），建议清除浏览器缓存以确保系统正常运行。
+3. Limpeza de Cache: Após cada atualização (especialmente após atualizações entre versões), recomenda-se limpar o cache do navegador para garantir o funcionamento correto do sistema.
 
-操作步骤
+Procedimento
 *****************************
 
-**软件升级**：
+**Atualização de Software**:
 
-1. 在“系统设置”->“关于”菜单栏下，点击“升级”按钮，进入软件升级；
+1. No menu “Configurações do Sistema” -> “Sobre”, clique no botão “Atualizar” para iniciar a atualização de software.
 
 .. image:: system/040.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.3‑2 系统升级界面
+.. centered:: Figura 15.3‑2 Interface de Atualização do Sistema
 
-2. 点击“选择文件”，选择在官网中下载的软件包software.tar.gz；
+2. Clique em “Selecionar Arquivo” e escolha o pacote de software software.tar.gz baixado do site oficial.
 
 .. important:: 
-   软件升级包名为确定的software.tar.gz，如果升级包名与之不一致，那么会出现升级失败，修改为确定的升级包名称即可。
+   O nome do pacote de atualização de software deve ser exatamente software.tar.gz. Se o nome do pacote de atualização for diferente, a atualização falhará. Renomeie o arquivo para o nome correto.
 
-3. 点击上传升级包，则开始升级, 升级过程中会显示进度条；
+3. Clique em “Enviar Pacote de Atualização” para iniciar a atualização. Uma barra de progresso será exibida durante o processo.
 
-4. 当升级进度条为100时，界面将提示“升级成功，请重新启动控制箱”；
+4. Quando a barra de progresso atingir 100%, a interface exibirá a mensagem “Atualização bem-sucedida. Por favor, reinicie o painel de controle.”
 
 .. image:: system/041.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.3‑3 软件升级成功
+.. centered:: Figura 15.3‑3 Atualização de Software Bem-sucedida
 
-5. 重启控制箱后，升级完成，在关于中确认版本信息。
+5. Após reiniciar o painel de controle, a atualização está concluída. Confirme as informações de versão em “Sobre”.
 
-**固件升级**：机器人进入BOOT模式后，上传升级压缩包，选择需要升级的从站（控制箱从站，本体驱动器从站1~6，末端从站），进行升级操作，并显示升级状态。
+**Atualização de Firmware**: Após o robô entrar no modo BOOT, faça o upload do pacote de atualização compactado. Selecione o escravo a ser atualizado (escravo do painel de controle, escravos do driver do corpo 1~6, escravo da extremidade) e realize a operação de atualização. O status da atualização será exibido.
 
 .. image:: system/042.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.3‑4 固件升级
+.. centered:: Figura 15.3‑4 Atualização de Firmware
 
-**从站配置文件升级**：机器人去使能后，上传升级文件，选择需要升级的从站（控制箱从站，本体驱动器从站1~6，末端从站），进行升级操作，并显示升级状态。
+**Atualização do Arquivo de Configuração do Escravo**: Após desabilitar o robô, faça o upload do arquivo de atualização. Selecione o escravo a ser atualizado (escravo do painel de controle, escravos do driver do corpo 1~6, escravo da extremidade) e realize a operação de atualização. O status da atualização será exibido.
 
 .. image:: system/043.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.3-5 从站配置文件升级
+.. centered:: Figura 15.3-5 Atualização do Arquivo de Configuração do Escravo
 
-**编码器升级**：机器人去使能后，上传升级文件，选择需要升级的关节Joint1~Joint6,并配置编码器模式。
+**Atualização do Codificador**: Após desabilitar o robô, faça o upload do arquivo de atualização. Selecione as juntas Joint1~Joint6 a serem atualizadas e configure o modo do codificador.
 
 .. image:: system/044.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.3-6 编码器升级
+.. centered:: Figura 15.3-6 Atualização do Codificador
 
-自定义信息
----------------
+Informações Personalizadas
+---------------------------------------------
 
-点击二级菜单栏自定义信息，进入自定义信息界面。自定义信息功能仅限管理员可使用。该页面可以上传用户信息包、机器人型号和设置示教程序加密状态等操作。
+Clique no submenu “Informações Personalizadas” para entrar na interface. A função de informações personalizadas só está disponível para administradores. Esta página permite operações como fazer upload de pacotes de informações do usuário, modelo do robô e definir o status de criptografia dos programas de ensinamento.
 
 .. image:: system/015.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑1 自定义信息示意图
+.. centered:: Figura 15.4‑1 Diagrama de Informações Personalizadas
 
-机器人型号
+Modelo do Robô
 ~~~~~~~~~~~~~~~
 
 .. important::
-   1. 在此配置机器人型号属于自定义机器人型号名称，与“系统设置”->“维护模式”->“控制器兼容”中配置的机器人型号功能不一致；
-   2. 不建议使用以“FR”和“ART”开头。如果输入以“FR”和“ART”开头的自定义机器人型号时，输入的型号名称必须与机器人型号目录表中的“型号简称”一致，（机器人型号目录表详见于“机器人型号配置”章节）。
+   1. Configurar o modelo do robô aqui é para definir um nome personalizado para o modelo do robô, o que é diferente da configuração do modelo do robô em “Configurações do Sistema” -> “Modo de Manutenção” -> “Compatibilidade do Controlador”.
+   2. Não é recomendado usar nomes começando com “FR” ou “ART”. Se um nome personalizado começando com “FR” ou “ART” for inserido, o nome inserido deve corresponder exatamente ao “Nome Abreviado do Modelo” na tabela de catálogo de modelos de robô (a tabela de catálogo de modelos de robô pode ser encontrada na seção “Configuração do Modelo do Robô”).
 
-参数范围配置
-~~~~~~~~~~~~~~~~
+Configuração da Faixa de Parâmetros
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-参数范围配置，只有管理员可进行参数范围的调节，其他权限成员的参数只可在管理员设定的参数范围之内设定。
+A configuração da faixa de parâmetros só pode ser realizada pelo administrador. Os parâmetros para outros membros com permissões só podem ser definidos dentro da faixa estabelecida pelo administrador.
 
-参数设定方式分为两种：滑块拖动和手动输入。
+Existem duas maneiras de definir os parâmetros: arrastar o controle deslizante ou inserir manualmente.
 
 .. important::
-   参数范围最大值必须大于最小值。参数范围配置成功3秒后，自动跳转到登录页，需重新登陆。
+   O valor máximo da faixa de parâmetros deve ser maior que o valor mínimo. 3 segundos após a configuração bem-sucedida da faixa de parâmetros, a página será automaticamente redirecionada para a página de login, e será necessário fazer login novamente.
 
 .. image:: system/016.png
    :width: 6in
@@ -442,83 +442,83 @@
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑2 参数范围配置示意图
+.. centered:: Figura 15.4‑2 Diagrama de Configuração da Faixa de Parâmetros
 
-机器人许可使用时间
+Tempo de Uso Permitido do Robô
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 锁屏设置
+1. Configuração de Bloqueio de Tela
 
-在“自定义信息”中查看机器人许可使用时间，设置该功能是否开启。选择开启该功能时，选择使用期限，如果未选择则提示“使用期限不能为空”。
+Em “Informações Personalizadas”, visualize o tempo de uso permitido do robô e defina se a função está ativada. Ao selecionar “Ativar”, escolha o período de validade. Se nenhum período for selecionado, a mensagem “O período de validade não pode estar vazio” será exibida.
 
-.. note:: 如果己开启锁屏功能，无法进行二次设置，同时无法更新系统时间。
+.. note:: Se a função de bloqueio de tela já estiver ativada, não é possível configurá-la novamente, nem atualizar a hora do sistema.
 
-选择使用期限后，点击“配置”按钮。
+Após selecionar o período de validade, clique no botão “Configurar”.
 
 .. image:: system/023.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑3 机器人许可使用时间关闭设置
+.. centered:: Figura 15.4‑3 Configuração do Tempo de Uso Permitido do Robô Desativado
 
 .. image:: system/024.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑4 机器人许可使用时间开启设置
+.. centered:: Figura 15.4‑4 Configuração do Tempo de Uso Permitido do Robô Ativado
 
-2. 到期提示
+2. Notificação de Expiração
 
-当机器人许可使用时间功能开启时，登录界面后有如下提示：
+Quando a função de tempo de uso permitido do robô está ativada, as seguintes notificações aparecem após o login:
 
-1)设备到期前 5天，开机登录成功，弹窗提示使用期限剩余天数，复位可消除。
+1) 5 dias antes do vencimento do equipamento, após o login inicial, uma janela pop-up exibirá os dias restantes do período de uso. A notificação pode ser fechada (reset).
 
 .. image:: system/025.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑5 开机提示
+.. centered:: Figura 15.4‑5 Notificação de Inicialização
 
-2)如设备持续工作中，设备到期前 5天，在零点时自动弹窗提示使用期限剩余天数，复位可消除。
+2) Se o equipamento estiver em operação contínua, 5 dias antes do vencimento, uma janela pop-up aparecerá automaticamente à meia-noite para notificar os dias restantes. A notificação pode ser fechada (reset).
 
 .. image:: system/026.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑6 持续工作提示
+.. centered:: Figura 15.4‑6 Notificação Durante Operação Contínua
 
-3. 解锁登录
+3. Login de Desbloqueio
 
-当机器人许可使用时间功能开启时，设备到期后，首次登录webApp直接进入锁屏界面。设备持续工作时，零点获取锁屏数据后自动登出，进入锁屏界面。此时输入解锁码后解锁进入登录界面，输入登录信息进行登录。
+Quando a função de tempo de uso permitido do robô está ativada e o equipamento expira, o primeiro acesso ao WebAPP leva diretamente à interface de bloqueio de tela. Se o equipamento estiver em operação contínua, à meia-noite, ao obter os dados de bloqueio, o sistema será desconectado automaticamente e a interface de bloqueio de tela será exibida. Neste momento, insira o código de desbloqueio para desbloquear e acessar a interface de login. Em seguida, insira as informações de login.
 
-.. note:: 集成商操作生成加密的解锁码。
+.. note:: O integrador opera para gerar o código de desbloqueio criptografado.
  
 .. image:: system/027.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.4‑7 锁屏界面  
+.. centered:: Figura 15.4‑7 Interface de Bloqueio de Tela  
 
-机器人型号配置
------------------
+Configuração do Modelo do Robô
+---------------------------------------
 
-.. important:: 如果您需要修改机器人型号，请与我们技术工程师取得联系并在指导下进行。
+.. important:: Se for necessário modificar o modelo do robô, entre em contato com o engenheiro de suporte técnico e faça a modificação sob orientação.
 
-登录协作机器人控制台Web后，在“系统设置”->“维护模式”->“控制器兼容”配置项中选择对应型号修改，机器人型号参考下方表格。
+Após fazer login no console web do robô colaborativo, em “Configurações do Sistema” -> “Modo de Manutenção” -> “Compatibilidade do Controlador”, selecione o modelo correspondente para modificar. Consulte a tabela abaixo para referência dos modelos.
 
-机器人型号表如下：
+Tabela de Modelos do Robô:
 
 .. list-table::
    :widths: 10 58 32
    :header-rows: 0
    :align: center
 
-   * - **数值**
-     - **型号（主型号-主版本号-次版本号）**
-     - **型号简称**
+   * - **Valor**
+     - **Modelo (Modelo Principal - Versão Principal - Versão Secundária)**
+     - **Nome Abreviado**
 
    * - 0
-     - 未配置
+     - Não configurado
      - /
 
    * - 1
@@ -534,7 +534,7 @@
      - FR3 V6.0(Mirror)
 
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 101
@@ -550,7 +550,7 @@
      - FR5 V6.0
      
    * - ...
-     - 预留
+     - Reservado
      - /
    
    * - 201
@@ -562,7 +562,7 @@
      - FR10 V6.0
      
    * - ...
-     - 预留
+     - Reservado
      - /
    
    * - 301
@@ -574,7 +574,7 @@
      - FR16 V6.0
      
    * - ...
-     - 预留
+     - Reservado
      - /
    
    * - 401
@@ -586,7 +586,7 @@
      - FR20 V6.0
      
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 501
@@ -594,7 +594,7 @@
      - ART3
      
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 601
@@ -602,7 +602,7 @@
      - ART5
      
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 702
@@ -614,7 +614,7 @@
      - FR3-WMS
      
    * - ...
-     - 预留
+     - Reservado
      - /
   
    * - 802
@@ -625,8 +625,12 @@
      - FRCustom(8)-V1-002(FR5-WML)
      - FR5-WML
      
+   * - 804
+     - FRCustom(8)-V1-003(FR5-C)
+     - FR5-C
+
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 901
@@ -658,7 +662,7 @@
      - FC3-R6-B
      
    * - ...
-     - 预留
+     - Reservado
      - /
 
    * - 1001
@@ -666,7 +670,7 @@
      - FR30 V6.0
      
    * - ...
-     - 预留
+     - Reservado
      - /
 
-.. note:: 其中，主版本号预留10个（1-10），次版本号预留10个（1-10）。
+.. note:: São reservados 10 números para a versão principal (1-10) e 10 números para a versão secundária (1-10).

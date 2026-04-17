@@ -1,12 +1,12 @@
-附录
+Apêndice
 ===================
 
-附录1：BIOS 中启用虚拟化
--------------------------
+Apêndice 1: Ativar Virtualização na BIOS
+-------------------------------------------------------
 
-不同型号的电脑启用虚拟化的流程可能不同，现以联想ThinkPad系列windows10举例：
+O processo para ativar a virtualização pode variar dependendo do modelo do computador. Usando um ThinkPad da Lenovo com Windows 10 como exemplo:
 
-- 打开电脑设置，选择更新和安全。
+- Abra as configurações do computador e selecione Atualização e Segurança.
 
 .. image:: controller_virtual_machine/013.png
    :width: 4in
@@ -16,70 +16,70 @@
    :width: 4in
    :align: center
 
-- 选择“恢复”。
+- Selecione “Recuperação”.
 
 .. image:: controller_virtual_machine/015.png
    :width: 4in
    :align: center
 
-- 选择“立即重启”。
+- Selecione “Reiniciar Agora”.
 
 .. image:: controller_virtual_machine/016.png
    :width: 4in
    :align: center
 
-- 选择“疑难解答”。
+- Selecione “Solução de Problemas”.
   
 .. image:: controller_virtual_machine/017.png
    :width: 4in
    :align: center
 
-- 选择“高级选项”。
+- Selecione “Opções Avançadas”.
 
 .. image:: controller_virtual_machine/018.png
    :width: 4in
    :align: center
 
-- 选择UEFI固件设置。
+- Selecione “Configurações de Firmware UEFI”.
 
 .. image:: controller_virtual_machine/019.png
    :width: 4in
    :align: center
 
-- 选择“重启”。
+- Selecione “Reiniciar”.
 
 .. image:: controller_virtual_machine/020.png
    :width: 4in
    :align: center
 
-- 选择“Security”下的“Virtualization”。
+- Selecione “Virtualization” dentro de “Security”.
 
 .. image:: controller_virtual_machine/021.png
    :width: 4in
    :align: center
 
-- 选择“Enabled”，按下“Enter”确认。
+- Selecione “Enabled” e pressione “Enter” para confirmar.
 
 .. image:: controller_virtual_machine/022.png
    :width: 4in
    :align: center
 
-- 按下“F10”，选择“Yes”，按下“Enter”保存修改。
+- Pressione “F10”, selecione “Yes” e pressione “Enter” para salvar as alterações.
 
 .. image:: controller_virtual_machine/023.png
    :width: 4in
    :align: center
 
-附录2：添加虚拟网卡（环回网络适配器）
---------------------------------------
+Apêndice 2: Adicionar Placa de Rede Virtual (Adaptador de Loopback)
+-----------------------------------------------------------------------------
 
-1. 打开设备管理器，按下“Windows键-X”，选择“设备管理器”。
+1. Abra o Gerenciador de Dispositivos. Pressione “Windows-X” e selecione “Gerenciador de Dispositivos”.
    
 .. image:: controller_virtual_machine/024.png
    :width: 4in
    :align: center
 
-2. 添加网络适配器。
+2. Adicione um adaptador de rede.
 
 .. image:: controller_virtual_machine/025.png
    :width: 4in
@@ -109,7 +109,7 @@
    :width: 4in
    :align: center
    
-3. 查看虚拟网卡，按下“Windows键-X”，选择“网络连接”。
+3. Visualize a placa de rede virtual. Pressione “Windows-X” e selecione “Conexões de Rede”.
 
 .. image:: controller_virtual_machine/032.png
    :width: 4in
@@ -127,117 +127,117 @@
    :width: 4in
    :align: center
    
-4. 配置环回适配器网络。
+4. Configure a rede do adaptador de loopback.
 
-- IP地址: 192.168.58.XXX（与192.168.58.2 同一网段即可）。
-- 子网掩码：255.255.255.0。
+- Endereço IP: 192.168.58.XXX (pode estar na mesma sub-rede que 192.168.58.2).
+- Máscara de sub-rede: 255.255.255.0.
 
 .. image:: controller_virtual_machine/012.png
    :width: 6in
    :align: center
 
-5. 打开Virtualbox网络配置，网卡名称选择“环回适配器网络”，启动虚拟机即可。
+5. Abra as configurações de rede do Virtualbox. Selecione “Adaptador de Loopback” como nome da placa de rede e inicie a máquina virtual.
 
 .. image:: controller_virtual_machine/013.png
    :width: 6in
    :align: center
 
-附录3：root权限
+Apêndice 3: Permissões Root
 --------------------------------------
 
-Ubuntu安装好后，Ubuntu系统默认root用户是不能登录的，密码也是空的。如果想要使用root用户登录，必须先为root用户设置密码。
+Após a instalação do Ubuntu, o usuário root não pode fazer login por padrão e a senha está vazia. Para fazer login como root, é necessário primeiro definir uma senha para o usuário root.
 
-1. 打开终端，输入 sudo passwd root ，然后回车输入几次密码，显示密码设置成功。
+1. Abra um terminal e digite `sudo passwd root`. Pressione Enter e defina a senha algumas vezes. Uma mensagem indicará que a senha foi definida com sucesso.
 
 .. image:: controller_virtual_machine/057.png
    :width: 6in
    :align: center
 
-2. 在终端继续输入 su - root 命令切换用户，回车输入密码。
+2. No terminal, continue digitando o comando `su - root` para alternar para o usuário root. Pressione Enter e digite a senha.
 
-.. warning:: 输入命令时一定要输入“-”，选项“-”表示连带环境变量一起切换，“-”坚决不能少。
+.. warning:: Ao digitar o comando, certifique-se de incluir o “-”. A opção “-” indica que as variáveis de ambiente também devem ser alternadas. O “-” não pode ser omitido.
 
 .. image:: controller_virtual_machine/058.png
    :width: 6in
    :align: center
 
-附录4：docker基础命令
+Apêndice 4: Comandos Básicos do Docker
 --------------------------------------
 
-1. docker 帮助命令 :
+1. Comando de ajuda do Docker:
 
 .. code-block:: console
    :linenos:
 
    docker --help
 
-2. 启动docker :
+2. Iniciar o Docker:
 
 .. code-block:: console
    :linenos:
 
    systemctl start docker
 
-3. 关闭docker :
+3. Parar o Docker:
 
 .. code-block:: console
    :linenos:
 
    systemctl stop docker
 
-4. 重启docker :
+4. Reiniciar o Docker:
 
 .. code-block:: console
    :linenos:
 
    systemctl restart docker
 
-5. docker设置随服务启动而自启动 :
+5. Configurar o Docker para iniciar automaticamente com o sistema:
 
 .. code-block:: console
    :linenos:
 
    systemctl enable docker
 
-6. 查看docker 运行状态 :
+6. Verificar o status de execução do Docker:
 
 .. code-block:: console
    :linenos:
 
    systemctl status docker
-   --如果是在运行中输入命令后会看到绿色的active
+   -- Se estiver em execução, você verá um texto verde "active" após executar o comando.
 
-7. docker容器 :
-
-.. code-block:: console
-   :linenos:
-
-   docker images：列出已经下载的镜像，查看镜像
-   docker rmi 镜像id或name：删除本地镜像
-   docker rmi -f 镜像id或name: 删除镜像
-   docker build：构建镜像
-   docker search 镜像id或name：在Docker Hub仓库中搜索关键字镜像
-   docker pull 镜像id或name：从仓库中下载镜像
-   docker images：列出已经下载的镜像，查看镜像
-   docker rmi 镜像id或name：删除本地镜像
-   docker rmi -f 镜像id或name: 删除镜像
-   docker build：构建镜像
-
-8. docker容器 :
+7. Imagens Docker:
 
 .. code-block:: console
    :linenos:
 
-   docker ps：列出运行中的容器
-   docker ps -a ： 查看所有容器，包括未运行
-   docker stop 容器id或name：停止容器
-   docker kill 容器id：强制停止容器
-   docker start 容器id或name：启动已停止的容器
-   docker inspect 容器id：查看容器的所有信息
-   docker container logs 容器id：查看容器日志
-   docker top 容器id：查看容器里的进程
-   docker exec -it 容器id /bin/bash：进入容器
-   exit：退出容器
-   docker rm 容器id或name：删除已停止的容器
-   docker rm -f 容器id：删除正在运行的容器
-   docker exec -it 容器ID sh :进入容器
+   docker images: Lista as imagens baixadas, visualiza as imagens
+   docker rmi id_imagem ou nome: Remove uma imagem local
+   docker rmi -f id_imagem ou nome: Força a remoção de uma imagem
+   docker build: Constrói uma imagem
+   docker search id_imagem ou nome: Pesquisa por palavras-chave no repositório Docker Hub
+   docker pull id_imagem ou nome: Baixa uma imagem do repositório
+   docker images: Lista as imagens baixadas, visualiza as imagens
+   docker rmi id_imagem ou nome: Remove uma imagem local
+   docker rmi -f id_imagem ou nome: Força a remoção de uma imagem
+   docker build: Constrói uma imagem
+
+8. Contêineres Docker:
+
+.. code-block:: console
+   :linenos:
+
+   docker ps: Lista os contêineres em execução
+   docker ps -a: Visualiza todos os contêineres, incluindo os que não estão em execução
+   docker stop id_contêiner ou nome: Para um contêiner
+   docker kill id_contêiner: Força a parada de um contêiner
+   docker start id_contêiner ou nome: Inicia um contêiner parado
+   docker inspect id_contêiner: Visualiza todas as informações do contêiner
+   docker container logs id_contêiner: Visualiza os logs do contêiner
+   docker top id_contêiner: Visualiza os processos dentro do contêiner
+   docker exec -it id_contêiner /bin/bash: Entra no contêiner
+   exit: Sai do contêiner
+   docker rm id_contêiner ou nome: Remove um contêiner parado
+   docker rm -f id_contêiner: Remove um contêiner em execução
+   docker exec -it id_contêiner sh: Entra no contêiner

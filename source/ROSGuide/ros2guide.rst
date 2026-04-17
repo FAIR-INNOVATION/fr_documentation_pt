@@ -1,20 +1,20 @@
-前言
+Prefácio
 ++++++++++
-fairino_hardware为法奥协作机器人基于ROS2开发的API接口，旨在针对入门级用户更便捷的使用法奥SDK。通过参数配置文件对默认参数的配置，即可适应不同的客户要求。 
+O fairino_hardware é uma API desenvolvida para robôs colaborativos FAIRINO baseada em ROS2, projetada para permitir que usuários iniciantes utilizem o SDK da FAIRINO de forma mais conveniente. Através da configuração de parâmetros padrão em arquivos de configuração, é possível atender a diferentes requisitos dos clientes.
 
 fairino_hardware
 ++++++++++++++++++++++++++++
-本章节说明APP运行环境如何配置。
+Esta seção explica como configurar o ambiente de execução do aplicativo.
 
-基本环境安装
---------------
+Instalação do Ambiente Básico
+----------------------------------------
 
-推荐在Ubuntu22.04LTS(Jammy)上使用，系统安装完毕后，需要安装ROS2，推荐用ros2-humble，全部的ROS2的安装可以参考教程：https://docs.ros.org/en/humble/index.html。
-在正式编译fairino_hardware前，还需要安装官方ros2_control包，全部的ros2_control安装可以参考教程：https://control.ros.org/humble/index.html。官方提供两种ros2_control安装方式，分别为指令安装方式和源码编译安装方式，由于指令安装方式可能会导致功能包安装不全，故推荐使用源码编译安装方式。
+Recomenda-se o uso no Ubuntu 22.04 LTS (Jammy). Após a instalação do sistema, é necessário instalar o ROS2. Recomenda-se o ros2-humble. Para a instalação completa do ROS2, consulte o tutorial: https://docs.ros.org/en/humble/index.html.
+Antes de compilar oficialmente o fairino_hardware, também é necessário instalar o pacote oficial ros2_control. Para a instalação completa do ros2_control, consulte o tutorial: https://control.ros.org/humble/index.html. O site oficial oferece duas maneiras de instalar o ros2_control: instalação por comando e instalação por compilação do código fonte. Como a instalação por comando pode resultar em pacotes de funcionalidades incompletos, recomenda-se o uso da compilação do código fonte.
 
-下面对ROS2(humble)的过程详细阐述：
+O processo de instalação do ROS2 (humble) é detalhado abaixo:
 
-1.打开shell窗口
+1. Abra uma janela de terminal
 
 .. code-block:: shell
     :linenos:
@@ -28,7 +28,7 @@ fairino_hardware
 
     locale  # verify settings
 
-2.设置源
+2. Configure as fontes de repositório
 
 .. code-block:: shell
     :linenos:
@@ -41,7 +41,7 @@ fairino_hardware
 
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
-3.安装ROS2
+3. Instale o ROS2
 
 .. code-block:: shell
     :linenos:
@@ -50,23 +50,23 @@ fairino_hardware
     sudo apt upgrade
     sudo apt install ros-humble-desktop
 
-4.最后安装dev工具
+4. Por fim, instale as ferramentas de desenvolvimento
 
 .. code-block:: shell
     :linenos:
 
     sudo apt install ros-dev-tools
 
-下面对ros2_control的安装过程详细阐述：
+O processo de instalação do ros2_control é detalhado abaixo:
 
-1.首先source ROS2的资源
+1. Primeiro, faça o source dos recursos do ROS2
 
 .. code-block:: shell
     :linenos:
 
     source /opt/ros/humble/setup.bash
 
-2.创建ros2_control工作空间，下载资源
+2. Crie o espaço de trabalho do ros2_control e baixe os recursos
 
 .. code-block:: shell
     :linenos:
@@ -76,7 +76,7 @@ fairino_hardware
     wget https://raw.githubusercontent.com/ros-controls/ros2_control_ci/master/ros_controls.$ROS_DISTRO.repos
     vcs import src < ros_controls.$ROS_DISTRO.repos
 
-3.安装依赖包
+3. Instale os pacotes de dependência
 
 .. code-block:: shell
     :linenos:
@@ -85,7 +85,7 @@ fairino_hardware
     sudo apt-get update
     rosdep install --from-paths src --ignore-src -r -y
 
-4.编译ros2_control
+4. Compile o ros2_control
 
 .. code-block:: shell
     :linenos:
@@ -93,15 +93,12 @@ fairino_hardware
     . /opt/ros/${ROS_DISTRO}/setup.sh
     colcon build --symlink-install
 
+Compilação e Construção do fairino_hardware
+-------------------------------------------------------
+1. Crie um espaço de trabalho colcon
+O fairino_hardware é composto por dois pacotes de funcionalidades: um é o pacote de funcionalidades de estrutura de dados personalizada `fairino_msgs`, e o outro é o pacote de funcionalidades principal `fairino_hardware`. Após instalar o ambiente básico, primeiro crie um espaço de trabalho colcon, por exemplo:
 
-
-
-编译及构建fairino_hardware
-------------------------------------------
-1. 创建colcon工作区
-fairino_hardware有两个功能包组成，一个是自定义数据结构的功能包fairino_msgs，另外一个是程序主体fairino_hardware功能包。在安装好基本环境后，先创建一个colcon工作区，比如:
-
-首先必须source ROS2和ros2_control的资源
+Primeiro, é necessário fazer o source dos recursos do ROS2 e do ros2_control
 
 .. code-block:: shell
     :linenos:
@@ -109,7 +106,7 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
     source /opt/ros/humble/setup.bash
     source ~/ros2_control_ws/install/setup.bash
 
-然后再创建工作区
+Em seguida, crie o espaço de trabalho
 
 .. code-block:: shell
     :linenos:
@@ -117,34 +114,34 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
     cd ~/
     mkdir -p ros2_ws/src
 
-2. 编译功能包
-将安装包的代码拷贝至ros2_ws/src目录下，那么在ros2_ws目录下运行如下命令：
+2. Compile os pacotes de funcionalidades
+Copie o código do pacote de instalação para o diretório `ros2_ws/src`. No diretório `ros2_ws`, execute o seguinte comando:
 
 .. code-block:: shell
     :linenos:
 
     source ~/ros2_control_ws/install/setup.bash
 
-待指令完成之后，运行以下指令：
+Após a conclusão do comando, execute o seguinte comando:
 
 .. code-block:: shell
     :linenos:
 
     colcon build --packages-select fairino_msgs
 
-等待上一条命令完成编译后，再使用以下指令编译fairino_hardware:
+Após aguardar a conclusão da compilação do comando anterior, use o seguinte comando para compilar o `fairino_hardware`:
 
 .. code-block::  shell
     :linenos:
 
     colcon build --packages-select fairino_hardware
 
-快速开始
+Início Rápido
 ++++++++++++++
 
-启动流程
------------------
-在Ubuntu下打开命令行，输入：
+Processo de Inicialização
+-------------------------------------------
+No Ubuntu, abra um terminal e digite:
 
 .. code-block::  shell
     :linenos:
@@ -157,11 +154,11 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
     :width: 6in
     :align: center
 
-查看机械臂状态反馈流程
---------------------------
-机械臂的状态反馈是通过topic发布的，用户可以通过ros2自带的命令观察到状态数据刷新，也可以编写程序获取该数据，下面展示如何通过ros2命令观察机械臂状态数据。
+Processo para Visualizar o Feedback de Estado do Braço Robótico
+------------------------------------------------------------------------------
+O feedback de estado do braço robótico é publicado através de tópicos. Os usuários podem observar a atualização dos dados de estado usando comandos nativos do ROS2 ou escrever programas para obter esses dados. Abaixo, mostramos como observar os dados de estado do braço robótico usando comandos ROS2.
 
-在ubuntu下打开命令行，输入：
+No Ubuntu, abra um terminal e digite:
 
 .. code-block:: shell
     :linenos:
@@ -170,15 +167,15 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
     source install/setup.bash
     ros2 topic echo /nonrt_state_data
 
-可以看到命令行窗口中不断刷新的状态数据，如下图所示。
+Você verá os dados de estado sendo atualizados continuamente na janela do terminal, conforme mostrado na figura abaixo.
 
 .. image:: img/fr_ros2_002.png
     :width: 6in
     :align: center
 
-下发指令流程
---------------------------
-在ubuntu下打开命令行，输入：
+Processo para Enviar Comandos
+---------------------------------------
+No Ubuntu, abra um terminal e digite:
 
 .. code-block:: shell
     :linenos:
@@ -187,13 +184,13 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
     source install/setup.bash
     rqt
 
-以上命令执行完毕后，会调出一个rqt GUI界面，如下图所示。
+Após a execução do comando acima, uma interface GUI do rqt será exibida, conforme mostrado na figura abaixo.
 
 .. image:: img/fr_ros2_003.png
     :width: 6in
     :align: center
 
-在GUI界面选择plugins->serivce->serivce caller，调出如下界面，选择/fairino_remote_command_service这项，在界面expression中输入指令字符串点击call即可看到下方对话框中跳出回复信息。
+Na interface GUI, selecione plugins -> service -> service caller. A interface a seguir será exibida. Selecione o serviço `/fairino_remote_command_service`. Na caixa de texto `expression`, insira a string de comando e clique em `call`. Você verá a mensagem de resposta na caixa de diálogo abaixo.
 
 .. image:: img/fr_ros2_004.png
     :width: 6in
@@ -201,572 +198,572 @@ fairino_hardware有两个功能包组成，一个是自定义数据结构的功�
 
 .. important:: 
 
-   - 输入字符串规则说明：
+   - Explicação das regras da string de entrada:
 
-   程序内部对输入的字符串形式进行了筛选，函数输入的格式必须是 [函数名]() 这样的形式，且圆括号的参数字符串必须是由字母，数字，逗号还有负号组成，出现其他字符或者空格均会报错。
+    O programa filtra internamente a forma da string de entrada. O formato da função de entrada deve ser `[Nome da função]()`. A string de parâmetros entre parênteses deve conter apenas letras, números, vírgulas e o sinal de menos. A presença de outros caracteres ou espaços resultará em erro.
 
-   - 指令反馈值说明：
+   - Explicação do valor de retorno do comando:
 
-   除了GET指令会反馈一串字符串，其余的函数反馈值都是int型，一般0为出现错误，1为正确执行，如果出现其他的值那么参考xmlrpc SDK中定义的错误代码对应的错误。
+    Exceto pelos comandos GET, que retornam uma string, os valores de retorno das outras funções são do tipo int. Geralmente, 0 indica um erro, 1 indica execução correta. Se outros valores aparecerem, consulte os códigos de erro definidos no SDK xmlrpc.
 
-修改参数流程
---------------------------
-由于简化SDK是改进自原生的SDK接口，能够简化是因为赋予了一些参数默认值，而在实际使用过程中也会遇到默认参数无法满足要求的情况，这个时候可以通过修改对应默认参数的数值，然后加载到节点中。
+Processo para Modificar Parâmetros
+----------------------------------------------------
+Como o SDK simplificado é uma melhoria da interface SDK nativa, a simplificação é possível porque alguns parâmetros recebem valores padrão. No entanto, durante o uso real, pode haver situações em que os parâmetros padrão não atendam aos requisitos. Nesses casos, é possível modificar os valores dos parâmetros padrão correspondentes e, em seguida, carregá-los no nó.
 
-源代码文件中存在一个fairino_remotecmdinterface_para.yaml参数文件，文件中的参数为预先设置的默认参数，用于简化指令输入参数，可以根据自己的具体需要修改其中的参数，然后使用命令动态修改参数: ros2 param load fr_command_server ~/ros2_ws/src/fairino_hardware/fairino_remotecmdinterface_para.yaml。
+No código fonte, existe um arquivo de parâmetros `fairino_remotecmdinterface_para.yaml`. Os parâmetros neste arquivo são os valores padrão predefinidos, usados para simplificar os parâmetros de entrada do comando. Eles podem ser modificados de acordo com suas necessidades específicas. Em seguida, use o comando para carregar os parâmetros dinamicamente: `ros2 param load fr_command_server ~/ros2_ws/src/fairino_hardware/fairino_remotecmdinterface_para.yaml`.
 
-API说明
-++++++++++++++
+Explicação da API
+++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     /*
-    函数功能描述:存储一个关节点位信息
-    id - 存储点位id号,从1开始,注意该id与CARTPoint的点位id号各自独立
-    double j1-j6 - 6个关节位置,单位是度
+    Descrição da função: Armazena informações de um ponto de junta
+    id - Número de identificação do ponto a ser armazenado, começando em 1. Observe que este ID é independente do ID do ponto CARTPoint.
+    double j1-j6 - 6 posições das juntas, unidade em graus
     */
     int JNTPoint(int id, double j1, double j2, double j3, double j4, double j5, double j6)
-    // 例子
+    // Exemplo
     JNTPoint(1,10,11,12,13,14,15)
 
     /*
-    函数功能描述:存储一个笛卡尔点位信息
-    id - 存储点位id号,从1开始,注意该id与JNTPoint的点位id号各自独立
-    double x,y,z,rx,ry,yz - 笛卡尔点位信息,位置单位是mm,角度单位是度
+    Descrição da função: Armazena informações de um ponto cartesiano
+    id - Número de identificação do ponto a ser armazenado, começando em 1. Observe que este ID é independente do ID do ponto JNTPoint.
+    double x,y,z,rx,ry,rz - Informações do ponto cartesiano, posição em mm, ângulo em graus
     */
-    int CARTPoint(int id, double x,y,z,rx,ry,rz)//存储一个笛卡尔空间点位
-    // 例子
+    int CARTPoint(int id, double x,y,z,rx,ry,rz)//Armazena um ponto no espaço cartesiano
+    // Exemplo
     CARTPoint(1,100,110,200,0,0,0)
 
     /*
-    函数功能描述:获取指定序号点的关节或者笛卡尔位置信息
-    string name - 'JNT'或者'CART',JNT代表获取关节点位信息,'CART'代表获取笛卡尔点位信息
-    int id - 点位id,从1开始
+    Descrição da função: Obtém a posição do ponto da junta ou cartesiano para o ponto com o número de sequência especificado
+    string name - 'JNT' ou 'CART'. 'JNT' representa obter informações do ponto de junta, 'CART' representa obter informações do ponto cartesiano.
+    int id - Número de identificação do ponto, começando em 1
     */
-    string GET(string name, int id)//获取对应id序号点位的内容,name可以输入JNT或者CART
-    // 例子
+    string GET(string name, int id)//Obtém o conteúdo do ponto com o ID correspondente. name pode ser JNT ou CART.
+    // Exemplo
     GET(JNT,1)
 
     /*
-    函数功能描述:拖动模式开关
-    uint8_t state - 1-打开拖动模式,0-关闭拖动模式
+    Descrição da função: Alterna o modo de arrastagem
+    uint8_t state - 1-ativar modo de arrastagem, 0-desativar modo de arrastagem
     */
     int DragTeachSwitch(uint8_t state)
-    // 例子
+    // Exemplo
     DragTeachSwitch(0)
 
     /*
-    函数功能描述:机械臂使能开关
-    uint8_t state - 1-机械臂使能,0-机械臂去使能
+    Descrição da função: Alterna a habilitação do braço robótico
+    uint8_t state - 1-habilitar braço robótico, 0-desabilitar braço robótico
     */
     int RobotEnable(uint8_t state)
-    // 例子
+    // Exemplo
     RobotEnable(1)
 
     /*
-    函数功能描述:模式切换
-    uint8_t state - 1-手动模式,0-自动模式
+    Descrição da função: Alterna o modo
+    uint8_t state - 1-modo manual, 0-modo automático
     */
     int Mode(uint8_t state)
-    // 例子
+    // Exemplo
     Mode(1)
 
     /*
-    函数功能描述:设置当前模式下机械臂速度
-    float vel - 速度百分比,范围为1-100
+    Descrição da função: Define a velocidade do braço robótico no modo atual
+    float vel - Porcentagem de velocidade, faixa de 1 a 100
     */
     int SetSpeed(float vel)
-    // 例子
+    // Exemplo
     SetSpeed(10)
 
     /*
-    函数功能描述:设置并加载指定序号的工具坐标系
-    int id - 工具坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 工具坐标系的偏移量信息
+    Descrição da função: Define e carrega o sistema de coordenadas da ferramenta com o número de sequência especificado
+    int id - Número do sistema de coordenadas da ferramenta, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da ferramenta
     */
     int SetToolCoord(int id, float x,float y, float z,float rx,float ry,float rz)
-    // 例子
+    // Exemplo
     SetToolCoord(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置工具坐标系列表
-    int id - 工具坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 工具坐标系的偏移量信息
+    Descrição da função: Define a lista de sistemas de coordenadas da ferramenta
+    int id - Número do sistema de coordenadas da ferramenta, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da ferramenta
     */
     int SetToolList(int id, float x,float y, float z,float rx,float ry,float rz );
-    // 例子
+    // Exemplo
     SetToolList(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置外部工具坐标系
-    int id - 工具坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 外部工具坐标系的偏移量信息
+    Descrição da função: Define o sistema de coordenadas da ferramenta externa
+    int id - Número do sistema de coordenadas da ferramenta, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da ferramenta externa
     */
     int SetExToolCoord(int id, float x,float y, float z,float rx,float ry,float rz);	
-    // 例子
+    // Exemplo
     SetExToolCoord(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置外部工具坐标系列表
-    int id - 工具坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 外部工具坐标系的偏移量信息
+    Descrição da função: Define a lista de sistemas de coordenadas da ferramenta externa
+    int id - Número do sistema de coordenadas da ferramenta, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da ferramenta externa
     */
     int SetExToolList(int id, float x,float y, float z,float rx,float ry,float rz);
-    // 例子
+    // Exemplo
     SetExToolList(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置工件坐标系
-    int id - 工件坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 工件坐标系的偏移量信息
+    Descrição da função: Define o sistema de coordenadas da peça
+    int id - Número do sistema de coordenadas da peça, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da peça
     */
     int SetWObjCoord(int id, float x,float y, float z,float rx,float ry,float rz);
-    // 例子
+    // Exemplo
     SetWObjCoord(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置工件坐标系列表
-    int id - 工件坐标系编号,范围1-15
-    float x,y,z,rx,ry,rz - 工件坐标系的偏移量信息
+    Descrição da função: Define a lista de sistemas de coordenadas da peça
+    int id - Número do sistema de coordenadas da peça, faixa 1-15
+    float x,y,z,rx,ry,rz - Informações de deslocamento do sistema de coordenadas da peça
     */
     int SetWObjList(int id, float x,float y, float z,float rx,float ry,float rz);
-    // 例子
+    // Exemplo
     SetWObjList(1,0,0,0,0,0,0)
 
     /*
-    函数功能描述:设置末端负载重量
-    float weight - 负载重量,单位kg
+    Descrição da função: Define o peso da carga de extremidade
+    float weight - Peso da carga, unidade kg
     */
     int SetLoadWeight(float weight);
-    // 例子
+    // Exemplo
     SetLoadWeight(3.5)
 
     /*
-    函数功能描述:设置末端负载质心坐标
-    float x,y,z - 质心坐标,单位为mm
+    Descrição da função: Define as coordenadas do centro de gravidade da carga de extremidade
+    float x,y,z - Coordenadas do centro de gravidade, unidade mm
     */
     int SetLoadCoord(float x,float y,float z);
-    // 例子
+    // Exemplo
     SetLoadCoord(10,20,30)
 
     /*
-    函数功能描述:设置机器人安装方式
-    uint8_t install - 安装方式,0-正装,1-侧装,2-倒装
+    Descrição da função: Define o modo de instalação do robô
+    uint8_t install - Modo de instalação, 0-montagem normal, 1-montagem lateral, 2-montagem invertida
     */
     int SetRobotInstallPos(uint8_t install);
-    // 例子
+    // Exemplo
     SetRobotInstallPos(0)
 
     /*
-    函数功能描述:设置机器人安装角度,自由安装
-    double yangle - 倾斜角
-    double zangle - 旋转角
+    Descrição da função: Define o ângulo de instalação do robô, instalação livre
+    double yangle - Ângulo de inclinação
+    double zangle - Ângulo de rotação
     */
     int SetRobotInstallAngle(double yangle,double zangle);
-    // 例子
+    // Exemplo
     SetRobotInstallAngle(90,0)
 
 
-    //安全配置
+    //Configurações de segurança
     /*
-    函数功能描述:设置机器人碰撞等级
-    float level1-level6 - 1-6轴的碰撞等级,范围是1-10
+    Descrição da função: Define o nível de colisão do robô
+    float level1-level6 - Níveis de colisão para os eixos 1-6, faixa de 1 a 10
     */
     int SetAnticollision(float level1, float level2, float level3, float level4, float level5, folat level6);
-    // 例子
+    // Exemplo
     SetAnticollision(1,1,1,1,1,1)
 
     /*
-	 * @brief  设置碰撞后策略
-	 * @param  [in] strategy  0-报错停止，1-继续运行
-	 * @param  [in] safeTime  安全停止时间[1000 - 2000]ms
-	 * @param  [in] safeDistance  安全停止距离[1-150]mm
-	 * @param  [in] safeVel 安全速度[50-250] mm/s
-	 * @param  [in] safetyMargin  j1-j6安全系数[1-10]
-	 * @return  错误码
+	 * @brief  Define a estratégia pós-colisão
+	 * @param  [in] strategy  0-parar com erro, 1-continuar executando
+	 * @param  [in] safeTime  Tempo de parada segura [1000 - 2000] ms
+	 * @param  [in] safeDistance  Distância de parada segura [1-150] mm
+	 * @param  [in] safeVel Velocidade segura [50-250] mm/s
+	 * @param  [in] safetyMargin  Fator de segurança j1-j6 [1-10]
+	 * @return  Código de erro
     */
 	int SetCollisionStrategy(int strategy, int safeTime, int safeDistance, int safeVel, int safetyMargin[])
-    // 例子
+    // Exemplo
     SetCollisionStrategy(1)
 
     /*
-	 * @brief 设置机器人碰撞检测方法
-	 * @param [in] method 碰撞检测方法：0-电流模式；1-双编码器；2-电流和双编码器同时开启
-     * @param [in] thresholdMode 碰撞等级阈值方式；0-碰撞等级固定阈值方式；1-自定义碰撞检测阈值
-	 * @return  错误码
+	 * @brief Define o método de detecção de colisão do robô
+	 * @param [in] method Método de detecção de colisão: 0-modo corrente; 1-duplo encoder; 2-corrente e duplo encoder simultaneamente
+     * @param [in] thresholdMode Modo de limite do nível de colisão; 0-modo de limite fixo do nível de colisão; 1-limite de detecção de colisão personalizado
+	 * @return  Código de erro
     */
 	int SetCollisionDetectionMethod(int method, int thresholdMode);
-    // 例子
+    // Exemplo
     SetCollisionDetectionMethod(0,0)
 
 
     /*
-	 * @brief 设置静态下碰撞检测开始关闭
-	 * @param  [in] status 0-关闭；1-开启
-	 * @return  错误码
+	 * @brief Ativa/desativa a detecção de colisão estática
+	 * @param  [in] status 0-desativar; 1-ativar
+	 * @return  Código de erro
     */
 	int SetStaticCollisionOnOff(int status);
-    // 例子
+    // Exemplo
     SetStaticCollisionOnOff(1)
 
 
 
     /*
-	 * @brief 关节扭矩功率检测
-	 * @param  [in] status 0-关闭；1-开启
-	 * @param  [in] power 设定最大功率(W);
-	 * @return  错误码
+	 * @brief Detecção de potência do torque das juntas
+	 * @param  [in] status 0-desativar; 1-ativar
+	 * @param  [in] power Potência máxima definida (W);
+	 * @return  Código de erro
     */
 	int SetPowerLimit(int status, double power);
-    //例子
+    //Exemplo
     SetPowerLimit(1,100)
 
     /*
-	 * @brief  配置力传感器
-	 * @param  [in] company  力传感器厂商，17-坤维科技，19-航天十一院，20-ATI传感器，21-中科米点，22-伟航敏芯，23-NBIT，24-鑫精诚(XJC)，26-NSR
-	 * @param  [in] device  设备号，坤维(0-KWR75B)，航天十一院(0-MCS6A-200-4)，ATI(0-AXIA80-M8)，中科米点(0-MST2010)，伟航敏芯(0-WHC6L-YB-10A)，NBIT(0-XLH93003ACS)，鑫精诚XJC(0-XJC-6F-D82)，NSR(0-NSR-FTSensorA)
-	 * @param  [in] softvesion  软件版本号，暂不使用，默认为0
-	 * @param  [in] bus 设备挂在末端总线位置，暂不使用，默认为0
-	 * @return  错误码
+	 * @brief  Configura o sensor de força
+	 * @param  [in] company  Fabricante do sensor de força, 17-Kunwei Technology, 19-Instituto de Pesquisa Aeroespacial 11, 20-Sensor ATI, 21-Zhongke Midian, 22-Weihang Minxin, 23-NBIT, 24-Xinjingcheng (XJC), 26-NSR
+	 * @param  [in] device  Número do dispositivo, Kunwei(0-KWR75B), Instituto Aeroespacial 11(0-MCS6A-200-4), ATI(0-AXIA80-M8), Zhongke Midian(0-MST2010), Weihang Minxin(0-WHC6L-YB-10A), NBIT(0-XLH93003ACS), Xinjingcheng XJC(0-XJC-6F-D82), NSR(0-NSR-FTSensorA)
+	 * @param  [in] softvesion  Número da versão do software, não usado no momento, padrão 0
+	 * @param  [in] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+	 * @return  Código de erro
     */
 	int FT_SetConfig(int company, int device, int softvesion, int bus);
-    // 例子
+    // Exemplo
     FT_SetConfig(0,1,0,0)
 
 
 
     /*
-	 * @brief  获取力传感器配置
-	 * @param  [out] company  力传感器厂商，待定
-	 * @param  [out] device  设备号，暂不使用，默认为0
-	 * @param  [out] softvesion  软件版本号，暂不使用，默认为0
-	 * @param  [out] bus 设备挂在末端总线位置，暂不使用，默认为0
-	 * @return  错误码
+	 * @brief  Obtém a configuração do sensor de força
+	 * @param  [out] company  Fabricante do sensor de força, a definir
+	 * @param  [out] device  Número do dispositivo, não usado no momento, padrão 0
+	 * @param  [out] softvesion  Número da versão do software, não usado no momento, padrão 0
+	 * @param  [out] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+	 * @return  Código de erro
     */
 	int FT_GetConfig(int *company, int *device, int *softvesion, int *bus);
-    // 例子
+    // Exemplo
     FT_GetConfig()
 
 
     /*
-	 * @brief  力传感器激活
-	 * @param  [in] act  0-复位，1-激活
-	 * @return  错误码
+	 * @brief  Ativa o sensor de força
+	 * @param  [in] act  0-reset, 1-ativar
+	 * @return  Código de erro
     */
 	int FT_Activate(uint8_t act);
-    // 例子
+    // Exemplo
     FT_Activate(1)
 
 
     /*
-	 * @brief  力传感器校零
-	 * @param  [in] act  0-去除零点，1-零点矫正
-	 * @return  错误码
+	 * @brief  Zera o sensor de força
+	 * @param  [in] act  0-remover zero, 1-correção de zero
+	 * @return  Código de erro
     */
 	int FT_SetZero(uint8_t act);
-    // 例子
+    // Exemplo
     FT_SetZero(1)
 
     /*
-	 * @brief  碰撞守护
-	 * @param  [in] flag 0-关闭碰撞守护，1-开启碰撞守护
-	 * @param  [in] sensor_id 力传感器编号
-	 * @param  [in] select  选择六个自由度是否检测碰撞，0-不检测，1-检测
-	 * @param  [in] ft  碰撞力/扭矩，fx,fy,fz,tx,ty,tz
-	 * @param  [in] max_threshold 最大阈值
-	 * @param  [in] min_threshold 最小阈值
-	 * @note   力/扭矩检测范围：(ft-min_threshold, ft+max_threshold)
-	 * @return  错误码
+	 * @brief  Proteção contra colisão
+	 * @param  [in] flag 0-desativar proteção contra colisão, 1-ativar proteção contra colisão
+	 * @param  [in] sensor_id  Número do sensor de força
+	 * @param  [in] select  Seleciona se os seis graus de liberdade são detectados para colisão, 0-não detectar, 1-detectar
+	 * @param  [in] ft  Força/torque de colisão, fx, fy, fz, tx, ty, tz
+	 * @param  [in] max_threshold  Limite máximo
+	 * @param  [in] min_threshold  Limite mínimo
+	 * @note   Faixa de detecção de força/torque: (ft-min_threshold, ft+max_threshold)
+	 * @return  Código de erro
     */
 	int FT_Guard(uint8_t flag, int sensor_id, uint8_t select[6], ForceTorque *ft, float max_threshold[6], float min_threshold[6]);
-    // 例子
+    // Exemplo
     FT_Guard(1,1,0,0,1,0,0,0,0,0,100,0,0,0,0,0,200,0,0,0,0,0,50,0,0,0)
 
 
     /*
-	 * @brief  恒力控制
-	 * @param  [in] flag 0-关闭恒力控制，1-开启恒力控制
-	 * @param  [in] sensor_id 力传感器编号
-	 * @param  [in] select  选择六个自由度是否检测碰撞，0-不检测，1-检测
-	 * @param  [in] ft  碰撞力/扭矩，fx,fy,fz,tx,ty,tz
-	 * @param  [in] ft_pid 力pid参数，力矩pid参数
-	 * @param  [in] adj_sign 自适应启停控制，0-关闭，1-开启
-	 * @param  [in] ILC_sign ILC启停控制， 0-停止，1-训练，2-实操
-	 * @param  [in] max_dis 最大调整距离，单位mm
-	 * @param  [in] max_ang 最大调整角度，单位deg
-	 * @param  [in] filter_Sign 滤波开启标志 0-关；1-开，默认关闭
-     * @param  [in] posAdapt_sign 姿态顺应开启标志 0-关；1-开，默认关闭
-     * @param  [in] isNoBlock 阻塞标志，0-阻塞；1-非阻塞
-	 * @return  错误码
+	 * @brief  Controle de força constante
+	 * @param  [in] flag 0-desativar controle de força constante, 1-ativar controle de força constante
+	 * @param  [in] sensor_id  Número do sensor de força
+	 * @param  [in] select  Seleciona se os seis graus de liberdade são detectados para colisão, 0-não detectar, 1-detectar
+	 * @param  [in] ft  Força/torque de colisão, fx, fy, fz, tx, ty, tz
+	 * @param  [in] ft_pid  Parâmetros PID de força, parâmetros PID de torque
+	 * @param  [in] adj_sign  Controle de ativação/desativação adaptativa, 0-desativar, 1-ativar
+	 * @param  [in] ILC_sign  Controle de ativação/desativação ILC, 0-parar, 1-treinar, 2-operação real
+	 * @param  [in] max_dis  Distância máxima de ajuste, unidade mm
+	 * @param  [in] max_ang  Ângulo máximo de ajuste, unidade graus
+	 * @param  [in] filter_Sign  Flag de ativação do filtro 0-desativar; 1-ativar, padrão desativado
+     * @param  [in] posAdapt_sign  Flag de ativação da conformidade de postura 0-desativar; 1-ativar, padrão desativado
+     * @param  [in] isNoBlock  Flag de bloqueio, 0-bloqueado; 1-não bloqueado
+	 * @return  Código de erro
     */
 	int FT_Control(uint8_t flag, int sensor_id, uint8_t select[6], ForceTorque *ft, float ft_pid[6], uint8_t adj_sign, uint8_t ILC_sign, float max_dis, float max_ang, int filter_Sign = 0, int posAdapt_sign = 0, int isNoBlock = 0);
-    // 例子
+    // Exemplo
     FT_Control(1,1,0,0,1,0,0,0,0,0,-10,0,0,0,0.0005,0,0,0,0,0,0,0,100,10,0,0,0) 
 
 
     /*
-	 * @brief  柔顺控制开启
-	 * @param  [in] p 位置调节系数或柔顺系数
-	 * @param  [in] force 柔顺开启力阈值，单位N
-	 * @return  错误码
+	 * @brief  Ativa o controle de complacência
+	 * @param  [in] p  Coeficiente de ajuste de posição ou coeficiente de complacência
+	 * @param  [in] force  Limite de força para ativação da complacência, unidade N
+	 * @return  Código de erro
     */
 	int FT_ComplianceStart(float p, float force);
-    // 例子
+    // Exemplo
     FT_ComplianceStart(0.005,20)
 
 
     /**
-	 * @brief  柔顺控制关闭
-	 * @return  错误码
+	 * @brief  Desativa o controle de complacência
+	 * @return  Código de erro
     */
 	int FT_ComplianceStop();
-    // 例子
+    // Exemplo
     FT_ComplianceStop()
 
     /*
-    函数功能描述:设置正限位,注意设置值必须在硬限位范围内
-    float limit1-limit6 - 6个关节限位值
+    Descrição da função: Define o limite positivo. Observe que o valor definido deve estar dentro do limite rígido.
+    float limit1-limit6 - Valores de limite para as 6 juntas
     */
     int SetLimitPositive(float limit1, float limit2, float limit3, float limit4, float limit5, float limit6);
-    // 例子
+    // Exemplo
     SetLimitPositve(100,90,90,90,90,90)
 
     /*
-    函数功能描述:设置负限位,注意设置值必须在硬限位范围内
-    float limit1-limit6 - 6个关节限位值
+    Descrição da função: Define o limite negativo. Observe que o valor definido deve estar dentro do limite rígido.
+    float limit1-limit6 - Valores de limite para as 6 juntas
     */
     int SetLimitNegative(float limit1, float limit2, float limit3, float limit4, float limit5, float limit6);
-    // 例子
+    // Exemplo
     SetLimitNegative(-100,-90,-90,-90,-90,-90)
 
     /*
-    函数功能描述:错误状态清除
+    Descrição da função: Limpa o estado de erro
     */
     int ResetAllError();
 
     /*
-    函数功能描述:关节摩擦力补偿开关
-    uint8_t state - 0-关, 1-开
+    Descrição da função: Alterna a compensação de fricção das juntas
+    uint8_t state - 0-desativar, 1-ativar
     */
     int FrictionCompensationOnOff(uint8_t state);
-    // 例子
+    // Exemplo
     FrictionCompensationOnOff(1)
 
     /*
-    函数功能描述:设置关节摩擦力补偿系数-正装
-    float coeff1-coeff6 - 6个关节补偿系数,范围是0-1
+    Descrição da função: Define os coeficientes de compensação de fricção das juntas - montagem normal
+    float coeff1-coeff6 - 6 coeficientes de compensação das juntas, faixa de 0 a 1
     */
     int SetFrictionValue_level(float coeff1,float coeff1,float coeff3,float coeff4,float coeff5,float coeff6);
-    // 例子
+    // Exemplo
     SetFrictionValue_level(1,1,1,1,1,1)
 
     /*
-    函数功能描述:设置关节摩擦力补偿系数-侧装
-    float coeff1-coeff6 - 6个关节补偿系数,范围是0-1
+    Descrição da função: Define os coeficientes de compensação de fricção das juntas - montagem lateral
+    float coeff1-coeff6 - 6 coeficientes de compensação das juntas, faixa de 0 a 1
     */
     int SetFrictionValue_wall(float coeff1,float coeff1,float coeff3,float coeff4,float coeff5,float coeff6);
-    // 例子
+    // Exemplo
     SetFrictionValue_wall(0.5,0.5,0.5,0.5,0.5,0.5)
 
     /*
-    函数功能描述:设置关节摩擦力补偿系数-倒装
-    float coeff1-coeff6 - 6个关节补偿系数,范围是0-1
+    Descrição da função: Define os coeficientes de compensação de fricção das juntas - montagem invertida
+    float coeff1-coeff6 - 6 coeficientes de compensação das juntas, faixa de 0 a 1
     */
     int SetFrictionValue_ceiling(float coeff1,float coeff1,float coeff3,float coeff4,float coeff5,float coeff6);
-    // 例子
+    // Exemplo
     SetFrictionValue_ceiling(0.5,0.5,0.5,0.5,0.5,0.5)
 
 
-    //外设控制
+    //Controle de periféricos
     /*
-    函数功能描述:激活夹爪
-    int index - 夹爪编号
-    uint8_t act - 0-复位, 1-激活
+    Descrição da função: Ativa a garra
+    int index - Número da garra
+    uint8_t act - 0-reset, 1-ativar
     */
     int ActGripper(int index,uint8_t act);
-    // 例子
+    // Exemplo
     ActGripper(1,1)
 
     /*
-    函数功能描述:控制夹爪
-    int index - 夹爪编号
-    int pos - 位置百分比,范围0-100
+    Descrição da função: Controla a garra
+    int index - Número da garra
+    int pos - Porcentagem de posição, faixa de 0 a 100
     */
     int MoveGripper(int index,int pos);
-    // 例子
+    // Exemplo
     MoveGripper(1,10)
 
 
-    //IO控制
+    //Controle de IO
     /*
-    函数功能描述:设置控制箱数字量输出
-    int id - io编号,范围0-15
-    uint_t status - 0-关, 1-开
+    Descrição da função: Define a saída digital do painel de controle
+    int id - Número do IO, faixa 0-15
+    uint_t status - 0-desativar, 1-ativar
     */
     int SetDO(int id,uint8_t status);
-    // 例子
+    // Exemplo
     SetDO(1,1)
 
     /*
-    函数功能描述:设置工具数字量输出
-    int id - io编号,范围0-1
-    uint_t status - 0-关, 1-开
+    Descrição da função: Define a saída digital da ferramenta
+    int id - Número do IO, faixa 0-1
+    uint_t status - 0-desativar, 1-ativar
     */
     int SetToolDO(int id,uint8_t status);
-    // 例子
+    // Exemplo
     SetToolDO(0,1)
 
     /*
-    函数功能描述:设置控制箱模拟量输出
-    int id - io编号,范围0-1
-    float vlaue - 电流或者电压值百分比,范围0-100
+    Descrição da função: Define a saída analógica do painel de controle
+    int id - Número do IO, faixa 0-1
+    float value - Porcentagem do valor de corrente ou tensão, faixa 0-100
     */
     int SetAO(int id,float value);
-    // 例子
+    // Exemplo
     SetAO(1,100)
 
     /*
-    函数功能描述:设置工具模拟量输出
-    int id - io编号,范围0
-    float vlaue - 电流或者电压值百分比,范围0-100
+    Descrição da função: Define a saída analógica da ferramenta
+    int id - Número do IO, faixa 0
+    float value - Porcentagem do valor de corrente ou tensão, faixa 0-100
     */
     int SetToolAO(int id,float value);
-    // 例子
+    // Exemplo
     SetToolAO(0,100)
 
 
-    //运动指令
+    //Instruções de movimento
     /*
-    函数功能描述:机器人点动
-    uint8_t ref - 0-关节点动, 2-基坐标系下点动, 4-工具坐标系下点动, 8-工件坐标系下点动
-    uint8_t nb - 1-关节1(或x轴),2-关节2(或y轴),3-关节3(或z轴),4-关节4(或绕x轴旋转),5-关节5(或绕y轴旋转),6-关节6(或绕z轴旋转)
-    uint8_t dir - 0-负方向, 1-正方向
-    float vel - 速度百分比, 范围为0-100
+    Descrição da função: Movimento incremental do robô (JOG)
+    uint8_t ref - 0-JOG de junta, 2-JOG no sistema de coordenadas base, 4-JOG no sistema de coordenadas da ferramenta, 8-JOG no sistema de coordenadas da peça
+    uint8_t nb - 1-junta 1 (ou eixo x), 2-junta 2 (ou eixo y), 3-junta 3 (ou eixo z), 4-junta 4 (ou rotação em torno do eixo x), 5-junta 5 (ou rotação em torno do eixo y), 6-junta 6 (ou rotação em torno do eixo z)
+    uint8_t dir - 0-direção negativa, 1-direção positiva
+    float vel - Porcentagem de velocidade, faixa de 0 a 100
     */
     int StartJOG(uint8_t ref, uin8_t nb, uint8_t dir, float vel);
-    // 例子
+    // Exemplo
     StartJOG(1,1,1,10)
 
     /*
-    函数功能描述:机器人点动停止
-    uint8_t ref - 0-关节点动停止, 2-基坐标系下点动停止, 4-工具坐标系下点动停止, 8-工件坐标系下点动停止
+    Descrição da função: Para o movimento incremental do robô
+    uint8_t ref - 0-parar JOG de junta, 2-parar JOG no sistema de coordenadas base, 4-parar JOG no sistema de coordenadas da ferramenta, 8-parar JOG no sistema de coordenadas da peça
     */
     int StopJOG(uint8_t ref);
-    // 例子
+    // Exemplo
     StopJOG(1)
 
     /*
-    函数功能描述:机器人点动立即停止
+    Descrição da função: Para o movimento incremental do robô imediatamente
     */
     int ImmStopJOG();
 
     /*
-    函数功能描述:关节空间运动
-    string point_name - 预存点位名称,比如JNT1就是关节点位信息序号为1的点位,CART1就是笛卡尔点位信息序号为1的点位,MoveJ指令支持输入关节点位或者笛卡尔点位。需要注意的,MoveJ指令由于默认参数中有指定工具坐标系和工件坐标系,当这两个坐标系序号与当前加载的不一致时,该指令会导致报错,需要在默认参数中修改坐标系参数并load参数后再运行该运动指令。
-    float vel - 指令速度百分比,范围0-100
-    int tool - 工具坐标系序号
-    int user - 工件坐标系序号
-    double expos1 - 外部轴1的位置
-    double expos2 - 外部轴2的位置
-    double expos3 - 外部轴3的位置
-    double expos4 - 外部轴4的位置
+    Descrição da função: Movimento no espaço articular
+    string point_name - Nome do ponto pré-armazenado, por exemplo, JNT1 é o ponto de junta com número de sequência 1, CART1 é o ponto cartesiano com número de sequência 1. O comando MoveJ suporta a entrada de pontos de junta ou pontos cartesianos. Observe que, como o comando MoveJ tem sistemas de coordenadas de ferramenta e peça especificados nos parâmetros padrão, se os números desses sistemas de coordenadas não corresponderem aos atualmente carregados, o comando resultará em um erro. É necessário modificar os parâmetros do sistema de coordenadas nos parâmetros padrão e carregar os parâmetros novamente antes de executar esta instrução de movimento.
+    float vel - Porcentagem de velocidade do comando, faixa 0-100
+    int tool - Número do sistema de coordenadas da ferramenta
+    int user - Número do sistema de coordenadas da peça
+    double expos1 - Posição do eixo externo 1
+    double expos2 - Posição do eixo externo 2
+    double expos3 - Posição do eixo externo 3
+    double expos4 - Posição do eixo externo 4
     */
-    int MoveJ(string point_name, float vel,int tool, int user,double expos1,double expos2,double expos3,double expos4);//point_name是输入预存点位信息,
-    // 例子
+    int MoveJ(string point_name, float vel,int tool, int user,double expos1,double expos2,double expos3,double expos4);//point_name é o nome do ponto pré-armazenado
+    // Exemplo
     MoveJ(JNT1,10,1,1,0,0,0,0)
 
     /*
-    函数功能描述:笛卡尔空间直线运动
-    string point_name - 预存点位名称,比如JNT1就是关节点位信息序号为1的点位,CART1就是笛卡尔点位信息序号为1的点位,MoveL指令支持输入关节点位或者笛卡尔点位。需要注意的,MoveL指令由于默认参数中有指定工具坐标系和工件坐标系,当这两个坐标系序号与当前加载的不一致时,该指令会导致报错,需要在默认参数中修改坐标系参数并load参数后再运行该运动指令。
-    float vel - 指令速度百分比,范围0-100
-    int tool - 工具坐标系序号
-    int user - 工件坐标系序号
-    double expos1 - 外部轴1的位置
-    double expos2 - 外部轴2的位置
-    double expos3 - 外部轴3的位置
-    double expos4 - 外部轴4的位置
+    Descrição da função: Movimento linear no espaço cartesiano
+    string point_name - Nome do ponto pré-armazenado, por exemplo, JNT1 é o ponto de junta com número de sequência 1, CART1 é o ponto cartesiano com número de sequência 1. O comando MoveL suporta a entrada de pontos de junta ou pontos cartesianos. Observe que, como o comando MoveL tem sistemas de coordenadas de ferramenta e peça especificados nos parâmetros padrão, se os números desses sistemas de coordenadas não corresponderem aos atualmente carregados, o comando resultará em um erro. É necessário modificar os parâmetros do sistema de coordenadas nos parâmetros padrão e carregar os parâmetros novamente antes de executar esta instrução de movimento.
+    float vel - Porcentagem de velocidade do comando, faixa 0-100
+    int tool - Número do sistema de coordenadas da ferramenta
+    int user - Número do sistema de coordenadas da peça
+    double expos1 - Posição do eixo externo 1
+    double expos2 - Posição do eixo externo 2
+    double expos3 - Posição do eixo externo 3
+    double expos4 - Posição do eixo externo 4
     */
     int MoveL(string point_name,float vel,int tool,int user,double expos1,double expos2,double expos3,double expos4);
-    // 例子
+    // Exemplo
     MoveL(CART1,10,1,1,0,0,0,0)
 
     /*
-    函数功能描述:笛卡尔空间圆弧运动
-    string point1_name point2_name - 预存点位名称,比如JNT1就是关节点位信息序号为1的点位,CART1就是笛卡尔点位信息序号为1的点位,MoveC指令支持输入关节点位或者笛卡尔点位,但是两个点位必须同类型的,即不支持第一个点位输入关节空间点位,第二个点位输入笛卡尔点位。需要注意的,MoveC指令由于默认参数中有指定工具坐标系和工件坐标系,当这两个坐标系序号与当前加载的不一致时,该指令会导致报错,需要在默认参数中修改坐标系参数并load参数后再运行该运动指令。
-    float vel - 指令速度百分比,范围0-100
-    int tool - 工具坐标系序号
-    int user - 工件坐标系序号
-    double expos1 - 点1的外部轴1的位置
-    double expos2 - 点1的外部轴2的位置
-    double expos3 - 点1的外部轴3的位置
-    double expos4 - 点1的外部轴4的位置
-    double expos1 - 点2的外部轴1的位置
-    double expos2 - 点2的外部轴2的位置
-    double expos3 - 点2的外部轴3的位置
-    double expos4 - 点2的外部轴4的位置
+    Descrição da função: Movimento de arco no espaço cartesiano
+    string point1_name point2_name - Nomes dos pontos pré-armazenados, por exemplo, JNT1 é o ponto de junta com número de sequência 1, CART1 é o ponto cartesiano com número de sequência 1. O comando MoveC suporta a entrada de pontos de junta ou pontos cartesianos, mas os dois pontos devem ser do mesmo tipo, ou seja, não suporta o primeiro ponto como ponto de junta e o segundo como ponto cartesiano. Observe que, como o comando MoveC tem sistemas de coordenadas de ferramenta e peça especificados nos parâmetros padrão, se os números desses sistemas de coordenadas não corresponderem aos atualmente carregados, o comando resultará em um erro. É necessário modificar os parâmetros do sistema de coordenadas nos parâmetros padrão e carregar os parâmetros novamente antes de executar esta instrução de movimento.
+    float vel - Porcentagem de velocidade do comando, faixa 0-100
+    int tool - Número do sistema de coordenadas da ferramenta
+    int user - Número do sistema de coordenadas da peça
+    double expos1 - Posição do eixo externo 1 do ponto 1
+    double expos2 - Posição do eixo externo 2 do ponto 1
+    double expos3 - Posição do eixo externo 3 do ponto 1
+    double expos4 - Posição do eixo externo 4 do ponto 1
+    double expos1 - Posição do eixo externo 1 do ponto 2
+    double expos2 - Posição do eixo externo 2 do ponto 2
+    double expos3 - Posição do eixo externo 3 do ponto 2
+    double expos4 - Posição do eixo externo 4 do ponto 2
     */
     int MoveC(string point1_name,string point2_name, float vel, int tool,int user,double expos1,double expos2,double expos3,double expos4,double expos1,double expos2,double expos3,double expos4);
-    // 例子
+    // Exemplo
     MoveC(JNT1,JNT2,10,1,1,0,0,0,0,0,0,0,0)
 
     /*
-    函数功能描述:样条运动开始
+    Descrição da função: Início do movimento spline
     */
     int SplineStart();
 
     /*
-    函数功能描述:关节空间样条运动,该指令只支持输入JNT1这样的关节数据,输入笛卡尔点位会报错
-    string point_name - 预存点位名称,比如JNT1就是关节点位信息序号为1的点位。
-    float vel - 速度百分比,范围0-100
+    Descrição da função: Movimento spline no espaço articular. Esta instrução só suporta a entrada de dados de junta como JNT1. A entrada de pontos cartesianos resultará em erro.
+    string point_name - Nome do ponto pré-armazenado, por exemplo, JNT1 é o ponto de junta com número de sequência 1.
+    float vel - Porcentagem de velocidade, faixa 0-100
     */
     int SplinePTP(string point_name, float vel);
-    // 例子
+    // Exemplo
     SplinePTP(JNT2,10)
 
     /*
-    函数功能描述:样条运动结束
+    Descrição da função: Fim do movimento spline
     */
     int SplineEnd();
 
     /*
-    函数功能描述:笛卡尔空间样条运动开始
-    uint8_t ctlpoint - 0-轨迹经过路径点, 1-轨迹不经过控制点,至少4个点
+    Descrição da função: Início do movimento spline no espaço cartesiano
+    uint8_t ctlpoint - 0-trajetória passa pelos pontos de caminho, 1-trajetória não passa pelos pontos de controle. Pelo menos 4 pontos são necessários.
     */
     int NewSplineStart(uint8_t ctlpoint);
-    // 例子
-    NewSplineStrart(1)
+    // Exemplo
+    NewSplineStart(1)
 
     /*
-    函数功能描述:笛卡尔空间样条运动,只能输入CART1这样的笛卡尔空间点位,输入关节空间点位会报错
-    string point_name - 预存点位名称,比如CART1就是笛卡尔空间点位信息序号为1的点位。
-    float vel - 速度百分比,范围0-100
-    int lastflag - 0-不是最后一个点, 1-是最后一个点
+    Descrição da função: Movimento spline no espaço cartesiano. Só é possível inserir pontos cartesianos como CART1. A entrada de pontos de junta resultará em erro.
+    string point_name - Nome do ponto pré-armazenado, por exemplo, CART1 é o ponto cartesiano com número de sequência 1.
+    float vel - Porcentagem de velocidade, faixa 0-100
+    int lastflag - 0-não é o último ponto, 1-é o último ponto
     */
     int NewSplinePoint(string point_name, float vel, int lastflag);
-    // 例子
+    // Exemplo
     NewSplinePoint(JNT2,20,0)
 
     /*
-    函数功能描述:笛卡尔空间样条运动结束
+    Descrição da função: Fim do movimento spline no espaço cartesiano
     */
     int NewSplineEnd();
 
     /*
-    函数功能描述:停止运动
+    Descrição da função: Para o movimento
     */
     int StopMotion();
 
     /*
-    函数功能描述:点位整体偏移开始
-    int flag - 0-基坐标系下/工件坐标系下偏移, 2-工具坐标系下偏移
-    double x,y,z,rx,ry,rz - 偏移位姿量
+    Descrição da função: Inicia o deslocamento geral de pontos
+    int flag - 0-deslocamento no sistema de coordenadas base/sistema de coordenadas da peça, 2-deslocamento no sistema de coordenadas da ferramenta
+    double x,y,z,rx,ry,rz - Valores de deslocamento da pose
     */
     int PointsOffsetEnable(int flag,double x,double y,double z,double rx,double ry,double rz);
-    // 例子
+    // Exemplo
     PointsOffsetEnable(1,10,10,10,0,0,0)
 
     /*
-    函数功能描述:点位整体偏移结束
+    Descrição da função: Termina o deslocamento geral de pontos
     */
     int PointsOffsetDisable();

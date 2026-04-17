@@ -1,68 +1,68 @@
-机器人IO
+IO do Robô
 ============
 
 .. toctree:: 
     :maxdepth: 5
 
-设置控制箱数字量输出
+Definir Saída Digital do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置控制箱数字量输出
-    * @param  [in] id  io编号，范围[0~15]
-    * @param  [in] status 0-关，1-开
-    * @param  [in] smooth 0-不平滑， 1-平滑
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @return  错误码
+    * @brief  Define a saída digital do painel de controle
+    * @param  [in] id  Número do IO, faixa [0~15]
+    * @param  [in] status 0-desligar, 1-ligar
+    * @param  [in] smooth 0-não suave, 1-suave
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @return  Código de erro
     */
     int SetDO(int id, int status, int smooth, int block); 
 
-设置工具数字量输出
+Definir Saída Digital da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置工具数字量输出
-    * @param  [in] id  io编号，范围[0~1]
-    * @param  [in] status 0-关，1-开
-    * @param  [in] smooth 0-不平滑， 1-平滑
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @return  错误码
+    * @brief  Define a saída digital da ferramenta
+    * @param  [in] id  Número do IO, faixa [0~1]
+    * @param  [in] status 0-desligar, 1-ligar
+    * @param  [in] smooth 0-não suave, 1-suave
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @return  Código de erro
     */
     int SetToolDO(int id, int status, int smooth, int block); 
 
-设置控制箱模拟量输出
+Definir Saída Analógica do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置控制箱模拟量输出
-    * @param  [in] id  id  io编号，范围[0~1]
-    * @param  [in] id  value 电流或电压值百分比，范围[0~100]对应电流值[0~20mA]或电压[0~10V]
-    * @param  [in] id  block  0-阻塞，1-非阻塞
-    * @return  错误码
+    * @brief  Define a saída analógica do painel de controle
+    * @param  [in] id  Número do IO, faixa [0~1]
+    * @param  [in] value  Porcentagem do valor de corrente ou tensão, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @return  Código de erro
     */
     int SetAO(int id, double value, int block); 
 
-设置工具模拟量输出
+Definir Saída Analógica da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  设置工具模拟量输出
-    * @param  [in] id  io编号，范围[0]
-    * @param  [in] value 电流或电压值百分比，范围[0~100]对应电流值[0~20mA]或电压[0~10V]
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @return  错误码
+    * @brief  Define a saída analógica da ferramenta
+    * @param  [in] id  Número do IO, faixa [0]
+    * @param  [in] value  Porcentagem do valor de corrente ou tensão, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @return  Código de erro
     */
     int SetToolAO(int id, double value, int block); 
 
-设置数字量、模拟量输出代码示例
+Exemplo de Código para Definir Saídas Digitais e Analógicas
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -120,100 +120,100 @@
         return 0;
     }
 
-获取控制箱数字量输入
+Obter Entrada Digital do Painel de Controle
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取控制箱数字量输入
-    * @param  [in] id  io编号，范围[0~15]
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [out] level  0-低电平，1-高电平
-    * @return  错误码
+    * @brief  Obtém a entrada digital do painel de controle
+    * @param  [in] id  Número do IO, faixa [0~15]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @param  [out] level  0-nível baixo, 1-nível alto
+    * @return  Código de erro
     */   
     int GetDI(int id, int block, int[] level);
 
-获取工具数字量输入
+Obter Entrada Digital da Ferramenta
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取工具数字量输入
-    * @param  [in] id    io编号，范围[0~1]
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [out] level 0-低电平，1-高电平
-    * @return  错误码
+    * @brief  Obtém a entrada digital da ferramenta
+    * @param  [in] id    Número do IO, faixa [0~1]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @param  [out] level 0-nível baixo, 1-nível alto
+    * @return  Código de erro
     */   
     int GetToolDI(int id, int block, int[] level);
 
-获取控制箱模拟量输入
+Obter Entrada Analógica do Painel de Controle
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取控制箱模拟量输入
-    * @param  [in] id  io编号，范围[0~1]
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [out] persent 输入电流或电压值百分比，范围[0~100]对应电流值[0~20mS]或电压[0~10V]
-    * @return  错误码
+    * @brief  Obtém a entrada analógica do painel de controle
+    * @param  [in] id  Número do IO, faixa [0~1]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @param  [out] percent  Porcentagem do valor de corrente ou tensão de entrada, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @return  Código de erro
     */   
-    int GetAI(int id, int block, double[] persent)
+    int GetAI(int id, int block, double[] percent)
 
-获取工具模拟量输入
+Obter Entrada Analógica da Ferramenta
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取工具模拟量输入
-    * @param  [in] id  io编号，范围[0]
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [out] persent 输入电流或电压值百分比，范围[0~100]对应电流值[0~20mS]或电压[0~10V]
-    * @return  错误码
+    * @brief  Obtém a entrada analógica da ferramenta
+    * @param  [in] id  Número do IO, faixa [0]
+    * @param  [in] block  0-bloqueante, 1-não bloqueante
+    * @param  [out] percent  Porcentagem do valor de corrente ou tensão de entrada, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @return  Código de erro
     */   
-    int GetToolAI(int id, int block, double[] persent)
+    int GetToolAI(int id, int block, double[] percent)
 
-获取机器人末端点记录按钮状态
+Obter Estado do Botão de Gravação de Ponto da Extremidade do Robô
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取机器人末端点记录按钮状态
-    * @param  [out] state 按钮状态，0-按下，1-松开
-    * @return  错误码
+    * @brief  Obtém o estado do botão de gravação de ponto da extremidade do robô
+    * @param  [out] state Estado do botão, 0-pressionado, 1-solto
+    * @return  Código de erro
     */   
     int GetAxlePointRecordBtnState(int[] state)
 
-获取机器人末端DO输出状态
+Obter Estado da Saída DO da Extremidade do Robô
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取机器人末端DO输出状态
-    * @param  [out] do_state DO输出状态，do0~do1对应bit1~bit2,从bit0开始
-    * @return  错误码
+    * @brief  Obtém o estado da saída DO da extremidade do robô
+    * @param  [out] do_state Estado da saída DO, do0~do1 correspondem aos bits 1~2, começando do bit0
+    * @return  Código de erro
     */   
     int GetToolDO(int[] do_state)
 
-获取机器人控制器DO输出状态
+Obter Estado da Saída DO do Controlador do Robô
 ++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取机器人控制器DO输出状态
-    * @param  [out] do_state_h DO输出状态，co0~co7对应bit0~bit7
-    * @param  [out] do_state_l DO输出状态，do0~do7对应bit0~bit7
-    * @return  错误码
+    * @brief  Obtém o estado da saída DO do controlador do robô
+    * @param  [out] do_state_h Estado da saída DO, co0~co7 correspondem aos bits 0~7
+    * @param  [out] do_state_l Estado da saída DO, do0~do7 correspondem aos bits 0~7
+    * @return  Código de erro
     */   
     int GetDO(int[] do_state_h, int[] do_state_l)
 
-获取机器人DI、DO状态代码示例
+Exemplo de Código para Obter Estados DI e DO do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -256,85 +256,85 @@
         return 0;
     }
 
-等待控制箱数字量输入
+Aguardar Entrada Digital do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 等待控制箱数字量输入
-    * @param  [in]  id  io编号，范围[0~15]
-    * @param  [in]  status 0-关，1-开
-    * @param  [in]  max_time  最大等待时间，单位ms
-    * @param  [in]  opt  超时后策略，0-程序停止并提示超时，1-忽略超时提示程序继续执行，2-一直等待
-    * @return  错误码
+    * @brief Aguarda a entrada digital do painel de controle
+    * @param  [in]  id  Número do IO, faixa [0~15]
+    * @param  [in]  status 0-desligar, 1-ligar
+    * @param  [in]  max_time  Tempo máximo de espera, unidade ms
+    * @param  [in]  opt  Estratégia após tempo limite, 0-parar o programa e indicar tempo limite, 1-ignorar o aviso de tempo limite e continuar a execução, 2-aguardar indefinidamente
+    * @return  Código de erro
     */
     int WaitDI(int id, int status, int max_time, int opt); 
 
-等待控制箱多路数字量输入
+Aguardar Múltiplas Entradas Digitais do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 等待控制箱多路数字量输入
-    * @param  [in] mode 0-多路与，1-多路或
-    * @param  [in] id  io编号，bit0~bit7对应DI0~DI7，bit8~bit15对应CI0~CI7
-    * @param  [in] status 0-关，1-开
-    * @param  [in] max_time  最大等待时间，单位ms
-    * @param  [in] opt  超时后策略，0-程序停止并提示超时，1-忽略超时提示程序继续执行，2-一直等待
-    * @return  错误码
+    * @brief Aguarda múltiplas entradas digitais do painel de controle
+    * @param  [in] mode 0-E lógico (AND) para múltiplos canais, 1-Ou lógico (OR) para múltiplos canais
+    * @param  [in] id  Número do IO, bit0~bit7 correspondem a DI0~DI7, bit8~bit15 correspondem a CI0~CI7
+    * @param  [in] status 0-desligar, 1-ligar
+    * @param  [in] max_time  Tempo máximo de espera, unidade ms
+    * @param  [in] opt  Estratégia após tempo limite, 0-parar o programa e indicar tempo limite, 1-ignorar o aviso de tempo limite e continuar a execução, 2-aguardar indefinidamente
+    * @return  Código de erro
     */
     int WaitMultiDI(int mode, int id, int status, int max_time, int opt); 
 
-等待工具数字量输入
+Aguardar Entrada Digital da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 等待工具数字量输入
-    * @param  [in]  id  io编号，范围[0~1]
-    * @param  [in]  status 0-关，1-开
-    * @param  [in]  max_time  最大等待时间，单位ms
-    * @param  [in]  opt  超时后策略，0-程序停止并提示超时，1-忽略超时提示程序继续执行，2-一直等待
-    * @return  错误码
+    * @brief Aguarda a entrada digital da ferramenta
+    * @param  [in]  id  Número do IO, faixa [0~1]
+    * @param  [in]  status 0-desligar, 1-ligar
+    * @param  [in]  max_time  Tempo máximo de espera, unidade ms
+    * @param  [in]  opt  Estratégia após tempo limite, 0-parar o programa e indicar tempo limite, 1-ignorar o aviso de tempo limite e continuar a execução, 2-aguardar indefinidamente
+    * @return  Código de erro
     */
     int WaitToolDI(int id, int status, int max_time, int opt); 
 
-等待控制箱模拟量输入
+Aguardar Entrada Analógica do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 等待控制箱模拟量输入
-    * @param  [in]  id  io编号，范围[0~1]
-    * @param  [in]  sign 0-大于，1-小于
-    * @param  [in]  value 输入电流或电压值百分比，范围[0~100]对应电流值[0~20mS]或电压[0~10V]
-    * @param  [in]  max_time  最大等待时间，单位ms
-    * @param  [in]  opt  超时后策略，0-程序停止并提示超时，1-忽略超时提示程序继续执行，2-一直等待
-    * @return  错误码
+    * @brief Aguarda a entrada analógica do painel de controle
+    * @param  [in]  id  Número do IO, faixa [0~1]
+    * @param  [in]  sign 0-maior que, 1-menor que
+    * @param  [in]  value  Porcentagem do valor de corrente ou tensão de entrada, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @param  [in]  max_time  Tempo máximo de espera, unidade ms
+    * @param  [in]  opt  Estratégia após tempo limite, 0-parar o programa e indicar tempo limite, 1-ignorar o aviso de tempo limite e continuar a execução, 2-aguardar indefinidamente
+    * @return  Código de erro
     */
     int WaitAI(int id, int sign, double value, int max_time, int opt);   
 
-等待工具模拟量输入
+Aguardar Entrada Analógica da Ferramenta
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 等待工具模拟量输入
-    * @param  [in]  id  io编号，范围[0]
-    * @param  [in]  sign 0-大于，1-小于
-    * @param  [in]  value 输入电流或电压值百分比，范围[0~100]对应电流值[0~20mS]或电压[0~10V]
-    * @param  [in]  max_time  最大等待时间，单位ms
-    * @param  [in]  opt  超时后策略，0-程序停止并提示超时，1-忽略超时提示程序继续执行，2-一直等待
-    * @return  错误码
+    * @brief Aguarda a entrada analógica da ferramenta
+    * @param  [in]  id  Número do IO, faixa [0]
+    * @param  [in]  sign 0-maior que, 1-menor que
+    * @param  [in]  value  Porcentagem do valor de corrente ou tensão de entrada, faixa [0~100] corresponde a corrente [0~20mA] ou tensão [0~10V]
+    * @param  [in]  max_time  Tempo máximo de espera, unidade ms
+    * @param  [in]  opt  Estratégia após tempo limite, 0-parar o programa e indicar tempo limite, 1-ignorar o aviso de tempo limite e continuar a execução, 2-aguardar indefinidamente
+    * @return  Código de erro
     */
     int WaitToolAI(int id, int sign, double value, int max_time, int opt); 
 
-等待控制箱数字、模拟输入信号代码示例
+Exemplo de Código para Aguardar Sinais de Entrada Digital e Analógica do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -367,98 +367,98 @@
         return 0;
     }
 
-设置控制箱DO停止/暂停后输出是否复位
+Definir se a Saída do DO do Painel de Controle é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱DO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do DO do painel de controle é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetCtlBoxDO(int resetFlag, int reloadFlag)
 
-设置控制箱AO停止/暂停后输出是否复位
+Definir se a Saída do AO do Painel de Controle é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱AO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do AO do painel de controle é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetCtlBoxAO(int resetFlag, int reloadFlag)
 
-设置末端工具DO停止/暂停后输出是否复位
+Definir se a Saída do DO da Ferramenta de Extremidade é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端工具DO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do DO da ferramenta de extremidade é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetAxleDO(int resetFlag, int reloadFlag)
 
-设置末端工具AO停止/暂停后输出是否复位
+Definir se a Saída do AO da Ferramenta de Extremidade é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端工具AO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do AO da ferramenta de extremidade é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetAxleAO(int resetFlag, int reloadFlag)
     
-设置扩展DO停止/暂停后输出是否复位
+Definir se a Saída do DO de Extensão é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置扩展DO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do DO de extensão é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetExtDO(int resetFlag, int reloadFlag)
     
-设置扩展AO停止/暂停后输出是否复位
+Definir se a Saída do AO de Extensão é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置扩展AO停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do AO de extensão é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetExtAO(int resetFlag, int reloadFlag)
 
-设置SmartTool停止/暂停后输出是否复位
+Definir se a Saída do SmartTool é Reiniciada Após Parada/Pausa
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置SmartTool停止/暂停后输出是否复位
-    * @param resetFlag  0-不复位；1-复位
-    * @param reloadFlag 暂停恢复后是否重加载，0-不加载；1-加载
-    * @return 错误码
+    * @brief Define se a saída do SmartTool é reiniciada após parada/pausa
+    * @param resetFlag  0-não reiniciar; 1-reiniciar
+    * @param reloadFlag Se recarrega após retomar da pausa, 0-não carregar; 1-carregar
+    * @return Código de erro
     */
     public int SetOutputResetSmartToolDO(int resetFlag, int reloadFlag)
 
-设置LUA程序停止/暂停后输出复位代码示例
+Exemplo de Código para Definir Reinicialização da Saída Após Parada/Pausa do Programa LUA
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -489,259 +489,259 @@
         robot.CloseRPC();
     }
 
-设置控制箱可配置CI端口功能
+Definir Função da Porta CI Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱可配置CI端口功能
-    * @param config CI0-CI7功能编码；
-    * 0-无;1-起弧成功;2-焊机准备;3-传送带检测;4-暂停;5-恢复;6-启动;7-停止;
-    8-暂停/恢复;9-启动/停止;10-脚踏拖动;11-移至作业原点;12-手自动切换;
-    13-焊丝寻位成功;14-运动中断;15-启动主程序;16-启动倒带;17-启动确认;
-    18-光电检测信号X;19-光电检测信号Y;20-外部急停输入信号1;21-外部急停输入信号2;
-    22-一级缩减模式;23-二级缩减模式;24-三级缩减模式(停止);25-恢复焊接;26-终止焊接;
-    27-辅助拖动开启;28-辅助拖动关闭;29-辅助拖动开启/关闭;30-清除所有错误;
-    31-手自动切换(高低电平);32-使能;33-去使能;34-使能/去使能(上升下降沿);35-定点跟踪开始/结束
-    * @return 错误码
+    * @brief Define a função da porta CI configurável do painel de controle
+    * @param config Códigos de função CI0-CI7;
+    * 0-Nenhum;1-Sucesso de partida de arco;2-Fonte de solda pronta;3-Detecção de esteira;4-Pausar;5-Retomar;6-Iniciar;7-Parar;
+    8-Pausar/Retomar;9-Iniciar/Parar;10-Arrastagem por pedal;11-Mover para ponto de operação;12-Alternar manual/automático;
+    13-Sucesso da busca de posição do arame;14-Interrupção de movimento;15-Iniciar programa principal;16-Iniciar rebobinagem;17-Confirmar início;
+    18-Sinal de detecção fotoelétrica X;19-Sinal de detecção fotoelétrica Y;20-Sinal de entrada de parada de emergência externa 1;21-Sinal de entrada de parada de emergência externa 2;
+    22-Modo de redução nível 1;23-Modo de redução nível 2;24-Modo de redução nível 3 (parada);25-Recuperar soldagem;26-Terminar soldagem;
+    27-Ativar arrastagem assistida;28-Desativar arrastagem assistida;29-Ativar/Desativar arrastagem assistida;30-Limpar todos os erros;
+    31-Alternar manual/automático (nível alto/baixo);32-Habilitar;33-Desabilitar;34-Habilitar/Desabilitar (borda de subida/descida);35-Iniciar/Parar rastreamento pontual
+    * @return Código de erro
     */
     public int SetDIConfig(int[] config)
 
-获取控制箱可配置CI端口功能
+Obter Função da Porta CI Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱可配置CI端口功能
-    * @param config CI0-CI7功能编码；
-    * 0-无;1-起弧成功;2-焊机准备;3-传送带检测;4-暂停;5-恢复;6-启动;7-停止;
-    8-暂停/恢复;9-启动/停止;10-脚踏拖动;11-移至作业原点;12-手自动切换;
-    13-焊丝寻位成功;14-运动中断;15-启动主程序;16-启动倒带;17-启动确认;
-    18-光电检测信号X;19-光电检测信号Y;20-外部急停输入信号1;21-外部急停输入信号2;
-    22-一级缩减模式;23-二级缩减模式;24-三级缩减模式(停止);25-恢复焊接;26-终止焊接;
-    27-辅助拖动开启;28-辅助拖动关闭;29-辅助拖动开启/关闭;30-清除所有错误;
-    31-手自动切换(高低电平);32-使能;33-去使能;34-使能/去使能(上升下降沿);35-定点跟踪开始/结束
-    * @return 错误码
+    * @brief Obtém a função da porta CI configurável do painel de controle
+    * @param config Códigos de função CI0-CI7;
+    * 0-Nenhum;1-Sucesso de partida de arco;2-Fonte de solda pronta;3-Detecção de esteira;4-Pausar;5-Retomar;6-Iniciar;7-Parar;
+    8-Pausar/Retomar;9-Iniciar/Parar;10-Arrastagem por pedal;11-Mover para ponto de operação;12-Alternar manual/automático;
+    13-Sucesso da busca de posição do arame;14-Interrupção de movimento;15-Iniciar programa principal;16-Iniciar rebobinagem;17-Confirmar início;
+    18-Sinal de detecção fotoelétrica X;19-Sinal de detecção fotoelétrica Y;20-Sinal de entrada de parada de emergência externa 1;21-Sinal de entrada de parada de emergência externa 2;
+    22-Modo de redução nível 1;23-Modo de redução nível 2;24-Modo de redução nível 3 (parada);25-Recuperar soldagem;26-Terminar soldagem;
+    27-Ativar arrastagem assistida;28-Desativar arrastagem assistida;29-Ativar/Desativar arrastagem assistida;30-Limpar todos os erros;
+    31-Alternar manual/automático (nível alto/baixo);32-Habilitar;33-Desabilitar;34-Habilitar/Desabilitar (borda de subida/descida);35-Iniciar/Parar rastreamento pontual
+    * @return Código de erro
     */
     public int GetDIConfig(int[] config)
 
-设置控制箱可配置CO端口功能
+Definir Função da Porta CO Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱可配置CO端口功能
-    * @param config CO0-CO7功能编码；
-    * 0-无;1-机器人报错;2-机器人运动中;3-喷涂启停;4-喷涂清枪;5-送气信号;6-起弧信号;7-点动送丝;
-    8-反向送丝;9-JOB输入口1;10-JOB输入口2;11-JOB输入口3;12-传送带启停控制;13-机器人暂停中;14-到达作业原点;
-    15-到达干涉区;16-焊丝寻位启停控制;17-机器人启动完成;18-程序启动停止;19-自动手动模式;20-急停输出信号1-安全;
-    21-急停输出信号2-安全;22-LUA脚本程序运行停止;23-安全状态输出-安全;24-保护性停止状态输出-安全;
-    25-机器人运动中-安全;26-机器人缩减模式-安全;27-机器人非缩减模式-安全;28-机器人非停止;29-机器人报错-指令点错误;
-    30-机器人报错-驱动器错误;31-机器人报错-超出软限位错误;32-机器人报错-碰撞错误;33-机器人报错-活动从站数量错误;
-    34-机器人报错-从站错误;35-机器人报错-IO错误;36-机器人报错-夹爪错误;37-机器人报错-文件错误;38-机器人报错-奇异位姿错误;
-    39-机器人报错-驱动器通信错误;40-机器人报错-参数错误;41-机器人报错-外部轴超出软限位错误;42-机器人警告-警告;
-    43-机器人警告-安全门警告;44-机器人警告-运动警告;45-机器人警告-干涉区警告;46-机器人警告-安全墙警告;
-    47-使能状态;48-断线自动抬升中;49-立方体1干涉警告;50-立方体2干涉警告;51-立方体3干涉警告;52-立方体4干涉警告;
-    * @return 错误码
+    * @brief Define a função da porta CO configurável do painel de controle
+    * @param config Códigos de função CO0-CO7;
+    * 0-Nenhum;1-Erro do robô;2-Robô em movimento;3-Iniciar/Parar pintura;4-Limpeza da pistola de pintura;5-Sinal de fluxo de gás;6-Sinal de partida de arco;7-Alimentação de arame ponto a ponto;
+    8-Alimentação de arame reversa;9-Porta de entrada JOB 1;10-Porta de entrada JOB 2;11-Porta de entrada JOB 3;12-Controle de início/parada da esteira;13-Robô em pausa;14-Ponto de operação atingido;
+    15-Área de interferência atingida;16-Controle de início/parada da busca de posição do arame;17-Início do robô concluído;18-Início/Parada do programa;19-Modo automático/manual;20-Sinal de saída de parada de emergência 1 - seguro;
+    21-Sinal de saída de parada de emergência 2 - seguro;22-Execução/Parada do programa de script LUA;23-Saída de estado seguro - seguro;24-Saída de estado de parada protetiva - seguro;
+    25-Robô em movimento - seguro;26-Modo de redução do robô - seguro;27-Modo não reduzido do robô - seguro;28-Robô não parado;29-Erro do robô - erro de ponto de comando;
+    30-Erro do robô - erro do driver;31-Erro do robô - erro de limite flexível excedido;32-Erro do robô - erro de colisão;33-Erro do robô - erro no número de escravos ativos;
+    34-Erro do robô - erro de escravo;35-Erro do robô - erro de IO;36-Erro do robô - erro da garra;37-Erro do robô - erro de arquivo;38-Erro do robô - erro de pose singular;
+    39-Erro do robô - erro de comunicação do driver;40-Erro do robô - erro de parâmetro;41-Erro do robô - erro de limite flexível do eixo externo excedido;42-Aviso do robô - aviso;
+    43-Aviso do robô - aviso de porta de segurança;44-Aviso do robô - aviso de movimento;45-Aviso do robô - aviso de área de interferência;46-Aviso do robô - aviso de parede de segurança;
+    47-Estado de habilitação;48-Elevação automática por desconexão em andamento;49-Aviso de interferência do cuboide 1;50-Aviso de interferência do cuboide 2;51-Aviso de interferência do cuboide 3;52-Aviso de interferência do cuboide 4;
+    * @return Código de erro
     */
     public int SetDOConfig(int[] config)
 
-获取控制箱可配置CO端口功能
+Obter Função da Porta CO Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱可配置CO端口功能
-    * @param config CO0-CO7功能编码；
-    * 0-无;1-机器人报错;2-机器人运动中;3-喷涂启停;4-喷涂清枪;5-送气信号;6-起弧信号;7-点动送丝;
-    8-反向送丝;9-JOB输入口1;10-JOB输入口2;11-JOB输入口3;12-传送带启停控制;13-机器人暂停中;14-到达作业原点;
-    15-到达干涉区;16-焊丝寻位启停控制;17-机器人启动完成;18-程序启动停止;19-自动手动模式;20-急停输出信号1-安全;
-    21-急停输出信号2-安全;22-LUA脚本程序运行停止;23-安全状态输出-安全;24-保护性停止状态输出-安全;
-    25-机器人运动中-安全;26-机器人缩减模式-安全;27-机器人非缩减模式-安全;28-机器人非停止;29-机器人报错-指令点错误;
-    30-机器人报错-驱动器错误;31-机器人报错-超出软限位错误;32-机器人报错-碰撞错误;33-机器人报错-活动从站数量错误;
-    34-机器人报错-从站错误;35-机器人报错-IO错误;36-机器人报错-夹爪错误;37-机器人报错-文件错误;38-机器人报错-奇异位姿错误;
-    39-机器人报错-驱动器通信错误;40-机器人报错-参数错误;41-机器人报错-外部轴超出软限位错误;42-机器人警告-警告;
-    43-机器人警告-安全门警告;44-机器人警告-运动警告;45-机器人警告-干涉区警告;46-机器人警告-安全墙警告;
-    47-使能状态;48-断线自动抬升中;49-立方体1干涉警告;50-立方体2干涉警告;51-立方体3干涉警告;52-立方体4干涉警告;
-    * @return 错误码
+    * @brief Obtém a função da porta CO configurável do painel de controle
+    * @param config Códigos de função CO0-CO7;
+    * 0-Nenhum;1-Erro do robô;2-Robô em movimento;3-Iniciar/Parar pintura;4-Limpeza da pistola de pintura;5-Sinal de fluxo de gás;6-Sinal de partida de arco;7-Alimentação de arame ponto a ponto;
+    8-Alimentação de arame reversa;9-Porta de entrada JOB 1;10-Porta de entrada JOB 2;11-Porta de entrada JOB 3;12-Controle de início/parada da esteira;13-Robô em pausa;14-Ponto de operação atingido;
+    15-Área de interferência atingida;16-Controle de início/parada da busca de posição do arame;17-Início do robô concluído;18-Início/Parada do programa;19-Modo automático/manual;20-Sinal de saída de parada de emergência 1 - seguro;
+    21-Sinal de saída de parada de emergência 2 - seguro;22-Execução/Parada do programa de script LUA;23-Saída de estado seguro - seguro;24-Saída de estado de parada protetiva - seguro;
+    25-Robô em movimento - seguro;26-Modo de redução do robô - seguro;27-Modo não reduzido do robô - seguro;28-Robô não parado;29-Erro do robô - erro de ponto de comando;
+    30-Erro do robô - erro do driver;31-Erro do robô - erro de limite flexível excedido;32-Erro do robô - erro de colisão;33-Erro do robô - erro no número de escravos ativos;
+    34-Erro do robô - erro de escravo;35-Erro do robô - erro de IO;36-Erro do robô - erro da garra;37-Erro do robô - erro de arquivo;38-Erro do robô - erro de pose singular;
+    39-Erro do robô - erro de comunicação do driver;40-Erro do robô - erro de parâmetro;41-Erro do robô - erro de limite flexível do eixo externo excedido;42-Aviso do robô - aviso;
+    43-Aviso do robô - aviso de porta de segurança;44-Aviso do robô - aviso de movimento;45-Aviso do robô - aviso de área de interferência;46-Aviso do robô - aviso de parede de segurança;
+    47-Estado de habilitação;48-Elevação automática por desconexão em andamento;49-Aviso de interferência do cuboide 1;50-Aviso de interferência do cuboide 2;51-Aviso de interferência do cuboide 3;52-Aviso de interferência do cuboide 4;
+    * @return Código de erro
     */
     public int GetDOConfig(int[] config)
 
-设置末端可配置End-CI端口功能
+Definir Função da Porta End-CI Configurável da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端可配置End-CI端口功能
-    * @param config End CI0-CI1功能编码；
-    * 0-无;1-拖动示教工具开关;2-点记录信号;3-手自动切换（脉冲信号）;4-TPD记录启动/停止;5-暂停运动;
-    6-恢复运动;7-启动;8-停止;9-暂停/恢复;10-启动/停止;11-力传感器辅助拖动开启;12-力传感器辅助拖动关闭;
-    13-力传感器辅助拖动开启/关闭;14-激光检测信号X;15-激光检测信号Y;16-PTP运动至作业原点;17-运动中断，根据信号停止当前运动;
-    18-启动主程序;19-启动倒带;20-启动确认;21-恢复焊接;22-终止焊接;23-清除错误;24-手自动切换（高低电平）
-    25-使能;26-去使能;27-使能/去使能;28-激光伺服跟踪启停信号;
-    * @return 错误码
+    * @brief Define a função da porta End-CI configurável da extremidade
+    * @param config Códigos de função End CI0-CI1;
+    * 0-Nenhum;1-Interruptor da ferramenta de arrastagem de ensino;2-Sinal de gravação de ponto;3-Alternar manual/automático (sinal de pulso);4-Iniciar/Parar gravação TPD;5-Pausar movimento;
+    6-Retomar movimento;7-Iniciar;8-Parar;9-Pausar/Retomar;10-Iniciar/Parar;11-Ativar arrastagem assistida por sensor de força;12-Desativar arrastagem assistida por sensor de força;
+    13-Ativar/Desativar arrastagem assistida por sensor de força;14-Sinal de detecção a laser X;15-Sinal de detecção a laser Y;16-Movimento PTP para ponto de operação;17-Interrupção de movimento, parar o movimento atual com base no sinal;
+    18-Iniciar programa principal;19-Iniciar rebobinagem;20-Confirmar início;21-Recuperar soldagem;22-Terminar soldagem;23-Limpar erro;24-Alternar manual/automático (nível alto/baixo)
+    25-Habilitar;26-Desabilitar;27-Habilitar/Desabilitar;28-Sinal de início/parada de rastreamento servo a laser;
+    * @return Código de erro
     */
     public int SetToolDIConfig(int[] config)
 
-获取末端可配置End-CI端口功能
+Obter Função da Porta End-CI Configurável da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取末端可配置End-CI端口功能
-    * @param config End CI0-CI1功能编码；
-    * 0-无;1-拖动示教工具开关;2-点记录信号;3-手自动切换（脉冲信号）;4-TPD记录启动/停止;5-暂停运动;
-    6-恢复运动;7-启动;8-停止;9-暂停/恢复;10-启动/停止;11-力传感器辅助拖动开启;12-力传感器辅助拖动关闭;
-    13-力传感器辅助拖动开启/关闭;14-激光检测信号X;15-激光检测信号Y;16-PTP运动至作业原点;17-运动中断，根据信号停止当前运动;
-    18-启动主程序;19-启动倒带;20-启动确认;21-恢复焊接;22-终止焊接;23-清除错误;24-手自动切换（高低电平）
-    25-使能;26-去使能;27-使能/去使能;28-激光伺服跟踪启停信号;
-    * @return 错误码
+    * @brief Obtém a função da porta End-CI configurável da extremidade
+    * @param config Códigos de função End CI0-CI1;
+    * 0-Nenhum;1-Interruptor da ferramenta de arrastagem de ensino;2-Sinal de gravação de ponto;3-Alternar manual/automático (sinal de pulso);4-Iniciar/Parar gravação TPD;5-Pausar movimento;
+    6-Retomar movimento;7-Iniciar;8-Parar;9-Pausar/Retomar;10-Iniciar/Parar;11-Ativar arrastagem assistida por sensor de força;12-Desativar arrastagem assistida por sensor de força;
+    13-Ativar/Desativar arrastagem assistida por sensor de força;14-Sinal de detecção a laser X;15-Sinal de detecção a laser Y;16-Movimento PTP para ponto de operação;17-Interrupção de movimento, parar o movimento atual com base no sinal;
+    18-Iniciar programa principal;19-Iniciar rebobinagem;20-Confirmar início;21-Recuperar soldagem;22-Terminar soldagem;23-Limpar erro;24-Alternar manual/automático (nível alto/baixo)
+    25-Habilitar;26-Desabilitar;27-Habilitar/Desabilitar;28-Sinal de início/parada de rastreamento servo a laser;
+    * @return Código de erro
     */
     public int GetToolDIConfig(int[] config)
     
-设置控制箱可配置CI有效状态
+Definir Estado Ativo da CI Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱可配置CI有效状态
-    * @param config CI0-CI7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Define o estado ativo da porta CI configurável do painel de controle
+    * @param config Estado ativo das portas CI0-CI7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int SetDIConfigLevel(int[] config)
         
-获取控制箱可配置CI有效状态
+Obter Estado Ativo da CI Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱可配置CI有效状态
-    * @param config CI0-CI7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Obtém o estado ativo da porta CI configurável do painel de controle
+    * @param config Estado ativo das portas CI0-CI7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int GetDIConfigLevel(int[] config)
         
-设置控制箱可配置CO有效状态
+Definir Estado Ativo da CO Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱可配置CO有效状态
-    * @param config CO0-CO7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Define o estado ativo da porta CO configurável do painel de controle
+    * @param config Estado ativo das portas CO0-CO7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int SetDOConfigLevel(int[] config)
 
-获取控制箱可配置CO有效状态
+Obter Estado Ativo da CO Configurável do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱可配置CO有效状态
-    * @param config CO0-CO7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Obtém o estado ativo da porta CO configurável do painel de controle
+    * @param config Estado ativo das portas CO0-CO7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int GetDOConfigLevel(int[] config)
     
-设置末端可配置CI有效状态
+Definir Estado Ativo da CI Configurável da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端可配置CI有效状态
-    * @param config CI0-CI1端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Define o estado ativo da porta CI configurável da extremidade
+    * @param config Estado ativo das portas CI0-CI1; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int SetToolDIConfigLevel(int[] config)
     
-获取末端可配置CI有效状态
+Obter Estado Ativo da CI Configurável da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取末端可配置CI有效状态
-    * @param config CI0-CI1端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Obtém o estado ativo da porta CI configurável da extremidade
+    * @param config Estado ativo das portas CI0-CI1; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int GetToolDIConfigLevel(int[] config)
     
-设置控制箱标准DI有效状态
+Definir Estado Ativo do DI Padrão do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱标准DI有效状态
-    * @param config DI0-DI7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Define o estado ativo do DI padrão do painel de controle
+    * @param config Estado ativo das portas DI0-DI7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int SetStandardDILevel(int[] config)
     
-获取控制箱标准DI有效状态
+Obter Estado Ativo do DI Padrão do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱标准DI有效状态
-    * @param config DI0-DI7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Obtém o estado ativo do DI padrão do painel de controle
+    * @param config Estado ativo das portas DI0-DI7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int GetStandardDILevel(int[] config)
 
-设置控制箱标准DO有效状态
+Definir Estado Ativo do DO Padrão do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置控制箱标准DO有效状态
-    * @param config DO0-DO7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Define o estado ativo do DO padrão do painel de controle
+    * @param config Estado ativo das portas DO0-DO7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int SetStandardDOLevel(int[] config)
     
-获取控制箱标准DO有效状态
+Obter Estado Ativo do DO Padrão do Painel de Controle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取控制箱标准DO有效状态
-    * @param config DO0-DO7端口有效状态；0-高电平有效；1-低电平有效
-    * @return 错误码
+    * @brief Obtém o estado ativo do DO padrão do painel de controle
+    * @param config Estado ativo das portas DO0-DO7; 0-nível alto ativo; 1-nível baixo ativo
+    * @return Código de erro
     */
     public int GetStandardDOLevel(int[] config)
         
-机器人IO配置代码示例
+Exemplo de Código de Configuração de IO do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java

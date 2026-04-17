@@ -1,214 +1,208 @@
-示教器
-===============
+Painel de Ensinamento
+===============================
 
 .. toctree:: 
    :maxdepth: 6
 
-示教器启用
--------------------
+Ativação do Painel de Ensinamento
+----------------------------------------------------
 
-1. 控制箱连接示教器，并启动。
+1. Conecte o painel de controle ao painel de ensinamento e ligue o sistema.
 
-2. 登录账号admin，密码123。进入页面，点击系统设置-通用设置，确认示教器为启用状态。
+2. Faça login com o nome de usuário admin e senha 123. Após entrar na página, clique em Configurações do Sistema - Configurações Gerais e verifique se o painel de ensinamento está no estado ativado.
 
 .. image:: teach_pendant/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.1‑1 示教器启用状态
+.. centered:: Figura 16.1‑1 Estado de Ativação do Painel de Ensinamento
 
-示教器多语言设置
---------------------
+Configuração de Idiomas do Painel de Ensinamento
+----------------------------------------------------------------
 
-1. 在登录界面（或首次激活界面均可设置），在右上角进行语言选择。
+1. Na interface de login (ou na interface de ativação inicial, ambas podem ser configuradas), selecione o idioma no canto superior direito.
 
 .. image:: teaching_pendant_software/062.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑1 激活界面设置语言
+.. centered:: Figura 16.2‑1 Configurar Idioma na Interface de Ativação
 
 .. image:: teaching_pendant_software/063.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑2 登录界面设置语言
+.. centered:: Figura 16.2‑2 Configurar Idioma na Interface de Login
 
-2. 以登录界面设置多语言为例，选择语言。出现以下提示（对应不同语言）即为设置成功，重启控制箱完成语言设置。
+2. Usando a interface de login como exemplo para configurar o idioma, selecione o idioma desejado. A mensagem de prompt abaixo (correspondente ao idioma selecionado) indica que a configuração foi bem-sucedida. Reinicie o painel de controle para concluir a configuração do idioma.
 
 .. image:: teach_pendant/004.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑3 设置中文
+.. centered:: Figura 16.2‑3 Configurar Chinês
 
 .. image:: teach_pendant/005.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑4 设置英文
+.. centered:: Figura 16.2‑4 Configurar Inglês
 
-输入法切换
+Alternância do Método de Entrada
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-默认输入法为英文输入法。
+O método de entrada padrão é o teclado inglês.
 
-1. 打开右下角软键盘，点击输入框，例如点击用户名输入框。
+1. Abra o teclado virtual no canto inferior direito e clique no campo de entrada, por exemplo, no campo de nome de usuário.
 
-2. 切换中文拼音输入法。
+2. Alterne para o método de entrada Pinyin chinês.
 
-点击两次CTRL键，按键状态变红色，点击空格进行选择输入法，以下为中文输入法。
+Pressione a tecla CTRL duas vezes. O estado da tecla muda para vermelho. Pressione a barra de espaço para selecionar o método de entrada. Abaixo está o método de entrada chinês.
 
 .. image:: teach_pendant/006.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑5 中文拼音输入法
+.. centered:: Figura 16.2‑5 Método de Entrada Pinyin Chinês
 
-3. 切换英文输入法
+3. Alterne para o método de entrada inglês.
 
-点击两次CTRL键，按键状态变红色，点击空格进行选择输入法，以下为英文输入法。
+Pressione a tecla CTRL duas vezes. O estado da tecla muda para vermelho. Pressione a barra de espaço para selecionar o método de entrada. Abaixo está o método de entrada inglês.
 
 .. image:: teach_pendant/007.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑6 英文输入法
+.. centered:: Figura 16.2‑6 Método de Entrada Inglês
 
-登录成功后，系统会加载模型等数据，加载完毕后进入初始页面。
+Após o login bem-sucedido, o sistema carregará os dados do modelo, etc. Após o carregamento, a página inicial será exibida.
 
-示教器与webApp语言不一致
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Inconsistência de Idioma entre o Painel de Ensinamento e o WebApp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-启用示教器后，在登录界面会触发示教器与webApp语言校验，当示教器语言与webApp语言不一致时，出现以下提示。
+Após ativar o painel de ensinamento, a verificação de idioma entre o painel e o WebApp é acionada na interface de login. Quando os idiomas do painel de ensinamento e do WebApp são diferentes, a seguinte mensagem é exibida.
 
 .. image:: teach_pendant/008.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.2‑7 示教器与webApp语言不一致提示
+.. centered:: Figura 16.2‑7 Mensagem de Inconsistência de Idioma entre o Painel de Ensinamento e o WebApp
 
-控制器及实体示教器IP重置功能
+Função de Redefinição de IP do Controlador e do Painel de Ensinamento Físico
 ----------------------------------------------------------------------------------
 
-功能概述
+Visão Geral da Função
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-此次优化增加不同途径的控制器及实体示教器IP复位操作功能，主要通过以下操作可实现以下功能：
+Esta otimização adiciona diferentes maneiras de redefinir o IP do controlador e do painel de ensinamento físico, principalmente através das seguintes operações:
 
-- 1. 使用webrecovery界面可进行控制箱网卡0和网卡1的IP重置；
-- 2. 使用实体示教器F1自定义按键功能配置IP复位（长按10秒）可进行控制箱网卡0、网卡1以及实体示教器的IP重置；
-- 3. 使用实体示教器F2和F4组合按键，同时长按10秒，可以在实体示教器未登录时进行实体示教器设备的IP重置。
+- 1. A interface webrecovery pode ser usada para redefinir os IPs das placas de rede 0 e 1 do painel de controle.
+- 2. Usando a função personalizada da tecla F1 no painel de ensinamento físico (pressione longamente por 10 segundos), é possível redefinir os IPs das placas de rede 0 e 1 do painel de controle e o IP do painel de ensinamento físico.
+- 3. Usando a combinação das teclas F2 e F4 no painel de ensinamento físico, pressionando ambas longamente por 10 segundos, é possível redefinir o IP do dispositivo do painel de ensinamento físico quando não estiver logado nele.
 
 .. image:: teach_pendant/010.png
    :width: 5in
    :align: center
 
-.. centered:: 图表 16.3‑1 mini控制箱网口示意图
+.. centered:: Figura 16.3‑1 Diagrama das Portas Ethernet do Mini Painel de Controle
 
-Webrecovery界面IP重置
+Redefinição de IP na Interface Webrecovery
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-使用8050端口登录webrecovery界面，如默认ip：192.168.57.2：8050登录，点击重置控制器IP‘重置’按钮，页面会进行二次弹窗确认，点击确定后再次点击重置控制器IP按钮以确认重置。
+Acesse a interface webrecovery usando a porta 8050, por exemplo, com o IP padrão 192.168.57.2:8050. Clique no botão ‘Redefinir’ para ‘Redefinir IP do Controlador’. Uma caixa de diálogo de confirmação aparecerá. Clique em OK e, em seguida, clique novamente no botão de redefinição de IP do controlador para confirmar a redefinição.
 
 .. image:: teach_pendant/011.png
    :width: 5in
    :align: center
 
-.. centered:: 图表 16.3‑2 Webrecovery界面IP重置功能
+.. centered:: Figura 16.3‑2 Função de Redefinição de IP na Interface Webrecovery
 
-二次确认后会提示重启生效。重启后控制器网卡0 IP恢复为默认192.168.57.2，网卡1 IP恢复为默认192.168.58.2。
+Após a segunda confirmação, uma mensagem indicará que a reinicialização é necessária para que a alteração tenha efeito. Após a reinicialização, o IP da placa de rede 0 do controlador retorna ao padrão 192.168.57.2 e o IP da placa de rede 1 retorna ao padrão 192.168.58.2.
 
-.. image:: teach_pendant/012.png
-   :width: 6in
-   :align: center
+Redefinição de IP Personalizada pela Tecla F1 do Painel de Ensinamento Físico
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. centered:: 图表 16.3‑3 Webrecovery界面IP重置二次确认
-
-实体示教器F1按键自定义IP重置
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-使用实体示教器F1按键自定义功能需先登录示教器界面进行F按键自定义功能进行配置，点击“系统设置”，点击“通用设置”，选择示教器模块，打开启用示教器开关，配置F1按键为重置IP（长按10秒），点击配置。
+Para usar a função personalizada da tecla F1 no painel de ensinamento físico, primeiro faça login na interface do painel de ensinamento e configure a função personalizada das teclas F. Clique em “Configurações do Sistema”, depois em “Configurações Gerais”. Selecione o módulo do painel de ensinamento, ative o interruptor para habilitar o painel de ensinamento e configure a tecla F1 para “Redefinir IP (pressionar longamente por 10 segundos)”. Clique em Configurar.
 
 .. image:: teach_pendant/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.3‑4 实体示教器F1按键自定义IP重置
+.. centered:: Figura 16.3‑3 Redefinição de IP Personalizada pela Tecla F1 do Painel de Ensinamento Físico
 
-此功能仅在实体示教器登录webapp时生效，长按F1按键10秒后会提示重启生效。重启后控制器网卡0 IP恢复为默认192.168.57.2，网卡1 IP恢复为默认192.168.58.2，实体示教器IP恢复为默认192.168.58.77。
+Esta função só é efetiva quando o painel de ensinamento físico está logado no webapp. Pressionar longamente a tecla F1 por 10 segundos fará com que uma mensagem de reinicialização seja exibida para que a alteração tenha efeito. Após a reinicialização, o IP da placa de rede 0 do controlador retorna ao padrão 192.168.57.2, o IP da placa de rede 1 retorna ao padrão 192.168.58.2 e o IP do painel de ensinamento físico retorna ao padrão 192.168.58.77.
 
-实体示教器F2和F4组合按键IP重置
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Redefinição de IP pela Combinação das Teclas F2 e F4 do Painel de Ensinamento Físico
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-实体示教器设备提供IP重置功能，在未连接webapp情况下也可进行实体示教器IP复位。同时长按F2和F4组合按键10秒钟，可重置实体示教器IP，IP默认恢复为192.168.58.77。恢复后需要重新登录webapp，在系统设置-通用设置中，设置实体示教器IP为192.168.58.77，重启后重新建立示教器连接。
+O dispositivo do painel de ensinamento físico oferece uma função de redefinição de IP que pode ser realizada mesmo sem conexão com o webapp. Pressionar longamente as teclas F2 e F4 simultaneamente por 10 segundos redefine o IP do painel de ensinamento físico para o padrão 192.168.58.77. Após a redefinição, é necessário fazer login novamente no webapp e, em Configurações do Sistema - Configurações Gerais, definir o IP do painel de ensinamento físico como 192.168.58.77. Após a reinicialização, a conexão com o painel de ensinamento será restabelecida.
 
 .. image:: installation/060.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.3‑6 实体示教器F2和F4组合按键IP重置
+.. centered:: Figura 16.3‑4 Redefinição de IP pela Combinação das Teclas F2 e F4 do Painel de Ensinamento Físico
 
-示教器按键自定义功能
+Função Personalizada das Teclas do Painel de Ensinamento
 ----------------------------------------------------------------------------------
 
-功能概述
+Visão Geral da Função
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-本文档旨在介绍如何使用示教器按键自定义功能。
+Este documento tem como objetivo apresentar como usar a função personalizada das teclas do painel de ensinamento.
 
-操作说明
+Instruções de Operação
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-功能配置
+Configuração da Função
 ++++++++++++++++++++++++++++++++++++++
 
-1. 打开访问并等陆webApp;
-   
-2. 点击左侧菜单栏“系统设置”-“通用设置”菜单进入示教器配置模块界面；
+1. Acesse e faça login no webApp.
+
+2. Clique no menu “Configurações do Sistema” na barra lateral esquerda e, em seguida, no submenu “Configurações Gerais” para entrar na interface do módulo de configuração do painel de ensinamento.
 
 .. image:: teach_pendant/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.4‑1 示教器按键功能配置界面
+.. centered:: Figura 16.4‑1 Interface de Configuração da Função das Teclas do Painel de Ensinamento
 
-3. 示教器启用后，包含钥匙自定义功能，F1-F4按键的功能配置。其中钥匙自定义功能可设置为拖动模式，F1-F4按键可配置重置IP(长按10秒)，一键清除报错，输出DO，使能切换及启动指定Lua程序。
+3. Após ativar o painel de ensinamento, estão disponíveis a função personalizada da chave seletora e a configuração de funções para as teclas F1-F4. A função personalizada da chave seletora pode ser definida como “Modo de Arrasto”. As teclas F1-F4 podem ser configuradas para Redefinir IP (pressionar longamente por 10 segundos), Limpar Erro com um Toque, Saída DO, Alternar Habilitação e Iniciar um Programa Lua Específico.
 
-钥匙自定义设置为拖动
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configuração da Chave Seletora Personalizada como Modo de Arrasto
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-1. 当钥匙自定义配置为拖动模式，且在登录WebApp时，示教器钥匙旋至自定义时，界面弹窗需确认当前负载，以防负载错误导致坠落；
+1. Quando a chave seletora personalizada é configurada como modo de arrasto e o usuário está logado no WebApp, ao girar a chave seletora do painel de ensinamento para a posição personalizada, uma janela pop-up solicitará a confirmação da carga atual para evitar queda devido a configuração incorreta de carga.
 
 .. image:: installation/061.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.4‑2 示教器模式示例
+.. centered:: Figura 16.4‑2 Exemplo de Modo do Painel de Ensinamento
 
-2. 确认负载设置正确后，点击确认，机器人进入拖动模式。
+2. Após confirmar que a configuração da carga está correta, clique em “Confirmar”. O robô entrará no modo de arrasto.
 
 .. image:: teach_pendant/014.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 16.4‑3 拖动模式设置前确认负载
+.. centered:: Figura 16.4‑3 Confirmação de Carga Antes de Entrar no Modo de Arrasto
 
-F1-F4按键功能自定义
+Função Personalizada das Teclas F1-F4
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: installation/060.png
    :width: 6in
    :align: center
    
-.. centered:: 图表 16.4‑4 示教器按键示例
+.. centered:: Figura 16.4‑4 Exemplo de Teclas do Painel de Ensinamento
 
-1. **重置IP（长按10秒）功能**：配置后长按10秒后会提示重启生效。重启后控制器网卡0的IP恢复为默认192.168.57.2，网卡1的IP恢复为默认192.168.58.2，实体示教器IP恢复为默认192.168.58.77。
+1. **Função Redefinir IP (pressionar longamente por 10 segundos)**: Após configurada, pressionar longamente por 10 segundos fará com que uma mensagem de reinicialização seja exibida para que a alteração tenha efeito. Após a reinicialização, o IP da placa de rede 0 do controlador retorna ao padrão 192.168.57.2, o IP da placa de rede 1 retorna ao padrão 192.168.58.2 e o IP do painel de ensinamento físico retorna ao padrão 192.168.58.77.
    
-2. **一键清除报错功能**：在当界面出现报错提示时，按压对应功能F键，可清除报错。
+2. **Função Limpar Erro com um Toque**: Quando uma mensagem de erro é exibida na interface, pressionar a tecla F correspondente configurada limpará o erro.
    
-3. **输出DO功能**：配置该功能且设置DO编号后，按压对应功能F键，可将当前DO编号对应状态切换。
+3. **Função Saída DO**: Após configurar esta função e definir o número do DO, pressionar a tecla F correspondente alternará o estado do DO definido.
    
-4. **使能切换功能**：配置该功能后，按压对应功能F键，可当前使能状态。
+4. **Função Alternar Habilitação**: Após configurar esta função, pressionar a tecla F correspondente alternará o estado de habilitação atual.
    
-5. **启动Lua程序**：配置该功能且设置Lua程序后，按压对应功能F键，机器人在自动模式下，即可自动运行所设置的Lua程序。 
+5. **Iniciar Programa Lua**: Após configurar esta função e definir um programa Lua, pressionar a tecla F correspondente fará com que o robô execute automaticamente o programa Lua definido, desde que esteja no modo automático.

@@ -1,22 +1,24 @@
-插件简介
+Introdução ao Plugin
 ++++++++++++++++++++++++++++++
-法奥MoveIt2插件是一款为法奥机器人的运动控制与路径规划提供支持的插件。借助法奥MoveIt2插件能够实现复杂的机器人运动控制、路径规划、逆运动学求解和实时碰撞检测等功能，适用于多种机械臂应用场景，如工业、焊接、制造业、自动化上下料、码垛、医疗等场景。
+O plugin FAIRINO MoveIt2 é um plugin que fornece suporte para controle de movimento e planejamento de trajetória para robôs FAIRINO. Com o plugin FAIRINO MoveIt2, é possível realizar funções complexas como controle de movimento do robô, planejamento de trajetória, resolução de cinemática inversa e detecção de colisão em tempo real. É adequado para várias aplicações com braços robóticos, como indústria, soldagem, manufatura, carga e descarga automatizada, paletização, áreas médicas, etc.
 
-快速使用
+Início Rápido
 ++++++++++++++++++++++++++++++
-本章节说明APP运行环境如何配置。
+Esta seção explica como configurar o ambiente de execução do aplicativo.
 
-推荐在Ubuntu22.04LTS(Jammy)上使用，系统安装完毕后，就可以安装ROS2，推荐用ros2-humble，ROS2的安装可以参考教程：https://docs.ros.org/en/humble/index.html。
+Recomenda-se o uso no Ubuntu 22.04 LTS (Jammy). Após a instalação do sistema, o ROS2 pode ser instalado. Recomenda-se o ros2-humble. Para a instalação do ROS2, consulte o tutorial: https://docs.ros.org/en/humble/index.html.
 
-法奥MoveIt2插件包安装及配置
-------------------------------
-克隆法奥MoveIt2插件
+Instalação e Configuração do Pacote do Plugin FAIRINO MoveIt2
+------------------------------------------------------------------------------
+Clonar o Plugin FAIRINO MoveIt2
 """"""""""""""""""""""""""""""""""
-克隆法奥MoveIt2插件到本地，然后cd到目标目录下，其中主要文件包括fairino_msgs法奥机器人数据传输数据类型功能包；fairino_hardware法奥机器人fairino_hardware插件功能包；
+Clone o plugin FAIRINO MoveIt2 localmente e, em seguida, acesse o diretório alvo. Os principais arquivos incluem:
 
-fairino_robot/fairino_description法奥机器人外观及urdf文件功能包；
-
-fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_config、fairino_robot/fairino5_v6_moveit2_config、fairino_robot/fairino10_v6_moveit2_config、fairino_robot/fairino16_v6_moveit2_config、fairino_robot/fairino20_v6_moveit2_config、fairino_robot/fairino30_v6_moveit2_config法奥机器人moveit2配置包，fairino_robot/fairino_mtc_demo法奥mtc示例代码包。
+- `fairino_msgs`: Pacote de funcionalidades para tipos de dados de transmissão de dados do robô FAIRINO;
+- `fairino_hardware`: Pacote de funcionalidades do plugin fairino_hardware do robô FAIRINO;
+- `fairino_robot/fairino_description`: Pacote de funcionalidades para a aparência do robô FAIRINO e arquivos URDF;
+- `fairino_robot/fairino3mt_v6_moveit2_config`, `fairino_robot/fairino3_v6_moveit2_config`, `fairino_robot/fairino5_v6_moveit2_config`, `fairino_robot/fairino10_v6_moveit2_config`, `fairino_robot/fairino16_v6_moveit2_config`, `fairino_robot/fairino20_v6_moveit2_config`, `fairino_robot/fairino30_v6_moveit2_config`: Pacotes de configuração moveit2 do robô FAIRINO.
+- `fairino_robot/fairino_mtc_demo`: Pacote de código de exemplo mtc do FAIRINO.
 
 .. image:: img/fairino_harware_001.png
     :width: 6in
@@ -25,10 +27,10 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     :width: 6in
     :align: center
 
-编译功能包
-""""""""""""""""""""""""""""""""""
+Compilar os Pacotes de Funcionalidades
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-编译fairino_msgs功能包
+Compilar o pacote de funcionalidades `fairino_msgs`:
 
 .. code-block:: shell
     :linenos:
@@ -37,7 +39,7 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build --packages-select fairino_msgs
     source install/setup.bash
 
-编译fairino_hardware功能包
+Compilar o pacote de funcionalidades `fairino_hardware`:
 
 .. code-block:: shell
     :linenos:
@@ -46,7 +48,7 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build --packages-select fairino_hardware
     source install/setup.bash
 
-编译fairino_description功能包
+Compilar o pacote de funcionalidades `fairino_description`:
 
 .. code-block:: shell
     :linenos:
@@ -55,7 +57,7 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build --packages-select fairino_description
     source install/setup.bash
 
-编译法奥机器人moveit2配置包，以fairino5_v6_moveit2_config为例
+Compilar os pacotes de configuração moveit2 do robô FAIRINO, usando `fairino5_v6_moveit2_config` como exemplo:
 
 .. code-block:: shell
     :linenos:
@@ -64,7 +66,7 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build --packages-select fairino5_v6_moveit2_config
     source install/setup.bash
 
-编译法奥机器人fairino_mtc_demo示例代码包，若该代码示例包未出现在官方ros2_ws工作空间内，可联系售后服务获取
+Compilar o pacote de código de exemplo `fairino_mtc_demo` do robô FAIRINO. Se este pacote de código de exemplo não estiver presente no espaço de trabalho oficial `ros2_ws`, entre em contato com o suporte pós-venda para obtê-lo.
 
 .. code-block:: shell
     :linenos:
@@ -73,24 +75,24 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build --packages-select fairino_mtc_demo
     source install/setup.bash
 
-配置法奥机械臂Moveit2模型
-------------------------------
-若不想使用官方提供的机器人moveit2_config配置包，可以通过moveit_setup_assistant配置自定义机器人moveit2_config配置包。
+Configurar o Modelo MoveIt2 do Braço Robótico FAIRINO
+--------------------------------------------------------------------------
+Se não quiser usar o pacote de configuração `moveit2_config` do robô fornecido oficialmente, é possível configurar um pacote de configuração `moveit2_config` de robô personalizado usando o `moveit_setup_assistant`.
 
-创建工作空间
+Criar um Espaço de Trabalho
 """"""""""""""""""""""""""""""""""
-创建工作空间，并创建功能包
+Crie um espaço de trabalho e um pacote de funcionalidades:
 
 .. code-block:: shell
     :linenos:
 
     mkdir -p test_fa_ws/src
-    cd test_fa_w/src
+    cd test_fa_ws/src
     mkdir fairino5_v6_robot_moveit_config
-    cd ..
+    cd ../..
     cd ..
 
-编译功能包，并source
+Compile o pacote de funcionalidades e faça o source:
 
 .. code-block:: shell
     :linenos:
@@ -98,85 +100,84 @@ fairino_robot/fairino3mt_v6_moveit2_config、fairino_robot/fairino3_v6_moveit2_c
     colcon build
     source install/setup.bash
 
-
-启动moveit_setup_assistant进行机器人配置
+Inicie o `moveit_setup_assistant` para configurar o robô:
 
 .. code-block:: shell
     :linenos:
 
     ros2 launch moveit_setup_assistant setup_assistant.launch.py
 
-配置机器人
+Configurar o Robô
 """"""""""""""""""""""""""""""""""
-启动配置界面
+Iniciar a Interface de Configuração
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在test_fa_ws目录下打开终端，配置界面选择“Create New Moveit Configuration Package”，创建新的moveit配置功能包。
+Abra um terminal no diretório `test_fa_ws`. Na interface de configuração, selecione “Create New Moveit Configuration Package” para criar um novo pacote de configuração moveit.
 
 .. image:: img/fairino_harware_003.png
     :width: 6in
     :align: center
 
-然后选中机器人的描述文件，即.urdf这个文件，然后选择Load Files，加载机器人模型，就可以看到右边加载出来了机器人的模型。
+Em seguida, selecione o arquivo de descrição do robô, ou seja, o arquivo `.urdf`, e clique em “Load Files” para carregar o modelo do robô. O modelo do robô aparecerá no lado direito.
 
 .. image:: img/fairino_harware_004.png
     :width: 6in
     :align: center
 
-配置Self-Collisions
+Configurar Self-Collisions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Self-Collisions为机器人碰撞设置，点击Generate Collision Matrix既可自动生成关节碰撞矩阵，其会将两接触连杆以及永远接触不到的连杆之间的碰撞取消，从而配置机器人关节碰撞矩阵的，进而避免计算两接触面碰撞，点击Generate Collision Matrix既可自动生成。
+Self-Collisions é para configuração de colisão do robô. Clique em “Generate Collision Matrix” para gerar automaticamente a matriz de colisão das juntas. Isso cancela a colisão entre os elos em contato e aqueles que nunca entrarão em contato, configurando assim a matriz de colisão das juntas do robô e evitando o cálculo da colisão entre as superfícies de contato. Clique em “Generate Collision Matrix” para gerar automaticamente.
 
 .. image:: img/fairino_harware_005.png
     :width: 6in
     :align: center
 
-配置Virtual Joints
+Configurar Virtual Joints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Virtual Joints为机器人虚拟轴，当机器人安装在移动平台上是就需要给机器人设置虚拟轴，设置虚拟轴的name、子连杆、关节类型等，当移动平台移动时，虚拟轴也同步运动，从而带动机器人运动，实现机器人随着移动平台运动的功能本次直接将机器人放置在world坐标系中，取名为virtual_joints。
+Virtual Joints são os eixos virtuais do robô. Quando o robô é montado em uma plataforma móvel, é necessário definir eixos virtuais para ele. Defina o nome do eixo virtual, o elo filho, o tipo de junta, etc. Quando a plataforma móvel se move, o eixo virtual também se move simultaneamente, movendo assim o robô. Isso permite que o robô se mova com a plataforma móvel. Neste caso, colocamos o robô diretamente no sistema de coordenadas world e o nomeamos como `virtual_joints`.
 
 .. image:: img/fairino_harware_006.png
     :width: 6in
     :align: center
 
-配置Planning Groups
+Configurar Planning Groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Planning Groups为机器人的规划组，它将进行运动学计算时需要同一考虑的关节划在同一规划组内，进行统一的正逆向运动学计算，如将一机器人放在AGV小车上，再在机器人末端安装夹具，测试将AGV小车的四个关节划在一个规划组，机器人的六个关节划在一个规划组，夹具的一个关节划在一个规划组进行运动学计算。
+Planning Groups são os grupos de planejamento do robô. Eles agrupam as juntas que precisam ser consideradas juntas para o cálculo cinemático dentro do mesmo grupo de planejamento, realizando cálculos de cinemática direta e inversa unificados. Por exemplo, ao colocar um robô em um carrinho AGV e, em seguida, instalar uma garra na extremidade do robô, teste agrupar as quatro juntas do carrinho AGV em um grupo de planejamento, as seis juntas do robô em outro grupo de planejamento e a junta da garra em um grupo de planejamento separado para o cálculo cinemático.
 
-由于本次不涉及夹具所以只添加机器人的各个关节组，即arm组，首先添加arm组，动力学求解器Kinematic Solver选择kdl_kinematics_plugin/KDLKinematicsPlugin，然后默认的规划器Group Default Planner选TRRT，然后点击Add Joints为这个规划组添加关节。
+Como este exemplo não envolve uma garra, apenas adicionamos os grupos de juntas do robô, ou seja, o grupo `arm`. Primeiro, adicione o grupo `arm`. Selecione `kdl_kinematics_plugin/KDLKinematicsPlugin` como o Solver Cinemático (Kinematic Solver). Em seguida, selecione `TRRT` como o Planejador Padrão do Grupo (Group Default Planner). Depois, clique em “Add Joints” para adicionar juntas a este grupo de planejamento.
 
 .. image:: img/fairino_harware_007.png
     :width: 6in
     :align: center
 
-arm的关节按住shift可以进行多选，点击'>'进行添加，然后点击save保存。
+As juntas do `arm` podem ser selecionadas múltiplas vezes mantendo pressionada a tecla Shift. Clique em ‘>’ para adicionar e, em seguida, clique em “save” para salvar.
 
 .. image:: img/fairino_harware_008.png
     :width: 6in
     :align: center
 
-定义好的规划组如下所示：
+O grupo de planejamento definido é mostrado abaixo:
 
 .. image:: img/fairino_harware_009.png
     :width: 6in
     :align: center
 
-配置Robot Poses
+Configurar Robot Poses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Robot Poses为机器人预设位姿，其为每个规划组定义一些预设的位姿，为arm定义一个home位姿态，这个姿态可以随意选择。
+Robot Poses são as poses predefinidas do robô. Elas definem algumas poses predefinidas para cada grupo de planejamento. Defina uma pose `home` para o grupo `arm`. Esta pose pode ser escolhida arbitrariamente.
 
 .. image:: img/fairino_harware_010.png
     :width: 6in
     :align: center
 
-Robot Poses可以为每个规划组定义预设姿态，当机器人中存在夹具时，可在Planning Groups部分添加夹具规划组，然后在Robot Poses设置姿态时就可为夹具设置预设姿态。
+Robot Poses pode definir poses predefinidas para cada grupo de planejamento. Quando o robô tem uma garra, um grupo de planejamento da garra pode ser adicionado na seção Planning Groups. Ao definir as poses em Robot Poses, a pose predefinida pode ser definida para a garra.
 
-配置End Effectors
+Configurar End Effectors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-End Effectors为机器人末端执行机构，末端执行机构的规划组为hand，然后默认连接的parent_link是panda_link8，由于本次没有末端执行器，所以这一步可跳过。
+End Effectors são os mecanismos de execução da extremidade do robô. O grupo de planejamento do mecanismo de execução da extremidade é `hand`. O `parent_link` conectado por padrão é `panda_link8`. Como não há mecanismo de execução da extremidade neste exemplo, esta etapa pode ser ignorada.
 
 ros2_control URDF Modifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ros2_control URDF Modifications主要用于设置下发和反馈的关节数据类型，可以选择位置、速度、扭矩三种，本次选择下发和反馈的关节数据类型都为位置控制，然后直接Add interfaces即可。
+ros2_control URDF Modifications é usado principalmente para definir os tipos de dados das juntas para envio e feedback. Três tipos podem ser selecionados: posição, velocidade e torque. Neste caso, selecionamos o controle de posição tanto para envio quanto para feedback. Em seguida, clique em “Add interfaces” diretamente.
 
 .. image:: img/fairino_harware_011.png
     :width: 6in
@@ -184,14 +185,13 @@ ros2_control URDF Modifications主要用于设置下发和反馈的关节数据�
 
 .. important:: 
 
-   - 注意：
+   - Nota:
 
-    选择关节数据类型需要与后续fairino_hardware插件相匹配，根据fairino_hardware插件传输数据选择下发和反馈的关节数据类型，由于本次控制实际机器人运动的fairino_hardware插件使用的是position数据类型，所以本次选择下发和反馈的关节数据类型都为位置控制。
-
+    O tipo de dado da junta selecionado precisa corresponder ao plugin `fairino_hardware`. Escolha os tipos de dados das juntas para envio e feedback com base nos dados transmitidos pelo plugin `fairino_hardware`. Como o plugin `fairino_hardware` que controla o movimento real do robô usa o tipo de dado `position`, selecionamos o controle de posição tanto para envio quanto para feedback.
 
 ROS 2 Controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ROS 2 Controllers主要用于生成ros2_controllers.yaml文件，该文件设置了发布频率、关节名称、控制器名称、控制器类型等，配置ROS 2 Controllers，为每个规划组配置控制器，点击Auto Add JointTrajectoryController Controllers For Each Planning Group即可。
+ROS 2 Controllers é usado principalmente para gerar o arquivo `ros2_controllers.yaml`. Este arquivo define a frequência de publicação, os nomes das juntas, os nomes dos controladores, os tipos de controladores, etc. Configure ROS 2 Controllers para cada grupo de planejamento. Clique em “Auto Add JointTrajectoryController Controllers For Each Planning Group” para adicionar automaticamente.
 
 .. image:: img/fairino_harware_012.png
     :width: 6in
@@ -199,9 +199,9 @@ ROS 2 Controllers主要用于生成ros2_controllers.yaml文件，该文件设置
 
 Moveit Controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Moveit Controllers主要用于生成moveit_controllers文件，该文件设置了控制器名称、控制器类型等，需要注意的是moveit_controllers中的控制器名称需要与ros2_controllers的控制器名称相同，否则不能顺利运行。
+Moveit Controllers é usado principalmente para gerar o arquivo `moveit_controllers`. Este arquivo define os nomes dos controladores, os tipos de controladores, etc. É importante notar que os nomes dos controladores em `moveit_controllers` precisam ser os mesmos que os nomes dos controladores em `ros2_controllers`; caso contrário, a execução não ocorrerá corretamente.
 
-并且当moveit_controllers中的控制器名称与ros2_controllers中的控制器名称相同时，moveit_controllers中的控制器类型会自动与ros2_controllers中的控制器类型映射到一起，实现下发的控制数据通过moveit_controllers发送给ros2_controllers，然后再通过ros2_controllers中的插件驱动实际机器人运动。
+Além disso, quando os nomes dos controladores em `moveit_controllers` são os mesmos que os nomes dos controladores em `ros2_controllers`, os tipos de controladores em `moveit_controllers` são automaticamente mapeados para os tipos de controladores em `ros2_controllers`. Isso permite que os dados de controle enviados sejam transmitidos pelo `moveit_controllers` para o `ros2_controllers` e, em seguida, através do plugin em `ros2_controllers`, o movimento real do robô é acionado.
 
 .. image:: img/fairino_harware_013.png
     :width: 6in
@@ -209,31 +209,31 @@ Moveit Controllers主要用于生成moveit_controllers文件，该文件设置�
 
 Launch Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-配置Launch Files，使用默认配置即可。
+Configure os Launch Files. Use a configuração padrão.
 
 .. image:: img/fairino_harware_014.png
     :width: 6in
     :align: center
 
-作者信息
+Informações do Autor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: img/fairino_harware_015.png
     :width: 6in
     :align: center
 
-生成Launch文件
+Gerar os Arquivos Launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-生成Launch文件，选择生成位置，本次在test_fa_ws/src文件路径下创建一个文件夹fairino5_v6_robot_moveit_config用于存放配置文件，然后选择生成。
+Gere os arquivos Launch. Selecione o local de geração. Neste caso, criamos uma pasta `fairino5_v6_robot_moveit_config` no caminho `test_fa_ws/src` para armazenar os arquivos de configuração e, em seguida, selecione “Generate”.
 
 .. image:: img/fairino_harware_016.png
     :width: 6in
     :align: center
 
-由于本次之前已经配置过一遍，若为初次配置Check files you want to be generated部分内容为黑色，说明可以生成Launch文件。
+Como já configuramos anteriormente, se for a primeira configuração, a parte “Check files you want to be generated” estará preta, indicando que os arquivos Launch podem ser gerados.
 
-启动Launch
+Iniciar o Launch
 """"""""""""""""""""""""""""""""""
-在配置完成后就可以进行功能包的编译，可以使用自定义机器人moveit2配置包替换法奥机器人moveit2配置包，实现针对用户自定义机器人的插件兼容使用
+Após a configuração, os pacotes de funcionalidades podem ser compilados. É possível usar o pacote de configuração moveit2 do robô personalizado para substituir o pacote de configuração moveit2 do robô FAIRINO, permitindo a compatibilidade do plugin com robôs personalizados pelo usuário.
 
 .. code-block:: shell
     :linenos:
@@ -241,110 +241,110 @@ Launch Files
     colcon build --packages-select fairino5_v6_robot_moveit_config
     source install/setup.bash
 
-然后直接运行刚才配置好的Launch文件
+Em seguida, execute diretamente o arquivo Launch configurado anteriormente:
 
 .. code-block:: shell
     :linenos:
 
     ros2 launch fairino5_v6_robot_moveit_config demo.launch.py
 
-就可以看到配置完成的rviz2界面。
+A interface rviz2 configurada será exibida.
 
 .. image:: img/fairino_harware_017.png
     :width: 6in
     :align: center
 
-Moveit2使用
+Uso do MoveIt2
 """"""""""""""""""""""""""""""""""
-打开配置的包后，可以通过拖拽右侧3D界面中机器人末端的蓝色球体设置机器人目标位置，然后通过机器人末端红、绿、蓝三个圆环改变机器人末端姿态。
+Após abrir o pacote configurado, é possível definir a posição alvo do robô arrastando a esfera azul na extremidade do robô na interface 3D do lado direito e, em seguida, alterar a postura da extremidade do robô através dos três anéis vermelho, verde e azul na extremidade do robô.
 
 .. image:: img/fairino_harware_018.png
     :width: 6in
     :align: center
 
-点击左侧Plan按钮，规划机器人运动轨迹。
+Clique no botão “Plan” no lado esquerdo para planejar a trajetória de movimento do robô.
 
 .. image:: img/fairino_harware_019.png
     :width: 6in
     :align: center
 
-点击左侧Execute按钮，驱动机器人按规划的轨迹运动到目标位姿。
+Clique no botão “Execute” no lado esquerdo para acionar o robô a se mover para a pose alvo ao longo da trajetória planejada.
 
 .. image:: img/fairino_harware_020.png
     :width: 6in
     :align: center
 
-Plan&Execute按钮是在规划轨迹后自动控制机器人运动。
+O botão “Plan & Execute” planeja a trajetória e, em seguida, controla automaticamente o movimento do robô.
 
-然后点击Joints标签可以通过改变各关节角度改变机器人目标位姿，然后通过Plan、Execute、Plan&Execute按钮驱动机器人运动。
+Em seguida, clique na aba “Joints” para alterar a pose alvo do robô ajustando os ângulos das juntas. Depois, use os botões “Plan”, “Execute” e “Plan & Execute” para acionar o movimento do robô.
 
 .. image:: img/fairino_harware_021.png
     :width: 6in
     :align: center
 
-fairino_hardware插件（自定义机器人moveit配置包）
-------------------------------------------------------------
-fairino_hardware插件为连接moveit与机器人的中间层，通过fairino_hardware插件move_group将运动规划发送给moveit_control，然后转发给ros2_control，ros2_control再通过fairino_hardware插件驱动实际机器人运动，并且fairino_hardware插件还会接受实际机器人的反馈数据，从而实现rviz2仿真界面机器人模型与实际机器人的同步，从而实现用户通过rviz2界面驱动实际机器人运动功能。
+fairino_hardware Plugin (Pacote de Configuração Moveit de Robô Personalizado)
+--------------------------------------------------------------------------------------------------------
+O plugin `fairino_hardware` é a camada intermediária que conecta o MoveIt ao robô. Através do plugin `fairino_hardware`, o `move_group` envia o planejamento de movimento para o `moveit_control`, que então o encaminha para o `ros2_control`. O `ros2_control`, por sua vez, utiliza o plugin `fairino_hardware` para acionar o movimento real do robô. Além disso, o plugin `fairino_hardware` também recebe os dados de feedback do robô real, permitindo a sincronização do modelo do robô na interface de simulação rviz2 com o robô real. Isso possibilita que o usuário acione o movimento do robô real através da interface rviz2.
 
-并且由于fairino_hardware插件的实现，使得法奥机器人能够接入ros2_control控制框架，使法奥机器人能够兼容基于ros2_control的第三方功能包。
+Devido à implementação do plugin `fairino_hardware`, os robôs FAIRINO podem ser integrados à estrutura de controle `ros2_control`, tornando-os compatíveis com pacotes de funcionalidades de terceiros baseados em `ros2_control`.
 
-在适配机械臂软件版本V3.8.3的fairino_hardware插件中，新增了扭矩模式及指令扭矩接口，使得机械臂可以进入扭矩模式并接收指令扭矩。
+No plugin `fairino_hardware` adaptado para a versão de software do braço robótico V3.8.3, foram adicionados o modo de torque e a interface de comando de torque, permitindo que o braço robótico entre no modo de torque e receba comandos de torque.
 
-fairino_hardware插件编译
-""""""""""""""""""""""""""""""""""
-编译官方提供的ros2_ws功能包中的fairino_hardware插件功能包，通过上节编译fairino_hardware插件功能包，然后将会在
+Compilação do Plugin fairino_hardware
+"""""""""""""""""""""""""""""""""""""""""""""""
+Compile o pacote de funcionalidades do plugin `fairino_hardware` no espaço de trabalho `ros2_ws` fornecido oficialmente. Compilando o pacote de funcionalidades `fairino_hardware` conforme a seção anterior, o arquivo `.so` do plugin gerado, `libfairino_hardware.so`, estará em:
 
 .. code-block:: shell
     :linenos:
 
     ros2_ws/install/fairino_hardware/lib/fairino_hardware
-    
-下看到插件生成的.so文件libfairino_hardware.so，说明插件编译成功。
 
-需要注意的是需要使fairino_hardware插件对机器人各关节的命名与moveit2配置的机器人各关节命名相同，本fairino_hardware插件对机器人六个关节的命名由基坐标位置到机器人末端分别为j1、j2、j3、j4、j5、j6，所以在moveit2配置的机器人时需要将机器人的关节命名为j1、j2、j3、j4、j5、j6。
+Isso indica que o plugin foi compilado com sucesso.
 
-fairino_hardware插件使用
+É importante que a nomenclatura das juntas do robô no plugin `fairino_hardware` corresponda à nomenclatura das juntas do robô configuradas no moveit2. Neste plugin `fairino_hardware`, a nomenclatura para as seis juntas do robô, da base até a extremidade, é `j1`, `j2`, `j3`, `j4`, `j5`, `j6`. Portanto, ao configurar o robô no moveit2, as juntas do robô devem ser nomeadas como `j1`, `j2`, `j3`, `j4`, `j5`, `j6`.
+
+Uso do Plugin fairino_hardware
 """"""""""""""""""""""""""""""""""
-若采用配置的自定义机器人moveit配置包，进入目录
+Se estiver usando um pacote de configuração moveit de robô personalizado, acesse o diretório:
 
 .. code-block:: shell
     :linenos:
 
     /home/fairino/test_fa_ws/install/fairino5_v6_robot_moveit_config/share/fairino5_v6_robot_moveit_config/config
 
-下，找到fairino5_v6_robot.ros2_control.xacro文件，将文件第3行的参数
+Localize o arquivo `fairino5_v6_robot.ros2_control.xacro` e substitua o parâmetro na linha 3:
 
 .. code-block:: shell
     :linenos:
 
     use_fake_hardware:=false
 
-替换为
+por:
 
 .. code-block:: shell
     :linenos:
 
     use_fake_hardware:=true
 
-根据后续的if判断可以看到，将use_fake_hardware设置成true是启用fairino_hardware/FairinoHardwareInterface这个插件，保存文件并退出即可。
+De acordo com a condição `if` subsequente, definir `use_fake_hardware` como `true` ativa o plugin `fairino_hardware/FairinoHardwareInterface`. Salve o arquivo e saia.
 
 .. image:: img/fairino_harware_022.png
     :width: 6in
     :align: center
 
-其中“fairino_hardware/FairinoHardwareInterface”hardware插件设置的插件名称，具体可以在“/home/fairino/ros2_ws/src/fairino_hardware”目录下的“fairino_hardware.xml”文件查看。
+O nome do plugin definido pela configuração de hardware “fairino_hardware/FairinoHardwareInterface” pode ser visualizado no arquivo “fairino_hardware.xml” no diretório “/home/fairino/ros2_ws/src/fairino_hardware”.
 
 .. image:: img/fairino_harware_023.png
     :width: 6in
     :align: center
 
-注意，在文件第3行中的robot_control_mode参数决定了加载插件时候暴露的指令接口，即参数代表了控制模式，0为位置控制模式，插件会暴露position接口，1为扭矩控制模式，插件会暴露effort接口。针对扭矩控制接口的demo预计会在适配机械臂软件V3.8.5版本的fairino_hardware功能包中推出。
+Observe que o parâmetro `robot_control_mode` na linha 3 do arquivo determina a interface de comando exposta ao carregar o plugin. Ou seja, o parâmetro representa o modo de controle. 0 é o modo de controle de posição, e o plugin expõe a interface `position`. 1 é o modo de controle de torque, e o plugin expõe a interface `effort`. O exemplo para a interface de controle de torque está previsto para ser lançado no pacote de funcionalidades `fairino_hardware` adaptado para a versão de software do braço robótico V3.8.5.
 
-当前的Moveit2控制器仅支持位置控制模式，请不要将robot_control_mode设置为1。
+O controlador Moveit2 atual suporta apenas o modo de controle de posição. Por favor, não defina `robot_control_mode` como 1.
 
-运行插件
+Executar o Plugin
 """"""""""""""""""""""""""""""""""
-打开终端，然后转到ros2_ws工作空间，并source工作空间，目的是将fairino_hardware插件添加进来，也可以将该路径加载到“~/.bashrc”文件中，但不建议
+Abra um terminal, acesse o espaço de trabalho `ros2_ws` e faça o source do espaço de trabalho. O objetivo é adicionar o plugin `fairino_hardware`. Este caminho também pode ser carregado no arquivo “~/.bashrc”, mas isso não é recomendado.
 
 .. code-block:: shell
     :linenos:
@@ -352,7 +352,7 @@ fairino_hardware插件使用
     cd ros2_ws
     source install/setup.bash
 
-然后回到主目录，然后转到test_fa_ws工作空间，并source工作空间，然后运行demo.launch.py文件
+Em seguida, retorne ao diretório principal, acesse o espaço de trabalho `test_fa_ws` e faça o source do espaço de trabalho. Depois, execute o arquivo `demo.launch.py`:
 
 .. code-block:: shell
     :linenos:
@@ -362,25 +362,25 @@ fairino_hardware插件使用
     source install/setup.bash
     ros2 launch fairino5_v6_robot_moveit_config demo.launch.py
 
-运行结果
+Resultado da Execução
 """"""""""""""""""""""""""""""""""
-demo.launch.py文件启动后，rviz2界面如下图所示：
+Após a inicialização do arquivo `demo.launch.py`, a interface rviz2 é mostrada abaixo:
 
 .. image:: img/fairino_harware_024.png
     :width: 6in
     :align: center
 
-此时rviz2启动界面与3.3.1节的最大不同为机器人初始位姿，此时由于加入了fairino_hardware插件，该插件会实时接受实际机器人关节状态，并通过ros2_control反馈给move_group，进而控制rviz2界面上的仿真机器人位姿，从而实现实际机器人与rviz2仿真机器人的同步。
+A principal diferença entre esta interface de inicialização do rviz2 e a da seção 3.3.1 é a pose inicial do robô. Agora, com a inclusão do plugin `fairino_hardware`, este plugin recebe em tempo real o estado das juntas do robô real e o envia de volta ao `move_group` através do `ros2_control`. Isso controla a pose do robô simulado na interface rviz2, sincronizando o robô real com o robô simulado no rviz2.
 
-此时实际机器人位姿如下所示：
+A pose do robô real neste momento é mostrada abaixo:
 
 .. image:: img/fairino_harware_025.png
     :width: 3in
     :align: center
 
-此时可以通过rviz2界面驱动实际机器人运动，拖拽rviz2界面中的机器人末端蓝色球体移动机器人末端到目标位置，然后拖动机器人末端红、绿、蓝三种颜色的圆环，改变机器人末端姿态，然后点击左侧Planning&Execute按钮，进行运动轨迹规划并驱动机器人运动，会发现实际机器人与rviz2界面上的仿真机器人进行同步运动，并运动到目标位姿停止。
+Agora é possível acionar o movimento do robô real através da interface rviz2. Arraste a esfera azul na extremidade do robô na interface rviz2 para mover a extremidade do robô até a posição alvo. Em seguida, arraste os anéis vermelho, verde e azul na extremidade do robô para alterar a postura da extremidade. Depois, clique no botão “Planning & Execute” no lado esquerdo para planejar a trajetória de movimento e acionar o movimento do robô. Observe que o robô real e o robô simulado na interface rviz2 se movem de forma síncrona e param na pose alvo.
 
-下图为通过rviz2界面控制实际机器人和rviz2界面仿真机器人运动到目标位姿：
+A figura abaixo mostra o controle do robô real e do robô simulado na interface rviz2 através da interface rviz2, movendo-se para a pose alvo:
 
 .. image:: img/fairino_harware_026.png
     :width: 6in
@@ -390,66 +390,62 @@ demo.launch.py文件启动后，rviz2界面如下图所示：
     :width: 3in
     :align: center
 
-至此可以通过moveit2控制实际机器人和rviz2界面上的仿真机器人同步运动。
+Assim, é possível controlar o movimento síncrono do robô real e do robô simulado na interface rviz2 através do moveit2.
 
+Pacote de Código de Exemplo mtc
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-mtc示例代码包
-++++++++++++++++++++++++++++++
-
-mtc示例代码包简介
+Introdução ao Pacote de Código de Exemplo mtc
 ---------------------------------------------------
-mtc示例代码包提供了一个使用moveit2和fairino_hardware插件进行重构的rviz2界面，将原有的MotionPlanning标签页更换为Motion Planning Tasks标签页，用于显示机器人运动各个阶段，rviz2界面可以通过
+O pacote de código de exemplo mtc fornece uma interface rviz2 reconstruída usando o moveit2 e o plugin `fairino_hardware`, substituindo a aba MotionPlanning original pela aba Motion Planning Tasks, usada para exibir as várias etapas do movimento do robô. A interface rviz2 pode ser editada através do arquivo “mtc.rviz” no caminho:
 
 .. code-block:: shell
     :linenos:
 
     ros2_ws/install/fairino_mtc_demo/share/fairino_mtc_demo/launch
 
-路径下的“mtc.rviz”文件进行编辑，用户可以通过编辑“mtc.rviz”文件来定制符合用户功能需求的rviz2界面。
+Os usuários podem editar o arquivo “mtc.rviz” para personalizar a interface rviz2 de acordo com suas necessidades funcionais.
 
-并且mtc示例代码包还提供了通过moveit2和fairino_hardware插件驱动机器人循环抓取目标的示例，通过该示例用户可以了解到如何通过代码的形式更好的利用moveit2和fairino_hardware插件与实际机器人进行交互，在此基础上用户可以进行符合需求的个性化定制。
+Além disso, o pacote de código de exemplo mtc fornece um exemplo de como acionar o robô para agarrar um alvo repetidamente usando o moveit2 e o plugin `fairino_hardware`. Através deste exemplo, os usuários podem entender como interagir melhor com o robô real usando o moveit2 e o plugin `fairino_hardware` através de código. Com base nisso, os usuários podem realizar personalizações de acordo com suas necessidades.
 
-mtc示例代码包编译
+Compilação do Pacote de Código de Exemplo mtc
 ---------------------------------------------------
 
-mtc示例代码包克隆
-""""""""""""""""""""""""""""""""""
-将官方提供的mtc示例代码包“fairino_robot”克隆到"ros2_ws"工作空间的src目录下。
+Clonar o Pacote de Código de Exemplo mtc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Clone o pacote de código de exemplo mtc “fairino_robot” fornecido oficialmente para o diretório `src` do espaço de trabalho “ros2_ws”.
 
-机器人型号选择
+Seleção do Modelo do Robô
 """"""""""""""""""""""""""""""""""
-在官方提供的mtc示例代码包的
+No pacote de código de exemplo mtc fornecido oficialmente, no arquivo `mtc_demo_env.launch.py` no diretório:
 
 .. code-block:: shell
     :linenos:
 
     ros2_ws/src/fairino_robot/fairino_mtc_demo/launch
 
-目录下的mtc_demo_env.launch.py文件中选择机器人型号，修改该文件中第9、10、11行以匹配需要设置的机器人。
+selecione o modelo do robô. Modifique as linhas 9, 10 e 11 neste arquivo para corresponder ao robô que precisa ser configurado.
 
 .. image:: img/fairino_harware_030.png
     :width: 6in
     :align: center
 
-具体机器人型号命名可以参考
-
+Para referência sobre a nomenclatura específica dos modelos de robô, consulte os pacotes de funcionalidades para cada modelo de robô no diretório:
 
 .. code-block:: shell
     :linenos:
 
     ros2_ws/src/fairino_robot/
 
-目录下各机器人型号的功能包。
-
 .. image:: img/fairino_harware_031.png
     :width: 3in
     :align: center
 
-mtc示例代码包编译
-""""""""""""""""""""""""""""""""""
-编译fairino_description功能包
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-打开终端，转到ros2_ws目录下，编译fairino_description功能包，然后进行source
+Compilação do Pacote de Código de Exemplo mtc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Compilar o pacote de funcionalidades `fairino_description`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Abra um terminal, acesse o diretório `ros2_ws`, compile o pacote de funcionalidades `fairino_description` e faça o source:
 
 .. code-block:: shell
     :linenos:
@@ -458,9 +454,9 @@ mtc示例代码包编译
     colcon build --packages-select fairino_description
     source install/setup.bash
 
-编译机器人功能包
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在ros2_ws目录下编译与型号对应的机器人功能包，以fairino5机器人为例
+Compilar o pacote de funcionalidades do robô
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+No diretório `ros2_ws`, compile o pacote de funcionalidades do robô correspondente ao modelo. Usando o robô FAIRINO5 como exemplo:
 
 .. code-block:: shell
     :linenos:
@@ -468,36 +464,36 @@ mtc示例代码包编译
     colcon build --packages-select fairino5_v6_moveit2_config
     source install/setup.bash
 
-然后需要添加fairino_hardware插件，用于与实际机器人同步运动，转到
+Em seguida, é necessário adicionar o plugin `fairino_hardware` para a sincronização com o robô real. Acesse o diretório:
 
 .. code-block:: shell
     :linenos:
 
     ros2_ws/install/fairino5_v6_moveit2_config/share/fairino5_v6_moveit2_config/config
-    
-目录下，找到fairino5_v6_robot.ros2_control.xacro，将文件第9行的
+
+Localize o arquivo `fairino5_v6_robot.ros2_control.xacro` e substitua a linha 9:
 
 .. code-block:: shell
     :linenos:
 
     <plugin>mock_components/GenericSystem</plugin>
-    
-替换为
+
+por:
 
 .. code-block:: shell
     :linenos:
 
     <plugin>fairino_hardware/FairinoHardwareInterface</plugin>
-    
-保存并退出。
+
+Salve e saia.
 
 .. image:: img/fairino_harware_032.png
     :width: 6in
     :align: center
 
-编译fairino_mtc_demo功能包
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-编译fairino_mtc_demo功能包，并进行source
+Compilar o pacote de funcionalidades `fairino_mtc_demo`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Compile o pacote de funcionalidades `fairino_mtc_demo` e faça o source:
 
 .. code-block:: shell
     :linenos:
@@ -505,11 +501,11 @@ mtc示例代码包编译
     colcon build --packages-select fairino_mtc_demo
     source install/setup.bash
 
-mtc示例代码包运行
+Execução do Pacote de Código de Exemplo mtc
 ---------------------------------------------------
-rviz2界面
+Interface rviz2
 """"""""""""""""""""""""""""""""""
-运行mtc_demo_env.launch.py文件打开定制rviz2界面，其中Motion Planning Tasks标签页用于显示自定义的机器人各运动过程
+Execute o arquivo `mtc_demo_env.launch.py` para abrir a interface rviz2 personalizada. A aba Motion Planning Tasks é usada para exibir as várias etapas do movimento personalizado do robô.
 
 .. code-block:: shell
     :linenos:
@@ -526,9 +522,9 @@ rviz2界面
     :width: 3in
     :align: center
 
-机器人运动
+Movimento do Robô
 """"""""""""""""""""""""""""""""""
-重新打开一个新终端，转到ros2_ws目录下，并source文件，运行mtc_demo_app.launch.py文件执行机器人运动
+Abra um novo terminal, acesse o diretório `ros2_ws`, faça o source do arquivo e execute o arquivo `mtc_demo_app.launch.py` para acionar o movimento do robô.
 
 .. code-block:: shell
     :linenos:
@@ -537,7 +533,7 @@ rviz2界面
     source install/setup.bash
     ros2 launch fairino_mtc_demo mtc_demo_app.launch.py
 
-然后在rviz2界面Motion Planning Tasks标签页将会显示机器人各运动过程，并且实际机器人与rviz2界面仿真机器人将会同步运动。
+Em seguida, na interface rviz2, a aba Motion Planning Tasks exibirá as várias etapas do movimento do robô, e o robô real e o robô simulado na interface rviz2 se moverão de forma síncrona.
 
 .. image:: img/fairino_harware_035.png
     :width: 6in
@@ -547,43 +543,43 @@ rviz2界面
     :width: 3in
     :align: center
 
-注意事项
+Precauções
 ++++++++++++++++++++++++++++++
 
-fairino_hardware插件版本同步
+Sincronização da Versão do Plugin fairino_hardware
 ---------------------------------------------------
-使用fairino_hardware插件的前提需要fairino_hardware插件的版本与法奥机器人版本一致；
+Um pré-requisito para usar o plugin `fairino_hardware` é que a versão do plugin `fairino_hardware` corresponda à versão do robô FAIRINO.
 
-fairino_hardware插件接受法奥机器人反馈的数据并转换为ros2_control的指定的指令数据类型，然后将ros2_control发送的机器人运动数据转换为法奥机器人特定的数据帧；
+O plugin `fairino_hardware` recebe os dados de feedback do robô FAIRINO e os converte no tipo de dado de comando especificado pelo `ros2_control`. Em seguida, converte os dados de movimento do robô enviados pelo `ros2_control` em quadros de dados específicos do robô FAIRINO.
 
-鉴于此，fairino_hardware插件的数据类型与法奥机器人数据类型是否一致就至关重要，而插件与机器人的不同版本可能会导致数据类型不同，所以在正式调试fairino_hardware插件前，需确认法奥机器人版本与fairino_hardware插件版本是否一致，若不一致需要对法奥机器人进行升级。
+Por esse motivo, é crucial que o tipo de dado do plugin `fairino_hardware` corresponda ao tipo de dado do robô FAIRINO. Diferentes versões do plugin e do robô podem levar a tipos de dados diferentes. Portanto, antes de depurar formalmente o plugin `fairino_hardware`, é necessário confirmar se a versão do robô FAIRINO corresponde à versão do plugin `fairino_hardware`. Se não corresponder, o robô FAIRINO precisa ser atualizado.
 
-- 首先可以在法奥机器人“WebAPP界面->系统设置->关于”界面查看机器人目前的各个版本型号。
+- Primeiro, você pode verificar as versões atuais do robô na interface “WebAPP do robô -> Configurações do Sistema -> Sobre”.
 
 .. image:: img/fairino_harware_037.png
     :width: 6in
     :align: center
 
-- 然后准备官方提供的机器人软件包，然后进入法奥机器人“WebAPP界面->辅助应用->机器人本体->系统升级”界面，然后点击“选择文件”按钮，选择准备的与fairino_hardware插件版本对应的机器人软件升级包，选择“上传升级包”，等待软件升级完成。
+- Em seguida, prepare o pacote de software do robô fornecido oficialmente. Acesse a interface “WebAPP do robô -> Aplicações Auxiliares -> Corpo do Robô -> Atualização do Sistema”. Clique no botão “Escolher Arquivo”, selecione o pacote de atualização de software do robô correspondente à versão do plugin `fairino_hardware` e clique em “Upload do Pacote de Atualização”. Aguarde a conclusão da atualização do software.
 
-- 升级完成后，系统会提示需要重启机器人，将机器人控制箱上的开关打到关闭挡位，等待25秒左右，然后启动机器人，至此机器人软件版本升级完成，可以进行后续的fairino_hardware插件的编译与使用。
+- Após a conclusão da atualização, o sistema solicitará a reinicialização do robô. Desligue o interruptor no painel de controle do robô, aguarde cerca de 25 segundos e, em seguida, ligue o robô. A atualização da versão do software do robô estará concluída, e você poderá prosseguir com a compilação e uso do plugin `fairino_hardware`.
 
 .. image:: img/fairino_harware_038.png
     :width: 6in
     :align: center
 
-可能遇到的问题
+Possíveis Problemas
 ---------------------------------------------------
-可能在配置机器人功能包右侧加载不出来机器人模型。
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-解决方法：这种错误可能是由于.urdf文件中的路径没有写对，可以通过修改.urdf文件中的路径和将meshes文件加复制进工作空间中的install/test_moveit/share/test_moveit下解决。
+O modelo do robô não é carregado no lado direito ao configurar o pacote de funcionalidades do robô.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Solução: Esse erro pode ser devido a um caminho incorreto no arquivo `.urdf`. Isso pode ser resolvido modificando o caminho no arquivo `.urdf` e copiando a pasta `meshes` para `install/test_moveit/share/test_moveit` no espaço de trabalho.
 
-生成package后，运行出错。
-""""""""""""""""""""""""""""""""""
-解决方法：将launches.py文件中203行“default_value=moveit_config.move_gro-up_capabilities["capabilities"],”中的“["capabilities"]”删除即可解决。
+Erro ao executar após gerar o pacote.
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+Solução: Exclua `["capabilities"]` na linha 203 do arquivo `launches.py`: `default_value=moveit_config.move_group_capabilities["capabilities"],`.
 
-总结
+Resumo
 ++++++++++++++++++++++++++++++
-本手册阐述了MoveIt2插件的安装、配置与使用；fairino_hardware插件的安装与使用，实现rviz2仿真机器人与实际机器人的同步运动；以及mtc示例代码包的编译与运行，借助moveit2和fairino_hardware插件实现定制化功能。
+Este manual descreve a instalação, configuração e uso do plugin MoveIt2; a instalação e uso do plugin `fairino_hardware` para realizar o movimento síncrono do robô simulado no rviz2 com o robô real; e a compilação e execução do pacote de código de exemplo mtc, usando o moveit2 e o plugin `fairino_hardware` para implementar funcionalidades personalizadas.
 
-希望通过本教程的阐述可以使用户对MoveIt2和fairino_hardware插件有更加全面的了解，希望能够帮助用户更好的个性化定制法奥机器人服务功能。
+Espera-se que através desta explicação, os usuários possam ter uma compreensão mais abrangente do MoveIt2 e do plugin `fairino_hardware`, e que isso possa ajudá-los a personalizar melhor os serviços do robô FAIRINO de acordo com suas necessidades.

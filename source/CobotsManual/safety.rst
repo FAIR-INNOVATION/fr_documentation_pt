@@ -1,659 +1,655 @@
-安全
+Segurança
 ===============
 
 .. toctree:: 
    :maxdepth: 6
 
-安全停止
-----------------
+Parada de Segurança
+--------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“安全停止”子菜单进入配置界面，设置安全停止模式和安全停止策略参数功能。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Parada de Segurança” para entrar na interface de configuração. Defina o modo de parada de segurança e os parâmetros da estratégia de parada de segurança.
 
 .. image:: safety/001.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.1-1 安全停止配置
+.. centered:: Figura 7.1-1 Configuração de Parada de Segurança
 
-安全停止双通道+缩减模式可配置
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Parada de Segurança de Dois Canais + Modo de Redução Configurável
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 ++++++++++++++++++++++++++++++++++++
 
-当安全停止的触发方式设置为“双通道”时，必须双通道保证清除状态并在操作界面人为清除警告后机器人才可复位。此外，在策略配置中增加缩减模式选项，当用户选择该策略时，机器人将进入缩减模式运动。
+Quando o método de acionamento da parada de segurança é definido como “Dois Canais”, ambos os canais devem garantir a remoção do estado de parada, e o robô só pode ser reiniciado após o operador limpar manualmente o alerta na interface de operação. Além disso, uma opção de modo de redução é adicionada à configuração da estratégia. Quando o usuário seleciona esta estratégia, o robô entrará no modo de redução de movimento.
 
-操作流程
+Procedimento Operacional
 ++++++++++++++++++++++++++++++++++++
 
-**Step1**：点击“初始设置”—>“安全”—>“安全停止”按钮，触发方式可选为“默认”和“双通道”两种模式，二者不同之处在于：“默认”模式在触发并恢复后自动清除界面报错，“双通道”模式在触发并恢复后需手动清除界面报错。“安全停止策略”可选择“停止”、“暂停”、“一级缩减模式”和“二级缩减模式”等类型，详细说明如下：当选为“停止”时，机器人将停止当前运动；当选为“暂停”时，机器人将暂停当前运动，恢复并清除报错后，将恢复暂停；当选为“一级缩减模式”时，机器人将进入一级缩减模式运动；当选为“二级缩减模式”时，机器人将进入二级缩减模式运动。
+**Step1**: Clique em “Configurações Iniciais” → “Segurança” → “Parada de Segurança”. O método de acionamento pode ser definido como “Padrão” ou “Dois Canais”. A diferença entre eles é: no modo “Padrão”, após o acionamento e a recuperação, o erro na interface é limpo automaticamente; no modo “Dois Canais”, após o acionamento e a recuperação, o erro na interface precisa ser limpo manualmente. A “Estratégia de Parada de Segurança” pode ser definida como “Parar”, “Pausar”, “Modo de Redução de Nível 1” ou “Modo de Redução de Nível 2”, com as seguintes explicações detalhadas: quando definido como “Parar”, o robô para o movimento atual; quando definido como “Pausar”, o robô pausa o movimento atual e retoma a pausa após a recuperação e a limpeza do erro; quando definido como “Modo de Redução de Nível 1”, o robô entra no movimento de redução de nível 1; quando definido como “Modo de Redução de Nível 2”, o robô entra no movimento de redução de nível 2.
 
 .. image:: safety/048.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.1-2 安全停止策略设置
+.. centered:: Figura 7.1-2 Configuração da Estratégia de Parada de Segurança
 
-**Step2**：因当触发方式选为“默认”时，在触发恢复后，可自动清除界面报错，因此无需过多介绍。故主要介绍当触发方式选为“双通道”时的操作：在触发恢复后，需手动点击右上角的“清除”操作，机器人才可复位。
+**Step2**: Como, quando o método de acionamento é definido como “Padrão”, o erro na interface é limpo automaticamente após a recuperação do acionamento, isso não requer mais explicação. Portanto, a descrição principal é para quando o método de acionamento é definido como “Dois Canais”: após a recuperação do acionamento, é necessário clicar manualmente na operação “Limpar” no canto superior direito para reiniciar o robô.
 
 .. image:: safety/049.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.1-3 手动清除安全停止触发操作
+.. centered:: Figura 7.1-3 Operação Manual para Limpar o Acionamento da Parada de Segurança
 
-安全速度
-----------------
+Velocidade de Segurança
+----------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“安全速度”子菜单进入配置界面，设置安全速度。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Velocidade de Segurança” para entrar na interface de configuração e definir a velocidade de segurança.
 
-.. note:: TCP手动速度小于250mm/s。
+.. note:: A velocidade manual do TCP é inferior a 250 mm/s.
 
 .. image:: safety/002.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.2-1 安全手动速度配置
+.. centered:: Figura 7.2-1 Configuração da Velocidade Manual de Segurança
 
-安全速度功能
+Função de Velocidade de Segurança
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 +++++++++++++++++++++++++++++
 
-机器人安全速度功能是在人机协作或动态环境中，通过主动限制机器人的运行速度，将动能与冲击力控制在安全阈值内，从而在意外接触时防止人员受伤，并有效保护设备与工件免受碰撞损害。
+A função de velocidade de segurança do robô, em ambientes colaborativos homem-máquina ou dinâmicos, limita ativamente a velocidade de operação do robô, mantendo a energia cinética e a força de impacto dentro de limites seguros. Isso previne ferimentos em caso de contato acidental e protege efetivamente o equipamento e a peça de trabalho contra danos por colisão.
 
-操作流程
+Procedimento Operacional
 +++++++++++++++++++++++++++++
 
-**Step1**：点击“初始设置”-“安全”-“安全速度”按钮，进行安全速度参数的设置：主要包含“功能启用”、“限制速度”、“超速后模式”三部分。
+**Step1**: Clique em “Configurações Iniciais” -> “Segurança” -> “Velocidade de Segurança” para definir os parâmetros de velocidade de segurança. Isso inclui principalmente três partes: “Ativação da Função”, “Velocidade Limite” e “Modo Após Exceder a Velocidade”.
 
-其中，功能启用中可选择“不启用”、“手动模式启用”和“所有模式启用”三种类型；
+Na ativação da função, pode-se selecionar “Não Ativado”, “Ativado no Modo Manual” ou “Ativado em Todos os Modos”.
 
-限制速度中进行限制速度的设置，机器人的线速度达到该限制速度时，将根据“超速后模式”的设定参数进行处理。“超速后模式”可选择“停止报警”、“自动限速”和“停止报警后去使能”三种模式，自动限速仅可在“手动模式启用”中使用。
+Na “Velocidade Limite”, define-se a velocidade limite. Quando a velocidade linear do robô atinge essa velocidade limite, o sistema age de acordo com os parâmetros definidos em “Modo Após Exceder a Velocidade”. O “Modo Após Exceder a Velocidade” pode ser selecionado como “Parar com Alarme”, “Limitação Automática de Velocidade” ou “Desabilitar Após Parar com Alarme”. A limitação automática de velocidade só pode ser usada quando a ativação é “Ativado no Modo Manual”.
 
-设置完成所需参数后，无需多余操作，将按照设定参数对机器人的运动进行处理，参数设置如图所示。
+Após definir os parâmetros necessários, nenhuma operação adicional é necessária. O movimento do robô será tratado de acordo com os parâmetros definidos, conforme mostrado na figura.
 
 .. image:: safety/056.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.2-2 安全速度参数设置
+.. centered:: Figura 7.2-2 Configuração dos Parâmetros de Velocidade de Segurança
 
-I/O安全
+Segurança de E/S
 ----------------
 
-点击菜单栏“初始设置”->“安全”，点击“I/O安全”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Segurança de E/S” para entrar na interface de configuração.
 
-HMI提供对16路数字量输入和16路数字量输出的安全状态进行设置，可设置为有效或无效状态，当控制器判断到处于安全状态时，16路数字量输入和16路数字量输出被设置成安全状态。
+O HMI permite definir o estado de segurança para 16 entradas digitais e 16 saídas digitais, que podem ser configuradas como ativas ou inativas. Quando o controlador determina que está em um estado de segurança, as 16 entradas digitais e as 16 saídas digitais são definidas para o estado de segurança.
 
 .. image:: safety/003.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.3-1 I/O安全状态配置
+.. centered:: Figura 7.3-1 Configuração do Estado de Segurança de E/S
 
-在LA系统下：
-    “I/O安全”中提供DIO安全功能，安全功能为双路DI或者DO，当检测到安全DI信号或安全状态标志触发时，输出DO。
+No sistema LA:
+    “Segurança de E/S” fornece funções de segurança DIO. As funções de segurança são DI ou DO de dois canais. Quando um sinal de segurança DI ou um marcador de estado de segurança é acionado, o DO de saída correspondente é ativado.
 
 .. image:: safety/004.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.3-2 I/O安全功能配置
+.. centered:: Figura 7.3-2 Configuração da Função de Segurança de E/S
 
+Parada de Emergência
+----------------------------
 
-急停停机
-----------------
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Parada de Emergência” para entrar na interface de configuração.
 
-点击菜单栏“初始设置”->“安全”，点击“急停停机”子菜单进入配置界面。
+Os tipos de parada de emergência 0, 1a, 1b, 2 podem ser definidos. Os limites de tempo de parada e os limites de distância de parada também podem ser definidos.
 
-急停停机类型0、1a、1b、2可设置、停机时间限值可设置、停止距离限值可设置。
-
-- 通过控制器送控制箱板，急停停机类型0控制箱板直接断电；
-  
-- 急停停机类型1a为减速停机后，切断本体电源；
-  
-- 急停停机类型1b为减速停机后，不切断本体电源，本体去使能；
-
-- 急停停机类型为2表示拍下急停，机器人减速停止并且保持使能，松开急停后，机器人应可以正常运行。
+- Através do controlador enviando para a placa do painel de controle, o tipo de parada de emergência 0 desliga diretamente a alimentação da placa do painel de controle.
+- O tipo de parada de emergência 1a é parada com desaceleração e, em seguida, a alimentação do corpo do robô é desligada.
+- O tipo de parada de emergência 1b é parada com desaceleração, mas a alimentação do corpo do robô não é desligada; o corpo do robô é desabilitado.
+- O tipo de parada de emergência 2 significa que, ao acionar a parada de emergência, o robô desacelera e para, mas mantém a habilitação. Ao soltar a parada de emergência, o robô deve poder operar normalmente.
 
 .. image:: safety/005.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.4-1 急停停机配置
+.. centered:: Figura 7.4-1 Configuração de Parada de Emergência
 
-安全停止恢复可选自动使能功能
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Função de Reabilitação Automática Selecionável Após Parada de Emergência
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 +++++++++++++++++++++
 
-机器人在经历过1b类急停停机后，提供了手动使能和自动使能两种模式，以供用户自行选择。当选为手动使能时，用户需在松开急停按钮后，将机器人的运行模式改为自动，手动点击使能按钮进行机器人使能；当选为自动使能时，用户在松开急停按钮后，机器人即可自动使能。
+Após o robô passar por uma parada de emergência do tipo 1b, são fornecidos dois modos: habilitação manual e habilitação automática, para que o usuário possa escolher. Quando a habilitação manual é selecionada, o usuário precisa alterar o modo de operação do robô para automático após soltar o botão de parada de emergência e, em seguida, clicar manualmente no botão de habilitação para ativar o robô. Quando a habilitação automática é selecionada, o robô é habilitado automaticamente após o usuário soltar o botão de parada de emergência.
 
-操作流程
+Procedimento Operacional
 +++++++++++++++++++++++++++
 
-**Step1**：点击“初始设置”—>“安全”—>“急停停机”按钮，“停机类型”选为“1b类”，并根据实际需要设置“停机时间限制”和“停机距离限制”参数，“急停复位后使能策略”可选为“手动使能”或“自动使能”。
+**Step1**: Clique em “Configurações Iniciais” → “Segurança” → “Parada de Emergência”. Selecione “Tipo 1b” no campo “Tipo de Parada” e defina os parâmetros “Limite de Tempo de Parada” e “Limite de Distância de Parada” conforme necessário. A “Estratégia de Habilitação Após Reset de Parada de Emergência” pode ser selecionada como “Habilitação Manual” ou “Habilitação Automática”.
 
 .. image:: safety/046.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.4-2 使能策略设置
+.. centered:: Figura 7.4-2 Configuração da Estratégia de Habilitação
 
-**Step2**：当选为“自动使能”时，用户在松开急停按钮后，机器人即可自动使能；当选为“手动使能”时，用户需在松开急停按钮后，在自动模式下，手动点击使能按钮进行机器人使能。
+**Step2**: Quando “Habilitação Automática” é selecionada, o robô é habilitado automaticamente após o usuário soltar o botão de parada de emergência. Quando “Habilitação Manual” é selecionada, o usuário precisa, no modo automático, clicar manualmente no botão de habilitação para ativar o robô após soltar o botão de parada de emergência.
 
 .. image:: safety/047.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.4-3 手动使能操作
+.. centered:: Figura 7.4-3 Operação de Habilitação Manual
 
-保护性停机
+Parada Protetiva
 ----------------
 
-点击菜单栏“初始设置”->“安全”，点击“保护性停机”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Parada Protetiva” para entrar na interface de configuração.
 
-保护性停机类型0、1、2，保护性停机类型0控制箱板直接断电，保护性停机类型1控制箱板先通知控制器控制机器人停住然后控制器反馈控制箱板断电，保护性停机类型2控制箱板通知控制器控制机器人停住。
+Tipos de parada protetiva 0, 1, 2. O tipo de parada protetiva 0 desliga diretamente a alimentação da placa do painel de controle. O tipo de parada protetiva 1 faz com que a placa do painel de controle notifique o controlador para parar o robô e, em seguida, o controlador envia feedback para a placa do painel de controle desligar a alimentação. O tipo de parada protetiva 2 faz com que a placa do painel de controle notifique o controlador para parar o robô.
 
 .. image:: safety/006.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.5-1 保护性停机配置
+.. centered:: Figura 7.5-1 Configuração de Parada Protetiva
 
 .. important::
-    安全数据状态标志和控制箱载板故障反馈通过Web端与控制器状态反馈中获取，当出现标志位为1时在WebAPP报警状态中提示安全数据状态异常。控制箱载板故障获取后的依据报错代码在WebAPP报警状态中展示具体报错信息。
+    Os marcadores de estado dos dados de segurança e os feedbacks de falha da placa de suporte do painel de controle podem ser obtidos através do WebApp e do feedback de estado do controlador. Quando um marcador for 1, uma anormalidade nos dados de segurança será indicada no estado de alarme do WebApp. Após a obtenção da falha da placa de suporte do painel de controle, a mensagem de erro específica será exibida no estado de alarme do WebApp de acordo com o código de erro.
 
 .. image:: safety/007.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.5-2 WebAPP报警状态
+.. centered:: Figura 7.5-2 Estado de Alarme do WebApp
 
-干涉区配置
---------------
+Configuração de Zona de Interferência
+-----------------------------------------------
 
-在“初始设置”->“安全”->“干涉区”的菜单栏下，点击“单个”子菜单项进入干涉区配置功能界面。
+No menu “Configurações Iniciais” -> “Segurança” -> “Zona de Interferência”, clique no submenu “Individual” para entrar na interface de configuração da função.
 
-首先我们需要对干涉方式和进入干涉区操作进行配置，干涉方式分为“轴干涉”和“立方体干涉”。
+Primeiro, precisamos configurar o modo de interferência e a operação ao entrar na zona de interferência. Os modos de interferência são divididos em “Interferência de Eixo” e “Interferência Cúbica”.
 
 .. image:: safety/025.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.6‑1 干涉区方式
+.. centered:: Figura 7.6‑1 Modos de Zona de Interferência
 
-通过滑块开关控制是否开启。首先进行干涉区运动配置“继续运动”或者“停止”。接下来设置进入干涉区拖动配置，用户可以根据需求设置拖动模式下进入干涉区后策略，不限制拖动，阻抗回调和切换回手动模式。
+Controle a ativação através do botão deslizante. Primeiro, configure a ação ao entrar na zona de interferência como “Continuar Movimento” ou “Parar”. Em seguida, defina a estratégia ao entrar na zona de interferência no modo de arrasto. O usuário pode definir a estratégia conforme a necessidade: sem restrição de arrasto, retorno com impedância ou alternar para o modo manual.
 
 .. image:: safety/026.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.6‑2 干涉区配置
+.. centered:: Figura 7.6‑2 Configuração da Zona de Interferência
 
-选择轴干涉，需要对轴干涉的参数进行配置，检测方法分为“指令位置”和“反馈位置”两种，干涉区模式分为“范围内干涉”和“范围外干涉”两种，接下来设置每个关节的范围以及各个关节范围是否使能，可以输入数值，也可以通过“最小值”和“最大值”后的“刷新图标”将当前机器人的位置记录到当中，最后点击配置即可。
+Selecionar Interferência de Eixo: É necessário configurar os parâmetros de interferência do eixo. O método de detecção pode ser “Posição de Comando” ou “Posição de Feedback”. O modo de zona de interferência pode ser “Interferência Dentro do Intervalo” ou “Interferência Fora do Intervalo”. Em seguida, defina o intervalo para cada junta e se o intervalo de cada junta está ativado. Os valores podem ser inseridos manualmente ou através do “Ícone de Atualização” após os campos “Mínimo” e “Máximo” para registrar a posição atual do robô. Finalmente, clique em “Configurar”.
 
 .. image:: safety/027.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.6‑3 轴干涉配置
+.. centered:: Figura 7.6‑3 Configuração de Interferência de Eixo
 
-选择立方体干涉，需要对立方体干涉的参数进行配置，检测方法分为“指令位置”和“反馈位置”两种，干涉区模式分为“范围内干涉”和“范围外干涉”两种，参考坐标系分为“基坐标”和“工件坐标”，根据实际使用选择设置。接下来设进行范围设置，范围设置分为两种方法，首先看第一种方法“两点法”，即立方体的两个对角的顶点组成，我们可以通过输入或者机器人示教记录位置。最后点击应用即可。
+Selecionar Interferência Cúbica: É necessário configurar os parâmetros de interferência cúbica. O método de detecção pode ser “Posição de Comando” ou “Posição de Feedback”. O modo de zona de interferência pode ser “Interferência Dentro do Intervalo” ou “Interferência Fora do Intervalo”. O sistema de coordenadas de referência pode ser “Coordenada Base” ou “Coordenada da Peça”, selecione de acordo com o uso real. Em seguida, defina o intervalo. Existem dois métodos para definir o intervalo. Primeiro, o método de “Dois Pontos”, onde os dois vértices opostos do cubo são usados. Podemos inserir os valores ou usar o ensinamento do robô para registrar as posições. Finalmente, clique em “Aplicar”.
 
 .. image:: safety/028.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.6‑4 立方体干涉配置
+.. centered:: Figura 7.6‑4 Configuração de Interferência Cúbica
 
-接下来看第二种方法“中心点+边长”，即立方体的中心位置点和立方体的边长构成干涉区，我们可以通过输入或者机器人示教记录位置。最后点击应用即可。
+O segundo método é o “Ponto Central + Comprimento da Aresta”, onde o ponto central do cubo e o comprimento das arestas formam a zona de interferência. Podemos inserir os valores ou usar o ensinamento do robô para registrar a posição. Finalmente, clique em “Aplicar”.
 
 .. image:: safety/029.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.6‑5 立方体干涉配置
+.. centered:: Figura 7.6‑5 Configuração de Interferência Cúbica
 
-力传感器辅助拖动下进入轴干涉安全回调功能
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Função de Retorno de Segurança ao Entrar em Interferência de Eixo com Arrasto Assistido por Sensor de Força
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 +++++++++++++++++++++++++
 
-力传感器辅助拖动下进入轴干涉的安全回调功能是力传感器辅助拖动与干涉区共存时，当机器人进入干涉区时，机器人自动切换成拖动模式，具有阻抗回调效果；当机器人退出干涉区后，机器人自动切换成力传感器辅助拖动。可满足用户在力传感器辅助拖动下的多种使用场景。
+A função de retorno de segurança ao entrar em interferência de eixo durante o arrasto assistido por sensor de força é aplicada quando o arrasto assistido por sensor de força e a zona de interferência coexistem. Quando o robô entra na zona de interferência, ele muda automaticamente para o modo de arrasto, proporcionando um efeito de retorno com impedância. Quando o robô sai da zona de interferência, ele retorna automaticamente ao modo de arrasto assistido por sensor de força. Isso atende a várias necessidades do usuário em diferentes cenários de uso com arrasto assistido por sensor de força.
 
-操作流程
+Procedimento Operacional
 ++++++++++++++++++++++++
 
-关节限位环
+Anel de Limite de Junta
 ********************************
-**Step1**：登录web界面，点击“关节限位环”开关，机器人关节处出现关节限位环，如下图所示。
+**Step1**: Faça login na interface web e ative o interruptor “Anel de Limite de Junta”. O anel de limite de junta aparecerá nas juntas do robô, conforme mostrado na figura.
 
 .. image:: safety/030.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑6 web界面关节限位环
+.. centered:: Figura 7.6‑6 Anel de Limite de Junta na Interface Web
 
-**Step2**：关节限位环上白标指针代表关节实际角度；缺口代表对应关节软限位位置，关节限位环缺口大小随软限位大小变化；关节运动时，关节限位环与关节保持相对静止。
+**Step2**: O marcador branco no anel de limite de junta representa o ângulo real da junta; a abertura representa a posição do limite suave da junta correspondente, e o tamanho da abertura varia com o tamanho do limite suave. Quando a junta se move, o anel de limite de junta permanece estacionário em relação à junta.
 
-轴干涉配置
-********************************
-**Step1**：配置并激活轴干涉。依次点击“初始设置”—>“安全”—>“干涉区”—>“单个”，进入干涉区配置页面，点击“轴干涉”卡片进入界面，打开“功能开启”滑块。
+Configuração de Interferência de Eixo
+*******************************************
+**Step1**: Configure e ative a interferência de eixo. Clique sequencialmente em “Configurações Iniciais” → “Segurança” → “Zona de Interferência” → “Individual” para entrar na página de configuração. Clique no cartão “Interferência de Eixo” para entrar na interface. Ative o controle deslizante “Ativar Função”.
 
-**Step2**：可设置“运动策略”为“继续运动”，选择“拖动策略”为“阻抗回调”并设置阻抗回调参数，如下图所示，阻抗回调参数表示阻抗回调时的回弹力，数值越大回弹力越大，建议参数配置为“5”。
+**Step2**: É possível definir a “Estratégia de Movimento” como “Continuar Movimento”. Selecione a “Estratégia de Arrasto” como “Retorno com Impedância” e defina os parâmetros de retorno com impedância, conforme mostrado na figura. O parâmetro de retorno com impedância representa a força de repulsão durante o retorno; quanto maior o valor, maior a força de repulsão. O valor recomendado é “5”.
 
 .. image:: safety/031.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑7 轴干涉配置界面
+.. centered:: Figura 7.6‑7 Interface de Configuração de Interferência de Eixo
 
-**Step3**：设置轴干涉区范围。可设置“检测模式”为“反馈位置”，“干涉区模式”可选择“范围内干涉”及“范围外干涉”两种模式；设置各关节干涉区范围，选择“使能”开启对应轴干涉范围，如下图所示。
+**Step3**: Defina o intervalo da zona de interferência de eixo. O “Modo de Detecção” pode ser definido como “Posição de Feedback”. O “Modo de Zona de Interferência” pode ser “Interferência Dentro do Intervalo” ou “Interferência Fora do Intervalo”. Defina o intervalo de interferência para cada junta e selecione “Ativar” para ativar o intervalo correspondente, conforme mostrado na figura.
 
 .. image:: safety/032.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑8 干涉区范围配置界面
+.. centered:: Figura 7.6‑8 Interface de Configuração do Intervalo da Zona de Interferência
 
-**Step4**：设置“干涉区模式”为“范围内干涉”，web界面关节限位环绿色为自由运动区域，黄色为干涉区域，白标指针所在区域高亮显示，如下图所示。
+**Step4**: Defina o “Modo de Zona de Interferência” como “Interferência Dentro do Intervalo”. No anel de limite de junta na interface web, o verde representa a área de movimento livre, o amarelo representa a área de interferência, e a área onde o marcador branco está localizado é destacada, conforme mostrado na figura.
 
 .. image:: safety/033.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑9 “范围内干涉”时关节限位环显示
+.. centered:: Figura 7.6‑9 Exibição do Anel de Limite de Junta no Modo “Interferência Dentro do Intervalo”
 
-**Step5**：设置“干涉区模式”为“范围外干涉”，web界面关节限位环绿色为自由运动区域，黄色为干涉区域，白标指针所在区域高亮显示，如下图所示。
+**Step5**: Defina o “Modo de Zona de Interferência” como “Interferência Fora do Intervalo”. No anel de limite de junta na interface web, o verde representa a área de movimento livre, o amarelo representa a área de interferência, e a área onde o marcador branco está localizado é destacada, conforme mostrado na figura.
 
 .. image:: safety/034.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑10 “范围外干涉”时关节限位环显示
+.. centered:: Figura 7.6‑10 Exibição do Anel de Limite de Junta no Modo “Interferência Fora do Intervalo”
 
-力传感器辅助拖动下进入轴干涉区
-++++++++++++++++++++++++++++++++++++++++++++++++++
+Entrada na Zona de Interferência de Eixo com Arrasto Assistido por Sensor de Força
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Step1**：依次点击“辅助应用”—>“工具应用”—>“拖动锁定”将力传感器辅助锁定功能“状态开关”切换为“开启”，将干涉区选项选择“开启”，设定相关系数并应用，如下图所示。
+**Step1**: Clique sequencialmente em “Aplicações Auxiliares” → “Aplicações de Ferramentas” → “Bloqueio de Arrasto”. Ative o “Interruptor de Estado” da função de bloqueio assistido por sensor de força para “Ativado”. Selecione a opção de zona de interferência como “Ativado”, defina os coeficientes relacionados e aplique, conforme mostrado na figura.
 
 .. image:: safety/035.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑11 力传感器辅助拖动配置界面
+.. centered:: Figura 7.6‑11 Interface de Configuração do Arrasto Assistido por Sensor de Força
 
-**Step2**：在力传感器辅助拖动下拖动机器人，当机器人关节角度到达干涉区范围时，切换机器人模式为电流环拖动，具有阻抗回调效果，可远离轴干涉区；退出轴干涉区范围后，切换机器人模式为力传感器辅助拖动。
+**Step2**: Arraste o robô com o arrasto assistido por sensor de força. Quando o ângulo da junta do robô atingir a zona de interferência, o modo do robô será alterado para arrasto por loop de corrente, proporcionando um efeito de retorno com impedância, permitindo que ele se afaste da zona de interferência de eixo. Após sair da zona de interferência, o modo do robô retorna ao arrasto assistido por sensor de força.
 
-立方体干涉配置
-++++++++++++++++++++++++++++++++++
+Configuração de Interferência Cúbica
+++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Step1**：设置立方体干涉区。依次点击“初始设置”—>“安全”—>“干涉区”—>“单个”，进入干涉区配置页面，点击“立方体干涉”卡片进入界面，打开“功能开启”滑块。
+**Step1**: Defina a zona de interferência cúbica. Clique sequencialmente em “Configurações Iniciais” → “Segurança” → “Zona de Interferência” → “Individual” para entrar na página de configuração. Clique no cartão “Interferência Cúbica” para entrar na interface. Ative o controle deslizante “Ativar Função”.
 
-**Step2**：可设置“运动策略”为“继续运动”，选择“拖动策略”为“不限制拖动”，如下图所示。
+**Step2**: É possível definir a “Estratégia de Movimento” como “Continuar Movimento”. Selecione a “Estratégia de Arrasto” como “Sem Restrição de Arrasto”, conforme mostrado na figura.
 
 .. image:: safety/036.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑12 立方体干涉区配置
+.. centered:: Figura 7.6‑12 Configuração de Interferência Cúbica
 
-**Step3**：设置立方体干涉区参数配置。可设置“检测模式”为“反馈位置”，“干涉区模式”可选择“范围内干涉”及“范围外干涉”两种模式，“参考坐标”设置为“基坐标”。
+**Step3**: Configure os parâmetros da zona de interferência cúbica. O “Modo de Detecção” pode ser definido como “Posição de Feedback”. O “Modo de Zona de Interferência” pode ser “Interferência Dentro do Intervalo” ou “Interferência Fora do Intervalo”. Defina a “Coordenada de Referência” como “Coordenada Base”.
 
-**Step4**：选择立方体干涉区范围的示教方式为“两点法”。示教机器人选择两个点位，分别为笛卡尔空间最小点及最大点，点击“应用”后web界面出现虚拟立方体，如下图所示。
+**Step4**: Selecione o método de ensinamento para o intervalo da zona de interferência cúbica como “Método de Dois Pontos”. Ensine o robô para selecionar dois pontos, que serão os pontos mínimo e máximo no espaço cartesiano. Após clicar em “Aplicar”, um cubo virtual aparecerá na interface web, conforme mostrado na figura.
 
 .. image:: safety/037.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑13 “两点法”设置立方体干涉区
+.. centered:: Figura 7.6‑13 Configuração da Zona de Interferência Cúbica com o “Método de Dois Pontos”
 
 .. image:: safety/038.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑14 web界面显示虚拟立方体
+.. centered:: Figura 7.6‑14 Exibição do Cubo Virtual na Interface Web
 
-**Step5**：选择立方体干涉区范围的示教方式为“中心点+边长”。示教机器人一个点位，设置以示教点为中心的X、Y、Z三轴边长，如下图所示，点击“应用”后web界面出现虚拟立方体。
+**Step5**: Selecione o método de ensinamento para o intervalo da zona de interferência cúbica como “Ponto Central + Comprimento da Aresta”. Ensine um ponto para o robô e defina os comprimentos das arestas nos eixos X, Y e Z centrados neste ponto, conforme mostrado na figura. Após clicar em “Aplicar”, um cubo virtual aparecerá na interface web.
 
 .. image:: safety/039.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑15 “中心点+边长”设置立方体干涉区
+.. centered:: Figura 7.6‑15 Configuração da Zona de Interferência Cúbica com “Ponto Central + Comprimento da Aresta”
 
-**Step6**：设置“干涉区模式”为“范围内干涉”，当机器人末端在立方体范围外，web界面虚拟立方体显示为透明度40%黄色，当机器人末端在立方体范围内时，立方体呈90%透明度黄色，并出现“进入干涉区”警告，如下图所示。
+**Step6**: Defina o “Modo de Zona de Interferência” como “Interferência Dentro do Intervalo”. Quando a extremidade do robô está fora do cubo virtual, o cubo é exibido na interface web com 40% de transparência na cor amarela. Quando a extremidade do robô está dentro do cubo, o cubo torna-se amarelo com 90% de transparência e um alerta “Entrando na Zona de Interferência” aparece, conforme mostrado na figura.
 
 .. image:: safety/040.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑16 “范围内干涉”模式时进入立方体干涉区
+.. centered:: Figura 7.6‑16 Entrada na Zona de Interferência Cúbica no Modo “Interferência Dentro do Intervalo”
 
-**Step7**：设置“干涉区模式”为“范围外干涉”，当机器人末端在立方体范围内，web界面虚拟立方体显示为透明度40%绿色，当机器人末端在立方体范围外时，立方体呈90%透明度绿色，并出现“进入干涉区”警告，如下图所示。
+**Step7**: Defina o “Modo de Zona de Interferência” como “Interferência Fora do Intervalo”. Quando a extremidade do robô está dentro do cubo virtual, o cubo é exibido na interface web com 40% de transparência na cor verde. Quando a extremidade do robô está fora do cubo, o cubo torna-se verde com 90% de transparência e um alerta “Entrando na Zona de Interferência” aparece, conforme mostrado na figura.
 
 .. image:: safety/041.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑17 “范围外干涉”模式时立方体干涉区显示
+.. centered:: Figura 7.6‑17 Exibição da Zona de Interferência Cúbica no Modo “Interferência Fora do Intervalo”
 
-安全墙配置
+Configuração de Parede de Segurança
 ++++++++++++++++++++++++++++++++++++++++++
-**Step1**：设置安全墙。依次点击“初始设置”—>“安全”—>“安全墙”进入安全墙配置界面，web界面支持最多同时设置8个安全墙，选择安全墙并配置安全墙，配置完成后启用对应安全墙，web界面出现透明度40%橙色虚拟墙体，如下图所示。
+**Step1**: Configure a parede de segurança. Clique sequencialmente em “Configurações Iniciais” → “Segurança” → “Parede de Segurança” para entrar na interface de configuração. A interface web suporta a configuração de até 8 paredes de segurança simultaneamente. Selecione uma parede de segurança e configure-a. Após a configuração, ative a parede de segurança correspondente. Uma parede virtual de cor laranja com 40% de transparência aparecerá na interface web, conforme mostrado na figura.
 
 .. image:: safety/042.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑18 安全墙配置
+.. centered:: Figura 7.6‑18 Configuração da Parede de Segurança
 
 .. image:: safety/043.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑19 web界面虚拟墙体显示
+.. centered:: Figura 7.6‑19 Exibição da Parede Virtual na Interface Web
 
-**Step2**：机器人末端进入安全墙，虚拟墙体呈90%透明度橙色，并出现“进入安全墙”警告，如下图所示。
+**Step2**: Quando a extremidade do robô entra na parede de segurança, a parede virtual torna-se laranja com 90% de transparência e um alerta “Entrando na Parede de Segurança” aparece, conforme mostrado na figura.
 
 .. image:: safety/044.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑20 机器人末端进入安全墙web界面虚拟墙体显示
+.. centered:: Figura 7.6‑20 Exibição da Parede Virtual na Interface Web Quando a Extremidade do Robô Entra na Parede de Segurança
 
-立方体干涉功能
+Função de Interferência Cúbica
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 +++++++++++++++++++++++++++++++
 
-立方体干涉功能支持同时定义并激活多个独立的立方体干涉区，每个干涉区在三维空间中的位置和尺寸可独立设定。此外，每个干涉区配备单独的CO触发信号输出，能够基于机器人的实时位置输出对应的触发信号。
+A função de interferência cúbica suporta a definição e ativação simultânea de múltiplas zonas de interferência cúbica independentes. A posição e o tamanho de cada zona de interferência no espaço 3D podem ser definidos independentemente. Além disso, cada zona de interferência possui um sinal de saída CO dedicado, capaz de emitir um sinal de acionamento correspondente com base na posição em tempo real do robô.
 
-操作流程
+Procedimento Operacional
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Step1**：进行立方体干涉功能启用和基础配置。依次点击“初始设置”->“安全”->“干涉区”->“立方体干涉”指令，通过滑块开关控制每个立方体干涉区是否开启，并进行基础配置。
+**Step1**: Ative e configure a função de interferência cúbica. Clique sequencialmente em “Configurações Iniciais” -> “Segurança” -> “Zona de Interferência” -> “Interferência Cúbica”. Use o controle deslizante para ativar ou desativar cada zona de interferência cúbica e realize a configuração básica.
 
-其中，进入干涉区运动策略可选为“继续运动”或“停止”，当选为“继续运动”时，机器人进入干涉区后将提示警告但继续运动；当选为“停止”时，机器人进入干涉区后将提示警告并停止运动。进入干涉区拖动策略可选为“不限制拖动”、“阻抗回调”和“切换回手动模式”。
+A estratégia de movimento ao entrar na zona de interferência pode ser definida como “Continuar Movimento” ou “Parar”. Quando definido como “Continuar Movimento”, o robô exibirá um alerta ao entrar na zona de interferência, mas continuará se movendo. Quando definido como “Parar”, o robô exibirá um alerta e interromperá o movimento ao entrar na zona de interferência. A estratégia de arrasto ao entrar na zona de interferência pode ser definida como “Sem Restrição de Arrasto”, “Retorno com Impedância” ou “Alternar para Modo Manual”.
 
 .. image:: safety/050.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑21 立方体开启控制与基础配置
+.. centered:: Figura 7.6‑21 Ativação e Configuração Básica da Interferência Cúbica
 
-**Step2**：进行立方体干涉区配置。可为每个干涉区ID设置不同的配置参数，需注意的是：
+**Step2**: Configure a zona de interferência cúbica. Parâmetros de configuração diferentes podem ser definidos para cada ID de zona de interferência. Observe que:
 
-(1) 检测方法需根据实际功能需求选择“指令位置”或“反馈位置”；
+(1) O método de detecção deve ser selecionado como “Posição de Comando” ou “Posição de Feedback” de acordo com os requisitos funcionais reais.
 
-(2) 当干涉区模式选为“范围外干涉”时，仅对单个干涉区有效。
+(2) Quando o modo de zona de interferência é definido como “Interferência Fora do Intervalo”, ele é aplicado apenas a uma única zona de interferência.
 
 .. image:: safety/051.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑22 立方体干涉区配置
+.. centered:: Figura 7.6‑22 Configuração da Zona de Interferência Cúbica
 
-**Step3**：进行干涉区范围设置。范围设置可选择“两点法”或“中心点+边长”的方式生成立方体干涉区。“两点法”方式通过指定立方体的两个对角顶点生成。“中心点+边长”方式通过指定立方体的中心点和三条边长生成。
+**Step3**: Defina o intervalo da zona de interferência. O intervalo pode ser gerado usando o método de “Dois Pontos” ou “Ponto Central + Comprimento da Aresta”. O método de “Dois Pontos” gera a zona de interferência especificando os dois vértices opostos do cubo. O método de “Ponto Central + Comprimento da Aresta” gera a zona de interferência especificando o ponto central do cubo e os três comprimentos das arestas.
 
 .. image:: safety/052.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑23 “两点法”生成干涉区
+.. centered:: Figura 7.6‑23 Geração da Zona de Interferência pelo “Método de Dois Pontos”
 
 .. image:: safety/053.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑24 “中心点+边长”生成干涉区
+.. centered:: Figura 7.6‑24 Geração da Zona de Interferência pelo “Método de Ponto Central + Comprimento da Aresta”
 
-**Step4**：进行CO信号设置。依次点击“初始设置”->“基础”->“I/O设置”-“DO”指令，为每个立方体配置相应的CO输出。
+**Step4**: Configure os sinais CO. Clique sequencialmente em “Configurações Iniciais” -> “Básico” -> “Configuração de E/S” -> “DO”. Configure a saída CO correspondente para cada cubo.
 
 .. image:: safety/054.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑25 CO输出配置
+.. centered:: Figura 7.6‑25 Configuração da Saída CO
 
-**Step5**：各立方体干涉区将根据设定的ID序号在机器人界面进行显示，当机器人末端中心点进入到干涉区后，界面会显示“进入干涉区”警告，对应的CO接口输出信号。
+**Step5**: Cada zona de interferência cúbica será exibida na interface do robô de acordo com seu ID definido. Quando o ponto central da extremidade do robô entra na zona de interferência, a interface exibirá um alerta “Entrando na Zona de Interferência” e o sinal da interface CO correspondente será ativado.
 
 .. image:: safety/055.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.6‑26 多立方体干涉区界面显示
+.. centered:: Figura 7.6‑26 Exibição de Múltiplas Zonas de Interferência Cúbica na Interface
 
-缩减模式
+Modo de Redução
 ---------------
 
-点击菜单栏“初始设置”->“安全”，点击“缩减模式”子菜单进入配置界面，选择“一级/二级模式”配置关节速度和末端TCP速度。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Modo de Redução” para entrar na interface de configuração. Selecione o “Modo de Nível 1/2” para configurar a velocidade das juntas e a velocidade TCP da extremidade.
 
 .. image:: safety/045.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.7-1 缩减模式
+.. centered:: Figura 7.7-1 Modo de Redução
 
-安全墙
----------------
+Parede de Segurança
+-----------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“安全墙配置”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Configuração de Parede de Segurança” para entrar na interface de configuração.
 
--  **安全墙配置**：点击启用按钮，可启用的相应的安全墙。当安全墙未配置安全范围时，会提示报错。点击下拉框，选择想要设定的安全墙，自动带出安全距离(可不设置，默认为0)，再点击“设置”按钮，设置成功。
-  
+-  **Configuração da Parede de Segurança**: Clique no botão de ativação para ativar a parede de segurança correspondente. Se a parede de segurança não tiver um intervalo de segurança configurado, um erro será exibido. Clique na lista suspensa, selecione a parede de segurança desejada. A distância de segurança será automaticamente exibida (pode não ser definida; o padrão é 0). Em seguida, clique no botão “Definir” para confirmar a configuração.
+
 .. image:: safety/008.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.8-1 安全墙配置
+.. centered:: Figura 7.8-1 Configuração da Parede de Segurança
 
--  **安全墙参考点配置**：选择安全墙后，可设置四个参考点。前三个点为平面参考点，用来确认设置的安全墙的平面。第四个点为安全范围参考点，用来确认设置的安全墙的安全范围。
+-  **Configuração dos Pontos de Referência da Parede de Segurança**: Após selecionar a parede de segurança, quatro pontos de referência podem ser definidos. Os primeiros três pontos são pontos de referência do plano, usados para confirmar o plano da parede de segurança definida. O quarto ponto é o ponto de referência do intervalo de segurança, usado para confirmar o intervalo de segurança definido para a parede.
 
 .. important::
-   若参考点设置成功，则亮绿灯。反之，则亮黄灯。直到参考点设置成功后转为绿灯。当四个参考点都设置成功后，可计算其安全范围，计算成功后安全范围参数点状态恢复默认。
+   Se os pontos de referência forem definidos com sucesso, o LED indicador acenderá em verde. Caso contrário, acenderá em amarelo. Ele só mudará para verde após a configuração bem-sucedida dos pontos de referência. Quando todos os quatro pontos de referência forem configurados com sucesso, o intervalo de segurança pode ser calculado. Após o cálculo bem-sucedido, o estado dos parâmetros do intervalo de segurança retorna ao padrão.
 
 .. image:: safety/009.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.8-2 安全范围参考点设置
+.. centered:: Figura 7.8-2 Configuração dos Pontos de Referência do Intervalo de Segurança
 
--  应用效果：启用配置成功的安全墙。拖动机器人，若机器人末端TCP处在设定安全范围内，则系统正常。若处在设定安全范围之外，则提示报错。
+-  Efeito da Aplicação: Ative a parede de segurança configurada com sucesso. Arraste o robô. Se o TCP da extremidade do robô estiver dentro do intervalo de segurança definido, o sistema funciona normalmente. Se estiver fora do intervalo de segurança definido, um erro será exibido.
 
 .. image:: safety/010.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.8-3 安全范围设置成功后效果图
+.. centered:: Figura 7.8-3 Efeito Após a Configuração Bem-sucedida do Intervalo de Segurança
 
-安全后台程序
----------------
+Programa de Segurança em Segundo Plano
+------------------------------------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“安全后台程序”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Programa de Segurança em Segundo Plano” para entrar na interface de configuração.
 
-用户点击“功能启用”按钮打开或者关闭安全后台程序的设置。选择"意外情况 "和"后台程序"，点击“设置”按钮配置意外情况处理逻辑的参数。
+O usuário clica no botão “Ativar Função” para ligar ou desligar a configuração do programa de segurança em segundo plano. Selecione a “Condição Inesperada” e o “Programa em Segundo Plano” e clique no botão “Definir” para configurar os parâmetros da lógica de tratamento da condição inesperada.
 
-启用安全后台程序并设置意外情况场景和后台程序，当用户开始运行程序，发生的意外情况场景与设置的意外情况匹配时，机器人会执行相对应的后台程序，起到安全防护的作用。
+Ative o programa de segurança em segundo plano e defina a condição inesperada e o programa em segundo plano. Quando o usuário inicia a execução do programa e a condição inesperada que ocorre corresponde à condição definida, o robô executará o programa em segundo plano correspondente, desempenhando uma função de proteção de segurança.
 
 .. image:: safety/011.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.9-1 安全后台程序
+.. centered:: Figura 7.9-1 Programa de Segurança em Segundo Plano
 
-工具方向限制（仅在LA系统下使用）
----------------------------------------------
+Limitação de Direção da Ferramenta (Apenas no sistema LA)
+-----------------------------------------------------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“工具方向限制”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Limitação de Direção da Ferramenta” para entrar na interface de configuração.
 
-工具方向限制是作用于机器人工具末端笛卡尔空间的用来限制机器人末端姿态运动范围的保护性功能，包括了功能启用设置，基准工具方向设定，最大偏移角设置。最大偏移角定义了工具末端笛卡尔坐标系Z轴与基准工具方向的最大夹角限制角度值，通常可理解为圆锥形空间。
+A limitação de direção da ferramenta é uma função de proteção que atua no espaço cartesiano da extremidade da ferramenta do robô, usada para restringir a faixa de movimento de postura da extremidade. Inclui a ativação da função, a definição da direção de referência da ferramenta e a definição do ângulo de desvio máximo. O ângulo de desvio máximo define o ângulo limite máximo entre o eixo Z do sistema de coordenadas cartesiano da extremidade da ferramenta e a direção de referência da ferramenta, geralmente entendido como um espaço cônico.
 
 .. image:: safety/012.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.10-1 工具方向限制
+.. centered:: Figura 7.10-1 Limitação de Direção da Ferramenta
 
-机器人限值（仅在LA系统下使用）
+Limites do Robô (Apenas no sistema LA)
 ---------------------------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“机器人限值”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Limites do Robô” para entrar na interface de configuração.
 
-机器人限值包括动量和功率，其中动量限值用于限制机器人最大动量，功率限值用于限制机器人做的机械功。
+Os limites do robô incluem momento linear e potência. O limite de momento linear é usado para limitar o momento máximo do robô, e o limite de potência é usado para limitar o trabalho mecânico realizado pelo robô.
 
 .. image:: safety/013.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.11-1 机器人限值
+.. centered:: Figura 7.11-1 Limites do Robô
 
-功率检测（仅在QX系统下使用）
+Detecção de Potência (Apenas no sistema QX)
 ---------------------------------------------
 
-点击菜单栏“初始设置”->“安全”，点击“功率检测”子菜单进入配置界面。
+Clique no menu “Configurações Iniciais” -> “Segurança” e, em seguida, clique no submenu “Detecção de Potência” para entrar na interface de configuração.
 
-当直接作用于机器人的电流环（仅有指令servoJT），用于限制机器人做的功。检测到机器人速度和力矩的积分超过限值，即进行功率保护。
+Usado quando o loop de corrente atua diretamente no robô (apenas comando servoJT), para limitar o trabalho realizado pelo robô. Se a integral da velocidade e do torque do robô exceder o limite, a proteção de potência é ativada.
 
 .. image:: safety/014.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.12-1 功率检测
+.. centered:: Figura 7.12-1 Detecção de Potência
 
-运动配置
+Configuração de Movimento
 ---------------------------------------------
 
-T形速度特性优化+blending平滑功能
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Otimização da Característica de Velocidade em T + Função de Suavização Blending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 ++++++++++++++++++++++
 
-在两段轨迹之间进行blending，可避免因完全停止而带来的频繁启停问题，从而提升机器人的运动效率。
+A realização de blending entre duas trajetórias evita o problema de partidas e paradas frequentes causadas por paradas completas, melhorando assim a eficiência do movimento do robô.
 
-本功能主要针对PTP-PTP、LIN-LIN、ARC-ARC、LIN-ARC、ARC-LIN指令间进行blending，其余指令间的blending不生效。
+Esta função visa principalmente o blending entre instruções PTP-PTP, LIN-LIN, ARC-ARC, LIN-ARC, ARC-LIN. O blending entre outros tipos de instruções não é efetivo.
 
-操作流程
-++++++++++++++++++++++
+Procedimento Operacional
+++++++++++++++++++++++++++++++++++++++++++
 
-因各指令的操作方式类似，本手册以PTP-PTP间的blending为例说明该功能的操作方法，该功能可通过两种方式实现：使用Lua指令、使用运动配置开关。
+Como os modos de operação para as várias instruções são semelhantes, este manual usa o blending entre PTP-PTP como exemplo para ilustrar o método de operação. Esta função pode ser implementada de duas maneiras: usando instruções Lua ou usando o interruptor de configuração de movimento.
 
-使用Lua指令方式
+Usando Instruções Lua
 *****************************
 
-**Step1**：选择要执行PTP功能的示教点，本手册以“A0”~“A5”作为示教点的名称。
+**Step1**: Selecione os pontos de ensinamento para executar a função PTP. Este manual usa “A0” a “A5” como nomes para os pontos de ensinamento.
 
-**Step2**：点击“示教程序”—>“程序编程”按钮，选择“运动指令”中的“点到点”指令，在“指令编辑”中选择示教点并设置调试速度，运动保护选择“加速度平滑模式”，在需要平滑的点处设置“平滑过渡”参数。
+**Step2**: Clique em “Programas de Ensinamento” → “Programação de Programa”. Selecione a instrução “Ponto a Ponto” em “Instruções de Movimento”. Na “Edição de Instrução”, selecione o ponto de ensinamento e defina a velocidade de teste. Selecione “Modo de Suavização de Aceleração” em “Proteção de Movimento”. Defina o parâmetro “Transição Suave” no ponto onde a suavização é necessária.
 
 .. image:: safety/020.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.13-1 加速度平滑PTP的blending指令设置
+.. centered:: Figura 7.13-1 Configuração da Instrução Blending para PTP com Suavização de Aceleração
 
-**Step3**：生成Lua程序并运行，即可实现对PTP-PTP的blending功能，该方式仅对AccSmoothStart()和AccSmoothEnd()之间的指令使用优化后的T形速度进行运动，对其余指令使用原T形速度进行运动。
+**Step3**: Gere e execute o programa Lua. Isso realiza a função de blending entre PTP-PTP. Este método aplica o movimento com perfil de velocidade T otimizado apenas às instruções entre AccSmoothStart() e AccSmoothEnd(), enquanto as outras instruções usam o movimento com perfil de velocidade T original.
 
 .. image:: safety/021.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.13-2 Lua指令方式进行PTP-PTP间blending典型程序
+.. centered:: Figura 7.13-2 Programa Típico para Blending PTP-PTP Usando Instruções Lua
 
-使用运动配置开关方
-***********************************
+Usando o Interruptor de Configuração de Movimento
+*****************************************************************
 
-**Step1**：点击“初始设置”—>“安全”—>“运动配置”按钮，打开“加速度平滑模式”的开关。
+**Step1**: Clique em “Configurações Iniciais” → “Segurança” → “Configuração de Movimento”. Ative o interruptor “Modo de Suavização de Aceleração”.
 
 .. image:: safety/022.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.13-3 加速度平滑模式配置开关设置
+.. centered:: Figura 7.13-3 Configuração do Interruptor do Modo de Suavização de Aceleração
 
-**Step2**：选择要执行PTP-PTP功能的示教点，本手册以“A0”~“A5”作为示教点的名称。
+**Step2**: Selecione os pontos de ensinamento para executar a função PTP-PTP. Este manual usa “A0” a “A5” como nomes para os pontos de ensinamento.
 
-**Step3**：点击“示教程序”—>“程序编程”按钮，选择“运动指令”中的“点到点”指令，在“指令编辑”中选择示教点并设置调试速度，运动保护选择“无”，在需要平滑的点处设置“平滑过渡”参数。
+**Step3**: Clique em “Programas de Ensinamento” → “Programação de Programa”. Selecione a instrução “Ponto a Ponto” em “Instruções de Movimento”. Na “Edição de Instrução”, selecione o ponto de ensinamento e defina a velocidade de teste. Selecione “Nenhum” em “Proteção de Movimento”. Defina o parâmetro “Transição Suave” no ponto onde a suavização é necessária.
 
 .. image:: safety/023.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.13-4 常规PTP的blending指令设置
+.. centered:: Figura 7.13-4 Configuração da Instrução Blending para PTP Padrão
 
-**Step4**：生成Lua程序并运行，即可实现对PTP-PTP的blending功能，典型程序和常规PTP程序相同，该方式会对所有指令使用优化后的T形速度进行运动。
+**Step4**: Gere e execute o programa Lua. Isso realiza a função de blending entre PTP-PTP. O programa típico é o mesmo que o programa PTP padrão. Este método aplica o movimento com perfil de velocidade T otimizado a todas as instruções.
 
 .. image:: safety/024.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.13-5 使用配置开关进行PTP-PTP间blending的典型程序
+.. centered:: Figura 7.13-5 Programa Típico para Blending PTP-PTP Usando o Interruptor de Configuração
 
-FIR自适应参数功能+FIR暂停恢复功能
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Função de Parâmetros Adaptativos FIR + Função de Pausa e Retomada FIR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-概述
+Visão Geral
 ++++++++++++++++++++++
 
-机器人时间最优模式参数自适应配置功能实现了无需调试配置其各项参数，该功能根据当前机器人的作业状态，自适应完成时间最优模式的参数配置，提升调试效率。
+A função de configuração adaptativa de parâmetros do modo de tempo ótimo do robô elimina a necessidade de depuração manual dos parâmetros. Esta função configura automaticamente os parâmetros do modo de tempo ótimo com base no estado operacional atual do robô, aumentando a eficiência da depuração.
 
-操作流程
-++++++++++++++++++++++
+Procedimento Operacional
+++++++++++++++++++++++++++++++++++++++++
 
-机器人基础运动指令PTP、LIN及ARC的使用方式类似，本例以时间最优模式的PTP运动指令作为主要示例。
+Os modos de uso das instruções básicas de movimento PTP, LIN e ARC são semelhantes. Este exemplo usa a instrução de movimento PTP no modo de tempo ótimo como exemplo principal.
 
-**Step1**：在机器人Web控制界面，依次点击“初始设置”->“安全”->“运动配置”，进入“运动配置”界面。
+**Step1**: Na interface de controle web do robô, clique sequencialmente em “Configurações Iniciais” -> “Segurança” -> “Configuração de Movimento” para entrar na interface de “Configuração de Movimento”.
 
 .. image:: safety/015.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.13-6 运动配置界面
+.. centered:: Figura 7.13-6 Interface de Configuração de Movimento
 
-**Step2**：在“运动配置”界面，点击“时间最优模式”开关，进入“时间最优模式”界面。
+**Step2**: Na interface “Configuração de Movimento”, clique no interruptor “Modo de Tempo Ótimo” para entrar na interface do “Modo de Tempo Ótimo”.
 
 .. image:: safety/016.png
    :width: 3in
    :align: center
 
-.. centered:: 图表 7.13-7 时间最优模式界面
+.. centered:: Figura 7.13-7 Interface do Modo de Tempo Ótimo
 
-.. note:: 在“时间最优模式”界面的“参数配置”栏中，在“调节系数”栏中可设置为-100~100，表示为缩放比例，用来控制运动指令的时间最优程度，默认值为1。
+.. note:: Na seção “Configuração de Parâmetros” da interface “Modo de Tempo Ótimo”, o “Coeficiente de Ajuste” pode ser definido de -100 a 100. Ele representa uma escala de fator, usada para controlar o grau de otimização do tempo para as instruções de movimento. O valor padrão é 1.
 
-**Step3**：确定要执行PTP运动的示教点，本例以“A0”~“A5”作为示教点的名称。
+**Step3**: Determine os pontos de ensinamento para executar o movimento PTP. Este exemplo usa “A0” a “A5” como nomes para os pontos de ensinamento.
 
-**Step4**：在机器人Web控制界面，依次点击“示教程序”—>“程序编程”，进入“运动指令”界面。
+**Step4**: Na interface de controle web do robô, clique sequencialmente em “Programas de Ensinamento” → “Programação de Programa” para entrar na interface “Instruções de Movimento”.
 
 .. image:: safety/017.png
    :width: 2in
    :align: center
 
-.. centered:: 图表 7.13-8 运动指令界面
+.. centered:: Figura 7.13-8 Interface de Instruções de Movimento
 
-**Step5**：在“运动指令”界面中，点击“点到点”，进入“PTP”指令编辑界面，分别在“点名称”下拉框中选择示教点、“调试速度”栏中设置期望速度比例、“在此点”栏中选择“停止”、“是否偏移”下拉框中选择“否”及“运动保护”栏中选择“无”后，点击“添加”。
+**Step5**: Na interface “Instruções de Movimento”, clique em “Ponto a Ponto” para entrar na interface de edição da instrução “PTP”. Selecione o ponto de ensinamento na lista suspensa “Nome do Ponto”, defina a proporção de velocidade desejada no campo “Velocidade de Teste (%)”, selecione “Parar” em “Neste Ponto”, selecione “Não” na lista suspensa “Habilitar Deslocamento” e selecione “Nenhum” em “Proteção de Movimento”. Em seguida, clique em “Adicionar”.
 
 .. image:: safety/018.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 7.13-9 PTP运动指令编辑界面
+.. centered:: Figura 7.13-9 Interface de Edição da Instrução de Movimento PTP
 
-**Step6**：“PTP”运动指令编辑界面，点击“应用”，即自动生成相应的LUA程序。
+**Step6**: Na interface de edição da instrução “PTP”, clique em “Aplicar”. O programa Lua correspondente será gerado automaticamente.
 
 .. image:: safety/019.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 7.13-10 典型时间最优模式的PTP运动LUA程序
+.. centered:: Figura 7.13-10 Programa Lua Típico para Movimento PTP no Modo de Tempo Ótimo
 
 .. note:: 
-   典型时间最优模式的PTP运动LUA程序与一般PTP运动LUA程序无异，其区别在于Step2步骤中已开启了“时间最优模式”功能。
+   O programa Lua para movimento PTP no modo de tempo ótimo não difere do programa PTP geral. A diferença está no fato de que o interruptor “Modo de Tempo Ótimo” foi ativado no Step2.
 
-   开启了“时间最优模式”功能开关，当前机器人基础运动指令PTP、LIN及ARC均处于时间最优模式，在该界面中关闭“时间最优模式”功能开关，即可恢复基础运动指令PTP、LIN及ARC状态。
-   在该界面不能同时开启“加速度平滑模式”功能开关。
+   Com o interruptor “Modo de Tempo Ótimo” ativado, as instruções básicas de movimento PTP, LIN e ARC do robô atual estão todas no modo de tempo ótimo. Para retornar as instruções básicas de movimento PTP, LIN e ARC ao estado normal, basta desativar o interruptor “Modo de Tempo Ótimo” nesta interface.
+   O interruptor “Modo de Suavização de Aceleração” não pode ser ativado simultaneamente com o “Modo de Tempo Ótimo” nesta interface.

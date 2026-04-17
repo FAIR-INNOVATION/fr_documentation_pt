@@ -1,117 +1,117 @@
-示教点
-===============
+Pontos de Ensinamento
+==============================
 
 .. toctree:: 
    :maxdepth: 6
 
-示教管理分为“系统模式”和“点位表模式”两种模式，实现调用机械手程序时，可以通过调用不同的点位表来实现不同的检测方案，完成配方的需求。后续每增加一款设备或者产品，可以通过上位机把点位表数据包下载到机器人，机器人新建的点位表数据包也可以上传给上位机。
+O gerenciamento de ensinamento é dividido em dois modos: "Modo de Sistema" e "Modo de Tabela de Pontos". Isso permite que, ao chamar programas do manipulador, diferentes tabelas de pontos possam ser usadas para implementar diferentes esquemas de detecção, atendendo às necessidades de receitas. Posteriormente, para cada novo equipamento ou produto adicionado, o pacote de dados da tabela de pontos pode ser baixado para o robô através do host, e o pacote de dados da tabela de pontos recém-criado pelo robô também pode ser enviado para o host.
 
-**系统模式**：支持“导入、导出、删除、重命名、修改、覆盖、修改、查看”示教点位内容，以及单步运动到示教点位。
+**Modo de Sistema**: Suporta "importar, exportar, excluir, renomear, modificar, sobrescrever, visualizar" o conteúdo dos pontos de ensinamento, bem como movimento passo a passo até o ponto de ensinamento.
 
 .. image:: points/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-1 示教管理界面-系统模式
+.. centered:: Figura 12.1-1 Interface de Gerenciamento de Ensinamento - Modo de Sistema
 
-**点位表模式**：支持“新增、应用、重命名、删除、导入、导出”点位表，“删除、修改、查看和覆盖”点位表内点位内容，以及单步运动到示教点位。
+**Modo de Tabela de Pontos**: Suporta "adicionar, aplicar, renomear, excluir, importar, exportar" tabelas de pontos, "excluir, modificar, visualizar e sobrescrever" o conteúdo dos pontos dentro da tabela de pontos, bem como movimento passo a passo até o ponto de ensinamento.
 
 .. image:: points/002.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-2 示教管理界面-点位表模式
+.. centered:: Figura 12.1-2 Interface de Gerenciamento de Ensinamento - Modo de Tabela de Pontos
 
-示教管理界面右上角显示机器人本体操作条，用户在该界面可以移动机器人本体，然后再进行示教点的数据覆盖操作。
+O canto superior direito da interface de gerenciamento de ensinamento exibe a barra de operação do corpo do robô. Nesta interface, o usuário pode mover o corpo do robô e, em seguida, realizar operações de sobrescrita de dados dos pontos de ensinamento.
 
 .. image:: points/003.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-3 示教管理界面-机器人本体操作条
+.. centered:: Figura 12.1-3 Interface de Gerenciamento de Ensinamento - Barra de Operação do Corpo do Robô
 
-在示教点表格数据的右上角可以输入示教点名称进行搜索；在示教点表格数据中点击示教点名称后，进入编辑状态，输入修改后的名称，点击示教点名称以外的地方即可完成修改。
+No canto superior direito dos dados da tabela de pontos de ensinamento, é possível inserir o nome do ponto de ensinamento para pesquisar. Nos dados da tabela de pontos de ensinamento, ao clicar no nome do ponto de ensinamento, ele entra em modo de edição. Insira o nome modificado e clique fora da área do nome do ponto de ensinamento para concluir a modificação.
 
 .. note:: 
    .. image:: points/004.png
       :height: 0.75in
       :align: left
 
-   名称：**导入按钮**
+   Nome: **Botão Importar**
    
-   作用：示教点文件导入
+   Função: Importar arquivo de pontos de ensinamento.
 
 .. note:: 
    .. image:: points/005.png
       :height: 0.75in
       :align: left
 
-   名称：**导出按钮**
+   Nome: **Botão Exportar**
    
-   作用：示教点文件导出
+   Função: Exportar arquivo de pontos de ensinamento.
 
 .. note:: 
    .. image:: points/006.png
       :height: 0.75in
       :align: left
 
-   名称：**删除按钮**
+   Nome: **Botão Excluir**
    
-   作用：选中一个/多个示教点后点击表格上方“删除”按钮后提示“请再次点击删除按钮确认删除”，再次点击后即可将该点信息删除；
+   Função: Após selecionar um ou mais pontos de ensinamento e clicar no botão "Excluir" acima da tabela, uma mensagem "Clique novamente no botão excluir para confirmar a exclusão" aparecerá. Após clicar novamente, as informações do(s) ponto(s) serão excluídas.
 
 .. note:: 
    .. image:: points/007.png
       :height: 0.75in
       :align: left
 
-   名称：**覆盖点位按钮**
+   Nome: **Botão Sobrescrever Ponto**
    
-   作用：点击将机器人当前点位数据覆盖示教点，并在弹窗中选择“是否同步示教程序”
+   Função: Clique para sobrescrever o ponto de ensinamento com os dados de posição atuais do robô. Na janela pop-up, selecione "Sincronizar programa de ensinamento".
 
 .. image:: points/008.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-4 覆盖示教点
+.. centered:: Figura 12.1-4 Sobrescrever Ponto de Ensinamento
 
 .. note:: 
    .. image:: points/009.png
       :height: 0.75in
       :align: left
 
-   名称：**编辑按钮**
+   Nome: **Botão Editar**
    
-   作用：点击确认修改示教点x，y，z，rx，ry，rz和v数值
+   Função: Clique para confirmar a modificação dos valores x, y, z, rx, ry, rz e v do ponto de ensinamento.
 
 .. important:: 
-   示教点x，y，z，rx，ry，rz的修改值不应超过机器人的工作范围。
+   Os valores modificados para x, y, z, rx, ry, rz do ponto de ensinamento não devem exceder a área de trabalho do robô.
 
 .. note:: 
    .. image:: points/010.png
       :height: 0.75in
       :align: left
 
-   名称：**详情按钮**
+   Nome: **Botão Detalhes**
    
-   作用：点击查看示教点详情
+   Função: Clique para visualizar os detalhes do ponto de ensinamento.
 
 .. image:: points/011.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-5 示教点详情
+.. centered:: Figura 12.1-5 Detalhes do Ponto de Ensinamento
 
 .. note:: 
    .. image:: points/012.png
       :height: 0.75in
       :align: left
 
-   名称：**开始运行按钮**
+   Nome: **Botão Iniciar Execução**
    
-   作用：点击选择单点运行的方式，将机器人移动到该点的位置；选择PTP为点到点运动，选择Lin为直线运动。
+   Função: Clique para selecionar o modo de movimento de ponto único e mover o robô para a posição desse ponto. Selecione PTP para movimento ponto a ponto ou Lin para movimento linear.
 
 .. image:: points/013.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 12.1-6 运行示教点
+.. centered:: Figura 12.1-6 Executar Ponto de Ensinamento

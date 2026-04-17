@@ -1,167 +1,167 @@
-机器人快速编程
-===================
+Programação Rápida do Robô
+=====================================
 
-简单运动指令介绍
---------------------
+Introdução às Instruções de Movimento Simples
+------------------------------------------------------------
 
-**PTP命令**：点击“点到点”图标进入PTP命令编辑界面。
+**Comando PTP**: Clique no ícone “Ponto a Ponto” para entrar na interface de edição de comandos PTP.
 
-可以选择需要到达的点，平滑过渡时间设置可以实现该点到下一点的运动是连续的，是否偏移设置，可以选择基于基坐标系偏移和基于工具坐标偏移，并弹出x,y,z,rx,ry,rz偏移量设置，PTP具体路径为运动控制器自动规划的最优路径，点击“添加”、“应用”后可保存该条指令。
+Você pode selecionar o ponto a ser alcançado. A configuração do tempo de transição suave permite que o movimento deste ponto para o próximo seja contínuo. A configuração de deslocamento permite selecionar o deslocamento com base no sistema de coordenadas base ou no sistema de coordenadas da ferramenta, exibindo as configurações de deslocamento x, y, z, rx, ry, rz. O caminho específico do PTP é o caminho ideal planejado automaticamente pelo controlador de movimento. Clique em “Adicionar” e “Aplicar” para salvar esta instrução.
 
 .. image:: teaching_pendant_software/055.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 5.1‑1 PTP命令界面
+.. centered:: Figura 5.1‑1 Interface do Comando PTP
 
-**Lin命令**：点击“直线”图标进入Lin命令编辑界面。
+**Comando Lin**: Clique no ícone “Linear” para entrar na interface de edição de comandos Lin.
 
-该指令功能与“PTP”指令相似，但该指令所到达点的路径为直线。
+A função desta instrução é semelhante à instrução “PTP”, mas o caminho para o ponto alcançado por esta instrução é uma linha reta.
 
 .. image:: teaching_pendant_software/057.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 5.1‑2 Lin命令界面
+.. centered:: Figura 5.1‑2 Interface do Comando Lin
 
-对程序文件进行操作
---------------------
+Operações com Arquivos de Programa
+----------------------------------------
 
-使用程序树顶部的工具栏修改程序树。
+Use a barra de ferramentas no topo da árvore de programas para modificá-la.
 
 .. note:: 
    .. image:: coding/006.png
       :height: 0.75in
       :align: left
 
-   名称：**打开**
+   Nome: **Abrir**
    
-   作用：打开用户程序文件
+   Função: Abre um arquivo de programa do usuário.
 
 .. note:: 
    .. image:: coding/007.png
       :height: 0.75in
       :align: left
 
-   名称：**新建**
+   Nome: **Novo**
    
-   作用：选择模板新建程序文件
+   Função: Cria um novo arquivo de programa selecionando um modelo.
    
 .. note:: 
    .. image:: coding/008.png
       :height: 0.75in
       :align: left
 
-   名称：**导入**
+   Nome: **Importar**
    
-   作用：导入文件到用户程序文件夹中
+   Função: Importa um arquivo para a pasta de programas do usuário.
 
 .. note:: 
    .. image:: coding/009.png
       :height: 0.75in
       :align: left
 
-   名称：**导出**
+   Nome: **Exportar**
    
-   作用：导出用户程序文件到本地点
+   Função: Exporta um arquivo de programa do usuário para o computador local.
 
 .. note:: 
    .. image:: coding/010.png
       :height: 0.75in
       :align: left
 
-   名称：**保存**
+   Nome: **Salvar**
    
-   作用：保存文件编辑内容。
+   Função: Salva o conteúdo editado do arquivo.
 
 .. note:: 
    .. image:: coding/011.png
       :height: 0.75in
       :align: left
 
-   名称：**另存为**
+   Nome: **Salvar Como**
    
-   作用：给文件重命名存放到用户程序或模板程序文件夹中
+   Função: Renomeia o arquivo e o salva na pasta de programas do usuário ou de modelos.
 
 .. note:: 
    .. image:: coding/012.png
       :height: 0.75in
       :align: left
 
-   名称：**复制**
+   Nome: **Copiar**
    
-   作用：复制一个节点，并允许将其用于其他操作（例如：将其粘贴到程序树的其他位置）
+   Função: Copia um nó, permitindo usá-lo em outras operações (por exemplo, colá-lo em outra posição da árvore de programas).
 
 .. note:: 
    .. image:: coding/013.png
       :height: 0.75in
       :align: left
 
-   名称：**粘贴**
+   Nome: **Colar**
    
-   作用：允许您粘贴之前剪切或复制的节点
+   Função: Permite colar um nó previamente cortado ou copiado.
 
 .. note:: 
    .. image:: coding/014.png
       :height: 0.75in
       :align: left
 
-   名称：**剪切**
+   Nome: **Cortar**
    
-   作用：剪切一个节点，并允许将其用于其他操作（例如：将其粘贴到程序树的其他位置）
+   Função: Corta um nó, permitindo usá-lo em outras operações (por exemplo, colá-lo em outra posição da árvore de programas).
 
 .. note:: 
    .. image:: coding/015.png
       :height: 0.75in
       :align: left
 
-   名称：**删除**
+   Nome: **Excluir**
    
-   作用：从程序树中删除一个节点
+   Função: Exclui um nó da árvore de programas.
 
 .. note:: 
    .. image:: coding/016.png
       :height: 0.75in
       :align: left
 
-   名称：**上移**
+   Nome: **Mover para Cima**
    
-   作用：向上移动该节点
+   Função: Move o nó para cima.
 
 .. note:: 
    .. image:: coding/017.png
       :height: 0.75in
       :align: left
 
-   名称：**下移**
+   Nome: **Mover para Baixo**
    
-   作用：向下移动该节点
+   Função: Move o nó para baixo.
 
 .. note:: 
    .. image:: coding/018.png
       :height: 0.75in
       :align: left
 
-   名称：**切换编辑模式**
+   Nome: **Alternar Modo de Edição**
    
-   作用：程序树模式和lua编辑模式互相切换
+   Função: Alterna entre o modo de árvore de programas e o modo de edição Lua.
 
-编写运行一个程序
---------------------
+Escrevendo e Executando um Programa
+----------------------------------------
 
-左侧主要是程序命令的添加，点击各关键字上方图标进入右侧程序命令添加的详细界面，程序命令添加到文件中的操作主要分为两种：
+O lado esquerdo é principalmente para adicionar comandos de programa. Clique no ícone acima de cada palavra-chave para entrar na interface detalhada de adição do comando à direita. As operações para adicionar um comando ao arquivo são divididas em dois tipos principais:
 
-- 1、打开相关指令点击应用按键即可将该指令添加到程序中；
-- 2、先点击“添加”按键，此时命令并未保存到程序文件中，需要再点击“应用”方可将命令保存到文件中。
+- 1. Abra a instrução relacionada e clique no botão “Aplicar” para adicioná-la ao programa.
+- 2. Clique primeiro no botão “Adicionar”. Neste momento, o comando ainda não está salvo no arquivo de programa. É necessário clicar em “Aplicar” para salvá-lo no arquivo.
 
-第二种方式多出现在同类型指令多条下发的情况，我们对该类型命令增加添加按键和显示已添加指令内容功能，点击添加按键可添加一条指令，已添加指令显示所有已添加的指令，点击“应用”即可将添加的指令保存到右侧已打开的文件中。
+O segundo método aparece frequentemente quando múltiplas instruções do mesmo tipo são enviadas. Para este tipo de comando, adicionamos a função de botão “Adicionar” e a exibição do conteúdo das instruções já adicionadas. Clicar em “Adicionar” adiciona uma instrução. As instruções já adicionadas são exibidas. Clicar em “Aplicar” salva as instruções adicionadas no arquivo aberto à direita.
 
-点击开始按钮，运行程序；点击停止按钮，停止程序运行；点击暂停/恢复按钮，暂停/恢复程序；程序运行时，当前执行的程序节点绿色高亮显示。
+Clique no botão “Iniciar” para executar o programa. Clique no botão “Parar” para interromper a execução. Clique no botão “Pausar/Retomar” para pausar ou retomar a execução. Durante a execução do programa, o nó do programa em execução atual é destacado em verde.
 
-在手动模式下，点击节点右侧第一个图标可以使机器人单独执行该指令，第二个图标为编辑该节点内容。
+No modo manual, clique no primeiro ícone à direita do nó para fazer o robô executar apenas aquela instrução individualmente. O segundo ícone serve para editar o conteúdo do nó.
 
 .. image:: coding/001.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 5.3‑1 程序树界面
+.. centered:: Figura 5.3‑1 Interface da Árvore de Programas

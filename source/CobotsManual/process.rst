@@ -1,406 +1,406 @@
-工艺包
-=============
+Pacotes de Funcionalidades (Processos)
+===========================================
 
 .. toctree:: 
   :maxdepth: 5
 
-焊接专家库
-----------------
+Biblioteca de Especialistas em Soldagem
+------------------------------------------------
 
-点击“辅助应用”->“工艺包”中的“焊接专家库”的菜单栏，进入焊接专家库功能界面，包含直焊、圆弧焊、多层多道焊和姿态调整。
+Clique no menu “Biblioteca de Especialistas em Soldagem” em “Aplicações Auxiliares” -> “Pacotes de Funcionalidades” para entrar na interface da função. Esta interface inclui soldagem reta, soldagem em arco, soldagem de múltiplas camadas e passes, e ajuste de postura.
 
 .. image:: process/001.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑1 扩展轴配置
+.. centered:: Figura 15.1‑1 Configuração do Eixo Extensor
 
-直焊
-~~~~~~~~~~~~
+Soldagem Reta
+~~~~~~~~~~~~~~~~~~~~
 
-点击“直焊”，进入直焊指导界面。在各项机器人基础设置配置完成的基础上，我们可以通过几个简单的步骤快速生成焊接示教程序。主要包含以下五个步骤，由于功能间存在互斥，所以实际生成一个焊接示教程序的步骤少于五步。
+Clique em “Soldagem Reta” para entrar na interface de orientação. Com base nas configurações básicas do robô já concluídas, podemos gerar rapidamente um programa de ensinamento de soldagem através de alguns passos simples. O processo envolve principalmente cinco etapas. Devido à exclusão mútua entre algumas funções, o número real de etapas para gerar um programa de ensinamento de soldagem é menor que cinco.
 
-步骤一，是否使用扩展轴，如果使用扩展轴需要配置好扩展轴相关坐标系以及使能扩展轴。使用扩展轴时，无法使用摆焊功能。
+Etapa 1, decidir se deve usar um eixo extensor. Se sim, é necessário configurar os sistemas de coordenadas relacionados ao eixo extensor e habilitá-lo. Quando um eixo extensor é usado, a função de soldagem com oscilação não pode ser usada.
 
 .. image:: process/002.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑2 扩展轴配置
+.. centered:: Figura 15.1‑2 Configuração do Eixo Extensor
 
-步骤二，选择是否需要传感器跟踪，如果是的话，需要编辑激光寻位指令的参数。使用传感器跟踪时，无法使用摆焊功能。
+Etapa 2, escolher se é necessário o rastreamento por sensor. Se sim, os parâmetros da instrução de busca de posição a laser precisam ser editados. Quando o rastreamento por sensor é usado, a função de soldagem com oscilação não pode ser usada.
 
 .. image:: process/003.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑3 激光寻位配置
+.. centered:: Figura 15.1‑3 Configuração da Busca de Posição a Laser
 
-步骤三，选择是否需要摆焊，如果需要摆焊，需要编辑摆焊相关参数。
+Etapa 3, escolher se a soldagem com oscilação é necessária. Se sim, os parâmetros relacionados à soldagem com oscilação precisam ser editados.
 
 .. image:: process/004.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑4 摆焊配置
+.. centered:: Figura 15.1‑4 Configuração da Soldagem com Oscilação
 
-步骤四，标定起点，起点安全点，终点，终点安全点。若第一步选择了扩展轴，会加载扩展轴移动功能，配合相关点的标定。
+Etapa 4, calibrar o ponto inicial, o ponto de segurança inicial, o ponto final e o ponto de segurança final. Se um eixo extensor foi selecionado na primeira etapa, a função de movimento do eixo extensor será carregada para auxiliar na calibração dos pontos relacionados.
 
 .. image:: process/005.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑5 标定相关点
+.. centered:: Figura 15.1‑5 Calibração de Pontos Relacionados
 
-步骤五，给程序命名，并在程序示教界面中自动打开该程序。
+Etapa 5, nomear o programa. O programa será aberto automaticamente na interface de programação de ensinamento.
 
 .. image:: process/006.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑6 保存程序
+.. centered:: Figura 15.1‑6 Salvar Programa
 
-程序保存成功后，可以在工艺参数中修改焊接速度。
+Após o programa ser salvo com sucesso, a velocidade de soldagem pode ser modificada nos parâmetros do processo.
 
 .. image:: process/007.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑7 工艺参数
+.. centered:: Figura 15.1‑7 Parâmetros do Processo
 
-圆弧焊
-~~~~~~~~~~~~
+Soldagem em Arco
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-点击“焊件形状”下的“圆弧焊”，进入圆弧焊指导界面。在各项机器人基础设置配置完成的基础上，我们可以通过两个简单的步骤快速生成焊接示教程序。主要包含以下两个步骤。
+Clique em “Soldagem em Arco” em “Forma da Peça” para entrar na interface de orientação. Com base nas configurações básicas do robô já concluídas, podemos gerar rapidamente um programa de ensinamento de soldagem através de dois passos simples.
 
-步骤一，标定起点，起点安全点，圆弧过渡点，终点和终点安全点。
+Etapa 1, calibrar o ponto inicial, o ponto de segurança inicial, o ponto de transição do arco, o ponto final e o ponto de segurança final.
 
 .. image:: process/008.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑8 标定点
+.. centered:: Figura 15.1‑8 Calibração de Pontos
 
-步骤二，给程序命名，并在程序示教界面中自动打开该程序。
+Etapa 2, nomear o programa. O programa será aberto automaticamente na interface de programação de ensinamento.
 
 .. image:: process/009.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑9 保存程序
+.. centered:: Figura 15.1‑9 Salvar Programa
 
-程序保存成功后，可以在工艺参数中修改焊接速度。
+Após o programa ser salvo com sucesso, a velocidade de soldagem pode ser modificada nos parâmetros do processo.
 
 .. image:: process/010.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1‑10 工艺参数
+.. centered:: Figura 15.1‑10 Parâmetros do Processo
 
-多层多道焊
-~~~~~~~~~~~~
+Soldagem de Múltiplas Camadas e Passes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-当焊脚尺寸大于10mm的焊缝时，通常会采用多层多道焊接功能。本功能能够模板化配置焊接程序，在多层多道焊接的第一道焊接过程种加入电弧跟踪功能，并在后续的多道直线焊接过程中修正焊缝偏差，从而提高焊缝质量。
+Quando o tamanho do cordão de solda é superior a 10 mm, a função de soldagem de múltiplas camadas e passes é normalmente utilizada. Esta função permite configurar programas de soldagem de forma modelada, adicionando a função de rastreamento de arco ao primeiro passe da soldagem de múltiplas camadas e passes, e corrigindo o desvio do cordão de solda nos passes lineares subsequentes, melhorando assim a qualidade da solda.
 
-电弧跟踪多层多道焊接功能操作流程如下：
+O procedimento operacional para a função de soldagem de múltiplas camadas e passes com rastreamento de arco é o seguinte:
 
-1) 设置工具坐标系，填入焊枪的工具尺寸与姿态。
+1) Configure o sistema de coordenadas da ferramenta, inserindo as dimensões e a postura da tocha de soldagem.
 
 .. note::
-   界面数值仅为示例，以实际工具状态为准。
+   Os valores na interface são apenas exemplos. O estado real da ferramenta deve ser considerado.
 
 .. image:: process/011.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-11 设置工具坐标系
+.. centered:: Figura 15.1-11 Configuração do Sistema de Coordenadas da Ferramenta
 
-2) 点击“多层多道焊”进入界面。
+2) Clique em “Soldagem de Múltiplas Camadas e Passes” para entrar na interface.
 
 .. image:: process/012.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-12 打开多层多道焊接界面
+.. centered:: Figura 15.1-12 Abrir Interface de Soldagem de Múltiplas Camadas e Passes
 
-3) 若要使用电弧跟踪功能，务必打开“首层焊接摆动功能”开关，并配置对应的摆动参数。
+3) Para usar a função de rastreamento de arco, certifique-se de ativar o interruptor “Função de Oscilação na Primeira Camada” e configure os parâmetros de oscilação correspondentes.
 
 .. image:: process/013.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-13 打开首层焊接摆动功能
+.. centered:: Figura 15.1-13 Ativar Função de Oscilação na Primeira Camada
 
-4) 点击“配置”按钮， 编辑摆动参数，之后点击“配置”。
+4) Clique no botão “Configurar” para editar os parâmetros de oscilação e, em seguida, clique em “Configurar” novamente.
 
 .. note::
-   若需要电弧跟踪进行左右补偿的情况，仅可选择“三角波摆动”和“正弦波摆动”类型，摆动频率不得低于0.5Hz，摆动幅度不得小于3mm，摆动左右等待时间需一致，摆动方位角需为0。
+   Se o rastreamento de arco exigir compensação lateral, apenas os tipos “Oscilação Triangular” e “Oscilação Senoidal” podem ser selecionados. A frequência de oscilação não deve ser inferior a 0,5 Hz, a amplitude de oscilação não deve ser inferior a 3 mm, os tempos de espera à esquerda e à direita devem ser iguais e o ângulo de azimute da oscilação deve ser 0.
 
 .. image:: process/014.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-14 配置摆动参数
+.. centered:: Figura 15.1-14 Configuração dos Parâmetros de Oscilação
 
-5) 打开“电弧跟踪功能”开关，编辑对应的上下与左右补偿参数。
+5) Ative o interruptor “Função de Rastreamento de Arco” e edite os parâmetros de compensação vertical e lateral correspondentes.
 
 .. note::
-   电弧跟踪参数根据实际焊接情况参考《电弧跟踪功能操作手册》或联系相关技术人员进行配置。
+   Os parâmetros de rastreamento de arco devem ser configurados com base na situação real de soldagem, consultando o “Manual de Operação da Função de Rastreamento de Arco” ou entrando em contato com a equipe técnica relevante.
 
 .. image:: process/015.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-15 配置电弧跟踪参数
+.. centered:: Figura 15.1-15 Configuração dos Parâmetros de Rastreamento de Arco
 
-6) 根据控制类型点击对应类型进入界面，首先在第一组点中设置“焊接点”为焊接开始位置；“X+点”为自定义偏置坐标系相对焊接点X+方向上的一点；“Z+点”为自定义偏置坐标系相对焊接点Z+方向上的一点；“安全点”为上一次焊接完成到下一次焊接开始的过渡位置。示教并设置完成后自动进入第二组点设置。
+6) Clique no tipo de controle correspondente para entrar na interface. Primeiro, no primeiro grupo de pontos, defina o “Ponto de Soldagem” como a posição de início da soldagem; “Ponto X+” como um ponto na direção X+ do sistema de coordenadas de deslocamento personalizado em relação ao ponto de soldagem; “Ponto Z+” como um ponto na direção Z+ do sistema de coordenadas de deslocamento personalizado em relação ao ponto de soldagem; e “Ponto de Segurança” como a posição de transição entre a conclusão da soldagem anterior e o início da próxima. Após o ensinamento e a configuração, o sistema avança automaticamente para a configuração do segundo grupo de pontos.
 
 .. image:: process/016.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-16 多层多道焊接直线开始点位置设置
+.. centered:: Figura 15.1-16 Configuração da Posição do Ponto de Início Linear para Soldagem de Múltiplas Camadas e Passes
 
-7) 选择“直线点”，此处“焊接点”为焊接结束位置；“X+点”为自定义偏置坐标系相对“焊接点”X+方向上的一点；“Z+点”为自定义偏置坐标系相对“焊接点”Z+方向上的一点。示教并设置完成后点击“完成”按钮设置多层多道焊接参数。
+7) Selecione “Ponto Linear”. Aqui, o “Ponto de Soldagem” é a posição de fim da soldagem; “Ponto X+” é um ponto na direção X+ do sistema de coordenadas de deslocamento personalizado em relação ao “Ponto de Soldagem”; “Ponto Z+” é um ponto na direção Z+ do sistema de coordenadas de deslocamento personalizado em relação ao “Ponto de Soldagem”. Após o ensinamento e a configuração, clique no botão “Concluir” para definir os parâmetros de soldagem de múltiplas camadas e passes.
 
 .. image:: process/017.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-17 多层多道焊接直线结束点位置设置
+.. centered:: Figura 15.1-17 Configuração da Posição do Ponto de Fim Linear para Soldagem de Múltiplas Camadas e Passes
 
-8) 在此页面能够设置多层多道焊接的数量，以及分布位置。点击参数表“On/Off”框选择激活的多层多道焊接位置对应值，在“X”“Z”“B”列填入期望的在自定义坐标系中的对应偏移位置与角度。
+8) Nesta página, é possível definir o número de camadas e passes para a soldagem de múltiplas camadas e passes, bem como suas posições de distribuição. Clique nas caixas “On/Off” na tabela de parâmetros para selecionar os valores correspondentes às posições ativadas para a soldagem de múltiplas camadas e passes. Nas colunas “X”, “Z”, “B”, insira as posições e ângulos de deslocamento desejados no sistema de coordenadas personalizado.
 
 .. image:: process/018.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-18 多层多道焊接参数设置
+.. centered:: Figura 15.1-18 Configuração dos Parâmetros para Soldagem de Múltiplas Camadas e Passes
 
-9) 至此已完成全部参数配置，输入希望保存的程序名，点击“保存”按钮可自动生产对应的多层多道焊接程序。
+9) Após concluir a configuração de todos os parâmetros, insira o nome do programa que deseja salvar e clique no botão “Salvar”. O programa de soldagem de múltiplas camadas e passes correspondente será gerado automaticamente.
 
 .. image:: process/019.png
    :width: 6in
    :align: center
 
-.. centered:: 图表 15.1-19 多层多道焊接程序生成
+.. centered:: Figura 15.1-19 Geração do Programa de Soldagem de Múltiplas Camadas e Passes
 
-10) 点击“打开程序”按钮，读取上一步骤保存的lua程序，程序内容如下图所示。
+10) Clique no botão “Abrir Programa” para carregar o programa Lua salvo na etapa anterior. O conteúdo do programa é mostrado na figura abaixo.
 
 .. image:: process/020.png
    :width: 4in
    :align: center
 
-.. centered:: 图表 15.1-20 电弧跟踪多层多道焊接程序示例
+.. centered:: Figura 15.1-20 Exemplo de Programa de Soldagem de Múltiplas Camadas e Passes com Rastreamento de Arco
 
-姿态调整
+Ajuste de Postura
 ~~~~~~~~~~~~~~~~~~
 
-姿态自适应配置步骤
-+++++++++++++++++++++++++++++++++++
+Passos para Configuração do Ajuste Adaptativo de Postura
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Step1**：进入姿态调整配置界面，选择板材类型和机器人实际工作运动方向，调整机器人姿态，分别设置姿态点A，姿态点B和姿态点C，通常A为平面姿态点，B为上升沿姿态点，C为下降沿姿态点。
+**Step1**: Entre na interface de configuração de ajuste de postura. Selecione o tipo de chapa e a direção real do movimento de trabalho do robô. Ajuste a postura do robô e defina os pontos de postura A, B e C respectivamente. Geralmente, A é o ponto de postura para a superfície plana, B é o ponto de postura para a borda ascendente e C é o ponto de postura para a borda descendente.
 
 .. figure:: process/021.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.1‑21 姿态调整配置
+.. centered:: Figura 15.1‑21 Configuração de Ajuste de Postura
 
 .. important:: 
-	A姿态和B姿态，A姿态和C姿态之间的姿态变化在满足应用需求下姿态变化越小越好。姿态自适应功能为辅助应用功能，通常配合焊缝跟踪使用。
+	A mudança de postura entre as posturas A e B, e entre A e C, deve ser a menor possível, desde que atenda aos requisitos da aplicação. A função de ajuste adaptativo de postura é uma função de aplicação auxiliar, geralmente usada em conjunto com o rastreamento do cordão de solda.
 
-**Step2**：在程序示教命令界面选择“Adjust”命令。根据具体的程序示教需求，在相应的地方添加指令。
+**Step2**: Na interface de comandos de programação de ensinamento, selecione o comando “Adjust”. Adicione a instrução nos locais apropriados de acordo com os requisitos específicos da programação de ensinamento.
 
 .. figure:: process/022.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.1‑22 姿态调整指令编辑
+.. centered:: Figura 15.1‑22 Edição da Instrução de Ajuste de Postura
 
-姿态自适应配合扩展轴和激光跟踪焊接示教程序
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Programa de Ensinamento de Soldagem com Ajuste Adaptativo de Postura Combinado com Eixo Extensor e Rastreamento a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. list-table::
    :widths: 50 80 80
    :header-rows: 0
    :align: center
 
-   * - **序号**
-     - **指令格式**
-     - **注释**
+   * - **Nº**
+     - **Formato da Instrução**
+     - **Comentário**
 
    * - 1
      - EXT_AXIS_PTP(1,1laserstart)
-     - #外部轴运动激光传感器起始点
+     - #Movimento do eixo extensor para o ponto inicial do sensor a laser
 
    * - 2
      - PTP(laserstart,10,-1,0)
-     - #机器人运动激光传感器起始点
+     - #Movimento do robô para o ponto inicial do sensor a laser
 
    * - 3
      - LTSearchStart(3,20,10,10000)
-     - #开始寻位
+     - #Iniciar busca de posição
 
    * - 4
      - LTSearchStop()
-     - #停止寻位
+     - #Parar busca de posição
 
    * - 5
      - EXT_AXIS_PTP(1,1,seamPos)
-     - #外部轴运动焊缝起点
+     - #Movimento do eixo extensor para o ponto inicial da solda
 
    * - 6
      - Lin(seamPos,20,-1,00,0)
-     - #机器人运动焊缝起点
+     - #Movimento do robô para o ponto inicial da solda
 
    * - 7
      - LTTrackOn()
-     - #激光跟踪
+     - #Ativar rastreamento a laser
 
    * - 8
      - ARCStart(0,10000)
-     - #焊机起弧
+     - #Abertura de arco da máquina de solda
 
    * - 9
      - PostureAdjustOn(0,PosA,PosC,PosB,1000)
-     - #姿态自适应调整开启
+     - #Ativar ajuste adaptativo de postura
 
    * - 10
      - EXT_AXIS_PTP(1,1,laserend)
-     - #外部轴运动焊缝终点
+     - #Movimento do eixo extensor para o ponto final da solda
 
    * - 11
      - Lin( laserend,10,-1,0,0)
-     - #机器人运动焊缝终点
+     - #Movimento do robô para o ponto final da solda
 
    * - 12
      - ARCEnd(0,10000)
-     - #焊机收弧
+     - #Extinção de arco da máquina de solda
 
    * - 13
      - PostureAdjustOff(0)
-     - #姿态自适应调整关闭
+     - #Desativar ajuste adaptativo de postura
 
    * - 14
      - LTTrackOff
-     - #激光跟踪关闭
+     - #Desativar rastreamento a laser
 
-码垛系统配置
----------------
+Configuração do Sistema de Paletização
+---------------------------------------------
 
-码垛系统配置步骤
-~~~~~~~~~~~~~~~~~~~~~~
+Passos para Configuração do Sistema de Paletização
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Step1**：在“辅助应用”->“工艺包”中点击“码垛”菜单项，进入码垛系统配置界面。
+**Step1**: No menu “Aplicações Auxiliares” -> “Pacotes de Funcionalidades”, clique no item “Paletização” para entrar na interface de configuração do sistema.
 
-第一次使用，需要首先进行配方创建，点击“配方创建”，输入配方名称，点击“创建”，创建成功后点击“开始配置”进入码垛配置页面。
+Na primeira utilização, é necessário criar uma receita. Clique em “Criar Receita”, insira um nome para a receita e clique em “Criar”. Após a criação bem-sucedida, clique em “Iniciar Configuração” para entrar na página de configuração da paletização.
 
 .. figure:: process/023.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑1 码垛配方配置
+.. centered:: Figura 15.2‑1 Configuração da Receita de Paletização
 
-**Step2**：在工件配置栏中点击“配置”进入工件配置弹窗，设置工件的“长度”，“宽度”，“高度”以及工件的抓取点，点击“确认配置”完成工件信息设置。
+**Step2**: Na seção de configuração da peça, clique em “Configurar” para abrir a janela pop-up de configuração da peça. Defina o “comprimento”, “largura”, “altura” e o ponto de agarre da peça. Clique em “Confirmar Configuração” para concluir as configurações da peça.
 
 .. figure:: process/024.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑2 码垛工件配置
+.. centered:: Figura 15.2‑2 Configuração da Peça para Paletização
 
-**Step3**：在托盘配置栏中点击“配置”进入托盘配置弹窗，设置托盘“前边”，“侧边”和“高度”，接着设置工位和工位过渡点，点击“确认配置”完成托盘信息设置。
+**Step3**: Na seção de configuração do palete, clique em “Configurar” para abrir a janela pop-up de configuração do palete. Defina a “Frente”, “Lateral” e “Altura” do palete. Em seguida, configure as estações de trabalho e os pontos de transição das estações. Clique em “Confirmar Configuração” para concluir as configurações do palete.
 
 .. figure:: process/025.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑3 码垛托盘配置
+.. centered:: Figura 15.2‑3 Configuração do Palete para Paletização
 
-**Step4**：在码垛设备尺寸配置栏中点击“配置”进入码垛设备尺寸配置配置弹窗，设置设备“X”、“Y”、“Z”和“Angle”，点击“确认配置”完成码垛设备尺寸配置信息设置。
+**Step4**: Na seção de configuração das dimensões do equipamento de paletização, clique em “Configurar” para abrir a janela pop-up de configuração. Defina “X”, “Y”, “Z” e “Ângulo” do equipamento. Clique em “Confirmar Configuração” para concluir a configuração das dimensões.
 
 .. important:: 
-   X、Y、Z为左托盘右上角或者右托盘左上角点相对于机器人基坐标系坐标值的绝对值，Angle为机器人安装时的旋转角度，推荐安装时为0。
+   X, Y, Z são os valores absolutos das coordenadas do canto superior direito do palete esquerdo ou do canto superior esquerdo do palete direito em relação ao sistema de coordenadas base do robô. Ângulo é o ângulo de rotação do robô durante a instalação, recomendado como 0.
 
 .. figure:: process/026.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑4 码垛设备尺寸配置
+.. centered:: Figura 15.2‑4 Configuração das Dimensões do Equipamento de Paletização
 
-**Step5**：在模式配置栏中点击“配置”进入模式配置弹窗。
+**Step5**: Na seção de configuração do modo, clique em “Configurar” para abrir a janela pop-up de configuração do modo.
 
-   **模式B开启/关闭**：开启：可以切换模式A/B，配置码垛每层模式的B模式；关闭：不可切换模式B，不可配置码垛每层模式的B模式；
+   **Ativar/Desativar Modo B**: Ativado: Permite alternar entre os Modos A/B e configurar o Modo B para cada camada de paletização. Desativado: Não é possível alternar para o Modo B nem configurar o Modo B para cada camada.
 
-   **模式A/B切换**：选择模式A：添加工件为模式A，工件序号为A1，A2...，不可调整工件透明度；选择模式B：添加工件为模式B，工件序号为B1，B2...，此时可以开启/关闭“显示模式A配置”显示模式A工件；
+   **Alternar Modo A/B**: Selecionar Modo A: Adiciona peças no Modo A, com números de sequência A1, A2,... Não é possível ajustar a transparência das peças. Selecionar Modo B: Adiciona peças no Modo B, com números de sequência B1, B2,... Neste modo, é possível ativar/desativar “Mostrar Configuração do Modo A” para exibir as peças do Modo A.
 
-   **显示模式A开启/关闭**：开启：调整模式B工件透明度来查看A/B模式配置效果是否合理，此时只能对模式B工件进行选中、添加、批量添加、删除和删除全部的操作；关闭：无法设置模式B工件透明度；
-
-.. important:: 
-   配置工件时，工件之间有碰撞时工件背景颜色变红，此时以上操作无法进行。如需操作，请配置工件为无碰撞。
-
-配置工件时，先设置工件间隔，右侧框框为模拟工件在右托盘的放置方式，可以单个添加也可以批量添加。接着设置码垛层数和各层的模式，点击“确认配置”完成模式信息设置。
+   **Ativar/Desativar Mostrar Modo A**: Ativado: Ajusta a transparência das peças do Modo B para verificar se a configuração combinada dos Modos A/B é razoável. Neste estado, apenas as peças do Modo B podem ser selecionadas, adicionadas, adicionadas em lote, excluídas ou totalmente excluídas. Desativado: Não é possível definir a transparência das peças do Modo B.
 
 .. important:: 
-   码垛方向：以右托盘为例，右下角为最远处，从右下角竖向或者横向摆放一排工件，再向上一排横向或竖向摆放工件，以此类推（Web页面已标注码垛方向，请注意查看）。
+   Ao configurar as peças, se houver colisão entre elas, o fundo da peça ficará vermelho. As operações acima não poderão ser realizadas. Para prosseguir, configure as peças de forma que não haja colisão.
+
+Ao configurar as peças, primeiro defina o espaçamento entre elas. A caixa à direita simula a disposição das peças no palete direito, podendo ser adicionadas individualmente ou em lote. Em seguida, defina o número de camadas e o modo para cada camada. Clique em “Confirmar Configuração” para concluir a configuração dos modos.
+
+.. important:: 
+   Direção de paletização: Usando o palete direito como exemplo, o canto inferior direito é o ponto mais distante. Disponha uma fileira de peças vertical ou horizontalmente a partir do canto inferior direito e, em seguida, disponha a próxima fileira horizontal ou verticalmente, e assim por diante (a direção de paletização está marcada na página web, por favor, verifique).
    
-   左托盘依据右托盘模式镜像放置工件。
+   O palete esquerdo posiciona as peças como imagem espelhada do padrão do palete direito.
 
 .. figure:: process/027.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑5 码垛模式A配置
+.. centered:: Figura 15.2‑5 Configuração do Modo A de Paletização
 
 .. figure:: process/028.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑6 码垛模式B配置
+.. centered:: Figura 15.2‑6 Configuração do Modo B de Paletização
 
-**Step6**：在示教程序生成栏点击“高级配置”进入高级配置弹窗，此时配置“取料抬升高度”、“第一次偏移距离”、“第二次偏移距离”和“吸料等待时间”。
+**Step6**: Na seção de geração do programa de ensinamento, clique em “Configurações Avançadas” para abrir a janela pop-up. Configure a “Altura de Elevação da Retirada”, a “Primeira Distância de Deslocamento”, a “Segunda Distância de Deslocamento” e o “Tempo de Espera para Sucção”.
 
-   **取料抬升高度**：用户自定义取料成功后，从抓取点取料成功后抬升的高度；
+   **Altura de Elevação da Retirada**: Altura para elevar a peça após uma retirada bem-sucedida do ponto de agarre, definida pelo usuário.
 
-   **第一/二次偏移距离**：用户自定义配置机器人倾斜堆放至目标点的偏移距离；
+   **Primeira/Segunda Distância de Deslocamento**: Distância de deslocamento configurável pelo usuário para o empilhamento inclinado da peça até o ponto alvo.
    
-   **吸料等待时间**：用户自定义配置吸料等待时间，监控吸料后负压到位信号，未到位时重复吸取动作；
+   **Tempo de Espera para Sucção**: Tempo de espera configurável pelo usuário para monitorar o sinal de pressão negativa no local após a sucção. Se o sinal não for recebido, a ação de sucção será repetida.
 
-   **平滑过渡**：开启平滑过渡按钮，可进行码垛/拆垛PTP平滑时间和LIN平滑半径相关参数配置。
+   **Transição Suave**: Ative o botão de transição suave para configurar os parâmetros relacionados ao tempo de transição suave PTP e ao raio de transição suave LIN para paletização/despaletização.
    
-   - PTP平滑时间：无平滑过渡时间/等级1(200ms)/等级2(400ms)/等级3(600ms)/等级4(800ms)/等级5(1000ms)
-   - LIN平滑半径：无平滑过渡半径/等级1(200mm)/等级2(400mm)/等级3(600mm)/等级4(800mm)/等级5(1000mm)
+   - Tempo de Transição Suave PTP: Sem transição suave / Nível 1 (200ms) / Nível 2 (400ms) / Nível 3 (600ms) / Nível 4 (800ms) / Nível 5 (1000ms)
+   - Raio de Transição Suave LIN: Sem transição suave / Nível 1 (200mm) / Nível 2 (400mm) / Nível 3 (600mm) / Nível 4 (800mm) / Nível 5 (1000mm)
 
 .. figure:: process/029.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.2‑7 码垛高级配置
+.. centered:: Figura 15.2‑7 Configurações Avançadas de Paletização
 
-**Step7**：在示教程序生成栏选择“方式选择”，点击“生成程序”，打开“码垛监控页”，在此页面可以对“生成信息”，“报警信息”和“码垛程序”显示和查看。
+**Step7**: Na seção de geração do programa de ensinamento, selecione a “Escolha do Modo”, clique em “Gerar Programa” e abra a “Página de Monitoramento da Paletização”. Nesta página, é possível visualizar as “Informações Geradas”, “Informações de Alarme” e o “Programa de Paletização”.
 
 .. figure:: process/030.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.2‑8 码垛系统监控
+.. centered:: Figura 15.2‑8 Monitoramento do Sistema de Paletização
 
-**Step8**：码垛运行程序中途报错后，程序停止，用户首先清除报错后，再次选择码垛程序运行，此时会弹出“上次程序中断”弹出框，点击“接续”按钮接续运行，点击“重新开始”按钮重新开始运行程序。
+**Step8**: Se ocorrer um erro durante a execução do programa de paletização e ele parar, o usuário deve primeiro limpar o erro e, em seguida, selecionar novamente o programa de paletização para executar. Neste momento, uma caixa de diálogo “Programa Anterior Interrompido” aparecerá. Clique no botão “Continuar” para retomar a execução do ponto de interrupção, ou clique no botão “Reiniciar” para executar o programa desde o início.
 
 .. figure:: process/031.png
    :align: center
    :width: 3in
 
-.. centered:: 图表 15.2‑9 码垛程序接续
+.. centered:: Figura 15.2‑9 Continuação do Programa de Paletização
 
-传送带跟踪
------------------
+Rastreamento de Esteira Transportadora
+--------------------------------------------------------
 
-传送带跟踪配置步骤
-~~~~~~~~~~~~~~~~~~~~~
+Passos para Configuração do Rastreamento de Esteira
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Step1**：在“辅助应用”->“工艺包”中选择“传送带”菜单项，进入传送带跟踪配置界面，点击“配置传送带IO”按键快速配置传送带功能所需IO，之后根据实际使用功能情况配置对应的参数，此处以无视觉跟踪抓取功能为例，需要配置传送带编码器通道，分辨率，导程，视觉搭配选择否，点击配置。
+**Step1**: Em “Aplicações Auxiliares” -> “Pacotes de Funcionalidades”, selecione o item “Esteira Transportadora” para entrar na interface de configuração. Clique no botão “Configurar E/S da Esteira” para configurar rapidamente as E/S necessárias para a função da esteira. Em seguida, configure os parâmetros correspondentes de acordo com a função real a ser utilizada. Aqui, usando a função de agarre sem rastreamento visual como exemplo, é necessário configurar o canal do codificador da esteira, a resolução, o passo e selecionar “Não” para “Combinação com Visão”. Clique em “Configurar”.
 
 .. figure:: process/032.png
    :align: center
@@ -410,234 +410,234 @@
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑1 传送带配置
+.. centered:: Figura 15.3‑1 Configuração da Esteira Transportadora
 
-**Step2**：接下来设置抓取点补偿值，为X,Y,Z三个方向上的补偿距离，可在调试过程中根据实际情况设置。
+**Step2**: Em seguida, defina os valores de compensação do ponto de agarre, que são as distâncias de compensação nas direções X, Y e Z. Eles podem ser ajustados durante a depuração de acordo com a situação real.
 
 .. figure:: process/034.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑2 传送带抓取点补偿配置
+.. centered:: Figura 15.3‑2 Configuração da Compensação do Ponto de Agarre da Esteira
 
-**Step3**：开启传送带，将标定的物体移动到定义的A点位置，停止传送带。移动机器人，将机器人末端的标定杆尖点与所标定的物体尖点对齐，点击起始点A按键，跳出对话框，显示当前编码器值和机器人位姿，点击标定完成起始点A标定。
+**Step3**: Ligue a esteira, mova o objeto calibrado para a posição definida como Ponto A e pare a esteira. Mova o robô, alinhe a ponta da haste de calibração na extremidade do robô com a ponta do objeto calibrado e clique no botão “Ponto A de Início”. Uma caixa de diálogo aparecerá mostrando o valor atual do codificador e a pose do robô. Clique em “Calibrar” para concluir a calibração do Ponto A de Início.
 
 .. figure:: process/035.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑3 起始点A配置
+.. centered:: Figura 15.3‑3 Configuração do Ponto A de Início
 
-**Step4**：点击参考点按键，进入参考点标定，记录参考点时记录机器人抓取时的高度和姿态，每次跟踪时都会以记录参考点的高度和姿态区跟踪抓取，可以和AB点不在一个高度，点击标定完成参考点标定。
+**Step4**: Clique no botão “Ponto de Referência” para entrar na calibração do ponto de referência. Ao registrar o ponto de referência, a altura e a postura do robô durante o agarre são registradas. Cada rastreamento subsequente usará a altura e a postura registradas para o rastreamento e agarre. Este ponto pode estar em uma altura diferente dos pontos A e B. Clique em “Calibrar” para concluir a calibração do ponto de referência.
 
 .. figure:: process/036.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑4 参考点配置
+.. centered:: Figura 15.3‑4 Configuração do Ponto de Referência
 
-**Step5**：开启传送带，将标定的物体移动到定义的B点位置，停止传送带。移动机器人，将机器人末端的标定杆尖点与所标定的物体尖点对齐，点击终点B按键，弹出对话框，显示当前编码器值和机器人位姿，点击标定完成终点B标定。
+**Step5**: Ligue a esteira, mova o objeto calibrado para a posição definida como Ponto B e pare a esteira. Mova o robô, alinhe a ponta da haste de calibração na extremidade do robô com a ponta do objeto calibrado e clique no botão “Ponto B Final”. Uma caixa de diálogo aparecerá mostrando o valor atual do codificador e a pose do robô. Clique em “Calibrar” para concluir a calibração do Ponto B Final.
 
 .. figure:: process/037.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑5 终点B配置
+.. centered:: Figura 15.3‑5 Configuração do Ponto B Final
 
-传送带跟踪示教程序
-~~~~~~~~~~~~~~~~~~~~~~~
+Programa de Ensinamento para Rastreamento de Esteira
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :widths: 50 80 80
    :header-rows: 0
    :align: center
 
-   * - **序号**
-     - **指令格式**
-     - **注释**
+   * - **Nº**
+     - **Formato da Instrução**
+     - **Comentário**
 
    * - 1
      - PTP(conveyorstart,30,-1,0)
-     - #机器人抓取起点
+     - #Ponto inicial para agarre do robô
 
    * - 2
      - While(1) do
-     - #循环抓取
+     - #Loop de agarre
 
    * - 3
      - ConveyorlODetect(10000)
-     - #Io实时检测物体
+     - #Detecção de objeto por E/S em tempo real
 
    * - 4
      - ConveyorGetTrackData(1)
-     - #物体位置获取
+     - #Obter posição do objeto
 
    * - 5
      - ConveyorTrackStart(1)
-     - #传送带跟踪开始
+     - #Iniciar rastreamento da esteira
 
    * - 6
      - Lin(cvrCatchPoint,10,-1,0,0)
-     - #机器人到达抓取点
+     - #Robô atinge o ponto de agarre
 
    * - 7
      - MoveGripper(1,255,255,0,10000)
-     - #夹爪抓取物体
+     - #Garra agarra o objeto
 
    * - 8
      - Lin(cvrRaisePoint,10,-1,0,0)
-     - #机器人提起
+     - #Robô levanta o objeto
 
    * - 9
      - ConveyorTrackEnd()
-     - #传送带跟踪结束
+     - #Encerrar rastreamento da esteira
 
    * - 10
      - PTP(conveyorraise,30,-1,0)
-     - #机器人到达等待点
+     - #Robô atinge o ponto de espera
 
    * - 11
      - PTP(conveyorend,30,-1,0)
-     - #机器人到达放置点
+     - #Robô atinge o ponto de colocação
 
    * - 12
      - MoveGripper(1,0,255,0,10000)
-     - #夹爪松开
+     - #Garra solta o objeto
 
    * - 13
      - PTP(conveyorstart,50,-1,0)
-     - #机器人再次回到抓取起点,等待下次抓取
+     - #Robô retorna ao ponto inicial de agarre, aguardando o próximo agarre
 
    * - 14
      - end
-     - #结束
+     - #Fim
 
-机器人传送带跟踪系统构成
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Composição do Sistema de Rastreamento de Esteira do Robô
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-传送带编码器数据通信连接方式
-+++++++++++++++++++++++++++++++++++
+Método de Conexão de Comunicação de Dados do Codificador da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-为了在机床加工中，实现自动化上下料流程，开发了基于FOCAS通信的CNC功能包，可实现协作机器人与CNC机床的通信交互与协同运动。
+Para automatizar o processo de carga e descarga em usinagem, foi desenvolvido um pacote de funcionalidades CNC baseado na comunicação FOCAS, que permite a interação de comunicação e o movimento coordenado entre o robô colaborativo e a máquina CNC.
 
-如图所示，FOCAS通信是基于以太网的，通过网线连接机器人控制箱网口与机床内嵌网口，即可建立机器人与机床的FOCAS通信，实现在机器人端的CNC控制和机床状态监控。
+Como mostrado na figura, a comunicação FOCAS é baseada em Ethernet. Conectando a porta Ethernet do painel de controle do robô à porta Ethernet integrada da máquina CNC, a comunicação FOCAS entre o robô e a máquina é estabelecida, permitindo o controle CNC e o monitoramento do estado da máquina a partir do robô.
 
 .. figure:: process/038.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑6 机器人传送带跟踪系统构成拓扑图
+.. centered:: Figura 15.3‑6 Diagrama Topológico da Composição do Sistema de Rastreamento de Esteira do Robô
 
-系统中，（a）为计算机，（b）为机器人及其控制箱，（c）为传送带、光电传感器及编码器组成的传送带系统。机器人控制箱通过数字IO通信与光电传感器、传送带相连，通过RS485与传送带编码器相连。
+No sistema, (a) é o computador, (b) é o robô e seu painel de controle, (c) é o sistema de esteira composto pela esteira transportadora, sensores fotoelétricos e codificadores. O painel de controle do robô se conecta aos sensores fotoelétricos e à esteira via comunicação digital IO, e se conecta ao codificador da esteira via RS485.
 
-传送带配置
+Configuração da Esteira
 +++++++++++++++++++++++++++++++++++
 
-进入机器人Web页面“基础设置”、“外设”、“跟踪”下属的“传送带”功能配置界面进行传送带跟踪功能属性配置。
+Acesse a interface de configuração da função de rastreamento de esteira através do menu “Configurações Básicas”, “Periféricos”, “Rastreamento” e “Esteira” na página web do robô.
 
 .. figure:: process/039.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑7 传送带跟踪配置页面
+.. centered:: Figura 15.3‑7 Página de Configuração do Rastreamento de Esteira
 
-在传送带跟踪配置页面，点击“传送带I/O一键配置”按钮一键配置传送带物理连接。
-之后在“参数配置”下的“功能选择”下拉框中选择“跟踪运动”，再后配置编码器属性、跟踪工件坐标系工件轴、视觉搭配，并在“跟踪类型”下拉框中选中“追检运动”，此时可输入跟踪起始距离以及跟踪终止距离。
-跟踪起始距离：触发跟踪信号后传送带运行到设置距离后机器人开始动作，当设置为-1时为自动触发。
-跟踪终止距离：机器人开始动作后，跟随传送带同步运动的最远距离。
+Na página de configuração, clique no botão “Configuração Rápida de E/S da Esteira” para configurar a conexão física da esteira com um clique.
+Em seguida, na seção “Configuração de Parâmetros”, na caixa de seleção “Seleção de Função”, escolha “Movimento de Rastreamento”. Depois, configure os atributos do codificador, o eixo da peça do sistema de coordenadas da peça para rastreamento, e a combinação com visão. Na caixa de seleção “Tipo de Rastreamento”, selecione “Movimento de Rastreamento Perseguidor”. Neste ponto, você pode inserir a distância de início do rastreamento e a distância de fim do rastreamento.
+Distância de início do rastreamento: Após o sinal de disparo do rastreamento, a esteira se move por esta distância antes que o robô comece a agir. Se definido como -1, o início é automático.
+Distância de fim do rastreamento: A distância máxima que o robô pode acompanhar a esteira em movimento síncrono após iniciar o movimento.
 
-跟踪坐标系配置
-+++++++++++++++++++++++++++++++++++
+Configuração do Sistema de Coordenadas para Rastreamento
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-跟踪运动使用工件坐标系作为传送带坐标系，因此需要设置工件坐标系。
+O movimento de rastreamento usa o sistema de coordenadas da peça como o sistema de coordenadas da esteira. Portanto, é necessário configurar o sistema de coordenadas da peça.
 
-点击“初始设置”、“基础”，在“坐标系”下选择“工件坐标系”，点击选择“wobjcoord0”以外的工件坐标系进行标定，标定方式此处不赘述。
+Clique em “Configurações Iniciais”, “Básico”, selecione “Coordenadas da Peça” em “Sistemas de Coordenadas” e, em seguida, selecione um sistema de coordenadas da peça diferente de “wobjcoord0” para calibrar. O método de calibração não será detalhado aqui.
 
 .. figure:: process/040.png
    :align: center
    :width: 4in
 
-.. centered:: 图表 15.3‑8 跟踪坐标系设置
+.. centered:: Figura 15.3‑8 Configuração do Sistema de Coordenadas para Rastreamento
 
-传送带跟踪追检运动功能
-+++++++++++++++++++++++++++++++++++
+Função de Movimento de Rastreamento Perseguidor da Esteira
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-追检运动属于传送带跟踪运动的一种，与跟踪运动相比追检运动的运动点示教无需在工件坐标系上方进行示教运动，可以在工件坐标系任意位置进行示教，再通过“跟踪起始距离”的参数进行末端与传送带同步运动，是一种比较灵活的跟踪方式。
+O movimento de rastreamento perseguidor é um tipo de movimento de rastreamento de esteira. Comparado ao movimento de rastreamento padrão, o ensinamento dos pontos de movimento para o movimento perseguidor não precisa ser feito acima do sistema de coordenadas da peça; pode ser feito em qualquer posição desse sistema. O movimento síncrono entre a extremidade do robô e a esteira é obtido através do parâmetro “Distância de início do rastreamento”. É uma forma de rastreamento bastante flexível.
 
-传送带跟踪追检运动功能简介
-+++++++++++++++++++++++++++++++++++
+Introdução à Função de Movimento de Rastreamento Perseguidor da Esteira
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-以下给出追检运动示例以介绍运动特性。
+O exemplo abaixo ilustra as características do movimento perseguidor.
 
 .. figure:: process/041.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑9 传送带跟踪追检运动示教示例
+.. centered:: Figura 15.3‑9 Exemplo de Ensinamento para Movimento de Rastreamento Perseguidor da Esteira
 
-其中，以x为工件坐标中传送带运动的方向，a为传送带平面，b为抓取目标工件，c为光电传感器，d为跟踪起始距离，e为跟踪终止距离。P1到P4为示教路点及其依次顺序，P2到P3为相同路点，包含夹爪运动。
+Onde, x é a direção do movimento da esteira no sistema de coordenadas da peça, a é o plano da esteira, b é a peça alvo a ser agarrada, c é o sensor fotoelétrico, d é a distância de início do rastreamento e e é a distância de fim do rastreamento. P1 a P4 são os pontos de caminho ensinados em sua ordem sequencial, e P2 e P3 são os mesmos ponto de caminho, incluindo o movimento da garra.
 
 .. figure:: process/042.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑10 传送带跟踪追检运动示教后执行示例
+.. centered:: Figura 15.3‑10 Exemplo de Execução Após o Ensinamento do Movimento de Rastreamento Perseguidor da Esteira
 
-当上述示教程序开始运行，工件触发光电开关信号后，机器人会等待目标运动到P1下方后开始跟踪运动，机器人夹爪将如上图所示轨迹运动。
+Quando o programa de ensinamento acima começar a ser executado e a peça acionar o sinal do sensor fotoelétrico, o robô aguardará até que o alvo se mova para abaixo de P1 antes de iniciar o movimento de rastreamento. A garra do robô se moverá ao longo da trajetória mostrada na figura.
 
-追检运动程序示教
-+++++++++++++++++++++++++++++++++++
+Ensinamento do Programa para Movimento de Rastreamento Perseguidor
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-追检运动程序逻辑与跟踪运动逻辑基本一致，包含获取触发信号、获取传送带数据以及开始跟踪运动部分。
+A lógica do programa para movimento de rastreamento perseguidor é basicamente a mesma que a do movimento de rastreamento padrão, incluindo a obtenção do sinal de disparo, a obtenção dos dados da esteira e o início do movimento de rastreamento.
 
-**Step 1**：点击“示教程序”，“程序编程”，选择并点击“外设指令”下属的“传送带”按钮进入传送带指令配置页面。
+**Step 1**: Clique em “Programas de Ensinamento”, “Programação de Programa”, selecione e clique no botão “Esteira Transportadora” em “Instruções de Periféricos” para entrar na página de configuração de instruções da esteira.
 
 .. figure:: process/043.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑11 I/O实时监测指令
+.. centered:: Figura 15.3‑11 Instrução de Monitoramento de E/S em Tempo Real
 
-**Step 2**：点击“I/O实时监测”并设置“最大等待示教(ms)”，实时检测跟踪触发信号。点击“添加”与“应用”按钮将指令添加到程序中。
+**Step 2**: Clique em “Monitoramento de E/S em Tempo Real” e defina o “Tempo Máximo de Espera (ms)” para detectar o sinal de disparo do rastreamento em tempo real. Clique nos botões “Adicionar” e “Aplicar” para adicionar a instrução ao programa.
 
 .. figure:: process/044.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑12 位置实时检测指令
+.. centered:: Figura 15.3‑12 Instrução de Detecção de Posição em Tempo Real
 
-**Step 3**：点击“位置实时检测”并将工作模式选定“跟踪运动”。点击“添加”与“应用”按钮将指令添加到程序中。
+**Step 3**: Clique em “Detecção de Posição em Tempo Real” e selecione “Movimento de Rastreamento” como o modo de trabalho. Clique nos botões “Adicionar” e “Aplicar” para adicionar a instrução ao programa.
 
 .. figure:: process/045.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑13 跟踪开启指令
+.. centered:: Figura 15.3‑13 Instrução de Ativação de Rastreamento
 
-**Step 4**：点击“跟踪开启”并工作模式选定“跟踪运动”。点击“添加”与“应用”按钮将指令添加到程序中。
+**Step 4**: Clique em “Ativar Rastreamento” e selecione “Movimento de Rastreamento” como o modo de trabalho. Clique nos botões “Adicionar” e “Aplicar” para adicionar a instrução ao programa.
 
-**Step 5**：示教在跟踪开启后的笛卡尔空间运动以及夹爪外设运动，运动过程中将保持与传送带的跟踪同步运动。
+**Step 5**: Ensinar os movimentos no espaço cartesiano após a ativação do rastreamento, bem como os movimentos do periférico da garra. Durante o movimento, o robô manterá o rastreamento sincronizado com a esteira.
 
 .. figure:: process/046.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑14 跟踪关闭指令
+.. centered:: Figura 15.3‑14 Instrução de Desativação de Rastreamento
 
-**Step 6**：点击“跟踪关闭”并点击“添加”与“应用”按钮将指令添加到程序中。
+**Step 6**: Clique em “Desativar Rastreamento” e, em seguida, clique nos botões “Adicionar” e “Aplicar” para adicionar a instrução ao programa.
 
 .. figure:: process/047.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑15 一段典型的传送带程序跟踪运动程序
+.. centered:: Figura 15.3‑15 Um Programa Típico de Movimento de Rastreamento de Esteira
 
-当连续示教两个相同的跟踪运动目标（可包含偏置距离），机器人运动将阻塞在该目标位置，实现持续同步跟踪直到跟踪距离达到终止跟踪距离为止。
+Quando dois pontos de movimento de rastreamento idênticos (podendo incluir distâncias de deslocamento) são ensinados em sequência, o movimento do robô será bloqueado no local do ponto alvo, mantendo o rastreamento síncrono contínuo até que a distância de rastreamento atinja a distância de fim de rastreamento.
 
 .. figure:: process/048.png
    :align: center
    :width: 6in
 
-.. centered:: 图表 15.3‑16 一段典型的传送带阻塞跟踪抓取运动程序
+.. centered:: Figura 15.3‑16 Um Programa Típico de Movimento de Agarre com Rastreamento Bloqueado da Esteira
 
-当连续示教两个相同的跟踪运动目标（可包含偏置距离），同时中间插入夹爪运动时，机器人将在该目标位置位置持续跟踪传送带直至夹爪运动完成，实现阻塞跟踪抓取。
+Quando dois pontos de movimento de rastreamento idênticos (podendo incluir distâncias de deslocamento) são ensinados em sequência e um movimento de garra é inserido entre eles, o robô permanecerá rastreando a esteira na posição do ponto alvo até que o movimento da garra seja concluído, realizando assim um agarre com rastreamento bloqueado.

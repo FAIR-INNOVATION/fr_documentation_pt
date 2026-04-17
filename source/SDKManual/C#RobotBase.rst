@@ -1,127 +1,127 @@
-机器人基础
-=============
+Fundamentos do Robô
+=======================================
 
 .. toctree:: 
     :maxdepth: 5
 
-实例化机器人
+Instanciar o Robô
 ++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  机器人接口类构造函数
+    * @brief  Construtor da classe de interface do robô
     */
     Robot(); 
 
-与控制器建立通信
-++++++++++++++++++++++++++++++++++
+Estabelecer Comunicação com o Controlador
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  与机器人控制器建立通信
-    * @param  [in] ip  控制器IP地址，出场默认为192.168.58.2
-    * @return 错误码
+    * @brief  Estabelecer comunicação com o controlador do robô
+    * @param  [in] ip  Endereço IP do controlador, padrão de fábrica é 192.168.58.2
+    * @return Código de erro
     */
     int RPC(string ip);
 
-与机器人断开通信
+Encerrar Comunicação com o Robô
 ++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 与机器人控制器断开通信 
-    * @return 错误码 
+    * @brief Encerrar comunicação com o controlador do robô
+    * @return Código de erro
     */ 
     int CloseRPC(); 
 
-查询SDK版本号
-++++++++++++++++++++++++++++++++++
+Consultar Número da Versão do SDK
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 查询 SDK 版本号 
-    * @param [out] version SDK 版本号 
-    * @return 错误码 
+    * @brief Consultar número da versão do SDK
+    * @param [out] version Número da versão do SDK
+    * @return Código de erro
     */  
     int GetSDKVersion(ref string version);
 
-获取控制器IP
+Obter IP do Controlador
 ++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取控制器IP
-    * @param  [out] ip  控制器IP
-    * @return  错误码
+    * @brief  Obter IP do controlador
+    * @param  [out] ip  IP do controlador
+    * @return  Código de erro
     */
     int GetControllerIP(ref string ip);
 
-控制机器人进入或退出拖动示教模式
-++++++++++++++++++++++++++++++++++
+Controlar a Entrada ou Saída do Robô no Modo de Ensinamento por Arrasto
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  控制机器人进入或退出拖动示教模式
-    * @param  [in] state 0-退出拖动示教模式，1-进入拖动示教模式
-    * @return  错误码
+    * @brief  Controlar a entrada ou saída do robô no modo de ensinamento por arrasto
+    * @param  [in] state 0-sair do modo de ensinamento por arrasto, 1-entrar no modo de ensinamento por arrasto
+    * @return  Código de erro
     */
     int DragTeachSwitch(byte state);
 
-查询机器人是否处于拖动模式
-++++++++++++++++++++++++++++++++++
+Verificar se o Robô Está no Modo de Arrasto
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  查询机器人是否处于拖动示教模式
-    * @param  [out] state 0-非拖动示教模式，1-拖动示教模式
-    * @return  错误码
+    * @brief  Verificar se o robô está no modo de ensinamento por arrasto
+    * @param  [out] state 0-não está no modo de ensinamento por arrasto, 1-está no modo de ensinamento por arrasto
+    * @return  Código de erro
     */
     int IsInDragTeach(ref byte state); 
 
-控制机器人上使能或下使能
-++++++++++++++++++++++++++++++++++
+Controlar a Habilitação ou Desabilitação do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  控制机器人上使能或下使能，机器人上电后默认自动上使能
-    * @param  [in] state  0-下使能，1-上使能
-    * @return  错误码
+    * @brief  Controlar a habilitação ou desabilitação do robô. Por padrão, o robô é automaticamente habilitado após a inicialização.
+    * @param  [in] state  0-desabilitar, 1-habilitar
+    * @return  Código de erro
     */
     int RobotEnable(byte state); 
 
-控制机器人手自动模式切换
-++++++++++++++++++++++++++++++++++
+Controlar a Alternância entre Modo Manual e Automático do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 控制机器人手自动模式切换
-    * @param [in] mode 0-自动模式，1-手动模式
-    * @return 错误码
+    * @brief Controlar a alternância entre modo manual e automático do robô
+    * @param [in] mode 0-modo automático, 1-modo manual
+    * @return Código de erro
     */
     int Mode(int mode);
 
-关闭机器人操作系统
-+++++++++++++++++++++++++++++
+Desligar o Sistema Operacional do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 关闭机器人操作系统
-    * @return 错误码
+    * @brief Desligar o sistema operacional do robô
+    * @return Código de erro
     */
     int ShutDownRobotOS();
 
-代码示例
-+++++++++++++++++++++++++++++
+Exemplo de Código
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -131,28 +131,28 @@
         Console.WriteLine($"ShutDownRobotOS rtn is {rtn}");
     }
 
-设置与机器人通讯重连参数
-++++++++++++++++++++++++++++++++++
+Definir Parâmetros de Reconexão de Comunicação com o Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置与机器人通讯重连参数
-    * @param [in] enable 是否开启 true-使能，false-不使能
-    * @param [in] times 重连次数
-    * @param [in] period 重连时间间隔（毫秒）
+    * @brief Definir parâmetros de reconexão de comunicação com o robô
+    * @param [in] enable Ativar ou não true-ativar, false-desativar
+    * @param [in] times Número de tentativas de reconexão
+    * @param [in] period Intervalo de tempo entre tentativas de reconexão (milissegundos)
     */
     void SetReconnectParam(bool enable, int times, int period);
 
-代码示例
-+++++++++++++
+Exemplo de Código
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     private void btnStandard_Click(object sender, EventArgs e)
     {
         Robot robot = new Robot();
-        robot.SetReconnectParam(true, 100, 20000);//断线重连参数
+        robot.SetReconnectParam(true, 100, 20000);// Parâmetros de reconexão
         robot.RPC("192.168.58.2"); 
 
         string ip = "";
@@ -184,88 +184,88 @@
         robot.Mode(1);
     }
 
-初始化日志参数
-++++++++++++++++++++++++++++++++++
+Inicializar Parâmetros de Log
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 初始化日志参数
-    * @param [in] logType：输出模式，DIRECT-直接输出；BUFFER-缓冲输出；ASYNC-异步输出
-    * @param [in] logLevel：日志过滤等级，ERROR-错误；WARNING-警告;INFO-信息；DEBUG-调试
-    * @param [in] filePath: 文件保存路径，如“D://Log/”
-    * @param [in] saveFileNum：保存文件个数，同时超出保存文件个数和保存文件天数的文件将被删除
-    * @param [in] saveDays: 保存文件天数，同时超出保存文件个数和保存文件天数的文件将被删除
-    * @return 错误码
+    * @brief Inicializar parâmetros de log
+    * @param [in] logType: Modo de saída, DIRECT-saída direta; BUFFER-saída com buffer; ASYNC-saída assíncrona
+    * @param [in] logLevel: Nível de filtragem do log, ERROR-erro; WARNING-aviso; INFO-informação; DEBUG-depuração
+    * @param [in] filePath: Caminho para salvar o arquivo, ex: "D://Log/"
+    * @param [in] saveFileNum: Número de arquivos a serem salvos. Arquivos que excederem tanto o número de arquivos salvos quanto o número de dias salvos serão excluídos.
+    * @param [in] saveDays: Número de dias para salvar os arquivos. Arquivos que excederem tanto o número de arquivos salvos quanto o número de dias salvos serão excluídos.
+    * @return Código de erro
     */
     int LoggerInit(FrLogType logType = FrLogType.DIRECT, FrLogLevel logLevel = FrLogLevel.INFO, string filePath = "", int saveFileNum = 10, int saveDays = 10);
 
-设置日志过滤等级
-++++++++++++++++++++++++++++++++++
+Definir Nível de Filtragem do Log
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 设置日志过滤等级
-    * @param [in] logLevel: 日志过滤等级，ERROR-错误；WARNING-警告;INFO-信息；DEBUG-调试
-    * @return 错误码
+    * @brief Definir nível de filtragem do log
+    * @param [in] logLevel: Nível de filtragem do log, ERROR-erro; WARNING-aviso; INFO-informação; DEBUG-depuração
+    * @return Código de erro
     */
     int SetLoggerLevel(FrLogLevel logLevel);
 
-获取机器人软件版本
-++++++++++++++++++++++++++++++++++
+Obter Versão do Software do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取机器人软件版本信息
-    * @param [out] robotModel 机器人型号
-    * @param [out] webVersion web版本
-    * @param [out] controllerVersion 控制器版本
-    * @return 错误码 
+    * @brief Obter informações da versão do software do robô
+    * @param [out] robotModel Modelo do robô
+    * @param [out] webVersion Versão web
+    * @param [out] controllerVersion Versão do controlador
+    * @return Código de erro
     */ 
     int GetSoftwareVersion(ref string robotModel, ref string webVersion, ref string controllerVersion);
-    
-获取机器人硬件版本
-++++++++++++++++++++++++++++++++++
+
+Obter Versão do Hardware do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取机器人硬件版本信息
-    * @param [out] ctrlBoxBoardVersion 控制箱载板硬件版本
-    * @param [out] driver1Version 驱动器1硬件版本
-    * @param [out] driver1Version 驱动器2硬件版本
-    * @param [out] driver1Version 驱动器3硬件版本
-    * @param [out] driver1Version 驱动器4硬件版本
-    * @param [out] driver1Version 驱动器5硬件版本
-    * @param [out] driver1Version 驱动器6硬件版本
-    * @param [out] endBoardVersion 末端板硬件版本
-    * @return 错误码 
+    * @brief Obter informações da versão do hardware do robô
+    * @param [out] ctrlBoxBoardVersion Versão do hardware da placa base do painel de controle
+    * @param [out] driver1Version Versão do hardware do driver 1
+    * @param [out] driver2Version Versão do hardware do driver 2
+    * @param [out] driver3Version Versão do hardware do driver 3
+    * @param [out] driver4Version Versão do hardware do driver 4
+    * @param [out] driver5Version Versão do hardware do driver 5
+    * @param [out] driver6Version Versão do hardware do driver 6
+    * @param [out] endBoardVersion Versão do hardware da placa da extremidade
+    * @return Código de erro
     */ 
     int GetHardwareVersion(ref string ctrlBoxBoardVersion, ref string driver1Version, ref string driver2Version, ref string driver3Version,ref string driver4Version, ref string driver5Version, ref string driver6Version, ref string endBoardVersion);
 
-获取机器人固件版本
-++++++++++++++++++++++++++++++++++
+Obter Versão do Firmware do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /** 
-    * @brief 获取机器人固件版本信息
-    * @param [out] ctrlBoxBoardVersion 控制箱载板固件版本
-    * @param [out] driver1Version 驱动器1固件版本
-    * @param [out] driver1Version 驱动器2固件版本
-    * @param [out] driver1Version 驱动器3固件版本
-    * @param [out] driver1Version 驱动器4固件版本
-    * @param [out] driver1Version 驱动器5固件版本
-    * @param [out] driver1Version 驱动器6固件版本
-    * @param [out] endBoardVersion 末端板固件版本
-    * @return 错误码 
+    * @brief Obter informações da versão do firmware do robô
+    * @param [out] ctrlBoxBoardVersion Versão do firmware da placa base do painel de controle
+    * @param [out] driver1Version Versão do firmware do driver 1
+    * @param [out] driver2Version Versão do firmware do driver 2
+    * @param [out] driver3Version Versão do firmware do driver 3
+    * @param [out] driver4Version Versão do firmware do driver 4
+    * @param [out] driver5Version Versão do firmware do driver 5
+    * @param [out] driver6Version Versão do firmware do driver 6
+    * @param [out] endBoardVersion Versão do firmware da placa da extremidade
+    * @return Código de erro
     */ 
     int GetFirmwareVersion(ref string ctrlBoxBoardVersion, ref string driver1Version, ref string driver2Version, ref string driver3Version,ref string driver4Version, ref string driver5Version, ref string driver6Version, ref string endBoardVersion);
 
-代码示例
-++++++++++++++
+Exemplo de Código
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 

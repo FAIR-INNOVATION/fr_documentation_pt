@@ -1,35 +1,14 @@
+Operação da Função CNDE
+=====================================
 
-CNDE功能操作
-=====================
+Configuração de Entrada e Dados de Entrada
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-输入配置与输入数据
-~~~~~~~~~~~~~~~~~~~~~~~~~
+O cliente envia quadros de dados para o robô através do CNDE para controlar saídas DO, saídas AO, registradores de entrada, etc. Antes de enviar os dados de entrada, é necessário configurar o conteúdo da função a ser controlada. A Tabela 2-1 mostra o formato do conteúdo da configuração de entrada do CNDE, que inclui o número da receita e uma série de nomes de funções de configuração de entrada (Tabela 1-2); a Tabela 3-2 correspondente mostra o formato do conteúdo dos dados de entrada, que inclui o número da receita e o grupo de bytes de dados de entrada.
 
-客户端通过CNDE向机器人发送数据帧对机器人DO、AO输出、输入寄存器等进行控制，在发送输入数据前，需要先配置需要控制的功能内容。表2-1为CNDE输入配置内容格式，包含配方编号及一系列输入配置功能名称（表1-2）；对应的表3-2为输入数据内容格式，包含配方编号和输入数据字节组。
+A entrada de dados CNDE suporta até 8 receitas. Ao enviar dados de entrada, o robô corresponderá o número da receita nos dados recebidos ao grupo de nomes de funções de configuração de receita correspondente, analisará os dados para obter o valor de entrada de dados para cada nome de função e, em seguida, executará operações de controle do robô com base nos dados de entrada.
 
-CNDE数据输入支持最多8个配方，在发送输入数据时，机器人将根据收到数据中的配方编号匹配到对应的配方配置功能名称组，并解析数据得到其中每个功能名称的输入数据值，进而根据输入的数据进行机器人控制操作。
-
-.. centered:: 表3-1 输入配置内容格式
-
-.. list-table::
-   :widths: 40 20 40
-   :header-rows: 0
-   :align: center
-   :class: sheet-center
-
-   * - **名称**
-     - **配方编号**
-     - **功能名称字符串**
-
-   * - 长度(byte)
-     - 1
-     - --
-
-   * - 内容
-     - 0 ~ 7
-     - 一系列输入数据功能名称
-
-.. centered:: 表3-2 输入数据内容格式
+.. centered:: Tabela 3-1 Formato do Conteúdo da Configuração de Entrada
 
 .. list-table::
    :widths: 40 20 40
@@ -37,65 +16,85 @@ CNDE数据输入支持最多8个配方，在发送输入数据时，机器人将
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **配方编号**
-     - **数据字节组**
+   * - **Nome**
+     - **Número da Receita**
+     - **String do Nome da Função**
 
-   * - 长度(byte)
+   * - Comprimento (byte)
      - 1
      - --
 
-   * - 内容
+   * - Conteúdo
      - 0 ~ 7
-     - 输入数据内容
+     - Uma série de nomes de funções de dados de entrada
 
-输入配置时，机器人控制器在收到配置名称组后会对每个名称进行校验，若所配置的功能名称正确无误，则机器人会反馈用“,”分割的所有配置功能的数据类型名称；若配置的功能名称有误，则机器人会反馈相应的错误内容。输入配置数据帧(16进制)示例如下：
+.. centered:: Tabela 3-2 Formato do Conteúdo dos Dados de Entrada
+
+.. list-table::
+   :widths: 40 20 40
+   :header-rows: 0
+   :align: center
+   :class: sheet-center
+
+   * - **Nome**
+     - **Número da Receita**
+     - **Grupo de Bytes de Dados**
+
+   * - Comprimento (byte)
+     - 1
+     - --
+
+   * - Conteúdo
+     - 0 ~ 7
+     - Conteúdo dos dados de entrada
+
+Durante a configuração de entrada, após receber o grupo de nomes de configuração, o controlador do robô validará cada nome. Se os nomes das funções configuradas estiverem corretos, o robô retornará os nomes dos tipos de dados de todas as funções configuradas, separados por “,”. Se houver um erro no nome da função configurada, o robô retornará a mensagem de erro correspondente. Um exemplo do quadro de dados de configuração de entrada (hexadecimal) é mostrado abaixo:
 
 .. image:: cnde/001.png
    :width: 6in
    :align: center
 
-其中配置输入功能名称组总长度为54个字节，加上输入配方编号1个字节，共55个字节，转成16进制为0x0037，在小端模式下，对应输入数据帧中的数据长度即为“37 00”。
+Onde o comprimento total do grupo de nomes de funções de entrada configuradas é de 54 bytes, mais 1 byte para o número da receita de entrada, totalizando 55 bytes, que em hexadecimal é 0x0037. No modo little-endian, o comprimento dos dados no quadro de dados de entrada correspondente é “37 00”.
 
-此时机器人将反馈一条类型为字符提示消息(本文3.3.1节字符提示消息)的数据帧：
+Neste momento, o robô retornará um quadro de dados do tipo mensagem de texto (mensagem de texto da seção 3.3.1):
 
 .. image:: cnde/002.png
    :width: 6in
    :align: center
 
-消息类型“00”表示这是一条执行成功的反馈消息，客户端可以提取“输入数据配置类型”和表1-3对比，得到输入配置的字节长度，本示例中数据总长度为1*5+4*30+8*30 = 365个字节。
+O tipo de mensagem “00” indica que esta é uma mensagem de feedback de execução bem-sucedida. O cliente pode extrair o “Tipo de Configuração de Dados de Entrada” e compará-lo com a Tabela 1-3 para obter o comprimento em bytes da configuração de entrada. Neste exemplo, o comprimento total dos dados é 1*5 + 4*30 + 8*30 = 365 bytes.
 
-若输入配置名称有误：
+Se houver um erro no nome da configuração de entrada:
 
 .. image:: cnde/003.png
    :width: 6in
    :align: center
 
-其对应的反馈信息为：
+A informação de feedback correspondente é:
 
 .. image:: cnde/004.png
    :width: 6in
    :align: center
 
-输入数据可以按一定的周期循环输入，也可以仅在有需要的时候输入，循环输入时机器人可以处理的最快周期为1ms，但较快的输入周期会带来一定的机器人系统资源开销，建议您根据实际情况合理设置数据输入周期。
+Os dados de entrada podem ser enviados em um ciclo periódico ou apenas quando necessário. Durante a entrada cíclica, o período mais rápido que o robô pode processar é de 1 ms, mas períodos de entrada mais rápidos podem consumir recursos do sistema do robô. Recomenda-se definir um período de entrada de dados razoável de acordo com a situação real.
 
-另外向机器人发送数据帧时，机器人不会有反馈信息，除非发送的数据帧长度或数据异常。输入数据帧示例如下，其中输入数据配方编号与输入数据字节组长度应该与输入配置相符：
+Além disso, ao enviar quadros de dados para o robô, o robô não retornará informações de feedback, a menos que o comprimento do quadro de dados enviado ou os dados estejam anormais. Um exemplo de quadro de dados de entrada é mostrado abaixo, onde o número da receita dos dados de entrada e o comprimento do grupo de bytes de dados de entrada devem corresponder à configuração de entrada:
 
 .. image:: cnde/005.png
    :width: 6in
    :align: center
 
-输出配置与输出数据
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuração de Saída e Dados de Saída
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-客户端通过CNDE获取机器人状态反馈可以根据需要自定义状态反馈内容和反馈周期，使用机器人CNDE状态反馈需要以下三个步骤：①输出配置；②启动输出；③接收输出数据。
+O cliente pode personalizar o conteúdo do feedback de estado e o período de feedback de acordo com as necessidades ao obter o feedback de estado do robô através do CNDE. O uso do feedback de estado CNDE do robô requer os seguintes três passos: ① Configuração de saída; ② Iniciar saída; ③ Receber dados de saída.
 
-输出配置
+Configuração de Saída
 +++++++++++++++++++++++
 
-输出配置帧内容包含输出周期和输出功能名称组(所有可配置名称见表1-1)，输出周期可配置范围为1 ~ 200ms，输出数据字节数最大支持4096byte。输出功能名称组为一系列用“,”分隔的输出功能名称字符串，客户端发送输出配置帧后，机器人会对配置的功能名称进行校验，若所配置的功能名称均为当前机器人CNDE支持的功能名称，则机器人反馈一系列“,”分隔的数据类型组合；否则若检验输出配置名称失败，则反馈对应的错误信息。
+O quadro de configuração de saída contém o período de saída e o grupo de nomes de funções de saída (todos os nomes configuráveis estão listados na Tabela 1-1). O período de saída pode ser configurado na faixa de 1 a 200 ms, e o número máximo de bytes de dados de saída suportado é 4096 bytes. O grupo de nomes de funções de saída é uma série de strings de nomes de funções de saída separadas por “,”. Após o cliente enviar o quadro de configuração de saída, o robô validará os nomes das funções configuradas. Se todos os nomes das funções configuradas forem suportados pelo CNDE atual do robô, o robô retornará uma série de combinações de tipos de dados separadas por “,”. Caso contrário, se a validação dos nomes da configuração de saída falhar, o robô retornará a mensagem de erro correspondente.
 
-.. centered:: 表3-3 输出配置内容
+.. centered:: Tabela 3-3 Conteúdo da Configuração de Saída
 
 .. list-table::
    :widths: 40 20 40
@@ -103,52 +102,52 @@ CNDE数据输入支持最多8个配方，在发送输入数据时，机器人将
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **输出周期(ms)**
-     - **功能名称字符串**
+   * - **Nome**
+     - **Período de Saída (ms)**
+     - **String do Nome da Função**
 
-   * - 长度(byte)
+   * - Comprimento (byte)
      - 2
      - --
 
-   * - 内容
+   * - Conteúdo
      - 1-200
-     - 输出功能名称组
+     - Grupo de nomes de funções de saída
 
-如输出配置帧如下：
+Por exemplo, o quadro de configuração de saída é o seguinte:
 
 .. image:: cnde/006.png
    :width: 6in
    :align: center
 
-其中配置输出功能名称组总长度为48个字节，加上输出周期2个字节，共50个字节，转成16进制为0x0032，在小端模式下，对应输入数据帧中的数据长度即为“32 00”。
+Onde o comprimento total do grupo de nomes de funções de saída configuradas é de 48 bytes, mais 2 bytes para o período de saída, totalizando 50 bytes, que em hexadecimal é 0x0032. No modo little-endian, o comprimento dos dados no quadro de dados de entrada correspondente é “32 00”.
 
-此时机器人将反馈一条类型为字符提示消息(本文3.3.1节字符提示消息)的数据帧：
+Neste momento, o robô retornará um quadro de dados do tipo mensagem de texto (mensagem de texto da seção 3.3.1):
 
 .. image:: cnde/007.png
    :width: 6in
    :align: center
 
-消息类型“00”表示这是一条执行成功的反馈消息，客户端可以提取“输出数据配置类型”和表1-3对比，得到输出配置的字节长度，本示例中数据总长度为1+8*10+4 = 85个字节。
+O tipo de mensagem “00” indica que esta é uma mensagem de feedback de execução bem-sucedida. O cliente pode extrair o “Tipo de Configuração de Dados de Saída” e compará-lo com a Tabela 1-3 para obter o comprimento em bytes da configuração de saída. Neste exemplo, o comprimento total dos dados é 1 + 8*10 + 4 = 85 bytes.
 
-若输入配置名称有误，如“queue”误写为“quene”：
+Se houver um erro no nome da configuração de entrada, como “queue” escrito incorretamente como “quene”:
 
 .. image:: cnde/008.png
    :width: 6in
    :align: center
 
-其对应的反馈信息为：
+A informação de feedback correspondente é:
 
 .. image:: cnde/009.png
    :width: 6in
    :align: center
 
-输出启动和停止
+Iniciar e Parar a Saída
 +++++++++++++++++++++++++
 
-机器人CNDE输出配置完成后，发送启动CNDE输出启动指令，机器人即按照配置的输出周期和输出内容进行状态反馈输出，同样发送CNDE停止输出指令，机器人将停止状态反馈输出。CNDE启动、停止指令没有指令内容，相应数据长度为0。
+Após a conclusão da configuração de saída do CNDE do robô, envie a instrução de início de saída do CNDE. O robô começará a retornar o feedback de estado de acordo com o período de saída e o conteúdo configurados. Da mesma forma, envie a instrução de parada de saída do CNDE, e o robô parará o retorno do feedback de estado. As instruções de início e parada do CNDE não têm conteúdo de instrução, e o comprimento dos dados correspondente é 0.
 
-.. centered:: 表3-4 CNDE输出启动、停止内容
+.. centered:: Tabela 3-4 Conteúdo de Início e Parada da Saída CNDE
 
 .. list-table::
    :widths: 40 40
@@ -156,27 +155,27 @@ CNDE数据输入支持最多8个配方，在发送输入数据时，机器人将
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **数据字节组**
+   * - **Nome**
+     - **Grupo de Bytes de Dados**
 
-   * - 长度(byte)
+   * - Comprimento (byte)
      - 0
 
-   * - 内容
-     - 无
+   * - Conteúdo
+     - Nenhum
 
-启动机器人CNDE输出数据帧示例如下：
+Um exemplo do quadro de dados para iniciar a saída de dados CNDE do robô é mostrado abaixo:
 
 .. image:: cnde/010.png
    :width: 3in
    :align: center
 
-客户端接收输出数据
-+++++++++++++++++++++++
+Recepção de Dados de Saída pelo Cliente
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-机器人CNDE数据输出启动后，客户端需要一个循环接收机器人反馈的数据信息，且客户端的循环接收频率要高于配置的输出数据频率，否则可能会发生数据丢包。机器人输出数据内容如表3-5；机器人输出数据字节组长度为输出配置的所有功能数据字节长度总和，字节数组为1字节对齐的按配置功能顺序的所有状态数据组合。
+Após o início da saída de dados CNDE do robô, o cliente precisa de um loop para receber as informações de dados de feedback do robô, e a frequência de recepção em loop do cliente deve ser maior do que a frequência de saída de dados configurada; caso contrário, pode ocorrer perda de pacotes. O conteúdo dos dados de saída do robô é mostrado na Tabela 3-5. O comprimento do grupo de bytes de dados de saída do robô é a soma dos comprimentos dos bytes de dados de todas as funções na configuração de saída. O array de bytes é uma combinação de todos os dados de estado na ordem das funções configuradas, com alinhamento de 1 byte.
 
-.. centered:: 表3-5 CNDE输出数据内容
+.. centered:: Tabela 3-5 Conteúdo dos Dados de Saída CNDE
 
 .. list-table::
    :widths: 40 40
@@ -184,32 +183,32 @@ CNDE数据输入支持最多8个配方，在发送输入数据时，机器人将
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **数据字节组**
+   * - **Nome**
+     - **Grupo de Bytes de Dados**
 
-   * - 长度(byte)
+   * - Comprimento (byte)
      - --
 
-   * - 内容
-     - 输出数据字节组
+   * - Conteúdo
+     - Grupo de bytes de dados de saída
 
-机器人输出数据帧示例如下：
+Um exemplo do quadro de dados de saída do robô é mostrado abaixo:
 
 .. image:: cnde/011.png
    :width: 4in
    :align: center
 
-CNDE辅助功能
-~~~~~~~~~~~~~~~~~
+Funções Auxiliares CNDE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-字符串提示消息
+Mensagem de Texto
 ++++++++++++++++++
 
-客户端和机器人之间可以通过CNDE相互发送字符串提示消息，消息内容包括消息类型和消息字符串(表3-6)，其中消息类型定义如表3-7。当CNDE客户端向机器人发送输入配置、输出配置、输出启动、输出停止等指令时，机器人均回复一条字符提示消息。
+Cliente e robô podem enviar mensagens de texto entre si através do CNDE. O conteúdo da mensagem inclui o tipo de mensagem e a string da mensagem (Tabela 3-6), onde a definição do tipo de mensagem é mostrada na Tabela 3-7. Quando o cliente CNDE envia instruções como configuração de entrada, configuração de saída, início de saída e parada de saída para o robô, o robô responde com uma mensagem de texto.
 
-若上述指令执行成功，则机器人反馈消息类型为“成功”，对应消息类型数值码为0x00；反之若上述指令执行失败，则机器人反馈消息类型为“错误”，对应消息类型数值为0x03，客户端可根据反馈的消息类型开判断指令执行结果，若消息类型为“错误”，则可以提取错误信息以分析错误原因。
+Se a instrução acima for executada com sucesso, o robô retornará uma mensagem com tipo “Sucesso”, correspondendo ao código numérico de tipo de mensagem 0x00. Por outro lado, se a instrução falhar, o robô retornará uma mensagem com tipo “Erro”, correspondendo ao código numérico de tipo de mensagem 0x03. O cliente pode julgar o resultado da execução da instrução com base no tipo de mensagem retornado. Se o tipo de mensagem for “Erro”, a mensagem de erro pode ser extraída para analisar a causa do erro.
 
-.. centered:: 表3-6 字符串提示消息内容
+.. centered:: Tabela 3-6 Conteúdo da Mensagem de Texto
 
 .. list-table::
    :widths: 40 20 40
@@ -217,19 +216,19 @@ CNDE辅助功能
    :align: center
    :class: sheet-center
 
-   * - **名称**
-     - **消息类型**
-     - **消息字符串**
+   * - **Nome**
+     - **Tipo de Mensagem**
+     - **String da Mensagem**
 
-   * - 长度(byte)
+   * - Comprimento (byte)
      - 1
      - --
 
-   * - 内容
+   * - Conteúdo
      - 0 ~ 4
-     - 消息字符串
+     - String da mensagem
 
-.. centered:: 表3-7 机器人CNDE字符提示消息类型
+.. centered:: Tabela 3-7 Tipos de Mensagem de Texto CNDE do Robô
 
 .. list-table::
    :widths: 40 40
@@ -237,43 +236,43 @@ CNDE辅助功能
    :align: center
    :class: sheet-center
 
-   * - **类型**
-     - **数值**
+   * - **Tipo**
+     - **Valor**
 
-   * - 成功
+   * - Sucesso
      - 0x00
 
-   * - 信息
+   * - Informação
      - 0x01
 
-   * - 警告
+   * - Aviso
      - 0x02
 
-   * - 错误
+   * - Erro
      - 0x03
 
-   * - 故障
+   * - Falha
      - 0x04
 
-切换机器人CNDE协议版本号
-++++++++++++++++++++++++++++++++++++++
+Alternar o Número da Versão do Protocolo CNDE do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-当前机器人CNDE仅有一个版本，版本号为“FR-CNDE-V0001”，因此本功能为预留功能，暂未开放使用。
+Atualmente, o CNDE do robô tem apenas uma versão, com o número “FR-CNDE-V0001”. Portanto, esta função é reservada e ainda não está disponível para uso.
 
-获取机器人软固件版本信息
-+++++++++++++++++++++++++++++++++++++++++
+Obter Informações de Versão de Software e Firmware do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-客户端通过CNDE向机器人发送获取软固件版本信息指令，指令内容为空，机器人收到请求后会反馈一条字符提示消息，消息内容包括机器人型号、机器人软件版本、机器人固件版本、机器人硬件版本等相关信息。
+O cliente envia uma instrução para obter informações de versão de software e firmware para o robô através do CNDE. O conteúdo da instrução é vazio. Após receber a solicitação, o robô retornará uma mensagem de texto. O conteúdo da mensagem inclui informações relevantes como modelo do robô, versão do software do robô, versão do firmware do robô, versão do hardware do robô, etc.
 
-末端透传功能周期数据获取（CNDE）
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aquisição de Dados Periódicos da Função de Passagem Direta na Extremidade (CNDE)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CNDE配置描述
+Descrição da Configuração CNDE
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-末端透传功能开启后，可在CNDE中配置"axle_gen_com_data"选项及周期，从而获取末端读取的外设的周期数据，反馈的数据帧定义如下。
+Após ativar a função de passagem direta na extremidade, a opção "axle_gen_com_data" e o período podem ser configurados no CNDE para obter os dados periódicos do periférico lidos pela extremidade. A definição do quadro de dados de feedback é a seguinte.
 
-.. centered:: 表3-8  末端透传功能周期数据CNDE反馈协议定义
+.. centered:: Tabela 3-8 Definição do Protocolo CNDE de Feedback de Dados Periódicos da Função de Passagem Direta na Extremidade
 
 .. list-table::
    :widths: 30 30 40
@@ -285,44 +284,44 @@ CNDE配置描述
      - **Byte 2**
      - **Byte 3-130**
 
-   * - ErrorCode
-     - Len
-     - Data
+   * - Código de Erro
+     - Comprimento
+     - Dados
 
-   * - 0-通信正常
-     - 周期数据的长度
-     - 数据帧Buffer
+   * - 0 - Comunicação normal
+     - Comprimento dos dados periódicos
+     - Buffer do quadro de dados
 
-   * - 1-末端与机器人通信异常
-     - 错误码不为0时长度清零
-     - 错误码不为0时Buffer清零
+   * - 1 - Anomalia de comunicação entre extremidade e robô
+     - Comprimento zerado quando o código de erro não é 0
+     - Buffer zerado quando o código de erro não é 0
 
-   * - 2-末端485通信异常	
+   * - 2 - Anomalia de comunicação 485 da extremidade	
      - 
      - 
 
-以倍益康艾灸头外设周期数据配置为例，代码显示配置为获取末端周期透传数据，获取周期50ms。
+Tomando como exemplo a configuração de dados periódicos do periférico do cabeçote de moxabustão Beiyikang, o código mostra a configuração para obter dados periódicos de passagem direta na extremidade, com um período de aquisição de 50 ms.
 
-末端透传CNDE配置代码示意:
+Exemplo de código de configuração CNDE para passagem direta na extremidade:
 
 .. code-block:: 
     :linenos:
 
-    tring outputCfg = "axle_gen_com_data";    //获取末端透传周期数据
+    string outputCfg = "axle_gen_com_data";    //Obter dados periódicos de passagem direta na extremidade
     byte[] sendBuffer = new byte[] { };
     byte[] cfgBuffer = Encoding.UTF8.GetBytes(outputCfg);
     CNDEPkg pkg  = new CNDEPkg();
-    pkg.type = 1;  //输出配置
+    pkg.type = 1;  //Configuração de saída
     pkg.len = (ushort)(2 + outputCfg.Length);
     pkg.data.Clear();
-    UInt16 period = 50;   //50ms update
+    UInt16 period = 50;   //Atualização a cada 50 ms
     byte[] periodBt = new byte[2] {0, 0};
     Int16ToByte(period, ref periodBt);
-    pkg.data.AddRange(periodBt);  //通讯周期
+    pkg.data.AddRange(periodBt);  //Período de comunicação
     pkg.data.AddRange(cfgBuffer); 
     pkg.ToBytes(ref sendBuffer);
 
-基于CNDE的倍益康艾灸头周期数据解包代码示例:
+Exemplo de código de desempacotamento de dados periódicos do cabeçote de moxabustão Beiyikang baseado em CNDE:
   
 .. code-block:: 
     :linenos:
@@ -336,7 +335,7 @@ CNDE配置描述
 
         int errorcode = putDate.axle_gen_com_data[0];
         int datalen = putDate.axle_gen_com_data[1];
-        // 过滤异常包
+        // Filtrar pacotes anômalos
         if ((errorcode != 0) || (datalen == 0) ||
         (putDate.axle_gen_com_data[2] != 0xAB) || 
         (putDate.axle_gen_com_data[3] != 0xBA))
@@ -344,7 +343,7 @@ CNDE配置描述
             Console.WriteLine($"rcv data is error");
             continue;
         }
-        // 按照倍益康艾灸头协议进行组包
+        // Montar pacote de acordo com o protocolo do cabeçote de moxabustão Beiyikang
         int curTem = putDate.axle_gen_com_data[6];
         int targetTem = putDate.axle_gen_com_data[7];
         int genData1 = putDate.axle_gen_com_data[8] << 8 | putDate.axle_gen_com_data[9];
@@ -359,7 +358,7 @@ CNDE配置描述
         Marshal.FreeHGlobal(structPtr);
     }
 
-基于末端透传功能倍益康艾灸头非周期数据通信代码示例:
+Exemplo de código de comunicação de dados aperiódicos para o cabeçote de moxabustão Beiyikang baseado na função de passagem direta na extremidade:
   
 .. code-block:: 
     :linenos:
@@ -385,13 +384,13 @@ CNDE配置描述
         ExaxisPos exaxisPos = new ExaxisPos(0, 0, 0, 0);
         DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
 
-        //开启末端透传功能
+        //Ativar a função de passagem direta na extremidade
         robot.SetAxleGenComEnable(1);
         robot.SetAxleLuaEnable(1);
 
         while(cnt<=10)
         { 
-            //读取版本号
+            //Ler número da versão
             ret = robot.SndRcvAxleGenComCmdData(5, version, 10, ref rcvdata);
             Console.WriteLine($" hard version : {rcvdata[4]},hard code:{rcvdata[5]}, soft version:{rcvdata[6]} {rcvdata[7]}, soft code:{rcvdata[8]}");
             if (ret != 0)
@@ -399,16 +398,16 @@ CNDE配置描述
                 break;
             }
             Thread.Sleep(1000);
-            //读取艾灸头在位状态
+            //Ler estado de presença do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, state, 6, ref rcvdata);
             Console.WriteLine($" state : {rcvdata[4]}");
             Thread.Sleep(1000);
-            //开启艾灸头激光
+            //Ativar laser do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, led_on, 6, ref rcvdata);
             Console.WriteLine($"led on rcv data is: {rcvdata[0]},{rcvdata[1]}, {rcvdata[2]}, {rcvdata[3]}, {rcvdata[4]}, {rcvdata[5]}");
             robot.MoveJ(p1Joint, p1Desc, 0, 0, 100, 100, 100, exaxisPos, -1, 0, offdese);
             Thread.Sleep(4000);
-            //关闭艾灸头激光
+            //Desativar laser do cabeçote de moxabustão
             ret = robot.SndRcvAxleGenComCmdData(6, led_off, 6, ref rcvdata);
             Console.WriteLine($"led off rcv data is: {rcvdata[0]},{rcvdata[1]}, {rcvdata[2]}, {rcvdata[3]}, {rcvdata[4]}, {rcvdata[5]}");
             robot.MoveJ(p2Joint, p2Desc, 0, 0, 100, 100, 100, exaxisPos, -1, 0, offdese);

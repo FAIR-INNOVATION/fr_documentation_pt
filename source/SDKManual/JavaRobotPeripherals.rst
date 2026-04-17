@@ -1,181 +1,181 @@
-机器人外设
-============
+Periféricos do Robô
+========================
 
 .. toctree:: 
     :maxdepth: 5
 
-配置夹爪
+Configurar Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  配置夹爪
-    * @param  [in] config .company  夹爪厂商，1-Robotiq，2-慧灵，3-天机，4-大寰，5-知行
-    * @param  [in] config .device  设备号，Robotiq(0-2F-85系列)，慧灵(0-NK系列,1-Z-EFG-100)，天机(0-TEG-110)，大寰(0-PGI-140)，知行(0-CTPM2F20)
-    * @param  [in] config .softvesion  软件版本号，暂不使用，默认为0
-    * @param  [in] config .bus 设备挂在末端总线位置，暂不使用，默认为0
-    * @return  错误码
+    * @brief  Configura a garra
+    * @param  [in] config .company   Fabricante da garra, 1-Robotiq, 2-Huiling, 3-Tianji, 4-Dahuan, 5-Zhixing
+    * @param  [in] config .device   Número do dispositivo, Robotiq(0-2F-85 series), Huiling(0-NK series,1-Z-EFG-100), Tianji(0-TEG-110), Dahuan(0-PGI-140), Zhixing(0-CTPM2F20)
+    * @param  [in] config .softvesion   Número da versão do software, não usado no momento, padrão 0
+    * @param  [in] config .bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+    * @return  Código de erro
     */
     int SetGripperConfig(DeviceConfig config);
 
-获取夹爪配置
+Obter Configuração da Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪配置
-    * @param  [out] config .company  夹爪厂商，1-Robotiq，2-慧灵，3-天机，4-大寰，5-知行
-    * @param  [out] config .device  设备号，Robotiq(0-2F-85系列)，慧灵(0-NK系列,1-Z-EFG-100)，天机(0-TEG-110)，大寰(0-PGI-140)，知行(0-CTPM2F20)
-    * @param  [out] config .softvesion  软件版本号，暂不使用，默认为0
-    * @param  [out] config .bus 设备挂在末端总线位置，暂不使用，默认为0
-    * @return  错误码
+    * @brief  Obtém a configuração da garra
+    * @param  [out] config .company   Fabricante da garra, 1-Robotiq, 2-Huiling, 3-Tianji, 4-Dahuan, 5-Zhixing
+    * @param  [out] config .device   Número do dispositivo, Robotiq(0-2F-85 series), Huiling(0-NK series,1-Z-EFG-100), Tianji(0-TEG-110), Dahuan(0-PGI-140), Zhixing(0-CTPM2F20)
+    * @param  [out] config .softvesion   Número da versão do software, não usado no momento, padrão 0
+    * @param  [out] config .bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
+    * @return  Código de erro
     */
     int GetGripperConfig(DeviceConfig config);
 
-激活夹爪
+Ativar Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  激活夹爪
-    * @param  [in] index  夹爪编号
-    * @param  [in] act  0-复位，1-激活
-    * @return  错误码
+    * @brief  Ativa a garra
+    * @param  [in] index   Número da garra
+    * @param  [in] act  0-reset, 1-ativar
+    * @return  Código de erro
     */
     int ActGripper(int index, int act); 
 
-控制夹爪
+Controlar Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  控制夹爪
-    * @param  [in] index  夹爪编号
-    * @param  [in] pos  位置百分比，范围[0~100]
-    * @param  [in] vel  速度百分比，范围[0~100]
-    * @param  [in] force  力矩百分比，范围[0~100]
-    * @param  [in] max_time  最大等待时间，范围[0~30000]，单位ms
-    * @param  [in] block  0-阻塞，1-非阻塞
-    * @param  [in] type 夹爪类型，0-平行夹爪；1-旋转夹爪
-    * @param  [in] rotNum 旋转圈数
-    * @param  [in] rotVel 旋转速度百分比[0-100]
-    * @param  [in] rotTorque 旋转力矩百分比[0-100]
-    * @return 错误码
+    * @brief  Controla a garra
+    * @param  [in] index   Número da garra
+    * @param  [in] pos   Porcentagem de posição, faixa [0~100]
+    * @param  [in] vel   Porcentagem de velocidade, faixa [0~100]
+    * @param  [in] force   Porcentagem de torque, faixa [0~100]
+    * @param  [in] max_time   Tempo máximo de espera, faixa [0~30000], unidade ms
+    * @param  [in] block  0-bloqueado, 1-não bloqueado
+    * @param  [in] type  Tipo de garra, 0-garra paralela; 1-garra rotativa
+    * @param  [in] rotNum  Número de rotações
+    * @param  [in] rotVel  Porcentagem de velocidade de rotação [0-100]
+    * @param  [in] rotTorque  Porcentagem de torque de rotação [0-100]
+    * @return Código de erro
     */
     int MoveGripper(int index, int pos, int vel, int force, int max_time, int block, int type, double rotNum, int rotVel, int rotTorque); 
 
-获取夹爪运动状态
-++++++++++++++++++++++++++++++++
+Obter Estado de Movimento da Garra
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪运动状态
-    * @return List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]: staus  0-运动未完成，1-运动完成
+    * @brief  Obtém o estado de movimento da garra
+    * @return List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: status  0-movimento não concluído, 1-movimento concluído
     */
     List<Integer> GetGripperMotionDone(); 
 
-获取夹爪激活状态
-++++++++++++++++++++++++++++++++
+Obter Estado de Ativação da Garra
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪激活状态
-    * @return  List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]: status  bit0~bit15对应夹爪编号0~15，bit=0为未激活，bit=1为激活
+    * @brief  Obtém o estado de ativação da garra
+    * @return  List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: status  bit0~bit15 correspondem aos números das garras 0~15, bit=0 não ativado, bit=1 ativado
     */
     List<Number> GetGripperActivateStatus()
 
-获取夹爪位置
+Obter Posição da Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪位置
-    * @return  List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]: position  位置百分比，范围0~100%
+    * @brief  Obtém a posição da garra
+    * @return  List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: position   Porcentagem de posição, faixa 0~100%
     */
     List<Number> GetGripperCurPosition()
 
-获取夹爪速度
+Obter Velocidade da Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪速度
-    * @return  List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]: speed  速度百分比，范围0~100%
+    * @brief  Obtém a velocidade da garra
+    * @return  List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: speed   Porcentagem de velocidade, faixa 0~100%
     */
     List<Number> GetGripperCurSpeed()
 
-获取夹爪电流
+Obter Corrente da Garra
 ++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪电流
-    * @return  List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]: current  电流百分比，范围0~100%
+    * @brief  Obtém a corrente da garra
+    * @return  List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: current   Porcentagem de corrente, faixa 0~100%
     */
     List<Number> GetGripperCurCurrent()
 
-获取夹爪电压
+Obter Tensão da Garra
 ++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪电压
-    * @return List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]:voltage  电压,单位0.1V
+    * @brief  Obtém a tensão da garra
+    * @return List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]:voltage   Tensão, unidade 0.1V
     */
     List<Number> GetGripperVoltage()
 
-获取夹爪温度
+Obter Temperatura da Garra
 ++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取夹爪温度
-    * @return List[0]:错误码; List[1] : fault  0-无错误，1-有错误; List[2]:temp  温度，单位℃
+    * @brief  Obtém a temperatura da garra
+    * @return List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]:temp   Temperatura, unidade ℃
     */
     List<Number> GetGripperTemp()
 
-计算预抓取点-视觉
-++++++++++++++++++++++++++++++++
+Calcular Ponto de Pré-Captura - Visão
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 计算预抓取点-视觉 
-    * @param [in] desc_pos  抓取点笛卡尔位姿
-    * @param [in] zlength   z轴偏移量
-    * @param [in] zangle    绕z轴旋转偏移量
-    * @param [out] pre_pos  获取点
-    * @return 错误码 
+    * @brief Calcula o ponto de pré-captura - Visão 
+    * @param [in] desc_pos   Pose cartesiana do ponto de captura
+    * @param [in] zlength   Deslocamento no eixo Z
+    * @param [in] zangle    Deslocamento de rotação em torno do eixo Z
+    * @param [out] pre_pos  Ponto de pré-captura
+    * @return Código de erro 
     */ 
     int ComputePrePick(DescPose desc_pos, double zlength, double zangle, DescPose pre_pos);
 
-计算撤退点-视觉
-++++++++++++++++++++++++++++++++
+Calcular Ponto de Retirada - Visão
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 计算撤退点-视觉 
-    * @param [in] desc_pos  抓取点笛卡尔位姿
-    * @param [in] zlength   z轴偏移量 
-    * @param [in] zangle    绕z轴旋转偏移量
-    * @param [out] post_poss 撤退点
-    * @return 错误码 
+    * @brief Calcula o ponto de retirada - Visão 
+    * @param [in] desc_pos   Pose cartesiana do ponto de captura
+    * @param [in] zlength   Deslocamento no eixo Z 
+    * @param [in] zangle    Deslocamento de rotação em torno do eixo Z
+    * @param [out] post_poss  Ponto de retirada
+    * @return Código de erro 
     */ 
     int ComputePostPick(DescPose desc_pos, double zlength, double zangle, DescPose post_pos);
 
-机器人夹爪操作代码示例
+Exemplo de Código para Operações com a Garra do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -240,41 +240,41 @@
         return 0;
     }
 
-获取旋转夹爪的旋转圈数
-++++++++++++++++++++++++++++++++
+Obter Número de Rotações da Garra Rotativa
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转圈数
-    * @return List[0]:错误码 List[1]: 0-无错误，1-有错误 List[2]:旋转圈数
+    * @brief  Obtém o número de rotações da garra rotativa
+    * @return List[0]: Código de erro List[1]: 0-sem erro, 1-com erro List[2]: Número de rotações
     */
     List<Number> GetGripperRotNum(); 
 
-获取旋转夹爪的旋转速度百分比
-++++++++++++++++++++++++++++++++
+Obter Porcentagem de Velocidade de Rotação da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转速度百分比
-    * @return List[0]:错误码 List[1]: 0-无错误，1-有错误 List[2]:旋转速度百分比
+    * @brief  Obtém a porcentagem de velocidade de rotação da garra rotativa
+    * @return List[0]: Código de erro List[1]: 0-sem erro, 1-com erro List[2]: Porcentagem de velocidade de rotação
     */
     List<Number> GetGripperRotSpeed(); 
 
-获取旋转夹爪的旋转力矩百分比
-++++++++++++++++++++++++++++++++
+Obter Porcentagem de Torque de Rotação da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  获取旋转夹爪的旋转力矩百分比
-    * @return List[0]:错误码 List[1]: 0-无错误，1-有错误 List[2]:旋转力矩百分比
+    * @brief  Obtém a porcentagem de torque de rotação da garra rotativa
+    * @return List[0]: Código de erro List[1]: 0-sem erro, 1-com erro List[2]: Porcentagem de torque de rotação
     */
     List<Number> GetGripperRotTorque(); 
 
-代码示获取旋转夹爪状态代码示例
-++++++++++++++++++++++++++++++++
+Exemplo de Código para Obter Estado da Garra Rotativa
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -293,110 +293,110 @@
         return 0;
     }
 
-传动带启动、停止
+Iniciar/Parar Esteira Transportadora
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  传动带启动、停止
-    * @param  [in] status 状态，1-启动，0-停止
-    * @return  错误码
+    * @brief  Inicia/para a esteira transportadora
+    * @param  [in] status Estado, 1-iniciar, 0-parar
+    * @return  Código de erro
     */
     int ConveyorStartEnd(int status);
 
-记录IO检测点
+Registrar Ponto de Detecção IO
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  记录IO检测点
-    * @return  错误码
+    * @brief  Registra o ponto de detecção IO
+    * @return  Código de erro
     */
     int ConveyorPointIORecord();
 
-记录A点
+Registrar Ponto A
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  记录A点
-    * @return  错误码
+    * @brief  Registra o ponto A
+    * @return  Código de erro
     */
     int ConveyorPointARecord(); 
 
-记录参考点
+Registrar Ponto de Referência
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  记录参考点
-    * @return  错误码
+    * @brief  Registra o ponto de referência
+    * @return  Código de erro
     */
     int ConveyorRefPointRecord();
 
-记录B点
+Registrar Ponto B
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  记录B点
-    * @return 错误码
+    * @brief  Registra o ponto B
+    * @return Código de erro
     */
     int ConveyorPointBRecord(); 
 
-传送带工件IO检测
+Detecção IO de Peça na Esteira
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 传送带工件IO检测
-    * @param [in] max_t 最大检测时间，单位ms
-    * @return 错误码 
+    * @brief Detecção IO de peça na esteira
+    * @param [in] max_t Tempo máximo de detecção, unidade ms
+    * @return Código de erro 
     */ 
     int ConveyorIODetect(int max_t);
 
-获取物体当前位置
+Obter Posição Atual do Objeto
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 获取物体当前位置
-    * @param [in] mode 1-跟踪抓取，2-跟踪运动，3-TPD跟踪
-    * @return 错误码 
+    * @brief Obtém a posição atual do objeto
+    * @param [in] mode 1-captura com rastreamento, 2-movimento com rastreamento, 3-rastreamento TPD
+    * @return Código de erro 
     */ 
     int ConveyorGetTrackData(int mode);
 
-传动带跟踪开始
+Iniciar Rastreamento da Esteira
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 传动带跟踪开始
-    * @param [in] status 状态，1-启动，0-停止
-    * @return 错误码 
+    * @brief Inicia o rastreamento da esteira
+    * @param [in] status Estado, 1-iniciar, 0-parar
+    * @return Código de erro 
     */ 
     int ConveyorTrackStart(int status);
 
-传动带跟踪停止
+Parar Rastreamento da Esteira
 +++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 传动带跟踪停止
-    * @return 错误码 
+    * @brief Para o rastreamento da esteira
+    * @return Código de erro 
     */ 
     int ConveyorTrackEnd();
 
-传动带参数配置
+Configurar Parâmetros da Esteira
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: Java SDK-v1.0.4-3.8.1
 
@@ -404,51 +404,51 @@
     :linenos:
 
     /**
-    * @brief  传动带参数配置
-    * @param [in] encChannel 编码器通道 1~2
-    * @param [in] resolution 编码器转一圈的脉冲数
-    * @param [in] lead 编码器转一圈传送带行走距离
-    * @param [in] wpAxis 工件坐标系编号 针对跟踪运动功能选择工件坐标系编号，跟踪抓取、TPD跟踪设为0
-    * @param [in] vision 是否配视觉  0 不配  1 配
-    * @param [in] speedRadio 速度比  针对传送带跟踪抓取选项（1-100）  其他选项默认为1
-    * @param [in] followType 跟踪运动类型，0-跟踪运动；1-追检运动
-    * @param [in] startDis 追检抓取需要设置， 跟踪起始距离， -1：自动计算(工件到达机器人下方后自动追检)，单位mm， 默认值0
-    * @param [in] endDis 追检抓取需要设置，跟踪终止距离， 单位mm， 默认值100
-    * @return 错误码
+    * @brief  Configura os parâmetros da esteira
+    * @param [in] encChannel Canal do encoder 1~2
+    * @param [in] resolution Número de pulsos do encoder por rotação
+    * @param [in] lead Distância percorrida pela esteira por rotação do encoder
+    * @param [in] wpAxis Número do sistema de coordenadas da peça (para movimento de rastreamento, escolha o número do sistema de coordenadas; para captura com rastreamento e rastreamento TPD, defina como 0)
+    * @param [in] vision Se usa visão  0-não usa  1-usa
+    * @param [in] speedRadio Relação de velocidade (para a opção de captura com rastreamento da esteira [1-100]; para outras opções, padrão 1)
+    * @param [in] followType Tipo de movimento de rastreamento, 0-movimento de rastreamento; 1-movimento de verificação
+    * @param [in] startDis Necessário para captura com verificação, distância inicial de rastreamento, -1: cálculo automático (a verificação começa automaticamente quando a peça chega abaixo do robô), unidade mm, valor padrão 0
+    * @param [in] endDis Necessário para captura com verificação, distância final de rastreamento, unidade mm, valor padrão 100
+    * @return Código de erro
     */
     int ConveyorSetParam(int encChannel, int resolution, double lead, int wpAxis, int vision, double speedRadio, int followType, int startDis, int endDis); 
 
-设置传动带抓取点补偿
-+++++++++++++++++++++++++++++++++++++++++
+Definir Compensação do Ponto de Captura da Esteira
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 设置传动带抓取点补偿
-    * @param [in] cmp 补偿位置 double[3]{x, y, z}
-    * @return 错误码 
+    * @brief Define a compensação do ponto de captura da esteira
+    * @param [in] cmp Compensação de posição double[3]{x, y, z}
+    * @return Código de erro 
     */ 
     int ConveyorCatchPointComp(Object[] cmp);
 
-传动带直线运动
-+++++++++++++++++++++++++++++++++++++++++
+Movimento Linear com Rastreamento da Esteira
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 直线运动
-    * @param [in] name 运动点描述
-    * @param [in] tool 工具坐标号，范围[0~14]
-    * @param [in] wobj 工件坐标号，范围[0~14]
-    * @param [in] vel 速度百分比，范围[0~100]
-    * @param [in] acc 加速度百分比，范围[0~100],暂不开放
-    * @param [in] ovl 速度缩放因子，范围[0~100]
-    * @param [in] blendR [-1.0]-运动到位(阻塞)，[0~1000.0]-平滑半径(非阻塞)，单位mm
-    * @return 错误码 
+    * @brief Movimento linear com rastreamento da esteira
+    * @param [in] name Nome do ponto de movimento
+    * @param [in] tool Número da ferramenta, faixa [0~14]
+    * @param [in] wobj Número da peça, faixa [0~14]
+    * @param [in] vel Porcentagem de velocidade, faixa [0~100]
+    * @param [in] acc Porcentagem de aceleração, faixa [0~100], temporariamente não disponível
+    * @param [in] ovl Fator de escala de velocidade, faixa [0~100]
+    * @param [in] blendR [-1.0]-movimento concluído (bloqueado), [0~1000.0]-raio de suavização (não bloqueado), unidade mm
+    * @return Código de erro 
     */ 
     int ConveyorTrackMoveL(String name, int tool, int wobj, double vel, double acc, double ovl, double blendR);   
 
-传送带通讯输入检测
+Detecção de Entrada de Comunicação da Esteira
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.4-3.8.1
 
@@ -456,28 +456,28 @@
     :linenos:
 
     /** 
-    * @brief 传送带通讯输入检测
-    * @param [in] timeout 等待超时时间ms
-    * @return 错误码
+    * @brief Detecção de entrada de comunicação da esteira
+    * @param [in] timeout Tempo limite de espera ms
+    * @return Código de erro
     */
     int ConveyorComDetect(int timeout);
 
-传送带通讯输入检测触发
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Acionamento da Detecção de Entrada de Comunicação da Esteira
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.4-3.8.1
 
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 传送带通讯输入检测触发
-    * @param [in] timeout 等待超时时间ms
-    * @return 错误码
+    * @brief Acionamento da detecção de entrada de comunicação da esteira
+    * @param [in] timeout Tempo limite de espera ms
+    * @return Código de erro
     */
     int ConveyorComDetectTrigger();
 
-机器人传送带操作示例程序
-++++++++++++++++++++++++++++++++++++++++
+Exemplo de Programa de Operação da Esteira do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -534,65 +534,65 @@
         return 0;
     }
 
-末端传感器配置
+Configurar Sensor de Extremidade
 +++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 末端传感器配置
-    * @param [in] config idCompany 厂商，18-JUNKONG；25-HUIDE
-    * @param [in] config idDevice 类型，0-JUNKONG/RYR6T.V1.0
-    * @param [in] config idSoftware 软件版本，0-J1.0/HuiDe1.0(暂未开放)
-    * @param [in] config idBus 挂载位置，1-末端1号口；2-末端2号口...8-末端8号口(暂未开放)
-    * @return 错误码
+    * @brief Configura o sensor de extremidade
+    * @param [in] config idCompany Fabricante, 18-JUNKONG；25-HUIDE
+    * @param [in] config idDevice Tipo, 0-JUNKONG/RYR6T.V1.0
+    * @param [in] config idSoftware Versão do software, 0-J1.0/HuiDe1.0 (temporariamente não disponível)
+    * @param [in] config idBus Posição de montagem, 1-porta 1 da extremidade; 2-porta 2 da extremidade...8-porta 8 da extremidade (temporariamente não disponível)
+    * @return Código de erro
     */
     int AxleSensorConfig(DeviceConfig config);
 
-获取末端传感器配置
-+++++++++++++++++++++++++++++++++++
+Obter Configuração do Sensor de Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 获取末端传感器配置
-    * @param [out] config idCompany 厂商，18-JUNKONG；25-HUIDE
-    * @param [out] config idDevice 类型，0-JUNKONG/RYR6T.V1.0
-    * @return 错误码
+    * @brief Obtém a configuração do sensor de extremidade
+    * @param [out] config idCompany Fabricante, 18-JUNKONG；25-HUIDE
+    * @param [out] config idDevice Tipo, 0-JUNKONG/RYR6T.V1.0
+    * @return Código de erro
     */
     int AxleSensorConfigGet(DeviceConfig config);
 
-末端传感器激活
+Ativar Sensor de Extremidade
 +++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 末端传感器激活
-    * @param [in] actFlag 0-复位；1-激活
-    * @return 错误码
+    * @brief Ativa o sensor de extremidade
+    * @param [in] actFlag 0-reset; 1-ativar
+    * @return Código de erro
     */
     int AxleSensorActivate(int actFlag);
 
-末端传感器寄存器写入
-+++++++++++++++++++++++++++++++++++
+Escrita no Registrador do Sensor de Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 末端传感器寄存器写入
-    * @param [in] devAddr  设备地址编号 0-255
-    * @param [in] regHAddr 寄存器地址高8位
-    * @param [in] regLAddr 寄存器地址低8位
-    * @param [in] regNum  寄存器个数 0-255
-    * @param [in] data1 写入寄存器数值1
-    * @param [in] data2 写入寄存器数值2
-    * @param [in] isNoBlock 0-阻塞；1-非阻塞
-    * @return 错误码
+    * @brief Escrita no registrador do sensor de extremidade
+    * @param [in] devAddr  Endereço do dispositivo 0-255
+    * @param [in] regHAddr 8 bits altos do endereço do registrador
+    * @param [in] regLAddr 8 bits baixos do endereço do registrador
+    * @param [in] regNum  Número de registradores 0-255
+    * @param [in] data1 Valor 1 a ser escrito no registrador
+    * @param [in] data2 Valor 2 a ser escrito no registrador
+    * @param [in] isNoBlock 0-bloqueado; 1-não bloqueado
+    * @return Código de erro
     */
     int AxleSensorRegWrite(int devAddr, int regHAddr, int regLAddr, int regNum, int data1, int data2, int isNoBlock);
 
-末端传感器代码示例
+Exemplo de Código do Sensor de Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -613,31 +613,31 @@
         return 0;
     }
 
-获取机器人外设协议
-+++++++++++++++++++++++++++++++++++
+Obter Protocolo de Periféricos do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 获取机器人外设协议
-    * @return List[0]:错误码; List[1] : int protocol 机器人外设协议号 4096-扩展轴控制卡；4097-ModbusSlave；4098-ModbusMaster 
+    * @brief Obtém o protocolo de periféricos do robô
+    * @return List[0]: Código de erro; List[1] : int protocol  Número do protocolo de periféricos do robô 4096-placa de controle do eixo de extensão; 4097-ModbusSlave; 4098-ModbusMaster 
     */
     List<Integer> GetExDevProtocol();
 
-设置机器人外设协议
-+++++++++++++++++++++++++++++++++++
+Definir Protocolo de Periféricos do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 设置机器人外设协议
-    * @param [in] protocol 机器人外设协议号 4096-扩展轴控制卡；4097-ModbusSlave；4098-ModbusMaster
-    * @return 错误码 
+    * @brief Define o protocolo de periféricos do robô
+    * @param [in] protocol Número do protocolo de periféricos do robô 4096-placa de controle do eixo de extensão; 4097-ModbusSlave; 4098-ModbusMaster
+    * @return Código de erro 
     */
     int SetExDevProtocol(int protocol);
 
-设置机器人外设协议示例程序
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Programa para Definir Protocolo de Periféricos do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -651,185 +651,185 @@
         return 0;
     }
 
-获取末端通讯参数
+Obter Parâmetros de Comunicação da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 获取末端通讯参数
-    * @param [out] param 末端通讯参数
-    * @return 错误码 
+    * @brief Obtém os parâmetros de comunicação da extremidade
+    * @param [out] param Parâmetros de comunicação da extremidade
+    * @return Código de erro 
     */
     int GetAxleCommunicationParam(AxleComParam param)
 
-设置末端通讯参数
+Definir Parâmetros de Comunicação da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /** 
-    * @brief 设置末端通讯参数
-    * @param [in] param 末端通讯参数
-    * @return 错误码 
+    * @brief Define os parâmetros de comunicação da extremidade
+    * @param [in] param Parâmetros de comunicação da extremidade
+    * @return Código de erro 
     */
     int SetAxleCommunicationParam(AxleComParam param)
 
-设置末端文件传输类型
+Definir Tipo de Transferência de Arquivo da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端文件传输类型
-    * @param [in] type 1-MCU升级文件；2-LUA文件
-    * @return  错误码
+    * @brief Define o tipo de transferência de arquivo da extremidade
+    * @param [in] type 1-arquivo de atualização MCU; 2-arquivo LUA
+    * @return  Código de erro
     */
     public int SetAxleFileType(int type)
 
-设置启用末端LUA执行
+Ativar Execução LUA na Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置启用末端LUA执行
-    * @param [in] enable 0-不启用；1-启用
-    * @return  错误码
+    * @brief Ativa a execução LUA na extremidade
+    * @param [in] enable 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     public int SetAxleLuaEnable(int enable)
 
-末端LUA文件异常错误恢复
+Recuperação de Erro de Arquivo LUA na Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 末端LUA文件异常错误恢复
-    * @param [in] status 0-不恢复；1-恢复
-    * @return  错误码
+    * @brief Recuperação de erro de arquivo LUA na extremidade
+    * @param [in] status 0-não recuperar; 1-recuperar
+    * @return  Código de erro
     */
     public int SetRecoverAxleLuaErr(int status)
 
-获取末端LUA执行使能状态
+Obter Estado de Ativação da Execução LUA na Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 获取末端LUA执行使能状态
-    * @param [out] status[0]: 0-未使能；1-已使能
-    * @return  错误码
+    * @brief Obtém o estado de ativação da execução LUA na extremidade
+    * @param [out] status[0]: 0-desativado; 1-ativado
+    * @return  Código de erro
     */
     int GetAxleLuaEnableStatus(int[] status)
 
-设置末端LUA末端设备启用类型
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 设置末端LUA末端设备启用类型
-    * @param forceSensorEnable 力传感器启用状态，0-不启用；1-启用
-    * @param gripperEnable 夹爪启用状态，0-不启用；1-启用
-    * @param IOEnable IO设备启用状态，0-不启用；1-启用
-    * @return  错误码
+    * @brief Define o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
+    * @param forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
+    * @param gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
+    * @param IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+    * @return  Código de erro
     */
     public int SetAxleLuaEnableDeviceType(int forceSensorEnable, int gripperEnable, int IOEnable)
 
-获取末端LUA末端设备启用类型
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 获取末端LUA末端设备启用类型
-     * @param enable enable[0]:forceSensorEnable 力传感器启用状态，0-不启用；1-启用
-     * @param enable enable[1]:gripperEnable 夹爪启用状态，0-不启用；1-启用
-     * @param enable enable[2]:IOEnable IO设备启用状态，0-不启用；1-启用
-     * @return  错误码
+     * @brief Obtém o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
+     * @param enable enable[0]:forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
+     * @param enable enable[1]:gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
+     * @param enable enable[2]:IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+     * @return  Código de erro
      */
     public int GetAxleLuaEnableDeviceType(int[] enable)
 
-获取当前配置的末端设备
+Obter Dispositivo de Extremidade Atualmente Configurado
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 获取当前配置的末端设备
-     * @param forceSensorEnable 力传感器启用设备编号 0-未启用；1-启用
-     * @param gripperEnable 夹爪启用设备编号，0-不启用；1-启用
-     * @param IODeviceEnable IO设备启用设备编号，0-不启用；1-启用
-     * @return  错误码
+     * @brief Obtém o dispositivo de extremidade atualmente configurado
+     * @param forceSensorEnable Número do dispositivo do sensor de força ativado 0-desativado; 1-ativado
+     * @param gripperEnable Número do dispositivo da garra ativado, 0-desativar; 1-ativar
+     * @param IODeviceEnable Número do dispositivo IO ativado, 0-desativar; 1-ativar
+     * @return  Código de erro
      */
     public int GetAxleLuaEnableDevice(int[] forceSensorEnable, int[] gripperEnable, int[] IODeviceEnable)
 
-设置启用夹爪动作控制功能
+Ativar Função de Controle de Movimento da Garra
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 设置启用夹爪动作控制功能
-     * @param id 夹爪设备编号
-     * @param func func[0]-夹爪使能；func[1]-夹爪初始化；2-位置设置；3-速度设置；4-力矩设置；6-读夹爪状态；7-读初始化状态；8-读故障码；9-读位置；10-读速度；11-读力矩
-     * @return  错误码
+     * @brief Ativa a função de controle de movimento da garra
+     * @param id Número do dispositivo da garra
+     * @param func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+     * @return  Código de erro
      */
     public int SetAxleLuaGripperFunc(int id, int[] func)
 
-获取启用夹爪动作控制功能
+Obter Função de Controle de Movimento da Garra Ativada
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 获取启用夹爪动作控制功能
-     * @param id 夹爪设备编号
-     * @param func func[0]-夹爪使能；func[1]-夹爪初始化；2-位置设置；3-速度设置；4-力矩设置；6-读夹爪状态；7-读初始化状态；8-读故障码；9-读位置；10-读速度；11-读力矩
-     * @return  错误码
+     * @brief Obtém a função de controle de movimento da garra ativada
+     * @param id Número do dispositivo da garra
+     * @param func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+     * @return  Código de erro
      */
     public int GetAxleLuaGripperFunc(int id, int[] func)
 
-机器人Ethercat从站文件写入
+Escrita de Arquivo no Escravo Ethercat do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 机器人Ethercat从站文件写入
-     * @param type 从站文件类型，1-升级从站文件；2-升级从站配置文件
-     * @param slaveID 从站号
-     * @param fileName 上传文件名
-     * @return  错误码
+     * @brief Escrita de arquivo no escravo Ethercat do robô
+     * @param type Tipo de arquivo do escravo, 1-arquivo de atualização do escravo; 2-arquivo de configuração do escravo
+     * @param slaveID Número do escravo
+     * @param fileName Nome do arquivo a ser enviado
+     * @return  Código de erro
      */
     public int SlaveFileWrite(int type, int slaveID, String fileName)
 
-上传末端Lua开放协议文件
+Enviar Arquivo de Protocolo Aberto LUA da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 上传末端Lua开放协议文件
-     * @param filePath 本地lua文件路径名 ".../AXLE_LUA_End_DaHuan.lua"
-     * @return 错误码
+     * @brief Envia arquivo de protocolo aberto LUA da extremidade
+     * @param filePath Caminho do arquivo lua local ".../AXLE_LUA_End_DaHuan.lua"
+     * @return Código de erro
      */
     public int AxleLuaUpload(String filePath)
 
-机器人Ethercat从站进入boot模式
+Entrar no Modo Boot do Escravo Ethercat do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 机器人Ethercat从站进入boot模式
-     * @return  错误码
+     * @brief Entrar no modo boot do escravo Ethercat do robô
+     * @return  Código de erro
      */
     public int SetSysServoBootMode()
 
-机器人末端LUA文件操作代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Operações com Arquivos LUA da Extremidade do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -891,7 +891,7 @@
 
     }
 
-获取SmartTool按钮状态
+Obter Estado dos Botões do SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.4-3.8.1
 
@@ -899,13 +899,13 @@
     :linenos:
 
     /**
-    * @brief 获取SmartTool按钮状态
-    * @param [out] state SmartTool手柄按钮状态;(bit0:0-通信正常；1-通信掉线；bit1-撤销操作；bit2-清空程序；bit3-A键；bit4-B键；bit5-C键；bit6-D键；bit7-E键；bit8-IO键；bit9-手自动；bit10开始)
-    * @return 错误码
+    * @brief Obtém o estado dos botões do SmartTool
+    * @param [out] state Estado dos botões do SmartTool; (bit0:0-comunicação normal; 1-comunicação perdida; bit1-operação de desfazer; bit2-limpar programa; bit3-tecla A; bit4-tecla B; bit5-tecla C; bit6-tecla D; bit7-tecla E; bit8-tecla IO; bit9-manual/automático; bit10-iniciar)
+    * @return Código de erro
     */
     int GetSmarttoolBtnState(int[] state)
 
-SmartTool按钮代码示例
+Exemplo de Código do Botão SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
@@ -913,13 +913,13 @@ SmartTool按钮代码示例
     public static void main(String[] args) 
     {
         Robot robot = new Robot();
-        robot.SetReconnectParam(true, 100, 500);//设置重连次数、间隔
+        robot.SetReconnectParam(true, 100, 500);//Definir número de tentativas de reconexão, intervalo
         robot.LoggerInit(FrLogType.DIRECT, FrLogLevel.INFO, "D://log", 10, 10);
         int rtn = robot.RPC("192.168.58.2");
         if (rtn == 0) {
-            System.out.println("rpc连接 success");
+            System.out.println("Conexão RPC bem-sucedida");
         } else {
-            System.out.println("rpc连接 fail");
+            System.out.println("Falha na conexão RPC");
             return;
         }
 
@@ -934,7 +934,7 @@ SmartTool按钮代码示例
         }
     }
 
-上传开放协议的Lua文件
+Enviar Arquivo Lua de Protocolo Aberto
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -942,14 +942,13 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 上传开放协议的Lua文件
-    * @param  filePath 本地开放协议lua文件路径名
-    * @return 错误码
+    * @brief Envia arquivo Lua de protocolo aberto
+    * @param  filePath Caminho do arquivo lua de protocolo aberto local
+    * @return Código de erro
     */
     public int OpenLuaUpload(String filePath)
 
-
-获取从站板卡参数
+Obter Parâmetros da Placa Escrava
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -957,15 +956,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief  获取从站板卡参数
-    * @param  type  0-Ethercat，1-CClink, 3-Ethercat, 4-EIP
-    * @param  version  协议版本
-    * @param  connState  0-未连接 1-已连接
-    * @return  错误码
+    * @brief  Obtém os parâmetros da placa escrava
+    * @param  type  0-Ethercat, 1-CClink, 3-Ethercat, 4-EIP
+    * @param  version  Versão do protocolo
+    * @param  connState  0-desconectado 1-conectado
+    * @return  Código de erro
     */
     public int GetFieldBusConfig(int[] type, int[] version, int[] connState)
 
-写入从站DO
+Escrever DO no Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -973,15 +972,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief  写入从站DO
-    * @param   DOIndex  DO编号
-    * @param   wirteNum  写入的数量
-    * @param   status 写入的数值，最多写8个
-    * @return  错误码
+    * @brief  Escreve DO no escravo
+    * @param   DOIndex  Número do DO
+    * @param   wirteNum  Número a ser escrito
+    * @param   status Valor a ser escrito, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveWriteDO(int DOIndex, int wirteNum, int[] status)
 
-写入从站AO
+Escrever AO no Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -989,15 +988,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief  写入从站AO
-    * @param  AOIndex  AO编号
-    * @param  wirteNum  写入的数量
-    * @param  status 写入的数值，最多写8个
-    * @return  错误码
+    * @brief  Escreve AO no escravo
+    * @param  AOIndex  Número do AO
+    * @param  wirteNum  Número a ser escrito
+    * @param  status Valor a ser escrito, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveWriteAO(int AOIndex, int wirteNum, int[] status)
 
-读取从站DI
+Ler DI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1005,15 +1004,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief  读取从站DI
-    * @param  DOIndex  DI编号
-    * @param  readNum  读取的数量
-    * @param  status 读取到的数值，最多读8个
-    * @return  错误码
+    * @brief  Lê DI do escravo
+    * @param  DOIndex  Número do DI
+    * @param  readNum  Número a ser lido
+    * @param  status Valor lido, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveReadDI(int DOIndex, int readNum, int[] status)
 
-读取从站AI
+Ler AI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1021,15 +1020,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief  读取从站AI
-    * @param  AIIndex  AI编号
-    * @param  readNum  读取的数量
-    * @param  status 读取到的数值，最多读8个
-    * @return  错误码
+    * @brief  Lê AI do escravo
+    * @param  AIIndex  Número do AI
+    * @param  readNum  Número a ser lido
+    * @param  status Valor lido, máximo de 8
+    * @return  Código de erro
     */
     public int FieldBusSlaveReadAI(int AIIndex, int readNum, double[] status)
 
-等待扩展DI输入
+Aguardar Entrada DI de Extensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1037,15 +1036,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 等待扩展DI输入
-    * @param  DIIndex DI编号
-    * @param  status 0-低电平；1-高电平
-    * @param  waitMs 最大等待时间(ms)
-    * @return 错误码
+    * @brief Aguarda entrada DI de extensão
+    * @param  DIIndex Número do DI
+    * @param  status 0-nível baixo; 1-nível alto
+    * @param  waitMs Tempo máximo de espera (ms)
+    * @return Código de erro
     */
     public int FieldBusSlaveWaitDI(int DIIndex, int status, int waitMs)
 
-等待扩展AI输入
+Aguardar Entrada AI de Extensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1053,23 +1052,23 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 等待扩展AI输入
-    * @param  AIIndex AI编号
-    * @param  waitType 0-大于；1-小于
-    * @param  value AI值
-    * @param  waitMs 最大等待时间(ms)
-    * @return 错误码
+    * @brief Aguarda entrada AI de extensão
+    * @param  AIIndex Número do AI
+    * @param  waitType 0-maior que; 1-menor que
+    * @param  value Valor do AI
+    * @param  waitMs Tempo máximo de espera (ms)
+    * @return Código de erro
     */
     public int FieldBusSlaveWaitAI(int AIIndex, int waitType, double value, int waitMs)
 
-从站模式相关接口指令代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Interfaces de Instrução do Modo Escravo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static void testFieldBusBoard(Robot robot)
     {
-        //上传并加载开放协议文件
+        //Carregar e enviar arquivo de protocolo aberto
         robot.OpenLuaUpload("D://zUP/1111/CtrlDev_field.lua");
         robot.Sleep(2000);
         robot.SetCtrlOpenLUAName(3, "CtrlDev_field.lua");
@@ -1079,22 +1078,22 @@ SmartTool按钮代码示例
         int[] type=new int[1];
         int[] version=new int[1];
         int[] connState=new int[1];
-        //获取从站板卡的协议类型、软件版本、与PLC的连接状态
+        //Obter tipo de protocolo da placa escrava, versão do software, status de conexão com CLP
         robot.GetFieldBusConfig(type, version, connState);
         System.out.println("type is: "+type[0]+", version is : "+version[0]+", connState is : "+connState[0]);
-        //写入DO0 = 1、DO1 = 0、DO2 = 1
+        //Escrever DO0 = 1, DO1 = 0, DO2 = 1
         int[] ctrl =new int[8];
         ctrl[0] = 1;
         ctrl[1] = 0;
         ctrl[2] = 1;
         robot.FieldBusSlaveWriteDO(0, 3, ctrl);
-        //写入AO2 = 0x1000
+        //Escrever AO2 = 0x1000
         int[] ctrlAO =new int[8];
         ctrlAO[0] = 0x1000;
         robot.FieldBusSlaveWriteAO(2, 1, ctrlAO);
         int[] DI=new int[4];
         double[] AI=new double[3];
-        //循环监控DI0~DI3 AI0~AI2
+        //Monitorar DI0~DI3 AI0~AI2 em loop
         for (int i = 0; i < 100; i++)
         {
             robot.FieldBusSlaveReadDI(0, 4, DI);
@@ -1103,16 +1102,16 @@ SmartTool按钮代码示例
             System.out.println("AI0 is: "+AI[0]+ ",AI1 is: "+AI[1]+",AI2 is: "+AI[2]);
             robot.Sleep(10);
         }
-        //等待DI0是否为1，等待时间100ms，并打印结果
+        //Aguardar DI0 ser igual a 1, tempo de espera 100ms, imprimir resultado
         int ret = robot.FieldBusSlaveWaitDI(0, 1, 100);
         System.out.println("FieldBusSlaveWaitDI result is: "+ ret);
-        //等待AI0是否大于400，等待时间100ms，并打印结果
+        //Aguardar AI0 ser maior que 400, tempo de espera 100ms, imprimir resultado
         ret = robot.FieldBusSlaveWaitAI(0,0,400.00,100);
         System.out.println("FieldBusSlaveWaitAI result is: "+ ret);
         robot.CloseRPC();
     }
 
-控制阵列式吸盘
+Controlar Matriz de Ventosas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1120,15 +1119,15 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 控制阵列式吸盘
-    * @param  slaveID 从站号
-    * @param  len 长度
-    * @param  ctrlValue 控制值 1-按最大真空度吸取 2-按设定真空度吸取 3-停止吸取
-    * @return 错误码
+    * @brief Controla a matriz de ventosas
+    * @param  slaveID Número do escravo
+    * @param  len Comprimento
+    * @param  ctrlValue Valor de controle 1-sucção com vácuo máximo 2-sucção com vácuo definido 3-parar sucção
+    * @return Código de erro
     */
     public int SetSuckerCtrl(int slaveID, int len, int[] ctrlValue)
 
-获取阵列式吸盘状态
+Obter Estado da Matriz de Ventosas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1136,16 +1135,16 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 获取阵列式吸盘状态
-    * @param  slaveID 从站号
-    * @param  state 吸附状态 0-释放物体 1-检测到工件吸附成功 2-没有吸附到物体 3-物体脱离
-    * @param  pressValue 当前真空度 单位kpa
-    * @param  error 吸盘当前的错误码
-    * @return 错误码
+    * @brief Obtém o estado da matriz de ventosas
+    * @param  slaveID Número do escravo
+    * @param  state Estado de sucção 0-objeto solto 1-objeto detectado e sucção bem-sucedida 2-objeto não detectado 3-objeto desprendido
+    * @param  pressValue Vácuo atual unidade kPa
+    * @param  error Código de erro atual da ventosa
+    * @return Código de erro
     */
     public int GetSuckerState(int slaveID, int[] state, int[] pressValue, int[] error)
 
-等待吸盘状态
+Aguardar Estado da Ventosa
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
@@ -1153,34 +1152,34 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 等待吸盘状态
-    * @param  slaveID 从站号
-    * @param  state 吸附状态 0-释放物体 1-检测到工件吸附成功 2-没有吸附到物体 3-物体脱离
-    * @param  ms 等待最大时间
-    * @return 错误码
+    * @brief Aguarda o estado da ventosa
+    * @param  slaveID Número do escravo
+    * @param  state Estado de sucção 0-objeto solto 1-objeto detectado e sucção bem-sucedida 2-objeto não detectado 3-objeto desprendido
+    * @param  ms Tempo máximo de espera
+    * @return Código de erro
     */
     public int WaitSuckerState(int slaveID, int state, int ms)
 
-阵列式吸盘控制指令代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Instruções de Controle da Matriz de Ventosas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static void testSucker(Robot robot)
     {
-        //上传并加载开放协议文件
-        robot.OpenLuaUpload("C：//项目/外设SDK/CtrlDev_sucker.lua");
+        //Carregar e enviar arquivo de protocolo aberto
+        robot.OpenLuaUpload("C：//openlua/CtrlDev_sucker.lua");
         robot.Sleep(2000);
         robot.UnloadCtrlOpenLUA(1);
         robot.LoadCtrlOpenLUA(1);
         robot.Sleep(1000);
-        //控制吸盘广播模式下，按照最大能力吸附
+        //Controlar ventosa em modo broadcast com capacidade máxima de sucção
         int[] ctrl = {1};
         robot.SetSuckerCtrl(0, 1, ctrl);
         int[] state=new int[1];
         int[] pressVlaue=new int[1];
         int[] error=new int[1];
-        //循环监控1号吸盘和12号吸盘的状态
+        //Monitorar estados da ventosa 1 e ventosa 12 em loop
         for (int i = 0; i < 100; i++)
         {
             robot.GetSuckerState(1, state,pressVlaue, error);
@@ -1189,17 +1188,17 @@ SmartTool按钮代码示例
             System.out.println("sucker12 state is :"+state[0]+", pressVlaue is:"+pressVlaue[0]+",error num is:"+error[0]);
             robot.Sleep(100);
         }
-        //等待1号吸盘是否为吸附到物体的状态，等待时间100ms
+        //Aguardar ventosa 1 atingir estado de objeto aderido, tempo de espera 100ms
         int ret = robot.WaitSuckerState(1, 1, 100);
         System.out.println("WaitSuckerState result is:"+ ret);
-        //单播模式关闭1号和12号吸盘
+        //Modo unicast para desligar ventosas 1 e 12
         ctrl[0] = 3;
         robot.SetSuckerCtrl(1, 1, ctrl);
         robot.SetSuckerCtrl(12, 1, ctrl);
         robot.CloseRPC();
     }
 
-激光外设打开关闭函数
+Função de Ligar/Desligar Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1207,14 +1206,14 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光外设打开关闭函数
-     * @param [in] OnOff 0-关闭 1-打开
-     * @param [in] weldId 焊缝ID 默认为0
-     * @return 错误码
+     * @brief Função para ligar/desligar periférico laser
+     * @param [in] OnOff 0-desligar 1-ligar
+     * @param [in] weldId ID da solda, padrão 0
+     * @return Código de erro
      */
     public int LaserTrackingLaserOnOff(int OnOff, int weldId)
     
-激光跟踪开始结束函数
+Função de Iniciar/Parar Rastreamento a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1222,14 +1221,14 @@ SmartTool按钮代码示例
     :linenos:
     
     /**
-     * @brief 激光跟踪开始结束函数
-     * @param [in] OnOff 0-结束 1-开始
-     * @param [in] coordId 激光外设工具坐标系编号
-     * @return 错误码
+     * @brief Função para iniciar/parar rastreamento a laser
+     * @param [in] OnOff 0-parar 1-iniciar
+     * @param [in] coordId Número do sistema de coordenadas da ferramenta do periférico laser
+     * @return Código de erro
      */
     public int LaserTrackingTrackOnOff(int OnOff, int coordId)
 
-激光寻位-固定反向
+Busca de Posição a Laser - Direção Fixa
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1237,17 +1236,17 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光寻位-固定反向
+     * @brief Busca de posição a laser - Direção fixa
      * @param [in] direction 0-x+ 1-x- 2-y+ 3-y- 4-z+ 5-z-
-     * @param [in] vel 速度 单位%
-     * @param [in] distance 最大寻位距离 单位mm
-     * @param [in] timeout 寻位超时时间 单位ms
-     * @param [in] posSensorNum 激光标定的工具坐标编号
-     * @return 错误码
+     * @param [in] vel Velocidade unidade %
+     * @param [in] distance Distância máxima de busca unidade mm
+     * @param [in] timeout Tempo limite de busca unidade ms
+     * @param [in] posSensorNum Número do sistema de coordenadas da ferramenta calibrado para o laser
+     * @return Código de erro
      */
     public int LaserTrackingSearchStart_xyz(int direction, int vel, int distance, int timeout, int posSensorNum)
     
-激光寻位-任意方向
+Busca de Posição a Laser - Direção Arbitrária
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1255,17 +1254,17 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光寻位-任意方向
-     * @param [in] directionPoint 寻位输入的点的xyz左边
-     * @param [in] vel 速度 单位%
-     * @param [in] distance 最大寻位距离 单位mm
-     * @param [in] timeout 寻位超时时间 单位ms
-     * @param [in] posSensorNum 激光标定的工具坐标编号
-     * @return 错误码
+     * @brief Busca de posição a laser - Direção arbitrária
+     * @param [in] directionPoint Coordenadas xyz do ponto de entrada da busca
+     * @param [in] vel Velocidade unidade %
+     * @param [in] distance Distância máxima de busca unidade mm
+     * @param [in] timeout Tempo limite de busca unidade ms
+     * @param [in] posSensorNum Número do sistema de coordenadas da ferramenta calibrado para o laser
+     * @return Código de erro
      */
     public int LaserTrackingSearchStart_point(DescTran directionPoint, int vel, int distance, int timeout, int posSensorNum)
    
-激光寻位结束
+Fim da Busca de Posição a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1273,12 +1272,12 @@ SmartTool按钮代码示例
    :linenos:
 
    /**
-    * @brief  激光寻位结束
-    * @return 错误码
+    * @brief  Fim da busca de posição a laser
+    * @return Código de erro
     */
     public int LaserTrackingSearchStop()
 
-激光IP配置
+Configuração de IP do Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1286,28 +1285,28 @@ SmartTool按钮代码示例
    :linenos:
 
     /**
-     * @brief 激光IP配置
-     * @param [in] ip 激光外设的ip地址
-     * @param [in] port 激光外设的端口号
-     * @return 错误码
+     * @brief Configuração de IP do laser
+     * @param [in] ip Endereço IP do periférico laser
+     * @param [in] port Número da porta do periférico laser
+     * @return Código de erro
      */
     public int LaserTrackingSensorConfig(String ip, int port)
 
-激光外设采样周期配置
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configuração do Período de Amostragem do Periférico Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 激光外设采样周期配置
-     * @param [in] period 激光外设采样周期 单位ms
-     * @return 错误码
+     * @brief Configuração do período de amostragem do periférico laser
+     * @param [in] period Período de amostragem do periférico laser unidade ms
+     * @return Código de erro
      */
     public int LaserTrackingSensorSamplePeriod(int period)
 
-激光外设驱动加载
+Carregar Driver do Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1315,13 +1314,13 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光外设驱动加载
-     * @param [in] type 激光外设驱动的协议类型 101-睿牛 102-创想 103-全视 104-同舟 105-奥太
-     * @return 错误码
+     * @brief Carregar driver do periférico laser
+     * @param [in] type Tipo de protocolo do driver do periférico laser 101-Ruiniu 102-Chuangxiang 103-Quanshi 104-Tongzhou 105-Aotai
+     * @return Código de erro
      */
     public int LoadPosSensorDriver(int type)
 
-激光外设驱动卸载
+Descarregar Driver do Periférico Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1329,12 +1328,12 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光外设驱动卸载
-     * @return 错误码
+     * @brief Descarregar driver do periférico laser
+     * @return Código de erro
      */
     public int UnLoadPosSensorDriver()
 
-激光焊缝轨迹记录
+Gravação da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1342,14 +1341,14 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光焊缝轨迹记录
-     * @param [in] status 0-停止记录 1-实时跟踪  2-开始记录
-     * @param [in] delayTime 延时时间 单位ms
-     * @return 错误码
+     * @brief Gravação da trajetória da solda a laser
+     * @param [in] status 0-parar gravação 1-rastreamento em tempo real 2-iniciar gravação
+     * @param [in] delayTime Tempo de atraso unidade ms
+     * @return Código de erro
      */
     public int LaserSensorRecord1(int status, int delayTime)
 
-激光焊缝轨迹复现
+Reprodução da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1357,14 +1356,14 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光焊缝轨迹复现
-     * @param [in] delayTime 延时时间 单位ms
-     * @param [in] speed 速度 单位%
-     * @return 错误码
+     * @brief Reprodução da trajetória da solda a laser
+     * @param [in] delayTime Tempo de atraso unidade ms
+     * @param [in] speed Velocidade unidade %
+     * @return Código de erro
      */
     public int LaserSensorReplay(int delayTime, double speed)
 
-激光跟踪复现
+Reprodução do Rastreamento a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1372,12 +1371,12 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 激光跟踪复现
-     * @return 错误码
+     * @brief Reprodução do rastreamento a laser
+     * @return Código de erro
      */
     public int MoveLTR()
 
-激光焊缝轨迹复现
+Reprodução da Trajetória da Solda a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1385,21 +1384,21 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-    * @brief 激光焊缝轨迹复现
-    * @param delayMode 模式 0-延时时间 1-延时距离
-    * @param delayTime 延时时间 单位ms
-    * @param delayDisExAxisNum 扩展轴编号
-    * @param delayDis 延时距离 单位mm
-    * @param sensitivePara 补偿灵敏系数
-    * @param trackMode 定点跟踪类型。0-扩展轴异步运动；1-机器人
-    * @param triggerMode 定点跟踪触发方式。0-跟踪时长；1-IO
-    * @param runTime 机器人定点跟踪时长(s)
-    * @param speed 速度 单位%
-    * @return 错误码
+    * @brief Reprodução da trajetória da solda a laser
+    * @param delayMode Modo de atraso 0-tempo de atraso 1-distância de atraso
+    * @param delayTime Tempo de atraso unidade ms
+    * @param delayDisExAxisNum Número do eixo de extensão
+    * @param delayDis Distância de atraso unidade mm
+    * @param sensitivePara Coeficiente de sensibilidade de compensação
+    * @param trackMode Tipo de rastreamento pontual. 0-movimento assíncrono do eixo de extensão; 1-robô
+    * @param triggerMode Modo de acionamento do rastreamento pontual. 0-duração do rastreamento; 1-IO
+    * @param runTime Duração do rastreamento pontual do robô (s)
+    * @param speed Velocidade unidade %
+    * @return Código de erro
     */
     public int LaserSensorRecordandReplay(int delayMode, int delayTime, int delayDisExAxisNum, double delayDis, double sensitivePara, int trackMode, int triggerMode, double runTime, double speed)
     
-运动到焊缝记录的起点
+Mover para o Início da Gravação da Solda
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1407,14 +1406,14 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 运动到焊缝记录的起点
+     * @brief Mover para o início da gravação da solda
      * @param [in] moveType 0-PTP 1-LIN
-     * @param [in] ovl 速度 单位%
-     * @return 错误码
+     * @param [in] ovl Velocidade unidade %
+     * @return Código de erro
      */
     public int MoveToLaserRecordStart(int moveType, double ovl)
 
-运动到焊缝记录的终点
+Mover para o Fim da Gravação da Solda
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1422,14 +1421,14 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 运动到焊缝记录的终点
+     * @brief Mover para o fim da gravação da solda
      * @param [in] moveType 0-PTP 1-LIN
-     * @param [in] ovl 速度 单位%
-     * @return 错误码
+     * @param [in] ovl Velocidade unidade %
+     * @return Código de erro
      */
     public int MoveToLaserRecordEnd(int moveType, double ovl)
 
-运动到激光传感器寻位点
+Mover para o Ponto de Busca do Sensor a Laser
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
@@ -1437,39 +1436,39 @@ SmartTool按钮代码示例
     :linenos:
 
     /**
-     * @brief 运动到激光传感器寻位点
-     * @param [in] moveFlag 运动类型：0-PTP；1-LIN
-     * @param [in] ovl 速度缩放因子，0-100
-     * @param [in] dataFlag 焊缝缓存数据选择：0-执行规划数据；1-执行记录数据
-     * @param [in] plateType 板材类型：0-波纹板；1-瓦楞板；2-围栏板；3-油桶；4-波纹甲壳钢
-     * @param [in] trackOffectType 激光传感器偏移类型：0-不偏移；1-基坐标系偏移；2-工具坐标系偏移；3-激光传感器原始数据偏移
-     * @param [in] offset 偏移量
-     * @return 错误码
+     * @brief Mover para o ponto de busca do sensor a laser
+     * @param [in] moveFlag Tipo de movimento: 0-PTP; 1-LIN
+     * @param [in] ovl Fator de escala de velocidade, 0-100
+     * @param [in] dataFlag Seleção de dados de cache da solda: 0-executar dados planejados; 1-executar dados gravados
+     * @param [in] plateType Tipo de placa: 0-placa ondulada; 1-placa corrugada; 2-placa de cerca; 3-barril de óleo; 4-aço de casco ondulado
+     * @param [in] trackOffectType Tipo de deslocamento do sensor a laser: 0-sem deslocamento; 1-deslocamento no sistema de coordenadas base; 2-deslocamento no sistema de coordenadas da ferramenta; 3-deslocamento com base nos dados brutos do sensor a laser
+     * @param [in] offset Valor de deslocamento
+     * @return Código de erro
      */
     public int MoveToLaserSeamPos(int moveFlag, double ovl, int dataFlag, int plateType, int trackOffectType, DescPose offset)
     
-获取激光传感器寻位点坐标信息
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Informações de Coordenadas do Ponto de Busca do Sensor a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.9-3.8.6
 
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief 获取激光传感器寻位点坐标信息
-     * @param [in] trackOffectType 激光传感器偏移类型：0-不偏移；1-基坐标系偏移；2-工具坐标系偏移；3-激光传感器原始数据偏移
-     * @param [in] offset 偏移量
-     * @param [out] jPos 关节位置[°]
-     * @param [out] descPos 笛卡尔位置[mm]
-     * @param [out] tool 工具坐标系
-     * @param [out] user 工件坐标系
-     * @param [out] exaxis 扩展轴位置[mm]
-     * @return 错误码
+     * @brief Obter informações de coordenadas do ponto de busca do sensor a laser
+     * @param [in] trackOffectType Tipo de deslocamento do sensor a laser: 0-sem deslocamento; 1-deslocamento no sistema de coordenadas base; 2-deslocamento no sistema de coordenadas da ferramenta; 3-deslocamento com base nos dados brutos do sensor a laser
+     * @param [in] offset Valor de deslocamento
+     * @param [out] jPos Posição articular [°]
+     * @param [out] descPos Posição cartesiana [mm]
+     * @param [out] tool Sistema de coordenadas da ferramenta
+     * @param [out] user Sistema de coordenadas da peça
+     * @param [out] exaxis Posição do eixo de extensão [mm]
+     * @return Código de erro
      */
     public int GetLaserSeamPos(int trackOffectType, DescPose offset, JointPos jPos, DescPose descPos, int[] tool, int[] user, ExaxisPos exaxis)
 
-激光外设传感器参数配置及调试代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Configuração e Depuração de Parâmetros do Periférico Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1489,14 +1488,14 @@ SmartTool按钮代码示例
         robot.CloseRPC();
     }
 
-激光轨迹扫描及轨迹复现的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Digitalização e Reprodução de Trajetória a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static void testLaserRecordAndReplay(Robot robot)
     {
-        //上传并加载开放协议文件
+        //Carregar e enviar arquivo de protocolo aberto
         robot.OpenLuaUpload("D://zUP/CtrlDev_laser_ruiniu-0117.lua");
         robot.Sleep(2000);
         robot.SetCtrlOpenLUAName(0, "CtrlDev_laser_ruiniu-0117.lua");
@@ -1531,14 +1530,14 @@ SmartTool按钮代码示例
         robot.CloseRPC();
     }
 
-激光寻位及实时跟踪的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Busca de Posição e Rastreamento em Tempo Real a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     public static void testLasertrack(Robot robot)
     {
-        //上传并加载开放协议文件
+        //Carregar e enviar arquivo de protocolo aberto
         robot.OpenLuaUpload("D://zUP/CtrlDev_laser_ruiniu-0117.lua");
         robot.Sleep(2000);
         robot.SetCtrlOpenLUAName(0, "CtrlDev_laser_ruiniu-0117.lua");
@@ -1567,13 +1566,13 @@ SmartTool按钮代码示例
             robot.MoveL(endjointPos, enddescPose, 1, 0, 20, 100, 100, -1, 0,exaxisPos, 0, 0, offdese, 0,1, 1);
 
             robot.LaserTrackingTrackOnOff(0, 3);
-            System.out.println("当前是第"+(i+1)+"次");
+            System.out.println("Execução atual: "+(i+1));
         }
         robot.CloseRPC();
     }
 
-扩展轴与机器人同步进行激光跟踪的代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Rastreamento a Laser Síncrono com Eixo de Extensão e Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1587,13 +1586,13 @@ SmartTool按钮代码示例
         DescPose seamdescPose=new DescPose(0, 0, 0, 0, 0, 0);
 
         for(int i =0;i<10;++i) {
-            //运动到需要寻位的起始点
+            //Mover para o ponto inicial da busca de posição
             JointPos startjointPos = new JointPos(58.337, -119.628, 146.037, -116.358, -92.224, -117.654);
             DescPose startdescPose = new DescPose(-53.375, -255.363, 0.919, 178.054, 1.077, -94.026);
             robot.ExtAxisSyncMoveJ(startjointPos, startdescPose, 1, 0, 100, 100, 100, startexaxisPos, -1, 0, offdese);
 
             System.out.println("11111");
-            //沿着-y方向开始寻位
+            //Iniciar busca de posição ao longo da direção -y
             int ret = robot.LaserTrackingSearchStart_xyz(3, 100, 300, 1000, 2);
             robot.LaserTrackingSearchStop();
             System.out.println("2222");
@@ -1606,56 +1605,56 @@ SmartTool按钮代码示例
                     seamdescPose.tran.x + ", " + seamdescPose.tran.y + ", " +
                     seamdescPose.tran.z + ", " + seamdescPose.rpy.rx + ", " +
                     seamdescPose.rpy.ry + ", " + seamdescPose.rpy.rz);
-            //如果寻位成功
+            //Se a busca de posição for bem-sucedida
             if (ret == 0) {
-                //机器人和扩展轴同步运动到寻位点
+                //Robô e eixo de extensão se movem sincronizadamente para o ponto de busca
                 robot.ExtAxisSyncMoveJ(seamjointPos, seamdescPose, 1, 0, 100, 100, 100, seamexaxisPos, -1, 0, offdese);
 
-                //开始沿着寻位点进行激光跟踪并与扩展轴同步运动
+                //Iniciar rastreamento a laser ao longo do ponto de busca e movimento síncrono com o eixo de extensão
                 System.out.println("3333");
                 robot.LaserTrackingTrackOnOff(1, 2);
                 JointPos endjointPos = new JointPos(70.580, -90.918, 126.593, -125.154, -92.162, -105.403);
                 DescPose enddescPose = new DescPose(-53.375, -419.020, 0.920, 178.054, 1.076, -94.026);
                 robot.ExtAxisSyncMoveL(endjointPos, enddescPose, 1, 0, 20, 100, 100, -1, endexaxisPos, 0, offdese);
                 ;
-                //停止跟踪
+                //Parar rastreamento
                 robot.LaserTrackingTrackOnOff(0, 2);
                 System.out.println("44444");
             }
-            System.out.println("当前运行次数为:"+i);
+            System.out.println("Número de execuções: "+i);
         }
         robot.CloseRPC();
     }
 
-末端透传功能打开关闭SDK接口
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Interface SDK para Ativar/Desativar Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 开启末端通用透传功能
-    * @param 使能，0-关闭，1-开启
-    * @return 错误码
+    * @brief Ativa/desativa a função de passagem direta na extremidade
+    * @param  enable, 0-desativar, 1-ativar
+    * @return Código de erro
     */
     public int SetAxleGenComEnable(int mode)
 
-末端透传功能非周期数据收发SDK接口
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Interface SDK para Transmissão e Recepção de Dados Aperiódicos na Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 末端发送非周期数据并等待应答
-    * @param lenSnd 发送的长度
-    * @param sndBuff 发送数据
-    * @param lenRcv 选择接受的长度
-    * @param [out] rcvData 应答的数据
-    * @return 错误码
+    * @brief Envia dados aperiódicos na extremidade e aguarda resposta
+    * @param lenSnd Comprimento do envio
+    * @param sndBuff Dados a serem enviados
+    * @param lenRcv Comprimento da recepção selecionada
+    * @param [out] rcvData Dados de resposta
+    * @return Código de erro
     */
     public int SndRcvAxleGenComCmdData(int lenSnd, int[] sndBuff, int lenRcv, int[] rcvData)
     
-基于末端透传功能倍益康艾灸头非周期数据通信代码示例
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Comunicação de Dados Aperiódicos do Cabeçote de Moxabustão Beiyikang Baseado na Função de Passagem Direta na Extremidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1678,30 +1677,30 @@ SmartTool按钮代码示例
     ExaxisPos exaxisPos = new ExaxisPos(0, 0, 0, 0);
     DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
 
-    // 开启末端透传功能
+    // Ativar função de passagem direta na extremidade
     robot.SetAxleGenComEnable(1);
     robot.SetAxleLuaEnable(1);
 
     while (cnt <= 10000) {
-        // 读取版本号
+        // Ler número da versão
         ret = robot.SndRcvAxleGenComCmdData(5, version, 10, rcvdata);
         if (ret == 0) {
             System.out.printf(" hard version : %d,hard code:%d, soft version:%d %d, soft code:%d \n",
                     rcvdata[4], rcvdata[5], rcvdata[6], rcvdata[7], rcvdata[8]);
         } else {
-            System.out.println("SndRcvAxleGenComCmdData version fail: " + ret);
+            System.out.println("Falha no SndRcvAxleGenComCmdData version: " + ret);
             break;
         }
         robot.Sleep(1000);
 
-        // 读取艾灸头在位状态
+        // Ler estado de presença do cabeçote de moxabustão
         ret = robot.SndRcvAxleGenComCmdData(6, state, 6, rcvdata);
         if (ret == 0) {
             System.out.printf(" state : %d \n", rcvdata[4]);
         }
         robot.Sleep(1000);
 
-        // 开启艾灸头激光
+        // Ativar laser do cabeçote de moxabustão
         ret = robot.SndRcvAxleGenComCmdData(6, led_on, 6, rcvdata);
         if (ret == 0) {
             System.out.printf("led on rcv data is: %d, %d, %d, %d, %d, %d\n",
@@ -1710,7 +1709,7 @@ SmartTool按钮代码示例
         robot.MoveJ(p1Joint, p1Desc, 0, 0, 100.0, 100.0, 100.0, exaxisPos, -1.0, 0, offdese);
         robot.Sleep(4000);
 
-        // 关闭艾灸头激光
+        // Desativar laser do cabeçote de moxabustão
         ret = robot.SndRcvAxleGenComCmdData(6, led_off, 6, rcvdata);
         if (ret == 0) {
             System.out.printf("led off rcv data is: %d, %d, %d, %d, %d, %d \n",
@@ -1724,46 +1723,46 @@ SmartTool按钮代码示例
     }
     }  
     
-下载开放协议Lua文件
+Download do Arquivo Lua de Protocolo Aberto
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 下载开放协议Lua文件
-    * @param fileName 开放协议文件名称“CtrlDev_XXX.lua”
-    * @param savePath 开放协议保存文件路径
-    * @return 错误码
+    * @brief Download do arquivo Lua de protocolo aberto
+    * @param fileName Nome do arquivo de protocolo aberto "CtrlDev_XXX.lua"
+    * @param savePath Caminho para salvar o arquivo de protocolo aberto
+    * @return Código de erro
     */
     public int OpenLuaDownload(string fileName, string savePath)
 
-删除开放协议Lua文件
+Excluir Arquivo Lua de Protocolo Aberto
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 删除开放协议Lua文件
-    * @param [in] fileName 要删除的开放协议lua文件名“CtrlDev_XXX.lua”
-    * @return 错误码
+    * @brief Excluir arquivo Lua de protocolo aberto
+    * @param [in] fileName Nome do arquivo lua de protocolo aberto a ser excluído "CtrlDev_XXX.lua"
+    * @return Código de erro
     */
     public int OpenLuaDelete(string fileName)
         
-删除所有开放协议Lua文件
+Excluir Todos os Arquivos Lua de Protocolo Aberto
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief 删除所有开放协议Lua文件
-    * @return 错误码
+    * @brief Excluir todos os arquivos Lua de protocolo aberto
+    * @return Código de erro
     */
     public int AllOpenLuaDelete()
 
-控制器外设开放协议上传下载删除代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código para Upload, Download e Exclusão de Protocolo Aberto de Periférico do Controlador
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
 .. code-block:: Java
     :linenos:

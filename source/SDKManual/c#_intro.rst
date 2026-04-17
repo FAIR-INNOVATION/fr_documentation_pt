@@ -1,19 +1,18 @@
 C#
 ==============
 
-本文档为C#版本的二次开发接口文档。
+Este documento é a documentação da interface de desenvolvimento secundário para a versão C#.
 
 .. important::
 
-    机器人参数单位说明：机器人位置单位为毫米(mm)，姿态单位为度(°)。
+    Explicação das unidades dos parâmetros do robô: A unidade de posição do robô é milímetro (mm) e a unidade de postura é grau (°).
 
 .. important:: 
 
-    1)	非特别说明的代码示例中都默认机器人已经正常开机使能；
-    2)	文档中的所有代码示例都默认在机器人的工作空间内没有任何干涉；
-    3)	实际使用测试时请采用现场机器人的数据使用。
-    4)  使用本SDK前，需通过NuGet查找“xmlrpcnet”包，并添加至项目引用；
-
+    1) Nos exemplos de código não especificados, presume-se que o robô já foi iniciado e habilitado normalmente.
+    2) Todos os exemplos de código neste documento presumem que não há interferência no espaço de trabalho do robô.
+    3) Ao testar na prática, use os dados do robô no local.
+    4) Antes de usar este SDK, é necessário encontrar o pacote "xmlrpcnet" através do NuGet e adicioná-lo como referência ao projeto.
 
 .. toctree:: 
     :numbered: 5

@@ -1,287 +1,287 @@
-机器人状态查询
-===============
+Consulta de Estado do Robô
+==============================
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 5
 
-获取当前关节位置(角度)
-+++++++++++++++++++++++++++++++++
+Obter Posição Articular Atual (graus)
+++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前关节位置(角度)
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] jPos 六个关节位置，单位deg
-    * @return  错误码
+    * @brief  Obtém a posição articular atual (graus)
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] jPos Posições das seis juntas, em graus
+    * @return  Código de erro
     */
-    int GetActualJointPosDegree(byte flag, ref JointPos jPos); 
+    int GetActualJointPosDegree(byte flag, ref JointPos jPos);
 
-获取当前关节位置(弧度)
-+++++++++++++++++++++++++++++++++
+Obter Posição Articular Atual (radianos)
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前关节位置(弧度)
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] jPos 六个关节位置，单位rad
-    * @return  错误码
-    */   
+    * @brief  Obtém a posição articular atual (radianos)
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] jPos Posições das seis juntas, em radianos
+    * @return  Código de erro
+    */
     int GetActualJointPosRadian(byte flag, ref JointPos jPos);
 
-获取关节反馈速度
-+++++++++++++++++++++++++++++++++
+Obter Velocidade de Feedback Articular
+++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取关节反馈速度-deg/s 
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] speed 六个关节速度 
-    * @return 错误码 
+    /**
+    * @brief Obtém a velocidade de feedback articular - graus/s
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] speed Velocidades das seis juntas
+    * @return Código de erro
     */
     int GetActualJointSpeedsDegree(byte flag, ref double[] speed);
 
-获取关节反馈加速度
-+++++++++++++++++++++++++++++++++
+Obter Aceleração de Feedback Articular
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取关节反馈加速度-deg/s^2 
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] acc 六个关节加速度 
-    * @return 错误码 
+    /**
+    * @brief Obtém a aceleração de feedback articular - graus/s^2
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] acc Acelerações das seis juntas
+    * @return Código de erro
     */
-    int GetActualJointAccDegree(byte flag, ref double[] acc); 
+    int GetActualJointAccDegree(byte flag, ref double[] acc);
 
-获取TCP指令速度-合速度
-+++++++++++++++++++++++++++++++++
+Obter Velocidade de Comando TCP - Velocidade Resultante
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取TCP指令速度-合速度 
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] tcp_speed 线性速度 
-    * @param [out] ori_speed 姿态速度 
-    * @return 错误码 
+    /**
+    * @brief Obtém a velocidade de comando TCP - velocidade resultante
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] tcp_speed Velocidade linear
+    * @param [out] ori_speed Velocidade de orientação
+    * @return Código de erro
     */
-    int GetTargetTCPCompositeSpeed(byte flag, ref double tcp_speed, ref double ori_speed); 
+    int GetTargetTCPCompositeSpeed(byte flag, ref double tcp_speed, ref double ori_speed);
 
-获取TCP反馈速度-合速度
-+++++++++++++++++++++++++++++++++
+Obter Velocidade de Feedback TCP - Velocidade Resultante
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
-    
-    /** 
-    * @brief 获取TCP反馈速度-合速度
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] tcp_speed 线性速度 
-    * @param [out] ori_speed 姿态速度 
-    * @return 错误码 
+
+    /**
+    * @brief Obtém a velocidade de feedback TCP - velocidade resultante
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] tcp_speed Velocidade linear
+    * @param [out] ori_speed Velocidade de orientação
+    * @return Código de erro
     */
     int GetActualTCPCompositeSpeed(byte flag, ref double tcp_speed, ref double ori_speed);
 
-获取TCP指令速度-分速度
-+++++++++++++++++++++++++++++++++
+Obter Velocidade de Comando TCP - Velocidades Componentes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取TCP指令速度-分速度
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] speed [x,y,z,rx,ry,rz]速度 
-    * @return 错误码 
+    /**
+    * @brief Obtém a velocidade de comando TCP - velocidades componentes
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] speed Velocidades [x, y, z, rx, ry, rz]
+    * @return Código de erro
     */
     int GetTargetTCPSpeed(byte flag, ref double[] speed);
 
-获取TCP反馈速度-分速度
-+++++++++++++++++++++++++++++++++
+Obter Velocidade de Feedback TCP - Velocidades Componentes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取TCP反馈速度-分速度
-    * @param [in] flag 0-阻塞，1-非阻塞 
-    * @param [out] speed [x,y,z,rx,ry,rz]速度 
-    * @return 错误码 
+    /**
+    * @brief Obtém a velocidade de feedback TCP - velocidades componentes
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] speed Velocidades [x, y, z, rx, ry, rz]
+    * @return Código de erro
     */
     int GetActualTCPSpeed(byte flag, ref double[] speed);
 
-获取当前工具位姿
+Obter Pose da Ferramenta Atual
 +++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前工具位姿
-    * @param  [in] flag  0-阻塞，1-非阻塞
-    * @param  [out] desc_pos  工具位姿
-    * @return  错误码
+    * @brief  Obtém a pose da ferramenta atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose da ferramenta
+    * @return  Código de erro
     */
-    int GetActualTCPPose(byte flag, ref DescPose desc_pos); 
+    int GetActualTCPPose(byte flag, ref DescPose desc_pos);
 
-获取当前工具坐标系编号
-+++++++++++++++++++++++++++++++++
+Obter Número do Sistema de Coordenadas da Ferramenta Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前工具坐标系编号
-    * @param  [in] flag  0-阻塞，1-非阻塞
-    * @param  [out] id  工具坐标系编号
-    * @return  错误码
+    * @brief  Obtém o número do sistema de coordenadas da ferramenta atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] id Número do sistema de coordenadas da ferramenta
+    * @return  Código de erro
     */
-    int GetActualTCPNum(byte flag, ref int id);  
+    int GetActualTCPNum(byte flag, ref int id);
 
-获取当前工件坐标系编号
-+++++++++++++++++++++++++++++++++
+Obter Número do Sistema de Coordenadas da Peça Atual
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前工件坐标系编号
-    * @param  [in] flag  0-阻塞，1-非阻塞
-    * @param  [out] id  工件坐标系编号
-    * @return  错误码
+    * @brief  Obtém o número do sistema de coordenadas da peça atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] id Número do sistema de coordenadas da peça
+    * @return  Código de erro
     */
     int GetActualWObjNum(byte flag, ref int id);
 
-获取当前末端法兰位姿
-+++++++++++++++++++++++++++++++++
+Obter Pose do Flange da Extremidade Atual
++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取当前末端法兰位姿
-    * @param  [in] flag  0-阻塞，1-非阻塞
-    * @param  [out] desc_pos  法兰位姿
-    * @return  错误码
+    * @brief  Obtém a pose do flange da extremidade atual
+    * @param  [in] flag 0-bloqueante, 1-não bloqueante
+    * @param  [out] desc_pos Pose do flange
+    * @return  Código de erro
     */
-    int GetActualToolFlangePose(byte flag, ref DescPose desc_pos);   
+    int GetActualToolFlangePose(byte flag, ref DescPose desc_pos);
 
-获取当前关节转矩
+Obter Torque Articular Atual
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取当前关节转矩
-    * @param  [in] flag 0-阻塞，1-非阻塞
-    * @param  [out] torques 关节转矩
-    * @return  错误码
+    * @brief Obtém o torque articular atual
+    * @param [in] flag 0-bloqueante, 1-não bloqueante
+    * @param [out] torques Torques das juntas
+    * @return Código de erro
     */
-    int GetJointTorques(byte flag, float[] torques); 
+    int GetJointTorques(byte flag, float[] torques);
 
-获取系统时间
+Obter Tempo do Sistema
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  获取系统时间
-    * @param  [out] t_ms 单位ms
-    * @return  错误码
+    * @brief  Obtém o tempo do sistema
+    * @param [out] t_ms em ms
+    * @return Código de erro
     */
     int GetSystemClock(ref double t_ms);
 
-查询机器人运动是否完成
-++++++++++++++++++++++++++++++++++++
+Verificar se o Movimento do Robô está Concluído
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  查询机器人运动是否完成
-    * @param  [out]  state  0-未完成，1-完成
-    * @return  错误码
-    */   
+    * @brief  Verifica se o movimento do robô está concluído
+    * @param [out] state 0-não concluído, 1-concluído
+    * @return Código de erro
+    */
     int GetRobotMotionDone(ref byte state);
 
-查询机器人运动队列缓存长度
-++++++++++++++++++++++++++++++++++++
+Consultar o Comprimento da Fila de Cache de Movimento do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 查询机器人运动队列缓存长度 
-    * @param [out] len   缓存长度
-    * @return 错误码 
+    /**
+    * @brief Consulta o comprimento da fila de cache de movimento do robô
+    * @param [out] len Comprimento da cache
+    * @return Código de erro
     */
     int GetMotionQueueLength(ref int len);
 
-获取机器人急停状态
-++++++++++++++++++++++++++++++++++++
+Obter Estado de Parada de Emergência do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取机器人急停状态
-    * @param [out] state 急停状态，0-非急停，1-急停
-    * @return 错误码  
+    * @brief Obtém o estado de parada de emergência do robô
+    * @param [out] state Estado de parada de emergência, 0-não em parada de emergência, 1-em parada de emergência
+    * @return Código de erro
     */
     int GetRobotEmergencyStopState(ref byte state);
 
-获取SDK与机器人的通讯状态
-++++++++++++++++++++++++++++++++++++
+Obter Estado de Comunicação entre SDK e o Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取SDK与机器人的通讯状态
-    * @param [out]  state 通讯状态，0-通讯正常，1-通讯异常
+    * @brief Obtém o estado de comunicação entre SDK e o robô
+    * @param [out] state Estado de comunicação, 0-comunicação normal, 1-comunicação anormal
     */
     int GetSDKComState(ref int state);
 
-获取安全停止信号
+Obter Sinal de Parada de Segurança
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取安全停止信号
-    * @param [out]  si0_state 安全停止信号SI0，0-无效，1-有效
-    * @param [out]  si1_state 安全停止信号SI1，0-无效，1-有效
+    * @brief Obtém o sinal de parada de segurança
+    * @param [out] si0_state Sinal de parada de segurança SI0, 0-inválido, 1-válido
+    * @param [out] si1_state Sinal de parada de segurança SI1, 0-inválido, 1-válido
     */
     int GetSafetyStopState(ref byte si0_state, ref byte si1_state);
 
-获取机器人关节驱动器温度(℃)
-++++++++++++++++++++++++++++++++++++
+Obter Temperatura do Driver Articular do Robô (°C)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取机器人关节驱动器温度(℃)
-    * @return 错误码
+    * @brief Obtém a temperatura do driver articular do robô (°C)
+    * @return Código de erro
     */
     int GetJointDriverTemperature(double[] temperature);
 
-获取机器人关节驱动器扭矩(Nm)
-++++++++++++++++++++++++++++++++++++
+Obter Torque do Driver Articular do Robô (Nm)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取机器人关节驱动器扭矩(Nm)
-    * @return 错误码
+    * @brief Obtém o torque do driver articular do robô (Nm)
+    * @return Código de erro
     */
     int GetJointDriverTorque(double torque[]);
 
-获取机器人实时状态结构体
-++++++++++++++++++++++++++++++++++++
+Obter Estrutura de Estado em Tempo Real do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 获取机器人实时状态结构体
-    * @param [out] pkg 机器人实时状态结构体 
-    * @return 错误码 
+    /**
+    * @brief Obtém a estrutura de estado em tempo real do robô
+    * @param [out] pkg Estrutura de estado em tempo real do robô
+    * @return Código de erro
     */
     int GetRobotRealTimeState(ref ROBOT_STATE_PKG pkg);
 
-机器人状态查询代码示例
-++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Consulta de Estado do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -377,62 +377,61 @@
         robot.GetRobotRealTimeState(ref pkg);
     }
 
-逆运动学求解
+Solução de Cinemática Inversa
 +++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  逆运动学求解
-    * @param  [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
-    * @param  [in] desc_pos 笛卡尔位姿
-    * @param  [in] config 关节空间配置，[-1]-参考当前关节位置解算，[0~7]-依据特定关节空间配置求解
-    * @param  [out] joint_pos 关节位置
-    * @return  错误码
-    */ 
+    * @brief  Solução de cinemática inversa
+    * @param [in] type 0-pose absoluta (sistema de coordenadas base), 1-pose incremental (sistema de coordenadas base), 2-pose incremental (sistema de coordenadas da ferramenta)
+    * @param [in] desc_pos Pose cartesiana
+    * @param [in] config Configuração do espaço articular, [-1]-resolver com base na posição articular atual, [0~7]-resolver com base em uma configuração específica do espaço articular
+    * @param [out] joint_pos Posição articular
+    * @return  Código de erro
+    */
     int GetInverseKin(int type, DescPose desc_pos, int config, ref JointPos joint_pos);
 
-逆运动学求解(参考位置)
-++++++++++++++++++++++++++++++++++++
+Solução de Cinemática Inversa (com posição de referência)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  逆运动学求解，参考指定关节位置判断是否有解
-    * @param  [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
-    * @param  [in] desc_pos 笛卡尔位姿
-    * @param  [in] joint_pos_ref 参考关节位置
-    * @param  [out] result 0-无解，1-有解
-    * @return  错误码
-    */   
-    int GetInverseKinRef(int posMode, DescPose desc_pos, JointPos joint_pos_ref, ref JointPos joint_pos); 
+    * @brief  Solução de cinemática inversa, verifica se há solução com base na posição articular de referência especificada
+    * @param [in] type 0-pose absoluta (sistema de coordenadas base), 1-pose incremental (sistema de coordenadas base), 2-pose incremental (sistema de coordenadas da ferramenta)
+    * @param [in] desc_pos Pose cartesiana
+    * @param [in] joint_pos_ref Posição articular de referência
+    * @param [out] result 0-sem solução, 1-com solução
+    * @return  Código de erro
+    */
+    int GetInverseKinRef(int posMode, DescPose desc_pos, JointPos joint_pos_ref, ref JointPos joint_pos);
 
-逆运动学求解，笛卡尔空间包含扩展轴位置
+Solução de Cinemática Inversa incluindo posição do eixo estendido no espaço cartesiano
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 逆运动学求解，笛卡尔空间包含扩展轴位置
-    * @param [in] type 0-绝对位姿(基坐标系)，1-增量位姿(基坐标系)，2-增量位姿(工具坐标系)
-    * @param [in] desc_pos 笛卡尔位姿
-    * @param [in] exaxis 扩展轴位置
-    * @param [in] tool 工具号
-    * @param [in] workPiece 工件号
-    * @param [out] joint_pos 关节位置
-    * @return 错误码
+    * @brief Solução de cinemática inversa incluindo posição do eixo estendido no espaço cartesiano
+    * @param [in] type 0-pose absoluta (sistema de coordenadas base), 1-pose incremental (sistema de coordenadas base), 2-pose incremental (sistema de coordenadas da ferramenta)
+    * @param [in] desc_pos Pose cartesiana
+    * @param [in] exaxis Posição do eixo estendido
+    * @param [in] tool Número da ferramenta
+    * @param [in] workPiece Número da peça
+    * @param [out] joint_pos Posição articular
+    * @return Código de erro
     */
     public int GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, ref JointPos joint_pos);
 
-逆运动学求解包含扩展轴位置代码示例
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Solução de Cinemática Inversa incluindo posição do eixo estendido
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     public void TestInverseKinExaxis()
     {
         ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
-        
 
         DescPose desc = new DescPose(99.957f, -0.002f, 29.994f, -176.569f, -6.757f, -167.462f);
         ExaxisPos exaxis = new ExaxisPos(100.0f, 0.0f, 0.0f, 0.0f);
@@ -455,36 +454,36 @@
         robot.MoveJ(jointPos, desc, toolnum, workPcsNum, (float)100.0, (float)100.0, (float)100.0, exaxis, -1, 0, offsetPos);
     }
 
-获取逆运动学是否有解
-++++++++++++++++++++++++++++++++++++
+Verificar se a Solução de Cinemática Inversa Existe
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    /** 
-    * @brief 逆运动学求解，判断指定参考关节位置是否有解
-    * @param [in] posMode 0绝对位姿，1相对位姿-基坐标系，2相对位姿-工具坐标系 
-    * @param [in] desc_pos 笛卡尔位姿 
-    * @param [in] joint_pos_ref 参考关节位置 
-    * @param [out] hasResult 0-无解，1-有解 
-    * @return 错误码 
-    */ 
-    int GetInverseKinHasSolution(int posMode, DescPose desc_pos, JointPos joint_pos_ref, ref bool hasResult);  
+    /**
+    * @brief Solução de cinemática inversa, verifica se há solução com base na posição articular de referência especificada
+    * @param [in] posMode 0-pose absoluta, 1-pose relativa - sistema de coordenadas base, 2-pose relativa - sistema de coordenadas da ferramenta
+    * @param [in] desc_pos Pose cartesiana
+    * @param [in] joint_pos_ref Posição articular de referência
+    * @param [out] hasResult 0-sem solução, 1-com solução
+    * @return Código de erro
+    */
+    int GetInverseKinHasSolution(int posMode, DescPose desc_pos, JointPos joint_pos_ref, ref bool hasResult);
 
-正运动学求解
+Solução de Cinemática Direta
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  正运动学求解
-    * @param  [in] joint_pos 关节位置
-    * @param  [out] desc_pos 笛卡尔位姿
-    * @return  错误码
+    * @brief  Solução de cinemática direta
+    * @param [in] joint_pos Posição articular
+    * @param [out] desc_pos Pose cartesiana
+    * @return  Código de erro
     */
-    int GetForwardKin(JointPos joint_pos, ref DescPose desc_pos); 
+    int GetForwardKin(JointPos joint_pos, ref DescPose desc_pos);
 
-机器人正逆运动学计算代码示例
-++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Cálculo de Cinemática Direta e Inversa do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -497,11 +496,11 @@
 
         robot.GetInverseKin(0, desc_pos1, -1, ref inverseRtn);
         Console.WriteLine($"dcs1 GetInverseKin rtn is {inverseRtn.jPos[0]} {inverseRtn.jPos[1]} {inverseRtn.jPos[2]} {inverseRtn.jPos[3]} {inverseRtn.jPos[4]} {inverseRtn.jPos[5]}");
-        robot.GetInverseKinRef(0,  desc_pos1, j1, ref inverseRtn);
+        robot.GetInverseKinRef(0, desc_pos1, j1, ref inverseRtn);
         Console.WriteLine($"dcs1 GetInverseKinRef rtn is {inverseRtn.jPos[0]} {inverseRtn.jPos[1]} {inverseRtn.jPos[2]} {inverseRtn.jPos[3]} {inverseRtn.jPos[4]} {inverseRtn.jPos[5]}");
 
         bool hasResut = false;
-        robot.GetInverseKinHasSolution(0,  desc_pos1,  j1, ref hasResut);
+        robot.GetInverseKinHasSolution(0, desc_pos1, j1, ref hasResut);
         Console.WriteLine($"dcs1 GetInverseKinRef result {hasResut}");
 
         DescPose forwordResult = new DescPose(0, 0, 0, 0, 0, 0);
@@ -509,46 +508,45 @@
         Console.WriteLine($"jpos1 forwordResult rtn is {forwordResult.tran.x} {forwordResult.tran.y} {forwordResult.tran.z} {forwordResult.rpy.rx} {forwordResult.rpy.ry} {forwordResult.rpy.rz}");
     }
 
-查询机器人示教管理点数据
-++++++++++++++++++++++++++++++++++++
-.. code-block:: c#
-    :linenos:
-
-    /** 
-    * @brief 查询机器人示教管理点位数据 
-    * @param [in] name    点位名
-    * @param [out] data   点位数据double[20]{x,y,z,rx,ry,rz,j1,j2,j3,j4,j5,j6,tool, wobj,speed,acc,e1,e2,e3,e4}
-    * @return 错误码 
-    */ 
-    int GetRobotTeachingPoint(string name, ref double[] data); 
-
-获取机器人DH参数补偿值 
-++++++++++++++++++++++++++++++++++++
-.. code-block:: c#
-    :linenos:
-
-    /** 
-    * @brief 获取机器人DH参数补偿值 
-    * @param [out] dhCompensation 机器人DH参数补偿值(mm) [cmpstD1,cmpstA2,cmpstA3,cmpstD4,cmpstD5,cmpstD6]
-    * @return 错误码 
-    */
-    int GetDHCompensation(ref double[] dhCompensation);
-
-
-获取控制箱SN码
-++++++++++++++++++++++++++++++++++++
+Consultar Dados do Ponto de Gerenciamento de Ensino do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 获取控制箱SN码
-    * @param [out] SNCode 控制箱SN码
-    * @return 错误码
+    * @brief Consulta os dados do ponto de gerenciamento de ensino do robô
+    * @param [in] name Nome do ponto
+    * @param [out] data Dados do ponto double[20]{x,y,z,rx,ry,rz,j1,j2,j3,j4,j5,j6,tool,wobj,speed,acc,e1,e2,e3,e4}
+    * @return Código de erro
+    */
+    int GetRobotTeachingPoint(string name, ref double[] data);
+
+Obter Valores de Compensação dos Parâmetros DH do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obtém os valores de compensação dos parâmetros DH do robô
+    * @param [out] dhCompensation Valores de compensação dos parâmetros DH do robô (mm) [cmpstD1,cmpstA2,cmpstA3,cmpstD4,cmpstD5,cmpstD6]
+    * @return Código de erro
+    */
+    int GetDHCompensation(ref double[] dhCompensation);
+
+Obter Número de Série da Caixa de Controle
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obtém o número de série da caixa de controle
+    * @param [out] SNCode Número de série da caixa de controle
+    * @return Código de erro
     */
     int GetRobotSN(ref string SNCode);
 
-查询机器人示教管理点位数据代码示例
-++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Consulta de Dados do Ponto de Gerenciamento de Ensino do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -577,7 +575,7 @@
         Console.WriteLine($"robot SN is  {SN}");
     }
 
-根据编号获取工具坐标系
+Obter Sistema de Coordenadas da Ferramenta por ID
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -585,14 +583,14 @@
     :linenos:
 
     /**
-    * @brief 根据编号获取工具坐标系
-    * @param [in] id 工具坐标系编号
-    * @param [out] coord 坐标系数值
-    * @return 错误码
+    * @brief Obtém o sistema de coordenadas da ferramenta por ID
+    * @param [in] id Número do sistema de coordenadas da ferramenta
+    * @param [out] coord Valores do sistema de coordenadas
+    * @return Código de erro
     */
     int GetToolCoordWithID(int id,ref DescPose coord)
 
-根据编号获取工件坐标系
+Obter Sistema de Coordenadas da Peça por ID
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -600,44 +598,44 @@
     :linenos:
 
     /**
-    * @brief 根据编号获取工件坐标系
-    * @param [in]  id 工件坐标系编号
-    * @param [out] coord 坐标系数值
-    * @return 错误码
+    * @brief Obtém o sistema de coordenadas da peça por ID
+    * @param [in] id Número do sistema de coordenadas da peça
+    * @param [out] coord Valores do sistema de coordenadas
+    * @return Código de erro
     */
     public int GetWObjCoordWithID(int id, ref DescPose coord)
 
-根据编号获取外部工具坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas da Ferramenta Externa por ID
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 根据编号获取外部工具坐标系
-    * @param [in]  id 外部工具坐标系编号
-    * @param [out] coord 坐标系数值
-    * @return 错误码
+    * @brief Obtém o sistema de coordenadas da ferramenta externa por ID
+    * @param [in] id Número do sistema de coordenadas da ferramenta externa
+    * @param [out] coord Valores do sistema de coordenadas
+    * @return Código de erro
     */
     public int GetExToolCoordWithID(int id, ref DescPose coord)
 
-根据编号获取扩展轴坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas do Eixo Estendido por ID
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief 根据编号获取扩展轴坐标系
-    * @param [in]  id 外部工具坐标系编号
-    * @param [out] coord 坐标系数值
-    * @return 错误码
+    * @brief Obtém o sistema de coordenadas do eixo estendido por ID
+    * @param [in] id Número do sistema de coordenadas da ferramenta externa
+    * @param [out] coord Valores do sistema de coordenadas
+    * @return Código de erro
     */
     public int GetExAxisCoordWithID(int id, ref DescPose coord)
 
-获取当前工具坐标系
+Obter Sistema de Coordenadas da Ferramenta Atual
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -645,13 +643,13 @@
     :linenos:
 
     /**
-     * @brief 获取当前工具坐标系
-     * @param [out] coord 坐标系数值
-     * @return 错误码
+     * @brief Obtém o sistema de coordenadas da ferramenta atual
+     * @param [out] coord Valores do sistema de coordenadas
+     * @return Código de erro
      */
     public int GetCurToolCoord(ref DescPose coord)
 
-获取当前工件坐标系
+Obter Sistema de Coordenadas da Peça Atual
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -659,41 +657,41 @@
     :linenos:
 
     /**
-     * @brief 获取当前工件坐标系
-     * @param [out] coord 坐标系数值
-     * @return 错误码
+     * @brief Obtém o sistema de coordenadas da peça atual
+     * @param [out] coord Valores do sistema de coordenadas
+     * @return Código de erro
      */
     public int GetCurWObjCoord(ref DescPose coord)
 
-获取当前外部工具坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas da Ferramenta Externa Atual
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
     :linenos:
 
     /**
-     * @brief 获取当前外部工具坐标系
-     * @param  [out] coord 坐标系数值
-     * @return 错误码
+     * @brief Obtém o sistema de coordenadas da ferramenta externa atual
+     * @param [out] coord Valores do sistema de coordenadas
+     * @return Código de erro
      */
     public int GetCurExToolCoord(ref DescPose coord)
 
-获取当前扩展轴坐标系
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter Sistema de Coordenadas do Eixo Estendido Atual
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
 .. code-block:: c#
     :linenos:
 
     /**
-     * @brief 获取当前扩展轴坐标系
-     * @param [out] coord 坐标系数值
-     * @return 错误码
+     * @brief Obtém o sistema de coordenadas do eixo estendido atual
+     * @param [out] coord Valores do sistema de coordenadas
+     * @return Código de erro
      */
     public int GetCurExAxisCoord(ref DescPose coord)
 
-获取机器人坐标系及负载代码示例
+Exemplo de Código de Sistemas de Coordenadas e Carga do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.8  Web-3.8.6
 
@@ -701,7 +699,7 @@
     :linenos:
 
     public void TestCoordMain()
-    {  
+    {
         DescPose t_coord = new DescPose(0, 0, 0, 0, 0, 0);
         t_coord.tran.x = 1.0;
         t_coord.tran.y = 2.0;
@@ -759,8 +757,3 @@
         robot.SetLoadCoord(id, cog);
         Thread.Sleep(100);
     }
-
-
-
-
-
