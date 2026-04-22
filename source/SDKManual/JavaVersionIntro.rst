@@ -1,5 +1,5 @@
 Notas de Atualização de Versão
-====================
+=================================
 
 .. toctree::
     :maxdepth: 5

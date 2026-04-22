@@ -1,11 +1,11 @@
 Configurações Comuns do Robô
-=================
+=======================================
 
 .. toctree::
     :maxdepth: 5
 
 Definir Ponto de Referência da Ferramenta - Método dos Seis Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -17,7 +17,7 @@ Definir Ponto de Referência da Ferramenta - Método dos Seis Pontos
     int SetToolPoint(int point_num);
 
 Calcular Sistema de Coordenadas da Ferramenta - Método dos Seis Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -29,7 +29,7 @@ Calcular Sistema de Coordenadas da Ferramenta - Método dos Seis Pontos
     int ComputeTool(DescPose tcp_pose);
 
 Definir Ponto de Referência da Ferramenta - Método dos Quatro Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -41,7 +41,7 @@ Definir Ponto de Referência da Ferramenta - Método dos Quatro Pontos
     int SetTcp4RefPoint(int point_num);
 
 Calcular Sistema de Coordenadas da Ferramenta - Método dos Quatro Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -53,7 +53,7 @@ Calcular Sistema de Coordenadas da Ferramenta - Método dos Quatro Pontos
     int ComputeTcp4(DescPose tcp_pose);
 
 Calcular Sistema de Coordenadas da Ferramenta com Base em Informações de Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -67,7 +67,7 @@ Calcular Sistema de Coordenadas da Ferramenta com Base em Informações de Ponto
     int ComputeToolCoordWithPoints(int method, JointPos[] pos, DescPose tool_pose);
 
 Definir Sistema de Coordenadas da Ferramenta
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -84,7 +84,7 @@ Definir Sistema de Coordenadas da Ferramenta
     int SetToolCoord(int id, DescPose coord, int type, int install, int toolID, int loadNum);
 
 Definir Lista de Sistemas de Coordenadas da Ferramenta
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -100,7 +100,7 @@ Definir Lista de Sistemas de Coordenadas da Ferramenta
     int SetToolList(int id, DescPose coord, int type, int install, int loadNum);
 
 Obter Sistema de Coordenadas da Ferramenta Atual
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -113,7 +113,7 @@ Obter Sistema de Coordenadas da Ferramenta Atual
     int GetTCPOffset(int flag, DescPose desc_pos);
 
 Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -177,7 +177,7 @@ Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta do R
     }
 
 Definir Ponto de Referência da Coordenada da Ferramenta Externa - Método dos Seis Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -189,7 +189,7 @@ Definir Ponto de Referência da Coordenada da Ferramenta Externa - Método dos S
     int SetExTCPPoint(int point_num);
 
 Calcular Sistema de Coordenadas da Ferramenta Externa - Método dos Seis Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -201,7 +201,7 @@ Calcular Sistema de Coordenadas da Ferramenta Externa - Método dos Seis Pontos
     int ComputeExTCF(DescPose tcp_pose);
 
 Definir Sistema de Coordenadas da Ferramenta Externa
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -215,7 +215,7 @@ Definir Sistema de Coordenadas da Ferramenta Externa
     int SetExToolCoord(int id, DescPose etcp, DescPose etool);
 
 Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -229,7 +229,7 @@ Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
     int SetExToolList(int id, DescPose etcp, DescPose etool);
 
 Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta Externa do Robô
-+++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -268,7 +268,7 @@ Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta Exte
     }
 
 Definir Ponto de Referência do Sistema de Coordenadas da Peça - Método dos Três Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -280,7 +280,7 @@ Definir Ponto de Referência do Sistema de Coordenadas da Peça - Método dos Tr
     int SetWObjCoordPoint(int point_num);
 
 Calcular Sistema de Coordenadas da Peça
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -294,7 +294,7 @@ Calcular Sistema de Coordenadas da Peça
     int ComputeWObjCoord(int method, int refFrame, DescPose wobj_pose);
 
 Definir Sistema de Coordenadas da Peça
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -308,7 +308,7 @@ Definir Sistema de Coordenadas da Peça
     int SetWObjCoord(int id, DescPose coord, int refFrame);
 
 Definir Lista de Sistemas de Coordenadas da Peça
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -322,7 +322,7 @@ Definir Lista de Sistemas de Coordenadas da Peça
     int SetWObjList(int id, DescPose coord, int refFrame);
 
 Calcular Sistema de Coordenadas da Peça com Base em Informações de Pontos
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -337,7 +337,7 @@ Calcular Sistema de Coordenadas da Peça com Base em Informações de Pontos
     int ComputeWObjCoordWithPoints(int method, DescPose[] pos, int refFrame, DescPose tcp_pose);
 
 Obter Sistema de Coordenadas da Peça Atual
-++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -350,7 +350,7 @@ Obter Sistema de Coordenadas da Peça Atual
     int GetWObjOffset(int flag, DescPose desc_pos);
 
 Exemplo de Código para Operações do Sistema de Coordenadas da Peça do Robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -428,7 +428,7 @@ Obter Velocidade Padrão do Robô
     List<Number> GetDefaultTransVel();
 
 Definir Peso da Carga na Extremidade
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -441,7 +441,7 @@ Definir Peso da Carga na Extremidade
     int SetLoadWeight(int loadNum, double weight);
 
 Definir Coordenadas do Centro de Massa da Carga na Extremidade
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -453,7 +453,7 @@ Definir Coordenadas do Centro de Massa da Carga na Extremidade
     int SetLoadCoord(DescTran coord);
 
 Definir Coordenadas do Centro de Massa da Carga na Extremidade
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -503,7 +503,7 @@ Definir Modo de Instalação do Robô
     int SetRobotInstallPos(int install);
 
 Definir Ângulo de Instalação do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -527,7 +527,7 @@ Obter Ângulo de Instalação do Robô
     public List<Number> GetRobotInstallAngle()
 
 Definir Valor de Variável do Sistema
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -552,7 +552,7 @@ Obter Valor de Variável do Sistema
     List<Number> GetSysVarValue(int id);
 
 Exemplo de Código para Configurações Comuns do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -614,7 +614,7 @@ Exemplo de Código para Configurações Comuns do Robô
     }
 
 Chave de Compensação de Atrito das Juntas
-++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -626,7 +626,7 @@ Chave de Compensação de Atrito das Juntas
     int FrictionCompensationOnOff(int state);
 
 Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Normal
-++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -638,7 +638,7 @@ Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Normal
     int SetFrictionValue_level(Object[] coeff);
 
 Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Lateral
-++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -650,7 +650,7 @@ Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Lateral
     int SetFrictionValue_wall(Object[] coeff);
 
 Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Invertida
-++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -662,7 +662,7 @@ Definir Coeficiente de Compensação de Atrito das Juntas - Montagem Invertida
     int SetFrictionValue_ceiling(Object[] coeff);
 
 Definir Coeficiente de Compensação de Atrito das Juntas - Instalação Livre
-++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -674,7 +674,7 @@ Definir Coeficiente de Compensação de Atrito das Juntas - Instalação Livre
     int SetFrictionValue_freedom(Object[] coeff);
 
 Exemplo de Código para Configuração de Compensação de Atrito das Juntas do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -730,7 +730,7 @@ Limpar Estado de Erro
     int ResetAllError();
 
 Exemplo de Código para Obter Estado de Falha e Limpar Erro do Robô
-+++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -748,7 +748,7 @@ Exemplo de Código para Obter Estado de Falha e Limpar Erro do Robô
     }
 
 Definir Parâmetros de Monitoramento de Temperatura e Velocidade da Ventoinha da Caixa de Controle de Larga Tensão
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.6-3.8.3
 
 .. code-block:: Java
@@ -763,7 +763,7 @@ Definir Parâmetros de Monitoramento de Temperatura e Velocidade da Ventoinha da
     int SetWideBoxTempFanMonitorParam(int enable, int period);
 
 Obter Parâmetros de Monitoramento de Temperatura e Velocidade da Ventoinha da Caixa de Controle de Larga Tensão
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.6-3.8.3
 
 .. code-block:: Java
@@ -776,7 +776,7 @@ Obter Parâmetros de Monitoramento de Temperatura e Velocidade da Ventoinha da C
     List<Number> GetWideBoxTempFanMonitorParam()
 
 Exemplo de Código para Obter Estado de Temperatura e Corrente da Ventoinha da Caixa de Controle de Larga Tensão
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -958,7 +958,7 @@ Exemplo de Código de Rastreamento do Foco
     }
 
 Ativar Função de Calibração de Sensibilidade do Sensor de Torque das Juntas
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -981,7 +981,7 @@ Coleta de Dados de Sensibilidade do Sensor de Torque das Juntas
     public int JointSensitivityCollect()
 
 Obter Resultado da Calibração de Sensibilidade do Sensor de Torque das Juntas
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1038,7 +1038,7 @@ Definir Parâmetros do Sensor de Força das Juntas
     public int SetAdmittanceParams(double[] M, double[] B, double[] K, double[] threshold, double[] sensitivity, int setZeroFlag);
 
 Exemplo de Código para Calibração Automática de Sensibilidade do Sensor de Torque das Juntas
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1285,7 +1285,7 @@ Obter Coeficiente de Feedforward de Velocidade por Eixo
     public int GetVelFeedForwardRatio(double[] radio)
 
 Exemplo de Código do Coeficiente de Feedforward de Velocidade do Robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1335,7 +1335,7 @@ Calibração TCP do Sensor Fotoelétrico - Calcular XYZ da Ferramenta
     public int TCPComputeXYZ(int select, double originDirection, DescTran pos1, DescTran pos2, DescTran pos3, DescTran pos4, DescTran TCP)
 
 Calibração TCP do Sensor Fotoelétrico - Iniciar Gravação da Posição do Centro do Flange da Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1346,7 +1346,7 @@ Calibração TCP do Sensor Fotoelétrico - Iniciar Gravação da Posição do Ce
     public int TCPRecordFlangePosStart()
 
 Calibração TCP do Sensor Fotoelétrico - Parar Gravação da Posição do Centro do Flange da Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1357,7 +1357,7 @@ Calibração TCP do Sensor Fotoelétrico - Parar Gravação da Posição do Cent
     public int TCPRecordFlangePosEnd()
 
 Calibração TCP do Sensor Fotoelétrico - Obter Posição do Centro da Ponta da Ferramenta
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

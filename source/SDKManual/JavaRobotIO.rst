@@ -5,7 +5,7 @@ IO do Robô
     :maxdepth: 5
 
 Definir Saída Digital do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -35,7 +35,7 @@ Definir Saída Digital da Ferramenta
     int SetToolDO(int id, int status, int smooth, int block); 
 
 Definir Saída Analógica do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -63,7 +63,7 @@ Definir Saída Analógica da Ferramenta
     int SetToolAO(int id, double value, int block); 
 
 Exemplo de Código para Definir Saídas Digitais e Analógicas
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -121,7 +121,7 @@ Exemplo de Código para Definir Saídas Digitais e Analógicas
     }
 
 Obter Entrada Digital do Painel de Controle
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -135,7 +135,7 @@ Obter Entrada Digital do Painel de Controle
     int GetDI(int id, int block, int[] level);
 
 Obter Entrada Digital da Ferramenta
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -149,7 +149,7 @@ Obter Entrada Digital da Ferramenta
     int GetToolDI(int id, int block, int[] level);
 
 Obter Entrada Analógica do Painel de Controle
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -163,7 +163,7 @@ Obter Entrada Analógica do Painel de Controle
     int GetAI(int id, int block, double[] percent)
 
 Obter Entrada Analógica da Ferramenta
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -177,7 +177,7 @@ Obter Entrada Analógica da Ferramenta
     int GetToolAI(int id, int block, double[] percent)
 
 Obter Estado do Botão de Gravação de Ponto da Extremidade do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -189,7 +189,7 @@ Obter Estado do Botão de Gravação de Ponto da Extremidade do Robô
     int GetAxlePointRecordBtnState(int[] state)
 
 Obter Estado da Saída DO da Extremidade do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -201,7 +201,7 @@ Obter Estado da Saída DO da Extremidade do Robô
     int GetToolDO(int[] do_state)
 
 Obter Estado da Saída DO do Controlador do Robô
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -257,7 +257,7 @@ Exemplo de Código para Obter Estados DI e DO do Robô
     }
 
 Aguardar Entrada Digital do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -272,7 +272,7 @@ Aguardar Entrada Digital do Painel de Controle
     int WaitDI(int id, int status, int max_time, int opt); 
 
 Aguardar Múltiplas Entradas Digitais do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -303,7 +303,7 @@ Aguardar Entrada Digital da Ferramenta
     int WaitToolDI(int id, int status, int max_time, int opt); 
 
 Aguardar Entrada Analógica do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -335,7 +335,7 @@ Aguardar Entrada Analógica da Ferramenta
     int WaitToolAI(int id, int sign, double value, int max_time, int opt); 
 
 Exemplo de Código para Aguardar Sinais de Entrada Digital e Analógica do Painel de Controle
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -368,7 +368,7 @@ Exemplo de Código para Aguardar Sinais de Entrada Digital e Analógica do Paine
     }
 
 Definir se a Saída do DO do Painel de Controle é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -381,7 +381,7 @@ Definir se a Saída do DO do Painel de Controle é Reiniciada Após Parada/Pausa
     public int SetOutputResetCtlBoxDO(int resetFlag, int reloadFlag)
 
 Definir se a Saída do AO do Painel de Controle é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -394,7 +394,7 @@ Definir se a Saída do AO do Painel de Controle é Reiniciada Após Parada/Pausa
     public int SetOutputResetCtlBoxAO(int resetFlag, int reloadFlag)
 
 Definir se a Saída do DO da Ferramenta de Extremidade é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -407,7 +407,7 @@ Definir se a Saída do DO da Ferramenta de Extremidade é Reiniciada Após Parad
     public int SetOutputResetAxleDO(int resetFlag, int reloadFlag)
 
 Definir se a Saída do AO da Ferramenta de Extremidade é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -420,7 +420,7 @@ Definir se a Saída do AO da Ferramenta de Extremidade é Reiniciada Após Parad
     public int SetOutputResetAxleAO(int resetFlag, int reloadFlag)
     
 Definir se a Saída do DO de Extensão é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -433,7 +433,7 @@ Definir se a Saída do DO de Extensão é Reiniciada Após Parada/Pausa
     public int SetOutputResetExtDO(int resetFlag, int reloadFlag)
     
 Definir se a Saída do AO de Extensão é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -446,7 +446,7 @@ Definir se a Saída do AO de Extensão é Reiniciada Após Parada/Pausa
     public int SetOutputResetExtAO(int resetFlag, int reloadFlag)
 
 Definir se a Saída do SmartTool é Reiniciada Após Parada/Pausa
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

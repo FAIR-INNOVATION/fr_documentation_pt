@@ -540,7 +540,7 @@ Movimento de Círculo Completo no Espaço Cartesiano (com cálculo automático d
     int Circle(DescPose desc_pos_p, int ptool, int puser, double pvel, double pacc, ExaxisPos epos_p, DescPose desc_pos_t, int ttool, int tuser, double tvel, double tacc, ExaxisPos epos_t, double ovl, int offset_flag, DescPose offset_pos, double oacc, double blendR,int config)
 
 Movimento de Círculo Completo no Espaço Cartesiano (com parâmetro de modo de velocidade/aceleração velAccParamMode adicionado)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
 .. code-block:: c#
@@ -573,7 +573,7 @@ Movimento de Círculo Completo no Espaço Cartesiano (com parâmetro de modo de 
     public int Circle(JointPos joint_pos_p, DescPose desc_pos_p, int ptool, int puser, double pvel, double pacc, ExaxisPos epos_p, JointPos joint_pos_t, DescPose desc_pos_t, int ttool, int tuser, double tvel, double tacc, ExaxisPos epos_t, double ovl, int offset_flag, DescPose offset_pos, double oacc, double blendR, int velAccParamMode)
 
 Movimento de Círculo Completo no Espaço Cartesiano (sobrecarga 1 sem necessidade de posição de junta)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-V1.1.7  Web-3.8.5
 
 .. code-block:: c#

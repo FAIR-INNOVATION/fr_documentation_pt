@@ -44,7 +44,7 @@ Definir Relação entre Corrente de Soldagem e Saída Analógica
     int WeldingSetCurrentRelation(WeldCurrentAORelation relation);
 
 Definir Relação entre Tensão de Soldagem e Saída Analógica
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

@@ -1,11 +1,11 @@
 Descrição das Estruturas de Dados
-================
+================================================
 
 .. toctree::
     :maxdepth: 5
 
 Tipo de Dados de Posição Articular
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -38,7 +38,7 @@ Tipo de Dados de Posição Articular
     }
 
 Tipo de Dados de Posição no Espaço Cartesiano
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -65,7 +65,7 @@ Tipo de Dados de Posição no Espaço Cartesiano
     }
 
 Tipo de Dados de Atitude de Ângulos de Euler
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -86,7 +86,7 @@ Tipo de Dados de Atitude de Ângulos de Euler
     }
 
 Tipo de Dados de Pose no Espaço Cartesiano
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -126,7 +126,7 @@ Tipo de Dados de Pose no Espaço Cartesiano
     }
 
 Tipo de Dados de Posição do Eixo Estendido
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -162,7 +162,7 @@ Tipo de Dados de Posição do Eixo Estendido
     }
 
 Tipo de Dados do Sensor de Torque
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -189,7 +189,7 @@ Tipo de Dados do Sensor de Torque
     }
 
 Tipo de Dados de Parâmetros da Espiral
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -218,7 +218,7 @@ Tipo de Dados de Parâmetros da Espiral
     }
 
 Tipo de Estado do Eixo Estendido
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -271,7 +271,7 @@ Tipo de Sensor
     }
 
 Configuração do Eixo Estendido 485
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -334,7 +334,7 @@ Estado de Interrupção da Soldagem
     }
 
 Parâmetros de Comunicação UDP do Eixo Estendido
-++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -356,7 +356,7 @@ Parâmetros de Comunicação UDP do Eixo Estendido
     }
 
 Tipo de Estrutura de Retroalimentação de Estado do Robô
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

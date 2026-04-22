@@ -263,7 +263,7 @@ Obter Versão do Firmware do Robô
                                           String driver4Version, String driver5Version, String driver6Version, String endBoardVersion);
 
 Exemplo de Código para Obter Versões de Software e Firmware do Robô
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

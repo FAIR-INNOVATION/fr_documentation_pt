@@ -141,7 +141,7 @@ Autozero do Sensor de Força
     int ForceSensorAutoComputeLoad(ref double weight, ref DescTran pos);
 
 Obter Dados de Força/Torque no Sistema de Coordenadas de Referência
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -165,7 +165,7 @@ Obter Dados Brutos de Força/Torque do Sensor de Força
     int FT_GetForceTorqueOrigin(byte flag, ref ForceTorque ft); 
 
 Exemplo de Código para Configuração e Autozero do Sensor de Força
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 

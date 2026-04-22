@@ -260,6 +260,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.16
      - 0.10
 
+   * - **FR5-C**
+     - 0.51
+     - 0.63
+     - 0.60
+     - 0.33
+     - 0.16
+     - 0.10
+
    * - **FR10**
      - 0.64
      - 0.70
@@ -339,6 +347,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 90
 
    * - **FR5**
+     - 420
+     - 500
+     - 480
+     - 310
+     - 150
+     - 120
+
+   * - **FR5-C**
      - 420
      - 500
      - 480
@@ -442,6 +458,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.19
      - 0.12
 
+   * - **FR5-C**
+     - 0.54
+     - 0.65
+     - 0.63
+     - 0.35
+     - 0.19
+     - 0.12
+
    * - **FR10**
      - 0.66
      - 0.73
@@ -521,6 +545,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 110
 
    * - **FR5**
+     - 450
+     - 520
+     - 510
+     - 330
+     - 180
+     - 140
+
+   * - **FR5-C**
      - 450
      - 520
      - 510
@@ -614,6 +646,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.21
      - 0.15
 
+   * - **FR5-C**
+     - 0.56
+     - 0.68
+     - 0.65
+     - 0.38
+     - 0.21
+     - 0.15
+
    * - **FR10**
      - 0.69
      - 0.75
@@ -693,6 +733,14 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 120
 
    * - **FR5**
+     - 460
+     - 540
+     - 520
+     - 350
+     - 190
+     - 160
+
+   * - **FR5-C**
      - 460
      - 540
      - 520
@@ -2022,6 +2070,17 @@ O robô colaborativo modelo FR5-WML tem uma capacidade máxima de carga de 7 kg 
 
 .. centered:: Figura 3.4-20 Curva de Carga do Robô Colaborativo Modelo FR5-WML
 
+Curva de Carga do Robô Colaborativo Modelo FR5-C
+*******************************************************
+
+O robô colaborativo modelo FR5-C tem uma carga máxima transportável de 5 kg e uma carga nominal de 4 kg. A curva de carga é mostrada na figura como "Desempenho Completo".
+
+.. figure:: installation/130.png
+	:align: center
+	:width: 5in
+
+.. centered:: Figura 3.4-21 Curva de Carga do Robô Colaborativo Modelo FR5-C
+
 Curva de Carga do Robô Colaborativo Modelo FR10
 *****************************************************************
 
@@ -2881,84 +2940,71 @@ Conector: M12-A-12P-Fêmea [o terminal de fiação deve ser um conector M12-A-12
 	:width: 2in
 
 .. list-table::
-   :widths: 10 15 15 20 40 
+   :widths: 10 15 20 40 
    :header-rows: 0
    :align: center
 
    * - **Pino**
-     - **Cor**
      - **Definição**
      - **Descrição**
      - **Observações**
 
    * - 1
-     - Azul
      - AGND
      - Terra analógico
      - Terra de referência analógico
 
    * - 2
-     - Marrom
      - 0V
      - Negativo da alimentação 24V
      - Negativo da alimentação de controle
 
    * - 3
-     - Vermelho
      - 485-A
      - Comunicação 485 A
      - Comunicação 485 para extensão reserva
 
    * - 4
-     - Cinza
      - 485-B
      - Comunicação 485 B
      - Comunicação 485 para extensão reserva
 
    * - 5
-     - Preto
      - DI0/DO0
      - Entrada/Saída Digital 0
      - 5, 6, 7 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 6
-     - Amarelo
      - DI1/DO1
      - Entrada/Saída Digital 1
      - 5, 6, 7 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 7
-     - Rosa
      - DI2/DO2
      - Entrada/Saída Digital 2
      - 5, 6, 7 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 8
-     - Verde Escuro
      - AI0/AO0
      - Entrada/Saída Analógica 0
      - 8, 9 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 9
-     - Branco
      - AI1/AO1
      - Entrada/Saída Analógica 1
      - 8, 9 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 10
-     - Roxo
      - 24V
      - Positivo da alimentação 24V
      - Positivo da alimentação de controle
 
    * - 11
-     - Laranja
      - DI3/DO3
      - Entrada/Saída Digital 3
      - 11, 12 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
 
    * - 12
-     - Verde Claro
      - DI4/DO4
      - Entrada/Saída Digital 4
      - 11, 12 são a mesma interface. Podem ser configuradas como entrada ou saída via programa, apenas uma função por vez.
