@@ -1114,13 +1114,13 @@ Escrever AO no Escravo
     :linenos:
 
     /**
-    * @brief  Escreve AO no escravo
-    * @param  AOIndex  Número do AO
-    * @param  wirteNum  Número a ser escrito
-    * @param  status Valor a ser escrito, máximo de 8
-    * @return  Código de erro
+    * @brief  Escrever AO da estação escrava
+    * @param [in] AOIndex Número AO
+    * @param [in] writeNum Número de valores a escrever
+    * @param [in] status Matriz de valores a escrever (máximo 8), AO0~AO15 são do tipo inteiro, AO16~AO31 são do tipo ponto flutuante
+    * @return Código de erro
     */
-    public int FieldBusSlaveWriteAO(int AOIndex, int wirteNum, int[] status)
+    public int FieldBusSlaveWriteAO(int AOIndex, int writeNum, double[] status)
 
 Ler DI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1198,7 +1198,7 @@ Exemplo de Código para Interfaces de Instrução do Modo Escravo
     
         int type = 0, version = 0, connState = 0;
         int[] ctrl = new int[8];
-        int[] ctrlAO = new int[8];
+        double[] ctrlAO = new double[8];
         int[] DI = new int[8];
         double[] AI = new double[8];
         if (rtn != 0)
@@ -1206,7 +1206,7 @@ Exemplo de Código para Interfaces de Instrução do Modo Escravo
             return;
         }
         // Upload and load open protocol file
-        robot.OpenLuaUpload("E://zup/CtrlDev_field.lua");
+        robot.OpenLuaUpload("E://temp/CtrlDev_field.lua");
         Thread.Sleep(2000);
         robot.SetCtrlOpenLUAName(3, "CtrlDev_field.lua");
         robot.UnloadCtrlOpenLUA(3);

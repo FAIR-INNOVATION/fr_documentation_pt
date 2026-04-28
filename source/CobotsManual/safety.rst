@@ -42,6 +42,64 @@ Procedimento Operacional
 
 .. centered:: Figura 7.1-3 Operação Manual para Limpar o Acionamento da Parada de Segurança
 
+Movimento a Velocidade de Segurança
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Após o robô acionar uma parada de segurança, o usuário pode clicar em um botão no webapp, configurar uma entrada CI configurável da caixa de controle ou configurar uma entrada End DI configurável da ferramenta do end-effector para controlar o robô e fazê-lo entrar no estado de movimento a velocidade de segurança. No estado de movimento a velocidade de segurança, o robô pode ser movido a passo de homem (jog) em velocidade segura, ou entrar no modo de arrasto para ser arrastado, auxiliando o usuário a resolver problemas.
+
+No webapp do robô, clique sequencialmente em "Configurações Iniciais", "Segurança", "Parada de Segurança", localize "Movimento a Velocidade de Segurança" nesta página e defina-o como habilitado.
+
+.. image:: safety/057.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.1-4 Habilitar Movimento a Velocidade de Segurança
+
+Quando uma parada de segurança for acionada neste momento, o canto superior direito do webapp do robô exibirá um aviso "Parada de Segurança Acionada" e mostrará o botão "Entrar em Movimento a Velocidade de Segurança".
+
+.. image:: safety/058.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.1-5 Pop-up para Entrar em Movimento a Velocidade de Segurança
+
+Clique no botão "Entrar", o robô irá automaticamente interromper o programa Lua e mudar para o modo manual. Ao mesmo tempo, o botão "Entrar em Movimento a Velocidade de Segurança" será atualizado para "Entrado". Neste ponto, o robô pode ser controlado através do botão do end-effector, caixa de botões, webapp, etc., para entrar no modo de arrasto e arrastar o robô, ou pode ser movido a passo de homem através do webapp ou do teach pendant.
+
+.. image:: safety/059.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.1-6 Entrar em Movimento a Velocidade de Segurança
+
+Quando o robô está em movimento a velocidade de segurança e está sendo movido a passo de homem no espaço cartesiano, a velocidade máxima de movimento do robô é a velocidade de segurança definida. Se a configuração de velocidade global atual do robô for maior que a velocidade de segurança, a velocidade de passo de homem do robô será automaticamente reduzida para a velocidade de segurança. A velocidade de segurança é definida em "Configurações Iniciais", "Segurança", "Velocidade de Segurança".
+
+Após o robô parar em segurança, além de poder controlar a entrada do robô no movimento de segurança pelo canto superior direito do webapp, também é possível entrar via entrada CI da caixa de controle ou entrada CI do end-effector. No webapp, clique sequencialmente em "Configurações Iniciais", "Básico", "Configurações I/O", "DI". Configure uma determinada porta CI da caixa de controle ou o End DI da ferramenta do end-effector como "Entrar em Movimento a Velocidade de Segurança". Após a parada de segurança ser acionada, basta acionar o sinal de entrada da porta configurada para entrar em movimento a velocidade de segurança.
+
+.. image:: safety/060.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.1-7 Entrar em Movimento a Velocidade de Segurança via Botão
+
+Parada de Segurança Apenas no Modo Automático
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quando o robô habilita o modo de parada de segurança (certificação CR, segurança funcional) e é usado com um teach pendant com habilitador de três posições, pode-se ativar a opção "Parada de Segurança Apenas no Modo Automático". Quando o sinal de parada de segurança do robô for acionado, o robô pode ser comutado para o modo manual no teach pendant e, em seguida, movido a passo de homem no modo manual ou entrar no modo de arrasto para arrastar o robô, auxiliando o usuário a resolver problemas.
+
+No webapp do robô, clique sequencialmente em "Configurações Iniciais", "Segurança", "Parada de Segurança", localize "Parada de Segurança Apenas no Modo Automático" nesta página e defina-o como habilitado.
+
+.. image:: safety/061.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.1-8 Ativar Parada de Segurança Apenas no Modo Automático
+
+Se o robô não tiver o modo de parada de segurança habilitado (certificação CR, segurança funcional), ou se um teach pendant não estiver sendo usado, a função "Parada de Segurança Apenas no Modo Automático" não pode ser ativada. Neste caso, o webapp exibirá uma mensagem de erro: "Parada de Segurança Apenas no Modo Automático requer que o habilitador de três posições do teach pendant esteja ativado". Além disso, quando o modo de parada de segurança ou o teach pendant for desabilitado, a função "Parada de Segurança Apenas no Modo Automático" também será automaticamente desativada.
+
+.. image:: safety/062.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 7.1-9 Erro ao Ativar a Parada de Segurança Apenas no Modo Automático
+
 Velocidade de Segurança
 ----------------------------
 

@@ -13,6 +13,18 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.5
+     - 2026-04-24
+     - | 1.Interface SetTrajectoryJSpeed() adiciona os modos de redução de velocidade e comutação direta;
+       | 2.Tipo de estrutura de feedback de estado do robô atualizado;
+       | 3.Adicionado tipo de enumeração de configuração de feedback de estado do robô;
+       | 4.Adicionada classe de resultado de configuração de feedback de estado do robô;
+       | 5.Adicionada interface SetRobotRealtimeStateConfig() para configurar o feedback de estado CNDE do robô;
+       | 6.Adicionada interface AddRobotRealtimeState() para adicionar um estado do robô à configuração de estado CNDE;
+       | 7.Adicionada interface DeleteRobotRealtimeState() para remover um estado do robô da configuração de estado CNDE;
+       | 8.Adicionada interface SetRobotRealtimeStatePeriod() para definir o período de feedback de estado CNDE;
+       | 9.Adicionada interface GetRobotRealtimeStateConfig() para obter todos os conjuntos de estados e o período do feedback de estado CNDE atual.
+
    * - V3.9.4
      - 2026-03-25
      - | 1. A interface ServoJTStart() adicionou um parâmetro de seleção de tipo de comunicação, suportando comunicação XMLRPC/UDP;

@@ -175,17 +175,17 @@ Obter Torque Articular Atual
     */
     int GetJointTorques(byte flag, float[] torques);
 
-Obter Tempo do Sistema
+Obter a Hora do Sistema
 ++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  Obtém o tempo do sistema
-    * @param [out] t_ms em ms
-    * @return Código de erro
+    * @brief  Obter a hora do sistema
+    * @param  [out] t_ms Unidade ms, pode ser convertida de acordo com o tempo UTC. Quando o robô está em estado de falha, GetSystemClock retorna 0 e retorna um código de erro.
+    * @return  Código de erro
     */
-    int GetSystemClock(ref double t_ms);
+    public int GetSystemClock(ref double t_ms)
 
 Verificar se o Movimento do Robô está Concluído
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -268,17 +268,17 @@ Obter Torque do Driver Articular do Robô (Nm)
     */
     int GetJointDriverTorque(double torque[]);
 
-Obter Estrutura de Estado em Tempo Real do Robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter o Último Quadro dos Dados de Estado em Tempo Real do Robô (Alteração no Mecanismo Interno)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief Obtém a estrutura de estado em tempo real do robô
-    * @param [out] pkg Estrutura de estado em tempo real do robô
-    * @return Código de erro
+    * @brief Obter o último quadro dos dados de estado em tempo real do robô (thread interno atualiza continuamente, esta interface retorna diretamente os dados em cache)
+    * @param [out] pkg Parâmetro de referência para receber os dados de estado do robô (estrutura ROBOT_STATE_PKG)
+    * @return Retorna 0 em caso de sucesso; retorna um código de erro negativo em caso de falha (ex. erro de comunicação de rede)
     */
-    int GetRobotRealTimeState(ref ROBOT_STATE_PKG pkg);
+    public int GetRobotRealTimeState(ref ROBOT_STATE_PKG pkg)
 
 Exemplo de Código de Consulta de Estado do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++

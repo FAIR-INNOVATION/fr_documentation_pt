@@ -1228,7 +1228,7 @@ Escrever AO no Escravo
     * @param  [in] status[8] Valor a ser escrito, máximo de 8
     * @return  Código de erro
     */
-    errno_t FieldBusSlaveWriteAO(uint8_t AOIndex, uint8_t wirteNum, int status[8]);
+    errno_t FieldBusSlaveWriteAO(uint8_t AOIndex, uint8_t wirteNum, double status[8]);
 
 Ler DI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1258,7 +1258,7 @@ Ler AI do Escravo
     * @param  [out] status[8] Valor lido, máximo de 8
     * @return  Código de erro
     */
-    errno_t FieldBusSlaveReadAI(uint8_t AIIndex, uint8_t readNum, int status[8]);
+    errno_t FieldBusSlaveReadAI(uint8_t AIIndex, uint8_t readNum, double status[8]);
 
 Aguardar Entrada DI de Extensão
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1303,9 +1303,9 @@ Exemplo de Código para Interfaces de Instrução do Modo Escravo
         FRRobot robot;
         uint8_t type = 0, version = 0, connState = 0;
         uint8_t ctrl[8];
-        int ctrlAO[8];
+        double ctrlAO[8];
         static uint8_t DI[8];
-        static int AI[8];
+        static double AI[8];
 
         robot.LoggerInit();
         robot.SetLoggerLevel(1);

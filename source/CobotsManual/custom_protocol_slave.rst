@@ -19,25 +19,37 @@ Os modelos das placas e as versões de software são descritos abaixo:
    :header-rows: 1
    :align: center
 
-   * - **Tipo de Protocolo**
-     - **Modelo da Placa**
-     - **Versão do Software do Robô**
+   * - **Tipo de protocolo**
+     - **Modelo da placa**
+     - **Versão do software do robô**
 
    * - CC-Link IEF Basic
-     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
-     - V3.8.0 ou superior
+     - Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.4 e superior
+
+   * - CC-Link IEF Basic
+     - Placa FRJ-PCIeN-EC-RJ-V10
+     - V3.9.5 e superior
 
    * - Profinet
-     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
-     - V3.8.0 ou superior
+     - Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.4 e superior
+
+   * - Profinet
+     - Placa FRJ-PCIeN-EC-RJ-V10
+     - V3.9.5 e superior
 
    * - Ethernet/IP
-     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
-     - V3.8.0 ou superior
+     - Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+     - V3.8.4 e superior
+
+   * - Ethernet/IP
+     - Placa FRJ-PCIeN-EC-RJ-V10
+     - V3.9.5 e superior
 
    * - EtherCAT
-     - Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, Placa FRJ-PCIeN-EC-RJ-V10
-     - V3.8.4.1 ou superior
+     - Placa FRJ-PCIeN-EC-RJ-V10
+     - V3.9.5 e superior
 
 Configuração do Ambiente de Hardware para a Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,7 +144,10 @@ Configuração do Ambiente de Hardware para a Placa FRJ-PCIeN
     5: CLP Siemens (porta Ethernet Profinet);
     6: CLP Inovance (Ethernet/IP);
 
-3. Ao alternar o protocolo na placa FRJ-PCIeN, é necessária uma atualização de firmware. Durante a atualização de firmware, o endereço IP do PC conectado à placa deve ser alterado para “192.168.0.xxx”. Em seguida, abra o software “Gateway Tool Set” -> selecione o dispositivo de placa de rede do PC a ser conectado -> clique no botão “Iniciar” no canto inferior direito -> clique no botão “Pesquisar” no canto superior direito para procurar o dispositivo da placa.
+Atualização de Firmware da Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Ao alternar o protocolo na placa, é necessária uma atualização de firmware. Durante a atualização do firmware, o endereço IP da placa e o endereço IP do PC laptop devem ser configurados na mesma sub-rede. Em seguida, abra o software "Gateway Tool Set" -> selecione o dispositivo de placa de rede do PC a ser conectado -> clique no botão "Iniciar" no canto inferior direito -> clique no botão "Pesquisar" no canto superior direito para procurar o dispositivo da placa.
 
 .. image:: custom_protocol_slave/045.png
    :width: 6in
@@ -140,7 +155,7 @@ Configuração do Ambiente de Hardware para a Placa FRJ-PCIeN
 
 .. centered:: Figura 17.2-11 Conectando ao Dispositivo da Placa
 
-4. Clique no botão “Atualizar” no canto inferior esquerdo -> selecione o dispositivo da placa -> clique no botão “…” no canto superior direito para selecionar o firmware do protocolo desejado -> clique no botão “Atualizar” e aguarde a conclusão da atualização do firmware.
+Clique no botão “Atualizar” no canto inferior esquerdo -> selecione o dispositivo da placa -> clique no botão “…” no canto superior direito para selecionar o firmware do protocolo desejado -> clique no botão “Atualizar” e aguarde a conclusão da atualização do firmware.
 
 .. image:: custom_protocol_slave/046.png
    :width: 6in
@@ -175,17 +190,18 @@ Quando o protocolo é configurado como Ethernet/IP, o controlador alterará o IP
 
 Quando o protocolo é alterado para Profinet e o nome do dispositivo escravo corresponde ao do mestre, o mestre configurará automaticamente o endereço IP do escravo.
 
-5. Atualização de Firmware da Placa FRJ-PCIeN-EC-RJ-V10
+Atualização de Firmware da Placa FRJ-PCIeN-EC-RJ-V10
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Insira o URL 192.169.58.2 para acessar a interface do robô. Clique em “Configurações Iniciais” -> “Periféricos” -> “Comunicação com Placa” para obter o número da versão do firmware da placa FRJ-PCIeN-EC-RJ-V10. Selecione o arquivo .bin a ser atualizado, clique em “Enviar” e, após a conclusão bem-sucedida da atualização do firmware, reinicie o painel de controle.
+Digite o URL 192.169.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o número da versão do firmware da placa FRJ-PCIeN-EC-RJ-V10. Selecione o arquivo bin a ser atualizado, clique em Upload, aguarde a conclusão da atualização do firmware e reinicie a caixa de controle.
 
 .. image:: custom_protocol_slave/064.png
    :width: 6in
    :align: center
 
-.. centered:: Figura 17.2-13 Atualização de Firmware da Placa
+.. centered:: Figura 17.2-13 Atualização de firmware da placa
 
-.. note:: 1. Apenas as versões V3.9.2 e superiores suportam a atualização de firmware do protocolo Ethercat; 2. Para atualizar o firmware do protocolo Ethercat, é necessário descarregar o protocolo aberto em execução.
+.. note:: Para atualizar o firmware da placa FRJ-PCIeN-EC-RJ-V10, é necessário descarregar o protocolo aberto em execução.
 
 Configuração do Ambiente de Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -699,6 +715,9 @@ Um exemplo do programa gerado é mostrado abaixo:
 Configuração do Ciclo de Comunicação da Placa
 ---------------------------------------------------------
 
+Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 O ciclo de comunicação da placa pode ser configurado através do host. Atualmente, apenas o firmware do protocolo PN é fornecido. A compatibilidade com os protocolos EIP, CClink ie basic e ECAT será adicionada posteriormente.
 
 (1) Conecte diretamente a porta Ethernet do PC (sistema Win11) à porta Ethernet da placa. Abra o Device Assistant v1.1.0. Clique duas vezes em “Ethernet” e, em seguida, clique no botão “Atualizar” no canto superior esquerdo para escanear os dispositivos da placa atualmente conectados.
@@ -722,6 +741,17 @@ O ciclo de comunicação da placa pode ser configurado através do host. Atualme
 .. image:: custom_protocol_slave/063.png
    :width: 6in
    :align: center
+
+Placa FRJ-PCIeN-EC-RJ-V10
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Digite o URL 192.169.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o ciclo de comunicação da placa. Insira o ciclo de comunicação desejado (1~100 ms), clique no botão "Configurar", aguarde a conclusão da configuração e reinicie a caixa de controle.
+
+.. image:: custom_protocol_slave/064.png
+   :width: 6in
+   :align: center
+
+.. note:: Para configurar o ciclo de comunicação da placa FRJ-PCIeN-EC-RJ-V10, é necessário descarregar o protocolo aberto em execução.
 
 Apêndice
 -------------------

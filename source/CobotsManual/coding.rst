@@ -433,7 +433,7 @@ Clique no ícone "Ponto a Ponto" para entrar na interface de edição do comando
 
 Movimento Relativo Ponto a Ponto
 ******************************************
-O robô se move por uma distância relativa a partir da posição atual. Na página de adição de instrução PTP, selecione o nome do ponto como "CurrentPos". Escolha o sistema de coordenadas de deslocamento como sistema de coordenadas base ou sistema de coordenadas da ferramenta, conforme necessário, e insira o deslocamento. Isso significa que o robô se desloca por um determinado valor ao longo do sistema de coordenadas definido a partir da posição atual. ("CurrentPos" é um ponto do sistema, não precisa ser ensinado).
+O robô se move uma distância relativa a partir da posição atual. Na página de adição de instrução PTP, selecione o nome do ponto como "CurrentPos", escolha o sistema de coordenadas de deslocamento como sistema de coordenadas base, sistema de coordenadas da ferramenta ou sistema de coordenadas da peça conforme necessário e insira o valor de deslocamento. O robô então realizará um movimento de deslocamento ao longo do sistema de coordenadas definido com base em sua posição atual. ("CurrentPos" é um ponto do sistema que não requer ensino)
 
 .. image:: coding/515.png
    :width: 6in
@@ -464,7 +464,7 @@ A função desta instrução é semelhante à instrução "PTP", mas o caminho d
 
 Movimento Relativo Linear
 ******************************************
-O robô se move por uma distância relativa em linha reta a partir da posição atual. Na página de adição de instrução LIN, selecione o nome do ponto como "CurrentPos". Escolha o sistema de coordenadas de deslocamento como sistema de coordenadas base ou sistema de coordenadas da ferramenta, conforme necessário, e insira o deslocamento. Isso significa que o robô se desloca por um determinado valor ao longo do sistema de coordenadas definido a partir da posição atual. ("CurrentPos" é um ponto do sistema, não precisa ser ensinado).
+O robô se move linearmente uma distância relativa a partir da posição atual. Na página de adição de instrução LIN, selecione o nome do ponto como "CurrentPos", escolha o sistema de coordenadas de deslocamento como sistema de coordenadas base, sistema de coordenadas da ferramenta ou sistema de coordenadas da peça conforme necessário e insira o valor de deslocamento. O robô então realizará um movimento de deslocamento ao longo do sistema de coordenadas definido com base em sua posição atual. ("CurrentPos" é um ponto do sistema que não requer ensino)
 
 .. image:: coding/517.png
    :width: 6in
@@ -652,7 +652,7 @@ Clique no ícone "Arco" para entrar na interface de edição do comando Arc.
 
 A instrução "Arc" é para movimento de arco e inclui três pontos. O primeiro ponto é o ponto inicial do arco, o segundo ponto é um ponto de transição intermediário e o terceiro ponto é o ponto final.
 
-Tanto o ponto de transição quanto o ponto final podem ser configurados para deslocamento, podendo ser baseado no sistema de coordenadas base ou no sistema de coordenadas da ferramenta. Uma janela será aberta para definir os deslocamentos em x, y, z, rx, ry, rz. O ponto final pode ter um raio de transição suave configurado para obter um efeito de movimento contínuo.
+Tanto os pontos de transição quanto os pontos finais podem ser configurados com ou sem deslocamento. Pode-se escolher entre deslocamento baseado no sistema de coordenadas base, deslocamento baseado nas coordenadas da ferramenta ou deslocamento baseado nas coordenadas da peça, e as configurações de deslocamento para x, y, z, rx, ry, rz serão exibidas. Para o ponto final, um raio de transição suave pode ser definido para obter um movimento contínuo.
 
 .. important::
    Para o movimento de arco, é necessário primeiro adicionar uma instrução PTP ou Lin para mover até o ponto inicial.
@@ -793,7 +793,7 @@ Conforme mostrado, abra a página de adição de instrução de círculo complet
 
 Selecione o ponto intermediário 2 do círculo completo como "P3". Escolha "Deslocamento no Sistema de Coordenadas Base" em "Habilitar Deslocamento".
 
-.. note:: Você pode escolher "Deslocamento no Sistema de Coordenadas da Ferramenta" de acordo com a situação real de trabalho.
+.. note:: Você pode escolher "Deslocamento de Coordenadas da Ferramenta" ou "Deslocamento de Coordenadas da Peça" de acordo com suas condições reais de trabalho.
 
 Insira o deslocamento dx como 10mm. Clique sequencialmente no botão "Adicionar" e no botão "Aplicar" na parte inferior da página.
 
@@ -819,12 +819,11 @@ Alterne o robô para o modo automático e inicie o programa em condições segur
 
 .. centered:: Figura 9.5-15 Trajetória com Mesmo Deslocamento de X10mm
 
-2. Deslocamentos Diferentes
+1. Deslocamentos Diferentes
 
 Abra a página de adição de instrução de círculo completo. Selecione "Deslocamentos Diferentes" em "Tipo de Deslocamento". Escolha o modo de movimento do ponto inicial e o ponto inicial como "P1". Selecione o ponto intermediário 1 do círculo completo como "P2". Escolha "Deslocamento no Sistema de Coordenadas Base" em "Habilitar Deslocamento".
 
-.. note:: 
-   Você pode escolher "Deslocamento no Sistema de Coordenadas da Ferramenta" de acordo com a situação real de trabalho.
+.. note:: Você pode escolher "Deslocamento de Coordenadas da Ferramenta" ou "Deslocamento de Coordenadas da Peça" de acordo com suas condições reais de trabalho.
 
 Insira o deslocamento dy como 10mm.
 
@@ -836,7 +835,7 @@ Insira o deslocamento dy como 10mm.
 
 Selecione o ponto intermediário do círculo completo como "P3". Escolha "Deslocamento no Sistema de Coordenadas Base" em "Habilitar Deslocamento".
 
-.. note:: Você pode escolher "Deslocamento no Sistema de Coordenadas da Ferramenta" de acordo com a situação real de trabalho.
+.. note:: Você pode escolher "Deslocamento de Coordenadas da Ferramenta" ou "Deslocamento de Coordenadas da Peça" de acordo com suas condições reais de trabalho.
 
 Insira o deslocamento dx como 10mm. Clique sequencialmente no botão "Adicionar" e no botão "Aplicar" na parte inferior da página.
 
@@ -868,6 +867,8 @@ Comando Espiral
 Clique no ícone "Espiral" para entrar na interface de edição do comando Spiral.
 
 A instrução "Spiral" é para movimento em espiral. Ela inclui três pontos que formam um círculo. Na página de configuração do terceiro ponto, existem parâmetros para número de voltas da espiral, ângulo de correção de postura, incremento do raio e incremento na direção do eixo da espiral. O número de voltas da espiral é o número de voltas do movimento em espiral. O ângulo de correção de postura corrige a postura no final da espiral em relação à postura do primeiro ponto da espiral. O incremento do raio é o incremento do raio a cada volta. O incremento na direção do eixo da espiral é o incremento ao longo do eixo da espiral. Há uma opção para habilitar deslocamento, que se aplica a toda a trajetória da espiral.
+
+Se usar deslocamento, você pode escolher "Deslocamento Baseado em Coordenadas Base", "Deslocamento Baseado em Coordenadas da Ferramenta" ou "Deslocamento Baseado em Coordenadas da Peça". Este deslocamento se aplica a toda a trajetória espiral.
 
 .. image:: coding/059.png
    :width: 6in
@@ -1455,7 +1456,7 @@ Comandos de IO Digital
 
 Clique no ícone "IO Digital" para entrar na interface de edição do comando IO.
 
-A instrução "IO" é dividida em duas partes: Definir IO (SetDO/SPLCSetDO) e Obter IO (GetDI/SPLCGetDI).
+A instrução "IO" é dividida em três partes: configuração de IO (SetDO/SPLCSetDO), obtenção de DI (GetDI/SPLCGetDI) e obtenção de DO (GetDO).
 
 A instrução "SetDO/SPLCSetDO" pode definir o estado da saída DO especificada, incluindo 16 saídas digitais do painel de controle e 2 saídas digitais da ferramenta. A opção "False" é para desligado, "True" para ligado. A opção "Bloquear" significa que o estado DO é definido após o movimento parar. A opção "Não Bloquear" significa que o estado DO é definido durante o movimento da instrução anterior. A opção de "Trajetória Suave" com "Break" significa que o estado DO é definido após o término do raio de transição suave. A opção "Serious" significa que o estado DO é definido durante o movimento do raio de transição suave. Quando esta instrução é adicionada a uma thread auxiliar, a opção "Aplicar à Thread" deve ser selecionada como "Sim". Em outros lugares, selecione "Não". Clique em "Adicionar" e "Aplicar".
 
@@ -1473,12 +1474,20 @@ Na instrução "GetDI/SPLCGetDI", selecione o valor do número da porta a ser ob
 
 .. centered:: Figura 9.6-2 Interface da Instrução GetDI
 
+Na instrução "GetDO", selecione o valor do número da porta desejado. A opção de bloqueio seleciona "Bloqueante" para obter o estado DO após a parada do movimento, e seleciona "Não bloqueante" para obter o estado DO durante o movimento anterior. Após a seleção, clique nos botões "Adicionar" e "Aplicar".
+
+.. image:: coding/571.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.6-2-2 Interface da Instrução GetDO
+
 Comandos de AI Analógico
 ++++++++++++++++++++++++++++++++++++
 
 Clique no ícone "AI Analógico" para entrar na interface de edição do comando AI.
 
-Esta instrução é dividida em duas funções: Definir Saída Analógica (SetAO/SPLCSetAO) e Obter Entrada Analógica (GetAI/SPLCGetAI).
+Esta instrução é dividida em três partes funcionais: configuração de saída analógica (SetAO/SPLCSetAO), obtenção de entrada analógica (GetAI/SPLCGetAI) e obtenção de saída analógica (GetAO).
 
 Em "SetAO/SPLCSetAO", selecione a saída analógica a ser definida. Insira o valor a ser definido, faixa de 0-10. A opção "Bloquear" significa que o estado AO é definido após o movimento parar. A opção "Não Bloquear" significa que o estado AO é definido durante o movimento da instrução anterior. Quando esta instrução é adicionada a uma thread auxiliar, a opção "Aplicar à Thread" deve ser selecionada como "Sim". Em outros lugares, selecione "Não". Clique em "Adicionar" e "Aplicar".
 
@@ -1495,6 +1504,14 @@ Em "GetAI/SPLCGetAI", selecione a entrada analógica a ser obtida. A opção "Bl
    :align: center
 
 .. centered:: Figura 9.6-4 Interface da Instrução GetAI
+
+"GetAO" seleciona a entrada analógica a ser obtida. A opção de bloqueio seleciona "Bloqueante" para obter o estado AI após a parada do movimento, e seleciona "Não bloqueante" para obter o estado AI durante o movimento anterior. Clique em "Adicionar" e "Aplicar".
+
+.. image:: coding/572.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.6-4-2 Interface da Instrução GetAO
 
 Comandos de IO Virtual
 ++++++++++++++++++++++++++++++++++++
@@ -6259,7 +6276,10 @@ A função de oscilação de ponto fixo com laser é uma combinação da funçã
 Procedimento Operacional para Laser + Oscilação de Ponto Fixo
 ****************************************************************************
 
-**Step1**: Configurar a comunicação do laser. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas.
+**Step1**: Configurar a comunicação do laser. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas. Ao aplicar em cenários como soldagem real, preste atenção ao seguinte:
+
+   - (1) O sensor laser linear deve ser equipado com dispositivos de proteção para evitar a influência de luz forte e respingos de solda;
+   - (2) O ponto de reconhecimento da coleta de dados do laser linear deve manter uma certa distância do ponto de solda para reduzir o impacto da luz forte na qualidade da coleta de dados do laser durante a soldagem.
 
 **Step2**: Calibrar o sistema de coordenadas da ferramenta do robô e o sistema de coordenadas do laser. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas.
 
@@ -6318,7 +6338,10 @@ Procedimento Operacional para Laser + Oscilação de Ponto Fixo
 Procedimento Operacional para Laser + Eixo de Extensão + Oscilação de Ponto Fixo
 ****************************************************************************************
 
-**Step1**: Configurar a comunicação do laser. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas.
+**Step1**: Configurar a comunicação do laser. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas. Ao aplicar em cenários como soldagem real, preste atenção ao seguinte:
+
+   - (1) O sensor laser linear deve ser equipado com dispositivos de proteção para evitar a influência de luz forte e respingos de solda;
+   - (2) O ponto de reconhecimento da coleta de dados do laser linear deve manter uma certa distância do ponto de solda para reduzir o impacto da luz forte na qualidade da coleta de dados do laser durante a soldagem.
 
 **Step2**: Configurar a comunicação do eixo de extensão. Consulte o capítulo correspondente no manual do usuário para etapas operacionais específicas.
 

@@ -32,5 +32,6 @@ Este documento é a documentação da interface de desenvolvimento secundário p
     C#RobotForceControl
     C#RobotExtendedAxis
     C#RobotWelding
+    C#RobotCnde
     C#RobotOther
     C#Appendix

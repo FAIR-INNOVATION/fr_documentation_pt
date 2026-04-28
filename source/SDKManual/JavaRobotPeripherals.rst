@@ -987,14 +987,14 @@ Escrever AO no Escravo
 .. code-block:: Java
     :linenos:
 
-    /**
-    * @brief  Escreve AO no escravo
-    * @param  AOIndex  Número do AO
-    * @param  wirteNum  Número a ser escrito
-    * @param  status Valor a ser escrito, máximo de 8
+    /*
+    * @brief  Escrever AO no Escravo
+    * @param  AOIndex Número AO
+    * @param  writeNum Número de valores a escrever
+    * @param  status Matriz de valores a escrever (máximo 8), AO0~AO15 são do tipo inteiro, AO16~AO31 são do tipo ponto flutuante
     * @return  Código de erro
     */
-    public int FieldBusSlaveWriteAO(int AOIndex, int wirteNum, int[] status)
+    public int FieldBusSlaveWriteAO(int AOIndex, int writeNum, double[] status)
 
 Ler DI do Escravo
 ++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -36,5 +36,6 @@ Este documento é a documentação da interface de desenvolvimento secundário p
     PythonRobotForceControl
     PythonRoboExtendedAxis
     PythonRobotWeld
+    PythonRobotCnde
     PythonRobotOthers
     PythonAppendix

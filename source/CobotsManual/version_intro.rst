@@ -1,5 +1,49 @@
-Notas de Versão
-===============
+Versão V3.9.5
+-----------------
+
+Data: 2026-04-24
+
+- **Funções do Controlador Otimizadas**: 
+    Caminho: Configurações Gerais -> Configurações de Rede; Programa de Ensino -> Programação.
+  
+    Descrição: 1. Adicionado erro de validação quando ETH0 e ETH1 são configurados com o mesmo endereço IP; 2. Cor otimizada da exibição do número da linha atualmente em execução no programa.
+
+- **Velocidade FR30 Otimizada**: 
+  
+    Descrição: Velocidade operacional melhorada.
+
+- **Função de Oscilação em Arco Otimizada**: 
+    Caminho: Programa de Ensino -> Programação -> Instrução de Arco.
+  
+    Descrição: Permite movimento de oscilação.
+
+- **Depuração SetTrajectoryJSpeed Otimizada para Operação Suave**: 
+  
+    Descrição: Durante o ajuste de velocidade da instrução, a velocidade do robô não cai para zero ao alternar velocidades.
+
+- **Modo de Edição de Instruções do Programa Lua no Módulo de Programação Otimizado**: 
+    Caminho: Programa de Ensino -> Programação.
+  
+    Descrição: Otimizado para que o conteúdo da instrução possa ser exibido com correspondência precisa.
+
+- **Adicionado Suporte ao Protocolo da Placa FRJ-PCIeN-EC-RJ-V20 (PN/Ecat/EIP/cclink)**: 
+    Caminho: Configurações Iniciais -> Periféricos -> Comunicação da Placa.
+  
+    Descrição: 1. Suporta atualização/obtenção de firmware online; 2. Suporta ciclo de comunicação configurável; 3. Suporta obtenção do status de conexão do barramento.
+
+- **Instruções do Controlador Adicionadas**: 
+    Caminho: Programa de Ensino -> Programação; Configurações Iniciais -> Segurança -> Parada de Segurança.
+  
+    Descrição: 1. Adicionada opção de tipo de deslocamento do sistema de coordenadas da peça às instruções de movimento; 2. Adicionada função de parada de segurança; 3. Adicionadas instruções de leitura de DO e AO para caixa de controle, end-effector e I/O estendido.
+
+- **Adicionada Função de Configuração de Sinal DO Após Parada de Emergência da Caixa de Controle**: 
+    Caminho: Configurações Iniciais -> Básico -> DO.
+  
+    Descrição: Adicionada função de configuração de sinal DO após parada de emergência da caixa de controle.
+
+- **Adicionado Suporte ao Pacote de Idiomas para Versão de Software em Português**: 
+  
+    Descrição: Adicionada comutação para o idioma português.
 
 Versão V3.9.4
 -----------------
