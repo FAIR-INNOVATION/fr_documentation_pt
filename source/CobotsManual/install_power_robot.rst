@@ -273,3 +273,123 @@ Desligando a Alimentação
    :align: center
 
 .. centered:: Figura 1.5-1 Botão de Desligar
+
+Bateria Botão da Caixa de Controle
+----------------------------------------------------------------
+
+Causas Comuns de Perda de Hora
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Este dispositivo usa uma bateria botão externa como fonte de alimentação de reserva para o relógio em tempo real (RTC), usada para manter a contagem da hora quando a alimentação principal é desconectada.
+
+Se ocorrer perda de hora (ou seja, data errada exibida após religar), geralmente é causada por uma ou mais das seguintes razões:
+
+.. list-table::
+   :widths: 40 40 60
+   :header-rows: 0
+   :align: center
+
+   * - **Categoria da Causa**
+     - **Descrição Específica**
+     - **Sugestões de Solução**
+
+   * - Bateria botão descarregada
+     - O dispositivo não foi ligado por mais de 3 meses, causando o consumo natural da energia da bateria.
+     - Medir a tensão da bateria com um multímetro (remover para medir). Se a tensão estiver abaixo de 2,5V, é necessário recarregar.
+
+   * - Bateria danificada
+     - A bateria atingiu o fim de sua vida útil.
+     - Verificar se a bateria apresenta vazamento ou inchaço. É necessário substituir a bateria. Modelo da bateria: MS621FE-FL11E, 3V/5,5mAH, recarregável.
+
+   * - Mau contato do terminal da bateria
+     - Os terminais da bateria estão oxidados, deformados, ou o dispositivo sofreu vibração causando o desprendimento momentâneo da bateria dos contatos.
+     - Verificar se a bateria está firmemente inserida nos terminais, limpar os contatos, reinstalar a bateria e garantir que esteja presa firmemente.
+
+   * - Bateria não instalada ou instalada invertida
+     - O usuário não instalou a bateria de reserva, ou inverteu a polaridade durante a instalação.
+     - | Confirmar que a bateria está instalada com a polaridade correta (polo positivo voltado para cima).
+       .. image:: installation/131.png
+          :width: 2in
+          :align: center
+
+   * - Falha no circuito de carregamento da bateria
+     - A bateria botão recarregável não consegue armazenar carga normalmente.
+     - O circuito de carregamento precisa ser inspecionado por pessoal de manutenção qualificado.
+
+.. warning:: A bateria botão usada neste dispositivo é o modelo [MS621FE-FL11E, 3V/5,5mAH, recarregável]. Certifique-se de escolher o método de manuseio correto de acordo com o modelo. É estritamente proibido instalar baterias não recarregáveis.
+
+Identificação de Anomalia de Hora e Calibração Manual
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1) Método de Identificação de Anomalia
+   
+Após religar o robô, primeiro verifique a hora atual exibida na página do dispositivo. Compare-a com a hora do sistema do computador:
+
+- Se corresponderem, a hora está normal e nenhuma ação adicional é necessária.
+
+.. image:: installation/132.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 1.6-1 Anomalia da Hora do Sistema
+
+- Se não corresponderem (por exemplo, data errada, desvio significativo de hora/minuto/segundo), é determinada uma anomalia de hora. Prossiga com as etapas de calibração abaixo.
+  
+2) Etapas de Calibração
+
+Se uma anomalia de hora foi confirmada, siga as operações abaixo para sincronizar a hora do sistema:
+
+- Abra o navegador para acessar o WebApp e navegue até a interface: "Configurações do Sistema -> Configurações Gerais -> Hora".
+
+.. image:: installation/133.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 1.6-2 Interface de Atualização da Hora do Sistema
+
+- Clique no botão "Atualizar" na interface. O sistema completará automaticamente a sincronização da hora. Após a sincronização, retorne à página do robô e a hora deve ser restaurada ao normal.
+
+Precauções de Carregamento e Manutenção da Bateria Botão
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1) Condições de Carregamento
+
+- Após a alimentação principal do dispositivo ser conectada (220V AC), o circuito de carregamento é ativado automaticamente.
+- A temperatura ambiente deve estar na faixa de 0℃ a 45℃. Temperaturas altas reduzem a eficiência do carregamento e encurtam a vida útil da bateria.
+
+2) Tempo de Carregamento
+
+- Uma bateria completamente descarregada leva aproximadamente [5 horas] para carregar totalmente. A função de manutenção da hora funciona normalmente durante este período.
+
+3) Ações Proibidas
+
+- Não use carregadores externos para carregar diretamente a bateria botão dentro do dispositivo.
+- Não instale baterias não recarregáveis no dispositivo, pois isso pode causar perigo.
+
+Substituição e Descarte da Bateria
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Ciclo de Substituição
+
+- Geralmente pode ser usada por mais de [5 anos]. Substitua se ocorrer perda frequente de hora.
+
+2) Etapas de Substituição
+
+- Desconecte a alimentação principal do dispositivo.
+- Abra a tampa superior.
+- Remova a bateria antiga, observando a direção da polaridade.
+- Solde uma nova bateria qualificada do mesmo modelo (polo positivo voltado para cima).
+- Feche a tampa, religue e calibre a hora atual.
+
+3) Descarte
+
+- Não jogue a bateria no fogo nem a exponha à água.
+- Recicle as baterias usadas de acordo com as regulamentações locais (baterias botão geralmente contêm lítio ou metais pesados).
+
+Suporte Técnico
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se o problema persistir após seguir as etapas acima, entre em contato com nossa equipe de suporte técnico e forneça as seguintes informações:
+
+- Modelo e número de série do dispositivo.
+- O modelo da bateria usada (verifique a gravação na superfície da bateria).
+- Fenômeno da falha (por exemplo, hora perdida imediatamente após queda de energia / perdida após ficar desligado durante a noite).

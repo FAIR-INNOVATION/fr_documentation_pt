@@ -180,6 +180,18 @@ Certificados de Robôs:
      - ✅
      - :download:`Download <_static/_doc/NRTL Collaborative Robot certification.pdf>`
 
+   * - **Certificado de Registro RCM de Robô Colaborativo**
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - :download:`Baixar <_static/_doc/Collaborative Robot RCM Registration Certificate.pdf>`
+
    * - **Certificado de Robô Limpo CLASSE 3**
      - ✅
      - ✅
