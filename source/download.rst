@@ -190,7 +190,7 @@ Certificados de Robôs:
      - ✅
      - ✅
      - ✅
-     - :download:`Baixar <_static/_doc/Collaborative Robot RCM Registration Certificate.pdf>`
+     - :download:`Download <_static/_doc/Collaborative Robot RCM Registration Certificate.pdf>`
 
    * - **Certificado de Robô Limpo CLASSE 3**
      - ✅
