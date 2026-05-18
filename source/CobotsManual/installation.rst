@@ -2208,19 +2208,19 @@ As conexões externas do sistema de controle do manipulador desta série usam co
 Painel de E/S do Controlador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Você pode usar as E/S dentro do painel de controle para controlar vários dispositivos, incluindo relés pneumáticos, CLPs e botões de parada de emergência. A Figura 3.5-2 mostra o grupo de interfaces elétricas do painel de controle. A Figura 3.5-3 mostra o grupo de interfaces elétricas do painel de controle Easy Manufacturing.
+Você pode usar os I/O dentro da caixa de controle para controlar vários dispositivos, incluindo relés pneumáticos, CLPs, chaves de fim de curso e botões de parada. A Figura 3.5-2 mostra o grupo de interfaces elétricas da caixa de controle, e a Figura 3.5-3 mostra o grupo de interfaces elétricas da mini caixa de controle integrada (mini BOX).
 
 .. figure:: installation/038.png
 	:align: center
 	:width: 6in
 
-.. centered:: Figura 3.5-2 Diagrama Esquemático das Interfaces Elétricas do Painel de Controle
+.. centered:: Figura 3.5-2 Diagrama esquemático da interface elétrica da caixa de controle
 
 .. figure:: installation/039.png
 	:align: center
 	:width: 6in
 
-.. centered:: Figura 3.5-3 Diagrama Esquemático das Interfaces Elétricas do Painel de Controle Easy Manufacturing
+.. centered:: Figura 3.5-3 Diagrama esquemático da interface elétrica da mini caixa de controle integrada (mini BOX)
 
 Grupo de Interfaces de Rede RJ45
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2280,21 +2280,35 @@ Esta seção especifica as especificações elétricas para as entradas/saídas 
 
 O robô deve ser instalado de acordo com as especificações elétricas.
 
-Configurando a interface "Alimentação e Comunicação", é possível usar uma fonte de alimentação interna ou externa de 24 V para fornecer energia às E/S digitais. Nesta interface, os dois terminais superiores (ex24V e exon) são para o 24V e o terra da fonte externa, e os dois terminais inferiores (24V e GND) são para o 24V e o terra da fonte interna. A configuração padrão usa a fonte interna, conforme mostrado na figura abaixo.
+Ao configurar a interface "Comunicação de Alimentação", você pode usar uma fonte de alimentação interna ou externa de 24V para alimentar os I/O digitais. Nesta interface, os dois terminais superiores (ex24V e exon) são o 24V e o terra da fonte de alimentação externa, e os dois terminais inferiores (24V e GND) são o 24V e o terra da fonte de alimentação interna. A configuração padrão usa a fonte de alimentação interna, como mostrado nas figuras abaixo da caixa de controle e da mini caixa de controle integrada (mini BOX).
 
 .. figure:: installation/044.png
 	:align: center
 	:width: 3in
 
-.. centered:: Figura 3.5-8 Diagrama Esquemático da Alimentação e Comunicação 01
+.. centered:: Caixa de Controle
 
-Se a carga tiver uma potência maior, uma fonte externa pode ser conectada conforme mostrado na figura abaixo.
+.. figure:: installation/134.png
+	:align: center
+	:width: 3in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
+.. centered:: Figura 3.5-8 Diagrama de Comunicação de Alimentação 01
+
+Se a potência da carga for alta, conecte uma fonte de alimentação externa conforme mostrado na figura abaixo. Para a mini caixa de controle integrada (mini BOX) de ampla tensão CA, a fonte de alimentação externa e a fonte de alimentação interna compartilham uma conexão comum de 0V.
 
 .. figure:: installation/045.png
 	:align: center
 	:width: 3in
 
-.. centered:: Figura 3.5-9 Diagrama Esquemático da Alimentação e Comunicação 02
+.. centered:: Caixa de Controle
+
+.. figure:: installation/135.png
+	:align: center
+	:width: 3in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
+.. centered:: Figura 3.5-9 Diagrama de Comunicação de Alimentação 02
 
 As especificações elétricas das fontes de alimentação interna e externa são mostradas na tabela abaixo:
 
@@ -2532,6 +2546,13 @@ O robô sai da fábrica com uma configuração padrão que permite a operação 
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/136.png
+	:align: center
+	:width: 3in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-10 Diagrama de Proteção de Segurança 01
 
 **Conectando Botões de Parada de Emergência Adicionais**
@@ -2541,6 +2562,13 @@ Na maioria das aplicações, é necessário usar um ou mais botões de parada de
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/137.png
+	:align: center
+	:width: 3in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-11 Diagrama de Proteção de Segurança 02
 
 **Conectando um Dispositivo de Parada de Segurança**
@@ -2550,6 +2578,13 @@ Um exemplo de dispositivo de parada de segurança é um interruptor de porta que
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/138.png
+	:align: center
+	:width: 3in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-12 Diagrama de Proteção de Segurança 03
 
 E/S Digital Geral
@@ -2567,6 +2602,13 @@ Este exemplo demonstra como conectar uma saída digital para controlar uma carga
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/139.png
+	:align: center
+	:width: 6in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-13 Diagrama de Saída Digital Geral 01
 
 Entrada Digital a partir de um Botão
@@ -2578,6 +2620,13 @@ O exemplo abaixo demonstra como conectar um botão simples a uma entrada digital
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/140.png
+	:align: center
+	:width: 6in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-14 Diagrama de Saída Digital Geral 02
 
 Interação com Outros Dispositivos ou CLP
@@ -2589,6 +2638,13 @@ O exemplo abaixo demonstra como interagir com outros dispositivos ou um CLP usan
 	:align: center
 	:width: 6in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/141.png
+	:align: center
+	:width: 6in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-15 Diagrama de Interação com Outros Dispositivos ou CLP
 
 E/S Analógica
@@ -2730,6 +2786,13 @@ O exemplo abaixo demonstra o uso da saída analógica para controlar uma esteira
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/142.png
+	:align: center
+	:width: 6in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-16 Diagrama de Saída Analógica
 
 **Usando Entrada Analógica**
@@ -2740,6 +2803,13 @@ O exemplo abaixo demonstra o uso da entrada analógica para conectar um sensor a
 	:align: center
 	:width: 3in
 
+.. centered:: Caixa de Controle
+
+.. figure:: installation/143.png
+	:align: center
+	:width: 6in
+
+.. centered:: Mini Caixa de Controle Integrada (mini BOX)
 .. centered:: Figura 3.5-17 Diagrama de Entrada Analógica
 
 Módulo Opcional FR3MT & 3C

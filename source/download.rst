@@ -287,6 +287,8 @@ Modelos 3D
 
     :download:`Modelo STEP da Caixa de Botões <_static/_doc/Button Box.zip>`
 
+    :download:`Modelo STEP da Estação de Trabalho CNC <_static/_doc/CNC Workstation.zip>`
+
     :download:`Modelo STEP da Estação de Paletização <_static/_doc/Palletizing.zip>`
 
     :download:`Modelo STEP da Estação de Separação <_static/_doc/Sorting.zip>`
