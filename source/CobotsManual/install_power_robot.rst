@@ -308,6 +308,7 @@ Se ocorrer perda de hora (ou seja, data errada exibida após religar), geralment
    * - Bateria não instalada ou instalada invertida
      - O usuário não instalou a bateria de reserva, ou inverteu a polaridade durante a instalação.
      - | Confirmar que a bateria está instalada com a polaridade correta (polo positivo voltado para cima).
+       
        .. image:: installation/131.png
           :width: 2in
           :align: center

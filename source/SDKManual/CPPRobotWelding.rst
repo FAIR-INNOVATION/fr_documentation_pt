@@ -5,7 +5,7 @@ Soldagem do Robô
     :maxdepth: 5
 
 Definir Parâmetros da Curva de Processo de Soldagem
-+++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -27,7 +27,7 @@ Definir Parâmetros da Curva de Processo de Soldagem
     errno_t WeldingSetProcessParam(int id, double startCurrent, double startVoltage, double startTime, double weldCurrent, double weldVoltage, double endCurrent, double endVoltage, double endTime);
 
 Obter Parâmetros da Curva de Processo de Soldagem
-+++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -49,7 +49,7 @@ Obter Parâmetros da Curva de Processo de Soldagem
     errno_t WeldingGetProcessParam(int id, double& startCurrent, double& startVoltage, double& startTime, double& weldCurrent, double& weldVoltage, double& endCurrent, double& endVoltage, double& endTime);
 
 Definir Relação entre Corrente de Soldagem e Saída Analógica
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
 
@@ -67,7 +67,7 @@ Definir Relação entre Corrente de Soldagem e Saída Analógica
     errno_t WeldingSetCurrentRelation(double currentMin, double currentMax, double outputVoltageMin, double outputVoltageMax);
 
 Definir Relação entre Tensão de Soldagem e Saída Analógica
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
 
@@ -85,7 +85,7 @@ Definir Relação entre Tensão de Soldagem e Saída Analógica
     errno_t WeldingSetVoltageRelation(double weldVoltageMin, double weldVoltageMax, double outputVoltageMin, double outputVoltageMax);
 
 Obter Relação entre Corrente de Soldagem e Saída Analógica
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
 
@@ -103,7 +103,7 @@ Obter Relação entre Corrente de Soldagem e Saída Analógica
     errno_t WeldingGetCurrentRelation(double *currentMin, double *currentMax, double *outputVoltageMin, double *outputVoltageMax);
 
 Obter Relação entre Tensão de Soldagem e Saída Analógica
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
 
@@ -183,7 +183,7 @@ Definir Parâmetros de Oscilação
      errno_t WeaveSetPara(int weaveNum, int weaveType, double weaveFrequency, int weaveIncStayTime, double weaveRange, double weaveLeftRange, double weaveRightRange, int additionalStayTime, int weaveLeftStayTime, int weaveRightStayTime, int weaveCircleRadio, int weaveStationary, double weaveYawAngle, double weaveRotAngle = 0);
 
 Exemplo de Código para Definir Parâmetros de Soldagem
-++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -267,7 +267,7 @@ Exemplo de Código para Definir Parâmetros de Soldagem
     }
 
 Definir Parâmetros de Oscilação em Tempo Real
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: C++SDK-v2.1.1.0
 
@@ -290,7 +290,7 @@ Definir Parâmetros de Oscilação em Tempo Real
     errno_t WeaveOnlineSetPara(int weaveNum, int weaveType, double weaveFrequency, int weaveIncStayTime, double weaveRange, int weaveLeftStayTime, int weaveRightStayTime, int weaveCircleRadio, int weaveStationary);
 
 Definir Parâmetros de Detecção de Interrupção Inesperada do Arco de Soldagem do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -305,7 +305,7 @@ Definir Parâmetros de Detecção de Interrupção Inesperada do Arco de Soldage
     errno_t WeldingSetCheckArcInterruptionParam(int checkEnable, int arcInterruptTimeLength);
 
 Obter Parâmetros de Detecção de Interrupção Inesperada do Arco de Soldagem do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -320,7 +320,7 @@ Obter Parâmetros de Detecção de Interrupção Inesperada do Arco de Soldagem 
     errno_t WeldingGetCheckArcInterruptionParam(int* checkEnable, int* arcInterruptTimeLength);
 
 Definir Parâmetros de Recuperação de Interrupção de Soldagem do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -337,7 +337,7 @@ Definir Parâmetros de Recuperação de Interrupção de Soldagem do Robô
     errno_t WeldingSetReWeldAfterBreakOffParam(int enable, double length, double velocity, int moveType);
 
 Obter Parâmetros de Recuperação de Interrupção de Soldagem do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -354,7 +354,7 @@ Obter Parâmetros de Recuperação de Interrupção de Soldagem do Robô
     errno_t WeldingGetReWeldAfterBreakOffParam(int* enable, double* length, double* velocity, int* moveType);
 
 Definir Porta DO Estendida do Modo de Controle da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -368,7 +368,7 @@ Definir Porta DO Estendida do Modo de Controle da Máquina de Solda
     errno_t SetWeldMachineCtrlModeExtDoNum(int DONum);
 
 Definir Modo de Controle da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -495,7 +495,7 @@ Fornecimento de Gás
     errno_t SetAspirated(int ioType, int airControl);
 
 Definir Retomada de Soldagem do Robô Após Interrupção
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -508,7 +508,7 @@ Definir Retomada de Soldagem do Robô Após Interrupção
     errno_t WeldingStartReWeldAfterBreakOff();
 
 Definir Saída da Soldagem do Robô Após Interrupção
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.8-3.7.8
 
 .. code-block:: c++
@@ -603,7 +603,7 @@ Início da Soldagem por Segmentos
     errno_t SegmentWeldStart(DescPose *startDesePos, DescPose *endDesePos, JointPos *startJPos, JointPos *endJPos, double weldLength, double noWeldLength, int weldIOType, int arcNum, int weldTimeout, bool isWeave, int weaveNum, int tool, int user, float vel, float acc, float ovl, float blendR, ExaxisPos *epos, uint8_t search, uint8_t offset_flag, DescPose *offset_pos);
 
 Exemplo de Código de Soldagem por Segmentos do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.2.0
 
 .. code-block:: c++
@@ -664,7 +664,7 @@ Fim da Oscilação de Simulação
     errno_t WeaveEndSim(int weaveNum);
 
 Início da Detecção de Alerta de Trajetória (Sem Movimento)
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -678,7 +678,7 @@ Início da Detecção de Alerta de Trajetória (Sem Movimento)
     errno_t WeaveInspectStart(int weaveNum);
 
 Fim da Detecção de Alerta de Trajetória (Sem Movimento)
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -708,7 +708,7 @@ Início da Mudança Gradual da Oscilação
      errno_t WeaveChangeStart(int weaveChangeFlag, int weaveNum, double velStart, double velEnd);
 
 Exemplo de Código de Soldagem com Mudança Gradual de Oscilação do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -769,7 +769,7 @@ Fim da Mudança Gradual da Oscilação
     errno_t WeaveChangeEnd();
 
 E/S Estendida - Configurar Sinal de Detecção de Gás da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -783,7 +783,7 @@ E/S Estendida - Configurar Sinal de Detecção de Gás da Máquina de Solda
     errno_t SetAirControlExtDoNum(int DONum);
 
 E/S Estendida - Configurar Sinal de Abertura de Arco da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -797,7 +797,7 @@ E/S Estendida - Configurar Sinal de Abertura de Arco da Máquina de Solda
     errno_t SetArcStartExtDoNum(int DONum);
 
 E/S Estendida - Configurar Sinal de Alimentação de Arame para Trás da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -811,7 +811,7 @@ E/S Estendida - Configurar Sinal de Alimentação de Arame para Trás da Máquin
     errno_t SetWireReverseFeedExtDoNum(int DONum);
 
 E/S Estendida - Configurar Sinal de Alimentação de Arame para Frente da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -825,7 +825,7 @@ E/S Estendida - Configurar Sinal de Alimentação de Arame para Frente da Máqui
     errno_t SetWireForwardFeedExtDoNum(int DONum);
 
 E/S Estendida - Configurar Sinal de Sucesso de Abertura de Arco da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -839,7 +839,7 @@ E/S Estendida - Configurar Sinal de Sucesso de Abertura de Arco da Máquina de S
     errno_t SetArcDoneExtDiNum(int DINum);
 
 E/S Estendida - Configurar Sinal de Prontidão da Máquina de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -853,7 +853,7 @@ E/S Estendida - Configurar Sinal de Prontidão da Máquina de Solda
     errno_t SetWeldReadyExtDiNum(int DINum);
 
 E/S Estendida - Configurar Sinal de Recuperação de Interrupção de Soldagem
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -868,7 +868,7 @@ E/S Estendida - Configurar Sinal de Recuperação de Interrupção de Soldagem
     errno_t SetExtDIWeldBreakOffRecover(int reWeldDINum, int abortWeldDINum);
 
 Exemplo de Código para Configurar Sinais de Soldagem com E/S Estendida
-+++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -930,7 +930,7 @@ Controle de Rastreamento de Arco
      errno_t ArcWeldTraceControl(int flag, double delaytime, int isLeftRight, double klr, double tStartLr, double stepMaxLr, double sumMaxLr, int isUpLow, double kud, double tStartUd, double stepMaxUd, double sumMaxUd, int axisSelect, int referenceType, double referSampleStartUd, double referSampleCountUd, double referenceCurrent, int offsetType = 0, int offsetParameter = 0);
 
 Configurar Porta de Sinal de Entrada de Rastreamento de Arco
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -944,7 +944,7 @@ Configurar Porta de Sinal de Entrada de Rastreamento de Arco
      errno_t ArcWeldTraceExtAIChannelConfig(int channel);
 
 Ativação da Compensação de Rastreamento de Arco + Múltiplas Camadas e Múltiplos Passes
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -957,7 +957,7 @@ Ativação da Compensação de Rastreamento de Arco + Múltiplas Camadas e Múlt
     errno_t ArcWeldTraceReplayStart();
 
 Desativação da Compensação de Rastreamento de Arco + Múltiplas Camadas e Múltiplos Passes
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -970,7 +970,7 @@ Desativação da Compensação de Rastreamento de Arco + Múltiplas Camadas e M�
     errno_t ArcWeldTraceReplayEnd();
 
 Mudança de Coordenadas de Deslocamento - Soldagem de Múltiplas Camadas e Múltiplos Passes
-++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -983,7 +983,7 @@ Mudança de Coordenadas de Deslocamento - Soldagem de Múltiplas Camadas e Múlt
     errno_t MultilayerOffsetTrsfToBase(DescTran pointO, DescTran pointX, DescTran pointZ, double dx, double dy, double db, DescPose& offset);
 
 Exemplo de Código de Rastreamento de Arco com Soldagem de Múltiplas Camadas e Múltiplos Passes
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1094,7 +1094,7 @@ Exemplo de Código de Rastreamento de Arco com Soldagem de Múltiplas Camadas e 
     }
 
 Seleção do Canal AI de Feedback de Corrente da Máquina de Solda para Rastreamento de Arco
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -1106,7 +1106,7 @@ Seleção do Canal AI de Feedback de Corrente da Máquina de Solda para Rastream
      errno_t ArcWeldTraceAIChannelCurrent(int channel);
 
 Seleção do Canal AI de Feedback de Tensão da Máquina de Solda para Rastreamento de Arco
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -1118,7 +1118,7 @@ Seleção do Canal AI de Feedback de Tensão da Máquina de Solda para Rastreame
      errno_t ArcWeldTraceAIChannelVoltage(int channel);
 
 Parâmetros de Conversão de Feedback de Corrente da Máquina de Solda para Rastreamento de Arco
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -1133,7 +1133,7 @@ Parâmetros de Conversão de Feedback de Corrente da Máquina de Solda para Rast
      errno_t ArcWeldTraceCurrentPara(float AILow, float AIHigh, float currentLow, float currentHigh);
 
 Parâmetros de Conversão de Feedback de Tensão da Máquina de Solda para Rastreamento de Arco
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -1194,7 +1194,7 @@ Exemplo de Código de Rastreamento de Arco
     }
 
 Definir Portas E/S Estendidas para Busca de Posição do Arame de Solda
-++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -1323,7 +1323,7 @@ Fim da Busca de Posição do Arame de Solda
      errno_t WireSearchEnd(int refPos, float searchVel, int searchDis, int autoBackFlag, float autoBackVel, int autoBackDis, int offectFlag);
 
 Calcular Deslocamento da Busca de Posição do Arame de Solda
-+++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -1342,7 +1342,7 @@ Calcular Deslocamento da Busca de Posição do Arame de Solda
      errno_t GetWireSearchOffset(int seamType, int method, std::vector<std::string> varNameRef, std::vector<std::string> varNameRes, int& offectFlag, DescPose& offect);
 
 Aguardar Conclusão da Busca de Posição do Arame de Solda
-+++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -1355,7 +1355,7 @@ Aguardar Conclusão da Busca de Posição do Arame de Solda
      errno_t WireSearchWait(std::string varName);
 
 Escrever Ponto de Contato da Busca de Posição do Arame no Banco de Dados
-+++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -1370,7 +1370,7 @@ Escrever Ponto de Contato da Busca de Posição do Arame no Banco de Dados
      errno_t SetPointToDatabase(std::string varName, DescPose pos);
 
 Exemplo de Código de Busca de Posição do Arame de Solda do Robô
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0
 
 .. code-block:: c++
@@ -1442,7 +1442,7 @@ Exemplo de Código de Busca de Posição do Arame de Solda do Robô
       return 0;
 
 Definir Início da Mudança Gradual da Tensão de Soldagem
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1459,7 +1459,7 @@ Definir Início da Mudança Gradual da Tensão de Soldagem
       errno_t WeldingSetVoltageGradualChangeStart(int IOType, double voltageStart, double voltageEnd, int AOIndex, int blend);
 
 Definir Fim da Mudança Gradual da Tensão de Soldagem
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1471,7 +1471,7 @@ Definir Fim da Mudança Gradual da Tensão de Soldagem
      errno_t WeldingSetVoltageGradualChangeEnd();
 
 Definir Início da Mudança Gradual da Corrente de Soldagem
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1488,7 +1488,7 @@ Definir Início da Mudança Gradual da Corrente de Soldagem
      errno_t WeldingSetCurrentGradualChangeStart(int IOType, double currentStart, double currentEnd, int AOIndex, int blend);
 
 Definir Fim da Mudança Gradual da Corrente de Soldagem
-+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1500,7 +1500,7 @@ Definir Fim da Mudança Gradual da Corrente de Soldagem
     errno_t WeldingSetCurrentGradualChangeEnd();
 
 Exemplo de Código de Mudança Gradual de Corrente e Tensão de Soldagem do Robô
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -1583,7 +1583,7 @@ Obter Parâmetros de Oscilação Personalizada
     errno_t CustomWeaveGetPara(int id, int& pointNum, DescTran point[10], double stayTime[10], double& frequency, int& incStayType, int& stationary);
 
 Exemplo de Código de Parâmetros de Oscilação Personalizada
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v3.8.6
 
 .. code-block:: c++
@@ -1651,4 +1651,284 @@ Exemplo de Código de Parâmetros de Oscilação Personalizada
       robot.MoveL(&j2, &desc_p2, 3, 0, 100, 100, 10, -1, &epos, 0, 0, &offset_pos, 0, 100);
       robot.WeaveEnd(0);
       robot.CloseRPC();
+    }
+
+Configuração de Parâmetros da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configuração de parâmetros da soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[in] Número do grupo a ser configurado (1~10)
+    * @param[in] scanSpeed Velocidade de varredura
+    * @param[in] scanWidth Largura de varredura
+    * @param[in] peakPower Potência de pico
+    * @param[in] dutyCycle Ciclo de trabalho
+    * @param[in] freq Frequência
+    * @return Código de erro
+    */
+    errno_t SetLaserWeldingParam(int io_type, int num, int scanSpeed, int scanWidth, int peakPower, int dutyCycle, int freq);
+
+Iniciar/Parar Soldagem a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Iniciar/parar soldagem a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[in] status Palavra de controle 0-desligar laser 1-ligar laser
+    * @param[in] max_waittime Tempo máximo de espera em milissegundos, padrão 10000
+    * @return Código de erro
+    */
+    errno_t SetLaserWeldingStartEnd(int io_type, int status, int max_waittime = 10000);
+
+Habilitar/Desabilitar Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Habilitar/desabilitar soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[in] status 0-desabilitar 1-habilitar
+    * @return Código de erro
+    */
+    errno_t SetLaserWeldingEnable(int io_type, int status);
+
+Reset de Falha da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Reset de falha da soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[in] status Palavra de controle 0-inválido 1-reset de falha
+    * @return Código de erro
+    */
+    errno_t ResetLaserWeldingErr(int io_type, int status);
+
+Obter Estado de Operação da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Obter estado de operação da soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[out] status Palavra de controle 0-parado 1-operando
+    * @return Código de erro
+    */
+    errno_t GetLaserWeldingRunningState(int io_type, int& status);
+
+Obter Estado de Falha da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Obter estado de falha da soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[out] status 0-sem falha 1-com falha
+    * @return Código de erro
+    */
+    errno_t GetLaserWeldingErrState(int io_type, int& status);
+
+Obter Parâmetros de Configuração da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Obter parâmetros de configuração da soldadora a laser
+    * @param[in] Número do grupo a ser configurado (1~10)
+    * @param[out] scanSpeed Velocidade de varredura
+    * @param[out] scanWidth Largura de varredura
+    * @param[out] peakPower Potência de pico
+    * @param[out] dutyCycle Ciclo de trabalho
+    * @param[out] freq Frequência
+    * @return Código de erro
+    */
+    errno_t GetLaserWeldingParamTarget(int num, int& scanSpeed, int& scanWidth, int& peakPower, int& dutyCycle, int& freq);
+
+Obter Parâmetros de Configuração Ativos da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Obter parâmetros de configuração ativos da soldadora a laser
+    * @param[in] io_type Tipo de comunicação 0-IO 1-UDP
+    * @param[out] scanSpeed Velocidade de varredura
+    * @param[out] scanWidth Largura de varredura
+    * @param[out] peakPower Potência de pico
+    * @param[out] dutyCycle Ciclo de trabalho
+    * @param[out] freq Frequência
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t GetLaserWeldingParamActual(int io_type, int& scanSpeed, int& scanWidth, int& peakPower, int& dutyCycle, int& freq);
+
+Configurar Porta DO de E/S Expansão para Habilitar Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configurar porta DO de E/S expansão para habilitar soldadora a laser
+    * @param[in] ctrlModeDONum Número da porta DO de E/S expansão para habilitar a soldadora a laser
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t SetLaserWeldingEnableExtDoNum(int ctrlModeDONum);
+
+Configurar Porta DO de E/S Expansão para Iniciar Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configurar porta DO de E/S expansão para iniciar soldadora a laser
+    * @param[in] ctrlModeDONum Número da porta DO de E/S expansão para iniciar/parar a soldadora a laser
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t SetLaserWeldingStartExtDoNum(int ctrlModeDONum);
+
+Configurar Porta DO de E/S Expansão para Reset de Falha da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configurar porta DO de E/S expansão para reset de falha da soldadora a laser
+    * @param[in] ctrlModeDONum Número da porta DO de E/S expansão para reset de falha da soldadora a laser
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t SetLaserWeldingErrResetExtDoNum(int ctrlModeDONum);
+
+Configurar Porta DI de E/S Expansão para Estado de Operação (Laser Ligado) da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configurar porta DI de E/S expansão para estado de operação (laser ligado) da soldadora a laser
+    * @param[in] diNum Número da porta DI de E/S expansão para estado de operação da soldadora a laser
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t SetLaserWeldingRunningStateExtDiNum(int diNum);
+
+Configurar Porta DI de E/S Expansão para Estado de Falha da Soldadora a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configurar porta DI de E/S expansão para estado de falha da soldadora a laser
+    * @param[in] diNum Número da porta DI de E/S expansão para estado de falha da soldadora a laser
+    * @return Código de erro, 0 indica sucesso, diferente de 0 indica falha
+    */
+    errno_t SetLaserWeldingErrStateExtDiNum(int diNum);
+
+Exemplo de Código de Soldagem a Laser
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    int TestLaserWeld()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        robot.SetReConnectParam(true, 300000, 500);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        rtn = robot.ExtDevLoadUDPDriver();
+        if (rtn != 0) 
+        {
+            std::cout << "Falha ao carregar driver UDP, código de erro: " << rtn << std::endl;
+        }
+        robot.Sleep(1000);
+        rtn = robot.SetLaserWeldingParam(1, 3, 2000, 3, 1500, 100, 1000);
+        if (rtn != 0) 
+        {
+            std::cout << "SetLaserWeldingParam falhou, código de erro: " << rtn << std::endl;
+        }
+        else 
+        {
+            std::cout << "SetLaserWeldingParam sucesso" << std::endl;
+        }
+        rtn = robot.SetLaserWeldingStartExtDoNum(1);
+        if (rtn != 0) 
+        {
+            std::cout << "SetLaserWeldingStartExtDoNum falhou, código de erro: " << rtn << std::endl;
+        }
+        rtn = robot.Mode(0);
+        if (rtn != 0) 
+        {
+            std::cout << "Falha ao definir modo 0, código de erro: " << rtn << std::endl;
+        }
+        robot.Sleep(1000);
+        DescPose desc_pos1(-303.721, -206.960, 297.105, 152.209, 19.857, 109.166);
+        DescPose desc_pos2(-301.575, -254.888, 284.786, 155.919, 26.946, 111.629);
+        DescPose desc_safe(-344.386, -280.830, 435.073, 173.835, 15.333, 124.931);
+        JointPos jointPos1(9.827, -99.740, 120.088, -78.900, -77.241, -17.904);
+        JointPos jointPos2(15.251, -96.456, 120.138, -84.664, -68.542, -17.843);
+        JointPos jointSafe(19.142, -98.078, 101.493, -83.078, -77.070, -17.794);
+        ExaxisPos exaxis(0.0, 0.0, 0.0, 0.0);
+        DescPose offset(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        int error = robot.MoveL(&desc_pos1,0, 0, 100, 100, 100, -1, 0, &exaxis, 0, 0, &offset, -1, 0);
+        std::cout << "MoveL para pos1 retorno: " << error << std::endl;
+        rtn = robot.SetLaserWeldingStartEnd(1, 1, 10000);
+        if (rtn != 0)
+        {
+            std::cout << "SetLaserWeldingStartEnd (iniciar) falhou, código de erro: " << rtn << std::endl;
+        }
+        else 
+        {
+            std::cout << "Laser iniciado" << std::endl;
+        }
+        rtn = robot.MoveL(&desc_pos2,0, 0, 30, 100, 100, -1, 0, &exaxis, 0, 0, &offset, -1, 0);
+        std::cout << "MoveL para pos2 retorno: " << rtn << std::endl;
+        rtn = robot.SetLaserWeldingStartEnd(1, 0, 10000);
+        if (rtn != 0)
+        {
+            std::cout << "SetLaserWeldingStartEnd (parar) falhou, código de erro: " << rtn << std::endl;
+        }
+        else 
+        {
+            std::cout << "Laser parado" << std::endl;
+        }
+        robot.Sleep(500);
+        rtn = robot.MoveL(&desc_safe, 0, 0, 100, 100, 100, -1, 0, &exaxis, 0, 0, &offset, -1, 0);
+        std::cout << "MoveL para safe_pos retorno: " << rtn << std::endl;
+        rtn = robot.Mode(1);
+        if (rtn != 0) 
+        {
+            std::cout << "Falha ao definir modo 1, código de erro: " << rtn << std::endl;
+        }
+        robot.Sleep(1000);
+        robot.CloseRPC();
+        robot.Sleep(1000);
+        std::cout << "Teste concluído" << std::endl;
+        return 0;
     }

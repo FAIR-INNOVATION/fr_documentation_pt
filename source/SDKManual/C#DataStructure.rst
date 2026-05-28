@@ -369,7 +369,7 @@ Tipo de estrutura de feedback do estado do robô
         public byte socketConnTimeout;     // Flag de timeout de conexão do socket
         public byte socketReadTimeout;     // Flag de timeout de leitura do socket
         public byte tsWebStateComErr;      // ts_web_state_com_err
-
+        public byte exaxisCoordID;         // Número do sistema de coordenadas do eixo de extensão
         public UInt16 check_sum;         /* Checksum */
 
         // Construtor: inicializa todos os campos de array
@@ -420,17 +420,20 @@ Tipo de estrutura de feedback do estado do robô
         }
     }
 
-Enum de estado configurável do robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+Tipo de Enumeração da Configuração de Feedback de Estado do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  Enum de estado configurável do robô, intervalo 3~131
+    * @brief  Enumeração de estados configuráveis do robô, intervalo 0~132
     */
     public enum RobotState
     {
+        FrameHead = 0,
+        FrameCnt = 1,
+        DataLen = 2,
         ProgramState = 3,
         RobotState = 4,
         MainCode = 5,
@@ -557,7 +560,8 @@ Enum de estado configurável do robô
         DriverError = 126,
         OutSoftLimitError = 127,
         AxleGenComData = 128,
-        SocketConnTimeout = 129,     // timeout de conexão do socket, bits 0-4: socketID 1-4
-        SocketReadTimeout = 130,     // timeout de leitura do socket, bits 0-4: socketID 1-4
-        TsWebStateComErr = 131     // falha de comunicação web-torque; 0-normal; 1-falha
+        SocketConnTimeout = 129,     // Timeout de conexão socket, bit0-bit4: socketID 1-4
+        SocketReadTimeout = 130,     // Timeout de leitura socket, bit0-bit4: socketID 1-4
+        TsWebStateComErr = 131,     // Falha de comunicação web-torque; 0-normal; 1-falha
+        ExaxisCoordID = 132          // Número do sistema de coordenadas do eixo de extensão
     }

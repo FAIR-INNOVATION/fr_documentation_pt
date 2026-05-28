@@ -348,7 +348,7 @@ Definir Torque em Torno do Eixo Y Durante a Execução da Trajetória
     errno_t SetTrajectoryJTorqueTy(double ty);
 
 Definir Torque em Torno do Eixo Z Durante a Execução da Trajetória
-++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
@@ -360,7 +360,7 @@ Definir Torque em Torno do Eixo Z Durante a Execução da Trajetória
     errno_t SetTrajectoryJTorqueTz(double tz);
 
 Enviar Arquivo de Trajetória J
-+++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: V3.7.7
 
 .. code-block:: c++
@@ -374,7 +374,7 @@ Enviar Arquivo de Trajetória J
 	errno_t TrajectoryJUpLoad(const std::string& filePath);
 
 Excluir Arquivo de Trajetória J
-+++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: V3.7.7
 
 .. code-block:: c++
@@ -388,7 +388,7 @@ Excluir Arquivo de Trajetória J
 	errno_t TrajectoryJDelete(const std::string& fileName);
 
 Exemplo de Código de Reprodução de Arquivo de Trajetória J do Robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
@@ -480,7 +480,7 @@ Reprodução de Trajetória (Antecedência de Trajetória)
     errno_t MoveTrajectoryLA();
 
 Exemplo de Código de Reprodução de Trajetória (Antecedência de Trajetória)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:

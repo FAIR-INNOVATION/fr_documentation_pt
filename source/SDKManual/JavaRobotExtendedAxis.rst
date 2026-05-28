@@ -5,7 +5,7 @@ Eixo de Extensão
     :maxdepth: 5
 
 Definir Parâmetros do Eixo de Extensão 485
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -31,7 +31,7 @@ Obter Parâmetros do Eixo de Extensão 485
     int AuxServoGetParam(int servoId, Axis485Param param);
 
 Habilitar/Desabilitar Eixo de Extensão 485
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -44,7 +44,7 @@ Habilitar/Desabilitar Eixo de Extensão 485
     int AuxServoEnable(int servoId, int status);
         
 Definir Modo de Controle do Eixo de Extensão 485
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -57,7 +57,7 @@ Definir Modo de Controle do Eixo de Extensão 485
     int AuxServoSetControlMode(int servoId, int mode);
 
 Definir Posição Alvo do Eixo de Extensão 485 (Modo Posição)
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -72,7 +72,7 @@ Definir Posição Alvo do Eixo de Extensão 485 (Modo Posição)
     int AuxServoSetTargetPos(int servoId, double pos, double speed, double acc);
     
 Definir Torque Alvo do Eixo de Extensão 485 (Modo Torque) - Temporariamente não disponível
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -101,7 +101,7 @@ Definir Homing do Eixo de Extensão 485
     int AuxServoHoming(int servoId, int mode, double searchVel, double latchVel);
 
 Limpar Informações de Erro do Eixo de Extensão 485
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -130,7 +130,7 @@ Obter Estado do Servo do Eixo de Extensão 485
     int AuxServoGetStatus(int servoId, int[] servoErrCode, int[] servoState, double[] servoPos, double[] servoSpeed, double[] servoTorque)
 
 Definir Velocidade Alvo do Eixo de Extensão 485 (Modo Velocidade)
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -144,7 +144,7 @@ Definir Velocidade Alvo do Eixo de Extensão 485 (Modo Velocidade)
     int AuxServoSetTargetSpeed(int servoId, double speed, double acc);
 
 Definir Número do Eixo de Dados do Eixo de Extensão 485 no Feedback de Estado
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -156,7 +156,7 @@ Definir Número do Eixo de Dados do Eixo de Extensão 485 no Feedback de Estado
     int AuxServosetStatusID(int servoId);
 
 Definir Aceleração/Desaceleração do Movimento do Eixo de Extensão 485
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -169,7 +169,7 @@ Definir Aceleração/Desaceleração do Movimento do Eixo de Extensão 485
     int AuxServoSetAcc(double acc, double dec)
 
 Definir Aceleração/Desaceleração de Parada de Emergência do Eixo de Extensão 485
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -182,7 +182,7 @@ Definir Aceleração/Desaceleração de Parada de Emergência do Eixo de Extens�
     int AuxServoSetEmergencyStopAcc(double acc, double dec)
 
 Obter Aceleração/Desaceleração do Movimento do Eixo de Extensão 485
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -193,7 +193,7 @@ Obter Aceleração/Desaceleração do Movimento do Eixo de Extensão 485
     List<Number> AuxServoGetAcc()
 
 Obter Aceleração/Desaceleração de Parada de Emergência do Eixo de Extensão 485
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -204,7 +204,7 @@ Obter Aceleração/Desaceleração de Parada de Emergência do Eixo de Extensão
     List<Number> AuxServoGetEmergencyStopAcc()
 
 Exemplo de Código de Controle do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -291,7 +291,7 @@ Exemplo de Código de Controle do Eixo de Extensão
     }
 
 Configuração dos Parâmetros de Comunicação UDP do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: Java SDK-v1.0.5-3.8.2
 
 .. code-block:: Java
@@ -305,7 +305,7 @@ Configuração dos Parâmetros de Comunicação UDP do Eixo de Extensão
     int ExtDevSetUDPComParam(UDPComParam param);     
 
 Obter Configuração dos Parâmetros de Comunicação UDP do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -348,7 +348,7 @@ Descarregar Comunicação UDP
     int ExtDevUnloadUDPDriver();
 
 Restaurar Conexão Após Desconexão Anormal da Comunicação UDP do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -359,7 +359,7 @@ Restaurar Conexão Após Desconexão Anormal da Comunicação UDP do Eixo de Ext
     int ExtDevUDPClientComReset();
 
 Fechar Comunicação Após Desconexão Anormal da Comunicação UDP do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -370,7 +370,7 @@ Fechar Comunicação Após Desconexão Anormal da Comunicação UDP do Eixo de E
     int ExtDevUDPClientComClose();
 
 Configuração dos Parâmetros do Eixo de Extensão UDP
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -393,8 +393,33 @@ Configuração dos Parâmetros do Eixo de Extensão UDP
     */
     int ExtAxisParamConfig(int axisID, int axisType, int axisDirection, double axisMax, double axisMin, double axisVel, double axisAcc, double axisLead, int encResolution, double axisOffect, int axisCompany, int axisModel, int axisEncType);
 
+UDP-Erweiterte Achsenparameterabfrage
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief UDP-erweiterte Achsenparameterabfrage
+    * @param  axisID Erweiterte Achsennummer [1-4]
+    * @param  params Ausgabeparameter-Array, Länge 12, Reihenfolge:
+    *               [0] axisType Erweiterter Achsentyp 0-linear; 1-drehend
+    *               [1] axisDirection Erweiterte Achsenrichtung 0-positiv; 1-negativ
+    *               [2] axisMax Maximale Position der erweiterten Achse mm
+    *               [3] axisMin Minimale Position der erweiterten Achse mm
+    *               [4] axisVel Geschwindigkeit mm/s
+    *               [5] axisAcc Beschleunigung mm/s²
+    *               [6] axisLead Spindelsteigung mm
+    *               [7] encResolution Encoder-Auflösung
+    *               [8] axisOffekt Schweißstartpunkt-Versatz der erweiterten Achse
+    *               [9] axisCompany Antriebshersteller 1-Hechen; 2-Inovance; 3-Panasonic
+    *               [10] axisModel Antriebsmodell
+    *               [11] axisEncType Encodertyp 0-inkrementell; 1-absolut
+    * @return Fehlercode
+    */
+    public int ExtAxisGetParamConfig(int axisID, Object[] params)
+
 Definir Posição de Instalação do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -406,7 +431,7 @@ Definir Posição de Instalação do Eixo de Extensão
     int SetRobotPosToAxis(int installType);
 
 Definir Configuração dos Parâmetros DH do Sistema de Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -482,57 +507,93 @@ Parar Jog do Eixo de Extensão UDP
     int ExtAxisStopJog(int axisID);
 
 Exemplo de Código de Configuração e Jog do Eixo de Extensão UDP
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: Java
     :linenos:
 
-    public static int TestUDPAxis(Robot robot)//UDP
-    {
-        UDPComParam para1=new UDPComParam("192.168.58.88", 2021, 2, 100, 3, 200, 1, 100, 5, 1);
-        int rtn = robot.ExtDevSetUDPComParam(para1);
-        String ip = ""; int port = 0; int period = 0; int lossPkgTime = 0; int lossPkgNum = 0; int disconnectTime = 0; int reconnectEnable = 0; int reconnectPeriod = 0; int reconnectNum = 0;
-        UDPComParam para2=new UDPComParam(ip, port, period, lossPkgTime, lossPkgNum, disconnectTime, reconnectEnable, reconnectPeriod, reconnectNum,0);
-        rtn = robot.ExtDevGetUDPComParam(para2);
+    public static int TestUDPAxis(Robot robot) {
+        int rtn = -1;
+        
+        UDPComParam param = new UDPComParam("192.168.58.88", 2021, 2, 100, 3, 200, 1, 100, 5, 1);
+        rtn = robot.ExtDevSetUDPComParam(param);
+        System.out.println("ExtDevSetUDPComParam rtn is " + rtn);
+        
+        UDPComParam getParam = new UDPComParam();
+        rtn = robot.ExtDevGetUDPComParam(getParam);
+        String paramStr = "\nip " + getParam.ip + "\nport " + getParam.port + "\nperiod " + getParam.period + 
+                "\nlossPkgTime " + getParam.lossPkgTime + "\nlossPkgNum " + getParam.lossPkgNum + 
+                "\ndisconnectTime " + getParam.disconnectTime + "\nreconnectEnable " + getParam.reconnectEnable + 
+                "\nreconnectPeriod " + getParam.reconnectPeriod + "\nreconnectNum " + getParam.reconnectNum + 
+                "\nselfConnect " + getParam.selfConnect;
+        System.out.println("ExtDevGetUDPComParam rtn is " + rtn + paramStr);
 
         robot.ExtDevLoadUDPDriver();
 
+        rtn = robot.SetExAxisCmdDoneTime(5000.0);
+        System.out.println("SetExAxisCmdDoneTime rtn is " + rtn);
+        
         rtn = robot.ExtAxisServoOn(1, 1);
+        System.out.println("ExtAxisServoOn axis id 1 rtn is " + rtn);
         rtn = robot.ExtAxisServoOn(2, 1);
-        robot.Sleep(3000);
+        System.out.println("ExtAxisServoOn axis id 2 rtn is " + rtn);
+        robot.Sleep(2000);
 
         robot.ExtAxisSetHoming(1, 0, 10, 2);
-        robot.Sleep(3000);
+        robot.Sleep(2000);
         rtn = robot.ExtAxisSetHoming(2, 0, 10, 2);
+        System.out.println("ExtAxisSetHoming rtn is " + rtn);
 
         robot.Sleep(4000);
 
         rtn = robot.SetRobotPosToAxis(1);
+        System.out.println("SetRobotPosToAxis rtn is " + rtn);
+        
         rtn = robot.SetAxisDHParaConfig(10, 20, 0, 0, 0, 0, 0, 0, 0);
-        rtn = robot.ExtAxisParamConfig(1, 1, 1, 1000, -1000, 1000, 1000, 1.905, 262144, 200, 1, 0, 0);
-        rtn = robot.ExtAxisParamConfig(2, 1, 1, 1000, -1000, 1000, 1000, 4.444, 262144, 200, 1, 0, 0);
+        System.out.println("SetAxisDHParaConfig rtn is " + rtn);
 
-        robot.Sleep(4000);
+        rtn = robot.ExtAxisParamConfig(1, 1, 1, 1000, -1000, 1000, 1000, 1.905, 262144, 200, 1, 0, 0);
+        System.out.println("ExtAxisParamConfig axis 1 rtn is " + rtn);
+        
+        Object[] params1 = new Object[12];
+        rtn = robot.ExtAxisGetParamConfig(1, params1);
+        System.out.printf("axis id 1 ExtAxisGetParamConfig : axisType %d, axisDirection %d, axisMax %.2f, axisMin %.2f, axisVel %.2f, axisAcc %.2f, axisLead %.2f, encResolution %d, axisOffect %.2f, axisCompany %d, axisModel %d, axisEncType %d\n",
+                (int)params1[0], (int)params1[1], (double)params1[2], (double)params1[3], 
+                (double)params1[4], (double)params1[5], (double)params1[6], (int)params1[7], 
+                (double)params1[8], (int)params1[9], (int)params1[10], (int)params1[11]);
+        
+        rtn = robot.ExtAxisParamConfig(2, 1, 1, 1000, -1000, 1000, 1000, 4.444, 262144, 200, 1, 0, 0);
+        System.out.println("ExtAxisParamConfig axis 2 rtn is " + rtn);
+        
+        Object[] params2 = new Object[12];
+        rtn = robot.ExtAxisGetParamConfig(2, params2);
+        System.out.printf("axis id 2 ExtAxisGetParamConfig : axisType %d, axisDirection %d, axisMax %.2f, axisMin %.2f, axisVel %.2f, axisAcc %.2f, axisLead %.2f, encResolution %d, axisOffect %.2f, axisCompany %d, axisModel %d, axisEncType %d\n",
+                (int)params2[0], (int)params2[1], (double)params2[2], (double)params2[3], 
+                (double)params2[4], (double)params2[5], (double)params2[6], (int)params2[7], 
+                (double)params2[8], (int)params2[9], (int)params2[10], (int)params2[11]);
+
+        robot.Sleep(3000);
+        
         robot.ExtAxisStartJog(1, 0, 10, 10, 30);
-        robot.Sleep(4000);
+        robot.Sleep(1000);
         robot.ExtAxisStopJog(1);
-        robot.Sleep(4000);
+        robot.Sleep(3000);
         robot.ExtAxisServoOn(1, 0);
 
-        robot.Sleep(4000);
+        robot.Sleep(3000);
+        
         robot.ExtAxisStartJog(2, 0, 10, 10, 30);
-        robot.Sleep(4000);
+        robot.Sleep(1000);
         robot.ExtAxisStopJog(2);
-        robot.Sleep(4000);
+        robot.Sleep(3000);
         robot.ExtAxisServoOn(2, 0);
-        robot.Sleep(4000);
         robot.ExtDevUnloadUDPDriver();
 
         return 0;
     }
 
 Definir Ponto de Referência do Sistema de Coordenadas do Eixo de Extensão - Método de Quatro Pontos
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -544,7 +605,7 @@ Definir Ponto de Referência do Sistema de Coordenadas do Eixo de Extensão - M�
     int ExtAxisSetRefPoint(int pointNum);
 
 Calcular Sistema de Coordenadas do Eixo de Extensão - Método de Quatro Pontos
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -556,7 +617,7 @@ Calcular Sistema de Coordenadas do Eixo de Extensão - Método de Quatro Pontos
     int ExtAxisComputeECoordSys(DescPose coord);
 
 Definir Ponto de Referência do Sistema de Coordenadas do Posicionador
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -568,7 +629,7 @@ Definir Ponto de Referência do Sistema de Coordenadas do Posicionador
     int PositionorSetRefPoint(int pointNum);
 
 Calcular Sistema de Coordenadas do Posicionador - Método de Quatro Pontos
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -580,7 +641,7 @@ Calcular Sistema de Coordenadas do Posicionador - Método de Quatro Pontos
     int PositionorComputeECoordSys(DescPose coord);
 
 Definir Pose do Ponto de Referência de Calibração no Sistema de Coordenadas da Extremidade do Posicionador
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -592,7 +653,7 @@ Definir Pose do Ponto de Referência de Calibração no Sistema de Coordenadas d
     int SetRefPointInExAxisEnd(DescPose pos);
 
 Aplicar Sistema de Coordenadas do Eixo de Extensão
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -621,7 +682,7 @@ Obter Sistema de Coordenadas do Eixo de Extensão
     int ExtAxisGetCoord(DescPose coord);
 
 Exemplo de Código de Calibração do Sistema de Coordenadas do Eixo de Extensão
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -735,7 +796,7 @@ Movimento do Eixo de Extensão UDP
     int ExtAxisMove(ExaxisPos pos, double ovl, double blend)
 
 Exemplo de Código de Movimento do Eixo de Extensão UDP
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -748,7 +809,7 @@ Exemplo de Código de Movimento do Eixo de Extensão UDP
     }
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento Articular do Robô
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -770,7 +831,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento Articular do Robô
     int ExtAxisSyncMoveJ(JointPos joint_pos, DescPose desc_pos, int tool, int user, double vel, double acc, double ovl, ExaxisPos epos, double blendT, int offset_flag, DescPose offset_pos);
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento Articular do Robô (Cálculo Automático de Cinemática Direta)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
 .. code-block:: Java
@@ -793,7 +854,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento Articular do Robô (C
     int ExtAxisSyncMoveJ(JointPos joint_pos, int tool, int user, double vel, double acc, double ovl, ExaxisPos epos, double blendT, int offset_flag, DescPose offset_pos) 
 
 Exemplo de Código de Movimento Síncrono do Eixo de Extensão UDP com Movimento Articular do Robô
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -852,7 +913,7 @@ Exemplo de Código de Movimento Síncrono do Eixo de Extensão UDP com Movimento
     }
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento Linear do Robô
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -874,7 +935,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento Linear do Robô
     int ExtAxisSyncMoveL(JointPos joint_pos, DescPose desc_pos, int tool, int user, double vel, double acc, double ovl, double blendR, ExaxisPos epos, int offset_flag, DescPose offset_pos);
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento Linear do Robô (Cálculo Automático de Cinemática Inversa)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
 .. code-block:: Java
@@ -898,7 +959,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento Linear do Robô (Cál
     int ExtAxisSyncMoveL(DescPose desc_pos, int tool, int user, double vel, double acc, double ovl, double blendR, ExaxisPos epos, int offset_flag, DescPose offset_pos,int config)
 
 Exemplo de Código de Movimento Síncrono do Eixo de Extensão UDP com Movimento Linear do Robô
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -957,7 +1018,7 @@ Exemplo de Código de Movimento Síncrono do Eixo de Extensão UDP com Movimento
     }
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento de Arco do Robô
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -988,7 +1049,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento de Arco do Robô
     int ExtAxisSyncMoveC(JointPos joint_pos_p, DescPose desc_pos_p, int ptool, int puser, double pvel, double pacc, ExaxisPos epos_p, int poffset_flag, DescPose offset_pos_p, JointPos joint_pos_t, DescPose desc_pos_t, int ttool, int tuser, double tvel, double tacc, ExaxisPos epos_t, int toffset_flag, DescPose offset_pos_t, double ovl, double blendR);
 
 Movimento Síncrono do Eixo de Extensão UDP com Movimento de Arco do Robô (Cálculo Automático de Cinemática Inversa)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: Java SDK-v1.0.8-3.8.5
 
 .. code-block:: Java
@@ -1020,7 +1081,7 @@ Movimento Síncrono do Eixo de Extensão UDP com Movimento de Arco do Robô (Cá
     int ExtAxisSyncMoveC(DescPose desc_pos_p, int ptool, int puser, double pvel, double pacc, ExaxisPos epos_p, int poffset_flag, DescPose offset_pos_p, DescPose desc_pos_t, int ttool, int tuser, double tvel, double tacc, ExaxisPos epos_t, int toffset_flag, DescPose offset_pos_t, double ovl, double blendR,int config)
 
 Exemplo de Código de Movimento Síncrono do Eixo de Extensão UDP com Movimento de Arco do Robô
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1112,7 +1173,7 @@ Definir AO de Extensão
     int SetAuxAO(int AONum, double value, boolean block);
 
 Definir Tempo de Filtro de Entrada do DI de Extensão
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
@@ -1124,7 +1185,7 @@ Definir Tempo de Filtro de Entrada do DI de Extensão
     int SetAuxDIFilterTime(int filterTime);
 
 Definir Tempo de Filtro de Entrada do AI de Extensão
-+++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 

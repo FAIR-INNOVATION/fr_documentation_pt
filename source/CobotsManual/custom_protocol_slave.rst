@@ -7,7 +7,7 @@ Instruções do Escravo de Protocolo Personalizado
 Visão Geral
 -------------------
 
-Para facilitar o controle de movimento do robô por um CLP através de diferentes protocolos de barramento industrial (CC-Link IEF Basic, Profinet, Ethernet/IP e EtherCAT), as placas FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, FRJ-PCIeN-EIP/CC/PN-RJ-V10 e FRJ-PCIeN-EC-RJ-V10 foram adicionadas ao mini painel de controle integrado.
+Para facilitar o controle de movimento do robô por um CLP através de diferentes protocolos de barramento industrial (CC-Link IEF Basic, Profinet, Ethernet/IP e EtherCAT), as placas FRH-PCIeN-EC/EIP/CC/PN-RJ-V10, FRJ-PCIeN-EIP/CC/PN-RJ-V10 e FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20 foram adicionadas ao mini painel de controle integrado.
 
 Configuração do Ambiente
 --------------------------
@@ -28,7 +28,7 @@ Os modelos das placas e as versões de software são descritos abaixo:
      - V3.8.4 e superior
 
    * - CC-Link IEF Basic
-     - Placa FRJ-PCIeN-EC-RJ-V10
+     - Placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20
      - V3.9.5 e superior
 
    * - Profinet
@@ -36,7 +36,7 @@ Os modelos das placas e as versões de software são descritos abaixo:
      - V3.8.4 e superior
 
    * - Profinet
-     - Placa FRJ-PCIeN-EC-RJ-V10
+     - Placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20
      - V3.9.5 e superior
 
    * - Ethernet/IP
@@ -44,11 +44,11 @@ Os modelos das placas e as versões de software são descritos abaixo:
      - V3.8.4 e superior
 
    * - Ethernet/IP
-     - Placa FRJ-PCIeN-EC-RJ-V10
+     - Placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20
      - V3.9.5 e superior
 
    * - EtherCAT
-     - Placa FRJ-PCIeN-EC-RJ-V10
+     - Placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20
      - V3.9.5 e superior
 
 Configuração do Ambiente de Hardware para a Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
@@ -189,19 +189,6 @@ Quando o protocolo é configurado como CC-Link IEF Basic, o controlador alterar�
 Quando o protocolo é configurado como Ethernet/IP, o controlador alterará o IP da placa para “192.168.0.112”.
 
 Quando o protocolo é alterado para Profinet e o nome do dispositivo escravo corresponde ao do mestre, o mestre configurará automaticamente o endereço IP do escravo.
-
-Atualização de Firmware da Placa FRJ-PCIeN-EC-RJ-V10
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Digite o URL 192.169.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o número da versão do firmware da placa FRJ-PCIeN-EC-RJ-V10. Selecione o arquivo bin a ser atualizado, clique em Upload, aguarde a conclusão da atualização do firmware e reinicie a caixa de controle.
-
-.. image:: custom_protocol_slave/064.png
-   :width: 6in
-   :align: center
-
-.. centered:: Figura 17.2-13 Atualização de firmware da placa
-
-.. note:: Para atualizar o firmware da placa FRJ-PCIeN-EC-RJ-V10, é necessário descarregar o protocolo aberto em execução.
 
 Configuração do Ambiente de Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -712,8 +699,8 @@ Um exemplo do programa gerado é mostrado abaixo:
 
 :download:`Apêndice I: Tabela de Mapeamento de Endereços do Modo Escravo <../_static/_doc/Control box slave mode address comparison table.xlsx>`
 
-Configuração do Ciclo de Comunicação da Placa
----------------------------------------------------------
+Atualização do firmware da placa e configuração do ciclo de comunicação
+-------------------------------------------------------------------------------------
 
 Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -742,16 +729,26 @@ O ciclo de comunicação da placa pode ser configurado através do host. Atualme
    :width: 6in
    :align: center
 
-Placa FRJ-PCIeN-EC-RJ-V10
+Placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Digite o URL 192.169.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o ciclo de comunicação da placa. Insira o ciclo de comunicação desejado (1~100 ms), clique no botão "Configurar", aguarde a conclusão da configuração e reinicie a caixa de controle.
+Esta placa suporta atualização online. Os passos são os seguintes:
+
+(1) Digite o URL 192.168.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o número da versão do firmware da placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20. Selecione o arquivo bin a ser atualizado, clique em Upload, aguarde a conclusão da atualização do firmware e reinicie a caixa de controle.
 
 .. image:: custom_protocol_slave/064.png
    :width: 6in
    :align: center
 
-.. note:: Para configurar o ciclo de comunicação da placa FRJ-PCIeN-EC-RJ-V10, é necessário descarregar o protocolo aberto em execução.
+.. note:: Para atualizar o firmware da placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20, é necessário descarregar o protocolo aberto em execução.
+
+(2) Digite o URL 192.168.58.2 para entrar na interface do robô, clique em "Configurações Iniciais" -> "Periféricos" -> "Comunicação da Placa" para obter o ciclo de comunicação da placa. Insira o ciclo de comunicação desejado (1~100 ms), clique no botão "Configurar", aguarde a conclusão da configuração e reinicie a caixa de controle.
+
+.. image:: custom_protocol_slave/064.png
+   :width: 6in
+   :align: center
+
+.. note:: Para configurar o ciclo de comunicação da placa FRJ-PCIeN-EC/PN/EIP/CC-RJ-V20, é necessário descarregar o protocolo aberto em execução.
 
 Apêndice
 -------------------

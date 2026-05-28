@@ -641,3 +641,201 @@ Quando dois pontos de movimento de rastreamento idênticos (podendo incluir dist
 .. centered:: Figura 15.3‑16 Um Programa Típico de Movimento de Agarre com Rastreamento Bloqueado da Esteira
 
 Quando dois pontos de movimento de rastreamento idênticos (podendo incluir distâncias de deslocamento) são ensinados em sequência e um movimento de garra é inserido entre eles, o robô permanecerá rastreando a esteira na posição do ponto alvo até que o movimento da garra seja concluído, realizando assim um agarre com rastreamento bloqueado.
+
+Função de Otimização da Instrução de Movimento em Matriz
+------------------------------------------------------------------
+Visão Geral
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+No processo de usinagem automatizada de equipamentos CNC e operações de paletização, as instruções de movimento em matriz são amplamente utilizadas em múltiplas etapas críticas do processo, incluindo carregamento de peças brutas, descarregamento de produtos acabados, inversão de peças e fixação secundária. Ao ensinar três pontos de matriz na receita de movimento em matriz para determinar a posição da matriz e configurar as linhas, colunas, camadas e o caminho de movimento da matriz, a receita da matriz pode ser rapidamente alternada na interface de instruções para implantação e execução.
+
+Configuração da Receita de Movimento em Matriz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Step1**: Entre na interface "Aplicações Auxiliares -> Pacotes de Processo -> Movimento em Matriz" para executar operações de adição, edição, renomeação e exclusão de receitas;
+
+.. figure:: process/049.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑1 Interface de Receita de Matriz
+
+.. note:: 
+   .. image:: process/050.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Botão Adicionar**
+   
+   Função: Adicionar nova receita de matriz
+
+.. note:: 
+   .. image:: process/051.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Botão Editar**
+   
+   Função: Editar parâmetros da receita de matriz
+
+.. note:: 
+   .. image:: process/052.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Botão Renomear**
+   
+   Função: Renomear a receita de matriz
+
+.. note:: 
+   .. image:: process/053.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Botão Excluir**
+   
+   Função: Excluir a receita de matriz
+
+**Step2**: Adicionar nova receita de matriz. Clique no botão "Adicionar" para abrir a janela modal "Adicionar Matriz". Digite o nome da matriz (caracteres especiais são proibidos, apenas números, caracteres chineses comuns e sublinhado "_" são permitidos). Em seguida, entre na interface de detalhes da receita para inserir o número de linhas, camadas, colunas, altura da camada, configuração de movimento e os deslocamentos X, Y, Z do ponto de transição, e ensine três pontos de caminho da matriz. Clique no botão "Configurar" para confirmar a configuração.
+
+.. figure:: process/054.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑2 Janela Modal Adicionar Matriz
+
+.. figure:: process/055.png
+   :align: center
+   :width: 4in
+
+.. figure:: process/056.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑3 Ensino do Primeiro Ponto de Caminho
+
+.. figure:: process/057.png
+   :align: center
+   :width: 4in
+
+.. figure:: process/058.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑4 Ensino do Segundo Ponto de Caminho
+
+.. figure:: process/059.png
+   :align: center
+   :width: 4in
+
+.. figure:: process/060.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑5 Ensino do Terceiro Ponto de Caminho
+
+Os caminhos de movimento são divididos no método "cabeça-cauda" e no método "zigzag". As descrições são as seguintes:
+
+**Método Cabeça-Cauda**: Complete a primeira linha da esquerda para a direita, retorne ao ponto inicial esquerdo, depois complete a segunda linha da esquerda para a direita, retorne novamente ao ponto inicial esquerdo, complete a terceira linha da esquerda para a direita, até que a cobertura completa seja alcançada.
+
+.. figure:: process/061.png
+   :align: center
+   :width: 1in
+
+.. centered:: Figura 15.4‑6 Método Cabeça-Cauda
+
+**Método Zigzag**: Complete a primeira linha da esquerda para a direita, mova-se verticalmente para baixo, depois complete a segunda linha da direita para a esquerda. Mova-se novamente verticalmente para baixo, depois complete a terceira linha da esquerda para a direita, continuando até que a área esteja completamente coberta.
+
+.. figure:: process/062.png
+   :align: center
+   :width: 1in
+
+.. centered:: Figura 15.4‑7 Método Zigzag
+
+**Step3**: Edição, renomeação e exclusão da receita. Clique no botão "Editar" para recuperar os dados da receita de matriz atualmente selecionada. Modifique os parâmetros ou re-ensine os pontos de caminho conforme necessário. Quando a renomeação for necessária, clique no botão "Renomear", digite o novo nome e clique novamente no botão "Renomear" para concluir. Clique no botão "Excluir", uma confirmação secundária solicitará se deseja excluir a receita de matriz; clique novamente no botão "Excluir" para confirmar a exclusão. Conforme mostrado abaixo:
+
+.. figure:: process/063.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑8 Renomeação da Receita de Matriz
+
+.. figure:: process/064.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑9 Prompt de Exclusão da Receita de Matriz
+
+Adição da Instrução de Movimento em Matriz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Step1**: Após entrar na interface "Programa de Ensino -> Programação -> Instruções de Paletização -> Movimento em Matriz", verifique se existem receitas. Se nenhuma receita foi criada, uma mensagem de prompt será exibida. Abaixo do texto do prompt, você pode clicar no botão "Configurar" para acessar rapidamente a interface "Aplicações Auxiliares -> Pacotes de Processo -> Movimento em Matriz". Conforme mostrado abaixo:
+
+.. figure:: process/065.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑10 Interface da Instrução Movimento em Matriz sem Receita
+
+Quando existe uma receita, a interface da instrução de movimento em matriz é exibida. Os tipos de instrução atuais são:
+
+- **Movimento em Matriz**: Define o robô para se mover para o ponto de transição para operações de carga/descarga;
+- **Contagem de Operação da Matriz**: Conta a linha, coluna e camada após o robô completar a carga/descarga;
+- **Configurar Contagem Inicial**: Define a linha, coluna e camada a partir das quais o robô inicia a carga/descarga;
+- **Obter Contagem da Matriz**: Obtém a linha, coluna e camada em que o robô completou a carga/descarga.
+
+.. figure:: process/066.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑11 Interface da Instrução Movimento em Matriz com Receita
+
+**Step2**: Adicione a instrução "Movimento em Matriz". Crie um novo programa chamado "matrix", selecione a receita "matrix1", a direção de movimento "Para Baixo" e insira a velocidade 100. O robô se move do ponto de segurança para o ponto de transição e depois para o ponto de coleta. Clique no botão "Adicionar" para aplicá-lo ao programa. Conforme mostrado abaixo:
+
+.. figure:: process/067.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑12 Instrução Movimento em Matriz Para Baixo
+
+**Step3**: Adicione a instrução "Contagem de Operação da Matriz". Selecione a receita "matrix1", clique no botão "Adicionar" para aplicá-la ao programa. Conforme mostrado abaixo:
+
+.. figure:: process/068.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑13 Instrução Contagem de Operação da Matriz
+
+**Step4**: Adicione a instrução "Movimento em Matriz". Selecione a receita "matrix1", a direção de movimento "Para Cima" e insira a velocidade 100. O robô se move do ponto de coleta para o ponto de transição e depois retorna ao ponto de segurança. Clique no botão "Adicionar" para aplicá-lo ao programa. Conforme mostrado abaixo:
+
+.. figure:: process/069.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑14 Instrução Movimento em Matriz Para Cima
+
+**Step5**: Adicione uma instrução while para looping contínuo. Clique no botão "Salvar" para salvar o programa, alterne para o modo automático e execute o programa. O robô executa continuamente operações de carga/descarga com movimento em matriz. Conforme mostrado abaixo:
+
+.. figure:: process/070.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑15 Execução da Instrução Movimento em Matriz
+
+**Step6**: Adicione a instrução "Configurar Contagem Inicial". Selecione a receita "matrix1", insira linha 1, coluna 1, camada 1. Clique no botão "Adicionar" para aplicá-la ao programa. Conforme mostrado abaixo:
+
+.. note:: Os números de linha, coluna e camada inseridos são incrementados em 1 para representar a linha, coluna e camada reais. Ou seja, inserindo linha 1, coluna 1, camada 1, o robô realmente começa da linha 2, coluna 2, camada 2 na posição especificada.
+
+.. figure:: process/071.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑16 Instrução Configurar Contagem Inicial
+
+**Step7**: Quando a matriz mudar, entre na interface "Aplicações Auxiliares -> Pacotes de Processo -> Movimento em Matriz", selecione a receita de matriz "matrix1", clique no botão editar para modificar os parâmetros e, em seguida, clique no botão configurar para concluir a modificação da matriz. Neste ponto, retorne à interface de programação, abra o programa "matrix" e execute-o diretamente para realizar o novo cenário de trabalho em matriz.
+
+.. figure:: process/072.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 15.4‑17 Modificar Receita de Matriz

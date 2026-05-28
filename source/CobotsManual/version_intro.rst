@@ -1,3 +1,28 @@
+Versão V3.9.6
+-----------------
+
+Data: 2026-05-26
+
+- **Função de Movimento Matricial Otimizada**: 
+    Caminho: Aplicações Auxiliares -> Pacote de Processo -> Movimento Matricial.
+  
+    Descrição: Otimizada a função do conjunto de instruções de movimento matricial.
+
+- **Função de Desaceleração DI Otimizada**: 
+    Caminho: Configurações Iniciais -> Básico -> Configurações de E/S.
+  
+    Descrição: 1. Quando o sinal DI é acionado, o processo de ajuste de velocidade é suave, sem impactos ou engasgos; 2. O caminho da extremidade do robô permanece inalterado antes e depois do ajuste de velocidade; 3. Sem erro ou pausa quando o DI aciona o ajuste de velocidade; 4. Execução imediata sem erro quando o DI aciona a parada.
+
+- **Adicionada Função de Adaptação de Comunicação da Soldadora a Laser do Robô**: 
+    Caminho: Configurações Iniciais -> Periféricos -> Máquina de Solda.
+  
+    Descrição: 1. WebAPP adiciona configurações relacionadas à soldadora a laser, depuração e instruções de geração de programa Lua; 2. Adicionados parâmetros relacionados à soldadora a laser; 3. O CLP desenvolve programas de adaptação.
+    
+- **Adicionada Adaptação de Protocolo EIP/CClink-IE para Placa FRJ-PCIeN-EIP/CC/PN-RJ-V10**: 
+    Caminho: Configurações Iniciais -> Periféricos -> Comunicação de Placa.
+  
+    Descrição: 1. Suporta ciclo de comunicação configurável; 2. Suporta obtenção do estado de conexão do barramento; 3. Compatível com protocolos EIP e CC.
+
 Versão V3.9.5
 -----------------
 

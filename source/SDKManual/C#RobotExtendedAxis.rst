@@ -453,6 +453,31 @@ Configurar Parâmetros do Eixo Extensor UDP
     */
     int ExtAxisParamConfig(int axisID, int axisType, int axisDirection, double axisMax, double axisMin, double axisVel, double axisAcc, double axisLead, long encResolution, double axisOffect, int axisCompany, int axisModel, int axisEncType);
 
+Definir a Posição de Instalação do Eixo de Extensão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: C#
+    :linenos:
+
+    /**
+    * @brief Obter parâmetros do eixo de extensão UDP
+    * @param [in] axisID Número do eixo de extensão [1-4]
+    * @param [out] axisType Tipo de eixo de extensão 0-linear; 1-rotativo
+    * @param [out] axisDirection Direção do eixo de extensão 0-positiva; 1-negativa
+    * @param [out] axisMax Posição máxima do eixo de extensão mm
+    * @param [out] axisMin Posição mínima do eixo de extensão mm
+    * @param [out] axisVel Velocidade mm/s
+    * @param [out] axisAcc Aceleração mm/s²
+    * @param [out] axisLead Avanço mm
+    * @param [out] encResolution Resolução do encoder
+    * @param [out] axisOffect Offset do eixo de extensão para o ponto de início da solda
+    * @param [out] axisCompany Fabricante do driver 1-Hecuan; 2-Inovance; 3-Panasonic
+    * @param [out] axisModel Modelo do driver 1-Hecuan-SV-XD3EA040L-E, 2-Hecuan-SV-X2EA150A-A, 1-Inovance-SV620PT5R4I, 1-Panasonic-MADLN15SG, 2-Panasonic-MSDLN25SG, 3-Panasonic-MCDLN35SG
+    * @param [out] axisEncType Tipo de encoder 0-incremental; 1-absoluto
+    * @return Código de erro
+    */
+    public int ExtAxisGetParamConfig(int axisID, ref int axisType, ref int axisDirection, ref double axisMax, ref double axisMin, ref double axisVel, ref double axisAcc, ref double axisLead, ref int encResolution, ref double axisOffect, ref int axisCompany, ref int axisModel, ref int axisEncType)
+
 Definir Posição de Instalação do Eixo Extensor
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C#SDK-v1.0.7
@@ -559,13 +584,13 @@ Exemplo de Código de Configuração e Jog do Eixo Extensor UDP
 .. code-block:: C#
     :linenos:
 
-    private void btnJog_Click(object sender, EventArgs e)
+    private void button65_Click(object sender, EventArgs e)
     {
-        int rtn = robot.ExtDevSetUDPComParam("192.168.58.88", 2021, 2, 100, 3, 200, 1, 100, 5,1);
+        int rtn = robot.ExtDevSetUDPComParam("192.168.58.88", 2021, 2, 100, 3, 200, 1, 100, 5, 1);
         Console.WriteLine("ExtDevSetUDPComParam rtn is " + rtn);
-        string ip = ""; int port = 0; int period = 0; int lossPkgTime = 0; int lossPkgNum = 0; int disconnectTime = 0; int reconnectEnable = 0; int reconnectPeriod = 0; int reconnectNum = 0;
-        rtn = robot.ExtDevGetUDPComParam(ref ip, ref port, ref period, ref lossPkgTime, ref lossPkgNum, ref disconnectTime, ref reconnectEnable, ref reconnectPeriod, ref reconnectNum);
-        string param = "\nip " + ip + "\nport " + port.ToString() + "\nperiod  " + period.ToString() + "\nlossPkgTime " + lossPkgTime.ToString() + "\nlossPkgNum  " + lossPkgNum.ToString() + "\ndisConntime  " + disconnectTime.ToString() + "\nreconnecable  " + reconnectEnable.ToString() + "\nreconnperiod  " + reconnectPeriod.ToString() + "\nreconnnun  " + reconnectNum.ToString();
+        string ip = ""; int port = 0; int period = 0; int lossPkgTime = 0; int lossPkgNum = 0; int disconnectTime = 0; int reconnectEnable = 0; int reconnectPeriod = 0; int reconnectNum = 0; int selfConnect = 0;
+        rtn = robot.ExtDevGetUDPComParam(ref ip, ref port, ref period, ref lossPkgTime, ref lossPkgNum, ref disconnectTime, ref reconnectEnable, ref reconnectPeriod, ref reconnectNum, ref selfConnect);
+        string param = "\nip " + ip + "\nport " + port.ToString() + "\nperiod  " + period.ToString() + "\nlossPkgTime " + lossPkgTime.ToString() + "\nlossPkgNum  " + lossPkgNum.ToString() + "\ndisConntime  " + disconnectTime.ToString() + "\nreconnecable  " + reconnectEnable.ToString() + "\nreconnperiod  " + reconnectPeriod.ToString() + "\nreconnnun  " + reconnectNum.ToString() + "\nselfConnect  " + selfConnect.ToString();
         Console.WriteLine("ExtDevGetUDPComParam rtn is " + rtn + param);
 
         robot.ExtDevLoadUDPDriver();
@@ -588,10 +613,32 @@ Exemplo de Código de Configuração e Jog do Eixo Extensor UDP
         Console.WriteLine("SetRobotPosToAxis rtn is " + rtn);
         rtn = robot.SetAxisDHParaConfig(10, 20, 0, 0, 0, 0, 0, 0, 0);
         Console.WriteLine("SetAxisDHParaConfig rtn is " + rtn);
+
+
+        int axisType = -1;
+        int axisDirection = -1;
+        double axisMax = -1;
+        double axisMin = -1;
+        double axisVel = -1;
+        double axisAcc = -1;
+        double axisLead = -1;
+        int encResolution = -1;
+        double axisOffect = -1;
+        int axisCompany = -1;
+        int axisModel = -1;
+        int axisEncType = -1;
+
         rtn = robot.ExtAxisParamConfig(1, 1, 1, 1000, -1000, 1000, 1000, 1.905f, 262144, 200, 1, 0, 0);
         Console.WriteLine("ExtAxisParamConfig axis 1 rtn is " + rtn);
+        rtn = robot.ExtAxisGetParamConfig(1, ref axisType, ref axisDirection, ref axisMax, ref axisMin, ref axisVel, ref axisAcc, ref axisLead, ref encResolution, ref axisOffect, ref axisCompany, ref axisModel, ref axisEncType);
+        Console.WriteLine($"axis id 1 ExtAxisGetParamConfig : axisType {axisType}, axisDirection {axisDirection}, axisMax {axisMax}, axisMin {axisMin}, axisVel {axisVel}, axisAcc {axisAcc}, axisLead {axisLead}, encResolution {encResolution}, axisOffect {axisOffect}, axisCompany {axisCompany}, axisModel {axisModel}, axisEncType {axisEncType}\n");
+                                                                                                                                                                                    
+
         rtn = robot.ExtAxisParamConfig(2, 1, 1, 1000, -1000, 1000, 1000, 4.444f, 262144, 200, 1, 0, 0);
         Console.WriteLine("ExtAxisParamConfig axis 2 rtn is " + rtn);
+        rtn = robot.ExtAxisGetParamConfig(2, ref axisType, ref axisDirection, ref axisMax,  ref axisMin, ref axisVel, ref axisAcc, ref axisLead, ref encResolution, ref axisOffect, ref axisCompany, ref axisModel, ref axisEncType);
+        Console.WriteLine($"axis id 2 ExtAxisGetParamConfig : axisType {axisType}, axisDirection {axisDirection}, axisMax {axisMax}, axisMin {axisMin}, axisVel {axisVel}, axisAcc {axisAcc}, axisLead {axisLead}, encResolution {encResolution}, axisOffect {axisOffect}, axisCompany {axisCompany}, axisModel {axisModel}, axisEncType {axisEncType}\n");
+
 
         Thread.Sleep(3000);
         robot.ExtAxisStartJog(1, 0, 10, 10, 30);

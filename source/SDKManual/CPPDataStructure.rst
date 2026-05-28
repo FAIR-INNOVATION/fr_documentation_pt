@@ -304,6 +304,7 @@ Pacote de feedback do estado do controlador
       uint8_t socketConnTimeout;   // Tempo limite de conexão do socket, bits 0-4: socketID 1-4
       uint8_t socketReadTimeout;   // Tempo limite de leitura do socket, bits 0-4: socketID 1-4
       uint8_t tsWebStateComErr;   // Falha de comunicação web-torque; 0-normal; 1-falha
+      uint8_t exaxisCoordID;     //ID do sistema de coordenadas do eixo estendido
       uint16_t check_sum;     // Checksum
     }ROBOT_STATE_PKG;
 
@@ -443,5 +444,6 @@ Tipo de Enumeração para Configuração de Feedback de Estado do Robô
         AxleGenComData = 128,       // Dados de feedback de transmissão transparente do end-effector do robô
         SocketConnTimeout = 129,    // Timeout de conexão socket, bit0-bit4 correspondem a socketID 1-4
         SocketReadTimeout = 130,    // Timeout de leitura socket, bit0-bit4 correspondem a socketID 1-4
-        TsWebStateComErr = 131      // Falha de comunicação web-torque: 0-normal, 1-falha
+        TsWebStateComErr = 131,     // Falha de comunicação web-torque: 0-normal, 1-falha
+        ExaxisCoordID = 132          //ID do sistema de coordenadas do eixo estendido
     };

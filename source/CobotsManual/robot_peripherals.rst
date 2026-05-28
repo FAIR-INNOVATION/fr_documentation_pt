@@ -2161,6 +2161,185 @@ Usando o programa "testWeld" como exemplo, alterne o robô para o modo automáti
 .. warning:: 
    A função de recuperação de interrupção de soldagem do robô colaborativo só pode ser usada para soldas lineares ou de arco. Ao usar o loop while (1) para soldagem, loops while aninhados não são suportados e instruções de julgamento condicional contendo variáveis locais não podem ser incluídas. Se a função de soldagem por pontos for usada, preste atenção em adicionar uma interface de feedback de informações de soldagem por pontos.
 
+Adaptação de Comunicação do Robô com Máquina de Solda a Laser
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Contexto
+++++++++++++++++++++++++++++++++++++++++++++
+
+Este manual do usuário explica usando como exemplo a máquina de solda a laser atualmente adaptada, a REDSABERE 1500. O robô executa o controle da soldagem através do "Protocolo de Comunicação Digital". Essencialmente, o robô se comunica com o CLP via UDP. O robô transmite dados de controle para o CLP através da comunicação UDP, e o CLP controla ainda mais a máquina de solda a laser via Modbus RTU. Ao mesmo tempo, o CLP adquire os parâmetros reais do processo de soldagem a laser e sinais de controle e os transmite de volta ao robô. O conteúdo do protocolo de comunicação UDP do robô é fornecido no Apêndice I.
+
+Configuração do CLP
+++++++++++++++++++++++++++++++++++++++++++++
+
+.. list-table:: 
+   :widths: 25 25 25 25
+   :header-rows: 1
+
+   * - Marca
+     - Modelo
+     - Software
+     - Endereço IP
+   * - Inovance
+     - EASY521-0808TN
+     - AutoShopV4.11.0.1
+     - 192.168.58.88
+			
+Download do Programa: Abra o programa de teste. O endereço IP padrão do CLP é "192.168.1.88". Altere o endereço IP do CLP para "192.168.58.88".
+
+Clique no botão de teste para estabelecer a comunicação com o CLP atual, conforme mostrado na figura abaixo;
+
+.. figure:: robot_peripherals/293.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-37 Conexão de Comunicação do CLP
+
+Após conectar-se com sucesso ao CLP atual, modifique o IP conforme mostrado na figura abaixo;
+
+.. figure:: robot_peripherals/294.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-38 Modificação do Endereço IP do CLP
+
+Altere para 192.168.58.88 e altere o gateway padrão para 192.168.58.1, conforme mostrado na figura abaixo;
+
+.. figure:: robot_peripherals/295.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-39 Modificação do Endereço do Gateway do CLP
+
+Altere o endereço IP local do computador para o segmento de rede 58 e clique novamente no botão de teste para verificar se a comunicação foi bem-sucedida, conforme mostrado na figura abaixo;
+
+.. figure:: robot_peripherals/296.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-40 Teste de Conexão do CLP
+
+Clique no botão de download para baixar o programa, conforme mostrado na figura abaixo.
+
+.. figure:: robot_peripherals/297.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-41 Download do Programa do CLP
+
+Configuração dos Parâmetros da Máquina de Solda a Laser
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+O robô colaborativo controla o processo de soldagem através do "Protocolo de Comunicação Digital". Ao usar o "Protocolo de Comunicação Digital", os parâmetros de comunicação devem ser configurados primeiro.
+
+Configuração do "Protocolo de Comunicação Digital"
+*************************************************************************************
+
+Conforme mostrado na figura abaixo, abra o WebApp e clique sequencialmente em "Configurações Iniciais", "Periféricos", "Máquina de Solda", "Solda a Laser", "Protocolo de Comunicação Digital (UDP)", "Configuração de Comunicação UDP".
+
+.. figure:: robot_peripherals/298.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-42 Configuração do Protocolo de Comunicação
+
+Os significados dos vários parâmetros são os seguintes:
+
+- **Endereço IP**: Endereço IP do CLP para comunicação UDP;
+- **Número da Porta**: Número da porta UDP do CLP;
+- **Período de Comunicação**: O período de comunicação UDP entre o robô e o CLP, padrão é 2ms;
+- **Período de Detecção de Perda de Pacotes, Número de Perdas**: Quando o número de perdas de pacotes dentro do período de detecção excede o valor definido, o robô relata um erro "Anomalia de perda de pacotes na comunicação UDP" e corta automaticamente a comunicação;
+- **Duração de Confirmação de Interrupção de Comunicação**: Se o robô não receber um pacote de dados de feedback completo do CLP dentro deste tempo, ele relata um alarme de erro "Interrupção de comunicação UDP" e corta a comunicação UDP;
+- **Reconexão Automática em Caso de Interrupção de Comunicação**: Se o robô tenta se reconectar automaticamente após detectar uma interrupção na comunicação UDP;
+- **Período de Reconexão, Número de Tentativas de Reconexão**: Quando a reconexão automática em caso de interrupção de comunicação está habilitada e uma interrupção de comunicação UDP é detectada, o robô tenta se reconectar no período definido. Se a conexão ainda não for bem-sucedida após o número máximo definido de tentativas de reconexão, o robô relata um alarme de erro "Interrupção de comunicação UDP" e corta a comunicação UDP.
+
+Após configurar os parâmetros acima, clique nos botões "Configurar" e "Carregar" respectivamente.
+
+Configuração de IO da Função de Soldagem
+*************************************************************************************
+
+Conforme mostrado abaixo, selecione a porta de entrada DI para o sinal de status da máquina de solda e a porta de saída DO para o sinal de controle da máquina de solda. A atual máquina de solda a laser REDSABERE 1500 suporta apenas o sinal de início de soldagem (emissão de laser); outros sinais ainda não foram adaptados. Após selecionar as portas, clique no botão "Configurar".
+
+.. figure:: robot_peripherals/299.png
+   :align: center
+   :width: 4in 
+
+.. centered:: Figura 8.6-43 Configurar a Função IO da Máquina de Solda
+
+Os significados dos sinais AUX-DI são os seguintes:
+
+- **Máquina de Solda Pronta**: Quando a máquina de solda está pronta para operações de soldagem, ela emite este sinal para o robô; quando a máquina de solda está com defeito ou não está pronta por outras razões, este sinal não é enviado ao robô, e o canto superior direito do WebApp do robô mostra "Máquina de solda não está pronta". A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Estado de Funcionamento da Máquina de Solda**: Quando a máquina de solda entra em estado de funcionamento, ela emite este sinal para o robô. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Estado de Falha da Máquina de Solda**: Quando a máquina de solda apresenta uma falha, ela envia este sinal para o robô. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+
+Os significados dos sinais AUX-DO são os seguintes:
+
+- **Habilitação da Máquina de Solda**: A porta de saída DO para o robô controlar a habilitação da máquina de solda. Quando o programa do robô executa o comando de habilitação da máquina de solda, a porta de saída DO correspondente para habilitação da máquina de solda torna-se automaticamente ativa. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Início de Soldagem (Emissão de Laser)**: A porta de saída DO para o robô controlar o início da soldagem (emissão de laser). Quando o programa do robô executa o comando de início de soldagem (emissão de laser), a porta de saída DO correspondente para início de soldagem (emissão de laser) torna-se automaticamente ativa. Ao modificar a porta de saída DO, a porta de controle correspondente no programa do CLP também deve ser modificada; o CLP atual usa DO1 por padrão.
+- **Detecção de Gás**: A porta de saída DO para o robô controlar o fornecimento de gás da máquina de solda. Quando o robô executa o comando de fornecimento de gás de soldagem, a porta de saída DO correspondente para fornecimento de gás torna-se automaticamente ativa. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Redefinição de Falha da Máquina de Solda**: A porta de saída DO para o robô controlar a redefinição de falha da máquina de solda. Quando o programa do robô executa o comando de redefinição de falha da máquina de solda, a porta de saída DO correspondente para redefinição de falha da máquina de solda torna-se automaticamente ativa. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Alimentação de Fio para Frente**: A porta de saída DO para o robô controlar a alimentação de fio para frente da máquina de solda. Quando o robô executa o comando de alimentação de fio para frente, a porta de saída DO correspondente para alimentação de fio para frente torna-se automaticamente ativa. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+- **Alimentação de Fio para Trás**: A porta de saída DO para o robô controlar a alimentação de fio para trás da máquina de solda. Quando o robô executa o comando de alimentação de fio para trás, a porta de saída DO correspondente para alimentação de fio para trás torna-se automaticamente ativa. A máquina de solda a laser REDSABERE 1500 não suporta este sinal e ainda não foi adaptada.
+
+Configuração dos Parâmetros do Processo de Soldagem
+*************************************************************************************
+
+Conforme mostrado na figura abaixo, encontre a seção "Parâmetros do Processo de Soldagem" na página de configuração de soldagem. O robô colaborativo fornece 10 grupos de parâmetros de processo de soldagem de 0 a 10. O número de processo 0 indica não usar a curva de processo de soldagem, enquanto os números de processo 1-10 usam a curva de processo de soldagem.
+
+.. figure:: robot_peripherals/300.png
+   :align: center
+   :width: 4in 
+
+.. centered:: Figura 8.6-44 Configuração dos Parâmetros do Processo de Soldagem
+
+Ao usar a curva de processo de soldagem, tomando como exemplo a seleção do número de processo de soldagem 1, insira em sequência "Velocidade de Varredura (mm/s)", "Largura de Varredura (mm)", "Potência de Pico (W)", "Ciclo de Trabalho (%)" e "Frequência (Hz)".
+
+A velocidade de varredura da máquina de solda a laser REDSABERE 1500 é limitada pela largura de varredura. A relação de restrição é: 10 ≤ Velocidade de Varredura / (Largura de Varredura × 2) ≤ 500. Valores fora desta faixa são automaticamente alterados para os valores limite. Quando a largura de varredura é definida como 0, nenhuma varredura é executada (ou seja, fonte de luz pontual). Caso contrário, um erro será relatado, e a interface web exibirá "Anomalia de comunicação da máquina de solda". Uma vez que a configuração esteja correta, o erro desaparecerá automaticamente. Conforme mostrado na figura abaixo.
+
+.. figure:: robot_peripherals/301.png
+   :align: center
+   :width: 3in 
+
+.. centered:: Figura 8.6-45 Anomalia de Comunicação da Máquina de Solda
+
+Depuração da Máquina de Solda
+*************************************************************************************
+
+Conforme mostrado na figura abaixo, encontre a seção "Depuração da Máquina de Solda" na página de configuração da máquina de solda. A atual máquina de solda a laser REDSABERE 1500 suporta apenas a depuração das funções de parada de emissão de laser e início de emissão de laser. Outros botões como "Tempo Limite" e "Habilitar" ainda não foram adaptados.
+
+.. figure:: robot_peripherals/302.png
+   :align: center
+   :width: 4in 
+
+.. centered:: Figura 8.6-46 Depuração da Máquina de Solda
+
+Escrita do Programa de Soldagem
+++++++++++++++++++++++++++++++++++++++++++++
+
+As instruções da função de soldagem estão integradas no programa de ensino. Conforme mostrado na figura abaixo, clique em "Programa de Ensino", "Programação" para criar um novo programa de usuário "testWeld.lua".
+
+.. figure:: robot_peripherals/303.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-47 Criar Programa "testWeld.lua"
+
+Conforme mostrado na figura abaixo, selecione "Instruções de Soldagem" e clique em "Solda a Laser".
+
+.. figure:: robot_peripherals/304.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-48 Instruções Relacionadas à Solda a Laser
+
+Conforme mostrado na figura abaixo, o tipo de controle padrão para instruções de solda a laser é "Protocolo de Comunicação Digital (UDP)". Você pode adicionar sequencialmente instruções para definir parâmetros do processo de soldagem (programa Lua), obter parâmetros do processo de soldagem (programa Lua), início de emissão de laser e parada de emissão de laser. Após adicionar as instruções Lua, clique no botão "Aplicar" para gerar o programa Lua de solda a laser. Clique no botão "Salvar", alterne para o modo automático e execute o programa.
+
+.. figure:: robot_peripherals/305.png
+   :align: center
+   :width: 6in 
+
+.. centered:: Figura 8.6-49 Gerar Programa de Soldagem
+
 Anexo 1: Protocolo de Comunicação UDP do Robô
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2449,79 +2628,79 @@ Controlador do Robô -> CLP
      - D242
      - INT
      - 
-     - Palavra de Controle do Motor 4
+     - Velocidade de varredura (máquina de solda a laser)
   
    * - 45
      - D243
      - DINT
      - 
-     - Entrada de Posição Alvo do Motor 4
+     - Largura de varredura (máquina de solda a laser)
 
    * - 46
      - D244
      - DINT
      - 
-     - Entrada de Posição Alvo do Motor 4
+     - Potência de pico (máquina de solda a laser)
 
    * - 47
      - D245
      - INT
      - 
-     - Palavra de Controle de Retorno à Origem do Motor 4
+     - Ciclo de trabalho (máquina de solda a laser)
 
    * - 48
      - D246
      - DINT
      - 
-     - Entrada de Velocidade Alta de Retorno à Origem do Motor 4
+     - Frequência de varredura (máquina de solda a laser)
 
    * - 49
      - D247
      - DINT
      - 
-     - Entrada de Velocidade Alta de Retorno à Origem do Motor 4
+     - Frequência de varredura (máquina de solda a laser)
 
    * - 50
      - D248
      - DINT
      - 
-     - Entrada de Velocidade Baixa de Retorno à Origem do Motor 4
+     - Máquina de solda a laser reservado
 
    * - 51
      - D249
      - DINT
      - 
-     - Entrada de Velocidade Baixa de Retorno à Origem do Motor 4
+     - Máquina de solda a laser reservado
 
    * - 52
      - D250
      - DINT
      - 
-     - Deslocamento de Posição (reservado)
+     - Máquina de solda a laser reservado
 
    * - 53
      - D251
      - DINT
      - 
-     - Deslocamento de Posição (reservado)
+     - Máquina de solda a laser reservado
 
    * - 54
      - D252
      - DINT
      - 
-     - Deslocamento de Velocidade (reservado)
+     - Máquina de solda a laser reservado
 
    * - 55
      - D253
      - DINT
      - 
-     - Deslocamento de Velocidade (reservado)
+     - Máquina de solda a laser reservado
 
    * - 56
      - D254
      - INT
      - 
-     - Reservado
+     - Máquina de solda a laser reservado
 
    * - 57
      - D255
@@ -2752,13 +2931,13 @@ CLP -> Controlador do Robô
      - D113
      - DINT
      - 
-     - Torque em Tempo Real (reservado)
+     - 1# Torque em tempo real (reservado) Transmitir o torque do motor ao computador host após multiplicar o valor de saída após a relação de redução por 100
 
    * - 16
      - D114
      - DINT
      - 
-     - Torque em Tempo Real (reservado)
+     - 1# Torque em tempo real (reservado) Transmitir o torque do motor ao computador host após multiplicar o valor de saída após a relação de redução por 100
 
    * - 17
      - D115
@@ -2944,91 +3123,91 @@ CLP -> Controlador do Robô
      - D145
      - INT
      - 
-     - Palavra de Estado do Motor 4
+     - Velocidade de varredura (máquina de solda a laser)
 
    * - 48
      - D146
      - DINT
      - 
-     - Posição Atual do Motor 4
+     - Largura de varredura (máquina de solda a laser)
 
    * - 49
      - D147
      - DINT
      - 
-     - Posição Atual do Motor 4
+     - Potência de pico (máquina de solda a laser)
 
    * - 50
      - D148
      - INT
      - 
-     - Palavra de Estado de Retorno à Origem do Motor 4
+     - Ciclo de trabalho (máquina de solda a laser)
 
    * - 51
      - D149
      - DINT
      - 
-     - Feedback de Velocidade Alta de Retorno à Origem do Motor 4
+     - Frequência de varredura (máquina de solda a laser)
 
    * - 52
      - D150
      - DINT
      - 
-     - Feedback de Velocidade Alta de Retorno à Origem do Motor 4
+     - Frequência de varredura (máquina de solda a laser)
 
    * - 53
      - D151
      - DINT
      - 
-     - Feedback de Velocidade Baixa de Retorno à Origem do Motor 4
+     - Máquina de solda a laser reservado
 
    * - 54
      - D152
      - DINT
      - 
-     - Feedback de Velocidade Baixa de Retorno à Origem do Motor 4
+     - Máquina de solda a laser reservado
 
    * - 55
      - D153
      - DINT
      - 
-     - Código de Falha do Motor 4
+     - Máquina de solda a laser reservado
 
    * - 56
      - D154
      - DINT
      - 
-     - Desvio de Seguimento (reservado)
+     - Máquina de solda a laser reservado
 
    * - 57
      - D155
      - DINT
      - 
-     - Desvio de Seguimento (reservado)
+     - Máquina de solda a laser reservado
 
    * - 58
      - D156
      - DINT
      - 
-     - Feedback de Velocidade (reservado)
+     - Máquina de solda a laser reservado
 
    * - 59
      - D157
      - DINT
      - 
-     - Feedback de Velocidade (reservado)
+     - Máquina de solda a laser reservado
 
    * - 60
      - D158
      - DINT
      - 
-     - Torque em Tempo Real (reservado)
+     - Máquina de solda a laser reservado
 
    * - 61
      - D159
      - DINT
      - 
-     - Torque em Tempo Real (reservado)
+     - Máquina de solda a laser reservado
 
    * - 62
      - D160
@@ -3158,7 +3337,7 @@ Na configuração do protocolo aberto, clique no botão "Upload" para enviar o a
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.6‑37 Upload e Configuração do Protocolo Aberto de Periférico do Controlador
+.. centered:: Figura 8.6‑50 Upload e Configuração do Protocolo Aberto de Periférico do Controlador
 
 Nos protocolos configurados, clique no botão "Carregar". O indicador de status de execução acenderá, indicando que o protocolo aberto foi carregado normalmente.
 
@@ -3166,7 +3345,7 @@ Nos protocolos configurados, clique no botão "Carregar". O indicador de status 
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.6-38 Carregamento e Indicação de Execução do Protocolo Aberto de Periférico do Controlador
+.. centered:: Figura 8.6-51 Carregamento e Indicação de Execução do Protocolo Aberto de Periférico do Controlador
 
 Protocolo Aberto da Fonte de Solda
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -13,6 +13,29 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.6
+     - 2026-05-26
+     - | 1.Estrutura de feedback de estado do robô atualizada, adicionado status do número do sistema de coordenadas dos eixos de extensão;
+       | 2.Tipo de enumeração de configuração de feedback de estado do robô atualizado, adicionada enumeração de configuração do número do sistema de coordenadas dos eixos de extensão;
+       | 3.Adicionada interface ExtAxisGetParamConfig() para obter a configuração de parâmetros dos eixos de extensão UDP;
+       | 4.Adicionada interface ServoJV() para movimento em modo servo de velocidade no espaço das juntas do robô;
+       | 5.Adicionada interface ServoMITStart() para início do controle MIT das juntas do robô;
+       | 6.Adicionada interface ServoMITEnd() para fim do controle MIT das juntas do robô;
+       | 7.Adicionada interface ServoMIT() para controle MIT das juntas do robô;
+       | 8.Adicionada interface SetLaserWeldingParam() para configuração de parâmetros de soldagem a laser do robô;
+       | 9.Adicionada interface SetLaserWeldingStartEnd() para definir início/parada da soldagem a laser do robô;
+       | 10.Adicionada interface SetLaserWeldingEnable() para habilitar/desabilitar a máquina de solda a laser;
+       | 11.Adicionada interface ResetLaserWeldingErr() para redefinir falhas da máquina de solda a laser;
+       | 12.Adicionada interface GetLaserWeldingRunningState() para obter o estado de funcionamento da máquina de solda a laser;
+       | 13.Adicionada interface GetLaserWeldingErrState() para obter o estado de falha da máquina de solda a laser;
+       | 14.Adicionada interface GetLaserWeldingParamTarget() para obter os parâmetros de configuração da soldagem a laser;
+       | 15.Adicionada interface GetLaserWeldingParamActual() para obter os parâmetros de configuração atualmente ativos da máquina de solda a laser;
+       | 16.Adicionada interface SetLaserWeldingEnableExtDoNum() para configurar a porta DO de habilitação de IO estendido da máquina de solda a laser;
+       | 17.Adicionada interface SetLaserWeldingStartExtDoNum() para configurar a porta DO de início de IO estendido da máquina de solda a laser;
+       | 18.Adicionada interface SetLaserWeldingErrResetExtDoNum() para configurar a porta DO de redefinição de falha de IO estendido da máquina de solda a laser;
+       | 19.Adicionada interface SetLaserWeldingRunningStateExtDiNum() para configurar a porta DI de estado de funcionamento (estado laser ligado) de IO estendido da máquina de solda a laser;
+       | 20.Adicionada interface SetLaserWeldingErrStateExtDiNum() para configurar a porta DI de estado de falha de IO estendido da máquina de solda a laser.
+
    * - V3.9.5
      - 2026-04-24
      - | 1.Interface SetTrajectoryJSpeed() adiciona os modos de redução de velocidade e comutação direta;

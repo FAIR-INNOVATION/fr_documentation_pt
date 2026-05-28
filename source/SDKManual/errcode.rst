@@ -188,3 +188,6 @@ Tabela de Códigos de Erro do SDK
     "202","Falha na verificação do arquivo de configuração Interfere","Verifique o arquivo de configuração Interfere"
     "203","Comunicação 485 da extremidade anormal","Verifique a comunicação 485 da extremidade"
     "204","Fila de comandos cheia","Verifique a frequência de envio de comandos"
+    "205","Protocolo terminal já configurado","Por favor, desative primeiro o protocolo terminal"
+    "206","Protocolo adaptado já configurado","Por favor, limpe primeiro o dispositivo atualmente adaptado"
+    "207","A paragem de segurança em modo automático requer a ativação de três posições do teach pendant","Por favor, verifique o teach pendant"

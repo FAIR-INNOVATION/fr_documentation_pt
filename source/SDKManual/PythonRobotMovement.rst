@@ -1648,3 +1648,204 @@ Exemplo de Código SDK de Oscilação em Ponto Fixo (incluindo laser e eixo este
         time.sleep(1)
 
     TestOriginPointWeave(robot)
+
+Movimento em Modo Servo de Velocidade no Espaço das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ServoJV(self, joint_vel, exis_vel, acc=0.0, vel=0.0, cmdT=0.008, filterT=0.0, gain=0.0, id=0, comType=0)``"
+    "Descrição", "Movimento em modo servo de velocidade no espaço das juntas"
+    "Parâmetros Obrigatórios", "
+    - ``joint_vel``: 6 velocidades alvo das juntas, unidade deg/s
+    - ``exis_vel``: 4 velocidades dos eixos externos, unidade deg/s
+    - ``acc``: Percentual de aceleração, intervalo [0~100], ainda não aberto, padrão 0
+    - ``vel``: Percentual de velocidade, intervalo [0~100], ainda não aberto, padrão 0
+    - ``cmdT``: Período do ciclo de comando, unidade s, intervalo recomendado [0.001~0.0016]
+    - ``filterT``: Tempo de filtro, unidade s, ainda não aberto, padrão 0
+    - ``gain``: Ganho proporcional para posição alvo, ainda não aberto, padrão 0
+    - ``id``: ID do comando servoJ, padrão 0
+    - ``comType``: Tipo de comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro Sucesso-0 Falha- errcode"
+
+Exemplo de Código de Movimento em Modo Servo de Velocidade no Espaço das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: python
+    :linenos: 
+
+    from fairino import Robot
+    import time
+
+    def main():
+        # Estabelecer conexão com o controlador do robô
+        robot = Robot.RPC('192.168.58.2')
+        time.sleep(0.5)  # Aguardar conexão e recebimento de dados
+
+        # Inicializar array de velocidade das juntas e array de velocidade dos eixos externos
+        joint_vel = [10.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        exis_vel = [0.0, 0.0, 0.0, 0.0]
+        acc = 0.0
+        vel = 0.0
+        cmdT = 0.008
+        filterT = 0.0
+        gain = 0.0
+        cnt = 0
+
+        # Chamar ServoJV em loop, total de 200 vezes
+        while cnt < 200:
+            rtn = robot.ServoJV(joint_vel=joint_vel, exis_vel=exis_vel, acc=acc, vel=vel,
+                                cmdT=cmdT, filterT=filterT, gain=gain)
+            print(f"ServoJV rtn is {rtn}")
+            cnt += 1
+
+        # Fechar conexão
+        robot.CloseRPC()
+
+
+    # Chamar função de teste
+    main()
+
+Início do Controle MIT das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ServoMITStart(self, comType=0)``"
+    "Descrição", "Início do controle MIT das juntas"
+    "Parâmetros Obrigatórios", "
+    - ``comType``: Tipo de comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro Sucesso-0 Falha- errcode"
+
+Fim do Controle MIT das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ServoMITEnd(self, comType=0)``"
+    "Descrição", "Fim do controle MIT das juntas"
+    "Parâmetros Obrigatórios", "
+    - ``comType``: Tipo de comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro Sucesso-0 Falha- errcode"
+
+Controle MIT das Juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ServoMIT(self, posGain, desPos, velGain, desVel, torque_ff, interval, comType=0)``"
+    "Descrição", "Controle MIT das juntas"
+    "Parâmetros Obrigatórios", "
+    - ``posGain``: Ganhos de posição das juntas j1~j6
+    - ``desPos``: Posições desejadas das juntas j1~j6, unidade: deg
+    - ``velGain``: Ganhos de velocidade das juntas j1~j6
+    - ``desVel``: Velocidades desejadas das juntas j1~j6, unidade: deg/s
+    - ``torque_ff``: Torques feedforward j1~j6, unidade: Nm
+    - ``interval``: Período do ciclo de comando, unidade s, intervalo [0.001~0.008]
+    - ``comType``: Tipo de comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro Sucesso-0 Falha- errcode"
+
+Exemplo de Código de Controle MIT das Juntas do Robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: python
+    :linenos: 
+
+    from time import sleep
+    import time
+    from fairino import Robot
+
+    # Estabelecer conexão com o controlador do robô
+    robot = Robot.RPC('192.168.58.2')
+
+    # Definir função de callback
+    def udp_frame_callback(src_type, count, cmd_id, data_len, content):
+        """Função de callback de resposta de comando UDP"""
+        print(f"Callback: cmd_id={cmd_id} count={count} data_len={data_len} content={content}")
+        return 0
+
+    def ServoMITtest(self):
+        # Definir callback de resposta de comando UDP
+        robot.SetUDPCmdRpyCallback(udp_frame_callback)
+
+        while True:
+            # Resetar todos os erros
+            robot.ResetAllError()
+            time.sleep(0.5)
+
+            # Inicializar arrays de parâmetros
+            posGain = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            desPos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            velGain = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            desVel = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            torques = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+            # Obter torques das juntas
+            rtn, torques = robot.GetJointTorques(flag=1)
+            print(f"GetJointTorques rtn: {rtn}")
+            print("111111")
+
+            # Iniciar modo Servo MIT
+            rtn = robot.ServoMITStart(0)
+            print(f"ServoMITStart rtn: {rtn}")
+
+            # Ativar drag teaching
+            rtn = robot.DragTeachSwitch(1)
+            print(f"DragTeachSwitch rtn: {rtn}")
+
+            intev = 0.008
+
+            # Movimento para frente: torque positivo no eixo 6 até o ângulo ultrapassar 30 graus
+            while True:
+                torques[5] = 0.03
+                rtn = robot.ServoMIT(posGain, desPos, velGain,
+                                    desVel, torques, intev, comType=0)
+                print(f"ServoMIT call rtn is {rtn}")
+                time.sleep(0.001)  # 1ms
+
+                rtn, pkg = robot.GetRobotRealTimeState()
+                print(f"pkg.jt_cur_pos[5]: {pkg.jt_cur_pos[5]}")
+
+                if pkg.jt_cur_pos[5] > 30:
+                    break
+
+            # Movimento reverso: torque negativo no eixo 6 até o ângulo ser menor que 0 graus
+            while True:
+                torques[5] = -0.03
+                rtn = robot.ServoMIT(posGain, desPos, velGain,
+                                    desVel, torques, intev, comType=0)
+                print(f"ServoMIT call rtn is {rtn}")
+                time.sleep(0.001)  # 1ms
+
+                rtn, pkg = robot.GetRobotRealTimeState()
+                print(f"pkg.jt_cur_pos[5]: {pkg.jt_cur_pos[5]}")
+
+                if pkg.jt_cur_pos[5] < 0:
+                    break
+
+            # Desativar drag teaching
+            rtn = robot.DragTeachSwitch(0)
+            print(f"DragTeachSwitch off rtn: {rtn}")
+
+            # Encerrar modo Servo MIT
+            rtn = robot.ServoMITEnd(0)
+            print(f"ServoMITEnd rtn: {rtn}")
+
+    # Chamar função de teste
+    ServoMITtest(robot)

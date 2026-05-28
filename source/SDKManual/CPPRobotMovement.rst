@@ -1987,3 +1987,174 @@ Exemplo de Código de Oscilação em Ponto Fixo (incluindo sensor a laser e eixo
         robot.Sleep(1000);
         return 0;
     }
+
+Movimento em Modo Servo de Velocidade no Espaço das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Movimento em modo servo de velocidade no espaço das juntas
+    * @param [in] joint_pos 6 velocidades das juntas alvo, unidade deg/s
+    * @param [in] axisPos 4 velocidades dos eixos externos, unidade deg/s
+    * @param [in] acc Percentual de aceleração, intervalo [0~100], temporariamente não aberto, padrão 0
+    * @param [in] vel Percentual de velocidade, intervalo [0~100], temporariamente não aberto, padrão 0
+    * @param [in] cmdT Período de envio do comando, unidade s, intervalo recomendado [0.001~0.0016]
+    * @param [in] filterT Tempo de filtro, unidade s, temporariamente não aberto, padrão 0
+    * @param [in] gain Amplificador proporcional para posição alvo, temporariamente não aberto, padrão 0
+    * @param [in] id ID do comando ServoJ, padrão 0
+    * @param[in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (corresponde à porta 20007 do robô)
+    * @return Código de erro
+    */
+    errno_t ServoJV(double jointVel[6], double exisVel[4], float acc, float vel, float cmdT, float filterT, float gain, int id = 0, int comType = 0);
+
+Exemplo de Código para Movimento em Modo Servo de Velocidade no Espaço das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int ServoJVtest()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        robot.SetReConnectParam(true, 300000, 500);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        double joint_vel[6] = { 10.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        double exis_vel[4] { 0.0, 0.0, 0.0, 0.0 };
+        float acc = 0.0f;
+        float vel = 0.0f;
+        float cmdT = 0.008f;
+        float filterT = 0.0f;
+        float gain = 0.0f;
+        int cnt = 0;
+        while (cnt < 200)
+        {
+            int error = robot.ServoJV(joint_vel, exis_vel, acc, vel, cmdT, filterT, gain);
+            printf("ServoJV rtn is %d\n", error);
+            cnt++;
+        }
+        robot.CloseRPC();
+        robot.Sleep(1000000);
+        return 0;
+    }
+
+Início do Controle MIT das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Início do controle MIT das juntas
+    * @param [in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (corresponde à porta 20007 do robô)
+    * @return Código de erro
+    */
+    errno_t ServoMITStart(int comType = 0);
+
+Fim do Controle MIT das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Fim do controle MIT das juntas
+    * @param [in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (corresponde à porta 20007 do robô)
+    * @return Código de erro
+    */
+    errno_t ServoMITEnd(int comType = 0);
+
+Controle MIT das Juntas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Controle MIT das juntas
+    * @param [in] posGain Ganho de posição das juntas j1~j6
+    * @param [in] desPos Posição desejada das juntas j1~j6, unidade: deg
+    * @param [in] velGain Ganho de velocidade das juntas j1~j6
+    * @param [in] desVel Velocidade desejada das juntas j1~j6, unidade: deg/s
+    * @param [in] torque_ff Torque de feedforward j1~j6, unidade: Nm
+    * @param [in] interval Período do comando, unidade s, intervalo [0.001~0.008]
+    * @param [in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (corresponde à porta 20007 do robô)
+    * @return Código de erro
+    */
+    errno_t ServoMIT(double posGain[6], double desPos[6], double velGain[6], double desVel[6], double torque_ff[6], double interval, int comType = 0);
+
+Exemplo de Código para Controle MIT das Juntas do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int ServoMITtest()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        robot.SetReConnectParam(true, 30000, 500);
+        int rtn = robot.SetCmdRpyCallback(UDPFrameCallBack);
+        printf("SetCmdRpyCallback rtn is %d\n", rtn);
+        rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        while (true)
+        {
+            robot.ResetAllError();
+            robot.Sleep(500);
+            double posGain[6] = { 0.0 };
+            double desPos[6] = { 0.0 };
+            double velGain[6] = { 0.0 };
+            double desVel[6] = { 0.0 };
+            double torques[6] = { 0.0 };
+            float curTorque[6] = { 0.0 };
+            robot.GetJointTorques(1, curTorque);
+            for (int i = 0; i < 6; i++)
+            {
+                torques[i] = curTorque[i];
+            }
+            robot.ServoMITStart(0);
+            ROBOT_STATE_PKG pkg = {};
+            robot.DragTeachSwitch(1);
+            double intev = 0.008;
+            double jPowerLimit[6] = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
+            double jVelLimit[6] = { 50, 50, 50, 50, 50, 50 };
+            int error = 0;
+            while (true)
+            {
+                torques[5] = 0.02;
+                error = robot.ServoMIT(posGain, desPos, velGain, desVel, torques, intev, 0);
+                robot.Sleep(1);
+                robot.GetRobotRealTimeState(&pkg);
+                printf("pkg.jt_cur_pos[5]: %f\n", pkg.jt_cur_pos[5]);
+                if (pkg.jt_cur_pos[5] > 30)
+                {
+                    break;
+                }
+            }
+            while (true)
+            {
+                torques[5] = -0.02;
+                error = robot.ServoMIT(posGain, desPos, velGain, desVel, torques, intev, 0);
+                robot.Sleep(1);
+                robot.GetRobotRealTimeState(&pkg);
+                printf("pkg.jt_cur_pos[5]:%f\n", pkg.jt_cur_pos[5]);
+                if (pkg.jt_cur_pos[5] < 0)
+                {
+                    break;
+                }
+            }
+            robot.DragTeachSwitch(0);
+            error = robot.ServoMITEnd(0);
+        }
+        robot.CloseRPC();
+        robot.Sleep(1000000);
+        return 0;
+    }
