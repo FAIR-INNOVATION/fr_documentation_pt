@@ -19,7 +19,7 @@ extensions = ['recommonmark']
 templates_path = ['_templates']
 exclude_patterns = []
 
-language = 'de'
+language = 'pt'
 locale_dirs = ['locale/']  # 设置本地化数据目录
 
 # 注：在生成html的时候这句话要注释
