@@ -12,8 +12,9 @@ Definir carregamento automático do programa de trabalho padrão na inicializaç
 
     "Protótipo", "``LoadDefaultProgConfig(flag, program_name)``"
     "Descrição", "Define o carregamento automático do programa de trabalho padrão na inicialização"
-    "Parâmetros obrigatórios", "- ``flag``: 1-carregar automaticamente o programa padrão na inicialização, 0-não carregar automaticamente
-    - ``program_name``: Nome e caminho do programa de trabalho, ex: `/fruser/movej.lua`, onde `/fruser/` é o caminho fixo para QX, `/usr/local/etc/controller/lua/` é o caminho fixo para LA"
+    "Parâmetros obrigatórios", "
+    - ``flag``: 1-carregar automaticamente o programa padrão na inicialização, 0-não carregar automaticamente
+    - ``program_name``: Nome e caminho do programa de trabalho, ex: `movej.lua`"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
@@ -25,7 +26,7 @@ Carregar o programa de trabalho especificado
 
     "Protótipo", "``ProgramLoad(program_name)``"
     "Descrição", "Carrega o programa de trabalho especificado"
-    "Parâmetros obrigatórios", "- ``program_name``: Nome e caminho do programa de trabalho, ex: `/fruser/movej.lua`, onde `/fruser/` é o caminho fixo para QX, `/usr/local/etc/controller/lua/` é o caminho fixo para LA"
+    "Parâmetros obrigatórios", "- ``program_name``: Nome e caminho do programa de trabalho, ex: `movej.lua`"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
@@ -125,7 +126,7 @@ Exemplo de Código de Operação de Programa LUA do Robô
     import time
     # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
     robot = Robot.RPC('192.168.58.2')
-    program_name = "/fruser/test0610.lua"
+    program_name = "test0610.lua"
     loaded_name = ""
     state = 0
     line = 0
