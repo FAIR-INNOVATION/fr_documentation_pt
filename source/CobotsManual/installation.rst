@@ -1823,7 +1823,7 @@ Ao instalar o robô em uma base de montagem, use 4 parafusos M6 com resistência
 	(II) Para cenários com velocidade de movimento relativamente rápida, velocidade de operação mais alta e requisitos de precisão elevados, recomenda-se a seguinte base de montagem, fixando o robô em um chão firme:
 
 	.. figure:: installation/067.png
-    :align: center
+		:align: center
 		:width: 3in
 
 	.. centered:: Figura 3.4-4 Base de Montagem para Requisitos Altos - Modelo FR3/FR3-WMS/FR3-WML/FR3-C/FR5-C
