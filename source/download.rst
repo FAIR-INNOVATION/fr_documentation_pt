@@ -241,6 +241,35 @@ Certificados de Componentes:
      - PETREL
      - :download:`Download <_static/_doc/Parts-Core Board Certification.pdf>`
 
+Certificados de Certificação da Garra:
+
+.. list-table::
+   :widths: 35 35 30
+   :header-rows: 0
+   :class: sheet-center
+
+   * - **Certificado de Certificação**
+     - **Tipo de Produto**
+     - **Download**
+   * - **Certificado CE-EMC da Garra Elétrica de 2 Dedos**
+     - FE-MG2-3-E
+     - :download:`Download <_static/_doc/FE-MG2-3-E Electric 2-Finger Gripper CE-EMC Certificate-V1.0.pdf>`
+   * - **Certificado ROHS da Garra Elétrica de 2 Dedos**
+     - FE-MG2-3-E
+     - :download:`Download <_static/_doc/FE-MG2-3-E Electric 2-Finger Gripper ROHS Certificate-V1.0.pdf>`
+   * - **Certificado CE-EMC do Atuador a Vácuo Elétrico**
+     - FE-MS1-1-E
+     - :download:`Download <_static/_doc/FE-MS1-1-E Electric Vacuum Actuator CE-EMC Certificate-V1.0.pdf>`
+   * - **Certificado ROHS do Atuador a Vácuo Elétrico**
+     - FE-MS1-1-E
+     - :download:`Download <_static/_doc/FE-MS1-1-E Electric Vacuum Actuator ROHS Certificate-V1.0.pdf>`
+   * - **Certificado CE-EMC da Ventosa a Vácuo Pneumática**
+     - FE-MS1-2-P
+     - :download:`Download <_static/_doc/FE-MS1-2-P Pneumatic Vacuum Suction Cup CE-EMC Certificate-V1.0.pdf>`
+   * - **Certificado ROHS da Ventosa a Vácuo Pneumática**
+     - FE-MS1-2-P
+     - :download:`Download <_static/_doc/FE-MS1-2-P Pneumatic Vacuum Suction Cup ROHS Certificate-V1.0.pdf>`
+
 Desenvolvimento Secundário
 ---------------------------------
     :download:`FAIRINO ROS1 <https://github.com/FAIR-INNOVATION/frcobot_ros/archive/refs/heads/master.zip>`
