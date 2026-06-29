@@ -513,7 +513,7 @@ Exemplo de Código para Reinicialização de Saída Após Parada/Pausa do Progra
     robot.SetOutputResetExtDO(resetFlag, resumeReloadFlag);
     robot.SetOutputResetExtAO(resetFlag, resumeReloadFlag);
     robot.SetOutputResetSmartToolDO(resetFlag, resumeReloadFlag);
-    robot.ProgramLoad("/fruser/test.lua");
+    robot.ProgramLoad("test.lua");
     robot.ProgramRun();
     robot.Sleep(2000);
     robot.PauseMotion();

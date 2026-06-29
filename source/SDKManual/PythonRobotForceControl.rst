@@ -1101,7 +1101,7 @@ Ativar Função de Compensação de Torque e Coeficientes de Compensação
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``SerCoderCompenParams(status, torqueCoeff)``"
+    "Protótipo", "``SetCoderCompenParams(status, torqueCoeff)``"
     "Descrição", "Ativa a função de compensação de torque e coeficientes de compensação"
     "Parâmetros obrigatórios", "- ``status``: Interruptor, 0-desativar; 1-ativar
     - ``torqueCoeff``: Coeficientes de compensação de torque J1-J6 [0-1]"

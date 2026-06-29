@@ -13,6 +13,33 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.7
+     - 2026-06-25
+     - | 1. Estrutura de feedback de status do robô atualizada: adicionado status de detecção de objeto ao sinal de conclusão de movimento da garra; adicionado às falhas da garra: 2-erro de comando, 3-queda de peça, outros-código de falha da garra +3;
+       | 2. Exemplos de código para reset de saída após parada/pausa do programa LUA atualizados; interface de carregamento de arquivo lua otimizada para exigir apenas o nome do arquivo lua, não mais o caminho.
+       | 3. Exemplos de código para calibração TCP do sensor fotoelétrico atualizados; interface de carregamento de arquivo otimizada para exigir apenas o nome do arquivo lua, não mais o caminho.
+       | 4. Exemplos de código para configuração de velocidade durante execução de trajetória atualizados; interface de carregamento de arquivo de trajetória J otimizada para exigir apenas o nome do arquivo de trajetória J, não mais o caminho.
+       | 5. Exemplos de código para reprodução de arquivo de trajetória J do robô atualizados; interface de carregamento de arquivo de trajetória J otimizada para exigir apenas o nome do arquivo de trajetória J, não mais o caminho.
+       | 6. Exemplos de código para reprodução de trajetória (antecipação de trajetória) atualizados; interface de carregamento de arquivo de trajetória J otimizada para exigir apenas o nome do arquivo de trajetória J, não mais o caminho.
+       | 7. O parâmetro nome do programa job na interface LoadDefaultProgConfig() agora requer apenas o nome do arquivo lua, não mais o caminho.
+       | 8. O parâmetro nome do programa job na interface ProgramLoad() agora requer apenas o nome do arquivo lua, não mais o caminho.
+       | 9. O parâmetro nome do programa job na interface GetLoadedProgram() agora requer apenas o nome do arquivo lua, não mais o caminho.
+       | 10. Exemplos de código para operações de programa LUA do robô atualizados; interface de carregamento de arquivo otimizada para exigir apenas o nome do arquivo lua, não mais o caminho.
+       | 11. Adicionado parâmetro de status de habilitação da mão destra à interface SetAxleLuaEnableDeviceType();
+       | 12. Adicionado parâmetro de status de habilitação da mão destra à interface GetAxleLuaEnableDeviceType();
+       | 13. Adicionado parâmetro de status de número do dispositivo habilitado para mão destra à interface GetAxleLuaEnableDevice();
+       | 14. Array de códigos de função da garra expandido para 32 em SetAxleLuaGripperFunc(), adicionado controle de garra rotativa, etc.;
+       | 15. Array de códigos de função da garra expandido para 32 em GetAxleLuaGripperFunc(), adicionado status de garra rotativa, etc.;
+       | 16. Corrigido erro de nome de interface em SetCoderCompenParams();
+       | 17. Adicionada interface SetDexterousHandsMove() para controlar o movimento da mão destra.
+       | 18. Adicionada interface SetDexterousHandsAct() para controlar o reset e ativação da mão destra.
+       | 19. Adicionada interface ClearDexterousHandsError() para limpar erros da mão destra.
+       | 20. Adicionada interface SetDexterousHandsFunc() para definir as funções de controle de ação da mão destra habilitadas.
+       | 21. Adicionada interface GetDexterousHandsFunc() para obter as funções de controle de ação da mão destra habilitadas.
+       | 22. Adicionadas SetWeaveBackCenterConfig(), GetWeaveBackCenterConfig() para definir e obter os parâmetros de retorno ao ponto zero do ciclo ao final da oscilação.
+       | 23. Adicionada interface SetWeaveOffsetRT() para definir deslocamento em tempo real da oscilação;
+       | 24. Adicionada interface SetSpeedInstant() para definição de velocidade em tempo real;
+
    * - V3.9.6
      - 2026-05-26
      - | 1.Estrutura de feedback de estado do robô atualizada, adicionado status do número do sistema de coordenadas dos eixos de extensão;

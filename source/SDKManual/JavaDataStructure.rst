@@ -397,7 +397,7 @@ Tipo de Estrutura de Retroalimentação de Estado do Robô
         public int ft_sensor_active;                // Estado de ativação do sensor de força
         public int EmergencyStop;                   // Estado de parada de emergência
         public int motion_done;                     // Movimento concluído
-        public int gripper_motiondone;              // Movimento da garra concluído
+        public int gripper_motiondone;              // Sinal de conclusão de movimento da garra, 0-não concluído, 1-concluído (nenhum objeto detectado), 2-movimento concluído (objeto detectado)
         public int mc_queue_len;                    // Comprimento da fila de movimentos
         public int collisionState;                  // Estado de colisão
         public int trajectory_pnum;                 // Número de sequência do ponto de trajetória

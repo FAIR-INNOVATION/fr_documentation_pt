@@ -12,7 +12,7 @@ Definir carregamento automático do programa de trabalho padrão na inicializaç
     /**
     * @brief Define o carregamento automático do programa de trabalho padrão na inicialização
     * @param [in] flag 0-não carregar automaticamente o programa padrão na inicialização, 1-carregar automaticamente o programa padrão na inicialização
-    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return Código de erro
     */
     int LoadDefaultProgConfig(int flag, String program_name);
@@ -24,7 +24,7 @@ Carregar o programa de trabalho especificado
 
     /**
     * @brief Carrega o programa de trabalho especificado
-    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param [in] program_name Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return Código de erro
     */
     int ProgramLoad(String program_name);
@@ -36,7 +36,7 @@ Obter o nome do programa de trabalho carregado
 
     /**
     * @brief Obtém o nome do programa de trabalho carregado
-    * @param [out] program_name program_name[0]: Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param [out] program_name program_name[0]: Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return Código de erro
     */
     int GetLoadedProgram(String[] program_name);
@@ -116,7 +116,7 @@ Exemplo de Código de Operação de Programa LUA do Robô
 
     public static int TestLuaOp(Robot robot)
     {
-        String program_name = "/fruser/Text1.lua";
+        String program_name = "Text1.lua";
         String[] loaded_name = new String[]{""};
         int[] state = new int[]{0};
         List<Integer> line = new ArrayList<>();

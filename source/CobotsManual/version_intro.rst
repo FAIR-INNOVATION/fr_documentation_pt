@@ -1,3 +1,45 @@
+Versão V3.9.7
+-----------------
+
+Data: 2026-06-25
+
+- **Pacote de idioma japonês do software otimizado**:
+
+    Descrição: Conteúdo de tradução do pacote de idioma japonês otimizado.
+
+- **Parâmetros de caminho para programas LUA do robô otimizados**:
+
+    Descrição: A entrada de arquivo agora requer apenas o nome; o caminho não é mais necessário.
+
+- **Função de weaving para novas transições spline linha-arco otimizada**:
+    Caminho: Aplicativos Auxiliares -> Pacote de Processo -> Biblioteca Especializada em Soldagem -> Nova Soldagem com Weaving em Spline.
+
+    Descrição: Adaptação da função de weaving para a nova funcionalidade de transição spline linha-arco.
+
+- **Função de proteção de limite suave (soft limit) das juntas otimizada**:
+    Caminho: Configuração Inicial -> Básico -> Juntas -> Limites Suaves.
+
+    Descrição: Coeficientes de rigidez e amortecimento para os limites suaves de cada junta otimizados.
+
+- **Função de impressão (print) para programas LUA do robô adicionada**:
+    Caminho: Programa do Teach Pendant -> Função de Impressão.
+
+    Descrição: Visualização em tempo real de informações de impressão personalizadas de programas LUA.
+
+- **Adaptador Lua para efetuador final para mão dextra de três dedos adicionado**:
+    Caminho: Configuração Inicial -> Periféricos -> Ventosa.
+
+    Descrição: 1. Adaptação para ventosa e mão dextra no efetuador final adicionada; 2. Protocolo aberto Lua existente para efetuador final otimizado.
+
+- **Função de relatório de erro para queda de peça da garra adicionada**:
+    Caminho: Configuração Inicial -> Periféricos -> Garra.
+
+    Descrição: Relatório de erro para queda de peça da garra adicionado; movimento é interrompido após o relatório.
+
+- **Função de feedback para ativação da proteção contra curto-circuito de 24V no módulo DO da caixa de controle de ampla tensão adicionada**:
+
+    Descrição: Proteção contra curto-circuito e aviso de erro adicionados.
+
 Versão V3.9.6
 -----------------
 

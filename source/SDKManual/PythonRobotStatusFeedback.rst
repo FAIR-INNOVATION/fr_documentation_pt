@@ -98,7 +98,7 @@ Tipo de Estrutura de Feedback de Estado do Robô
             # Sinais de estado
             ("EmergencyStop", c_uint8),         # Flag de parada de emergência, 0-não pressionada, 1-pressionada
             ("motion_done", c_int),             # Sinal de movimento concluído, 1-concluído, 0-não concluído
-            ("gripper_motiondone", c_uint8),    # Sinal de movimento da garra concluído, 1-concluído, 0-não concluído
+            ("gripper_motiondone", c_uint8),    # Sinal de conclusão de movimento da garra, 0-não concluído, 1-concluído (nenhum objeto detectado), 2-movimento concluído (objeto detectado)
             ("mc_queue_len", c_int),            # Comprimento da fila de comandos de movimento
             ("collisionState", c_uint8),        # Detecção de colisão, 1-colisão, 0-sem colisão
             ("trajectory_pnum", c_int),         # Número do ponto de trajetória
@@ -107,7 +107,7 @@ Tipo de Estrutura de Feedback de Estado do Robô
 
             # Informações da garra
             ("gripper_fault_id", c_uint8),      # Número da garra com falha
-            ("gripper_fault", c_uint16),        # Falha da garra
+            ("gripper_fault", c_uint16),        # Falha da garra 0-sem falha 1-timeout 485 2-erro de comando 3-queda de peça Outro-código de falha da garra
             ("gripper_active", c_uint16),      # Estado de ativação da garra
             ("gripper_position", c_uint8),      # Posição da garra
             ("gripper_speed", c_int8),          # Velocidade da garra
@@ -280,14 +280,14 @@ Pacote de Dados de Retroalimentação de Estado do Controlador
     "ft_sensor_active","Estado de ativação do sensor de torque, 0-reset, 1-ativado"
     "EmergencyStop","Sinalizador de parada de emergência, 0-parada de emergência não pressionada, 1-parada de emergência pressionada"
     "motion_done","Sinal de movimento concluído, 1-concluído, 0-não concluído"
-    "gripper_motiondone","Sinal de movimento concluído da garra, 1-concluído, 0-não concluído"
+    "gripper_motiondone","Sinal de conclusão de movimento da garra, 0-não concluído, 1-concluído (nenhum objeto detectado), 2-movimento concluído (objeto detectado)"
     "mc_queue_len","Comprimento da fila de instruções de movimento"
     "collisionState","Detecção de colisão, 1-colisão, 0-sem colisão"
     "trajectory_pnum","Número do ponto de trajetória"
     "safety_stop0_state","Sinal de parada de segurança SI0"
     "safety_stop1_state","Sinal de parada de segurança SI1"
     "gripper_fault_id","Número da garra com falha"
-    "gripper_fault","Falha da garra"
+    "gripper_fault","Falha da garra 0-sem falha 1-timeout 485 2-erro de comando 3-queda de peça Outro-código de falha da garra"
     "gripper_active","Estado de ativação da garra, 0-não ativada, 1-ativada"
     "gripper_position","Posição da garra (percentagem)"
     "gripper_speed","Velocidade da garra (percentagem)"

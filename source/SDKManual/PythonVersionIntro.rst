@@ -13,6 +13,25 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.7
+     - 2026-06-25
+     - | 1. Os parâmetros de PhotoelectricSensorTCPCalibration() agora podem se adaptar a nomes de arquivo sem caminho;
+       | 2. Os parâmetros de LoadTrajectoryJ() agora podem se adaptar a nomes de arquivo sem caminho;
+       | 3. Os parâmetros de LoadTrajectoryLA() agora podem se adaptar a nomes de arquivo sem caminho;
+       | 4. Os parâmetros de LoadDefaultProgConfig() agora podem se adaptar a nomes de arquivo sem caminho;
+       | 5. Os parâmetros de ProgramLoad() agora podem se adaptar a nomes de arquivo sem caminho;
+       | 6. Adicionado parâmetro de status de habilitação da mão destra à interface SetAxleLuaEnableDeviceType();
+       | 7. Adicionado parâmetro de status de habilitação da mão destra à interface GetAxleLuaEnableDeviceType();
+       | 8. Modificadas as interfaces para obter os tipos de habilitação de dispositivos de extremidade atualmente configurados e o controle de ação da garra;
+       | 9. Adicionados habilitação e códigos de função para a mão destra;
+       | 10. Adicionada interface SetDexterousHandsMove() para controlar o movimento da mão destra;
+       | 11. Adicionada interface SetDexterousHandsAct() para controlar o reset e ativação da mão destra;
+       | 12. Adicionada interface ClearDexterousHandsError() para limpar erros da mão destra;
+       | 13. Adicionada interface SetDexterousHandsFunc() para definir as funções de controle de ação da mão destra habilitadas;
+       | 14. Adicionada interface GetDexterousHandsFunc() para obter as funções de controle de ação da mão destra habilitadas;
+       | 15. Adicionadas interfaces para definir e obter os parâmetros de retorno ao ponto zero do ciclo ao final da oscilação;
+       | 16. Adicionada interface SetWeaveOffsetRT() para definir deslocamento em tempo real da oscilação e interface SetSpeedInstant() para definição de velocidade em tempo real.
+
    * - V3.9.6
      - 2026-05-26
      - | 1.Estrutura de feedback de estado do robô atualizada, adicionado status do número do sistema de coordenadas dos eixos de extensão;

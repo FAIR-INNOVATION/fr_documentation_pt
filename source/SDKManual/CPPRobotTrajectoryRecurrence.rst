@@ -239,9 +239,9 @@ Exemplo de Código para Definir a Velocidade do Robô Durante a Execução da Tr
             return -1;
         }
         
-        rtn = robot.TrajectoryJUpLoad("D://zUP/trajHelix_aima_1.txt");
+        rtn = robot.TrajectoryJUpLoad("D://zUP/horse.txt");
         printf("Upload TrajectoryJ A %d\n", rtn);
-        char traj_file_name[90] = "/fruser/traj/trajHelix_aima_1.txt";
+        char traj_file_name[90] = "horse.txt";
         rtn = robot.LoadTrajectoryJ(traj_file_name, 100, 1);
         printf("LoadTrajectoryJ %s, rtn is: %d\n", traj_file_name, rtn);
         DescPose traj_start_pose;

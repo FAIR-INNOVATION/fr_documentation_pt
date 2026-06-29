@@ -464,6 +464,122 @@ Garra Rotativa
 
 .. note:: O número de rotações é um número de rotações absoluto. O número máximo de rotações para frente é 90, e o número máximo de rotações para trás é 90. Após a rotação, é necessário realizar um reset.
 
+Função de Detecção de Queda de Peça da Garra
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Instruções de Configuração
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Os usuários podem modificar o protocolo aberto da extremidade para ler o valor do registro de alarme de queda da garra e enviá-lo de volta ao robô. Quando a garra define esta falha, o robô acionará simultaneamente a falha "Alarme de Queda de Peça da Garra".
+
+Usando a garra Junduo como exemplo, o exemplo a seguir mostra a adição da detecção de queda da garra ao protocolo aberto da extremidade. Este código lê o bit 1 do registro 0x07D0 da garra. Quando este bit é definido como 1, a flag de queda de peça é acionada e o GripState é atribuído com o valor 3 e transmitido ao robô, acionando a falha "Alarme de Queda de Peça da Garra".
+
+Se houver problemas durante a escrita, entre em contato com nossa empresa para obter suporte técnico.
+
+.. centered:: Exemplo de Adição da Lógica de Detecção de Queda da Garra Junduo ao Protocolo Aberto da Extremidade
+
+.. code-block:: console
+    :linenos:  
+
+    ……
+    local T5 = {0x01,0x03,0x07,0xD0,0x00,0x01,0x84,0x87}
+    ……
+    if (Rcmd3 == 7) then
+    T5[7], T5[8] = CrcValue(T5[1], T5[2], T5[3], T5[4], T5[5], T5[6])
+    EndTxGripData(T5[1], T5[2], T5[3], T5[4], T5[5], T5[6], T5[7], T5[8])
+    DelayMs(10)
+    a, Rxd1, Rxd2, Rxd3, Rxd4, Rxd5, Rxd6, Rxd7 = EndRxGripData()
+    RxdCrcH, RxdCrcL = CrcValue(Rxd1, Rxd2, Rxd3, Rxd4, Rxd5)
+    if ((a == 8) and (Rxd1 == Rcmd2) and (Rxd2 == 0x03) and (Rxd3 == 0x02) and (Rxd6 == RxdCrcH) and (Rxd7 == RxdCrcL)) then
+    local Fall = ((Rxd5 & 0x02) >> 1)
+    Rxd5 = ((Rxd5 & 0xC0) >> 6)
+    if(Fall == 0)then
+    if (Rxd5 == 0x00) then
+    GripState = 0x00
+    elseif (Rxd5 == 0x03) then
+    GripState = 0x01
+    elseif ((Rxd5 == 0x01) or (Rxd5 == 0x02)) then
+    GripState = 0x02
+    end
+    else
+    GripState = 0x03
+    end
+    GripStateBack(GripState)
+    end
+    end
+
+Com base no protocolo da extremidade com a lógica de detecção de queda adicionada, vá para "Configurações Iniciais" -> "Periféricos" -> "Garra" para carregar, atualizar e aplicar o protocolo aberto LUA da extremidade.
+
+.. figure:: robot_peripherals/316.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.2‑13 Upload do Protocolo da Extremidade da Garra
+
+Após reiniciar o robô, a garra pode ser usada normalmente. Se ocorrer uma queda de peça durante o uso da garra, o robô reportará "Peça da garra caiu, por favor redefinir e reativar a garra" e o robô interromperá simultaneamente o movimento atual e o programa LUA em execução.
+
+Os códigos de falha principais e secundários das portas 8083 e 20004 mudarão para 8-3, com o código de erro da garra correspondente sendo 3. Para outros códigos de erro enviados pela própria garra, o controlador adicionará 3 ao código de erro original.
+
+.. figure:: robot_peripherals/317.png
+   :align: center
+   :width: 3in
+
+.. centered:: Figura 8.2‑14 Falha "Peça da Garra Caiu"
+ 
+É importante notar que, após limpar esta falha, o usuário precisa enviar manualmente os comandos "Redefinir Garra" e "Ativar Garra" para limpar a flag de queda no registro da garra. Isso pode ser feito através de botões na página ou comandos LUA; caso contrário, a falha ainda será relatada na próxima execução.
+
+.. figure:: robot_peripherals/318.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.2‑15 Redefinindo e Ativando a Garra pela Página
+
+.. figure:: robot_peripherals/319.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.2‑16 Redefinindo e Ativando a Garra via Comandos LUA
+
+Além disso, a garra Junduo fornece um registro de limite de detecção de queda no endereço 0x1399, que precisa ser modificado escrevendo com o comando 0x10. A faixa de modificação é 0~1000. O protocolo da extremidade fornecido neste documento pode alterar o valor deste registro. A primeira escrita após cada execução do protocolo escreve este valor (0x14, modificável conforme necessário). Um exemplo é mostrado abaixo em 2-2. Para informações detalhadas de uso, consulte o fabricante da garra Junduo.
+
+.. centered:: Exemplo de Adição da Modificação do Limite de Queda da Garra Junduo ao Protocolo Aberto da Extremidade
+
+.. code-block:: console
+    :linenos:  
+
+    ……
+    local T10 = {0x01,0x10,0x13,0x99,0x00,0x01,0x02,0x00,0x14,0x00,0x00}
+    ……
+    if Set == 0 then
+    T10[10],T10[11]= CrcValue(T10[1],T10[2],T10[3],T10[4],T10[5],T10[6],T10[7],T10[8],T10[9])
+    EndTxGripData(T10[1],T10[2],T10[3],T10[4],T10[5],T10[6],T10[7],T10[8],T10[9],T10[10],T10[11])
+    DelayMs(35)
+    a,Rxd1, Rxd2, Rxd3, Rxd4, Rxd5,Rxd6,Rxd7,Rxd8 = EndRxGripData()
+    Set=1
+    end
+
+Apêndice 1: Erros do Controlador de Movimento e Métodos de Tratamento
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. centered:: Tabela de Códigos de Erro do Controlador de Movimento
+
+.. list-table:: 
+   :widths: 15 40 100
+   :header-rows: 1
+
+   * - Código de Falha Principal
+     - Código de Falha Secundário
+     - Descrição
+   * - 8-Erro de Dispositivo da Extremidade
+     - 1
+     - Erro de timeout de movimento da garra, redefinível
+   * - 8-Erro de Dispositivo da Extremidade
+     - 2
+     - Timeout de comunicação 485 da extremidade, redefinível
+   * - 8-Erro de Dispositivo da Extremidade
+     - 3
+     - Alarme de queda de peça da garra, redefinível. Após limpar a falha, por favor redefinir e reativar a garra
+
 Sensor de Força
 -------------------------
 
@@ -7048,3 +7164,117 @@ Exemplo de Script Lua Escrito para o Cabeçote de Moxabustão Beiyikang
     --***
     LuaGc()
     end
+
+Função da Mão Destra
+---------------------------------------------------------------------
+
+Visão Geral
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+O protocolo aberto LUA da extremidade adiciona as seguintes funções:
+
+1. O protocolo aberto LUA da extremidade adapta-se à mão destra para realizar o movimento sincronizado das articulações da mão destra.
+2. Adicionada a função de envio de comandos síncronos multi-escravos para resposta síncrona de vários motores escravos.
+
+Configuração do Ambiente
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Versão do Firmware da Extremidade: FR_END_FV201013_MAIN_U1_T01_20260407
+
+Versão do Software do Robô: V3.9.7 e superior
+
+Instruções Operacionais Relacionadas à Mão Destra
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configuração da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. Abra o WebApp, vá para Configurações Iniciais -> Periféricos -> Mão Destra -> Gerenciamento de Protocolos, carregue o arquivo Lua da Mão Destra, selecione o arquivo carregado e clique no botão "Aplicar". Após a mensagem de atualização bem-sucedida, reinicie a caixa de controle.
+
+.. figure:: robot_peripherals/306.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑1 Gerenciamento de Protocolos
+
+2. Abra o WebApp, vá para Configurações Iniciais -> Periféricos -> Mão Destra -> Parâmetros de Comunicação, configure os parâmetros de comunicação, incluindo taxa de transmissão, bits de dados, bits de parada, etc., e clique no botão "Configurar" após a conclusão.
+
+.. figure:: robot_peripherals/307.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑2 Configuração de Parâmetros de Comunicação
+
+Os parâmetros detalhados de comunicação da extremidade são os seguintes:
+
+- **Taxa de Transmissão**: Suporta 1-9600, 2-14400, 3-19200, 4-38400, 5-56000, 6-67600, 7-115200, 8-128000; o chip driver Rs485 da extremidade é 485 de baixa velocidade, a taxa de transmissão não pode exceder 200k;
+- **Bits de Dados**: Suporta (8, 9), atualmente 8 é comumente usado;
+- **Bits de Parada**: 1-1, 2-0.5, 3-2, 4-1.5, atualmente 1 é comumente usado;
+- **Paridade**: 0-None, 1-Odd, 2-Even, atualmente 0 é comumente usado;
+- **Tempo de Timeout**: 1~1000ms, este valor deve ser definido razoavelmente em combinação com os periféricos;
+- **Tentativas de Timeout**: 1~10, principalmente para retransmissão por timeout para reduzir anomalias ocasionais e melhorar a experiência do usuário;
+- **Intervalo de Comando Periódico**: 1~1000ms, principalmente para o intervalo de tempo entre cada envio de comando periódico;
+
+3. Abra o WebApp, vá para Configurações Iniciais -> Periféricos -> Mão Destra -> Ativação do Protocolo da Extremidade, ative o protocolo da extremidade, inicie o dispositivo da mão destra e configure os códigos de função correspondentes para a mão destra.
+
+.. figure:: robot_peripherals/308.png
+   :align: center
+   :width: 6in
+
+.. figure:: robot_peripherals/309.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑3 Códigos de Função Correspondentes da Mão Destra
+
+4. Os códigos de função atualmente definidos do protocolo aberto LUA da extremidade são mostrados nas figuras a seguir.
+
+.. figure:: robot_peripherals/310.png
+   :align: center
+   :width: 6in
+
+.. figure:: robot_peripherals/311.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑4 Códigos de Função do Protocolo Aberto
+
+.. note:: A mão destra deve suportar a leitura dos códigos de função relacionados ao estado de operação para facilitar a consulta do estado do movimento.
+  
+Controle de Movimento da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. Abra o WebApp, vá para Programa de Ensino -> Interface de Programação e abra as instruções periféricas da mão destra.
+
+.. figure:: robot_peripherals/312.png
+   :align: center
+   :width: 4in
+
+.. centered:: Figura 8.19‑5 Instruções Periféricas da Mão Destra
+   
+2. Clique em Ativar, selecione o endereço inicial correspondente da mão destra e adicione a instrução de ativação correspondente.
+
+.. figure:: robot_peripherals/313.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑6 Instrução de Ativação da Mão Destra
+
+3. Clique em Controle, preencha os dados de posição, velocidade e torque necessários para o movimento do escravo único da mão destra, preencha o tempo máximo de timeout e adicione a instrução de controle correspondente.
+
+.. figure:: robot_peripherals/314.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑7 Instrução de Controle da Mão Destra
+
+Monitoramento de Dados da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Abra o WebApp, vá para Configurações Iniciais -> Periféricos -> Mão Destra -> Ativação do Protocolo da Extremidade e ative o monitoramento de status. Após o envio das instruções de controle, na interface Dexterous à direita, é possível obter os dados de feedback em tempo real de posição, velocidade e torque do escravo único da mão destra.
+
+.. figure:: robot_peripherals/315.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.19‑8 Dados de Feedback em Tempo Real da Mão Destra    

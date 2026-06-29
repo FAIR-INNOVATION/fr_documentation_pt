@@ -318,10 +318,10 @@ Exemplo de Código de Reprodução de Arquivo de Trajetória J do Robô
 
     public static int TestTraj(Robot robot)
     {
-        int rtn = robot.TrajectoryJUpLoad("D://zUP/traj.txt");
+        int rtn = robot.TrajectoryJUpLoad("D://zUP/horse.txt");
         System.out.println("Upload TrajectoryJ A :"+ rtn);
 
-        String traj_file_name = "/fruser/traj/traj.txt";
+        String traj_file_name = "horse.txt";
         rtn = robot.LoadTrajectoryJ(traj_file_name, 100, 1);
         System.out.println("LoadTrajectoryJ:"+traj_file_name+", rtn is:"+ rtn);
 
@@ -383,9 +383,9 @@ Exemplo de código para definir a velocidade durante a execução da trajetória
         int rtn;
 
         robot.SetReconnectParam(true, 30000, 500);
-        rtn = robot.TrajectoryJUpLoad("D://zUP/trajHelix_aima_1.txt");
+        rtn = robot.TrajectoryJUpLoad("D://zUP/horse.txt");
         System.out.printf("Upload TrajectoryJ A %d%n", rtn);
-        String trajFileName = "/fruser/traj/trajHelix_aima_1.txt";
+        String trajFileName = "horse.txt";
         rtn = robot.LoadTrajectoryJ(trajFileName, 100, 1);
         System.out.printf("LoadTrajectoryJ %s, rtn is: %d%n", trajFileName, rtn);
         DescPose trajStartPose = new DescPose();

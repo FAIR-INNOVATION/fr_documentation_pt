@@ -286,6 +286,111 @@ Programa de Ensinamento de Soldagem com Ajuste Adaptativo de Postura Combinado c
      - LTTrackOff
      - #Desativar rastreamento a laser
 
+Função de Oscilação com Transição Linear de Arco com Nova Spline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão Geral
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A função de transição linear de arco com nova spline combinada com oscilação é uma combinação da função de transição linear de arco com nova spline do robô e da função de oscilação, permitindo que o robô realize movimentos de oscilação dos tipos "oscilação em onda triangular", "oscilação em onda triangular em L vertical", "oscilação triangular para soldagem vertical", "oscilação em onda senoidal" e "oscilação em onda senoidal em L vertical" durante o processo de transição linear de arco com nova spline.
+
+Procedimento Operacional
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Passo 1**: Calibrar o sistema de coordenadas da ferramenta do robô via WebApp. Para os detalhes operacionais desta função, consulte o capítulo correspondente do manual do usuário.
+
+**Passo 2**: Ensinar não menos que 4 pontos via WebApp. Observação: a distância entre os pontos deve ser uniforme para obter os melhores resultados.
+
+**Passo 3**: Configurar os parâmetros de oscilação. Na interface principal do WebApp, clique em "Programa de Ensino" -> "Programação" para entrar na área "Instruções de Movimento".
+
+.. figure:: process/073.png
+   :align: center
+   :width: 4in
+   
+.. centered:: Figura 15.1‑23 Área "Instruções de Movimento"
+  
+Na área "Instruções de Movimento", clique no botão "Oscilação" para entrar na interface de configuração "Weave". Na área "Edição de Instruções", selecione o número do processo no menu suspenso "Selecionar Número", clique em "Editar" para acessar a configuração dos parâmetros do processo de oscilação. Após a configuração, clique em "Configurar" para salvar o número do processo.
+
+.. figure:: process/074.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑24 Configuração dos Parâmetros do Processo de Oscilação
+ 
+.. note:: A função de transição linear de arco com nova spline combinada com oscilação é atualmente aplicável aos tipos "oscilação em onda triangular", "oscilação em onda triangular em L vertical", "oscilação triangular para soldagem vertical", "oscilação em onda senoidal" e "oscilação em onda senoidal em L vertical". Selecione "Incluir" no menu suspenso "Tempo de Espera da Oscilação" e "Continuar movimento durante o tempo de espera" no menu suspenso "Espera de Posição da Oscilação".
+
+**Passo 4**: Adicionar instruções de movimento oscilante. Na área "Tipo de Instrução" da interface de configuração "Weave", clique em "Iniciar Oscilação" -> "Adicionar" -> "Parar Oscilação" -> "Adicionar" -> "Aplicar" para concluir as configurações do movimento oscilante.
+
+.. figure:: process/075.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑25 Configurações do Movimento Oscilante
+  
+**Passo 5**: Adicionar uma instrução de transição linear de arco com nova spline. Na área "Instruções de Movimento", clique no botão "N-Spline" para entrar na interface de configuração "N-Spline". Na área "Tipo de Instrução", clique no botão "Início de trajetória multiponto", selecione "Ponto de transição de arco" no menu suspenso "Modo de Controle", insira os parâmetros no campo "Tempo de transição médio global" e clique em "Adicionar" para concluir a configuração do modo de movimento com nova spline.
+
+.. figure:: process/076.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑26 Configuração do Modo de Movimento com Nova Spline
+
+.. note:: O "Tempo de transição médio global" aplica-se ao modo de controle "Ponto de transição de arco". Para outros modos, os padrões podem ser mantidos e recomenda-se ajustar o valor para cima tanto quanto possível.
+
+Métodos de ajuste:
+
+1. Dividir o tempo total de movimento por (número de pontos - 1) para obter o parâmetro do tempo de transição médio global, com as unidades de tempo em milissegundos.
+2. Definir com base no tempo de percurso dos dois pontos com a maior distância durante o movimento completo. Se a observação for inconveniente ou não houver exigência de transição suave de postura, pode-se definir o padrão como 10000 milissegundos ou ajustar para cima.
+
+**Passo 6**: Adicionar pontos de movimento. Na área "Tipo de Instrução" da interface de configuração "N-Spline", clique no botão "Definir Ponto" -> "SPL". Selecione o ponto de movimento no menu suspenso "Nome do Ponto", insira a proporção da velocidade de movimento da instrução no campo "Velocidade de Depuração", insira o parâmetro do raio de suavização no campo "Raio de Transição Suave", selecione o status de movimento do ponto no menu suspenso "É o Último Ponto" e clique em "Adicionar" para concluir a configuração de um único ponto de movimento.
+
+.. figure:: process/077.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑27 Configuração dos Pontos de Movimento
+ 
+.. note:: Repetir o Passo 6 para concluir a configuração de todos os pontos de movimento e selecionar "Sim" no menu suspenso "É o Último Ponto" na configuração do ponto final.
+
+**Passo 7**: Concluir a instrução de transição linear de arco com nova spline. Na área "Tipo de Instrução" da interface de configuração "N-Spline", clique no botão "Fim de trajetória multiponto", clique em "Adicionar" -> "Aplicar" para concluir a configuração geral da instrução de transição linear de arco com nova spline.
+
+.. figure:: process/078.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑28 Configuração do Fim do Movimento com Nova Spline
+  
+**Passo 8**: Escrever o programa LUA para a função de transição linear de arco com nova spline + oscilação. Ajustar a ordem das instruções geradas dos Passos 4 a 7. Executar o programa LUA para implementar a função de transição linear de arco com nova spline + oscilação.
+
+.. figure:: process/079.png
+   :align: center
+   :width: 4in
+   
+.. centered:: Figura 15.1‑29 Programa LUA para Transição Linear de Arco com Nova Spline + Oscilação
+ 
+.. note:: Antes do ponto de movimento inicial da transição linear de arco com nova spline, pode-se adicionar um movimento PTP para garantir que o robô atinja o ponto de movimento inicial.
+
+Configuração da Estratégia de Retorno ao Centro para Transição Linear de Arco com Nova Spline + Oscilação
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Na interface principal do WebApp, clique em "Aplicações Auxiliares" -> "Pacote de Processo" -> "Banco de Dados Especialista em Soldagem" para entrar na área "Banco de Dados Especialista em Soldagem".
+
+.. figure:: process/080.png
+   :align: center
+   :width: 6in
+   
+.. centered:: Figura 15.1‑30 Instrução de Soldagem com Oscilação com Nova Spline
+
+Na área "Banco de Dados Especialista em Soldagem", clique no botão "Soldagem com Oscilação com Nova Spline" para entrar na interface de configuração "Soldagem com Oscilação com Nova Spline". Na área "Parâmetros de Soldagem com Oscilação", selecione "Sem retorno ao centro" ou "Retorno ao centro com trajetória estendida" no menu suspenso "Tipo de Retorno ao Centro da Oscilação", conforme mostrado na Figura 3-2. Após a seleção, clique no botão "Configurar" para concluir a configuração da estratégia de retorno ao centro da oscilação.
+
+.. figure:: process/081.png
+   :align: center
+   :width: 4in
+   
+.. centered:: Figura 15.1‑31 Tipo de Retorno ao Centro da Oscilação para Transição Linear de Arco com Nova Spline
+
+.. note:: No menu suspenso "Tipo de Retorno ao Centro da Oscilação", quando "Sem retorno ao centro" é selecionado, o movimento oscilante de transição de arco com nova spline para após atingir o ponto final; quando "Retorno ao centro com trajetória estendida" é selecionado, o movimento oscilante de transição de arco com nova spline continua após atingir o ponto final para garantir que o movimento pare na conclusão de um ciclo completo de oscilação.
+
 Configuração do Sistema de Paletização
 ---------------------------------------------
 

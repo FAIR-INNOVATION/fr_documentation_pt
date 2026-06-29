@@ -723,70 +723,82 @@ Obter Estado de Ativação da Execução LUA na Extremidade
     */
     int GetAxleLuaEnableStatus(int[] status)
 
-Definir Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir os tipos de dispositivo de extremidade habilitados para LUA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief Define o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
-    * @param forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
-    * @param gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
-    * @param IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+    * @brief Define os tipos de dispositivo de extremidade habilitados para o LUA
+    * @param forceSensorEnable Status de habilitação do sensor de força, 0-desabilitado; 1-habilitado
+    * @param gripperEnable Status de habilitação da garra, 0-desabilitado; 1-habilitado
+    * @param IOEnable Status de habilitação do dispositivo IO, 0-desabilitado; 1-habilitado
+    * @param dexhandEnable Status de habilitação da mão destra, 0-desabilitado; 1-habilitado
     * @return  Código de erro
     */
-    public int SetAxleLuaEnableDeviceType(int forceSensorEnable, int gripperEnable, int IOEnable)
+    public int SetAxleLuaEnableDeviceType(int forceSensorEnable, int gripperEnable, int IOEnable, int dexhandEnable)
 
-Obter Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter os tipos de dispositivo de extremidade habilitados para LUA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief Obtém o tipo de dispositivo de extremidade ativado pelo LUA na extremidade
-     * @param enable enable[0]:forceSensorEnable Estado de ativação do sensor de força, 0-desativar; 1-ativar
-     * @param enable enable[1]:gripperEnable Estado de ativação da garra, 0-desativar; 1-ativar
-     * @param enable enable[2]:IOEnable Estado de ativação do dispositivo IO, 0-desativar; 1-ativar
+     * @brief Obtém os tipos de dispositivo de extremidade habilitados para o LUA
+     * @param enable enable[0]:forceSensorEnable Status de habilitação do sensor de força, 0-desabilitado; 1-habilitado
+     * @param enable enable[1]:gripperEnable Status de habilitação da garra, 0-desabilitado; 1-habilitado
+     * @param enable enable[2]:IOEnable Status de habilitação do dispositivo IO, 0-desabilitado; 1-habilitado
+     * @param enable enable[3]:dexhandEnable Status de habilitação da mão destra, 0-desabilitado; 1-habilitado
      * @return  Código de erro
      */
     public int GetAxleLuaEnableDeviceType(int[] enable)
 
-Obter Dispositivo de Extremidade Atualmente Configurado
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter os dispositivos de extremidade atualmente configurados
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief Obtém o dispositivo de extremidade atualmente configurado
-     * @param forceSensorEnable Número do dispositivo do sensor de força ativado 0-desativado; 1-ativado
-     * @param gripperEnable Número do dispositivo da garra ativado, 0-desativar; 1-ativar
-     * @param IODeviceEnable Número do dispositivo IO ativado, 0-desativar; 1-ativar
+     * @brief Obtém os dispositivos de extremidade atualmente configurados
+     * @param forceSensorEnable Número do dispositivo de sensor de força habilitado, 0-desabilitado; 1-habilitado
+     * @param gripperEnable Número do dispositivo de garra habilitado, 0-desabilitado; 1-habilitado
+     * @param IODeviceEnable Número do dispositivo IO habilitado, 0-desabilitado; 1-habilitado
+     * @param dexhandEnable Status de habilitação da mão destra, 0-desabilitado; 1-habilitado
      * @return  Código de erro
      */
-    public int GetAxleLuaEnableDevice(int[] forceSensorEnable, int[] gripperEnable, int[] IODeviceEnable)
+    public int GetAxleLuaEnableDevice(int[] forceSensorEnable, int[] gripperEnable, int[] IODeviceEnable, int[] dexhandEnable)
 
-Ativar Função de Controle de Movimento da Garra
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Definir as funções de controle de ação da garra habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief Ativa a função de controle de movimento da garra
+     * @brief Define as funções de controle de ação da garra habilitadas
      * @param id Número do dispositivo da garra
-     * @param func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+     * @param func func[0]-habilitação da garra; func[1]-inicialização da garra; func[2]-definição de posição; func[3]-definição de velocidade; func[4]-definição de torque; func[6]-leitura do estado da garra;
+        func[7]-leitura do estado de inicialização; func[8]-leitura do código de falha; func[9]-leitura da posição; func[10]-leitura da velocidade; func[11]-leitura do torque; func[12]-definição do número de rotações para garra rotativa;
+        func[13]-definição da velocidade de rotação para garra rotativa; func[14]-definição do torque de rotação para garra rotativa; func[15]-leitura do estado da garra rotativa; func[16]-leitura do estado de inicialização da garra rotativa;
+        func[17]-leitura do número de rotações da garra rotativa; func[18]-leitura da velocidade da garra rotativa; func[19]-leitura do torque da garra rotativa; func[20]-definição de movimento síncrono multi-eixo; func[21]-comando de limpeza de falhas;
+        func[22]-estado de operação de eixo único; func[23]-estado de operação de todos os eixos;
      * @return  Código de erro
      */
     public int SetAxleLuaGripperFunc(int id, int[] func)
 
-Obter Função de Controle de Movimento da Garra Ativada
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter as funções de controle de ação da garra habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-     * @brief Obtém a função de controle de movimento da garra ativada
+     * @brief Obtém as funções de controle de ação da garra habilitadas
      * @param id Número do dispositivo da garra
-     * @param func func[0]-ativação da garra; func[1]-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque
+     * @param func func[0]-habilitação da garra; func[1]-inicialização da garra; func[2]-definição de posição; func[3]-definição de velocidade; func[4]-definição de torque; func[6]-leitura do estado da garra;
+        func[7]-leitura do estado de inicialização; func[8]-leitura do código de falha; func[9]-leitura da posição; func[10]-leitura da velocidade; func[11]-leitura do torque; func[12]-definição do número de rotações para garra rotativa;
+        func[13]-definição da velocidade de rotação para garra rotativa; func[14]-definição do torque de rotação para garra rotativa; func[15]-leitura do estado da garra rotativa; func[16]-leitura do estado de inicialização da garra rotativa;
+        func[17]-leitura do número de rotações da garra rotativa; func[18]-leitura da velocidade da garra rotativa; func[19]-leitura do torque da garra rotativa; func[20]-definição de movimento síncrono multi-eixo; func[21]-comando de limpeza de falhas;
+        func[22]-estado de operação de eixo único; func[23]-estado de operação de todos os eixos;
      * @return  Código de erro
      */
     public int GetAxleLuaGripperFunc(int id, int[] func)
@@ -1802,3 +1814,154 @@ Exemplo de Código para Upload, Download e Exclusão de Protocolo Aberto de Peri
         robot.Sleep(1000);
         return 0;
     }
+
+Controlar o Movimento da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Controlar o movimento da mão destra
+    * @param idstart Número da estação escrava inicial
+    * @param slaveNum Número de escravos
+    * @param pos Array de posições, comprimento 16, intervalo (-360~360)
+    * @param speed Array de percentuais de velocidade, comprimento 16, intervalo [0~100]
+    * @param force Array de percentuais de torque, comprimento 16, intervalo [0~100]
+    * @param max_time Tempo máximo de espera, intervalo [0~30000], unidade ms
+    * @return Código de erro
+    */
+    public int SetDexterousHandsMove(int idstart, int slaveNum, double[] pos, int[] speed, int[] force, int max_time) 
+        
+Controlar o Reset e Ativação da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Controlar o reset e ativação da mão destra
+    * @param id Número da estação escrava
+    * @param act 0-reset 1-ativação
+    * @return Código de erro
+    */
+    public int SetDexterousHandsAct(int id, int act)
+            
+Limpar Erro da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Limpar erro da mão destra
+    * @return Código de erro
+    */
+    public int ClearDexterousHandsError()
+                
+Definir as Funções de Controle de Ação da Mão Destra Habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Define as funções de controle de ação da mão destra habilitadas
+    * @param id Número da estação escrava da mão destra
+    * @param func Array de funções, comprimento 32, Bit0-acionamento de aperto, Bit1-inicialização da garra, Bit2-definição de posição, Bit3-definição de velocidade, Bit4-definição de torque, Bit6-leitura do estado da garra, Bit7-leitura do estado de inicialização, Bit8-leitura do código de falha, Bit9-leitura da posição, Bit10-leitura da velocidade, Bit11-leitura do torque, Bit12-definição do número de rotações, Bit13-definição da velocidade de rotação, Bit14-definição do torque de rotação, Bit15-leitura do estado da garra rotativa, Bit16-leitura do estado de inicialização da rotação, Bit17-leitura do número de rotações, Bit18-leitura da velocidade de rotação, Bit19-leitura do torque de rotação, Bit20-definição de movimento síncrono multi-eixo, Bit21-comando de limpeza de falhas, Bit22-estado de operação de eixo único, Bit23-estado de operação de todos os eixos
+    * @return Código de erro
+    */
+    public int SetDexterousHandsFunc(int id, int[] func)
+                    
+Obter as Funções de Controle de Ação da Mão Destra Habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Obtém as funções de controle de ação da mão destra habilitadas
+    * @param id Número do dispositivo da mão destra
+    * @param func Array de parâmetros de saída, comprimento 32, Bit0-acionamento de aperto, Bit1-inicialização da garra, Bit2-definição de posição, Bit3-definição de velocidade, Bit4-definição de torque, Bit6-leitura do estado da garra, Bit7-leitura do estado de inicialização, Bit8-leitura do código de falha, Bit9-leitura da posição, Bit10-leitura da velocidade, Bit11-leitura do torque, Bit12-definição do número de rotações, Bit13-definição da velocidade de rotação, Bit14-definição do torque de rotação, Bit15-leitura do estado da garra rotativa, Bit16-leitura do estado de inicialização da rotação, Bit17-leitura do número de rotações, Bit18-leitura da velocidade de rotação, Bit19-leitura do torque de rotação, Bit20-definição de movimento síncrono multi-eixo, Bit21-comando de limpeza de falhas, Bit22-estado de operação de eixo único, Bit23-estado de operação de todos os eixos
+    * @return Código de erro
+    */
+    public int GetDexterousHandsFunc(int id, int[] func)
+                    
+Exemplo de Código de Configuração e Movimento da Mão Destra no Efetuador Final
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: Java
+    :linenos:
+
+    public static int TestDexterousHands(Robot robot) {
+        int id = 1;
+        int slaveNum = 4;
+        int max_time = 8000;
+        int[] speed = new int[16]; 
+        int[] force = new int[16]; 
+
+        robot.LoggerInit(FrLogType.DIRECT, FrLogLevel.INFO, "D://log", 10, 10);
+        for (int i = 0; i < 16; i++) {
+            force[i] = (i < 4) ? 50 : 0;
+        }
+
+        final double[] pos = new double[16];
+
+        JointPos j1 = new JointPos(-91.876, -85.920, 109.279, -86.239, -96.664, -28.563);
+        JointPos j2 = new JointPos(-40.954, -85.920, 109.279, -86.239, -96.664, -28.563);
+        ExaxisPos epos = new ExaxisPos(0, 0, 0, 0);
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+
+        int ret = robot.ClearDexterousHandsError();
+        System.out.println("ClearDexterousHandsError -> " + ret);
+
+        int[] setFunc = new int[32];
+        setFunc[2] = 1;
+        setFunc[4] = 1;
+        setFunc[9] = 1;
+        setFunc[10] = 1;
+        setFunc[11] = 1;
+        setFunc[22] = 1;
+
+        ret = robot.SetDexterousHandsFunc(id, setFunc);
+
+        int[] getFunc = new int[32];
+        ret = robot.GetDexterousHandsFunc(id, getFunc);
+        System.out.println("GetDexterousHandsFunc -> " + ret);
+        if (ret == 0) {
+            for (int i = 0; i < getFunc.length; i++) {
+                System.out.print("  [" + i + "]=" + getFunc[i]);
+                if ((i + 1) % 8 == 0) {
+                    System.out.println();
+                } else if (i < getFunc.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            if (getFunc.length % 8 != 0) {
+                System.out.println();
+            }
+        }
+
+        ret = robot.SetDexterousHandsAct(id, 1);
+        if (ret != 0) {
+            return ret;
+        }
+
+        setPositions(pos, 20, 20, 20, 20);
+        ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time);
+        robot.Sleep(5000);
+        
+        for (int iteration = 1; iteration <= 10; iteration++) {
+            robot.MoveJ(j1, 0, 0, 100, 100, 100, epos, -1, 0, offset_pos);
+
+            setPositions(pos, 10, 10, 10, 10);
+            ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time);
+            robot.Sleep(1000);
+
+            robot.MoveJ(j2, 0, 0, 100, 100, 100, epos, -1, 0, offset_pos);
+            setPositions(pos, 50, 50, 50, 50);
+            ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time);
+            robot.Sleep(1000);
+        }
+        return 0;
+    }    

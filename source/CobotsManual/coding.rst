@@ -8555,3 +8555,134 @@ A seguir, um exemplo típico de programa LUA para soldagem de curva de interseç
    :align: center
 
 .. centered:: Figura 9.38‑18 Programa de Exemplo para Soldagem de Curva de Interseção com Posicionador
+
+Função de Impressão PrintMsg() do Programa LUA do Robô
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+O programa LUA do robô possui instruções de impressão integradas que podem exibir informações específicas na janela de impressão do WebApp. Esta função suporta a impressão de valores numéricos, strings, tabelas, booleanos, etc., e é equipada com capacidades auxiliares como armazenamento de logs de impressão, pesquisa de conteúdo e download de logs, facilitando a depuração e o rastreamento de dados.
+
+Edição e Adição de Instruções de Impressão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Clique no botão "Imprimir" na página "Instruções Lógicas" para abrir a página de edição da instrução de impressão PrintMsg(). Primeiro, defina o texto de impressão e o tipo de dados respectivamente.
+
+.. image:: coding/573.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑1 Página de Edição de Instrução de Impressão   
+
+- **Texto**: Preencha uma string descritiva personalizada para indicar o significado do conteúdo impresso, por exemplo, "robot current pos :", "recv socket value :", etc.
+- **Tipo**: Dividido em "Variável" e "Função", selecione conforme necessário.
+- **Variável**: Imprime valores de variáveis personalizadas, suportando variáveis dos tipos numérico, string, tabela, booleano, etc.
+- **Função**: Imprime o valor de retorno da função da instrução especificada. Após selecionar este tipo, você pode escolher a função alvo na lista de funções abaixo, como GetActualTCPPose() para obter a posição TCP do robô, GetDI() para ler o estado de entrada DI do controlador, GetActualJointPosDegree() para obter os ângulos atuais das juntas do robô, etc.
+
+Tomando como exemplo a impressão da posição atual das juntas do robô: insira o texto de impressão "robot current joint pos :", selecione Função como o tipo de dados e escolha a função GetActualJointPosDegree(), então clique em Adicionar e Aplicar em sequência. O sistema gerará automaticamente a instrução de impressão correspondente no programa LUA:
+
+.. code-block:: console
+    :linenos:
+
+    PrintMsg("robot current joint pos :",GetActualJointPosDegree())
+
+.. image:: coding/574.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑2 Adicionando uma Instrução de Impressão   
+
+Você também pode alternar o painel do programa para a página editável, inserir o nome da instrução PrintMsg() e inserir o conteúdo a ser impresso nos parâmetros, separando vários conteúdos de impressão com vírgulas.
+
+.. image:: coding/575.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑3 Escrevendo Informações de Impressão Personalizadas  
+
+Visualização de Informações de Impressão e Operações Básicas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Clique no botão de exibição de impressão para abrir a janela pop-up de informações de impressão. Alterne o robô para o modo automático e execute o programa. O conteúdo impresso será exibido em tempo real na janela. Cada mensagem contém quatro informações: timestamp, nome do programa LUA, número da linha do código e conteúdo impresso.
+
+.. image:: coding/576.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑4 Caixa de Exibição de Conteúdo Impresso  
+
+Limpeza do Conteúdo Impresso
+*******************************************************************
+
+Clique no botão "Limpar" na parte superior da janela de impressão para limpar todo o conteúdo exibido na janela com um clique.
+
+.. image:: coding/577.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑5 Limpeza do Conteúdo Impresso  
+
+Pesquisa de Conteúdo Impresso
+*******************************************************************
+
+Digite a palavra-chave alvo na caixa de pesquisa e clique em Localizar. A janela exibirá apenas os registros de impressão que contêm a palavra-chave, ocultando o restante. Após limpar a caixa de pesquisa e clicar em Localizar novamente, todas as informações de impressão serão restauradas.
+
+.. image:: coding/578.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑6 Pesquisa de Conteúdo Impresso  
+
+Configuração e Gerenciamento de Logs de Impressão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Configuração de Parâmetros de Armazenamento de Logs de Impressão
+*******************************************************************
+
+No webapp, clique em "Configurações do Sistema" e "Modo de Manutenção" em sequência para entrar no modo de manutenção. Encontre os módulos "Gerenciamento de Logs" e "Log de Impressão" para configurar a ativação/desativação da função de armazenamento de logs de impressão, definir o número de arquivos a serem salvos e o número máximo de entradas de impressão por arquivo de log. Após ativar o armazenamento de logs de impressão, todos os dados de impressão serão automaticamente gravados em arquivos de log.
+
+.. image:: coding/579.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑7 Configuração de Parâmetros de Armazenamento de Logs de Impressão 
+
+Quando o dispositivo robô reinicia o sistema ou o número de entradas em um único arquivo de log atinge o limite definido, um novo arquivo de log é automaticamente criado e a rotação de logs é acionada. Quando o número total de arquivos de log excede o limite máximo de armazenamento, o sistema exclui automaticamente os arquivos de log mais antigos.
+
+Download de Logs de Impressão
+*******************************************************************
+
+Clique no botão de download na parte superior da janela de impressão para baixar todo o conteúdo impresso na janela atual para o computador local.
+
+.. image:: coding/580.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑8 Download de Logs de Impressão 
+
+Além do download direto de logs de impressão, os logs de impressão também estão incluídos ao baixar logs do controlador e arquivos de fonte de dados completos.
+
+Exemplos de Código de Instruções de Impressão
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Impressão da Posição Alvo Recebida pelo Robô
+*******************************************************************
+
+A seguir está um programa em que o robô lê as posições Cartesianas x, y, z alvo de um escravo ModbusTCP e controla o movimento do robô para a posição alvo. No programa, cada vez que a posição alvo é lida, a instrução PrintMsg() é usada para imprimir a posição alvo.
+
+.. image:: coding/581.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑9 Exemplo de Impressão da Posição Alvo do Robô 
+
+Impressão da Posição em Tempo Real do Robô e Dados DI da Caixa de Controle
+*************************************************************************************
+
+A seguir está um programa de movimento não bloqueante do robô que imprime a posição do robô e os valores DI da caixa de controle em tempo real durante o movimento.
+
+.. note:: Nota: Ao chamar a instrução de impressão PrintMsg() em um loop, é necessário usar a instrução sleep_ms() para definir o intervalo de sono do loop, evitando um loop infinito.
+
+.. image:: coding/582.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.39‑10 Exemplo de Impressão da Posição Atual e DI Durante o Movimento do Robô   

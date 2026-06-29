@@ -810,24 +810,26 @@ Obter Estado de Ativação da Execução LUA na Extremidade
     "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode 
     - ``enable``: 0-desativar; 1-ativar"
 
-Definir Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir os tipos de dispositivo de extremidade habilitados para LUA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.5
 
 .. csv-table:: 
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``SetAxleLuaEnableDeviceType(forceSensorEnable, gripperEnable, IOEnable)``"
-    "Descrição", "Define o tipo de dispositivo de extremidade ativado pelo LUA na extremidade"
-    "Parâmetros Obrigatórios", "- ``forceSensorEnable``: Estado de ativação do sensor de força, 0-desativar; 1-ativar
-    - ``gripperEnable``: Estado de ativação da garra, 0-desativar; 1-ativar
-    - ``IOEnable``: Estado de ativação do dispositivo IO, 0-desativar; 1-ativar"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "Código de erro: Sucesso-0   Falha - errcode "
+    "Protótipo", "``SetAxleLuaEnableDeviceType(self, forceSensorEnable, gripperEnable, IOEnable, dexhandEnable)``"
+    "Descrição", "Define os tipos de dispositivo de extremidade habilitados para o LUA"
+    "Parâmetros obrigatórios", "
+    - ``forceSensorEnable``: Status de habilitação do sensor de força, 0-desabilitado; 1-habilitado
+    - ``gripperEnable``: Status de habilitação da garra, 0-desabilitado; 1-habilitado
+    - ``IOEnable``: Status de habilitação do dispositivo IO, 0-desabilitado; 1-habilitado
+    - ``dexhandEnable``: Status de habilitação da mão destra, 0-desabilitado; 1-habilitado"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
 
-Obter Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter os tipos de dispositivo de extremidade habilitados para LUA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.5
 
 .. csv-table:: 
@@ -835,16 +837,17 @@ Obter Tipo de Dispositivo de Extremidade Ativado pelo LUA na Extremidade
     :widths: 10 30
 
     "Protótipo", "``GetAxleLuaEnableDeviceType()``"
-    "Descrição", "Obtém o tipo de dispositivo de extremidade ativado pelo LUA na extremidade"
-    "Parâmetros Obrigatórios", "Nenhum"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode 
-    - ``forceSensorEnable``: Estado de ativação do sensor de força, 0-desativar; 1-ativar
-    - ``gripperEnable``: Estado de ativação da garra, 0-desativar; 1-ativar
-    - ``IOEnable``: Estado de ativação do dispositivo IO, 0-desativar; 1-ativar"
+    "Descrição", "Obtém os tipos de dispositivo de extremidade habilitados para o LUA"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro, 0-sucesso; diferente de zero-erro
+    - ``forceSensorEnable``: Status de habilitação do sensor de força, 0-desabilitado; 1-habilitado
+    - ``gripperEnable``: Status de habilitação da garra, 0-desabilitado; 1-habilitado
+    - ``IOEnable``: Status de habilitação do dispositivo IO, 0-desabilitado; 1-habilitado
+    - ``dexhandEnable``: Status de habilitação da mão destra, 0-desabilitado; 1-habilitado"
 
-Obter Dispositivo de Extremidade Atualmente Configurado
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter os dispositivos de extremidade atualmente configurados
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.5
 
 .. csv-table:: 
@@ -852,16 +855,17 @@ Obter Dispositivo de Extremidade Atualmente Configurado
     :widths: 10 30
 
     "Protótipo", "``GetAxleLuaEnableDevice()``"
-    "Descrição", "Obtém o dispositivo de extremidade atualmente configurado"
-    "Parâmetros Obrigatórios", "Nenhum"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode 
-    - ``forceSensorEnable[8]``: Estado de ativação do sensor de força, 0-desativar; 1-ativar
-    - ``gripperEnable[8]``: Estado de ativação da garra, 0-desativar; 1-ativar
-    - ``IOEnable[8]``: Estado de ativação do dispositivo IO, 0-desativar; 1-ativar"
+    "Descrição", "Obtém os dispositivos de extremidade atualmente configurados"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro, 0-sucesso; diferente de zero-erro
+    - ``forceSensorEnable[8]``: Status de habilitação do sensor de força, 0-desabilitado; 1-habilitado
+    - ``gripperEnable[8]``: Status de habilitação da garra, 0-desabilitado; 1-habilitado
+    - ``IOEnable[8]``: Status de habilitação do dispositivo IO, 0-desabilitado; 1-habilitado
+    - ``dexhandEnable``: Status de habilitação da mão destra, 0-desabilitado; 1-habilitado"
 
-Ativar Função de Controle de Movimento da Garra
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir as funções de controle de ação da garra habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.5
 
 .. csv-table:: 
@@ -869,14 +873,15 @@ Ativar Função de Controle de Movimento da Garra
     :widths: 10 30
 
     "Protótipo", "``SetAxleLuaGripperFunc(id, func)``"
-    "Descrição", "Ativa a função de controle de movimento da garra"
-    "Parâmetros Obrigatórios", "- ``id``: Número do dispositivo da garra
-    - ``func``: 0-ativação da garra; 1-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque, 12-15 reservados"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "Código de erro: Sucesso-0   Falha - errcode "
+    "Descrição", "Define as funções de controle de ação da garra habilitadas"
+    "Parâmetros obrigatórios", "
+    - ``id``: Número do dispositivo da garra
+    - ``func``: 0-habilitação da garra; 1-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque; 12-definição do número de rotações para garra rotativa; 13-definição da velocidade de rotação para garra rotativa; 14-definição do torque de rotação para garra rotativa; 15-leitura do estado da garra rotativa; 16-leitura do estado de inicialização da garra rotativa; 17-leitura do número de rotações da garra rotativa; 18-leitura da velocidade da garra rotativa; 19-leitura do torque da garra rotativa; 20-definição de movimento síncrono multi-eixo; 21-comando de limpeza de falhas; 22-estado de operação de eixo único; 23-estado de operação de todos os eixos;"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
 
-Obter Função de Controle de Movimento da Garra Ativada
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Obter as funções de controle de ação da garra habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.0.5
 
 .. csv-table:: 
@@ -884,11 +889,11 @@ Obter Função de Controle de Movimento da Garra Ativada
     :widths: 10 30
 
     "Protótipo", "``GetAxleLuaGripperFunc(id)``"
-    "Descrição", "Obtém a função de controle de movimento da garra ativada"
-    "Parâmetros Obrigatórios", "- ``id``: Número do dispositivo da garra"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode 
-    - ``func``: 0-ativação da garra; 1-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque, 12-15 reservados"
+    "Descrição", "Obtém as funções de controle de ação da garra habilitadas"
+    "Parâmetros obrigatórios", "- ``id``: Número do dispositivo da garra"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro, 0-sucesso; diferente de zero-erro
+    - ``func``: 0-habilitação da garra; 1-inicialização da garra; 2-definição de posição; 3-definição de velocidade; 4-definição de torque; 6-leitura do estado da garra; 7-leitura do estado de inicialização; 8-leitura do código de falha; 9-leitura da posição; 10-leitura da velocidade; 11-leitura do torque; 12-definição do número de rotações para garra rotativa; 13-definição da velocidade de rotação para garra rotativa; 14-definição do torque de rotação para garra rotativa; 15-leitura do estado da garra rotativa; 16-leitura do estado de inicialização da garra rotativa; 17-leitura do número de rotações da garra rotativa; 18-leitura da velocidade da garra rotativa; 19-leitura do torque da garra rotativa; 20-definição de movimento síncrono multi-eixo; 21-comando de limpeza de falhas; 22-estado de operação de eixo único; 23-estado de operação de todos os eixos;"
 
 Escrita de Arquivo no Escravo Ethercat do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1848,3 +1853,177 @@ Exemplo de Código SDK para Operações com Arquivos Lua de Protocolo Aberto
 
     # Chama a função de teste
     TestCtrlOpenLuaOperate(robot)
+
+Controlar o Movimento da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetDexterousHandsMove(self, idstart, slaveNum, pos, speed, force, max_time)``"
+    "Descrição", "Controlar o movimento da mão destra"
+    "Parâmetros Obrigatórios", "
+    - ``idstart``: Número da estação escrava inicial;
+    - ``slaveNum``: Número de escravos;
+    - ``pos[16]``: Posição (-360~360);
+    - ``speed[16]``: Percentual de velocidade, intervalo [0~100];
+    - ``force[16]``: Percentual de torque, intervalo [0~100];
+    - ``max_time``: Tempo máximo de espera, intervalo [0~30000], unidade ms;"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+        
+Controlar o Reset e Ativação da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetDexterousHandsAct(self, id, act)``"
+    "Descrição", "Controlar o reset e ativação da mão destra"
+    "Parâmetros Obrigatórios", "
+    - ``id``: Número da estação escrava;
+    - ``act``: 0-reset 1-ativação"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+        
+Limpar Erro da Mão Destra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ClearDexterousHandsError(self)``"
+    "Descrição", "Limpar erro da mão destra"
+    "Parâmetros Obrigatórios", "Nenhum"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+    
+Definir as Funções de Controle de Ação da Mão Destra Habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetDexterousHandsFunc(self, id, func)``"
+    "Descrição", "Define as funções de controle de ação da mão destra habilitadas"
+    "Parâmetros Obrigatórios", "
+    - ``id``: Número da estação escrava da mão destra;
+    - ``func``: Array de funções, 32 elementos
+        0-acionamento de aperto, 1-inicialização da garra, 2-definição de posição, 3-definição de velocidade, 4-definição de torque,
+        6-leitura do estado da garra, 7-leitura do estado de inicialização, 8-leitura do código de falha, 9-leitura da posição, 10-leitura da velocidade,
+        11-leitura do torque, 12-definição do número de rotações, 13-definição da velocidade de rotação, 14-definição do torque de rotação,
+        15-leitura do estado da garra rotativa, 16-leitura do estado de inicialização da rotação, 17-leitura do número de rotações, 18-leitura da velocidade de rotação,
+        19-leitura do torque de rotação, 20-definição de movimento síncrono multi-eixo, 21-comando de limpeza de falhas, 22-estado de operação de eixo único,
+        23-estado de operação de todos os eixos"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+    
+Obter as Funções de Controle de Ação da Mão Destra Habilitadas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``GetDexterousHandsFunc(self, id)``"
+    "Descrição", "Obtém as funções de controle de ação da mão destra habilitadas"
+    "Parâmetros Obrigatórios", "
+    - ``id``: Número da estação escrava da mão destra;
+    - ``func``: Array de funções, 32 elementos
+        0-acionamento de aperto, 1-inicialização da garra, 2-definição de posição, 3-definição de velocidade, 4-definição de torque,
+        6-leitura do estado da garra, 7-leitura do estado de inicialização, 8-leitura do código de falha, 9-leitura da posição, 10-leitura da velocidade,
+        11-leitura do torque, 12-definição do número de rotações, 13-definição da velocidade de rotação, 14-definição do torque de rotação,
+        15-leitura do estado da garra rotativa, 16-leitura do estado de inicialização da rotação, 17-leitura do número de rotações, 18-leitura da velocidade de rotação,
+        19-leitura do torque de rotação, 20-definição de movimento síncrono multi-eixo, 21-comando de limpeza de falhas, 22-estado de operação de eixo único,
+        23-estado de operação de todos os eixos"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
+Exemplo de Código de Configuração e Movimento da Mão Destra no Efetuador Final  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:  
+     
+    from fairino import Robot
+    import time
+    robot = Robot.RPC('192.168.58.2')
+
+    def main(self):
+
+        id = 1                 
+        slaveNum = 4         
+        max_time = 8000      
+        speed = [0] * 16     
+        force = [0] * 16     
+
+        for i in range(16):
+            force[i] = 50 if i < 4 else 0
+
+        def set_positions(v1, v2, v3, v4):
+            pos = [0.0] * 16
+            pos[0] = v1
+            pos[1] = v2
+            pos[2] = v3
+            pos[3] = v4
+            return pos
+
+        j1 = [-53.426,-85.916,109.280,-86.236,-96.663,-28.560]
+        j2 = [-91.877,-85.917,109.281,-86.236,-96.663,-28.560]
+        epos = [0, 0, 0, 0]
+        offset_pos = [0, 0, 0, 0, 0, 0]
+
+        ret = robot.ClearDexterousHandsError()
+        print(f"ClearDexterousHandsError -> {ret}")
+
+        setFunc = [0] * 32
+        setFunc[2] = 1   
+        setFunc[4] = 1   
+        setFunc[9] = 1   
+        setFunc[10] = 1  
+        setFunc[11] = 1  
+        setFunc[22] = 1  
+
+        ret = robot.SetDexterousHandsFunc(id, setFunc)
+        print(f"SetDexterousHandsFunc(init + funções de posição/torque habilitadas) -> {ret}")
+
+        ret, getFunc = robot.GetDexterousHandsFunc(id)
+        print(f"GetDexterousHandsFunc -> {ret}")
+        if ret == 0:
+            print("GetDexterousHandsFunc :")
+            for i in range(len(getFunc)):
+                print(f"  [{i}]={getFunc[i]}", end="")
+                if (i + 1) % 8 == 0:
+                    print()  
+                elif i < len(getFunc) - 1:
+                    print(", ", end="")
+            if len(getFunc) % 8 != 0:
+
+        ret = robot.SetDexterousHandsAct(id, 1)
+        print(f"SetDexterousHandsAct() -> {ret}")
+        if ret != 0:
+            return
+            pos = set_positions(20, 20, 20, 20)
+        ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time)
+        print(f"ret: {ret}")
+        time.sleep(5)
+
+        for iteration in range(1, 11):
+            robot.MoveJ(joint_pos=j1, tool=1, user=0, vel=100, acc=100, ovl=100,
+                        exaxis_pos=epos, blendT=-1, offset_flag=0, offset_pos=offset_pos)
+
+            pos = set_positions(10, 10, 10, 10)
+            ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time)
+            time.sleep(1)
+
+            robot.MoveJ(joint_pos=j2, tool=1, user=0, vel=100, acc=100, ovl=100,
+                        exaxis_pos=epos, blendT=-1, offset_flag=0, offset_pos=offset_pos)
+
+            pos = set_positions(50, 50, 50, 50)
+            ret = robot.SetDexterousHandsMove(id, slaveNum, pos, speed, force, max_time)
+            time.sleep(1)
+
+    main(robot)

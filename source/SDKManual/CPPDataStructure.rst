@@ -205,14 +205,14 @@ Pacote de feedback do estado do controlador
       uint8_t ft_sensor_active;   // Estado de ativação do sensor de força, 0-reset, 1-ativado
       uint8_t EmergencyStop;    // Flag de parada de emergência, 0-parada de emergência não acionada, 1-parada de emergência acionada
       int   motion_done;     // Sinal de movimento concluído, 1-concluído, 0-não concluído
-      uint8_t gripper_motiondone; // Sinal de conclusão do movimento da garra, 1-concluído, 0-não concluído
+      uint8_t gripper_motiondone; // Sinal de conclusão de movimento da garra, 0-não concluído, 1-concluído (nenhum objeto detectado), 2-movimento concluído (objeto detectado)
       int   mc_queue_len;     // Comprimento da fila de instruções de movimento
       uint8_t collisionState;    // Detecção de colisão, 1-colisão, 0-sem colisão
       int   trajectory_pnum;   // Número do ponto da trajetória
       uint8_t safety_stop0_state; // Sinal de parada de segurança SI0
       uint8_t safety_stop1_state; // Sinal de parada de segurança SI1
       uint8_t gripper_fault_id;   // ID da garra com erro
-      uint16_t gripper_fault;    // Falha da garra
+      uint16_t gripper_fault;    // Falha da garra 0-sem falha 1-timeout 485 2-erro de comando 3-queda de peça Outro-código de falha da garra
       uint16_t gripper_active;    // Estado de ativação da garra
       uint8_t gripper_position;   // Posição da garra
       int8_t  gripper_speed;    // Velocidade da garra

@@ -217,14 +217,14 @@ Tipo de estrutura de feedback do estado do robô
 
         public byte EmergencyStop;          // Flag de parada de emergência, 0-não pressionado, 1-pressionado
         public int motion_done;             // Sinal de movimento concluído, 1-concluído, 0-não concluído
-        public byte gripper_motiondone;     // Sinal de conclusão do movimento da garra, 1-concluído, 0-não concluído
+        public byte gripper_motiondone;     // Sinal de conclusão de movimento da garra, 0-não concluído, 1-concluído (nenhum objeto detectado), 2-movimento concluído (objeto detectado)
         public int mc_queue_len;            // Comprimento da fila de comandos de movimento
         public byte collisionState;         // Detecção de colisão, 1-colisão, 0-sem colisão
         public int trajectory_pnum;         // Número do ponto da trajetória
         public byte safety_stop0_state;     // Sinal de parada de segurança SI0
         public byte safety_stop1_state;     // Sinal de parada de segurança SI1
         public byte gripper_fault_id;       // ID da garra com erro
-        public UInt16 gripper_fault;     /* Falha da garra */
+        public UInt16 gripper_fault;     /* Falha da garra 0-sem falha 1-timeout 485 2-erro de comando 3-queda de peça Outro-código de falha da garra */
         public UInt16 gripper_active;    /* Estado de ativação da garra */
         public byte gripper_position;       // Posição da garra
         public byte gripper_speed;       /* Velocidade da garra */

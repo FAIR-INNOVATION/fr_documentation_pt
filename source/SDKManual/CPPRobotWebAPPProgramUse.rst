@@ -12,7 +12,7 @@ Definir carregamento automático do programa de trabalho padrão na inicializaç
     /**
     * @brief  Define o carregamento automático do programa de trabalho padrão na inicialização
     * @param  [in] flag  0-não carregar automaticamente o programa padrão na inicialização, 1-carregar automaticamente o programa padrão na inicialização
-    * @param  [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param  [in] program_name Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return  Código de erro
     */
     errno_t LoadDefaultProgConfig(uint8_t flag, char program_name[64]);
@@ -24,7 +24,7 @@ Carregar o programa de trabalho especificado
 
     /**
     * @brief  Carrega o programa de trabalho especificado
-    * @param  [in] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param  [in] program_name Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return  Código de erro
     */
     errno_t ProgramLoad(char program_name[64]);
@@ -36,7 +36,7 @@ Obter o nome do programa de trabalho carregado
 
     /**
     * @brief  Obtém o nome do programa de trabalho carregado
-    * @param  [out] program_name Nome e caminho do programa de trabalho, ex: "/fruser/movej.lua", onde "/fruser/" é o caminho fixo para QX, "/usr/local/etc/controller/lua/" é o caminho fixo para LA
+    * @param  [out] program_name Nome e caminho do programa de trabalho, ex: "movej.lua"
     * @return  Código de erro
     */
     errno_t GetLoadedProgram(char program_name[64]);
@@ -126,7 +126,7 @@ Exemplo de Código de Operação de Programa LUA do Robô
         return -1;
       }
       robot.SetReConnectParam(true, 30000, 500);
-      char program_name[64] = "/fruser/test.lua";
+      char program_name[64] = "test.lua";
       char loaded_name[64] = "";
       uint8_t state;
       int line;
