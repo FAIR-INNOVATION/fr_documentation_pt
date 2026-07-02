@@ -18,6 +18,8 @@ Alternar Idioma
     \ `Italiano <https://fairino-doc-it.readthedocs.io/latest/>`__\ 
 
     \ `Deutsch <https://fairino-doc-de.readthedocs.io/latest/>`__\ 
+    
+    \ `Polski <https://fairino-doc-pl.readthedocs.io/latest/>`__\ 
 
 .. toctree::
    :maxdepth: 6

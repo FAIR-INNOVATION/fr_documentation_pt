@@ -5,9 +5,13 @@
 Brochuras
 --------------
 
-    :download:`Catálogo de Produtos FAIRINO <_static/_doc/FAIRINO Product Catalogue.pdf>`
+    :download:`Perfil da Empresa FAIRINO <_static/_doc/FAIRINO Company Profile.pdf>`
 
-    :download:`Catálogo de Produtos Ecológicos FAIRINO <_static/_doc/FAIRINO Accessories Ecosystem.pdf>`
+    :download:`Catálogo de Produtos do Ecossistema FAIRINO <_static/_doc/FAIRINO Accessories Ecosystem.pdf>`
+
+    :download:`Folheto de Soldagem FAIRINO <_static/_doc/FAIRINO Welding Brochure.pdf>`
+
+    :download:`Robô Humanóide FAIRINO <_static/_doc/FAIRINO Humanoid Robot.pdf>`
 
 Certificações de Qualidade
 ---------------------------------
