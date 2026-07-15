@@ -122,12 +122,6 @@ Informações da Placa de Identificação
 
 .. centered:: Figura 3.1-11 Robô Colaborativo Modelo FR30
 
-.. figure:: installation/125.png
-	:align: center
-	:width: 6in
-
-.. centered:: Figura 3.1-12 Robô Colaborativo Modelo FR30L
-
 Validade e Responsabilidade
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -284,14 +278,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.31
      - 0.22
 
-   * - **FR30L**
-     - 0.69
-     - 0.75
-     - 0.80
-     - 0.48
-     - 0.31
-     - 0.22
-
 .. centered:: Tabela 3.1-2 Tempo de Parada Categoria 0 (ms)
 .. list-table::
    :widths: 10 15 15 15 15 15 15
@@ -363,14 +349,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 130
 
    * - **FR20**
-     - 540
-     - 600
-     - 700
-     - 400
-     - 260
-     - 170
-
-   * - **FR30L**
      - 540
      - 600
      - 700
@@ -466,14 +444,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.33
      - 0.25
 
-   * - **FR30L**
-     - 0.71
-     - 0.78
-     - 0.82
-     - 0.51
-     - 0.33
-     - 0.25
-
 .. centered:: Tabela 3.1-4 Tempo de Parada de Segurança (ms)
 .. list-table::
    :widths: 10 15 15 15 15 15 15
@@ -545,14 +515,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 150
 
    * - **FR20**
-     - 560
-     - 630
-     - 720
-     - 430
-     - 280
-     - 200
-
-   * - **FR30L**
      - 560
      - 630
      - 720
@@ -638,14 +600,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 0.36
      - 0.27
 
-   * - **FR30L**
-     - 0.74
-     - 0.80
-     - 0.85
-     - 0.53
-     - 0.36
-     - 0.27
-
 .. centered:: Tabela 3.1-6 Tempo de Parada por Limite Suave (ms)
 .. list-table::
    :widths: 10 15 15 15 15 15 15
@@ -717,14 +671,6 @@ Os eixos 1 e 6 foram testados com o robô se movendo horizontalmente, com o eixo
      - 170
 
    * - **FR20**
-     - 580
-     - 640
-     - 740
-     - 440
-     - 300
-     - 210
-
-   * - **FR30L**
      - 580
      - 640
      - 740
@@ -1840,7 +1786,7 @@ Ao instalar o robô em uma base de montagem, use 4 parafusos M8 com resistência
 
 	.. centered:: Figura 3.4-10 Base de Montagem para Requisitos Altos - Modelo FR10, FR16
 
-Requisitos de Instalação do Braço do Robô FR20, FR30, FR30L
+Requisitos de Instalação do Braço do Robô FR20, FR30
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Ao instalar o robô em uma base de montagem, use 6 parafusos M10 com resistência não inferior a classe 8.8 para fixá-lo. Os parafusos devem ser apertados com um torque de no mínimo 45 Nm. Recomenda-se o uso de dois furos de pino de φ8mm na base, combinados com pinos, para posicionar o robô, aumentando a precisão da instalação e evitando o movimento devido a colisões. Quando o robô tem altos requisitos de precisão de operação, certifique-se de adicionar pinos para posicioná-lo.
@@ -1849,7 +1795,7 @@ Ao instalar o robô em uma base de montagem, use 6 parafusos M10 com resistênci
 	:align: center
 	:width: 6in
 
-.. centered:: Figura 3.4-11 Dimensões de Instalação do Robô Colaborativo Modelo FR20, FR30, FR30L
+.. centered:: Figura 3.4-11 Dimensões de Instalação do Robô Colaborativo Modelo FR20, FR30
 
 .. important:: 
 
@@ -1876,7 +1822,7 @@ A flange da ferramenta do robô possui quatro furos roscados M6 para conectar a 
 	:align: center
 	:width: 6in
 
-.. centered:: Figura 3.4-14 Desenho da Flange da Extremidade para Robôs Modelo FR20/FR30/FR30L
+.. centered:: Figura 3.4-14 Desenho da Flange da Extremidade para Robôs Modelo FR20/FR30
 
 .. important:: 
 	- Certifique-se de que a ferramenta esteja instalada corretamente e com segurança.

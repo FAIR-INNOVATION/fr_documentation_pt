@@ -71,11 +71,6 @@ Ao instalar o robô colaborativo em uma base de montagem, use a quantidade corre
      - ≥45 Nm
      - φ8mm
 
-   * - FR30L
-     - 6 parafusos M10
-     - ≥45 Nm
-     - φ8mm
-
 .. important:: 
    Recomenda-se que a base de montagem do robô atenda aos seguintes requisitos para garantir uma instalação firme e estável:
    
