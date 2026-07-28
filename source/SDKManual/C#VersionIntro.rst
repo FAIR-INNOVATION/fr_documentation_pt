@@ -13,6 +13,24 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.8
+     - 2026-07-27
+     - | 1. Atualizada a estrutura de feedback de status do robô para incluir o status de execução do programa LUA atual do robô: 0 - programa não em execução; 1 - programa em execução (incluindo programa pausado);
+       | 2. Atualizadas as descrições dos parâmetros para as interfaces SetExToolCoord() e SetExToolList() para configuração do sistema de coordenadas da ferramenta externa e da lista de sistemas de coordenadas de ferramentas. Os números dos sistemas de coordenadas de ferramentas externas foram atualizados para 20-39. Atualizados os exemplos de código para operações com sistemas de coordenadas de ferramentas externas.
+       | 3. Adicionada a capacidade de recuperar parâmetros de tipo de ferramenta, posição de instalação, ID da ferramenta e número de carga à interface GetToolCoordWithID() para obtenção de parâmetros do sistema de coordenadas da ferramenta.
+       | 4. Adicionada a capacidade de recuperar parâmetros do sistema de coordenadas de referência à interface GetWObjCoordWithID() para obtenção de parâmetros do sistema de coordenadas da peça.
+       | 5. Adicionada a capacidade de recuperar parâmetros de pose do sistema de coordenadas da peça montado na extremidade do robô à interface GetExToolCoordWithID() para obtenção de parâmetros do sistema de coordenadas da ferramenta externa.
+       | 6. Adicionada a capacidade de recuperar o número do eixo estendido e os parâmetros de flag de calibração à interface GetExAxisCoordWithID() para obtenção de parâmetros do sistema de coordenadas do eixo estendido.
+       | 7. Adicionadas configurações de parâmetros de velocidade de segurança das juntas do robô à interface SetVelReducePara() para configuração da velocidade de segurança do robô.
+       | 8. Adicionado um exemplo de aquisição do modo de controle da máquina de solda ao exemplo de código de configuração de parâmetros de soldagem.
+       | 9. Adicionados exemplos de código para obtenção de configurações de funções DI estendidas e DO estendidas ao exemplo de código de configuração de sinais de soldagem IO estendidos.
+       | 10. Adicionado um novo exemplo de código para configuração da velocidade de segurança das juntas do robô;
+       | 11. Adicionada uma nova interface WaitStationaryMotionDone() para aguardar a conclusão do movimento vazio em posição;
+       | 12. Adicionada uma nova interface SetStationaryTrackPara() para configuração de parâmetros de rastreamento em posição da esteira transportadora, juntamente com um exemplo de código de rastreamento em posição da esteira transportadora;
+       | 13. Adicionadas novas interfaces WorkPieceTrsfStart() e WorkPieceTrsfEnd() para início e fim da transformação do sistema de coordenadas da peça, juntamente com um exemplo de código de transformação do sistema de coordenadas da peça.
+       | 14. Adicionada a interface GetWeldMachineCtrlMode() para obtenção do modo de controle da máquina de solda.
+       | 15. Adicionadas as interfaces GetExtDIConfig() e GetExtDOConfig() para obtenção das configurações das funções DI estendidas e DO estendidas.
+
    * - V3.9.7
      - 2026-06-25
      - | 1. Adicionado erro de alarme de queda de peça da garra, código de falha principal 8, código de falha secundário 3.

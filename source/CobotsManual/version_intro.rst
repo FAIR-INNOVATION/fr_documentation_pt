@@ -1,3 +1,38 @@
+Versão V3.9.8
+-----------------
+
+Data: 2026-07-27
+
+- **Movimento de rastreamento da esteira transportadora otimizado**:
+    Caminho: Teach Program -> Comandos da Esteira.
+
+    Descrição: 1. Otimização das configurações do ponto de gatilho IO e do ponto inicial do programa; 2. Otimização do acionamento múltiplo de sinais IO durante o movimento.
+
+- **Carregamento web para grandes programas LUA e subprogramas otimizado**:
+    Caminho: Teach Program -> Importar Programa.
+
+    Descrição: Enviar arquivos de programas LUA grandes (acima de 50 MB) para carregamento e execução.
+
+- **Comandos de configuração/obtenção de ferramentas do robô, sistemas de coordenadas da peça e carga otimizados**:
+    Caminho: Configuração Inicial -> Ferramentas, Sistemas de Coordenadas da Peça, Carga.
+
+    Descrição: Parâmetros de sistemas de coordenadas e carga podem ser normalmente configurados e obtidos via interface de comando da porta 8080, SDK e WebApp.
+
+- **Recursos relacionados ao SmartTool adicionados**:
+    Caminho: Configuração Inicial -> Periféricos -> Punho de Solda.
+
+    Descrição: 1. Reset da memória dos botões IO após limpar ou criar um novo programa; 2. Adicionada seleção do número de processo para as 3 gerações de instruções relacionadas ao início do arco e removido o limite de timeout para início do arco; 3. Adicionada função de limpeza global de pontos com reset do número de sequência após a limpeza; 4. Removida a restrição de configuração repetida de PTP, LIN e ARC.
+
+- **Adicionado suporte para mão destra de cinco dedos**:
+    Caminho: Configuração Inicial -> Periféricos -> Mão Destra.
+
+    Descrição: Adicionado adaptador Lua para efetuador final para mão destra de cinco dedos.
+
+- **Adicionada adaptação de impedância articular FR3-WML para arrasto**:
+    Caminho: Aplicativos Auxiliares -> Aplicações de Ferramenta -> Bloqueio de Arrasto.
+
+    Descrição: Ajustados os parâmetros de arrasto híbrido com força de seis eixos e impedância articular para FR3-WML para habilitar a funcionalidade de arrasto.
+
 Versão V3.9.7
 -----------------
 

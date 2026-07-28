@@ -305,6 +305,7 @@ Pacote de feedback do estado do controlador
       uint8_t socketReadTimeout;   // Tempo limite de leitura do socket, bits 0-4: socketID 1-4
       uint8_t tsWebStateComErr;   // Falha de comunicação web-torque; 0-normal; 1-falha
       uint8_t exaxisCoordID;     //ID do sistema de coordenadas do eixo estendido
+      uint8_t programRunState;     //Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
       uint16_t check_sum;     // Checksum
     }ROBOT_STATE_PKG;
 
@@ -446,4 +447,5 @@ Tipo de Enumeração para Configuração de Feedback de Estado do Robô
         SocketReadTimeout = 130,    // Timeout de leitura socket, bit0-bit4 correspondem a socketID 1-4
         TsWebStateComErr = 131,     // Falha de comunicação web-torque: 0-normal, 1-falha
         ExaxisCoordID = 132          //ID do sistema de coordenadas do eixo estendido
+        programRunState = 133       //Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
     };

@@ -206,9 +206,9 @@ Definir Sistema de Coordenadas da Ferramenta Externa
 
     "Protótipo", "``SetExToolCoord(id, etcp, etool)``"
     "Descrição", "Define o sistema de coordenadas da ferramenta externa"
-    "Parâmetros obrigatórios", "- ``id``: Número do sistema de coordenadas, intervalo [0~14];
-    - ``etcp``: Sistema de coordenadas da ferramenta externa, unidades [mm][°];
-    - ``etool``: Sistema de coordenadas da ferramenta da extremidade, unidades [mm][°];"
+    "Parâmetros obrigatórios", "- ``id``: Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19;
+    - ``etcp``: [x,y,z,rx,ry,rz] Sistema de coordenadas da ferramenta externa, unidades [mm][°];
+    - ``etool``: [x,y,z,rx,ry,rz] Sistema de coordenadas da ferramenta da extremidade, unidades [mm][°];"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
@@ -220,7 +220,7 @@ Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
 
     "Protótipo", "``SetExToolList(id, etcp, etool)``"
     "Descrição", "Define a lista de sistemas de coordenadas da ferramenta externa"
-    "Parâmetros obrigatórios", "- ``id``: Número do sistema de coordenadas, intervalo [0~14];
+    "Parâmetros obrigatórios", "- ``id``: Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19;
     - ``etcp``: Sistema de coordenadas da ferramenta externa, unidades [mm][°];
     - ``etool``: Sistema de coordenadas da ferramenta da extremidade, unidades [mm][°];"
     "Parâmetros padrão", "Nenhum"
@@ -231,31 +231,42 @@ Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta Exte
 .. code-block:: python
     :linenos:
 
-    from fairino import Robot
+    from time import sleep
     import time
-    import threading
-    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
+    from fairino import Robot
+
     robot = Robot.RPC('192.168.58.2')
-    p1Desc = [-89.606, 779.517, 193.516, 178.000, 0.476, -92.484]
-    p1Joint = [-108.145, -50.137, 85.818, -125.599, -87.946, 74.329]
-    p2Desc = [-24.656, 850.384, 191.361, 177.079, -2.058, -95.355]
-    p2Joint = [-111.024, -41.538, 69.222, -114.913, -87.743, 74.329]
-    p3Desc = [-99.813, 766.661, 241.878, -176.817, 1.917, -91.604]
-    p3Joint = [-107.266, -56.116, 85.971, -122.560, -92.548, 74.331]
-    exaxisPos = [0, 0, 0, 0]
-    offdese = [0, 0, 0, 0, 0, 0]
-    posTCP = [p1Desc, p2Desc, p3Desc]
-    robot.MoveJ(joint_pos=p1Joint, tool=1, user=0, vel=50)
-    robot.SetExTCPPoint(1)
-    robot.MoveJ(joint_pos=p2Joint, tool=1, user=0, vel=50)
-    robot.SetExTCPPoint(2)
-    robot.MoveJ(joint_pos=p3Joint, tool=1, user=0, vel=50)
-    robot.SetExTCPPoint(3)
-    rtn, coordRtn = robot.ComputeExTCF()
-    print(f"ComputeExTCF {rtn}  coord is {coordRtn[0]} {coordRtn[1]} {coordRtn[2]} {coordRtn[3]} {coordRtn[4]} {coordRtn[5]}")
-    robot.SetExToolCoord(1, coordRtn, offdese)
-    robot.SetExToolList(1, coordRtn, offdese)
-    robot.CloseRPC()
+
+    def TestExtCoord(self):
+        p1Desc = [-89.606, 779.517, 193.516, 178.000, 0.476, -92.484]
+        p1Joint = [-108.145, -50.137, 85.818, -125.599, -87.946, 74.329]
+
+        p2Desc = [-24.656, 850.384, 191.361, 177.079, -2.058, -95.355]
+        p2Joint = [-111.024, -41.538, 69.222, -114.913, -87.743, 74.329]
+
+        p3Desc = [-99.813, 766.661, 241.878, -176.817, 1.917, -91.604]
+        p3Joint = [-107.266, -56.116, 85.971, -122.560, -92.548, 74.331]
+
+        exaxisPos = [0, 0, 0, 0]
+        offdese = [0, 0, 0, 0, 0, 0]
+
+        posTCP = [p1Desc, p2Desc, p3Desc]
+        # coordRtn = DescPose()
+
+        robot.MoveJ(joint_pos=p1Joint,tool=1, user=0, vel=50)
+        robot.SetExTCPPoint(1)
+        robot.MoveJ(joint_pos=p2Joint,tool=1, user=0, vel=50)
+        robot.SetExTCPPoint(2)
+        robot.MoveJ(joint_pos=p3Joint,tool=1, user=0, vel=50)
+        robot.SetExTCPPoint(3)
+        rtn,coordRtn = robot.ComputeExTCF()
+        print(f"ComputeExTCF {rtn}  coord is {coordRtn[0]} {coordRtn[1]} {coordRtn[2]} {coordRtn[3]} {coordRtn[4]} {coordRtn[5]}")
+
+        robot.SetExToolCoord(21, coordRtn, offdese)
+        robot.SetExToolList(21, coordRtn, offdese)
+
+        robot.CloseRPC()
+    TestExtCoord(robot)
 
 Definir Ponto de Referência da Peça - Método dos Três Pontos
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

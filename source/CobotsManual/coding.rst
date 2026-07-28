@@ -176,16 +176,52 @@ Use a barra de ferramentas na parte superior da árvore do programa para modific
    
    Função: Alternar entre o modo de árvore de programa e o modo de edição Lua
 
-A descrição dos ícones no canto superior direito é a seguinte:
+Os ícones no canto superior direito são descritos a seguir:
 
 .. note:: 
    .. image:: coding/240.png
       :height: 0.75in
       :align: left
 
-   Nome: **Adicionar/Editar Programação de Programa**
+   Nome: **Adicionar/Editar Programação de Programas**
    
    Função: Adicionar/editar o conteúdo do comando do programa atual
+
+.. note:: 
+   .. image:: coding/245.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Ponto de Ensino Local**
+   
+   Função: Pontos de ensino que se aplicam apenas ao programa atual
+
+.. note:: 
+   .. image:: coding/242.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Interface de Subprograma NewDofile**
+   
+   Função: Quando o comando do programa atual contém uma instrução NewDofile, clique para entrar e selecionar o nome do subprograma para visualizar seu conteúdo.
+
+.. note:: 
+   .. image:: coding/244.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Backup do Programa de Ensino Atual**
+   
+   Função: Registra as modificações feitas no programa atual
+
+.. note:: 
+   .. image:: coding/602.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Log de Impressão**
+   
+   Função: Saída de informações especificadas para a janela de impressão do WebApp para facilitar a depuração e o rastreamento de dados
 
 .. note:: 
    .. image:: coding/241.png
@@ -197,40 +233,67 @@ A descrição dos ícones no canto superior direito é a seguinte:
    Função: Retornar à interface do modelo 3D do robô
 
 .. note:: 
-   .. image:: coding/242.png
+   .. image:: coding/596.png
       :height: 0.75in
       :align: left
 
-   Nome: **Interface de Subprograma NewDofile**
+   Nome: **Depuração de Rede Socket**
    
-   Função: Quando o comando do programa atual contém uma instrução NewDofile, clique para selecionar o nome do subprograma e visualizar seu conteúdo
+   Função: Interface de depuração de comunicação em rede
 
 .. note:: 
    .. image:: coding/243.png
       :height: 0.75in
       :align: left
 
-   Nome: **Configuração Modbus TCP**
+   Nome: **Configurações Modbus TCP**
    
-   Função: Configurar os parâmetros da comunicação Modbus TCP
+   Função: Configurar os parâmetros de comunicação Modbus TCP
 
 .. note:: 
-   .. image:: coding/244.png
+   .. image:: coding/597.png
       :height: 0.75in
       :align: left
 
-   Nome: **Backup do Programa de Ensino Atual**
+   Nome: **Configurações Modbus RTU**
    
-   Função: Registrar as alterações feitas no programa atual
+   Função: Configurar os parâmetros de comunicação Modbus RTU
 
 .. note:: 
-   .. image:: coding/245.png
+   .. image:: coding/598.png
       :height: 0.75in
       :align: left
 
-   Nome: **Pontos de Ensino Locais**
+   Nome: **Gerenciamento de Programas em Segundo Plano**
    
-   Função: Pontos de ensino que se aplicam apenas ao programa atual
+   Função: Configurar a interface de programas em segundo plano
+
+.. note:: 
+   .. image:: coding/599.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Gerenciamento de Variáveis do Usuário**
+   
+   Função: Configurar a interface de variáveis do usuário
+
+.. note:: 
+   .. image:: coding/600.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Pontos de Ensino**
+   
+   Função: Configurar a interface de pontos de ensino
+
+.. note:: 
+   .. image:: coding/601.png
+      :height: 0.75in
+      :align: left
+
+   Nome: **Configuração do Programa Principal**
+   
+   Função: Configurar o programa principal
 
 Comandos do Programa
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -1427,6 +1490,98 @@ Selecione o sistema de coordenadas da peça a ser automaticamente transformado. 
 
 .. centered:: Figura 9.5-33 Interface da Instrução WPTrsf
 
+Função de Transformação da Peça e Velocidade de Segurança
+**************************************************************
+
+Visão Geral
+""""""""""""""""""""""""""""""""""""
+
+A função de transformação da peça refere-se à migração das trajetórias de movimento PTP\LIN\ARC\CIR sob o sistema de coordenadas da peça atual para operar sob o sistema de coordenadas da peça alvo.
+
+A função de velocidade de segurança refere-se à configuração aberta dos limites de velocidade no espaço cartesiano\articular do robô, permitindo a proteção de velocidade tanto no espaço de trabalho quanto no espaço articular.
+
+Procedimento Operacional da Função de Transformação da Peça
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Calibrar o sistema de coordenadas da peça do robô através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 2**: Ensinar pontos. Ensinar pontos de movimento PTP\LIN\ARC\CIR e escrever programas LUA através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 3**: Configurar a transformação do sistema de coordenadas da peça. Na interface principal do WebApp, clique em "Teach Program" - "Program Programming" para acessar a área "Instruções de Movimento".
+
+.. image:: coding/583.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 9.5-33-1 Área "Instruções de Movimento"
+
+Na área "Instruções de Movimento", clique no botão "Transformação da Peça" para acessar a interface de configuração da instrução "WPTrsf".
+
+.. image:: coding/584.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.5-33-2 Configuração da Instrução WPTrsf
+
+Na interface de configuração da instrução "WPTrsf" -> área de configuração "Editar Instrução", selecione o número do sistema de coordenadas da peça alvo no menu suspenso "Selecionar Sistema de Coordenadas da Peça", clique nos botões "Adicionar" - "Aplicar" para concluir a configuração da função de transformação da peça.
+
+**Passo 4**: Escrever o programa LUA para a função de transformação da peça. Ajuste a ordem das instruções geradas do Passo 2 ao Passo 3 e execute o programa LUA para implementar a função de transformação da peça.
+
+.. image:: coding/585.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 9.5-33-3 Programa LUA para a Função de Transformação da Peça
+
+Procedimento Operacional da Função de Velocidade de Segurança
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Na interface principal do WebApp, clique em "Configuração Inicial" - "Segurança" - "Velocidade de Segurança" para acessar a área de configuração "Velocidade de Segurança".
+
+.. image:: coding/586.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.5-33-4 Configuração da Instrução de Velocidade de Segurança
+
+Na área de configuração "Velocidade de Segurança" -> menu suspenso "Habilitar Função", você pode selecionar as opções "Desabilitar", "Habilitar no Modo Manual" e "Habilitar em Todos os Modos".
+
+"Habilitar no Modo Manual" significa que a função é habilitada ao alternar para o modo manual no WebApp; "Habilitar em Todos os Modos" significa que a função é habilitada ao alternar para o modo manual, modo automático e modo de arrasto no WebApp.
+
+Na área de configuração "Velocidade de Segurança" mostrada abaixo, você pode definir a proteção de velocidade nos espaços cartesiano e articular do robô respectivamente nos campos de entrada "Velocidade Limite TCP", "Velocidade Limite J1", "Velocidade Limite J2", "Velocidade Limite J3", "Velocidade Limite J4", "Velocidade Limite J5" e "Velocidade Limite J6".
+
+É importante notar que durante o movimento do robô, as proteções de velocidade acima são acionadas com base no valor mínimo entre elas.
+
+Na área de configuração "Velocidade de Segurança" -> menu suspenso "Modo Pós-Excesso de Velocidade", você pode selecionar as opções "Parar e Alarmar", "Limitação Automática de Velocidade" e "Desabilitar Após Parar e Alarmar", conforme mostrado na tabela abaixo.
+
+.. centered:: Tabela 9.5-4 Seleção do "Modo Pós-Excesso de Velocidade" sob Diferentes Opções de "Habilitar Função"
+
+.. list-table::
+   :widths: 25 25 25 25
+   :header-rows: 0
+   :align: center
+
+   * - \
+     - **Parar e Alarmar**
+     - **Limitação Automática de Velocidade**
+     - **Desabilitar Após Parar e Alarmar**
+
+   * - **Habilitar no Modo Manual**
+     - Suportado
+     - Suportado
+     - Suportado
+
+   * - **Habilitar em Todos os Modos**
+     - Suportado
+     - Não Suportado
+     - Suportado
+			
+"Parar e Alarmar": Quando tanto a velocidade de comando quanto a de feedback das juntas excedem a velocidade de segurança, o WebApp exibe um aviso de excesso de velocidade;
+
+"Limitação Automática de Velocidade": Quando tanto a velocidade de comando quanto a de feedback das juntas excedem a velocidade de segurança, a velocidade é automaticamente reduzida para dentro do limite de segurança;
+
+"Desabilitar Após Parar e Alarmar": Quando tanto a velocidade de comando quanto a de feedback das juntas excedem a velocidade de segurança, o WebApp exibe um aviso de excesso de velocidade e todas as juntas do robô são desabilitadas.
+
 Comando de Transformação de Ferramenta
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1723,6 +1878,71 @@ Esta instrução inclui quatro comandos: detecção de posição em tempo real, 
    :align: center
 
 .. centered:: Figura 9.7-5 Interface da Instrução Conveyor
+
+Função de Movimento de Rastreamento no Local da Esteira Transportadora
+***********************************************************************
+
+Visão Geral
+"""""""""""""""""""""""""""""""""""
+
+Esta função permite que o robô identifique e rastreie sincronizadamente objetos em movimento em uma esteira transportadora e, em seguida, realize um movimento "relativamente estacionário" entre o robô e o objeto sem parar a esteira.
+
+Procedimento Operacional
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Clique em "Aplicativos Auxiliares" - "Pacote de Processo" - "Rastreamento de Esteira" para configurar os parâmetros de rastreamento da esteira, incluindo "Configuração I/O", "Configuração de Parâmetros", "Compensação do Ponto de Pegada" (necessário apenas para a função "Rastreamento com Pegada") e "Configuração dos Pontos de Referência". Na "Configuração dos Pontos de Referência", a posição do "Ponto Inicial a" é a posição do objeto quando o movimento da esteira começa; a posição do "Ponto Final b" é a posição do objeto quando o movimento da esteira termina. Para detalhes operacionais, consulte os capítulos correspondentes.
+
+**Passo 2**: O movimento de rastreamento usa o sistema de coordenadas da peça como o sistema de coordenadas da esteira, portanto, o sistema de coordenadas da peça precisa ser configurado. Clique em "Configuração Inicial" - "Básico", selecione "Sistema de Coordenadas da Peça", clique para selecionar um sistema de coordenadas da peça diferente de "wobjcoord0" para calibração. Consulte os capítulos correspondentes para o método de calibração.
+
+**Passo 3**: Clique em "Teach Program" - "Program Programming" - "Esteira" para entrar na página de configuração da função esteira.
+
+**Passo 4**: Clique no botão "Habilitar Rastreamento", selecione "Movimento de Rastreamento" como modo de trabalho e clique no botão "Adicionar".
+
+.. image:: coding/590.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.7-5-1 Configurações de Habilitação de Rastreamento
+
+**Passo 5**: Clique no botão "Detecção I/O em Tempo Real", defina o tempo máximo de espera e clique no botão "Adicionar".
+
+.. image:: coding/591.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.7-5-2 Configurações de Detecção I/O em Tempo Real
+
+**Passo 6**: Clique no botão "Detecção de Posição em Tempo Real", selecione "Movimento de Rastreamento" como modo de trabalho e clique no botão "Adicionar".
+
+.. image:: coding/592.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.7-5-3 Configurações de Detecção de Posição em Tempo Real
+
+**Passo 7**: Clique no botão "Movimento de Rastreamento no Local". Os modos de trabalho são "Tempo", "Distância" e "Tempo + Distância". No modo "Tempo", é necessário definir o tempo de movimento. O tempo é calculado a partir do início do rastreamento da esteira, e o rastreamento para após o tempo definido. No modo "Distância", é necessário definir a distância de movimento. A distância é calculada a partir do início do rastreamento da esteira, e o rastreamento para após a distância definida. No modo "Tempo + Distância", é necessário definir tanto o tempo quanto a distância de movimento. O cálculo começa a partir da ativação do rastreamento da esteira, e o rastreamento para quando uma das condições definidas (tempo ou distância) for atendida. Nota: Para a segurança do ambiente de movimento, a posição máxima de rastreamento desses três modos não excederá a posição do "Ponto Final b" durante a calibração da esteira. Clique no botão "Adicionar".
+
+.. image:: coding/593.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.7-5-4 Configurações de Parâmetros de Movimento de Rastreamento no Local
+
+**Passo 8**: Clique no botão "Desabilitar Rastreamento" e clique no botão "Adicionar".
+
+.. image:: coding/594.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.7-5-5 Configurações de Desabilitação de Rastreamento
+
+**Passo 9**: O programa LUA gerado para o movimento de rastreamento no local da esteira é mostrado na figura. Execute o programa para realizar o movimento de rastreamento no local da esteira.
+
+.. image:: coding/595.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 9.7-5-6 Programa LUA de Movimento de Rastreamento no Local da Esteira
 
 Comando Equipamento de Lixamento
 ++++++++++++++++++++++++++++++++++++++++++++
@@ -8686,3 +8906,75 @@ A seguir está um programa de movimento não bloqueante do robô que imprime a p
    :align: center
 
 .. centered:: Figura 9.39‑10 Exemplo de Impressão da Posição Atual e DI Durante o Movimento do Robô   
+
+Otimização da Função de Carregamento Web para Grandes Programas LUA e Subprogramas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Contexto
+++++++++++++++++++++++++++++++++++++++++++++++
+
+Atualmente, o robô não consegue lidar com grandes programas LUA (200k+ linhas). Ao carregar um grande programa LUA, a página web não consegue carregá-lo e utilizá-lo.
+
+Ao mesmo tempo, ao importar programas, a lógica de importação atual não realiza a análise e validação do programa. Após a importação, o programa deve ser aberto manualmente e salvo para validação. Ao utilizar um grande número de chamadas de subprogramas simultaneamente, cada um deve ser aberto manualmente um por um, o que consome muito tempo e reduz drasticamente a eficiência do trabalho.
+
+Visão Geral
+++++++++++++++++++++++++++++++++++++++++++++++
+
+Esta otimização visa os programas importados. O backend analisa e salva automaticamente. Após o upload dos subprogramas subsequentes, eles podem ser chamados diretamente sem a necessidade de abertura e salvamento manuais.
+
+Para grandes programas LUA, quando o frontend web importa um grande programa LUA (um programa LUA nativo que não requer análise secundária), ele é nomeado com o prefixo RAW, como RAW_test.lua. Este tipo de programa indica que o programa consiste inteiramente em instruções LUA nativas e não contém informações de negócios da aplicação. Pode ser colocado diretamente no interpretador LUA para execução. O controlador só precisa realizar a validação sintática, sem analisar linha por linha. Isso reduz significativamente o tempo de análise de importação do arquivo. Ao mesmo tempo, o frontend não realiza mais a renderização animada para grandes programas LUA; os programas são exibidos em formato de texto simples, e o destaque dinâmico e os números de linha em execução não são mais mostrados, melhorando a eficiência da renderização de dados do frontend. Para instruções específicas que precisam de análise, consulte o Capítulo 1.4.
+
+Após a importação de um programa, a Web deve exibir uma barra de progresso e uma mensagem de confirmação após a importação bem-sucedida.
+
+Para grandes programas LUA, recomenda-se o uso de subprogramas em conjunto com o método `RAW_` para melhorar a eficiência operacional.
+
+Procedimento Operacional para Grandes Programas LUA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Passo 1**: Nomeie o grande programa LUA com o prefixo `RAW_`, por exemplo, RAW_test200000.lua.
+
+**Passo 2**: Abra a página web, clique em "Teach Program" -> "Program Programming" em sequência, selecione o comando "Importar" e escolha RAW_test200000.lua na seleção de arquivos "Importar".
+
+.. image:: coding/587.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.40‑1 Importação de Arquivo `RAW_`    
+
+**Passo 3**: Aguarde a conclusão da importação. Quando a importação for concluída, as operações de importação, análise, salvamento e renderização já foram realizadas, e o arquivo pode ser executado diretamente.
+
+.. image:: coding/588.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.40‑2 Aguardando Importação   
+
+Procedimento Operacional para Subprogramas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Passo 1**: Abra a página web, clique em "Teach Program" -> "Program Programming" em sequência, selecione o comando "Importar" e selecione em lote o programa principal e os subprogramas na seleção de arquivos "Importar".
+
+**Passo 2**: Aguarde a importação bem-sucedida de todos os programas, alterne o robô para o modo automático e o programa principal pode ser executado diretamente.
+
+Precauções
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Arquivos `RAW_` realizam apenas validação sintática e não analisam e geram o conteúdo do arquivo linha por linha. Eles contêm informações de pontos, operações IO e outras funções LUA integradas personalizadas para conveniência do cliente. Tais funções precisam ser combinadas com dados personalizados do usuário para geração secundária em funções LUA diretamente executáveis e não podem ser usadas em arquivos `RAW_`.
+
+.. image:: coding/589.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.40‑3 Fluxograma de Importação de Programa LUA 
+
+Para escrever arquivos `RAW_`, consulte o Manual do Usuário de Scripts de Programação FRLua. As seguintes funções LUA requerem análise e não são aplicáveis a arquivos `RAW_`.
+
+laserPTP(), EXT_AXIS_PTP(), SPTP(), NewSP(), SplinePTP(), laserLin(), SLIN(), Lin(), laserARC(), ARC() 
+laserCircle(), Circle(), TCPComputeCircleCenter(), unifCircle(), NewSpiral(), Spiral(), SCIRC() 
+ModbusSlaveWriteDO(), ModbusSlaveWriteDI(), ModbusSlaveWriteAO(), ModbusSlaveWriteAI(), ModbusSlaveReadDO(), ModbusSlaveReadDI(), ModbusSlaveReadAO(), ModbusSlaveReadAI(), ModbusSlaveWaitDI(), ModbusSlaveWaitAI()
+ModbusMasterWriteDO(), ModbusMasterWriteAO(), ModbusMasterReadDO(), ModbusMasterReadDI(), ModbusMasterReadAO(), ModbusMasterReadAI(), ModbusMasterWaitDI(), ModbusMasterWaitAI()
+ModbusSlaveWriteDO_RTU(), ModbusSlaveWriteDI_RTU(), ModbusSlaveWriteAO_RTU(), ModbusSlaveWriteAI_RTU(), ModbusSlaveReadDO_RTU(), ModbusSlaveReadDI_RTU(), ModbusSlaveReadAO_RTU(), ModbusSlaveReadAI_RTU(), ModbusSlaveWaitDI_RTU(), ModbusSlaveWaitAI_RTU()
+ModbusMasterWriteDO_RTU(), ModbusMasterWriteAO_RTU(), ModbusMasterReadDO_RTU(), ModbusMasterReadDI_RTU(), ModbusMasterReadAO_RTU(), ModbusMasterReadAI_RTU(), ModbusMasterWaitDI_RTU(), ModbusMasterWaitAI_RTU(), SetAO(), SetAuxAO(), SetToolAO(), WaitAI()
+FieldBusSlaveWaitAI(), WaitToolAI(), WaitAuxAI(), SPLCSetAO(), SPLCSetToolAO(), SetToolList(), SetWObjList(), SetExToolList(), PostureAdjustOn(), RegisterVar(), SetSysVarValue(), GetSysVarValue(), MultilayerOffsetTrsfToBase(), GetSegWeldDisDir(), DMP()
+LTSearchStart(), PointTableSwitch(), GetSegmentWeldPoint(), LaserRecordPoint(), GetIntersectionThrough3Point(), GetIntersectionThrough4Point(), GetUserVal(), SetUserVal(), MoveToIntersectLineStart(), MoveIntersectLine(), OriginPointWeaveStart()
+MatrixMoveStart(), MatrixMoveEnd(), MatrixSetCountPlus(), MatrixGetCount(), MatrixSetStartCount().   

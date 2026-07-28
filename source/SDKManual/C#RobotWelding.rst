@@ -177,12 +177,12 @@ Definir Parâmetros de Oscilação
 
 Exemplo de Código para Definir Parâmetros de Soldagem
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-.. versionadded:: C#SDK-V1.1.3  Web-3.8.2
+.. versionadded:: C#SDK-V3.9.8
     
 .. code-block:: c#
     :linenos:
 
-    private void button7_Click(object sender, EventArgs e)
+    private void button42_Click(object sender, EventArgs e)
     {
         robot.WeldingSetProcessParam(1, 177, 27, 1000, 178, 28, 176, 26, 1000);
         robot.WeldingSetProcessParam(2, 188, 28, 555, 199, 29, 133, 23, 333);
@@ -254,12 +254,16 @@ Exemplo de Código para Definir Parâmetros de Soldagem
         robot.SetWeldMachineCtrlModeExtDoNum(17);
         for (int i = 0; i < 5; i++)
         {
+            int getCtrlMode = -1;
             robot.SetWeldMachineCtrlMode(0);
+            robot.GetWeldMachineCtrlMode(ref getCtrlMode);
+            Console.WriteLine("GetWeldMachineCtrlMode {0}", getCtrlMode);
             Thread.Sleep(1000);
             robot.SetWeldMachineCtrlMode(1);
+            robot.GetWeldMachineCtrlMode(ref getCtrlMode);
+            Console.WriteLine("GetWeldMachineCtrlMode {0}", getCtrlMode);
             Thread.Sleep(1000);
         }
-
     }
 
 Definir Parâmetros de Oscilação Online
@@ -364,6 +368,18 @@ Definir Modo de Controle da Fonte de Solda
     * @return Código de erro
     */
     public int SetWeldMachineCtrlMode(int mode,int ioType = 1)
+
+Obter Modo de Controle da Máquina de Solda
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obtém o modo de controle da máquina de solda
+    * @param [out] mode Modo de controle da máquina de solda; 0-modo único CC; 1-modo único pulsado; 2-modo JOB; 3-modo controle local; 4-modo separado; 5-modo CC/CV; 6-TIG; 7-CMT
+    * @return Código de erro
+    */
+    public int GetWeldMachineCtrlMode(ref int mode)    
 
 Início da Soldagem
 ++++++++++++++++++++++++++++++++++
@@ -787,8 +803,8 @@ IO de Extensão - Configurar Sinal de Recuperação de Interrupção de Soldagem
     */
     int SetExtDIWeldBreakOffRecover(int reWeldDINum, int abortWeldDINum);
 
-Exemplo de Código para Configurar Sinais de Soldagem com IO de Extensão
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configurar e Obter Exemplo de Código IO Estendido
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
@@ -803,7 +819,40 @@ Exemplo de Código para Configurar Sinais de Soldagem com IO de Extensão
         robot.SetArcDoneExtDiNum(60);
         robot.SetExtDIWeldBreakOffRecover(70, 80);
         robot.SetWireSearchExtDIONum(0, 1);
+
+        int[] DIConfig = new int[16];
+        int[] DOConfig = new int[16];
+        int rtn = robot.GetExtDIConfig(ref DIConfig);
+        Console.WriteLine("GetExtDIConfig rtn={0}, máquina de solda pronta={1}, início de arco bem-sucedido={2}, retomada de interrupção={3}, saída de interrupção={4}, busca de fio bem-sucedida={5}, status do laser={6}, erro do laser={7}",
+            rtn, DIConfig[0], DIConfig[1], DIConfig[2], DIConfig[3], DIConfig[4], DIConfig[5], DIConfig[6]);
+        rtn = robot.GetExtDOConfig(ref DOConfig);
+        Console.WriteLine("GetExtDOConfig rtn={0}, início de arco da solda={1}, teste de gás={2}, alimentação de fio para frente={3}, alimentação de fio para trás={4}, busca de fio={5}, modo de solda={6}, habilitação do laser={7}, acionamento do laser={8}, reset do laser={9}",
+            rtn, DOConfig[0], DOConfig[1], DOConfig[2], DOConfig[3], DOConfig[4], DOConfig[5], DOConfig[6], DOConfig[7], DOConfig[8]);
     }
+
+Obter Configuração da Função DI Estendida
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obtém a configuração da função DI estendida
+    * @param [out] DIConfig Configuração de entrada DI estendida; [0]-máquina de solda pronta; [1]-início de arco bem-sucedido; [2]-retomada de interrupção de soldagem; [3]-saída de interrupção de soldagem; [4]-busca de fio bem-sucedida; [5]-status de operação da máquina de solda a laser; [6]-status de falha da máquina de solda a laser; [7-15]-reservados
+    * @return  Código de erro
+    */
+    public int GetExtDIConfig(ref int[] DIConfig)
+
+Obter Configuração da Função DO Estendida
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obtém a configuração da função DO estendida
+    * @param [out] DOConfig Configuração de saída DO estendida; [0]-início de arco da máquina de solda; [1]-detecção de gás; [2]-alimentação de fio para frente; [3]-alimentação de fio para trás; [4]-busca de fio; [5]-modo de controle da máquina de solda; [6]-habilitação da máquina de solda a laser; [7]-início da máquina de solda a laser; [8]-reinicialização da máquina de solda a laser; [9-15]-reservados
+    * @return  Código de erro
+    */
+    public int GetExtDOConfig(ref int[] DOConfig)
 
 Controle de Rastreamento de Arco
 ++++++++++++++++++++++++++++++++++

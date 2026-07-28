@@ -457,10 +457,7 @@ Configurar Parâmetros da Esteira
                     - ``lead``: Relação de transmissão mecânica, distância percorrida pela esteira por rotação do encoder
                     - ``wpAxis``: Número do sistema de coordenadas da peça (para movimento de rastreamento, escolha o número do sistema de coordenadas; para captura com rastreamento e rastreamento TPD, defina como 0)
                     - ``vision``: Se usa visão  0-não usa 1-usa,
-                    - ``speedRadio``: Relação de velocidade (para a opção de captura com rastreamento da esteira, faixa de velocidade (1-100); para movimento de rastreamento e rastreamento TPD, defina como 1)
-    - ``followType``: Tipo de movimento de rastreamento, 0-movimento de rastreamento; 1-movimento de verificação"
-    "Parâmetros Padrão", "- ``startDis``: Necessário para captura com verificação, distância inicial de rastreamento, -1: cálculo automático (a verificação começa automaticamente quando a peça chega abaixo do robô), unidade mm, valor padrão 0
-    - ``endDis``: Necessário para captura com verificação, distância final de rastreamento, unidade mm, valor padrão 100"
+                    - ``speedRadio``: Relação de velocidade (para a opção de captura com rastreamento da esteira, faixa de velocidade (1-100); para movimento de rastreamento e rastreamento TPD, defina como 1)"
     "Valor de Retorno", "Código de erro: Sucesso-0   Falha - errcode"
 
 Compensação do Ponto de Captura da Esteira
@@ -576,6 +573,111 @@ Exemplo de Código de Operação da Esteira do Robô
     retval = robot.MoveGripper(index, 100, 40, 10, max_time, block, 0, 0, 0, 0)
     print(f"MoveGripper retval is:{retval}")
     robot.CloseRPC()
+
+Configuração de Parâmetros de Rastreamento em Posição da Esteira Transportadora
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: python SDK-V3.9.8
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetStationaryTrackPara(self, trackMode, trackTime, trackDis)``"
+    "Descrição", "Configura os parâmetros de rastreamento em posição da esteira transportadora"
+    "Parâmetros Obrigatórios", "
+    - ``trackMode``: 0-tempo; 1-distância; 2-tempo e distância, qualquer condição satisfeita
+    - ``trackTime``: Tempo de rastreamento, unidade s
+    - ``trackDis``: Distância de rastreamento
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
+Aguardar Conclusão do Movimento Vazio em Posição
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: python SDK-V3.9.8
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``WaitStationaryMotionDone(self)``"
+    "Descrição", "Aguardar a conclusão do movimento vazio em posição"
+    "Parâmetros Obrigatórios", "Nenhum"
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
+Exemplo de Código de Movimento de Rastreamento em Posição da Esteira Transportadora
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: python SDK-V3.9.8
+
+.. code-block:: python
+    :linenos: 
+
+    from fairino import Robot
+    import time
+
+
+    def main():
+        robot = Robot.RPC('192.168.58.2')
+        time.sleep(0.5) 
+        j1 = [-35.146, -102.684, 120.805, -100.401, -90.295, 150.105]
+        d1 = [-121.814, -348.341, 209.978, -173.152, -3.585, -5.446]
+
+        ex = [0.0, 0.0, 0.0, 0.0]
+        zeroOff = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        tool = 1
+        workpiece = 1
+
+        para = [0, 10000, 200, 0, 0, 10]
+    
+        rtn = robot.ConveyorSetParam(para= para)
+        print(f"ConveyorSetParam rtn is {rtn}")
+
+        robot.MoveJ(joint_pos=j1, desc_pos=d1, tool=tool, user=workpiece,
+                    vel=100, acc=100, ovl=100, exaxis_pos=ex,
+                    blendT=-1, offset_flag=0, offset_pos=zeroOff)
+
+        print("--- Step 1: SetDO(6,1) ---")
+        rtn = robot.SetDO(6, 1, 0, 0)
+        print(f"  SetDO(6,1) rtn={rtn}")
+
+        print("--- Step 2: ConveyorTrackStart(2) ---")
+        rtn = robot.ConveyorTrackStart(2)
+        print(f"  ConveyorTrackStart(2) rtn={rtn}")
+
+        print("--- Step 3: ConveyorIODetect(10000) ---")
+        rtn = robot.ConveyorIODetect(10000)
+        print(f"  ConveyorIODetect(10000) rtn={rtn}")
+
+        print("--- Step 4: ConveyorGetTrackData(2) ---")
+        rtn = robot.ConveyorGetTrackData(2)
+        print(f"  ConveyorGetTrackData(2) rtn={rtn}")
+
+        print("--- Step 5: SetStationaryTrackPara(0,5,5) ---")
+        rtn = robot.SetStationaryTrackPara(0, 5, 5)
+        print(f"  SetStationaryTrackPara(0,5,5) rtn={rtn}")
+
+        print("--- Step 6: MoveStationary() ---")
+        rtn = robot.MoveStationary()
+        print(f"  MoveStationary() rtn={rtn}")
+
+        rtn = robot.WaitStationaryMotionDone()
+        print(f"  WaitStationaryMotionDone() rtn={rtn}")
+
+        print("--- Step 7: ConveyorTrackEnd() ---")
+        rtn = robot.ConveyorTrackEnd()
+        print(f"  ConveyorTrackEnd() rtn={rtn}")
+
+        print("--- Step 8: SetDO(6,0) ---")
+        rtn = robot.SetDO(6, 0, 0, 0)
+        print(f"  SetDO(6,0) rtn={rtn}")
+
+        robot.CloseRPC()
+
+
+    if __name__ == "__main__":
+        main()
 
 Configurar Sensor de Extremidade
 +++++++++++++++++++++++++++++++++

@@ -462,9 +462,6 @@ Configurar Parâmetros da Esteira
     * @param [in] para[3] Número do sistema de coordenadas da peça (para movimento de rastreamento, escolha o número do sistema de coordenadas; para captura com rastreamento e rastreamento TPD, defina como 0)
     * @param [in] para[4] Se usa visão 0-não usa 1-usa
     * @param [in] para[5] Relação de velocidade (para a opção de captura com rastreamento da esteira [1-100]; para outras opções, padrão 1)
-    * @param [in] followType Tipo de movimento de rastreamento, 0-movimento de rastreamento; 1-movimento de verificação
-    * @param [in] startDis Necessário para captura com verificação, distância inicial de rastreamento, -1: cálculo automático (a verificação começa automaticamente quando a peça chega abaixo do robô), unidade mm, valor padrão 0
-    * @param [in] endDis Necessário para captura com verificação, distância final de rastreamento, unidade mm, valor padrão 100
     * @return Código de erro
     */
     errno_t ConveyorSetParam(float para[6], int followType = 0, int startDis = 0, int endDis = 100);
@@ -596,6 +593,87 @@ Exemplo de Programa de Operação da Esteira do Robô
       return 0;
     }
 
+Configuração de Parâmetros de Rastreamento em Posição da Esteira Transportadora
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.9.8
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Configura os parâmetros de rastreamento em posição da esteira transportadora
+    * @param [in] trackMode 0-tempo; 1-distância; 2-tempo e distância, qualquer condição satisfeita
+    * @param [in] trackTime Tempo de rastreamento, unidade s
+    * @param [in] trackDis Distância de rastreamento, unidade mm
+    * @return Código de erro
+    */
+    int SetStationaryTrackPara(int trackMode, double trackTime, int trackDis);
+    
+Exemplo de Código de Rastreamento em Posição da Esteira Transportadora
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-v3.9.8
+    
+.. code-block:: c++
+    :linenos:
+
+    int TestStationaryTrack()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        robot.SetReConnectParam(true, 30000, 500);
+        printf("\n========== Teste de Rastreamento Estacionário da Esteira ==========");
+        JointPos j1(-35.146, -102.684, 120.805, -100.401, -90.295, 150.105);
+        DescPose d1(-121.814, -348.341, 209.978, -173.152, -3.585, -5.446);
+        ExaxisPos ex(0, 0, 0, 0);
+        DescPose zeroOff(0, 0, 0, 0, 0, 0);
+        int tool = 1;
+        int workpiece = 1;
+        float conveyorParam[6] = { 0, 10000, 200, 0, 0, 10 };
+        rtn = robot.ConveyorSetParam(conveyorParam);
+        robot.MoveJ(&j1, &d1, tool, workpiece, 100, 100, 100, &ex, -1, 0, &zeroOff);
+        // Step 1: Sinal de controle SetDO
+        printf("--- Step 1: SetDO(6,1) ---\n");
+        rtn = robot.SetDO(6, 1, 0, 0);
+        printf("  SetDO(6,1) rtn={0}\n", rtn);
+        // Step 2: Início do rastreamento da esteira
+        printf("--- Step 2: ConveyorTrackStart(2) ---\n");
+        rtn = robot.ConveyorTrackStart(2);
+        printf("  ConveyorTrackStart(2) rtn={0}\n", rtn);
+        // Step 3: Detecção IO da peça
+        printf("--- Step 3: ConveyorIODetect(10000) ---\n");
+        rtn = robot.ConveyorIODetect(10000);
+        printf("  ConveyorIODetect(10000) rtn={0}\n", rtn);
+        // Step 4: Obter dados de rastreamento
+        printf("--- Step 4: ConveyorGetTrackData(2) ---\n");
+        rtn = robot.ConveyorGetTrackData(2);
+        printf("  ConveyorGetTrackData(2) rtn={0}\n", rtn);
+        // Step 5: Configuração de parâmetros de rastreamento estacionário (modo tempo, 200s, distância 5)
+        printf("--- Step 5: SetStationaryTrackPara(0,200,5) ---\n");
+        rtn = robot.SetStationaryTrackPara(0, 5, 5);
+        printf("  SetStationaryTrackPara(0,200,5) rtn={0}\n", rtn);
+        // Step 6: Executar movimento de rastreamento estacionário
+        printf("--- Step 6: MoveStationary() ---\n");
+        rtn = robot.MoveStationary();
+        rtn = robot.WaitStationaryMotionDone();
+        printf("  MoveStationary() rtn={0}\n", rtn);
+        // Step 7: Fim do rastreamento da esteira
+        printf("--- Step 7: ConveyorTrackEnd() ---\n");
+        rtn = robot.ConveyorTrackEnd();
+        printf("  ConveyorTrackEnd() rtn={0}\n", rtn);
+        // Step 8: Sinal de desligamento SetDO
+        printf("--- Step 8: SetDO(6,0) ---\n");
+        rtn = robot.SetDO(6, 0, 0, 0);
+        printf("  SetDO(6,0) rtn={0}\n", rtn);
+        printf("\n========== Teste de Rastreamento Estacionário Concluído ==========\n");
+        return 0;
+    }
 
 Configurar Sensor de Extremidade
 +++++++++++++++++++++++++++++++++++++++

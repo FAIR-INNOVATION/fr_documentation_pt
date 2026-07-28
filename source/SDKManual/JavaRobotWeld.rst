@@ -141,79 +141,119 @@ Exemplo de Código para Definir Parâmetros de Soldagem
 .. code-block:: Java
     :linenos:
 
-    public static int TestSetWeldParam(Robot robot)
-    {
+    public static int TestSetWeldParam(Robot robot) {
+        // 1. Definir parâmetros do processo de soldagem
         WeldingProcessParam para1 = new WeldingProcessParam(177, 27, 1000, 178, 28, 176, 26, 1000);
         WeldingProcessParam para2 = new WeldingProcessParam(188, 28, 555, 199, 29, 133, 23, 333);
-
         robot.WeldingSetProcessParam(1, para1);
         robot.WeldingSetProcessParam(2, para2);
 
-        double startCurrent = 0;
-        double startVoltage = 0;
-        int startTime = 0;
-        double weldCurrent = 0;
-        double weldVoltage = 0;
-        double endCurrent = 0;
-        double endVoltage = 0;
-        int endTime = 0;
-
-        WeldingProcessParam param = new WeldingProcessParam(startCurrent, startVoltage, startTime, weldCurrent, weldVoltage, endCurrent, endVoltage, endTime);
+        // 2. Obter e imprimir o grupo de parâmetros 1
+        WeldingProcessParam param = new WeldingProcessParam(0, 0, 0, 0, 0, 0, 0, 0);
         robot.WeldingGetProcessParam(1, param);
-        robot.WeldingGetProcessParam(2, param);
+        System.out.println("the Num 1 process param is "
+                + param.startCurrent + " " + param.startVoltage + " "
+                + param.startTime + " " + param.weldCurrent + " "
+                + param.weldVoltage + " " + param.endCurrent + " "
+                + param.endVoltage + " " + param.endTime);
 
+        // 3. Obter e imprimir o grupo de parâmetros 2
+        robot.WeldingGetProcessParam(2, param);
+        System.out.println("the Num 2 process param is "
+                + param.startCurrent + " " + param.startVoltage + " "
+                + param.startTime + " " + param.weldCurrent + " "
+                + param.weldVoltage + " " + param.endCurrent + " "
+                + param.endVoltage + " " + param.endTime);
+
+        // 4. Definir relação corrente/tensão e imprimir valor de retorno
         WeldCurrentAORelation rela1 = new WeldCurrentAORelation(0, 400, 0, 10, 0);
         int rtn = robot.WeldingSetCurrentRelation(rela1);
+        System.out.println("WeldingSetCurrentRelation rtn is: " + rtn);
 
         WeldVoltageAORelation rela2 = new WeldVoltageAORelation(0, 40, 0, 10, 1);
         rtn = robot.WeldingSetVoltageRelation(rela2);
+        System.out.println("WeldingSetVoltageRelation rtn is: " + rtn);
 
-        double current_min = 0;
-        double current_max = 0;
-        double vol_min = 0;
-        double vol_max = 0;
-        double output_vmin = 0;
-        double output_vmax = 0;
-        int curIndex = 0;
-        int volIndex = 0;
-        WeldCurrentAORelation rela3 = new WeldCurrentAORelation(current_min, current_max, output_vmin, output_vmax, curIndex);
+        // 5. Obter e imprimir relação corrente
+        WeldCurrentAORelation rela3 = new WeldCurrentAORelation(0, 0, 0, 0, 0);
         rtn = robot.WeldingGetCurrentRelation(rela3);
+        System.out.println("WeldingGetCurrentRelation rtn is: " + rtn);
+        System.out.println("current min " + rela3.currentMin
+                + " current max " + rela3.currentMax
+                + " output vol min " + rela3.outputVoltageMin
+                + " output vol max " + rela3.outputVoltageMax);
 
+        // 6. Obter e imprimir relação tensão
         WeldVoltageAORelation rela4 = new WeldVoltageAORelation(0, 0, 0, 0, 0);
         rtn = robot.WeldingGetVoltageRelation(rela4);
+        System.out.println("WeldingGetVoltageRelation rtn is: " + rtn);
+        System.out.println("vol min " + rela4.weldVoltageMin
+                + " vol max " + rela4.weldVoltageMax
+                + " output vol min " + rela4.outputVoltageMin
+                + " output vol max " + rela4.outputVoltageMax);
 
+        // 7. Definir corrente/tensão e imprimir valor de retorno
         rtn = robot.WeldingSetCurrent(0, 100, 0, 0);
+        System.out.println("WeldingSetCurrent rtn is: " + rtn);
 
-        robot.Sleep(3000);
+        robot.Sleep(3000);  // Corresponde a this_thread::sleep_for(chrono::seconds(3))
 
         rtn = robot.WeldingSetVoltage(0, 10, 0, 0);
+        System.out.println("WeldingSetVoltage rtn is: " + rtn);
 
-        rtn = robot.WeaveSetPara(0, 0, 2.000000, 0, 10.000000, 0.000000, 0.000000, 0, 0, 0, 0, 0, 60.000000, 0);
+        // 8. Definir parâmetros de oscilação
+        rtn = robot.WeaveSetPara(0, 0, 2.000000, 0, 10.000000, 0.000000, 0.000000, 0, 0, 0, 0, 0, 60.000000,0);
+        System.out.println("rtn is: " + rtn);
 
         robot.WeaveOnlineSetPara(0, 0, 1, 0, 20, 0, 0, 0, 0);
 
+        // 9. Definir parâmetros de detecção de interrupção de arco e ressoldagem
         rtn = robot.WeldingSetCheckArcInterruptionParam(1, 200);
+        System.out.println("WeldingSetCheckArcInterruptionParam  " + rtn);
+
         rtn = robot.WeldingSetReWeldAfterBreakOffParam(1, 5.7, 98.2, 0);
-        int enable = 0;
-        double length = 0;
-        double velocity = 0;
-        int moveType = 0;
-        int checkEnable = 0;
-        int arcInterruptTimeLength = 0;
-        List<Integer> inter = new ArrayList<>();
-        List<Number> num = new ArrayList<>();
+        System.out.println("WeldingSetReWeldAfterBreakOffParam  " + rtn);
 
-        inter = robot.WeldingGetCheckArcInterruptionParam();
-        num = robot.WeldingGetReWeldAfterBreakOffParam();
+        // 10. Obter e imprimir parâmetros de detecção de interrupção de arco
+        List<Integer> inter = robot.WeldingGetCheckArcInterruptionParam();
+        int checkEnable = inter.get(0);
+        int arcInterruptTimeLength = inter.get(1);
+        System.out.println("WeldingGetCheckArcInterruptionParam checkEnable " + checkEnable
+                + "  arcInterruptTimeLength " + arcInterruptTimeLength);
 
+        // 11. Obter e imprimir parâmetros de ressoldagem (retorna List<Number>)
+        List<Number> num = robot.WeldingGetReWeldAfterBreakOffParam();
+        int enable = num.get(0).intValue();
+        double length = num.get(1).doubleValue();
+        double velocity = num.get(2).doubleValue();
+        int moveType = num.get(3).intValue();
+        System.out.printf("WeldingGetReWeldAfterBreakOffParam enable = %d, length = %f, velocity = %f, moveType = %d%n",
+                enable, length, velocity, moveType);
+
+        // 12. Definir DO estendido e controle em loop
         robot.SetWeldMachineCtrlModeExtDoNum(17);
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
+            int[] mode = new int[1];   // Para receber o valor de saída
+
             robot.SetWeldMachineCtrlMode(0);
+            rtn = robot.GetWeldMachineCtrlMode(mode);
+            if (rtn == 0) {
+                System.out.println("GetWeldMachineCtrlMode " + mode[0]);
+            } else {
+                System.out.println("GetWeldMachineCtrlMode failed, err: " + rtn);
+            }
             robot.Sleep(1000);
+
             robot.SetWeldMachineCtrlMode(1);
+            rtn = robot.GetWeldMachineCtrlMode(mode);
+            if (rtn == 0) {
+                System.out.println("GetWeldMachineCtrlMode " + mode[0]);
+            } else {
+                System.out.println("GetWeldMachineCtrlMode failed, err: " + rtn);
+            }
             robot.Sleep(1000);
         }
+
         return 0;
     }
 
@@ -312,6 +352,18 @@ Definir Modo de Controle da Máquina de Solda
     * @return Código de erro* @return Código de erro
     */
     public int SetWeldMachineCtrlMode(int mode, int ioType)
+
+Obter Modo de Controle da Máquina de Solda
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Obtém o modo de controle da máquina de solda
+    * @param mode Modo de controle da máquina de solda; 0-modo único CC; 1-modo único pulsado; 2-modo JOB; 3-modo controle local; 4-modo separado; 5-modo CC/CV; 6-TIG; 7-CMT
+    * @return Código de erro
+    */
+    public int GetWeldMachineCtrlMode(int[] mode)
 
 Início da Soldagem
 ++++++++++++++++++++++++++++++++++
@@ -732,8 +784,60 @@ Exemplo de Código para Configurar Sinais de Soldagem com E/S Estendida
         robot.SetExtDIWeldBreakOffRecover(70, 80);
         robot.SetWireSearchExtDIONum(0, 1);
 
+        int[] DIConfig = new int[16];
+        int[] DOConfig = new int[16];
+        int rtn = robot.GetExtDIConfig(DIConfig);
+        System.out.printf("GetExtDIConfig rtn is %d\n welder ready %d\narc done %d\nreweld start %d\nabort reweld %d\nwiresearch done %d\nLaser welding State %d\nlaser welding error state %d\n",
+            rtn, DIConfig[0], DIConfig[1], DIConfig[2], DIConfig[3], DIConfig[4], DIConfig[5], DIConfig[6]);
+
+        rtn = robot.GetExtDOConfig(DOConfig);
+        System.out.printf("GetExtDOConfig rtn is %d\n Arc Start %d\nAir Test %d\nWire forward %d\nWire Inverse %d\nwiresearch %d\nWeld Mode %d\nlaser Enable %d\nLaser On %d\nLaser Reset Error %d\n",
+            rtn, DOConfig[0], DOConfig[1], DOConfig[2], DOConfig[3], DOConfig[4], DOConfig[5], DOConfig[6], DOConfig[7], DOConfig[8]);
+
+
+
         return 0;
     }
+
+Obter Configuração da Função DI Estendida
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Obtém a configuração da função DI estendida
+    * @param DIConfig Configuração de entrada DI estendida; DIConfig[0]-porta DI estendida máquina de solda pronta;
+    * DIConfig[1]-porta DI estendida início de arco bem-sucedido;
+    * DIConfig[2]-porta DI estendida retomada de interrupção de soldagem;
+    * DIConfig[3]-porta DI estendida saída de interrupção de soldagem;
+    * DIConfig[4]-porta DI estendida busca de fio bem-sucedida;
+    * DIConfig[5]-porta DI estendida status de operação da máquina de solda a laser;
+    * DIConfig[6]-porta DI estendida status de falha da máquina de solda a laser;
+    * DIConfig[7-15]-reservados
+    * @return  Código de erro
+    */
+    public int GetExtDIConfig(int[] DIConfig)
+
+Obter Configuração da Função DO Estendida
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Obtém a configuração da função DO estendida
+    * @param DOConfig Configuração de saída DO estendida; DOConfig[0]-porta DO estendida início de arco da máquina de solda;
+    * DOConfig[1]-porta DO estendida detecção de gás;
+    * DOConfig[2]-porta DO estendida alimentação de fio para frente;
+    * DOConfig[3]-porta DO estendida alimentação de fio para trás;
+    * DOConfig[4]-porta DO estendida busca de fio;
+    * DOConfig[5]-porta DO estendida modo de controle da máquina de solda;
+    * DOConfig[6]-porta DO estendida habilitação da máquina de solda a laser;
+    * DOConfig[7]-porta DO estendida início da máquina de solda a laser (emissão de laser);
+    * DOConfig[8]-porta DO estendida reinicialização da máquina de solda a laser;
+    * DOConfig[9-15]-reservados
+    * @return  Código de erro
+    */
+    public int GetExtDOConfig(int[] DOConfig)
 
 Controle de Rastreamento de Arco
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

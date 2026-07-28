@@ -640,6 +640,8 @@ Geração Automática do Protocolo Lua na Extremidade
 
 Esta é uma nova funcionalidade. Para protocolos embutidos relacionados ao periférico SmartTool (atualmente suporta apenas quatro protocolos: End_SmartTool_V1.3.lua, End_SM_JD_V1.3.lua, End_SM_GZCX_V1.3.lua, End_SM_XJC_V1.3.lua), o protocolo Lua de extremidade pode ser gerado automaticamente através da configuração na página web e enviado para a extremidade, sem necessidade de escrita pelo usuário. O usuário configura os botões A, B, C, D, E e IO do punho de solda SmartTool conforme a necessidade. Após a configuração, é necessário desativar o robô e clicar em "Aplicar". Nesse momento, a página perguntará "Entrar no modo boot e aplicar o protocolo aberto?". Após confirmar, o robô entra no estado boot e faz o upload automático do protocolo Lua gerado automaticamente. Após reiniciar o robô, o SmartTool pode ser usado de acordo com os botões configurados.
 
+A partir da versão V3.9.8, o SmartTool baseado no protocolo do efetuador final suporta a configuração de diferentes botões com a mesma função. Além disso, foram adicionadas a seleção do número de oscilação e do número do processo de soldagem. O número de oscilação é padrão 0. Se "Início da Oscilação" for configurado, o número de oscilação pode ser selecionado. As configurações do botão IO são consistentes com as configurações de Início da Oscilação. O tempo máximo para início e fim do arco pode ser configurado até 10000ms.
+
 .. figure:: robot_peripherals/284.png
    :align: center
    :width: 6in
@@ -684,6 +686,22 @@ O SmartTool baseado no protocolo aberto adicionou um modo antierro. Acesse seque
    :width: 6in
 
 .. centered:: Figura 8.3‑2-8 Função "Modo Antierro" no SmartTool
+
+Função de Limpeza de Memória do Botão IO do SmartTool
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+O SmartTool baseado no protocolo aberto adicionou uma função de limpeza de memória do botão IO. Quando o usuário pressiona um botão IO uma vez, ele é memorizado para gerar instruções emparelhadas. Se a função "Limpar Programa" ou "Novo Programa" for pressionada, a memória do botão IO será limpa e o próximo pressionamento do botão IO regenerará a instrução.
+
+Função de Limpeza Global de Pontos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Uma função de limpeza global de pontos foi adicionada. Abra o WebApp, clique em "Teach Program" e "Teach Points" em sequência, selecione "System Mode" e clique em "Clear All" para limpar todos os pontos salvos pelo usuário. Neste momento, os números de sequência dos pontos de instrução gerados e salvos pelo SmartTool serão redefinidos, começando em 1.
+
+.. figure:: robot_peripherals/320.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.3‑2-9 Função de Limpeza Global de Pontos
 
 Exemplo de Protocolo Lua de Periférico de Extremidade para Punho de Solda
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1123,7 +1141,9 @@ Funções das teclas A-E:
 
 .. centered:: Figura 8.4‑2-2 Inserção da velocidade física real
 
-Após a configuração bem-sucedida, um novo comando de movimento relacionado é adicionado ao programa de ensino. Ao configurar o comando de movimento ARC, é necessário primeiro configurar o comando PTP/LIN.
+Após a configuração bem-sucedida, um novo comando de movimento relacionado é adicionado ao programa de ensino. 
+
+.. note:: Nota: Ao configurar a instrução de movimento ARC, a instrução PTP/LIN deve ser configurada primeiro para garantir que as etapas para adicionar instruções sejam seguidas corretamente.
 
 - Saída DO: Ao selecionar "Saída DO", uma caixa suspensa é exibida para escolher as opções DO0⁓DO7.
 
@@ -1137,7 +1157,7 @@ Função da tecla IO:
 
 -  **Configuração do Sinal IO**: A caixa suspensa permite selecionar opções DO0⁓DO7, CO0⁓CO7, End-DO0, End-DO1 e IO de extensão (Aux-DO0⁓Aux-DO127);
 
--  **Comando Combinado**: Após selecionar "Sinal IO", sob condições específicas, os itens de configuração "Seleção da Fonte de Solda" e "Velocidade do Ponto" são exibidos, gerando diferentes instruções de programa.
+-  **Comando Combinado**: Após selecionar "Sinal IO", sob condições específicas, os itens de configuração "Seleção da Fonte de Solda" e "Velocidade do Ponto" são exibidos, gerando diferentes instruções de programa.Além disso, foi adicionada a seleção do número do processo de soldagem. Além disso, o tempo máximo para início e fim do arco pode ser configurado até 10000ms. O número de oscilação é padrão 0. Se "Início da Oscilação" for configurado, o número de oscilação pode ser selecionado. As configurações do botão IO são consistentes com as configurações de Início da Oscilação.
 
 .. important::
    -  Quando o sinal IO é configurado como DO0~DO7 ou CO0~CO7 (sem configurar "Arco de Partida"), o programa adiciona SetDO; neste momento, "Seleção da Fonte de Solda" e "Velocidade do Ponto" ficam ocultos.
@@ -1148,6 +1168,7 @@ Função da tecla IO:
    -  Quando o sinal IO é configurado como CO0~CO7 (com configurar "Arco de Partida") ou IO de extensão (com configurar "Arco de Partida da Fonte de Solda") e "Seleção da Fonte de Solda" é "Solda", ao pressionar pela primeira vez, o programa adiciona ARCStart; na segunda vez, adiciona ARCEnd; na terceira vez, adiciona ARCStart; na quarta vez, adiciona ARCStart, alternando repetidamente; neste momento, "Seleção da Fonte de Solda" e "Velocidade do Ponto" ficam ocultos.
    -  Quando o sinal IO é configurado como CO0~CO7 (com configurar "Arco de Partida") ou IO de extensão (com configurar "Arco de Partida da Fonte de Solda") e "Seleção da Fonte de Solda" é "LIN + Solda", ao pressionar pela primeira vez, o programa adiciona LIN e ARCStart; na segunda vez, adiciona LIN e ARCEnd; na terceira vez, adiciona LIN e ARCStart; na quarta vez, adiciona LIN e ARCEnd, alternando repetidamente; neste momento, "Seleção da Fonte de Solda" e "Velocidade do Ponto" são exibidos.
    -  Quando o sinal IO é configurado como CO0~CO7 (com configurar "Arco de Partida") ou IO de extensão (com configurar "Arco de Partida da Fonte de Solda") e "Seleção da Fonte de Solda" é "LIN + Solda + Oscilação", ao pressionar pela primeira vez, o programa adiciona LIN, ARCStart e WeaveStart; na segunda vez, adiciona LIN, ARCEnd e WeaveEnd; na terceira vez, adiciona LIN, ARCStart e WeaveStart; na quarta vez, adiciona LIN, ARCEnd e WeaveEnd, alternando repetidamente; neste momento, "Seleção da Fonte de Solda" e "Velocidade do Ponto" ficam ocultos.
+   -  Quando a função "Limpar Programa" ou "Novo Programa" for pressionada, a memória do botão IO será limpa e o próximo pressionamento do botão IO regenerará a instrução.
   
 .. image:: robot_peripherals/031.png
    :width: 4in
@@ -6418,50 +6439,55 @@ Use o botão de arrastagem para ajustar a extremidade do robô para a horizontal
 
 .. centered:: Figura 8.14‑13 Autozero do Sensor de Força/Torque
 
-Arrastagem Híbrida com Força de 6 Eixos e Impedância de Junta
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Arrasto Híbrido com Força de Seis Eixos e Impedância Articular
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-1. Arrastagem Assistida
+Arrasto Assistido
+********************************************************
 
-**Passo 1**: No menu "Aplicações Auxiliares" -> "Aplicações de Ferramenta", clique em "Travamento de Arrastagem" para entrar na interface da função de travamento de arrastagem.
+**Passo 1**: No menu de "Aplicativos Auxiliares" -> "Aplicações de Ferramenta", clique em "Bloqueio de Arrasto" para entrar na interface da função de bloqueio de arrasto.
 
-**Passo 2**: Na seção "Arrastagem Híbrida com Força de 6 Eixos e Impedância de Junta", defina o estado de controle como "Ativado", o estado de ativação da impedância como "Desativado", defina o ganho de arrastagem, a velocidade linear da extremidade como 1000mm/s e o limite de velocidade angular como 100°/s. Clique no botão "Aplicar" para ativar a função. A configuração específica é mostrada na Figura 4.
-
-**Passo 3**: Altere o modo do robô para modo de arrastagem e mova o robô manualmente. O efeito específico é: ao mover manualmente a extremidade do robô, a arrastagem é leve, boa experiência; ao mover manualmente as juntas do robô, a arrastagem é pesada.
+**Passo 2**: Na seção "Arrasto Híbrido com Força de Seis Eixos e Impedância Articular", defina o status de controle como "Ativado", defina o status de habilitação de impedância como "Desativado", defina o ganho de arrasto, a velocidade linear da extremidade para 1000mm/s, o limite de velocidade angular para 100°/s e clique no botão "Aplicar" para ativar a função. A configuração específica é mostrada na figura abaixo.
 
 .. figure:: robot_peripherals/241.png
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.14‑14 Configuração dos Parâmetros da Arrastagem Assistida por Força de 6 Eixos
+.. centered:: Figura 8.14‑14 Parâmetros de Configuração para Arrasto Assistido com Força de Seis Eixos
 
-2. Controle de Impedância de Junta
+Controle de Impedância Articular
+********************************************************
 
-O controle de impedância serve para limitar a força e a posição durante a arrastagem. Seu estado padrão é "Desativado".
+A função do controle de impedância é limitar a força e a posição de arrasto. Seu status padrão é "Desativado".
 
-A operação específica é mostrada na Figura 5. Defina o estado de ativação da impedância como "Ativado" e, em seguida, defina os coeficientes de amortecimento e rigidez conforme mostrado na Figura 5. Atualmente, a função do coeficiente de rigidez ainda não está disponível.
+Para operações específicas, veja a figura abaixo. Defina o status de habilitação de impedância como "Ativado" e defina o coeficiente de amortecimento e o coeficiente de rigidez conforme mostrado. A função do coeficiente de rigidez ainda não está disponível.
 
 .. figure:: robot_peripherals/242.png
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.14‑15 Configuração dos Parâmetros da Impedância de Junta
+.. centered:: Figura 8.14‑15 Parâmetros de Configuração para Impedância Articular
 
-Função específica dos parâmetros:
+Funções específicas dos parâmetros:
 
-- **Estado de Controle**: Quando ativado, esta função pode ser usada no modo de arrastagem.
+- **Status de Controle**: Após a ativação, esta função pode ser usada no modo de arrasto.
   
-- **Ativação da Impedância**: Quando ativado, os parâmetros de rigidez e amortecimento precisam ser configurados. A função é limitar a força e a posição durante a arrastagem.
+- **Habilitação de Impedância**: Após a ativação, é necessário configurar os parâmetros de rigidez e amortecimento. Sua função é limitar a força e a posição de arrasto.
   
-- **Ganho de Arrastagem**: Parâmetros sugeridos entre [0-5]. Se definido como 0, o robô não pode ser movido manualmente. Se definido como 1, o efeito de arrastagem não melhora. Se maior que 1, a arrastagem é leve, boa experiência. Quanto maior o valor, mais leve a arrastagem.
+- **Ganho de Arrasto**: Recomenda-se definir os parâmetros entre [0-5]. Quando definido como 0, o robô não pode ser arrastado. Quando definido como 1, o efeito de arrasto não melhora. Quando maior que 1, o arrasto é leve e a experiência de arrasto é boa. Quanto maior o parâmetro, mais fácil o arrasto.
   
-- **Ganho de Rigidez**: Se definido como 0, a função é retornar à posição inicial após a arrastagem.
+- **Ganho de Rigidez**: Quando definido como 0, restaura o robô à posição inicial antes do arrasto após o arrasto.
   
-- **Ganho de Amortecimento**: A função é limitar a força de arrastagem. Faixa de parâmetros para eixos 1-3: [0-0.5]; para eixos 4-5: [0-0.1]; para eixo 6: [0-0.05].
+- **Ganho de Amortecimento**: Sua função é limitar a força de arrasto. A faixa de parâmetros para os eixos 1-3 é [0-0.5], para os eixos 4-5 é [0-0.1]; para o eixo 6 é [0-0.05].
   
-- **Velocidade Linear da Extremidade**: 1000mm/s. Se a velocidade linear da extremidade exceder o limite, o robô alterna para o modo manual e exibe um aviso de excesso de velocidade TCP.
+- **Velocidade Linear da Extremidade**: 1000mm/s. Quando o limite de velocidade linear da extremidade é excedido, o robô muda para o modo manual e exibe um alerta de excesso de velocidade TCP.
   
-- **Limite de Velocidade Angular**: 100°/s. Se a velocidade angular exceder o limite, o robô alterna para o modo manual e exibe um aviso de excesso de velocidade TCP.
+- **Limite de Velocidade Angular**: 100°/s. Quando o limite de velocidade angular é excedido, o robô muda para o modo manual e exibe um alerta de excesso de velocidade TCP.
+
+.. note::
+  1. Para o robô FR3WML, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [0.15, 0.15, 0.15, 0.15, 0.15, 0.2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05].
+
+  2. Quando todos os parâmetros de ganho de arrasto são definidos como 0, a resistência ao arrasto é forte e é difícil arrastar; quando todos os parâmetros de ganho de arrasto são definidos como 5, a sensação de arrasto é leve; quanto maior o parâmetro, mais fácil o arrasto.
 
 Função de Rastreamento Pontual com Laser e Eixo de Extensão
 ---------------------------------------------------------------------------------
@@ -7238,6 +7264,20 @@ Os parâmetros detalhados de comunicação da extremidade são os seguintes:
    :width: 6in
 
 .. centered:: Figura 8.19‑4 Códigos de Função do Protocolo Aberto
+
+Os comandos de controle de movimento da mão destra são 0x31-0x36, descritos a seguir:
+
+- ① 0x31 é o código de função de inicialização da mão destra. A implementação específica é determinada pela condição real da mão destra.
+- ② 0x32-0x34 são códigos de função para envio de parâmetros de controle da mão destra, correspondendo respectivamente aos parâmetros de controle de posição, parâmetros de controle de velocidade e parâmetros de controle de torque, usados para definir os valores alvo de movimento para cada junta.
+- ③ 0x35 é o código de função de ativação do movimento de aperto. O controle de movimento da mão destra geralmente tem dois modos: um onde o movimento é executado imediatamente após a escrita no registro de posição; o outro onde o movimento só começa após escrever um valor específico no registro de ativação de ação após a escrita no registro de posição. Se ativar esta função de ativação é determinado pela condição real da mão destra.
+- ④ 0x36 é o código de função de movimento síncrono multi-eixo. Se o movimento síncrono multi-eixo é suportado é determinado pela condição real da mão destra. Se suportado, é usado para alcançar um planejamento coordenado no tempo de múltiplas juntas dos dedos, iniciando simultaneamente e atingindo suas respectivas posições/velocidades alvo ao mesmo tempo. Se não suportado, cada eixo é controlado sequencialmente através de comandos de controle de eixo único para alcançar um efeito coordenado semelhante.
+
+Os comandos de consulta de status da mão destra são 0xA0-0xA6, descritos a seguir:
+
+- ⑤ 0xA0 é o código de função para leitura do status de operação de eixo único, usado para consultar o status de movimento atual e as informações de status de aperto de uma junta especificada.
+- ⑥ 0xA2 é o código de função para leitura do status de inicialização, usado para consultar o status de conclusão da inicialização e a prontidão do sistema da mão destra. A implementação específica é determinada pela condição real da mão destra.
+- ⑦ 0xA3-0xA5 são códigos de função para leitura dos parâmetros de status em tempo real da mão destra, correspondendo respectivamente à posição real atual, velocidade real atual e torque real atual, usados para controle em malha fechada e monitoramento de status.
+- ⑧ 0xA6 é o código de função para leitura das informações de alarme da mão destra, usado para obter os códigos de falha subjacentes e o status de alarme da mão destra, facilitando o diagnóstico de anomalias e o tratamento de proteção.
 
 .. note:: A mão destra deve suportar a leitura dos códigos de função relacionados ao estado de operação para facilitar a consulta do estado do movimento.
   

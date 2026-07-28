@@ -498,6 +498,7 @@ Tipo de Estrutura de Retroalimentação de Estado do Robô
         public int socketReadTimeout;                // Tempo limite de leitura do socket
         public int tsWebStateComErr;                 // Erro de comunicação de estado TS Web
         public int exaxisCoordID;                  //ID do sistema de coordenadas do eixo estendido
+        public int programRunState;                //Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
     }
 
 Classe de Resultado da Configuração de Feedback de Estado do Robô
@@ -654,4 +655,5 @@ Tipo de Enumeração da Configuração de Feedback de Estado do Robô
         SocketReadTimeout,      // Tempo limite de leitura socket, bit0-bit4 correspondem ao socketID 1-4
         TsWebStateComErr,       // Falha de comunicação web-torque: 0-normal, 1-falha
         ExaxisCoordID           // ID do sistema de coordenadas do eixo estendido
+        programRunState         //Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
     };

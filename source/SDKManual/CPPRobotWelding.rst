@@ -190,80 +190,85 @@ Exemplo de Código para Definir Parâmetros de Soldagem
 
     int TestSetWeldParam(void)
     {
-      ROBOT_STATE_PKG pkg = {};
-      FRRobot robot;
-      robot.LoggerInit();
-      robot.SetLoggerLevel(1);
-      int rtn = robot.RPC("192.168.58.2");
-      if (rtn != 0)
-      {
-        return -1;
-      }
-      robot.SetReConnectParam(true, 30000, 500);
-      robot.WeldingSetProcessParam(1, 177, 27, 1000, 178, 28, 176, 26, 1000);
-      robot.WeldingSetProcessParam(2, 188, 28, 555, 199, 29, 133, 23, 333);
-      double startCurrent = 0;
-      double startVoltage = 0;
-      double startTime = 0;
-      double weldCurrent = 0;
-      double weldVoltage = 0;
-      double endCurrent = 0;
-      double endVoltage = 0;
-      double endTime = 0;
-      robot.WeldingGetProcessParam(1, startCurrent, startVoltage, startTime, weldCurrent, weldVoltage, endCurrent, endVoltage, endTime);
-      cout << "the Num 1 process param is " << startCurrent << " " << startVoltage << " " << startTime << " " << weldCurrent << " " << weldVoltage << " " << endCurrent << " " << endVoltage << " " << endTime << endl;
-      robot.WeldingGetProcessParam(2, startCurrent, startVoltage, startTime, weldCurrent, weldVoltage, endCurrent, endVoltage, endTime);
-      cout << "the Num 2 process param is " << startCurrent << " " << startVoltage << " " << startTime << " " << weldCurrent << " " << weldVoltage << " " << endCurrent << " " << endVoltage << " " << endTime << endl;
-      rtn = robot.WeldingSetCurrentRelation(0, 400, 0, 10, 0);
-      cout << "WeldingSetCurrentRelation rtn is: " << rtn << endl;
-      rtn = robot.WeldingSetVoltageRelation(0, 40, 0, 10, 1);
-      cout << "WeldingSetVoltageRelation rtn is: " << rtn << endl;
-      double current_min = 0;
-      double current_max = 0;
-      double vol_min = 0;
-      double vol_max = 0;
-      double output_vmin = 0;
-      double output_vmax = 0;
-      int curIndex = 0;
-      int volIndex = 0;
-      rtn = robot.WeldingGetCurrentRelation(&current_min, &current_max, &output_vmin, &output_vmax, &curIndex);
-      cout << "WeldingGetCurrentRelation rtn is: " << rtn << endl;
-      cout << "current min " << current_min << " current max " << current_max << " output vol min " << output_vmin << " output vol max " << output_vmax << endl;
-      rtn = robot.WeldingGetVoltageRelation(&vol_min, &vol_max, &output_vmin, &output_vmax, &volIndex);
-      cout << "WeldingGetVoltageRelation rtn is: " << rtn << endl;
-      cout << "vol min " << vol_min << " vol max " << vol_max << " output vol min " << output_vmin << " output vol max " << output_vmax << endl;
-      rtn = robot.WeldingSetCurrent(1, 100, 0, 0);
-      cout << "WeldingSetCurrent rtn is: " << rtn << endl;
-      this_thread::sleep_for(chrono::seconds(3));
-      rtn = robot.WeldingSetVoltage(1, 10, 0, 0);
-      cout << "WeldingSetVoltage rtn is: " << rtn << endl;
-      rtn = robot.WeaveSetPara(0, 0, 2.000000, 0, 10.000000, 0.000000, 0.000000, 0, 0, 0, 0, 0, 60.000000);
-      cout << "rtn is: " << rtn << endl;
-      robot.WeaveOnlineSetPara(0, 0, 1, 0, 20, 0, 0, 0, 0);
-      rtn = robot.WeldingSetCheckArcInterruptionParam(1, 200);
-      printf("WeldingSetCheckArcInterruptionParam  %d\n", rtn);
-      rtn = robot.WeldingSetReWeldAfterBreakOffParam(1, 5.7, 98.2, 0);
-      printf("WeldingSetReWeldAfterBreakOffParam  %d\n", rtn);
-      int enable = 0;
-      double length = 0;
-      double velocity = 0;
-      int moveType = 0;
-      int checkEnable = 0;
-      int arcInterruptTimeLength = 0;
-      rtn = robot.WeldingGetCheckArcInterruptionParam(&checkEnable, &arcInterruptTimeLength);
-      printf("WeldingGetCheckArcInterruptionParam checkEnable %d  arcInterruptTimeLength %d\n", checkEnable, arcInterruptTimeLength);
-      rtn = robot.WeldingGetReWeldAfterBreakOffParam(&enable, &length, &velocity, &moveType);
-      printf("WeldingGetReWeldAfterBreakOffParam enable = %d, length = %lf, velocity = %lf, moveType = %d\n", enable, length, velocity, moveType);
-      robot.SetWeldMachineCtrlModeExtDoNum(17);
-      for (int i = 0; i < 5; i++)
-      {
-        robot.SetWeldMachineCtrlMode(0);
-        robot.Sleep(1000);
-        robot.SetWeldMachineCtrlMode(1);
-        robot.Sleep(1000);
-      }
-      robot.CloseRPC();
-      return 0;
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        robot.SetReConnectParam(true, 30000, 500);
+        robot.WeldingSetProcessParam(1, 177, 27, 1000, 178, 28, 176, 26, 1000);
+        robot.WeldingSetProcessParam(2, 188, 28, 555, 199, 29, 133, 23, 333);
+        double startCurrent = 0;
+        double startVoltage = 0;
+        double startTime = 0;
+        double weldCurrent = 0;
+        double weldVoltage = 0;
+        double endCurrent = 0;
+        double endVoltage = 0;
+        double endTime = 0;
+        robot.WeldingGetProcessParam(1, startCurrent, startVoltage, startTime, weldCurrent, weldVoltage, endCurrent, endVoltage, endTime);
+        cout << "the Num 1 process param is " << startCurrent << " " << startVoltage << " " << startTime << " " << weldCurrent << " " << weldVoltage << " " << endCurrent << " " << endVoltage << " " << endTime << endl;
+        robot.WeldingGetProcessParam(2, startCurrent, startVoltage, startTime, weldCurrent, weldVoltage, endCurrent, endVoltage, endTime);
+        cout << "the Num 2 process param is " << startCurrent << " " << startVoltage << " " << startTime << " " << weldCurrent << " " << weldVoltage << " " << endCurrent << " " << endVoltage << " " << endTime << endl;
+        rtn = robot.WeldingSetCurrentRelation(0, 400, 0, 10, 0);
+        cout << "WeldingSetCurrentRelation rtn is: " << rtn << endl;
+        rtn = robot.WeldingSetVoltageRelation(0, 40, 0, 10, 1);
+        cout << "WeldingSetVoltageRelation rtn is: " << rtn << endl;
+        double current_min = 0;
+        double current_max = 0;
+        double vol_min = 0;
+        double vol_max = 0;
+        double output_vmin = 0;
+        double output_vmax = 0;
+        int curIndex = 0;
+        int volIndex = 0;
+        rtn = robot.WeldingGetCurrentRelation(&current_min, &current_max, &output_vmin, &output_vmax, &curIndex);
+        cout << "WeldingGetCurrentRelation rtn is: " << rtn << endl;
+        cout << "current min " << current_min << " current max " << current_max << " output vol min " << output_vmin << " output vol max " << output_vmax << endl;
+        rtn = robot.WeldingGetVoltageRelation(&vol_min, &vol_max, &output_vmin, &output_vmax, &volIndex);
+        cout << "WeldingGetVoltageRelation rtn is: " << rtn << endl;
+        cout << "vol min " << vol_min << " vol max " << vol_max << " output vol min " << output_vmin << " output vol max " << output_vmax << endl;
+        rtn = robot.WeldingSetCurrent(0, 100, 0, 0);
+        cout << "WeldingSetCurrent rtn is: " << rtn << endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        rtn = robot.WeldingSetVoltage(0, 10, 0, 0);
+        cout << "WeldingSetVoltage rtn is: " << rtn << endl;
+        rtn = robot.WeaveSetPara(0, 0, 2.000000, 0, 10.000000, 0.000000, 0.000000, 0, 0, 0, 0, 0, 60.000000);
+        cout << "rtn is: " << rtn << endl;
+        robot.WeaveOnlineSetPara(0, 0, 1, 0, 20, 0, 0, 0, 0);
+        rtn = robot.WeldingSetCheckArcInterruptionParam(1, 200);
+        printf("WeldingSetCheckArcInterruptionParam  %d\n", rtn);
+        rtn = robot.WeldingSetReWeldAfterBreakOffParam(1, 5.7, 98.2, 0);
+        printf("WeldingSetReWeldAfterBreakOffParam  %d\n", rtn);
+        int enable = 0;
+        double length = 0;
+        double velocity = 0;
+        int moveType = 0;
+        int checkEnable = 0;
+        int arcInterruptTimeLength = 0;
+        rtn = robot.WeldingGetCheckArcInterruptionParam(&checkEnable, &arcInterruptTimeLength);
+        printf("WeldingGetCheckArcInterruptionParam checkEnable %d  arcInterruptTimeLength %d\n", checkEnable, arcInterruptTimeLength);
+        rtn = robot.WeldingGetReWeldAfterBreakOffParam(&enable, &length, &velocity, &moveType);
+        printf("WeldingGetReWeldAfterBreakOffParam enable = %d, length = %lf, velocity = %lf, moveType = %d\n", enable, length, velocity, moveType);
+        robot.SetWeldMachineCtrlModeExtDoNum(17);
+        for (int i = 0; i < 5; i++)
+        {
+            int getCtrlMode = -1;
+            robot.SetWeldMachineCtrlMode(0);
+            robot.GetWeldMachineCtrlMode(getCtrlMode);
+            printf("GetWeldMachineCtrlMode %d\n", getCtrlMode);
+            robot.Sleep(1000);
+            robot.SetWeldMachineCtrlMode(1);
+            robot.GetWeldMachineCtrlMode(getCtrlMode);
+            printf("GetWeldMachineCtrlMode %d\n", getCtrlMode);
+            robot.Sleep(1000);
+        }
+        robot.CloseRPC();
+        return 0;
     }
 
 Definir Parâmetros de Oscilação em Tempo Real
@@ -381,6 +386,20 @@ Definir Modo de Controle da Máquina de Solda
     * @return Código de erro
     */
     errno_t SetWeldMachineCtrlMode(int mode, int ioType = 1);
+
+Obter Modo de Controle da Máquina de Solda
+++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-V3.9.8
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Obtém o modo de controle da máquina de solda
+    * @param [out] mode Modo de controle da máquina de solda; 0-modo único CC; 1-modo único pulsado; 2-modo JOB; 3-modo controle local; 4-modo separado; 5-modo CC/CV; 6-TIG; 7-CMT
+    * @return Código de erro
+    */
+    errno_t GetWeldMachineCtrlMode(int& mode);
 
 Início da Soldagem
 ++++++++++++++++++++++++++
@@ -866,6 +885,50 @@ E/S Estendida - Configurar Sinal de Recuperação de Interrupção de Soldagem
      * @return Código de erro
      */
     errno_t SetExtDIWeldBreakOffRecover(int reWeldDINum, int abortWeldDINum);
+    
+Obter Configuração da Função DI Estendida
+++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-V3.9.8
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief Obtém a configuração da função DI estendida
+     * @param [out] DIConfig Configuração de entrada DI estendida; DIConfig[0]-porta DI estendida máquina de solda pronta;
+                                         DIConfig[1]-porta DI estendida início de arco bem-sucedido;
+                                            DIConfig[2]-porta DI estendida retomada de interrupção de soldagem;
+                                            DIConfig[3]-porta DI estendida saída de interrupção de soldagem;
+                                            DIConfig[4]-porta DI estendida busca de fio bem-sucedida;
+                                            DIConfig[5]-porta DI estendida status de operação da máquina de solda a laser;
+                                            DIConfig[6]-porta DI estendida status de falha da máquina de solda a laser;
+                                            DIConfig[7-15]-reservados
+    * @return  Código de erro
+    */
+    errno_t GetExtDIConfig(int DIConfig[16]);
+    
+Obter Configuração da Função DO Estendida
+++++++++++++++++++++++++++++++++++++++++++
+.. versionadded:: C++SDK-V3.9.8
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+     * @brief Obtém a configuração da função DO estendida
+     * @param [out] DOConfig Configuração de saída DO estendida; DOConfig[0]-porta DO estendida início de arco da máquina de solda;
+                                            DOConfig[1]-porta DO estendida detecção de gás;
+                                            DOConfig[2]-porta DO estendida alimentação de fio para frente;
+                                            DOConfig[3]-porta DO estendida alimentação de fio para trás;
+                                            DOConfig[4]-porta DO estendida busca de fio;
+                                            DOConfig[5]-porta DO estendida modo de controle da máquina de solda;
+                                            DOConfig[6]-porta DO estendida habilitação da máquina de solda a laser;
+                                            DOConfig[7]-porta DO estendida início da máquina de solda a laser (emissão de laser);
+                                            DOConfig[8]-porta DO estendida reinicialização da máquina de solda a laser;
+                                            DOConfig[9-15]-reservados
+    * @return  Código de erro
+    */
+    errno_t GetExtDOConfig(int DOConfig[16]);
 
 Exemplo de Código para Configurar Sinais de Soldagem com E/S Estendida
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -875,26 +938,34 @@ Exemplo de Código para Configurar Sinais de Soldagem com E/S Estendida
 
     int TestExtDIConfig(void)
     {
-      ROBOT_STATE_PKG pkg = {};
-      FRRobot robot;
-      robot.LoggerInit();
-      robot.SetLoggerLevel(1);
-      int rtn = robot.RPC("192.168.58.2");
-      if (rtn != 0)
-      {
-        return -1;
-      }
-      robot.SetReConnectParam(true, 30000, 500);
-      robot.SetArcStartExtDoNum(10);
-      robot.SetAirControlExtDoNum(20);
-      robot.SetWireForwardFeedExtDoNum(30);
-      robot.SetWireReverseFeedExtDoNum(40);
-      robot.SetWeldReadyExtDiNum(50);
-      robot.SetArcDoneExtDiNum(60);
-      robot.SetExtDIWeldBreakOffRecover(70, 80);
-      robot.SetWireSearchExtDIONum(0, 1);
-      robot.CloseRPC();
-      return 0;
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        robot.SetReConnectParam(true, 30000, 500);
+        robot.SetArcStartExtDoNum(10);
+        robot.SetAirControlExtDoNum(20);
+        robot.SetWireForwardFeedExtDoNum(30);
+        robot.SetWireReverseFeedExtDoNum(40);
+        robot.SetWeldReadyExtDiNum(50);
+        robot.SetArcDoneExtDiNum(60);
+        robot.SetExtDIWeldBreakOffRecover(70, 80);
+        robot.SetWireSearchExtDIONum(0, 1);
+        int DIConfig[16] = { 0 };
+        int DOConfig[16] = { 0 };
+        rtn = robot.GetExtDIConfig(DIConfig);
+        printf("GetExtDIConfig rtn is %d\n welder ready %d\narc done %d\nreweld start %d\nabort reweld %d\nwiresearch done %d\nLaser welding State %d\nlaser welding error state %d\n",
+            rtn, DIConfig[0], DIConfig[1], DIConfig[2], DIConfig[3], DIConfig[4], DIConfig[5], DIConfig[6]);
+        rtn = robot.GetExtDOConfig(DOConfig);
+        printf("GetExtDOConfig rtn is %d\n Arc Start %d\nAir Test %d\nWire forward %d\nWire Inverse %d\nwiresearch %d\nWeld Mode %d\nlaser Enable %d\nLaser On %d\nLaser Reset Error %d\n",
+            rtn, DOConfig[0], DOConfig[1], DOConfig[2], DOConfig[3], DOConfig[4], DOConfig[5], DOConfig[6], DOConfig[7], DOConfig[8]);
+        robot.CloseRPC();
+        return 0;
     }
 
 Controle de Rastreamento de Arco

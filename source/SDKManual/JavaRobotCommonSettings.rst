@@ -207,7 +207,7 @@ Definir Sistema de Coordenadas da Ferramenta Externa
 
     /**
     * @brief Define o sistema de coordenadas da ferramenta externa
-    * @param [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param [in] id Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19
     * @param [in] etcp Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
     * @param [in] etool Pendente
     * @return Código de erro
@@ -221,7 +221,7 @@ Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
 
     /**
     * @brief Define a lista de sistemas de coordenadas da ferramenta externa
-    * @param [in] id Número do sistema de coordenadas, intervalo [0~14]
+    * @param [in] id Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19
     * @param [in] etcp Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
     * @param [in] etool Pendente
     * @return Código de erro

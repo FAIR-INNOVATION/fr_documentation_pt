@@ -370,6 +370,7 @@ Tipo de estrutura de feedback do estado do robô
         public byte socketReadTimeout;     // Flag de timeout de leitura do socket
         public byte tsWebStateComErr;      // ts_web_state_com_err
         public byte exaxisCoordID;         // Número do sistema de coordenadas do eixo de extensão
+        public byte programRunState;         // Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
         public UInt16 check_sum;         /* Checksum */
 
         // Construtor: inicializa todos os campos de array
@@ -564,4 +565,5 @@ Tipo de Enumeração da Configuração de Feedback de Estado do Robô
         SocketReadTimeout = 130,     // Timeout de leitura socket, bit0-bit4: socketID 1-4
         TsWebStateComErr = 131,     // Falha de comunicação web-torque; 0-normal; 1-falha
         ExaxisCoordID = 132          // Número do sistema de coordenadas do eixo de extensão
+        programRunState = 133       //Status de execução do programa LUA 0-programa não em execução; 1-programa em execução (incluindo programa pausado)
     }

@@ -211,7 +211,7 @@ Calcular Sistema de Coordenadas da Ferramenta Externa
     errno_t ComputeExTCF(DescPose *tcp_pose);
 
 Definir Sistema de Coordenadas da Ferramenta Externa
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.2.0
 
 .. code-block:: c++
@@ -219,69 +219,69 @@ Definir Sistema de Coordenadas da Ferramenta Externa
 
     /**
     * @brief  Define o sistema de coordenadas da ferramenta externa
-    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
-    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
-    * @param  [in] etool  Pendente
+    * @param  [in] id Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19
+    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param  [in] etool  Pose do sistema de coordenadas da peça montado na extremidade do robô
     * @return  Código de erro
     */
     errno_t  SetExToolCoord(int id, DescPose *etcp, DescPose *etool);
 
-Definir Lista de Sistemas de Coordenadas da Ferramenta Externa
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir Lista de Sistemas de Coordenadas de Ferramentas Externas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionchanged:: C++SDK-v2.1.2.0
 
 .. code-block:: c++
     :linenos:
 
     /**
-    * @brief  Define a lista de sistemas de coordenadas da ferramenta externa
-    * @param  [in] id Número do sistema de coordenadas, intervalo [0~14]
-    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro do flange da extremidade
-    * @param  [in] etool  Pendente
+    * @brief  Define a lista de sistemas de coordenadas de ferramentas externas
+    * @param  [in] id Número do sistema de coordenadas, 20-39 correspondem aos sistemas de coordenadas de ferramentas externas 0-19
+    * @param  [in] etcp  Pose do ponto central da ferramenta em relação ao centro da flange da extremidade
+    * @param  [in] etool  Pose do sistema de coordenadas da peça montado na extremidade do robô
     * @return  Código de erro
     */
     errno_t  SetExToolList(int id, DescPose *etcp, DescPose *etool);
 
-Exemplo de Código para Operações do Sistema de Coordenadas da Ferramenta Externa do Robô
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de Código de Operação do Sistema de Coordenadas da Ferramenta Externa do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c++
     :linenos:
 
     int TestExtCoord(void)
     {
-       ROBOT_STATE_PKG pkg = {};
-       FRRobot robot;
-       robot.LoggerInit();
-       robot.SetLoggerLevel(1);
-       int rtn = robot.RPC("192.168.58.2");
-       if (rtn != 0)
-       {
-          return -1;
-       }
-       robot.SetReConnectParam(true, 30000, 500);
-       DescPose p1Desc(-89.606, 779.517, 193.516, 178.000, 0.476, -92.484);
-       JointPos p1Joint(-108.145, -50.137, 85.818, -125.599, -87.946, 74.329);
-       DescPose p2Desc(-24.656, 850.384, 191.361, 177.079, -2.058, -95.355);
-       JointPos p2Joint(-111.024, -41.538, 69.222, -114.913, -87.743, 74.329);
-       DescPose p3Desc(-99.813, 766.661, 241.878, -176.817, 1.917, -91.604);
-       JointPos p3Joint(-107.266, -56.116, 85.971, -122.560, -92.548, 74.331);
-       ExaxisPos exaxisPos(0, 0, 0, 0);
-       DescPose offdese(0, 0, 0, 0, 0, 0);
-       DescPose posTCP[3] = { p1Desc , p2Desc , p3Desc };
-       DescPose coordRtn = {};
-       robot.MoveJ(&p1Joint, &p1Desc, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
-       robot.SetExTCPPoint(1);
-       robot.MoveJ(&p2Joint, &p2Desc, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
-       robot.SetExTCPPoint(2);
-       robot.MoveJ(&p3Joint, &p3Desc, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
-       robot.SetExTCPPoint(3);
-       rtn = robot.ComputeExTCF(&coordRtn);
-       printf("ComputeExTCF          %d coord is %f %f %f %f %f %f \n", rtn, coordRtn.tran.x, coordRtn.tran.y, coordRtn.tran.z, coordRtn.rpy.rx, coordRtn.rpy.ry, coordRtn.rpy.rz);
-       robot.SetExToolCoord(1, &coordRtn, &offdese);
-       robot.SetExToolList(1, &coordRtn, &offdese);
-       robot.CloseRPC();
-       return 0;
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        robot.SetReConnectParam(true, 30000, 500);
+        DescPose p1Desc(-89.606, 779.517, 193.516, 178.000, 0.476, -92.484);
+        JointPos p1Joint(-108.145, -50.137, 85.818, -125.599, -87.946, 74.329);
+        DescPose p2Desc(-24.656, 850.384, 191.361, 177.079, -2.058, -95.355);
+        JointPos p2Joint(-111.024, -41.538, 69.222, -114.913, -87.743, 74.329);
+        DescPose p3Desc(-99.813, 766.661, 241.878, -176.817, 1.917, -91.604);
+        JointPos p3Joint(-107.266, -56.116, 85.971, -122.560, -92.548, 74.331);
+        ExaxisPos exaxisPos(0, 0, 0, 0);
+        DescPose offdese(0, 0, 0, 0, 0, 0);
+        DescPose posTCP[3] = { p1Desc , p2Desc , p3Desc };
+        DescPose coordRtn = {};
+        robot.MoveJ(&p1Joint, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
+        robot.SetExTCPPoint(1);
+        robot.MoveJ(&p2Joint, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
+        robot.SetExTCPPoint(2);
+        robot.MoveJ(&p3Joint, 1, 0, 100, 100, 100, &exaxisPos, -1, 0, &offdese);
+        robot.SetExTCPPoint(3);
+        rtn = robot.ComputeExTCF(&coordRtn);
+        printf("ComputeExTCF          %d coord is %f %f %f %f %f %f \n", rtn, coordRtn.tran.x, coordRtn.tran.y, coordRtn.tran.z, coordRtn.rpy.rx, coordRtn.rpy.ry, coordRtn.rpy.rz);
+        robot.SetExToolCoord(21, &coordRtn, &offdese);
+        robot.SetExToolList(21, &coordRtn, &offdese);
+        robot.CloseRPC();
+        return 0;
     }
 
 Definir Ponto de Referência da Peça - Método dos Três Pontos

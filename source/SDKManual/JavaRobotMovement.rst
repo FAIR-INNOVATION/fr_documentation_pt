@@ -1688,6 +1688,17 @@ Parar Proteção contra Pose Singular
     */
     int SingularAvoidEnd();
 
+Aguardar Conclusão do Movimento Vazio em Posição
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:    
+
+    /**
+    * @brief Aguardar a conclusão do movimento vazio em posição
+    * @return Código de erro
+    */
+    public int WaitStationaryMotionDone()    
+
 Exemplo de Código de Proteção contra Pose Singular do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
@@ -2138,3 +2149,76 @@ Exemplo de Código de Controle MIT das Juntas do Robô
         }
         // return 0;
     }
+
+Início da Transformação dos Pontos do Sistema de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:    
+
+    /**
+    * @brief Início da transformação dos pontos do sistema de coordenadas da peça
+    * @param workpieceID Número da peça [0-14]
+    * @return Código de erro, 0 em caso de sucesso
+    */
+    public int WorkPieceTrsfStart(int workpieceID)
+
+Fim da Transformação dos Pontos do Sistema de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:    
+
+    /**
+    * @brief Fim da transformação dos pontos do sistema de coordenadas da peça
+    * @return Código de erro, 0 em caso de sucesso
+    */
+    public int WorkPieceTrsfEnd()
+
+Exemplo de Código de Movimento de Transformação do Sistema de Coordenadas da Peça
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:    
+    
+    public static int TestWorkPieceTrsf(Robot robot) {
+        ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
+
+        JointPos j1 = new JointPos(-11.188, -64.165, -107.299, -76.706, 89.590, 92.983);
+        DescPose desc1 = new DescPose(225.986, 190.694, 394.238, -6.230, -23.797, -98.972);
+        JointPos j2 = new JointPos(-38.148, -97.408, -133.704, -30.999, 89.584, 92.986);
+        DescPose desc2 = new DescPose(52.741, 262.917, 30.824, -5.696, -9.864, -126.092);
+        JointPos j3 = new JointPos(-25.561, -123.131, -85.736, -94.911, 89.582, 93.006);
+        DescPose desc3 = new DescPose(70.455, 88.410, 45.299, -4.101, 31.775, -113.199);
+        JointPos j4 = new JointPos(-8.013, -125.881, -79.196, -84.440, 89.564, 93.005);
+        DescPose desc4 = new DescPose(209.453, -73.895, 56.416, -4.727, 17.523, -95.906);
+        JointPos j5 = new JointPos(-2.722, -94.518, -119.965, -54.518, 89.563, 93.005);
+        DescPose desc5 = new DescPose(274.800, 81.106, 102.977, -5.467, -2.980, -90.711);
+        JointPos j6 = new JointPos(-2.671, -56.234, -138.914, -25.099, 95.355, 92.967);
+        DescPose desc6 = new DescPose(300.392, 177.281, 300.926, -1.909, -51.894, -89.703);
+        JointPos j7 = new JointPos(-1.229, -121.184, -63.201, -122.331, 93.045, 93.019);
+        DescPose desc7 = new DescPose(296.856, -31.294, 215.698, -0.589, 34.594, -88.954);
+
+        ExaxisPos exaxis = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+        DescPose offset = new DescPose(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
+        int tool = 1;
+        int workpiece = 1;
+        double blend = 5.0;
+
+        robot.MoveJ(j1, desc1, tool, workpiece, 100, 100, 100, exaxis, -1, 0, offset);
+        robot.MoveJ(j2, desc2, tool, workpiece, 100, 100, 100, exaxis, blend, 0, offset);
+        robot.MoveL(j3, desc3, tool, workpiece, 10, 100, 100, blend, 0, exaxis, 0, 1, offset,-1, 0,0,0);
+        robot.MoveC(j4, desc4, tool, workpiece, 100, 100, exaxis, 0, offset, j5, desc5, tool, workpiece, 100, 100, exaxis, 0, offset, 10, blend,100, 0);
+        robot.Circle(j6, desc6, tool, workpiece, 100, 100, exaxis, j7, desc7, tool, workpiece, 100, 100, exaxis, 10, 0, offset, 100.0, blend,0);
+
+        int rtn = robot.WorkPieceTrsfStart(2);
+        System.out.printf("WorkPieceTrsfStart rtn is %d\n", rtn);
+        robot.MoveJ(j1, desc1, tool, workpiece, 100, 100, 100, exaxis, -1, 0, offset);
+        robot.MoveJ(j2, desc2, tool, workpiece, 100, 100, 100, exaxis, blend, 0, offset);
+        robot.MoveL(j3, desc3, tool, workpiece, 10, 100, 100, blend, 0, exaxis, 0, 1, offset,-1, 0,0,0);
+        robot.MoveC(j4, desc4, tool, workpiece, 100, 100, exaxis, 0, offset, j5, desc5, tool, workpiece, 100, 100, exaxis, 0, offset, 10, blend,100, 0);
+        robot.Circle(j6, desc6, tool, workpiece, 100, 100, exaxis, j7, desc7, tool, workpiece, 100, 100, exaxis, 10, 0, offset, 100.0, blend, 0);
+
+        robot.WorkPieceTrsfEnd();
+        System.out.printf("WorkPieceTrsfEnd rtn is %d\n", rtn);
+        robot.Sleep(2000);
+        return 0;
+    }    
