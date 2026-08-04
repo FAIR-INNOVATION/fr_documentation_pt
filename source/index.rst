@@ -34,6 +34,12 @@ Alternar Idioma
 
 .. toctree:: 
    :maxdepth: 6
+   :caption: Loja de Plugins
+
+   CapSoftware
+
+.. toctree:: 
+   :maxdepth: 6
    :caption: Plataforma Aberta
 
    ROSGuide/index
