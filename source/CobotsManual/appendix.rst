@@ -163,7 +163,79 @@ Apêndice 1: Códigos de Erro do Controlador de Movimento e Soluções
    "13-Erro de parâmetro definido", "16", "Erro no canal do codificador da esteira, reinicializável"
    "13-Erro de parâmetro definido", "17", "Erro no número do eixo da peça na esteira, reinicializável"
 
-Apêndice 2: Tabela de Códigos de Falha do Servo Driver
+Apêndice 2: Tabela de Falhas da Caixa de Controle de Larga Tensão
+---------------------------------------------------------------------------------
+
+.. list-table::
+   :widths: 20 40 80
+   :header-rows: 0
+   :align: center
+
+   * - **Código de Falha**
+     - **Nome da Falha**
+     - **Método de Resolução**
+
+   * - 3
+     - MCU Auxiliar Offline
+     - | 1. Regravar o firmware da MCU auxiliar
+       | 2. Reparar a MCU auxiliar ou substituir a caixa de controle  
+
+   * - 4
+     - Inconsistência de Entrada de Emergência das MCUs Principal e Auxiliar
+     - | 1. Verificar o chicote de fios do botão de emergência da caixa de botões ou substituir o conjunto da caixa de botões
+       | 2. Verificar os dois chicotes de curto-circuito de emergência nos terminais da caixa de controle  
+       | 3. Se a falha persistir, reparar ou substituir a caixa de controle 
+
+   * - 5
+     - Inconsistência de Entrada de Segurança das MCUs Principal e Auxiliar
+     - | 1. Verificar os dois chicotes de curto-circuito de segurança nos terminais da caixa de controle
+       | 2. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - 6
+     - Inconsistência de Entrada de Emergência e Habilitação de 3 Posições das MCUs Principal e Auxiliar
+     - | 1. Verificar o interruptor de habilitação de 3 posições do teach pendant e o chicote de fios do teach pendant
+       | 2. Substituir o conjunto do teach pendant
+       | 3. Verificar se o Web está no modo teach pendant e se o teach pendant está conectado
+       | 4. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - 7
+     - Inconsistência de Entrada/Saída STO Principal
+     - | 1. Verificar se o conector do cabo pesado da caixa de controle e o chicote STO estão firmemente conectados
+       | 2. Verificar se o drive suporta a função STO
+       | 3. Para configuração caixa de controle certificada de larga tensão + robô não certificado, verificar se o modo de segurança funcional está ativado
+       | 4. A caixa de controle certificada de larga tensão no modo de certificação ativa a detecção de falhas STO; o robô não certificado não suporta o modo de segurança funcional
+       | 5. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - 8
+     - Inconsistência de Entrada/Saída STO Auxiliar
+     - | 1. Verificar se o conector do cabo pesado da caixa de controle e o chicote STO estão firmemente conectados
+       | 2. Verificar se o drive suporta a função STO
+       | 3. Para configuração caixa de controle certificada de larga tensão + robô não certificado, verificar se o modo de segurança funcional está ativado
+       | 4. A caixa de controle certificada de larga tensão no modo de certificação ativa a detecção de falhas STO; o robô não certificado não suporta o modo de segurança funcional
+       | 5. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - 9
+     - MCU Principal Detecta Inconsistência de Entrada/Saída do Relé 48V
+     - | 1. Verificar a entrada e o feedback do relé de guia forçada na caixa de controle
+       | 2. Verificar se o relé 48V na caixa de controle está colado
+       | 3. Verificar se o circuito de feedback do relé 48V na caixa de controle está funcionando corretamente
+       | 4. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - 10
+     - MCU Auxiliar Detecta Inconsistência de Entrada/Saída do Relé 48V
+     - | 1. Verificar a entrada e o feedback do relé de guia forçada na caixa de controle
+       | 2. Verificar se o relé 48V na caixa de controle está colado
+       | 3. Verificar se o circuito de feedback do relé 48V na caixa de controle está funcionando corretamente
+       | 4. Se a falha persistir, reparar ou substituir a caixa de controle
+
+   * - \
+     - Caixa de Controle Desligada, Sem Saída 48V
+     - | 1. Verificar o circuito relacionado ao chip de proteção contra curto-circuito 24V e verificar se há curtos-circuitos no 24V
+       | 2. Verificar os chicotes de curto-circuito dos terminais de entrada de emergência e entrada de segurança
+       | 3. Verificar se a placa secundária de alimentação 24V da caixa de controle está fornecendo 24V
+       | 4. Se a falha persistir, reparar ou substituir a caixa de controle
+
+Apêndice 3: Tabela de Códigos de Falha do Servo Driver
 -------------------------------------------------------------------------
 
 .. list-table::
@@ -377,7 +449,27 @@ Apêndice 2: Tabela de Códigos de Falha do Servo Driver
      - | 1. Verifique se o disco de codificação óptico está contaminado ou mal fixado.
        | 2. Se a falha persistir, repare ou substitua o módulo magnético.
 
-Apêndice 3: Atualização via 485 da Placa de Extremidade
+   * - 46
+     - Falha de Configuração do Tipo de Robô
+     - | 1. Sem desligar a energia, verificar o número da versão do firmware do drive com falha
+       | 2. Reconfigurar o tipo de robô
+       | 3. Se a falha persistir, substituir ou reparar a placa do drive
+
+   * - 47
+     - Falha de Detecção de Tensão do Freio
+     - | 1. Verificar se a fiação do freio está anormal
+       | 2. Verificar se o circuito do freio está anormal
+
+   * - 50
+     - Falha no Comando de Posição
+     - | 1. Verificar se o comando de posição enviado pelo computador host (controlador) está anormal (ou mutação do comando de posição)
+
+   * - 51
+     - Falha no Módulo do Encoder Magnético - Falha no Encoder Óptico
+     - | 1. Verificar se a fiação do sensor de torque está anormal
+       | 2. Se a falha persistir, reparar ou substituir o sensor de torque
+
+Apêndice 4: Atualização via 485 da Placa de Extremidade
 -------------------------------------------------------------------------
 
 Durante o uso em campo, pode ser necessário atualizar o firmware para atender a novos requisitos. Um novo arquivo de atualização (XX_XX_MAIN.bin) será fornecido. A atualização da placa de extremidade é feita através da interface 485 (requer um conversor USB para 485). Os passos para a atualização são:
@@ -434,7 +526,7 @@ Durante o uso em campo, pode ser necessário atualizar o firmware para atender a
 
 .. centered:: Figura 18.3-6 Consultar Versão do Firmware
 
-Apêndice 4: Atualização via 485 da Caixa de Controle
+Apêndice 5: Atualização via 485 da Caixa de Controle
 ----------------------------------------------------------------------
 
 Na placa da caixa de controle do robô, há um conector “Fonte de Alimentação/Comunicação”. Conecte os terminais A e B da ferramenta USB-485 aos pinos “485-A” e “485-B” deste conector.
@@ -447,7 +539,7 @@ O processo de atualização é o mesmo da placa de extremidade; basta selecionar
 
 .. centered:: Figura 18.4-1 Conector de Fonte de Alimentação/Comunicação
 
-Apêndice 5: Lista de Peças de Reposição e Peças Sujeitas a Desgaste
+Apêndice 6: Lista de Peças de Reposição e Peças Sujeitas a Desgaste
 ---------------------------------------------------------------------------
 
 .. list-table::
