@@ -105,6 +105,30 @@ O painel de fiação do robô colaborativo é mostrado na figura abaixo:
 
 A interface do painel de botões é, por padrão, a porta de controle do painel de ensinamento, com o endereço IP 192.168.58.2. Use um cabo de rede para conectar a interface do painel de botões a um computador. Defina o endereço IP do computador para 192.168.58.10 ou para o mesmo segmento de rede. Abra o navegador Google Chrome e digite 192.168.58.2 para acessar a página do painel de ensinamento.
 
+Informações dos Furos de Montagem da Caixa de Controle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: installation/149.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 1.2-2 Dimensões Externas da Caixa de Controle - Dimensões dos Furos de Montagem 1
+
+.. image:: installation/150.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 1.2-3 Dimensões Externas da Caixa de Controle - Dimensões dos Furos de Montagem 2
+
+.. note:: 
+  1. Os furos cotados são furos de montagem disponíveis;
+  2. Há 16 furos de montagem no total, distribuídos nos lados esquerdo e direito da caixa de controle, 8 em cada lado;
+  3. A especificação do parafuso para os furos de montagem é M3, com passo de 0,5mm;
+  4. A profundidade de inserção dos parafusos na carcaça de chapa metálica da caixa de controle é ≤5mm;
+  5. O torque de montagem recomendado é 0,6Nm, o torque de montagem máximo é 0,84Nm.
+
+:download:`Dimensões Externas da Caixa de Controle - Dimensões dos Furos de Montagem <../_static/_doc/Control box outer dimensions - mounting hole dimensions.zip>`
+
 Conhecendo o Painel de Botões e o LED da Extremidade
 ---------------------------------------------------------------
 

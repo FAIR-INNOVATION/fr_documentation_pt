@@ -34,6 +34,10 @@ Paletizador frcap
 
       .. raw:: html
 
+         <div style="font-size:16px;color:#888;margin-bottom:10px;">Suporte à Versão >= 3.9.0</div>
+
+      .. raw:: html
+
          <div style="font-size:16px;color:#666;line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Fornece um pacote completo de paletização, suportando configurações de tipos de caixa, modos, estações de trabalho, paletes e outras configurações de paletização.</div>
 
       +++
@@ -76,6 +80,10 @@ Cap de Carga e Descarga
       .. raw:: html
 
          <div style="font-size:16px;color:#888;margin-bottom:10px;">Atualizado em 2026-07-31</div>
+
+      .. raw:: html
+
+         <div style="font-size:16px;color:#888;margin-bottom:10px;">Suporte à Versão >= 3.9.8</div>
 
       .. raw:: html
 

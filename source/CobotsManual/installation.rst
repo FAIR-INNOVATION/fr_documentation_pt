@@ -1344,6 +1344,139 @@ Existem duas configurações de software relacionadas à saída digital: "Saída
      - Inválido
      - Válido
 
+Manual de Segurança para Conexão de Alimentação da Caixa de Controle CC
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Definição e Identificação dos Terminais
+************************************************************************************
+O painel frontal da caixa de controle CC possui um terminal de entrada de alimentação de 3 PINs, correspondendo respectivamente ao positivo da alimentação (+V), negativo da alimentação (-V) e aterramento de proteção (PE). Para evitar danos ao equipamento devido a conexões incorretas, consulte rigorosamente a tabela abaixo:
+
+.. list-table::
+   :widths: 15 10 35 35
+   :header-rows: 0
+   :align: center
+
+   * - **Identificação do Terminal** 
+     - **Padrão de Cor**
+     - **Definição da Função**
+     - **Operação Proibida**
+
+   * - 	.. figure:: installation/144.png
+          :align: center
+          :width: 2in
+     - Vermelho
+     - Entrada positiva da alimentação CC, apenas para cabo positivo de 30-60VDC
+     - Curto-circuito com PE ou -V é estritamente proibido
+
+   * - 	.. figure:: installation/145.png
+          :align: center
+          :width: 2in
+     - Preto
+     - Entrada negativa da alimentação CC, apenas para cabo negativo de 30-60VDC, formando o circuito de alimentação
+     - Conexão ao chassi ou PE é estritamente proibida
+
+   * - 	.. figure:: installation/146.png
+          :align: center
+          :width: 2in
+     - Amarelo (Amarelo-Verde)
+     - Terminal de aterramento de proteção (terra de segurança do chassi)
+     - Uso como negativo ou positivo da alimentação é estritamente proibido
+
+.. warning::
+  Aviso de Risco Crítico: Este dispositivo não possui circuitos de proteção contra inversão de polaridade, conexão incorreta ou sobretensão. Qualquer uma das seguintes operações irregulares danificará instantaneamente a placa-mãe interna e os componentes de potência, causando queima permanente e irreversível do dispositivo:
+  
+  1. Inversão de polaridade (cabos +V e -V invertidos);
+  2. +V ou -V conectados erroneamente ao orifício PE;
+  3. Terminal negativo conectado erroneamente ao terra (-V em curto com PE);
+  4. Conexão a corrente alternada (110V/220V/380V) ou tensão CC fora da faixa de 30~60Vdc.
+
+Preparações de Segurança Antes da Conexão
+*************************************************************************
+
+Antes de conectar, os operadores devem concluir as seguintes preparações:
+
+Confirmação de Desligamento
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Desligue completamente a fonte de alimentação a montante e afixe uma placa de aviso de segurança. Use um multímetro para verificar os terminais de entrada de alimentação, confirmando que não há tensão ou carga residual, e nunca realize conexões com a alimentação ligada.
+
+Inspeção do Equipamento
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Verifique se os terminais do equipamento não estão danificados, oxidados ou soltos, e se o corpo não está úmido, com infiltração de água ou danos físicos, garantindo que o equipamento esteja em perfeitas condições.
+
+Confirmação da Fonte de Alimentação
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Confirme que o tipo de saída da fonte de alimentação a montante é uma fonte de alimentação CC estabilizada de 30-60VDC. É estritamente proibido conectar alimentação CA de 110V/220V/380V, alimentação CC abaixo de 30VDC ou acima de 60VDC.
+
+Seleção do Cabo
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Recomenda-se o uso de cabos flexíveis de cobre de 4mm² (AWG11) ou superior. O comprimento de um único cabo de alimentação não deve exceder 2 metros. Não use cabos com bitola insuficiente, isolamento danificado ou envelhecido.
+
+Seleção do Terminal do Cabo
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+As extremidades dos cabos devem ser crimpadas com terminais de pressão pré-isolados (modelo recomendado: DBV5.5-10 terminal de garfo). Inserir fios de cobre descarnados diretamente nos orifícios dos terminais é estritamente proibido.
+
+Calibração das Ferramentas
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Prepare um multímetro qualificado, chave de fenda isolada e alicate de crimpagem. Calibre o multímetro com antecedência para garantir que sua função de detecção de tensão esteja funcionando corretamente, permitindo medição precisa de tensão e distinção de polaridade.
+
+Procedimento Padrão de Conexão
+************************************************************************************
+
+Crimpagem dos Terminais dos Cabos
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Use o alicate de crimpagem para fixar os terminais de pressão (recomendados DBV5.5-10) em uma extremidade de cada um dos três cabos coloridos: vermelho (+V), preto (-V) e amarelo-verde (PE). Certifique-se de que a crimpagem esteja firme e que o núcleo de cobre não esteja exposto. O uso de cabos da mesma cor ou com identificação de cor pouco clara é estritamente proibido.
+
+Inserção e Aperto do Conector Terminal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Insira os terminais crimpados nos orifícios correspondentes do conector de encaixe destacável fornecido com o equipamento (preste atenção à direção de inserção, com o lado plano do terminal voltado para a mola de contato):
+Cabo vermelho → insira no orifício +V;
+Cabo preto → insira no orifício -V;
+Cabo amarelo-verde → insira no orifício PE.
+Use uma chave de fenda isolada de ponta chata para apertar no sentido horário o parafuso de fixação do cabo acima de cada orifício.
+
+.. figure:: installation/147.png
+  :align: center
+  :width: 4in
+
+.. centered:: Chicote de cabos com terminais de pressão inseridos no conector verde
+
+Verificação de Tração
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Após apertar cada cabo, puxe o cabo com força para confirmar que o terminal não está solto e que o núcleo não escorregou. Se estiver solto, recrimpe o terminal e aperte novamente.
+
+Inserção na Caixa de Controle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Insira o conector com os cabos na entrada de alimentação da caixa de controle CC, seguindo a direção da guia de polarização. Certifique-se de que o conector esteja totalmente encaixado.
+
+.. figure:: installation/148.png
+  :align: center
+  :width: 3in
+
+.. centered:: Conector com chicote de cabos inserido na entrada de alimentação da caixa de controle CC
+
+Verificação Final de Isolamento Antes da Energização
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Com a alimentação ainda não conectada, use um multímetro para medir a impedância entre +V e -V na extremidade do conector, confirmando que não há curto-circuito; meça a impedância entre +V/-V e PE, confirmando que estão em estado de isolamento aberto.
+
+Inicialização e Tratamento de Anomalias
+************************************************************************************
+
+- Inicialização Normal: Feche o interruptor de alimentação a montante e observe o indicador luminoso no painel da caixa de controle. A condição normal é que o indicador permaneça aceso, sem sons ou odores anormais.
+- Condição Anormal (Desligue imediatamente!): Se houver chiado intenso, fumaça, faíscas, odores, ou se o amperímetro da fonte a montante indicar instantaneamente sobrecarga máxima, desligue imediatamente a alimentação principal e não religue. Entre em contato com o suporte técnico após o equipamento esfriar completamente. Não tente desmontar o equipamento para inspeção.
+
+.. warning:: Aviso Final: A energização indica que você compreendeu e cumpriu integralmente as especificações de conexão acima. Se qualquer identificação não estiver clara, entre em contato imediatamente com o suporte técnico. Não confie na experiência para fazer as conexões!
+
 Plano de Inspeção e Manutenção
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
