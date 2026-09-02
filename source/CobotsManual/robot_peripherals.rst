@@ -654,6 +654,16 @@ A partir da versão V3.9.8, o SmartTool baseado no protocolo do efetuador final 
 
 .. centered:: Figura 8.3‑2-5 Mensagem na Página "Entrar no modo boot e aplicar o protocolo aberto?"
 
+Além disso, ao utilizar os botões IO, o usuário precisa selecionar o tipo de comunicação da máquina de solda atual, incluindo: I/O do controlador, Protocolo de Comunicação Digital (UDP), Protocolo de Comunicação Digital (Modbus TCP). Para I/O do controlador e Protocolo de Comunicação Digital (UDP), o DO correspondente deve ser configurado com a função de início de arco para que instruções relacionadas à soldagem possam ser geradas. Para o Protocolo de Comunicação Digital (Modbus TCP), a instrução deve ser configurada como soldagem para que instruções relacionadas à soldagem possam ser geradas; caso contrário, apenas instruções para configurar a saída DO serão geradas.
+
+.. note:: É importante notar que ao selecionar os Protocolos de Comunicação Digital (UDP) ou (Modbus TCP) para a comunicação com a máquina de solda, a configuração das instruções de soldagem requer que a conexão de comunicação seja estabelecida corretamente.
+
+.. figure:: robot_peripherals/321.png
+   :align: center
+   :width: 4in
+
+.. centered:: Figura 8.3‑2-6 Seleção do Tipo de Controle da Máquina de Solda e Tipo de Instrução
+
 Importação do Modelo de Programa de Geração para SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -663,7 +673,7 @@ Se a tecla SmartTool estiver configurada com a função de geração de programa
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.3‑2-6 Importação do Modelo de Programa de Geração para SmartTool
+.. centered:: Figura 8.3‑2-7 Importação do Modelo de Programa de Geração para SmartTool
 
 Configuração dos Pontos de Comando de Movimento para SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -674,7 +684,7 @@ Ao configurar os três comandos "PTP", "LIN" e "ARC" no SmartTool, é possível 
    :align: center
    :width: 4in
 
-.. centered:: Figura 8.3‑2-7 Configuração de "Pontos de Ensino Globais" e "Pontos de Ensino Locais" para Comandos de Movimento SmartTool
+.. centered:: Figura 8.3‑2-8 Configuração de "Pontos de Ensino Globais" e "Pontos de Ensino Locais" para Comandos de Movimento SmartTool
 
 Modo Antierro no SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -685,7 +695,7 @@ O SmartTool baseado no protocolo aberto adicionou um modo antierro. Acesse seque
    :align: center
    :width: 6in
 
-.. centered:: Figura 8.3‑2-8 Função "Modo Antierro" no SmartTool
+.. centered:: Figura 8.3‑2-9 Função "Modo Antierro" no SmartTool
 
 Função de Limpeza de Memória do Botão IO do SmartTool
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -701,7 +711,7 @@ Uma função de limpeza global de pontos foi adicionada. Abra o WebApp, clique e
    :align: center
    :width: 6in
 
-.. centered:: Figura 8.3‑2-9 Função de Limpeza Global de Pontos
+.. centered:: Figura 8.3‑2-10 Função de Limpeza Global de Pontos
 
 Exemplo de Protocolo Lua de Periférico de Extremidade para Punho de Solda
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1098,6 +1108,51 @@ Clique no cartão "Protocolo Personalizado" para entrar na interface. Ative o se
 
 .. centered:: Figura 8.3‑12 Ativação do Sensor de Força
 
+Adaptação do Sensor de Força Kaiwei
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão Geral
++++++++++++++++++++++++++++++++++++++++++++++
+Um novo sensor de força Kaiwei foi adicionado à lista de dispositivos adaptados, com o modelo KWL-SFTE75B.
+
+Adaptação do Sensor de Força Kaiwei
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+(1) Vá para Configuração Inicial -> Periféricos -> Sensor de Força e selecione o dispositivo adaptado.
+
+.. figure:: robot_peripherals/322.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.3‑13 Dispositivos Adaptados
+
+(2) Na lista de dispositivos adaptados, selecione o fabricante KWL, selecione o tipo KWL-SFTE75B, escolha a posição de montagem e clique em Configurar.
+
+.. figure:: robot_peripherals/323.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.3‑13 Configurar Fabricante
+
+(3) Selecione o número da posição de montagem correspondente, clique em Reiniciar e depois em Ativar. Quando Act_State na barra de ferramentas FT mostrar 1, o sensor está pronto para uso normal.
+
+.. figure:: robot_peripherals/324.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.3‑14 Operações de Ativação e Reinicialização
+
+Instruções de Uso do Dispositivo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+(1) Na barra de ferramentas FT, Fx, Fy, Fz, Tx, Ty, Tz representam os dados de força de seis eixos, com unidades em N e N·m.
+
+.. figure:: robot_peripherals/325.png
+   :align: center
+   :width: 4in
+
+.. centered:: Figura 8.3‑15 Dados de Força de Seis Eixos na Barra de Ferramentas FT
+
 Punho de Solda
 -------------------------------------------------------------
 
@@ -1157,7 +1212,10 @@ Função da tecla IO:
 
 -  **Configuração do Sinal IO**: A caixa suspensa permite selecionar opções DO0⁓DO7, CO0⁓CO7, End-DO0, End-DO1 e IO de extensão (Aux-DO0⁓Aux-DO127);
 
--  **Comando Combinado**: Após selecionar "Sinal IO", sob condições específicas, os itens de configuração "Seleção da Fonte de Solda" e "Velocidade do Ponto" são exibidos, gerando diferentes instruções de programa.Além disso, foi adicionada a seleção do número do processo de soldagem. Além disso, o tempo máximo para início e fim do arco pode ser configurado até 10000ms. O número de oscilação é padrão 0. Se "Início da Oscilação" for configurado, o número de oscilação pode ser selecionado. As configurações do botão IO são consistentes com as configurações de Início da Oscilação.
+-  **Instruções Combinadas**: Após selecionar "Sinal IO", os itens de configuração "Seleção da Máquina de Solda" e "Velocidade do Ponto" são exibidos sob condições específicas para gerar diferentes instruções de programa.
+
+  - O usuário precisa selecionar o tipo de comunicação da máquina de solda atual, incluindo: I/O do controlador, Protocolo de Comunicação Digital (UDP), Protocolo de Comunicação Digital (Modbus TCP). Para I/O do controlador e Protocolo de Comunicação Digital (UDP), o DO correspondente deve ser configurado com a função de início de arco para que instruções relacionadas à soldagem possam ser geradas. Para o Protocolo de Comunicação Digital (Modbus TCP), a instrução deve ser configurada como soldagem para que instruções relacionadas à soldagem possam ser geradas; caso contrário, apenas instruções para configurar a saída DO serão geradas. É importante notar que ao selecionar os Protocolos de Comunicação Digital (UDP) ou (Modbus TCP) para a comunicação com a máquina de solda, a configuração das instruções de soldagem requer que a conexão de comunicação seja estabelecida corretamente.
+  - Além disso, foi adicionada a seleção do número do processo de soldagem. Além disso, o tempo máximo para início e fim do arco pode ser configurado até 10000ms. O número de oscilação é padrão 0. Se "Início da Oscilação" for configurado, o número de oscilação pode ser selecionado. As configurações do botão IO são consistentes com as configurações de Início da Oscilação.
 
 .. important::
    -  Quando o sinal IO é configurado como DO0~DO7 ou CO0~CO7 (sem configurar "Arco de Partida"), o programa adiciona SetDO; neste momento, "Seleção da Fonte de Solda" e "Velocidade do Ponto" ficam ocultos.
@@ -6485,7 +6543,15 @@ Funções específicas dos parâmetros:
 - **Limite de Velocidade Angular**: 100°/s. Quando o limite de velocidade angular é excedido, o robô muda para o modo manual e exibe um alerta de excesso de velocidade TCP.
 
 .. note::
-  1. Para o robô FR3WML, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [0.15, 0.15, 0.15, 0.15, 0.15, 0.2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05].
+  1. Configurações dos parâmetros de arrasto
+
+  (1) Para o robô FR3WML, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [1.5, 1.5, 1.5, 1.5, 1.5, 2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05];
+
+  (2) Para o robô FR3WMS, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [2, 2, 2, 2, 2, 2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05];
+
+  (3) Para o robô FR3C, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [2, 2, 2, 2, 2, 2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05].
+
+  (4) Para o robô FR5C, as configurações de parâmetros recomendadas são as seguintes: ganho de arrasto [2, 2, 2, 2, 2, 2], ganho de amortecimento após ativação da impedância [0.1, 0.1, 0.1, 0.05, 0.05, 0.05].
 
   2. Quando todos os parâmetros de ganho de arrasto são definidos como 0, a resistência ao arrasto é forte e é difícil arrastar; quando todos os parâmetros de ganho de arrasto são definidos como 5, a sensação de arrasto é leve; quanto maior o parâmetro, mais fácil o arrasto.
 

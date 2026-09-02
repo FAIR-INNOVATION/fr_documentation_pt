@@ -504,6 +504,7 @@ Definir Função da Porta CI Configurável do Painel de Controle
     22-modo de redução nível 1;23-modo de redução nível 2;24-modo de redução nível 3 (parada);25-retomar soldagem;26-terminar soldagem;
     27-ativar arrasto assistido;28-desativar arrasto assistido;29-ativar/desativar arrasto assistido;30-limpar todos os erros;
     31-alternar manual/automático (nível alto/baixo);32-habilitar;33-desabilitar;34-habilitar/desabilitar (borda de subida/descida);35-iniciar/parar rastreamento de ponto fixo
+    36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força
     * @return Código de erro
     */
     public int SetDIConfig(int[] config)
@@ -524,6 +525,11 @@ Obter Função da Porta CI Configurável do Painel de Controle
     22-modo de redução nível 1;23-modo de redução nível 2;24-modo de redução nível 3 (parada);25-retomar soldagem;26-terminar soldagem;
     27-ativar arrasto assistido;28-desativar arrasto assistido;29-ativar/desativar arrasto assistido;30-limpar todos os erros;
     31-alternar manual/automático (nível alto/baixo);32-habilitar;33-desabilitar;34-habilitar/desabilitar (borda de subida/descida);35-iniciar/parar rastreamento de ponto fixo
+    36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força
+    201-Sinal de entrada de parada de emergência externa 1-dois canais; 202-Sinal de entrada de parada de emergência externa 2-dois canais; 203-Modo reduzido de nível 1-dois canais;
+    204-Modo reduzido de nível 2-dois canais; 205-Modo reduzido de nível 3-dois canais; 206-Parada normal-dois canais; 207-Parede de segurança 1-dois canais; 208-Parede de segurança 2-dois canais;
+    209-Parede de segurança 3-dois canais; 210-Parede de segurança 4-dois canais; 211-Parede de segurança 5-dois canais; 212-Parede de segurança 6-dois canais; 213-Parede de segurança 7-dois canais;
+    214-Parede de segurança 8-dois canais; 215-Reinicialização de parada de segurança-dois canais;
     * @return Código de erro
     */
     public int GetDIConfig(out int[] config)
@@ -570,9 +576,103 @@ Obter Função da Porta CO Configurável do Painel de Controle
     39-erro do robô - erro de comunicação com o driver;40-erro do robô - erro de parâmetro;41-erro do robô - erro de limite suave excedido no eixo externo;42-aviso do robô - aviso;
     43-aviso do robô - aviso de porta de segurança;44-aviso do robô - aviso de movimento;45-aviso do robô - aviso de zona de interferência;46-aviso do robô - aviso de parede de segurança;
     47-estado de habilitação;48-elevação automática durante desconexão;49-aviso de interferência do cubo 1;50-aviso de interferência do cubo 2;51-aviso de interferência do cubo 3;52-aviso de interferência do cubo 4;
+    201-Sinal de saída de parada de emergência 1-dois canais; 202-Sinal de saída de parada de emergência 2-dois canais; 203-Saída de status de segurança-dois canais; 204-Saída de status de parada protetiva-dois canais; 205-Robô em movimento-dois canais;
+	206-Robô em modo reduzido-dois canais; 207-Robô em modo não reduzido-dois canais;
     * @return Código de erro
     */
     public int GetDOConfig(out int[] config)
+
+Configuração da Função CI de Dois Canais de Segurança
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Configuração da função CI de dois canais de segurança
+    * @param [in] ID ID do dois canais; [0-3]
+    * @param [in] config Configuração da função; 0-sem configuração; 201-Sinal de entrada de parada de emergência externa 1; 202-Sinal de entrada de parada de emergência externa 2; 203-Modo reduzido de nível 1; 204-Modo reduzido de nível 2; 205-Modo reduzido de nível 3;
+                        206-Parada normal; 207-Parede de segurança 1; 208-Parede de segurança 2; 209-Parede de segurança 3; 210-Parede de segurança 4; 211-Parede de segurança 5; 212-Parede de segurança 6; 213-Parede de segurança 7;
+                        214-Parede de segurança 8; 215-Reinicialização de parada de segurança;
+    * @return Código de erro
+    */
+    public int SetSafetyDIConfig(int ID, int config)
+
+Configuração da Função CO de Dois Canais de Segurança
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Configuração da função CO de dois canais de segurança
+    * @param [in] ID ID do dois canais; [0-3]
+    * @param [in] config Configuração da função; 0-sem configuração; 201-Sinal de saída de parada de emergência 1; 202-Sinal de saída de parada de emergência 2; 203-Saída de status de segurança; 204-Saída de status de parada protetiva; 205-Robô em movimento;
+                        206-Robô em modo reduzido; 207-Robô em modo não reduzido;
+    * @return Código de erro
+    */
+    public int SetSafetyDOConfig(int ID, int config)
+
+Exemplo de Código de Verificação da Configuração das Funções CI/CO de Dois Canais de Segurança
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c#
+    :linenos:
+
+    public void TestSafetyIOConfig()
+    {
+        int rtn = 0;
+
+        rtn = robot.SetSafetyDIConfig(0, 201);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(1, 202);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(2, 203);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(3, 204);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+
+        int[] getDIConfig = new int[8];
+        rtn = robot.GetDIConfig(out getDIConfig);
+        Console.WriteLine($"GetDIConfig rtn is {rtn}, value is {string.Join(" ", getDIConfig)}");
+
+        rtn = robot.SetSafetyDIConfig(0, 0);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(1, 0);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(2, 0);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDIConfig(3, 0);
+        Console.WriteLine($"SetSafetyDIConfig rtn is {rtn}");
+
+        rtn = robot.GetDIConfig(out getDIConfig);
+        Console.WriteLine($"GetDIConfig rtn is {rtn}, value is {string.Join(" ", getDIConfig)}");
+
+        rtn = robot.SetSafetyDOConfig(0, 204);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(1, 205);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(2, 206);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(3, 207);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+
+        int[] getDOConfig = new int[8];
+        rtn = robot.GetDOConfig(out getDOConfig);
+        Console.WriteLine($"GetDOConfig rtn is {rtn}, value is {string.Join(" ", getDOConfig)}");
+
+        rtn = robot.SetSafetyDOConfig(0, 0);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(1, 0);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(2, 0);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+        rtn = robot.SetSafetyDOConfig(3, 0);
+        Console.WriteLine($"SetSafetyDOConfig rtn is {rtn}");
+
+        rtn = robot.GetDOConfig(out getDOConfig);
+        Console.WriteLine($"GetDOConfig rtn is {rtn}, value is {string.Join(" ", getDOConfig)}");
+    }    
 
 Definir Função da Porta End-CI Configurável da Extremidade
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

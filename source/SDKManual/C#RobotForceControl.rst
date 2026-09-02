@@ -481,6 +481,24 @@ Inserção Rotativa
     */
     public int FT_RotInsertion(int rcs, double angVelRot, double ft, double max_angle, int orn, double max_angAcc, int rotorn, int strategy)
 
+Busca em Espiral
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief  Busca em espiral
+    * @param  [in] rcs Sistema de coordenadas de referência, 0-sistema da ferramenta, 1-sistema base
+    * @param  [in] dr Avanço do raio por volta
+    * @param  [in] ft Limiar de força/torque, fx,fy,fz,tx,ty,tz, intervalo [0~100]
+    * @param  [in] max_t_ms Tempo máximo de busca, unidade ms
+    * @param  [in] max_vel Velocidade linear máxima, unidade mm/s
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
+    * @return  Código de erro
+    */
+    public int FT_SpiralSearch(int rcs, float dr, float ft, float max_t_ms, float max_vel, int strategy = 0)
+
 Inserção Linear
 +++++++++++++++++++++++++++++++++++++++++++++
     
@@ -495,9 +513,10 @@ Inserção Linear
     * @param  [in] lin_a Aceleração linear, unidade mm/s^2, não utilizada temporariamente
     * @param  [in] max_dis Distância máxima de inserção, unidade mm
     * @param  [in] linorn  Direção de inserção, 0-direção negativa, 1-direção positiva
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
     * @return  Código de erro
     */
-    public int FT_LinInsertion(int rcs, float ft, float lin_v, float lin_a, float max_dis, byte linorn)
+    public int FT_LinInsertion(int rcs, float ft, float lin_v, float lin_a, float max_dis, byte linorn, int strategy=0)
 
 Exemplo de Código de Inserção Rotacional com Sensor de Força
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1027,9 +1046,10 @@ Posicionamento de Superfície
     * @param  [in] lin_a Aceleração linear de busca, unidade mm/s^2, não utilizada temporariamente, padrão 0
     * @param  [in] max_dis Distância máxima de busca, unidade mm
     * @param  [in] ft  Limiar de força/torque de término de movimento, fx,fy,fz,tx,ty,tz
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
     * @return  Código de erro
     */
-    public int FT_FindSurface(int rcs, byte dir, byte axis, float lin_v, float lin_a, float max_dis, float ft)
+    public int FT_FindSurface(int rcs, byte dir, byte axis, float lin_v, float lin_a, float max_dis, float ft, int stragety = 0)
 
 Início do Cálculo da Posição do Plano Médio
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

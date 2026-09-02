@@ -505,6 +505,7 @@ Definir Função da Porta CI Configurável do Painel de Controle
     22-Modo de redução nível 1;23-Modo de redução nível 2;24-Modo de redução nível 3 (parada);25-Recuperar soldagem;26-Terminar soldagem;
     27-Ativar arrastagem assistida;28-Desativar arrastagem assistida;29-Ativar/Desativar arrastagem assistida;30-Limpar todos os erros;
     31-Alternar manual/automático (nível alto/baixo);32-Habilitar;33-Desabilitar;34-Habilitar/Desabilitar (borda de subida/descida);35-Iniciar/Parar rastreamento pontual
+    36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força
     * @return Código de erro
     */
     public int SetDIConfig(int[] config)
@@ -525,6 +526,11 @@ Obter Função da Porta CI Configurável do Painel de Controle
     22-Modo de redução nível 1;23-Modo de redução nível 2;24-Modo de redução nível 3 (parada);25-Recuperar soldagem;26-Terminar soldagem;
     27-Ativar arrastagem assistida;28-Desativar arrastagem assistida;29-Ativar/Desativar arrastagem assistida;30-Limpar todos os erros;
     31-Alternar manual/automático (nível alto/baixo);32-Habilitar;33-Desabilitar;34-Habilitar/Desabilitar (borda de subida/descida);35-Iniciar/Parar rastreamento pontual
+    36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força
+    201-Sinal de entrada de parada de emergência externa 1-dois canais; 202-Sinal de entrada de parada de emergência externa 2-dois canais; 203-Modo reduzido de nível 1-dois canais;
+    204-Modo reduzido de nível 2-dois canais; 205-Modo reduzido de nível 3-dois canais; 206-Parada normal-dois canais; 207-Parede de segurança 1-dois canais; 208-Parede de segurança 2-dois canais;
+    209-Parede de segurança 3-dois canais; 210-Parede de segurança 4-dois canais; 211-Parede de segurança 5-dois canais; 212-Parede de segurança 6-dois canais; 213-Parede de segurança 7-dois canais;
+    214-Parede de segurança 8-dois canais; 215-Reinicialização de parada de segurança-dois canais;
     * @return Código de erro
     */
     public int GetDIConfig(int[] config)
@@ -571,6 +577,8 @@ Obter Função da Porta CO Configurável do Painel de Controle
     39-Erro do robô - erro de comunicação do driver;40-Erro do robô - erro de parâmetro;41-Erro do robô - erro de limite flexível do eixo externo excedido;42-Aviso do robô - aviso;
     43-Aviso do robô - aviso de porta de segurança;44-Aviso do robô - aviso de movimento;45-Aviso do robô - aviso de área de interferência;46-Aviso do robô - aviso de parede de segurança;
     47-Estado de habilitação;48-Elevação automática por desconexão em andamento;49-Aviso de interferência do cuboide 1;50-Aviso de interferência do cuboide 2;51-Aviso de interferência do cuboide 3;52-Aviso de interferência do cuboide 4;
+    201-Sinal de saída de parada de emergência 1-dois canais; 202-Sinal de saída de parada de emergência 2-dois canais; 203-Saída de status de segurança-dois canais; 204-Saída de status de parada protetiva-dois canais; 205-Robô em movimento-dois canais;
+	206-Robô em modo reduzido-dois canais; 207-Robô em modo não reduzido-dois canais;
     * @return Código de erro
     */
     public int GetDOConfig(int[] config)

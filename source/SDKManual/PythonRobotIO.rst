@@ -509,7 +509,8 @@ Definir Função da Porta CI Configurável
       18-sinal de detecção fotoelétrica X;19-sinal de detecção fotoelétrica Y;20-sinal de parada de emergência externa 1;21-sinal de parada de emergência externa 2;
       22-modo de redução de nível 1;23-modo de redução de nível 2;24-modo de redução de nível 3 (parada);25-retomar soldagem;26-terminar soldagem;
       27-ativar arrasto auxiliar;28-desativar arrasto auxiliar;29-ativar/desativar arrasto auxiliar;30-limpar todos os erros;
-      31-comutação manual/automático (nível alto/baixo);32-ativar;33-desativar;34-ativar/desativar (borda de subida/descida);35-iniciar/terminar rastreamento de ponto fixo"
+      31-comutação manual/automático (nível alto/baixo);32-ativar;33-desativar;34-ativar/desativar (borda de subida/descida);35-iniciar/terminar rastreamento de ponto fixo
+      36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
@@ -529,7 +530,12 @@ Obter Função da Porta CI Configurável da Caixa de Controle
       18-sinal de detecção fotoelétrica X;19-sinal de detecção fotoelétrica Y;20-sinal de parada de emergência externa 1;21-sinal de parada de emergência externa 2;
       22-modo de redução de nível 1;23-modo de redução de nível 2;24-modo de redução de nível 3 (parada);25-retomar soldagem;26-terminar soldagem;
       27-ativar arrasto auxiliar;28-desativar arrasto auxiliar;29-ativar/desativar arrasto auxiliar;30-limpar todos os erros;
-      31-comutação manual/automático (nível alto/baixo);32-ativar;33-desativar;34-ativar/desativar (borda de subida/descida);35-iniciar/terminar rastreamento de ponto fixo"
+      31-comutação manual/automático (nível alto/baixo);32-ativar;33-desativar;34-ativar/desativar (borda de subida/descida);35-iniciar/terminar rastreamento de ponto fixo
+      36-Entrar em movimento com velocidade de segurança;37-Bloqueio de arrasto por anel de corrente;38-Bloqueio assistido por sensor de força
+      201-Sinal de entrada de parada de emergência externa 1-dois canais; 202-Sinal de entrada de parada de emergência externa 2-dois canais; 203-Modo reduzido de nível 1-dois canais;
+      204-Modo reduzido de nível 2-dois canais; 205-Modo reduzido de nível 3-dois canais; 206-Parada normal-dois canais; 207-Parede de segurança 1-dois canais; 208-Parede de segurança 2-dois canais;
+      209-Parede de segurança 3-dois canais; 210-Parede de segurança 4-dois canais; 211-Parede de segurança 5-dois canais; 212-Parede de segurança 6-dois canais; 213-Parede de segurança 7-dois canais;
+      214-Parede de segurança 8-dois canais; 215-Reinicialização de parada de segurança-dois canais;"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
@@ -575,7 +581,9 @@ Obter Função da Porta CO Configurável
       34-erro do robô-erro de escrava;35-erro do robô-erro de E/S;36-erro do robô-erro da garra;37-erro do robô-erro de arquivo;38-erro do robô-erro de pose singular;
       39-erro do robô-erro de comunicação do driver;40-erro do robô-erro de parâmetro;41-erro do robô-erro de limite flexível do eixo externo excedido;42-aviso do robô-aviso;
       43-aviso do robô-aviso de porta de segurança;44-aviso do robô-aviso de movimento;45-aviso do robô-aviso de área de interferência;46-aviso do robô-aviso de parede de segurança;
-      47-estado ativado;48-elevação automática durante desconexão;49-aviso de interferência do cubo 1;50-aviso de interferência do cubo 2;51-aviso de interferência do cubo 3;52-aviso de interferência do cubo 4;"
+      47-estado ativado;48-elevação automática durante desconexão;49-aviso de interferência do cubo 1;50-aviso de interferência do cubo 2;51-aviso de interferência do cubo 3;52-aviso de interferência do cubo 4;
+      201-Sinal de saída de parada de emergência 1-dois canais; 202-Sinal de saída de parada de emergência 2-dois canais; 203-Saída de status de segurança-dois canais; 204-Saída de status de parada protetiva-dois canais; 205-Robô em movimento-dois canais;
+	  206-Robô em modo reduzido-dois canais; 207-Robô em modo não reduzido-dois canais;"
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 

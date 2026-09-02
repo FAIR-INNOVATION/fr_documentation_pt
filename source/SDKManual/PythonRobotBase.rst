@@ -162,24 +162,22 @@ Exemplo de Código de Controle Básico do Robô
 .. code-block:: python
     :linenos:
 
-    from fairino import Robot
-    import time
-    # Estabelece conexão com o controlador do robô, retorna um objeto robô se a conexão for bem-sucedida
-    robot = Robot.RPC('192.168.58.2')
-    error, version = robot.GetSDKVersion()
+    time.sleep(1)
+    error,version = robot.GetSDKVersion()
     print(f"SDK version: {version}")
-    error, ip = robot.GetControllerIP()
+    error,ip = robot.GetControllerIP()
     print(f"controller ip: {ip}")
+
     robot.Mode(1)
     time.sleep(1)
     robot.DragTeachSwitch(state=1)
     time.sleep(1)
-    error, state = robot.IsInDragTeach()
+    error,state = robot.IsInDragTeach()
     print(f"drag state: {state}")
     time.sleep(3)
     robot.DragTeachSwitch(state=0)
     time.sleep(1)
-    error, state = robot.IsInDragTeach()
+    error,state = robot.IsInDragTeach()
     print(f"drag state: {state}")
     time.sleep(3)
     robot.RobotEnable(0)
@@ -188,6 +186,15 @@ Exemplo de Código de Controle Básico do Robô
     robot.Mode(0)
     time.sleep(1)
     robot.Mode(1)
+    time.sleep(1)
+    rtn = robot.HiSpeedManualSwitch(1)
+    print(f"change high speed mode : {rtn}")
+    time.sleep(1)
+    rtn = robot.HiSpeedManualSwitch(0)
+    print(f"change low speed mode : {rtn}")
+    time.sleep(3)
+    robot.ShutDownRobotOS()
+  
     robot.CloseRPC()
 
 Obter Versão do Software do Robô

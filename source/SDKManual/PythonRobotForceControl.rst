@@ -451,13 +451,14 @@ Busca em Espiral
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``FT_SpiralSearch(rcs, ft, dr=0.7, max_t_ms=60000, max_vel=5)``"
+    "Protótipo", "``FT_SpiralSearch(rcs, ft, dr=0.7, max_t_ms=60000, max_vel=5, strategy=0)``"
     "Descrição", "Busca em espiral"
     "Parâmetros obrigatórios", "- ``rcs``: Sistema de coordenadas de referência, 0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas base
     - ``ft``: Limiar de força ou torque (0~100), em N ou Nm;"
     "Parâmetros padrão", "- ``dr``: Avanço do raio por volta, em mm, padrão 0.7;
     - ``max_t_ms``: Tempo máximo de busca, em ms, padrão 60000;
-    - ``max_vel``: Velocidade linear máxima, em mm/s, padrão 5"
+    - ``max_vel``: Velocidade linear máxima, em mm/s, padrão 5;
+    - ``strategy``：strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento;"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
 Inserção Rotativa
@@ -540,14 +541,15 @@ Inserção Linear
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``FT_LinInsertion(rcs, ft, disMax, linorn, lin_v=1.0, lin_a=1.0)``"
+    "Protótipo", "``FT_LinInsertion(rcs, ft, disMax, linorn, lin_v=1.0, lin_a=1.0, strategy=0)``"
     "Descrição", "Inserção linear"
     "Parâmetros obrigatórios", "- ``rcs``: Sistema de coordenadas de referência, 0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas base;
     - ``ft``: Limiar de força ou torque (0~100), em N ou Nm;
     - ``disMax``: Distância máxima de inserção, em mm;
     - ``linorn``: Direção de inserção: 0-direção negativa, 1-direção positiva"
     "Parâmetros padrão", "- ``lin_v``: Velocidade linear, em mm/s, padrão 1;
-    - ``lin_a``: Aceleração linear, em mm/s², não utilizado no momento, padrão 1"
+    - ``lin_a``: Aceleração linear, em mm/s², não utilizado no momento, padrão 1;
+    - ``strategy``：Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento;"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
 Exemplo de Código de Instruções de Busca em Espiral, Inserção Linear, etc.
@@ -631,7 +633,7 @@ Localização de Superfície
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``FT_FindSurface(rcs, dir, axis, disMax, ft, lin_v=3.0, lin_a=0.0)``"
+    "Protótipo", "``FT_FindSurface(rcs, dir, axis, disMax, ft, lin_v=3.0, lin_a=0.0, stragety = 0)``"
     "Descrição", "Localização de superfície"
     "Parâmetros obrigatórios", "- ``rcs``: Sistema de coordenadas de referência, 0-sistema de coordenadas da ferramenta, 1-sistema de coordenadas base;
     - ``dir``: Direção do movimento, 1-direção positiva, 2-direção negativa;
@@ -639,7 +641,8 @@ Localização de Superfície
     - ``disMax``: Distância máxima de busca, em mm;
     - ``ft``: Limiar de força para terminar o movimento, em N;"
     "Parâmetros padrão", "- ``lin_v``: Velocidade linear de busca, em mm/s, padrão 3;
-    - ``lin_a``: Aceleração linear de busca, em mm/s², padrão 0;"
+    - ``lin_a``: Aceleração linear de busca, em mm/s², padrão 0;
+    - ``strategy``：Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento;"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
 Iniciar Cálculo da Posição do Plano Médio

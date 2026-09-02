@@ -2271,6 +2271,218 @@ Permite ajustar a velocidade de reprodução do rastreamento a laser, permitindo
 
 .. centered:: Figura 9.8-4 Interface da Instrução LT-Rec
 
+Reprodução de Trajetória de Varredura a Laser com Oscilação Sobrep
+****************************************************************************************************************
+
+Visão Geral
+""""""""""""""""""""""""""""""""""""""""""""""""
+A função de reprodução de trajetória de varredura a laser com oscilação sobreposta refere-se à sobreposição de ondas triangulares / ondas triangulares em L vertical / ondas circulares no sentido horário / ondas circulares no sentido anti-horário / ondas senoidais / ondas senoidais em L vertical / ondas triangulares para soldagem vertical durante a reprodução da trajetória de varredura a laser. Suporta tanto a oscilação regular quanto a oscilação em pontos fixos, e pode ser adaptada ao movimento de eixos estendidos, conforme mostrado na Tabela 1-1.
+
+.. centered:: Tabela 9.8-1 Modos de Reprodução de Trajetória de Varredura a Laser com Oscilação Sobrep
+
+.. list-table::
+   :widths: 40 30 30
+   :header-rows: 0
+   :align: center
+
+   * - **Reprodução de Trajetória**
+     - **Oscilação Regular**
+     - **Oscilação em Pontos Fixos**
+
+   * - Robô
+     - Sim
+     - Sim
+
+   * - Eixo Estendido
+     - Não
+     - Sim
+
+Reprodução de Trajetória de Varredura a Laser com Oscilação Regular Sobrep
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Configure o sensor laser linear através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 2**: Calibre o sistema de coordenadas da ferramenta através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 3**: Calibre o sistema de coordenadas do sensor através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 4**: Ensine pontos de movimento através do WebApp. Ensine os pontos de movimento para a reprodução da trajetória de varredura a laser da peça alvo e escreva o programa LUA básico para os comandos de movimento LIN correspondentes do robô. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 5**: Configure o número dos parâmetros de oscilação através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 6**: Comando de gravação a laser. Na interface principal do WebApp, clique em "Teach Program" -> "Program Programming" para acessar a área "Comandos de Soldagem".
+
+.. image:: coding/609.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 9.8-4-1 Área "Comandos de Soldagem"
+ 
+**Passo 7**: Iniciar gravação a laser. Na área "Comandos de Soldagem", clique no botão "Gravação a Laser" para acessar a área de configuração do comando "LT-Rec".
+
+Na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Iniciar Gravação" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de iniciar gravação a laser.
+
+.. image:: coding/610.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-2 Iniciar Gravação a Laser
+
+**Passo 8**: Parar gravação a laser. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Parar Gravação" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de parar gravação a laser.
+
+.. image:: coding/611.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-3 Parar Gravação a Laser
+
+**Passo 9**: Mover para ponto de solda. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Mover para Ponto de Solda", selecione o modo de movimento "PTP" ou "LIN" no menu suspenso "Modo de Movimento"; defina a velocidade do comando no campo de entrada "Velocidade"; clique no botão "Início" ou "Fim" para selecionar o ponto de movimento alvo.
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação.
+
+.. image:: coding/612.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-4 Mover para Ponto de Solda
+
+**Passo 10**: Reprodução de trajetória a laser. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Reprodução de Trajetória" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso"; defina a velocidade do comando no campo de entrada "Velocidade".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de reprodução de trajetória a laser.
+
+.. image:: coding/613.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-5 Reprodução de Trajetória a Laser
+
+**Passo 11**: Sobrep oscilação regular. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Reprodução de Rastreamento a Laser", selecione a opção "Oscilação Regular" no menu suspenso "Sobrep Oscilação"; selecione o número dos parâmetros de oscilação configurado no menu suspenso "Selecionar Número" do Passo 5.
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de sobreposição de oscilação regular.
+
+.. image:: coding/614.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-6 Sobrep Oscilação Regular
+
+**Passo 12**: Escreva o programa LUA para reprodução de trajetória de varredura a laser + oscilação regular. Ajuste a ordem dos comandos LUA gerados do Passo 4 ao Passo 11 e execute o programa LUA para implementar a função de reprodução de trajetória de varredura a laser com oscilação regular sobreposta.
+
+.. image:: coding/615.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-7 Programa LUA para Reprodução de Trajetória de Varredura a Laser com Oscilação Regular Sobrep
+
+Reprodução de Trajetória de Varredura a Laser com Oscilação em Pontos Fixos Sobrep
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Configure o sensor laser linear através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 2**: Configure o eixo estendido através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 3**: Calibre o sistema de coordenadas da ferramenta através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 4**: Calibre o sistema de coordenadas do sensor através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 5**: Ensine pontos de movimento através do WebApp. Ensine os pontos de movimento para a reprodução da trajetória de varredura a laser da peça alvo e escreva o programa LUA básico para os comandos de movimento LIN correspondentes do robô e movimento assíncrono do eixo estendido. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 6**: Configure o número dos parâmetros de oscilação através do WebApp. Para detalhes operacionais desta função, consulte os capítulos correspondentes do manual do usuário.
+
+**Passo 7**: Comando de gravação a laser. Na interface principal do WebApp, clique em "Teach Program" -> "Program Programming" para acessar a área "Comandos de Soldagem".
+
+.. image:: coding/616.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 9.8-4-8 Área "Comandos de Soldagem"
+
+**Passo 8**: Iniciar gravação a laser. Na área "Comandos de Soldagem", clique no botão "Gravação a Laser" para acessar a área de configuração do comando "LT-Rec".
+
+Na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Iniciar Gravação" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de iniciar gravação a laser.
+
+.. image:: coding/617.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-9 Iniciar Gravação a Laser
+ 
+**Passo 9**: Parar gravação a laser. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Parar Gravação" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de parar gravação a laser.
+
+.. image:: coding/618.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-10 Parar Gravação a Laser
+  
+**Passo 10**: Mover para ponto de solda. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Mover para Ponto de Solda", selecione o modo de movimento "PTP" ou "LIN" no menu suspenso "Modo de Movimento"; defina a velocidade do comando no campo de entrada "Velocidade"; clique no botão "Início" ou "Fim" para selecionar o ponto de movimento alvo.
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação.
+
+.. image:: coding/619.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-11 Mover para Ponto de Solda
+  
+**Passo 11**: Reprodução de trajetória a laser. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Gravação de Dados de Solda", selecione a opção "Reprodução de Trajetória" no menu suspenso "Seleção de Função"; defina o tempo de gravação com atraso no campo de entrada "Tempo de Atraso"; defina a velocidade do comando no campo de entrada "Velocidade".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de reprodução de trajetória a laser.
+
+.. image:: coding/620.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-12 Reprodução de Trajetória a Laser
+  
+**Passo 12**: Sobrep oscilação em pontos fixos. Na área de configuração do comando "LT-Rec", na área de configuração "Tipo de Comando", clique no botão "Reprodução de Rastreamento a Laser", selecione a opção "Oscilação em Pontos Fixos" no menu suspenso "Sobrep Oscilação"; selecione o número dos parâmetros de oscilação configurado no menu suspenso "Selecionar Número" do Passo 6.
+
+Selecione a opção "Ponto de Referência" no menu suspenso "Referência de Oscilação"; selecione o ponto de referência no menu suspenso "Ponto de Referência".
+
+Na área de configuração do comando "LT-Rec", clique no botão "Adicionar". O campo "Pré-visualização do Programa" exibirá o programa LUA pré-gerado. Clique em "Aplicar" para concluir a operação de sobreposição de oscilação regular.
+
+.. image:: coding/621.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-13 Referência de Oscilação como Ponto de Referência com Oscilação em Pontos Fixos Sobrep
+
+.. note:: Nota: Quando a opção "Ponto de Referência" é selecionada no menu suspenso "Referência de Oscilação", a direção de avanço do robô é a direção da linha que conecta o ponto atual e o ponto de referência, e o ponto atual e o ponto de referência devem estar nos mesmos sistemas de coordenadas de ferramenta e peça.
+
+Quando a opção "Sistema de Coordenadas da Ferramenta" é selecionada no menu suspenso "Referência de Oscilação", a direção de avanço do robô é a direção do eixo X do sistema de coordenadas da ferramenta atual.
+
+.. image:: coding/622.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.8-4-14 Referência de Oscilação como Sistema de Coordenadas da Ferramenta com Oscilação em Pontos Fixos Sobrep
+ 
+**Passo 13**: Escreva o programa LUA para reprodução de trajetória de varredura a laser + oscilação em pontos fixos. Ajuste a ordem dos comandos LUA gerados do Passo 5 ao Passo 13 e execute o programa LUA para implementar a função de reprodução de trajetória de varredura a laser com oscilação em pontos fixos sobreposta.
+
+.. note:: Nota: Em comparação com o programa LUA, o programa LUA para reprodução de trajetória de varredura a laser com oscilação em pontos fixos sobreposta não inclui o comando MoveLTR(), e o último parâmetro (tempo de oscilação) do comando OriginPointWeaveStartt() gerado por padrão deve ser modificado para qualquer valor inteiro não negativo maior que 0. Durante a operação do robô, o controlador converterá automaticamente este parâmetro para o tempo de execução real da trajetória reproduzida.
+
+.. image:: coding/623.png
+   :width: 6in
+   :align: center
+
+.. centered:: (a) Referência de Oscilação como Ponto de Referência
+
+.. image:: coding/624.png
+   :width: 6in
+   :align: center
+
+.. centered:: (b) Referência de Oscilação como Sistema de Coordenadas da Ferramenta
+
+.. centered:: Figura 9.8-4-15 Programa LUA para Reprodução de Trajetória de Varredura a Laser com Oscilação em Pontos Fixos Sobrep
+
 Comando de Busca de Posição do Arame
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -2798,36 +3010,86 @@ Esta instrução inclui oito comandos: FT_Guard (detecção de colisão), FT_Con
 
 .. centered:: Figura 9.9-1 Interface da Instrução F/T
 
-Função de Otimização da Inserção Rotativa com Controle de Força
-***********************************************************************
+Otimização do Pacote de Processo de Montagem com Controle de Força
+*************************************************
 
 Visão Geral
-""""""""""""""""""""""""""""""""""
-A função de inserção rotativa com controle de força é geralmente usada para continuar após a ação de inserção rotativa. Antes de executar a ação, é necessário mover a extremidade do robô para o ponto de ensino do furo perfeitamente alinhado. De acordo com o cenário de aplicação, defina os parâmetros de movimento correspondentes e a estratégia de tratamento para quando nenhuma força externa for detectada. Quando a força externa detectada após o término não atingir o limite definido, o usuário pode optar por parar todo o programa (configurado como "Erro", a interface exibe um erro vermelho) ou continuar o movimento (configurado como "Aviso", a interface exibe um aviso amarelo).
+""""""""""""""""""""""""""""""""""""
+As funções de inserção helicoidal e inserção linear com controle de força são geralmente utilizadas para operações de busca de furo e inserção em montagem, enquanto a função de posicionamento de superfície é geralmente utilizada para localizar superfícies no espaço cartesiano. Com base no cenário de aplicação, defina os parâmetros de movimento correspondentes e a estratégia de tratamento para quando nenhuma força externa for detectada. Quando a força externa detectada após a conclusão não atingir o limite definido, o usuário pode optar por parar todo o programa (configurado como "Erro", com um erro vermelho exibido na interface), ou optar por continuar o movimento (configurado como "Aviso", com um aviso amarelo exibido na interface).
 
-Fluxo de Operação
-""""""""""""""""""""""""""""""""""""""""
-**Passo 1**: Clique sequencialmente em "Programa de Ensino" -> "Programação de Programa" -> "Conjunto de Controle de Força" - Instrução "Rot". Defina os parâmetros de movimento correspondentes de acordo com o cenário de aplicação real. A estratégia de tratamento para quando nenhuma força externa for detectada pode ser definida como "Erro" ou "Aviso". Quando configurado como "Erro", se a força externa detectada pelo robô for sempre menor que o limite definido e o ângulo de rotação definido já tiver sido atingido, um erro será reportado na interface e a execução do programa será interrompida. Quando configurado como "Aviso", se a força externa detectada pelo robô for sempre menor que o limite definido e o ângulo de rotação definido já tiver sido atingido, um aviso será reportado na interface e o programa continuará a ser executado.
+Procedimento Operacional para Otimização da Inserção Helicoidal com Controle de Força
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+**Passo 1**: Clique em "Teach Program" -> "Program Programming" -> "Conjunto Controle de Força" -> comando "Rot" em sequência. Defina os parâmetros de movimento correspondentes com base no cenário de aplicação real. A estratégia de tratamento para quando nenhuma força externa for detectada pode ser definida como "Erro" ou "Aviso". Quando configurado como "Erro", se o robô detectar que a força externa esteve sempre abaixo do limite definido e o ângulo de rotação definido foi atingido, um erro será exibido na interface e a execução dos programas subsequentes será interrompida. Quando configurado como "Aviso", se o robô detectar que a força externa esteve sempre abaixo do limite definido e o ângulo de rotação definido foi atingido, um aviso será exibido na interface e a execução dos programas subsequentes continuará.
 
 .. image:: coding/531.png
    :width: 3in
    :align: center
 
-.. centered:: Figura 9.9-2 Configuração dos Parâmetros de Inserção Rotativa com Controle de Força
+.. centered:: Figura 9.9-2 Configuração de Parâmetros de Inserção Rotacional com Controle de Força
 
-**Passo 2**: A função de inserção rotativa com controle de força precisa ser usada em conjunto com a função "FT_Control" para movimento. Defina os mesmos parâmetros de movimento. Os programas Lua típicos com a estratégia de tratamento definida como "Erro" ou "Aviso" são mostrados nas figuras, respectivamente.
+**Passo 2**: A função de inserção rotacional com controle de força deve ser usada em conjunto com a função "FT_Control" para movimento. Defina os mesmos parâmetros de movimento. Programas LUA típicos com a estratégia de tratamento para ausência de força externa definida como "Erro" ou "Aviso" são mostrados nas figuras respectivamente.
 
 .. image:: coding/532.png
    :width: 6in
    :align: center
 
-.. centered:: Figura 9.9-3 Programa Lua Típico com Configuração "Erro"
+.. centered:: Figura 9.9-3 Programa LUA Típico Configurado como "Erro"
 
 .. image:: coding/533.png
    :width: 6in
    :align: center
 
-.. centered:: Figura 9.9-4 Programa Lua Típico com Configuração "Aviso"
+.. centered:: Figura 9.9-4 Programa LUA Típico Configurado como "Aviso"
+
+Procedimento Operacional para Otimização da Inserção Linear com Controle de Força
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Clique em "Teach Program" -> "Program Programming" -> "Conjunto Controle de Força" -> comando "Lin" em sequência. Defina os parâmetros de movimento correspondentes com base no cenário de aplicação real. A estratégia de tratamento para quando nenhuma força externa for detectada pode ser definida como "Erro" ou "Aviso". Quando configurado como "Erro", se o robô detectar que a força externa esteve sempre abaixo do limite definido e a distância de inserção definida foi atingida, um erro será exibido na interface e a execução dos programas subsequentes será interrompida. Quando configurado como "Aviso", se o robô detectar que a força externa esteve sempre abaixo do limite definido e a distância de inserção definida foi atingida, um aviso será exibido na interface e a execução dos programas subsequentes continuará. Como mostrado na Figura 3-1.
+
+.. image:: coding/603.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 9.9-5 Configuração de Parâmetros de Inserção Linear com Controle de Força
+
+**Passo 2**: A função de inserção linear com controle de força deve ser usada em conjunto com a função "FT_Control" para movimento. Defina os mesmos parâmetros de movimento. Programas LUA típicos com a estratégia de tratamento para ausência de força externa definida como "Erro" ou "Aviso" são mostrados nas Figuras 3-2 e 3-3 respectivamente.
+
+.. image:: coding/604.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.9-6 Programa LUA Típico Configurado como "Erro"
+
+.. image:: coding/605.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.9-6 Programa LUA Típico Configurado como "Aviso"
+
+Procedimento Operacional para Otimização do Posicionamento de Superfície com Controle de Força
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Passo 1**: Clique em "Teach Program" -> "Program Programming" -> "Conjunto Controle de Força" -> comando "FindSurface" em sequência. Defina os parâmetros de movimento correspondentes com base no cenário de aplicação real. A estratégia de tratamento para quando nenhuma força externa for detectada pode ser definida como "Erro" ou "Aviso". Quando configurado como "Erro", se o robô detectar que a força externa esteve sempre abaixo do limite definido e a distância de busca definida foi atingida, um erro será exibido na interface e a execução dos programas subsequentes será interrompida. Quando configurado como "Aviso", se o robô detectar que a força externa esteve sempre abaixo do limite definido e a distância de busca definida foi atingida, um aviso será exibido na interface e a execução dos programas subsequentes continuará. Como mostrado na Figura 4-1.
+
+.. image:: coding/606.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 9.9-7 Configuração de Parâmetros de Posicionamento de Superfície com Controle de Força
+
+**Passo 2**: A função de posicionamento de superfície com controle de força deve ser usada em conjunto com a função "FT_Control" para movimento. Defina os mesmos parâmetros de movimento. Programas LUA típicos com a estratégia de tratamento para ausência de força externa definida como "Erro" ou "Aviso" são mostrados nas Figuras 4-2 e 4-3 respectivamente.
+
+.. image:: coding/607.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.9-8 Programa LUA Típico Configurado como "Erro"
+
+.. image:: coding/608.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.9-9 Programa LUA Típico Configurado como "Aviso"
 
 Comando de Gravação de Torque
 ++++++++++++++++++++++++++++++++++++++

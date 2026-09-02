@@ -380,13 +380,14 @@ Solução de Cinemática Inversa Incluindo Posição do Eixo de Extensão no Esp
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``GetInverseKinExaxis(type, desc_pos, exaxis, tool, workPiece)``"
+    "Protótipo", "``GetInverseKinExaxis(type, desc_pos, exaxis, tool, workPiece, config = -1)``"
     "Descrição", "Solução de cinemática inversa incluindo posição do eixo de extensão no espaço cartesiano"
     "Parâmetros Obrigatórios", "- ``type``: 0-pose absoluta (sistema de coordenadas base), 1-pose incremental (sistema de coordenadas base), 2-pose incremental (sistema de coordenadas da ferramenta)
     - ``desc_pos``: Pose cartesiana
     - ``exaxis``: Posição do eixo de extensão
     - ``tool``: Número da ferramenta
-    - ``workPiece``: Número da peça"
+    - ``workPiece``: Número da peça
+    - ``config -1``: solução automática, 0-7 correspondem a oito conjuntos de soluções"
     "Parâmetros Padrão", "Nenhum"
     "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode
     - ``joint_pos``: Posição articular"

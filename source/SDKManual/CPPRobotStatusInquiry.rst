@@ -403,9 +403,10 @@ Solução de Cinemática Inversa incluindo posição do eixo estendido no espaç
     * @param [in] tool Número da ferramenta
     * @param [in] workPiece Número da peça
     * @param [out] joint_pos Posição articular
+    * @param [in] config Configuração do espaço de juntas, [-1] - resolução com base na posição atual das juntas como referência, [0~7] - resolução de acordo com uma configuração específica do espaço de juntas
     * @return Código de erro
     */
-    errno_t GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, JointPos& joint_pos);
+    errno_t GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, JointPos& joint_pos, int config = -1);
 
 Exemplo de Código de Solução de Cinemática Inversa incluindo posição do eixo estendido
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

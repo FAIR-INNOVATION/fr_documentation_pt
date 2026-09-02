@@ -12,7 +12,22 @@ Notas de Atualização de Versão
    * - **Número da Versão**
      - **Data**
      - **Descrição da Atualização**
-   
+
+   * - V3.9.9
+     - 2026-09-01
+     - | 1. Modificada a descrição dos parâmetros da interface GetGripperMotionDone() para obtenção do estado da garra, atualizada a definição do estado da garra;
+       | 2. Modificada a GetInverseKinExaxis(), a interface de solução de cinemática inversa que inclui posições de eixos estendidos, adicionados parâmetros de configuração de juntas com valor padrão -1 referenciando a configuração atual de juntas;
+       | 3. Modificadas as interfaces de controle de força FT_SpiralSearch(), FT_LinInsertion() e FT_FindSurface() para adicionar parâmetros de estratégia de tratamento para quando nenhuma força/torque for detectado;
+       | 4. Modificadas as descrições dos parâmetros da interface de configuração da função CIO da caixa de controle do robô SetDIConfig(), GetDIConfig(), SetDOConfig(), GetDOConfig(), atualizados os nomes de funções e códigos de função recém-adicionados;
+       | 5. Modificados os exemplos de código de controle básico do robô, adicionados exemplos de código para alternância para o modo manual de alta velocidade;
+       | 6. Adicionado o comando ServoJ() para movimento em modo servo no espaço de juntas (entrada multiponto) e exemplos de código;
+       | 7. Adicionado o comando GetSafetyParamsCheckSum() para obtenção do checksum dos parâmetros de configuração de segurança, o comando SafetyOPPasswordCheck() para verificação de senha de operação de segurança e exemplos de código;
+       | 8. Adicionado o comando GripperWaitMotionDone() para aguardar a conclusão do movimento da garra e exemplos de código;
+       | 9. Adicionado o comando SetRobotTime() para sincronizar o horário do sistema com o robô e exemplos de código;
+       | 10. Adicionadas as configurações SetSafetyDIConfig() para função CI de dois canais de segurança, SetSafetyDOConfig() para função CO de dois canais de segurança e exemplos de código;
+       | 11. Adicionado o comando HiSpeedManualSwitch() para alternar para o modo manual de alta velocidade;
+       | 12. Adicionados exemplos de código para sobreposição de oscilação durante a reprodução da trajetória do sensor laser;
+
    * - V3.9.8
      - 2026-07-27
      - | 1. Atualizada a estrutura de feedback de status do robô para incluir o status de execução do programa LUA atual do robô: 0 - programa não em execução; 1 - programa em execução (incluindo programa pausado);

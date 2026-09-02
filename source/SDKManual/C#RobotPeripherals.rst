@@ -94,6 +94,53 @@ Obter Estado de Ativação da Garra
     */
     int GetGripperActivateStatus(ref int fault, ref int status);
 
+Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief  Aguarda o status de movimento da garra (definido apenas para o protocolo aberto do efetuador final; para dispositivos adaptados, a definição do status é passada para cada fabricante de garra)
+    * @param  [in] status  0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
+    * @param  [in] timeout Tempo limite (ms), -1 para espera infinita
+    * @param  [in] strategy  0-parar com erro, 1-continuar executando
+    * @param  [in] type  0-garra paralela, 1-garra rotativa
+    * @return  Código de erro
+    */
+    public int GripperWaitMotionDone(int status, int timeout, int strategy, int type) 
+    
+Exemplo de Código para Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c#
+    :linenos:
+
+    public void TestGripperWaitMotionDone()
+    {
+        int rtn;
+        ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
+
+
+        // Garra aberta
+        rtn = robot.MoveGripper(1, 50, 50, 100, 30000, 0, 0, 0, 0, 0);
+        Console.WriteLine("MoveGripper(abrir) ret={0}", rtn);
+        Thread.Sleep(2000);
+        robot.GetRobotRealTimeState(ref pkg);
+        Console.WriteLine(" gripper_motiondone {0})", pkg.gripper_motiondone);
+        // Garra fechada
+        rtn = robot.MoveGripper(1, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
+        Console.WriteLine("MoveGripper(fechar) ret={0}", rtn);
+        Thread.Sleep(2000);
+        robot.GetRobotRealTimeState(ref pkg);
+        Console.WriteLine(" gripper_motiondone {0}", pkg.gripper_motiondone);
+        // Aguardar movimento concluído sem detecção de objeto, timeout 30s, parar com erro
+        rtn = robot.GripperWaitMotionDone(2, -1, 0, 0);
+        Console.WriteLine("GripperWaitMotionDone(aguardar conclusão sem detecção de objeto) ret={0}", rtn);
+
+        // Garra aberta
+        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
+        Console.WriteLine("MoveGripper(abrir) ret={0}", rtn);
+    }    
+
 Obter Posição da Garra
 ++++++++++++++++++++++++++
 .. code-block:: c#
@@ -1870,6 +1917,147 @@ Exemplo de Código para Rastreamento a Laser Síncrono com Eixo de Extensão e R
             }
             Console.WriteLine($"Number of completions : {i + 1} ");
         }     
+    }
+
+Exemplo de Código de Reprodução de Gravação a Laser + Oscilação Regular
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    void TestLaserReproduceNormalWeave()
+    {
+        JointPos startjointPos = new JointPos(69.655, -71.524, -119.568, -76.454, 91.188, 138.014);
+        DescPose startdescPose = new DescPose(214.765, 311.139, 41.255, 7.693, -0.287, 37.080);
+        JointPos endjointPos = new JointPos(58.803, -79.528, -113.688, -74.599, 91.637, 127.167);
+        DescPose enddescPose = new DescPose(294.942, 311.153, 41.302, 7.701, -0.283, 37.081);
+        DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
+        int rtn = 0;
+
+        // WaitMs(1000)
+        Thread.Sleep(1000);
+
+        // MoveL para posição inicial (eixo estendido 0,174.957,0,0)
+        rtn = robot.MoveL(startjointPos, startdescPose, 5, 0, 100, 100, 100, -1, 0, new ExaxisPos(0, 174.957, 0, 0), 0, 0, offdese, 100, 0, 0, 10);
+
+        Console.WriteLine($"MoveL start: {rtn}");
+
+        // Iniciar gravação a laser
+        rtn = robot.LaserSensorRecord1(2, 10);
+        Console.WriteLine($"LaserSensorRecord start: {rtn}");
+
+        // MoveL para posição final
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 100, -1, 0, new ExaxisPos(0, 174.957, 0, 0), 0, 0, offdese, 100, 0, 0, 10);
+        Console.WriteLine($"MoveL end: {rtn}");
+
+        // Parar gravação a laser
+        rtn = robot.LaserSensorRecord1(0, 10);
+        Console.WriteLine($"LaserSensorRecord stop: {rtn}");
+
+        // MoveL de volta para posição inicial
+        rtn = robot.MoveL(startjointPos, startdescPose, 5, 0, 100, 100, 100, -1, 0, new ExaxisPos(0, 174.957, 0, 0), 0, 0, offdese, 100, 0, 0, 10);
+        Console.WriteLine($"MoveL back: {rtn}");
+
+        // Movimento LIN para o início do caminho gravado a laser
+        rtn = robot.MoveToLaserRecordStart(1, 30);
+        Console.WriteLine($"MoveToLaserRecordStart: {rtn}");
+
+        // Iniciar oscilação regular
+        rtn = robot.WeaveStart(0);
+        Console.WriteLine($"WeaveStart: {rtn}");
+
+        // Iniciar reprodução da gravação
+        rtn = robot.LaserSensorRecord1(3, 10);
+        Console.WriteLine($"LaserSensorRecord replay: {rtn}");
+
+        // Movimento de reprodução de rastreamento a laser
+        rtn = robot.MoveLTR();
+        Console.WriteLine($"MoveLTR: {rtn}");
+        Thread.Sleep(3000);
+
+        // Parar reprodução da gravação
+        rtn = robot.LaserSensorRecord1(0, 10);
+        Console.WriteLine($"LaserSensorRecord stop: {rtn}");
+
+        // Finalizar oscilação regular
+        rtn = robot.WeaveEnd(0);
+        Console.WriteLine($"WeaveEnd: {rtn}");
+    }
+
+Exemplo de Código de Reprodução de Gravação a Laser + Movimento Assíncrono de Eixos Estendidos + Oscilação em Pontos Fixos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    void TestLaserRecordReplayExaxisWithWave()
+    {
+        JointPos startjointPos = new JointPos(106.245, -63.397, -93.331, -80.809, 80.389, 134.561);
+        DescPose startdescPose = new DescPose(33.534, 516.527, 371.029, 14.712, -31.379, 71.734);
+        JointPos endjointPos = new JointPos(105.534, -64.685, -93.681, -79.071, 80.772, 133.952);
+        DescPose enddescPose = new DescPose(33.536, 528.536, 364.924, 14.712, -31.379, 71.734);
+        DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
+        int rtn = 0;
+
+        // MoveJ para ponto seguro (eixo estendido 0,174.957,0,0)
+        rtn = robot.MoveJ(startjointPos, startdescPose, 5, 0, 100, 100, 50, new ExaxisPos(0, 174.957, 0, 0), -1, 0, offdese);
+        Console.WriteLine($"MoveJ start: {rtn}");
+
+        // Movimento assíncrono do eixo estendido para o ponto inicial 105.003
+        rtn = robot.ExtAxisMove(new ExaxisPos(0, 105.003, 0, 0), 50, -1);
+        Console.WriteLine($"ExtAxisMove 105.003: {rtn}");
+        Thread.Sleep(3000);
+
+        // MoveL para o ponto inicial
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 50, -1, 0, new ExaxisPos(0, 105.003, 0, 0), 0, 0, offdese, 100, 0, 0, 10);
+        Console.WriteLine($"MoveL end: {rtn}");
+
+        // Iniciar gravação a laser
+        rtn = robot.LaserSensorRecord1(2, 10);
+        Console.WriteLine($"LaserSensorRecord start: {rtn}");
+
+        // Eixo estendido se move para 174.957 durante a gravação
+        rtn = robot.ExtAxisMove(new ExaxisPos(0, 174.957, 0, 0), 50, -1);
+        Console.WriteLine($"ExtAxisMove 174.957: {rtn}");
+        Thread.Sleep(3000);
+
+        // Parar gravação a laser
+        rtn = robot.LaserSensorRecord1(0, 10);
+        Console.WriteLine($"LaserSensorRecord stop: {rtn}");
+
+
+        // Eixo estendido retorna para 105.003, MoveL de volta ao ponto inicial
+        rtn = robot.ExtAxisMove(new ExaxisPos(0, 105.003, 0, 0), 50, -1);
+        Console.WriteLine($"ExtAxisMove back: {rtn}");
+
+        // MoveL para o ponto inicial
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 50, -1, 0, new ExaxisPos(0, 105.003, 0, 0), 0, 0, offdese, 100, 0, 0, 10);
+        Console.WriteLine($"MoveL back: {rtn}");
+
+        // Movimento PTP para o início do caminho gravado a laser
+        rtn = robot.MoveToLaserRecordStart(0, 30);
+        Console.WriteLine($"MoveToLaserRecordStart: {rtn}");
+
+        // Iniciar reprodução
+        rtn = robot.LaserSensorRecord1(3, 10);
+        Console.WriteLine($"LaserSensorRecord replay: {rtn}");
+
+        // Iniciar oscilação em pontos fixos
+        DescPose refPoint = new DescPose(61.087, 512.431, 370.523, 14.335, -31.333, 69.014);
+        rtn = robot.OriginPointWeaveStart(0, 1, refPoint, 5);
+        Console.WriteLine($"OriginPointWeaveStart: {rtn}");
+
+        // Eixo estendido se move para 174.957 durante a oscilação
+        rtn = robot.ExtAxisMove(new ExaxisPos(0, 174.957, 0, 0), 50, -1);
+        Console.WriteLine($"ExtAxisMove replay: {rtn}");
+
+        // Finalizar oscilação
+        rtn = robot.OriginPointWeaveEnd();
+        Console.WriteLine($"OriginPointWeaveEnd: {rtn}");
+
+        // Parar reprodução
+        rtn = robot.LaserSensorRecord1(0, 10);
+        Console.WriteLine($"LaserSensorRecord stop: {rtn}");
     }
 
 Ativar/Desativar Função de Passagem Direta na Extremidade

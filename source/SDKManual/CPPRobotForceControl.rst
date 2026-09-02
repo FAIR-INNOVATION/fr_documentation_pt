@@ -510,9 +510,10 @@ Busca em Espiral
     * @param  [in] ft Limite de força/torque, fx, fy, fz, tx, ty, tz, faixa [0~100]
     * @param  [in] max_t_ms Tempo máximo de busca, unidade ms
     * @param  [in] max_vel Velocidade linear máxima, unidade mm/s
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
     * @return  Código de erro
     */   
-    errno_t  FT_SpiralSearch(int rcs, float dr, float ft, float max_t_ms, float max_vel);  
+    errno_t  FT_SpiralSearch(int rcs, float dr, float ft, float max_t_ms, float max_vel, int strategy = 0);  
 
 Inserção Rotativa
 +++++++++++++++++++++++++++++++++++++++++++++
@@ -612,9 +613,10 @@ Inserção Linear
     * @param  [in] lin_a Aceleração linear, unidade mm/s^2, não usado no momento
     * @param  [in] max_dis Distância máxima de inserção, unidade mm
     * @param  [in] linorn  Direção de inserção, 0-direção negativa, 1-direção positiva
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
     * @return  Código de erro
     */   
-    errno_t  FT_LinInsertion(int rcs, float ft, float lin_v, float lin_a, float max_dis, uint8_t linorn);    
+    errno_t  FT_LinInsertion(int rcs, float ft, float lin_v, float lin_a, float max_dis, uint8_t linorn, int strategy=0);    
 
 Exemplo de Código para Busca em Espiral, Inserção Linear, etc.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -725,10 +727,11 @@ Localização de Superfície
     * @param  [in] lin_v Velocidade linear de busca, unidade mm/s
     * @param  [in] lin_a Aceleração linear de busca, unidade mm/s^2, não usado no momento, padrão 0
     * @param  [in] max_dis Distância máxima de busca, unidade mm
-    * @param  [in] ft  Limite de força/torque de término da ação, fx, fy, fz, tx, ty, tz  
+    * @param  [in] ft  Limite de força/torque de término da ação, fx, fy, fz, tx, ty, tz 
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento 
     * @return  Código de erro
     */   
-    errno_t  FT_FindSurface(int rcs, uint8_t dir, uint8_t axis, float lin_v, float lin_a, float max_dis, float ft);   
+    errno_t  FT_FindSurface(int rcs, uint8_t dir, uint8_t axis, float lin_v, float lin_a, float max_dis, float ft, int stragety = 0);   
 
 Início do Cálculo da Posição do Plano Médio
 +++++++++++++++++++++++++++++++++++++++++++++

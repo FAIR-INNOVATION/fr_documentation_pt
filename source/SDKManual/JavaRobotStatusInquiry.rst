@@ -387,30 +387,32 @@ Solução de Cinemática Inversa incluindo posição do eixo estendido no espaç
     * @param tool Número da ferramenta
     * @param workPiece Número da peça
     * @param joint_pos Posição articular
+    * @param config -1: solução automática, 0-7 correspondem a oito conjuntos de soluções
     * @return Código de erro
     */
-    public int GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, JointPos joint_pos)
+    public int GetInverseKinExaxis(int type, DescPose desc_pos, ExaxisPos exaxis, int tool, int workPiece, JointPos joint_pos, int config)
 
 Exemplo de Código de Solução de Cinemática Inversa incluindo posição do eixo estendido
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    public static void TestInverseKinExaxis(Robot robot)
+    public static void  TestInverseKinExaxis(Robot robot)
     {
-        DescPose desc = new DescPose(99.957, -0.002, 29.994, -176.569, -6.757, -167.462);
-        ExaxisPos exaxis = new ExaxisPos(100.0, 0.0, 0.0, 0.0);
-        JointPos jointPos = new JointPos();
-        DescPose offsetPos = new DescPose();
-        ROBOT_STATE_PKG pkg = robot.GetRobotRealTimeState();
+        DescPose desc=new DescPose(99.957, -0.002, 29.994, -176.569, -6.757, -167.462);
+        ExaxisPos exaxis=new ExaxisPos(100.0, 0.0, 0.0, 0.0);
+        JointPos jointPos =new JointPos();
+        DescPose offsetPos =new DescPose();
+
+        ROBOT_STATE_PKG pkg=robot.GetRobotRealTimeState();
         int toolnum = pkg.tool;
         int workPcsNum = pkg.user;
-        robot.GetInverseKinExaxis(0, desc, exaxis, toolnum, workPcsNum, jointPos);
+        robot.GetInverseKinExaxis(0, desc, exaxis, toolnum, workPcsNum, jointPos, 0);
         System.out.printf("GetInverseKinExaxis joint is %f, %f, %f, %f, %f, %f\n", jointPos.J1, jointPos.J2, jointPos.J3, jointPos.J4, jointPos.J5, jointPos.J6);
+
         robot.ExtAxisMove(exaxis, 100, -1);
         robot.MoveJ(jointPos, desc, toolnum, workPcsNum, 100.0, 100.0, 100.0, exaxis, -1, 0, offsetPos);
-        robot.CloseRPC();
-        robot.Sleep(9999999);
+
     }
 
 Verificar se a Solução de Cinemática Inversa Existe

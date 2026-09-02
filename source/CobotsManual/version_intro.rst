@@ -1,3 +1,41 @@
+Versão V3.9.9
+-----------------
+
+Data: 2026-09-01
+
+- **Pacote de processo de montagem com controle de força otimizado**:
+    Caminho: Teach Program -> Comandos de Controle de Força.
+
+    Descrição: Usabilidade e confiabilidade do processo aprimoradas.
+
+- **Configuração de escravos dinâmicos da estação mestra IGH otimizada**:
+
+    Descrição: Compatibilidade multimodelo e conveniência de manutenção aprimoradas.
+
+- **Adicionada extensão da função de arrasto com impedância articular para múltiplos modelos**:
+    Caminho: Aplicativos Auxiliares -> Bloqueio de Arrasto.
+
+    Descrição: Suporte à função de arrasto adicionado para os modelos FR3-WML, FR3-WMS, FR3-C e FR5-C.
+
+- **Adicionada função de verificação de configuração de segurança**:
+    Caminho: Configuração Inicial -> Segurança.
+
+    Descrição: Reformulação da página de segurança, verificação de senha de configuração de segurança, verificação de legalidade da configuração e geração de relatórios de segurança em PDF.
+
+- **Adicionada adaptação completa do sensor de força de seis eixos Kaiwei**:
+    Caminho: Configuração Inicial -> Periféricos -> Sensor de Força.
+
+    Descrição: Adaptação do sensor de força KWL adicionada.
+
+- **Adicionado suporte à função de oscilação para reprodução de varredura a laser**:
+    Caminho: Programação de Programas -> Gravação a Laser -> Comando de Reprodução de Rastreamento a Laser.
+
+    Descrição: Adaptabilidade do processo de soldagem a laser e qualidade da solda aprimoradas.
+
+- **Adicionado diagnóstico de saúde do link físico da pilha de protocolos IGH**:
+
+    Descrição: Função de leitura e exibição na interface adicionadas para localização rápida de problemas no barramento.
+
 Versão V3.9.8
 -----------------
 

@@ -13,6 +13,26 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V3.9.9
+     - 2026-09-01
+     - | 1. Atualizada a interface GetGripperMotionDone() para obtenção do status de movimento da garra, atualizada a definição e o escopo de uso dos parâmetros de saída do status da garra;
+       | 2. Modificada a GetInverseKinExaxis(), a interface de solução de cinemática inversa que inclui posições de eixos estendidos, adicionados parâmetros de configuração de juntas com valor padrão -1 referenciando a configuração atual de juntas;
+       | 3. Modificadas as interfaces de controle de força FT_SpiralSearch(), FT_LinInsertion() e FT_FindSurface() para adicionar parâmetros de estratégia de tratamento para quando nenhuma força/torque for detectado;
+       | 4. Modificadas SetDIConfig(), GetDIConfig(), SetDOConfig(), GetDOConfig() CIO da caixa de controle do robô;
+       | 5. Descrições dos parâmetros da interface de configuração de funções atualizadas, atualizados os nomes de funções e códigos de função recém-adicionados; adicionada a interface GetSafetyParamsCheckSum() para obtenção do checksum dos parâmetros de configuração de segurança;
+       | 6. Modificados os exemplos de código de controle básico do robô, adicionados exemplos de código para alternância para o modo manual de alta velocidade;
+       | 7. Adicionada a interface de verificação de senha de operação de segurança SafetyOPPasswordCheck();
+       | 8. Adicionada a interface GripperWaitMotionDone() para aguardar o status de movimento da garra, suporta configurações de tempo limite e estratégia (aplicável apenas ao protocolo aberto do efetuador final);
+       | 9. Adicionada a interface SetRobottime() para sincronizar o horário do sistema com o robô;
+       | 10. Adicionada a interface ServoJ() para movimento em modo servo no espaço de juntas, suporta entrada de múltiplos pontos de uma só vez;
+       | 11. Adicionados exemplos de código para reprodução de gravação a laser + oscilação regular;
+       | 12. Adicionados exemplos de código para reprodução de gravação a laser + movimento assíncrono de eixos estendidos + oscilação em pontos fixos;
+       | 13. Adicionada a interface de busca em espiral FT_SpiralSearch();
+       | 14. Adicionada a interface HiSpeedManualSwitch() para alternar para o modo manual de alta velocidade;
+       | 15. Adicionada a interface SetSafetyDIConfig() para configuração da função CI de dois canais de segurança;
+       | 16. Adicionada a interface SetSafetyDOConfig() para configuração da função CO de dois canais de segurança;
+       | 17. Adicionados exemplos de verificação de configuração-leitura-limpeza das funções CI/CO de dois canais de segurança.
+
    * - V3.9.8
      - 2026-07-27
      - | 1. Atualizada a estrutura de feedback de status do robô para incluir o status de execução do programa LUA atual do robô: 0 - programa não em execução; 1 - programa em execução (incluindo programa pausado);

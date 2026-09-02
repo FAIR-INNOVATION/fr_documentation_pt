@@ -1445,3 +1445,134 @@ Parâmetros Admitância para Conformidade de Postura Aberta
 .. centered:: Figura 6.11‑4 Configurar o Sistema de Coordenadas de Referência do Sensor de Força
 
 **Step4**: Execute o script e observe o efeito da conformidade de postura. O parâmetro de inércia afeta a resposta de aceleração e a capacidade de rejeição de distúrbios. Quanto maior a inércia, mais pronunciada a histerese do robô. O coeficiente de amortecimento afeta a suavidade durante a conformidade de postura. Quanto maior o amortecimento, mais difícil é a conformidade de postura.
+
+Configuração de Movimento
+---------------------------------------------
+
+Otimização da Característica de Velocidade em T + Função de Suavização Blending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão Geral
+++++++++++++++++++++++
+
+O blending entre dois segmentos de trajetória evita problemas frequentes de partida/parada causados por paradas completas, melhorando assim a eficiência do movimento do robô.
+
+Esta função se aplica principalmente ao blending entre os comandos PTP-PTP, LIN-LIN, ARC-ARC, LIN-ARC e ARC-LIN. O blending entre outros tipos de comando não é eficaz.
+
+Procedimento Operacional
+++++++++++++++++++++++
+
+Como os métodos de operação para cada comando são semelhantes, este manual usa o blending entre PTP-PTP como exemplo para ilustrar a operação desta função. Esta função pode ser implementada de duas maneiras: usando instruções Lua ou usando o interruptor de configuração de movimento.
+
+Método com Instruções Lua
+*****************************
+
+**Passo 1**: Selecione os pontos de ensino para executar a função PTP. Este manual usa "A0" ~ "A5" como nomes dos pontos de ensino.
+
+**Passo 2**: Clique em "Teach Program" -> "Program Programming" e selecione o comando "Ponto a Ponto" de "Instruções de Movimento". Na área "Editar Instrução", selecione o ponto de ensino e defina a velocidade de depuração. Selecione "Modo de Suavização de Aceleração" para proteção de movimento e defina o parâmetro "Transição Suave" nos pontos onde a suavização é necessária.
+
+.. image:: base/103.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-1 Configurações de Instrução Blending para PTP com Suavização de Aceleração
+
+**Passo 3**: Gere e execute o programa Lua para obter a função de blending PTP-PTP. Neste modo, apenas as instruções entre AccSmoothStart() e AccSmoothEnd() usam a velocidade em T otimizada para movimento, enquanto outras instruções usam a velocidade em T original.
+
+.. image:: base/104.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-2 Programa Típico para Blending PTP-PTP com Método de Instruções Lua
+
+Método com Interruptor de Configuração de Movimento
+***********************************
+
+**Passo 1**: Clique em "Configuração Inicial" -> "Segurança" -> "Configuração de Movimento" e ative o interruptor "Modo de Suavização de Aceleração".
+
+.. image:: base/105.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-3 Configurações do Interruptor de Configuração do Modo de Suavização de Aceleração
+
+**Passo 2**: Selecione os pontos de ensino para executar a função PTP-PTP. Este manual usa "A0" ~ "A5" como nomes dos pontos de ensino.
+
+**Passo 3**: Clique em "Teach Program" -> "Program Programming" e selecione o comando "Ponto a Ponto" de "Instruções de Movimento". Na área "Editar Instrução", selecione o ponto de ensino e defina a velocidade de depuração. Selecione "Nenhum" para proteção de movimento e defina o parâmetro "Transição Suave" nos pontos onde a suavização é necessária.
+
+.. image:: base/106.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-4 Configurações de Instrução Blending para PTP Regular
+
+**Passo 4**: Gere e execute o programa Lua para obter a função de blending PTP-PTP. O programa típico é o mesmo que o programa PTP regular. Neste modo, todas as instruções usam a velocidade em T otimizada para movimento.
+
+.. image:: base/107.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-5 Programa Típico para Blending PTP-PTP com Interruptor de Configuração
+
+Função de Parâmetros Adaptativos FIR + Função de Pausa/Retomada FIR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão Geral
+++++++++++++++++++++++
+
+A função de configuração adaptativa de parâmetros do modo de tempo ótimo do robô elimina a necessidade de depurar e configurar vários parâmetros. Esta função completa adaptativamente a configuração de parâmetros para o modo de tempo ótimo com base no estado operacional atual do robô, melhorando a eficiência da depuração.
+
+Procedimento Operacional
+++++++++++++++++++++++
+
+O uso dos comandos de movimento básicos PTP, LIN e ARC do robô é semelhante. Este exemplo usa o comando de movimento PTP em modo de tempo ótimo como exemplo principal.
+
+**Passo 1**: Na interface de controle Web do robô, clique em "Configuração Inicial" -> "Segurança" -> "Configuração de Movimento" em sequência para acessar a interface "Configuração de Movimento".
+
+.. image:: base/098.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-6 Interface de Configuração de Movimento
+
+**Passo 2**: Na interface "Configuração de Movimento", clique no interruptor "Modo de Tempo Ótimo" para acessar a interface "Modo de Tempo Ótimo".
+
+.. image:: base/099.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 7.13-7 Interface do Modo de Tempo Ótimo
+
+.. note:: Na seção "Configuração de Parâmetros" da interface "Modo de Tempo Ótimo", o "Coeficiente de Ajuste" pode ser definido de -100 a 100, representando um fator de escala usado para controlar o grau de otimização de tempo para comandos de movimento. O valor padrão é 1.
+
+**Passo 3**: Determine os pontos de ensino para executar o movimento PTP. Este exemplo usa "A0" ~ "A5" como nomes dos pontos de ensino.
+
+**Passo 4**: Na interface de controle Web do robô, clique em "Teach Program" -> "Program Programming" em sequência para acessar a interface "Instruções de Movimento".
+
+.. image:: base/100.png
+   :width: 2in
+   :align: center
+
+.. centered:: Figura 7.13-8 Interface de Instruções de Movimento
+
+**Passo 5**: Na interface "Instruções de Movimento", clique em "Ponto a Ponto" para acessar a interface de edição de instrução "PTP". Selecione o ponto de ensino no menu suspenso "Nome do Ponto", defina a proporção de velocidade desejada no campo "Velocidade de Depuração", selecione "Parar" no campo "Neste Ponto", selecione "Não" no menu suspenso "Deslocamento" e selecione "Nenhum" no campo "Proteção de Movimento". Em seguida, clique em "Adicionar".
+
+.. image:: base/101.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-9 Interface de Edição de Instrução de Movimento PTP
+
+**Passo 6**: Na interface de edição de instrução de movimento "PTP", clique em "Aplicar" para gerar automaticamente o programa LUA correspondente.
+
+.. image:: base/102.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-10 Programa LUA Típico para Movimento PTP em Modo de Tempo Ótimo
+
+.. note:: 
+   O programa LUA típico para movimento PTP em modo de tempo ótimo não é diferente de um programa LUA para movimento PTP regular. A diferença é que a função "Modo de Tempo Ótimo" foi ativada no Passo 2.
+
+   Quando o interruptor da função "Modo de Tempo Ótimo" está ativado, os comandos de movimento básicos PTP, LIN e ARC do robô estão todos em modo de tempo ótimo. Desativando o interruptor da função "Modo de Tempo Ótimo" nesta interface, os comandos de movimento básicos PTP, LIN e ARC retornarão ao seu estado normal.
+   O interruptor da função "Modo de Suavização de Aceleração" não pode ser ativado simultaneamente com o modo de tempo ótimo nesta interface.
