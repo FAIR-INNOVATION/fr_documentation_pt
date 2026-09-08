@@ -126,6 +126,21 @@ Desligar o Sistema Operacional do Robô
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
+Alternar para o Modo Manual de Alta Velocidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``HiSpeedManualSwitch(self, state)``"
+    "Descrição", "Alternar para o modo manual de alta velocidade"
+    "Parâmetros Obrigatórios", "
+    - ``state``：0-sair do modo manual de alta velocidade; 1-entrar no modo manual de alta velocidade
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
 Inicializar Parâmetros de Log
 +++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: python SDK-v2.1.1

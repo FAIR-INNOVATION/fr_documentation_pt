@@ -79,6 +79,52 @@ Obter Estado de Movimento da Garra
     */
     List<Integer> GetGripperMotionDone(); 
 
+Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief  Aguarda o status de movimento da garra
+    * @param  [in]  status  0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
+    * @param  [in] timeout Tempo limite (ms), -1 para espera infinita
+    * @param  [in] strategy  0-parar com erro, 1-continuar executando
+    * @param  [in] type  0-garra paralela, 1-garra rotativa
+    * @return  Código de erro
+    */
+    public int GripperWaitMotionDone(int status, int timeout, int strategy, int type)
+
+Exemplo de Código para Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static void TestGripperWaitMotionDone(Robot robot)
+    {
+        int rtn;
+
+        // Garra aberta
+        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
+        System.out.println("MoveGripper(abrir) ret=" + rtn);
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Garra fechada
+        rtn = robot.MoveGripper(1, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
+        System.out.println("MoveGripper(fechar) ret=" + rtn);
+
+        // Aguardar movimento concluído sem detecção de objeto, timeout 30s, parar com erro
+        rtn = robot.GripperWaitMotionDone(2, 30000, 0, 0);
+        System.out.println("GripperWaitMotionDone(aguardar conclusão sem detecção de objeto) ret=" + rtn);
+
+        // Garra aberta
+        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
+        System.out.println("MoveGripper(abrir) ret=" + rtn);
+    }
+
 Obter Estado de Ativação da Garra
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
@@ -1662,6 +1708,150 @@ Exemplo de Código para Busca de Posição e Rastreamento em Tempo Real a Laser
             System.out.println("Execução atual: "+(i+1));
         }
         robot.CloseRPC();
+    }
+
+Exemplo de Código de Reprodução de Gravação a Laser + Oscilação Normal
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static void TestLaserReproduceNormalWeave(Robot robot)
+    {
+        JointPos startjointPos = new JointPos(68.930, -70.217, -121.821, -75.522, 91.216, 137.289);
+        DescPose startdescPose = new DescPose(216.097, 304.517, 34.164, -3.871, 0.792, 132.864);
+        JointPos endjointPos = new JointPos(58.092, -78.843, -115.569, -73.420, 91.662, 126.457);
+        DescPose enddescPose = new DescPose(296.276, 307.453, 34.803, -3.868, 0.783, 132.864);
+        DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos exaxis0Pos = new ExaxisPos(0, 174.957, 0, 0);
+        ExaxisPos exaxis1Pos = new ExaxisPos(0, 105.003, 0, 0);
+
+        robot.Sleep(1000);
+
+        // MoveL para posição inicial (Eixo estendido 0,174.957,0,0)
+        int rtn = robot.MoveL(startjointPos, startdescPose, 5, 0, 100, 100, 100, -1, 0, exaxis0Pos, 0, 0, offdese, 100, 0, 0, 10);
+        System.out.printf("MoveL start: %d\n", rtn);
+
+        // Iniciar gravação a laser
+        rtn = robot.LaserSensorRecord1(2, 10);
+        System.out.printf("LaserSensorRecord start: %d\n", rtn);
+
+        // MoveL para posição final
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 100, -1, 0, exaxis0Pos, 0, 0, offdese, 100, 0, 0, 10);
+        System.out.printf("MoveL end: %d\n", rtn);
+
+        // Parar gravação a laser
+        rtn = robot.LaserSensorRecord1(0, 10);
+        System.out.printf("LaserSensorRecord stop: %d\n", rtn);
+
+        // MoveL de volta para posição inicial
+        rtn = robot.MoveL(startjointPos, startdescPose, 5, 0, 100, 100, 100, -1, 0, exaxis0Pos, 0, 0, offdese, 100, 0, 0, 10);
+        System.out.printf("MoveL back: %d\n", rtn);
+
+        // Movimento LIN para o início do caminho gravado a laser
+        rtn = robot.MoveToLaserRecordStart(1, 30);
+        System.out.printf("MoveToLaserRecordStart: %d\n", rtn);
+
+        // Iniciar oscilação normal
+        rtn = robot.WeaveStart(0);
+        System.out.printf("WeaveStart: %d\n", rtn);
+
+        // Iniciar reprodução da gravação
+        rtn = robot.LaserSensorRecord1(3, 10);
+        System.out.printf("LaserSensorRecord replay: %d\n", rtn);
+
+        // Movimento de reprodução de rastreamento a laser
+        rtn = robot.MoveLTR();
+        System.out.printf("MoveLTR: %d\n", rtn);
+
+        robot.Sleep(3000);
+
+        // Parar reprodução da gravação
+        rtn = robot.LaserSensorRecord1(0, 10);
+        System.out.printf("LaserSensorRecord stop: %d\n", rtn);
+
+        // Finalizar oscilação normal
+        rtn = robot.WeaveEnd(0);
+        System.out.printf("WeaveEnd: %d\n", rtn);
+
+        robot.Sleep(1000);
+    }
+    
+Exemplo de Código de Reprodução de Gravação a Laser + Movimento Assíncrono de Eixos Estendidos + Oscilação em Pontos Fixos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static void TestLaserRecordReplayExaxisWithWave(Robot robot)
+    {
+        JointPos startjointPos = new JointPos(105.600, -65.393, -93.638, -79.687, 79.175, 134.046);
+        DescPose startdescPose = new DescPose(42.376, 533.597, 362.564, -34.957, -0.564, 169.063);
+        JointPos endjointPos = new JointPos(105.600, -65.393, -93.638, -79.687, 79.175, 134.046);
+        DescPose enddescPose = new DescPose(42.376, 533.597, 362.564, -34.957, -0.564, 169.063);
+        DescPose offdese = new DescPose(0, 0, 0, 0, 0, 0);
+        ExaxisPos exaxis0Pos = new ExaxisPos(0, 134.296, 0, 0);
+        ExaxisPos exaxis1Pos = new ExaxisPos(0, 74.335, 0, 0);
+        // MoveJ para ponto seguro (Eixo estendido 0,174.957,0,0)
+        int rtn = robot.MoveJ(startjointPos, startdescPose, 5, 0, 100, 100, 50, exaxis0Pos, -1, 0, offdese);
+        System.out.printf("MoveJ start: %d\n", rtn);
+
+        // Movimento assíncrono do eixo estendido para a posição inicial 105.003
+        rtn = robot.ExtAxisMove(exaxis1Pos, 50, -1);
+        System.out.printf("ExtAxisMove 105.003: %d\n", rtn);
+
+        robot.Sleep(3000);
+
+        // MoveL para o ponto inicial
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 50, -1, 0, exaxis1Pos, 0, 0, offdese, 100, 0, 0, 10);
+        System.out.printf("MoveL end: %d\n", rtn);
+
+        // Iniciar gravação a laser
+        rtn = robot.LaserSensorRecord1(2, 10);
+        System.out.printf("LaserSensorRecord start: %d\n", rtn);
+
+        // Eixo estendido se move para 174.957 durante a gravação
+        rtn = robot.ExtAxisMove(exaxis0Pos, 50, -1);
+        System.out.printf("ExtAxisMove 174.957: %d\n", rtn);
+
+        robot.Sleep(3000);
+
+        // Parar gravação a laser
+        rtn = robot.LaserSensorRecord1(0, 10);
+        System.out.printf("LaserSensorRecord stop: %d\n", rtn);
+
+        // Eixo estendido retorna para 105.003, MoveL de volta ao ponto inicial
+        rtn = robot.ExtAxisMove(exaxis1Pos, 50, -1);
+        System.out.printf("ExtAxisMove back: %d\n", rtn);
+
+        // MoveL para o ponto inicial
+        rtn = robot.MoveL(endjointPos, enddescPose, 5, 0, 100, 100, 50, -1, 0, exaxis1Pos, 0, 0, offdese, 100, 0, 0, 10);
+        System.out.printf("MoveL back: %d\n", rtn);
+
+        // Movimento PTP para o início do caminho gravado a laser
+        rtn = robot.MoveToLaserRecordStart(0, 30);
+        System.out.printf("MoveToLaserRecordStart: %d\n", rtn);
+
+        // Iniciar reprodução
+        rtn = robot.LaserSensorRecord1(3, 10);
+        System.out.printf("LaserSensorRecord replay: %d\n", rtn);
+
+        // Iniciar oscilação em pontos fixos
+        DescPose refPoint = new DescPose(49.381, 533.608, 362.556, -34.961, -0.564, 169.062);
+        rtn = robot.OriginPointWeaveStart(0, 1, refPoint, 5);
+        System.out.printf("OriginPointWeaveStart: %d\n", rtn);
+
+        // Eixo estendido se move para 174.957 durante a oscilação
+        rtn = robot.ExtAxisMove(exaxis0Pos, 50, -1);
+        System.out.printf("ExtAxisMove replay: %d\n", rtn);
+
+        // Finalizar oscilação
+        rtn = robot.OriginPointWeaveEnd();
+        System.out.printf("OriginPointWeaveEnd: %d\n", rtn);
+
+        // Parar reprodução
+        rtn = robot.LaserSensorRecord1(0, 10);
+        System.out.printf("LaserSensorRecord stop: %d\n", rtn);
+
+        robot.Sleep(1000);
     }
 
 Exemplo de Código para Rastreamento a Laser Síncrono com Eixo de Extensão e Robô

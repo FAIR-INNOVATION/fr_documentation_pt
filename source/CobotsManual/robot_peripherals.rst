@@ -580,6 +580,33 @@ Apêndice 1: Erros do Controlador de Movimento e Métodos de Tratamento
      - 3
      - Alarme de queda de peça da garra, redefinível. Após limpar a falha, por favor redefinir e reativar a garra
 
+Apêndice: Instrução de Bloqueio de Espera da Garra
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Clique em "Teach Program" -> "Instruções Periféricas" -> "Garra" para adicionar uma instrução de espera para o movimento da garra ser concluído, que pode bloquear até que a ação de fixação seja concluída para obter a posição física real da garra.
+
+.. image:: safety/032.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 8.2-17 Instrução de Espera para Conclusão do Movimento da Garra
+ 
+- Estado da Garra: Movimento não concluído, movimento concluído sem detecção de objeto, movimento concluído com detecção de objeto;
+- Tempo de Timeout: Unidade ms, -1 significa esperar para sempre.
+- Estratégia de Timeout: Você pode escolher parar com erro ou continuar executando.
+- Tipo de Garra: Você pode escolher garra paralela ou garra rotativa.
+
+.. note:: 
+   Nota: A instrução de espera para conclusão do movimento da garra é aplicável apenas a protocolos personalizados; dispositivos adaptados atualmente não a suportam.
+
+   Você também pode usar diretamente GetGripperMotionDone() para julgamento. O parâmetro de entrada é o tipo de garra: 0 para garra paralela, 1 para garra rotativa. Os valores de retorno são erro da garra e estado da garra. Erro da garra 0 significa nenhum erro, outros valores significam que há um erro. Estado da garra 0 significa movimento não concluído, 1 significa movimento concluído sem detecção de objeto, 2 significa movimento concluído com detecção de objeto. Programas de exemplo para esperar pela conclusão do movimento da garra e obter a posição da garra são os seguintes:
+
+.. image:: safety/033.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 8.2-18 Programa de Exemplo de Movimento da Garra
+
 Sensor de Força
 -------------------------
 

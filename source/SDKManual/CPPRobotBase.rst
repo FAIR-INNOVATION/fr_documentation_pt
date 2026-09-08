@@ -122,6 +122,19 @@ Desligar o Sistema Operacional do Robô
     */
     errno_t ShutDownRobotOS();
 
+Alternar para o Modo Manual de Alta Velocidade
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Alternar para o modo manual de alta velocidade
+    * @param [in] state 0-sair do modo manual de alta velocidade; 1-entrar no modo manual de alta velocidade
+    * @return Código de erro
+    */
+    errno_t HiSpeedManualSwitch(int state);    
+
 Definir Parâmetros de Reconexão de Comunicação com o Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. versionadded:: C++SDK-v2.1.5.0

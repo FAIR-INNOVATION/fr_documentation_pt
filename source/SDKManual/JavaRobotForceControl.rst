@@ -480,6 +480,58 @@ Inserção Rotativa
     */
     public int FT_RotInsertion(int rcs, double angVelRot, double ft, double max_angle, int orn, double max_angAcc, int rotorn, int strategy)
 
+Busca em Espiral
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief  Busca em espiral
+    * @param  [in] rcs Sistema de coordenadas de referência, 0-sistema da ferramenta, 1-sistema base
+    * @param  [in] dr Avanço do raio por volta
+    * @param  [in] ft Limiar de força/torque, fx,fy,fz,tx,ty,tz, intervalo [0~100]
+    * @param  [in] max_t_ms Tempo máximo de busca, unidade ms
+    * @param  [in] max_vel Velocidade linear máxima, unidade mm/s
+    * @param  [in] strategy Estratégia de tratamento quando nenhuma força/torque é detectado, 0-erro; 1-aviso, continuar movimento
+    * @return  Código de erro
+    */
+    public int FT_SpiralSearch(int rcs, double dr, double ft, double max_t_ms, double max_vel, int strategy)
+
+Inserção Linear
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Inserção linear
+    * @param rcs Sistema de coordenadas de referência, 0-sistema da ferramenta, 1-sistema base
+    * @param ft Limiar de força/torque, fx,fy,fz,tx,ty,tz, intervalo [0~100]
+    * @param lin_v Velocidade linear, unidade mm/s
+    * @param lin_a Aceleração linear, unidade mm/s^2, não utilizada temporariamente
+    * @param max_dis Distância máxima de inserção, unidade mm
+    * @param linorn Direção de inserção, 0-direção negativa, 1-direção positiva
+    * @return Código de erro
+    */
+    public int FT_LinInsertion(int rcs, double ft, double lin_v, double lin_a, double max_dis, int linorn, int strategy)
+
+Posicionamento de Superfície
++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Posicionamento de superfície
+    * @param rcs Sistema de coordenadas de referência, 0-sistema da ferramenta, 1-sistema base
+    * @param dir Direção de movimento, 1-direção positiva, 2-direção negativa
+    * @param axis Eixo de movimento, 1-eixo x, 2-eixo y, 3-eixo z
+    * @param lin_v Velocidade linear de busca, unidade mm/s
+    * @param lin_a Aceleração linear de busca, unidade mm/s^2, não utilizada temporariamente, padrão 0
+    * @param max_dis Distância máxima de busca, unidade mm
+    * @param ft Limiar de força/torque de término de movimento, fx,fy,fz,tx,ty,tz
+    * @return Código de erro
+    */
+    public int FT_FindSurface(int rcs, int dir, int axis, double lin_v, double lin_a, double max_dis, double ft, int strategy)
+
 Exemplo de Código de Inserção Rotativa com Sensor de Força do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java

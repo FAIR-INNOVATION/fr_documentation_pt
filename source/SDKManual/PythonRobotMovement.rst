@@ -1979,3 +1979,139 @@ Exemplo de Código de Transformação dos Pontos do Sistema de Coordenadas da Pe
 
     if __name__ == "__main__":
         main()    
+
+Movimento em Modo Servo no Espaço de Juntas (Suporta Entrada de Múltiplos Pontos de Uma Vez)    
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: python
+    :linenos: 
+    
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``ServoJMultiPos(self, joint_pos, axisPos, acc=0.0, vel=0.0, cmdT=0.008, filterT=0.0, gain=0.0, id=0, cmdType=0)``"
+    "Descrição", "Movimento em modo servo no espaço de juntas (suporta entrada de múltiplos pontos de uma vez)"
+    "Parâmetros Obrigatórios", "
+    - ``joint_pos``: Conjunto de posições alvo das juntas (suporta até 10 grupos), unidade deg, lista 2D onde cada elemento contém 6 posições de juntas
+    - ``axisPos``: Posição do eixo externo, unidade mm, 4 elementos
+    - ``acc``: Percentual de aceleração, intervalo [0~100], não disponível ainda, padrão 0.0
+    - ``vel``: Percentual de velocidade, intervalo [0~100], não disponível ainda, padrão 0.0
+    - ``cmdT``: Ciclo de envio do comando, unidade s, intervalo recomendado [0.001~0.0016], padrão 0.008
+    - ``filterT``: Tempo de filtro, unidade s, não disponível ainda, padrão 0.0
+    - ``gain``: Amplificador proporcional da posição alvo, não disponível ainda, padrão 0.0
+    - ``id``: ID do comando ServoJ, padrão 0
+    - ``cmdType``: Tipo de transmissão do comando, 0=XML-RPC, 1=UDP passthrough
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro
+    - ``servoJCmdCount``: Contagem de pontos de comando ServoJ [0-10000] (retornado apenas via XML-RPC)"   
+        
+Exemplo de Código para Movimento em Modo Servo no Espaço de Juntas (Entrada de Múltiplos Pontos)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: python
+    :linenos:     
+
+    from fairino import Robot
+    import time
+
+    def main():
+        # Estabelecer conexão com o controlador do robô
+        robot = Robot.RPC('192.168.58.2')
+        time.sleep(0.5)  # Aguardar conexão e recebimento de dados
+
+        # ========== Ler arquivo de trajetória de juntas ==========
+        file_path = "C://Users/lenovo/Desktop/ServoJPath.txt"
+        all_joint_data = []
+
+        try:
+            with open(file_path, 'r') as fin:
+                for line in fin:
+                    parts = line.strip().split()
+                    if len(parts) >= 6:
+                        # Pular a primeira coluna (coluna de índice), pegar as colunas 2~7 (índices 1~6)
+                        one_pose = [float(parts[i]) for i in range(1, 7)]
+                        all_joint_data.append(one_pose)
+        except FileNotFoundError:
+            print("Não foi possível abrir o arquivo ServoJPath.txt")
+            return
+
+        print(f"Total de {len(all_joint_data)} conjuntos de posições de juntas lidos")
+
+        # ========== Construir caminho de ida e volta (direto + reverso, removendo ponto final duplicado) ==========
+        back_forth_path = all_joint_data.copy()
+        # Começando do penúltimo, adicionar em ordem reversa (removendo o ponto final duplicado)
+        for i in range(len(all_joint_data) - 2, -1, -1):
+            back_forth_path.append(all_joint_data[i])
+
+        print(f"Total de pontos no caminho de ida e volta: {len(back_forth_path)}")
+
+        epos = [0.0, 0.0, 0.0, 0.0]
+        offset_pos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        # Mover para posição inicial
+        robot.MoveJ(joint_pos=all_joint_data[0], tool=0, user=0,
+                    vel=100, acc=100, ovl=100, exaxis_pos=epos,
+                    blendT=-1, offset_flag=0, offset_pos=offset_pos)
+
+        time.sleep(1)
+
+        # ========== Loop principal ==========
+        while True:
+            # Redefinir todos os erros
+            robot.ResetAllError()
+
+            # Mover para posição inicial
+            robot.MoveJ(joint_pos=all_joint_data[0], tool=0, user=0,
+                        vel=100, acc=100, ovl=100, exaxis_pos=epos,
+                        blendT=-1, offset_flag=0, offset_pos=offset_pos)
+
+            move_count = 0
+            total_points = len(back_forth_path)
+
+            while move_count < total_points - 10:
+                # Obter estado em tempo real do robô
+                rtn, pkg = robot.GetRobotRealTimeState()
+
+                # Calcular o número de comandos ServoJ que podem ser enviados de uma vez
+                single_servo_j_count = 50 - pkg.mc_queue_len
+                if single_servo_j_count <= 0:
+                    time.sleep(0.1)
+                    continue
+
+                if single_servo_j_count > 10:
+                    single_servo_j_count = 10
+
+                # Construir a lista de posições de juntas para enviar desta vez (lista 2D, cada elemento contém 6 ângulos de juntas)
+                joint_pos_list = []
+                for j in range(single_servo_j_count):
+                    if move_count < total_points:
+                        joint_pos_list.append(back_forth_path[move_count])
+                        move_count += 1
+                    else:
+                        break
+
+                # Enviar comando ServoJ multi-ponto
+                axis_pos = [0.0, 0.0, 0.0, 0.0]
+                # Nota sobre a ordem dos parâmetros: joint_pos, axisPos, acc, vel, cmdT, filterT, gain, id, cmdType
+                # acc=100.0 corresponde a C++ 100.0, vel=100.0 corresponde a C++ 100.0
+                rtn, servo_j_cmd_count = robot.ServoJMultiPos(joint_pos_list, axis_pos,
+                                                            acc=100.0, vel=100.0,
+                                                            cmdT=0.008, filterT=0.008,
+                                                            gain=1.0, id=0, cmdType=0)
+                if rtn != 0:
+                    print(f"ServoJMultiPos falhou, código de erro: {rtn}")
+                    break
+
+                # Imprimir informações de depuração
+                print(f"Enviando {len(joint_pos_list)} waypoints, contagem de comandos ServoJ: {servo_j_cmd_count}")
+
+            time.sleep(4)
+
+        # Fechar conexão (normalmente não será executado)
+        robot.CloseRPC()
+
+
+    if __name__ == "__main__":
+        main()        

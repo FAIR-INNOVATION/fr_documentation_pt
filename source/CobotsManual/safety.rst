@@ -38,7 +38,7 @@ Os parâmetros de configuração de segurança suportam a exportação de relat�
 .. centered:: Figura 7.1-3 Pré-visualização do PDF do Relatório de Configuração de Segurança
 
 Gerenciamento de Parâmetros de Configuração de Segurança
-------------------------------------------------
+----------------------------------------------------------------
 
 Todos os parâmetros de configuração de segurança relacionados ao robô são gerenciados uniformemente na página web "Configuração Inicial" -> "Segurança". A modificação dos parâmetros de configuração de segurança requer primeiro a inserção da "Senha de Configuração de Segurança" para verificação. Somente após a verificação bem-sucedida, as modificações na configuração dos parâmetros de segurança podem ser feitas.
 
@@ -57,7 +57,7 @@ Após modificar os parâmetros de configuração de segurança, clique em "Aplic
 .. centered:: Figura 7.2-2 Segunda Confirmação dos Parâmetros de Configuração de Segurança
 
 Gerenciamento da Senha de Configuração de Segurança
-------------------------------------------------
+--------------------------------------------------------
 
 A senha de configuração de segurança pode ser alterada em "Configurações do Sistema" -> "Modo de Manutenção" -> "Configuração de Parâmetros de Segurança". A senha padrão é 12345678. A alteração da senha requer a verificação da senha antiga. A nova e a antiga senha não podem ser iguais. O comprimento da senha é de no mínimo 1 caractere e no máximo 8 caracteres, e diferencia letras maiúsculas e minúsculas e símbolos.
 
@@ -186,7 +186,7 @@ Clique na barra de menu "Configuração Inicial" -> "Segurança" e clique no sub
 .. centered:: Figura 7.4-7 Habilitação Automática na Inicialização
 
 Limite de Orientação da Ferramenta (Usado apenas no sistema LA)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Clique na barra de menu "Configuração Inicial" -> "Segurança" e clique no submenu "Limite de Orientação da Ferramenta" para entrar na interface de configuração.
 
@@ -408,30 +408,3 @@ O segundo método é o "Método Centro + Comprimento do Lado", onde o ponto cent
    :align: center
 
 .. centered:: Figura 7.4-25 Configuração de Interferência de Cuboide
-
-Apêndice: Instrução de Bloqueio de Espera da Garra
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Clique em "Teach Program" -> "Instruções Periféricas" -> "Garra" para adicionar uma instrução de espera para o movimento da garra ser concluído, que pode bloquear até que a ação de fixação seja concluída para obter a posição física real da garra.
-
-.. image:: safety/032.png
-   :width: 4in
-   :align: center
-
-.. centered:: Figura 7.4-26 Instrução de Espera para Conclusão do Movimento da Garra
- 
-- Estado da Garra: Movimento não concluído, movimento concluído sem detecção de objeto, movimento concluído com detecção de objeto;
-- Tempo de Timeout: Unidade ms, -1 significa esperar para sempre.
-- Estratégia de Timeout: Você pode escolher parar com erro ou continuar executando.
-- Tipo de Garra: Você pode escolher garra paralela ou garra rotativa.
-
-.. note:: 
-   Nota: A instrução de espera para conclusão do movimento da garra é aplicável apenas a protocolos personalizados; dispositivos adaptados atualmente não a suportam.
-
-   Você também pode usar diretamente GetGripperMotionDone() para julgamento. O parâmetro de entrada é o tipo de garra: 0 para garra paralela, 1 para garra rotativa. Os valores de retorno são erro da garra e estado da garra. Erro da garra 0 significa nenhum erro, outros valores significam que há um erro. Estado da garra 0 significa movimento não concluído, 1 significa movimento concluído sem detecção de objeto, 2 significa movimento concluído com detecção de objeto. Programas de exemplo para esperar pela conclusão do movimento da garra e obter a posição da garra são os seguintes:
-
-.. image:: safety/033.png
-   :width: 6in
-   :align: center
-
-.. centered:: Figura 7.4-27 Programa de Exemplo de Movimento da Garra

@@ -296,3 +296,63 @@ Exemplo de Código para Obter Versões de Software e Firmware do Robô
         robot.GetFirmwareVersion(ctrlBoxBoardVersion, driver1Version, driver2Version, driver3Version,
                 driver4Version, driver5Version, driver6Version, endBoardVersion);
     }
+
+Exemplo de Código de Controle Básico do Robô
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static int TestRobotCtrl(Robot robot)
+    {
+        int rtn = -1;
+        String version = "";
+        version = robot.GetSDKVersion();
+        System.out.println("SDK version:"+version);
+        String[] ip={""};
+        robot.GetControllerIP(ip);
+        System.out.println("ip: "+ip[0]);
+
+        robot.Mode(1);
+        robot.Sleep(1000);
+        robot.DragTeachSwitch(1);
+        robot.Sleep(1000);
+        ROBOT_STATE_PKG pkg=robot.GetRobotRealTimeState();
+        System.out.println("drag state :" +pkg.robot_state);
+
+        robot.Sleep(3000);
+        robot.DragTeachSwitch(0);
+        robot.Sleep(1000);
+        pkg=robot.GetRobotRealTimeState();
+        System.out.println("drag state :" +pkg.robot_state);
+        robot.Sleep(3000);
+
+        robot.RobotEnable(0);
+        robot.Sleep(3000);
+        robot.RobotEnable(1);
+
+        robot.Mode(0);
+        robot.Sleep(1000);
+        robot.Mode(1);
+
+        robot.Sleep(1000);
+        rtn = robot.HiSpeedManualSwitch(1);
+        System.out.println("change high speed mode"+ rtn);
+        robot.Sleep(1000);
+        rtn = robot.HiSpeedManualSwitch(0);
+        System.out.println("change low speed mode"+ rtn);
+        robot.Sleep(3000);
+        System.out.println("Press any key to exit!");
+        return 0;
+    }    
+
+Alternar para o Modo Manual de Alta Velocidade
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Alternar para o modo manual de alta velocidade
+    * @param [in] state 0-sair do modo manual de alta velocidade; 1-entrar no modo manual de alta velocidade
+    * @return Código de erro
+    */
+    public int HiSpeedManualSwitch(int state)    

@@ -850,3 +850,136 @@ Exemplo de Código SDK de Configuração de E/S
 
     # Chamar função de teste
     TestIOConfig(robot)
+
+Configuração da Função CI de Dois Canais de Segurança
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetSafetyDIConfig(self, ID, config)``"
+    "Descrição", "Configuração da função CI de dois canais de segurança"
+    "Parâmetros Obrigatórios", "
+    - ``ID``: ID do dois canais; [0-3]
+    - ``config``: Configuração da função; 0-sem configuração; 201-Sinal de entrada de parada de emergência externa 1; 202-Sinal de entrada de parada de emergência externa 2; 203-Modo reduzido de nível 1; 204-Modo reduzido de nível 2; 205-Modo reduzido de nível 3;
+                           206-Parada normal; 207-Parede de segurança 1; 208-Parede de segurança 2; 209-Parede de segurança 3; 210-Parede de segurança 4; 211-Parede de segurança 5; 212-Parede de segurança 6; 213-Parede de segurança 7;
+                           214-Parede de segurança 8; 215-Reinicialização de parada de segurança;
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
+Configuração da Função CO de Dois Canais de Segurança
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SetSafetyDOConfig(self, ID, config)``"
+    "Descrição", "Configuração da função CO de dois canais de segurança"
+    "Parâmetros Obrigatórios", "
+    - ``ID``: ID do dois canais; [0-3]
+    - ``config``: Configuração da função; 0-sem configuração; 201-Sinal de saída de parada de emergência 1; 202-Sinal de saída de parada de emergência 2; 203-Saída de status de segurança; 204-Saída de status de parada protetiva; 205-Robô em movimento; 206-Robô em modo reduzido; 207-Robô em modo não reduzido;
+    "
+    "Parâmetros Padrão", "Nenhum"
+    "Valor de Retorno", "Código de erro, 0-sucesso; diferente de zero-erro"
+
+Exemplo de Código de Configuração da Função IO de Dois Canais de Segurança    
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:
+
+    from fairino import Robot
+    import time
+
+    def main():
+        # Estabelecer conexão com o controlador do robô
+        robot = Robot.RPC('192.168.58.2')
+        time.sleep(0.5)  # Aguardar conexão e recebimento de dados
+
+        print("========== Safety IO Config Test ==========")
+
+        # ========== Definir Configuração DI de Segurança ==========
+        print("\n--- Set Safety DI Configuration ---")
+        rtn = robot.SetSafetyDIConfig(0, 201)
+        print(f"SetSafetyDIConfig(0, 201) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(1, 202)
+        print(f"SetSafetyDIConfig(1, 202) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(2, 203)
+        print(f"SetSafetyDIConfig(2, 203) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(3, 204)
+        print(f"SetSafetyDIConfig(3, 204) rtn is {rtn}")
+
+        # Obter configuração DI
+        rtn, getDIConfig = robot.GetDIConfig()
+        print(f"GetDIConfig rtn is {rtn}, value is {getDIConfig[0]} {getDIConfig[1]} {getDIConfig[2]} {getDIConfig[3]} {getDIConfig[4]} {getDIConfig[5]} {getDIConfig[6]} {getDIConfig[7]}")
+
+        # ========== Limpar Configuração DI de Segurança ==========
+        print("\n--- Clear Safety DI Configuration ---")
+        rtn = robot.SetSafetyDIConfig(0, 0)
+        print(f"SetSafetyDIConfig(0, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(1, 0)
+        print(f"SetSafetyDIConfig(1, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(2, 0)
+        print(f"SetSafetyDIConfig(2, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDIConfig(3, 0)
+        print(f"SetSafetyDIConfig(3, 0) rtn is {rtn}")
+
+        # Obter configuração DI para verificar limpeza
+        rtn, getDIConfig = robot.GetDIConfig()
+        print(f"GetDIConfig rtn is {rtn}, value is {getDIConfig[0]} {getDIConfig[1]} {getDIConfig[2]} {getDIConfig[3]} {getDIConfig[4]} {getDIConfig[5]} {getDIConfig[6]} {getDIConfig[7]}")
+
+        # ========== Definir Configuração DO de Segurança ==========
+        print("\n--- Set Safety DO Configuration ---")
+        rtn = robot.SetSafetyDOConfig(0, 204)
+        print(f"SetSafetyDOConfig(0, 204) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(1, 205)
+        print(f"SetSafetyDOConfig(1, 205) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(2, 206)
+        print(f"SetSafetyDOConfig(2, 206) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(3, 207)
+        print(f"SetSafetyDOConfig(3, 207) rtn is {rtn}")
+
+        # Obter configuração DO
+        rtn, getDOConfig = robot.GetDOConfig()
+        print(f"GetDOConfig rtn is {rtn}, value is {getDOConfig[0]} {getDOConfig[1]} {getDOConfig[2]} {getDOConfig[3]} {getDOConfig[4]} {getDOConfig[5]} {getDOConfig[6]} {getDOConfig[7]}")
+
+        # ========== Limpar Configuração DO de Segurança ==========
+        print("\n--- Clear Safety DO Configuration ---")
+        rtn = robot.SetSafetyDOConfig(0, 0)
+        print(f"SetSafetyDOConfig(0, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(1, 0)
+        print(f"SetSafetyDOConfig(1, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(2, 0)
+        print(f"SetSafetyDOConfig(2, 0) rtn is {rtn}")
+
+        rtn = robot.SetSafetyDOConfig(3, 0)
+        print(f"SetSafetyDOConfig(3, 0) rtn is {rtn}")
+
+        # Obter configuração DO para verificar limpeza
+        rtn, getDOConfig = robot.GetDOConfig()
+        print(f"GetDOConfig rtn is {rtn}, value is {getDOConfig[0]} {getDOConfig[1]} {getDOConfig[2]} {getDOConfig[3]} {getDOConfig[4]} {getDOConfig[5]} {getDOConfig[6]} {getDOConfig[7]}")
+
+        time.sleep(2)
+
+        # Fechar conexão
+        robot.CloseRPC()
+        time.sleep(1)
+
+        print("\n========== Test Complete ==========")
+
+
+    if __name__ == "__main__":
+        main()

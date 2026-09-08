@@ -111,7 +111,7 @@ A interface de login é mostrada abaixo:
 Configuração de Idiomas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- O sistema atualmente inclui oito idiomas nativos: Chinês Simplificado, Chinês Tradicional, Inglês, Francês, Coreano, Japonês, Russo e Italiano.
+- O sistema atualmente possui 11 idiomas: chinês simplificado, chinês tradicional, inglês, francês, coreano, japonês, russo, italiano, alemão, português e polonês.
 - O nome do pacote de idioma deve ser: [código do idioma].json, por exemplo: es.json, onde o código do idioma segue o padrão ISO 639-1.
 - A tabela de correspondência de idiomas é a seguinte:
 
@@ -168,6 +168,16 @@ Configuração de Idiomas
    * - Alemão
      - Deutsch
      - de
+     - Sim
+
+   * - Português
+     - Português
+     - pt
+     - Sim
+
+   * - Polonês
+     - Polski
+     - pl
      - Sim
 
 1. Na interface de login (ou na interface de ativação inicial), selecione o idioma no canto superior direito.

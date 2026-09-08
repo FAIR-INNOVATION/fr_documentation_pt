@@ -343,6 +343,53 @@ Exemplo de Código para Obter Estado da Garra Rotativa
       return 0;
     }
 
+Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Aguarda o status de movimento da garra (definido apenas para o protocolo aberto do efetuador final; para dispositivos adaptados, o status de movimento obtido é um valor pass-through)
+    * @param [in] status 0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
+    * @param [in] timeout Tempo limite (ms), -1 para espera infinita
+    * @param [in] strategy 0-parar com erro, 1-continuar executando
+    * @param [in] type 0-garra paralela, 1-garra rotativa
+    * @return Código de erro
+    */
+    errno_t GripperWaitMotionDone(int status, int timeout, int strategy, int type);
+    
+Exemplo de Código para Aguardar Status de Movimento da Garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: c++
+    :linenos:
+
+    int TestGripperWaitMotionDone()
+    {
+    ROBOT_STATE_PKG pkg = {};
+    FRRobot robot;
+    robot.LoggerInit();
+    robot.SetLoggerLevel(1);
+    robot.SetReConnectParam(true, 30000, 500);
+    int rtn = robot.RPC("192.168.58.2");
+    if (rtn != 0)
+    {
+        return -1;
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        rtn = robot.MoveGripper(1, 0, 10, 100, 30000, 0, 0, 0, 0, 0);
+        printf("MoveGripper(Open) ret=%d\n", rtn);
+        rtn = robot.GripperWaitMotionDone(1, 10000, 0, 0);
+        printf("GripperWaitMotionDone(Wait for motion completed without object detection) ret=%d\n", rtn);
+        rtn = robot.MoveGripper(1, 90, 10, 100, 30000, 0, 0, 0, 0, 0);
+        printf("MoveGripper(Close) ret=%d\n", rtn);
+        rtn = robot.GripperWaitMotionDone(1, 10000, 0, 0);
+        printf("GripperWaitMotionDone(Wait for motion completed without object detection) ret=%d\n", rtn);
+    }
+    robot.Sleep(1000);
+    robot.CloseRPC();
+    robot.Sleep(1000);
+    }
 
 Iniciar/Parar Esteira Transportadora
 +++++++++++++++++++++++++++++++++++++++++++++
@@ -1954,7 +2001,160 @@ Exemplo de Código para Rastreamento a Laser Síncrono com Eixo de Extensão e R
         }
         robot.CloseRPC();
     } 
+
+Exemplo de Código de Reprodução de Gravação a Laser + Movimento Assíncrono de Eixos Estendidos + Oscilação em Pontos Fixos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:
+
+    void TestLaserRecordReplayExaxisWithWave()
+    {
+    ROBOT_STATE_PKG pkg = {};
+    FRRobot robot = {};
+    robot.LoggerInit();
+    robot.SetLoggerLevel(1);
+    robot.SetReConnectParam(true, 30000, 500);
+    int rtn = robot.RPC("192.168.58.2");
+    if (rtn != 0)
+    {
+        return;
+    }
+    JointPos startjointPos = JointPos(105.600, -65.393, -93.638, -79.687, 79.175, 134.046);
+    DescPose startdescPose = DescPose(42.376, 533.597, 362.564, -34.957, -0.564, 169.063);
+    JointPos endjointPos = JointPos(105.600, -65.393, -93.638, -79.687, 79.175, 134.046);
+    DescPose enddescPose = DescPose(42.376, 533.597, 362.564, -34.957, -0.564, 169.063);
+    DescPose offdese = DescPose(0, 0, 0, 0, 0, 0);
+    ExaxisPos exaxis0Pos(0, 134.296, 0, 0);
+    ExaxisPos exaxis1Pos(0, 74.335, 0, 0);
+    // MoveJ para ponto seguro (Eixo estendido 0,174.957,0,0)
+    rtn = robot.MoveJ(&startjointPos, &startdescPose, 5, 0, 100, 100, 50, &exaxis0Pos, -1, 0, &offdese);
+    printf("MoveJ start: %d\n", rtn);
+    // Movimento assíncrono do eixo estendido para a posição inicial 105.003
+    rtn = robot.ExtAxisMove(exaxis1Pos, 50, -1);
+    printf("ExtAxisMove 105.003: %d\n", rtn);
+    robot.Sleep(3000);
+    // MoveL para o ponto inicial
+    rtn = robot.MoveL(&endjointPos, &enddescPose, 5, 0, 100, 100, 50, -1, 0, &exaxis1Pos, 0, 0, &offdese, 100, 0, 0, 10);
+    printf("MoveL end: %d\n", rtn);
+    // Iniciar gravação a laser
+    rtn = robot.LaserSensorRecord1(2, 10);
+    printf("LaserSensorRecord start: %d\n", rtn);
+    // Eixo estendido se move para 174.957 durante a gravação
+    rtn = robot.ExtAxisMove(exaxis0Pos, 50, -1);
+    printf("ExtAxisMove 174.957: %d\n", rtn);
+    robot.Sleep(3000);
+    // Parar gravação a laser
+    rtn = robot.LaserSensorRecord1(0, 10);
+    printf("LaserSensorRecord stop: %d\n", rtn);
+    // Eixo estendido retorna para 105.003, MoveL de volta ao ponto inicial
+    rtn = robot.ExtAxisMove(exaxis1Pos, 50, -1);
+    printf("ExtAxisMove back: %d\n", rtn);
+    // MoveL para o ponto inicial
+    rtn = robot.MoveL(&endjointPos, &enddescPose, 5, 0, 100, 100, 50, -1, 0, &exaxis1Pos, 0, 0, &offdese, 100, 0, 0, 10);
+    printf("MoveL back: %d\n", rtn);
+    // Movimento PTP para o início do caminho gravado a laser
+    rtn = robot.MoveToLaserRecordStart(0, 30);
+    printf("MoveToLaserRecordStart: %d\n", rtn);
+    // Iniciar reprodução
+    rtn = robot.LaserSensorRecord1(3, 10);
+    printf("LaserSensorRecord replay: %d\n", rtn);
+    // Iniciar oscilação em pontos fixos
+    DescPose refPoint = DescPose(49.381, 533.608, 362.556, -34.961, -0.564, 169.062);
+    rtn = robot.OriginPointWeaveStart(0, 1, refPoint, 5);
+    printf("OriginPointWeaveStart: %d\n", rtn);
+    // Eixo estendido se move para 174.957 durante a oscilação
+    rtn = robot.ExtAxisMove(exaxis0Pos, 50, -1);
+    printf("ExtAxisMove replay: %d\n", rtn);
+    // Finalizar oscilação
+    rtn = robot.OriginPointWeaveEnd();
+    printf("OriginPointWeaveEnd: %d\n", rtn);
+    // Parar reprodução
+    rtn = robot.LaserSensorRecord1(0, 10);
+    printf("LaserSensorRecord stop: %d\n", rtn);
+    robot.CloseRPC();
+    robot.Sleep(1000);
+    }
                                                             
+Exemplo de Código de Reprodução de Gravação a Laser + Oscilação Normal
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:
+
+    void TestLaserReproduceNormalWeave()
+    {
+    ROBOT_STATE_PKG pkg = {};
+    FRRobot robot = {};
+    robot.LoggerInit();
+    robot.SetLoggerLevel(1);
+    robot.SetReConnectParam(true, 30000, 500);
+    int rtn = robot.RPC("192.168.58.2");
+    if (rtn != 0)
+    {
+        return;
+    }
+
+    JointPos startjointPos = JointPos(68.930, -70.217, -121.821, -75.522, 91.216, 137.289);
+    DescPose startdescPose = DescPose(216.097, 304.517, 34.164, -3.871, 0.792, 132.864);
+    JointPos endjointPos = JointPos(58.092, -78.843, -115.569, -73.420, 91.662, 126.457);
+    DescPose enddescPose = DescPose(296.276, 307.453, 34.803, -3.868, 0.783, 132.864);
+    DescPose offdese = DescPose(0, 0, 0, 0, 0, 0);
+    ExaxisPos exaxis0Pos(0, 174.957, 0, 0);
+    ExaxisPos exaxis1Pos(0, 105.003, 0, 0);
+
+    robot.Sleep(1000);
+
+    // MoveL para posição inicial (Eixo estendido 0,174.957,0,0)
+    rtn = robot.MoveL(&startjointPos, &startdescPose, 5, 0, 100, 100, 100, -1, 0, &exaxis0Pos, 0, 0, &offdese, 100, 0, 0, 10);
+    printf("MoveL start: %d\n", rtn);
+
+    // Iniciar gravação a laser
+    rtn = robot.LaserSensorRecord1(2, 10);
+    printf("LaserSensorRecord start: %d\n", rtn);
+
+    // MoveL para posição final
+    rtn = robot.MoveL(&endjointPos, &enddescPose, 5, 0, 100, 100, 100, -1, 0, &exaxis0Pos, 0, 0, &offdese, 100, 0, 0, 10);
+    printf("MoveL end: %d\n", rtn);
+
+    // Parar gravação a laser
+    rtn = robot.LaserSensorRecord1(0, 10);
+    printf("LaserSensorRecord stop: %d\n", rtn);
+
+    // MoveL de volta para posição inicial
+    rtn = robot.MoveL(&startjointPos, &startdescPose, 5, 0, 100, 100, 100, -1, 0, &exaxis0Pos, 0, 0, &offdese, 100, 0, 0, 10);
+    printf("MoveL back: %d\n", rtn);
+
+    // Movimento LIN para o início do caminho gravado a laser
+    rtn = robot.MoveToLaserRecordStart(1, 30);
+    printf("MoveToLaserRecordStart: %d\n", rtn);
+
+    // Iniciar oscilação normal
+    rtn = robot.WeaveStart(0);
+    printf("WeaveStart: %d\n", rtn);
+
+    // Iniciar reprodução da gravação
+    rtn = robot.LaserSensorRecord1(3, 10);
+    printf("LaserSensorRecord replay: %d\n", rtn);
+
+    // Movimento de reprodução de rastreamento a laser
+    rtn = robot.MoveLTR();
+    printf("MoveLTR: %d\n", rtn);
+
+    robot.Sleep(3000);
+
+    // Parar reprodução da gravação
+    rtn = robot.LaserSensorRecord1(0, 10);
+    printf("LaserSensorRecord stop: %d\n", rtn);
+
+    // Finalizar oscilação normal
+    rtn = robot.WeaveEnd(0);
+    printf("WeaveEnd: %d\n", rtn);
+
+    robot.CloseRPC();
+    robot.Sleep(1000);
+    }
+
 Ativar/Desativar Função de Passagem Direta na Extremidade
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     

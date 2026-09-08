@@ -843,6 +843,120 @@ Programa de Exemplo de Movimento no Modo Servo no Espaço Articular
         }
     }
 
+Movimento em Modo Servo no Espaço de Juntas (Suporta Entrada de Múltiplos Pontos de Uma Vez)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    /**
+    * @brief Movimento em modo servo no espaço de juntas (suporta entrada de múltiplos pontos de uma vez)
+    * @param [in] joint_pos Conjunto de posições alvo das juntas (suporta até 10 grupos), unidade deg
+    * @param [in] axisPos Posição do eixo externo, unidade mm
+    * @param [in] acc Percentual de aceleração, intervalo [0~100], não disponível ainda, padrão 0
+    * @param [in] vel Percentual de velocidade, intervalo [0~100], não disponível ainda, padrão 0
+    * @param [in] cmdT Ciclo de envio do comando, unidade s, intervalo recomendado [0.001~0.0016]
+    * @param [in] filterT Tempo de filtro, unidade s, não disponível ainda, padrão 0
+    * @param [in] gain Amplificador proporcional da posição alvo, não disponível ainda, padrão 0
+    * @param [out] servoJCmdCount Contagem de pontos de comando ServoJ [0-10000]
+    * @param [in] id ID do comando ServoJ, padrão 0
+    * @param [in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (corresponde à porta 20007 do robô)
+    * @return Código de erro
+    */
+    public int ServoJ(List<JointPos> joint_pos, ExaxisPos axisPos, float acc, float vel, float cmdT, float filterT, float gain, ref int servoJCmdCount, int id = 0, int comType = 0)
+
+Exemplo de Código para Movimento em Modo Servo no Espaço de Juntas (Suporta Entrada de Múltiplos Pontos de Uma Vez)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static void TestServoJPath(Robot robot)
+    {
+        // Ler o arquivo de caminho ServoJ, pegando as colunas 2~7 de cada linha como 6 posições de juntas
+        String filePath = "D:\\zUP\\ServoJPath.txt";
+        List<JointPos> allJointData = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
+        {
+            String line;
+            while ((line = reader.readLine()) != null)
+            {
+                String[] cols = line.split("[ \\t]+");
+                if (cols.length < 7)
+                    continue;
+                JointPos pose = new JointPos(0, 0, 0, 0, 0, 0);
+                pose.J1 = Double.parseDouble(cols[1]);
+                pose.J2 = Double.parseDouble(cols[2]);
+                pose.J3 = Double.parseDouble(cols[3]);
+                pose.J4 = Double.parseDouble(cols[4]);
+                pose.J5 = Double.parseDouble(cols[5]);
+                pose.J6 = Double.parseDouble(cols[6]);
+                allJointData.add(pose);
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Failed to read file: " + e.getMessage());
+            return;
+        }
+        System.out.println("Total " + allJointData.size() + " joint position sets read");
+        if (allJointData.isEmpty())
+            return;
+
+        // Construir um caminho de ida e volta: ordem direta + ordem inversa
+        List<JointPos> backForthPath = new ArrayList<>(allJointData);
+        for (int i = allJointData.size() - 2; i >= 0; i--)
+        {
+            backForthPath.add(allJointData.get(i));
+        }
+
+        ExaxisPos epos = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+        DescPose offsetPos = new DescPose(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        robot.MoveJ(allJointData.get(0), 0, 0, 100, 100, 100, epos, -1, 0, offsetPos);
+
+        robot.Sleep(1000);
+
+        ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
+        while (true)
+        {
+            robot.ResetAllError();
+            robot.MoveJ(allJointData.get(0), 0, 0, 100, 100, 100, epos, -1, 0, offsetPos);
+            int moveCount = 0;
+            while (moveCount < backForthPath.size() - 10)
+            {
+                pkg = robot.GetRobotRealTimeState();
+
+                int singleServoJCount = 50 - pkg.mc_queue_len;
+                if (singleServoJCount <= 0)
+                {
+                    robot.Sleep(100);
+                    continue;
+                }
+                if (singleServoJCount > 10)
+                {
+                    singleServoJCount = 10;
+                }
+
+                List<JointPos> jointPos = new ArrayList<>();
+                for (int j = 0; j < singleServoJCount; j++)
+                {
+                    jointPos.add(backForthPath.get(moveCount));
+                    moveCount++;
+                }
+
+                System.out.println("Sending " + singleServoJCount + " waypoints, moveCount=" + moveCount);
+
+                ExaxisPos axisPos = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+                int[] servoJCmdCount = new int[1];
+                int rtn = robot.ServoJ(jointPos, axisPos, 100.0f, 100.0f, 0.008f, 0.008f, 1.0f, servoJCmdCount, 0, 0);
+                if (rtn != 0)
+                {
+                    System.out.println("ServoJ failed: " + rtn);
+                    break;
+                }
+            }
+            robot.Sleep(4000);
+        }
+    }
+
 Início do Controle de Torque Articular
 ++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
