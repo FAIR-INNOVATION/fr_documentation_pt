@@ -66,7 +66,7 @@ Use a barra de ferramentas na parte superior da árvore do programa para modific
 
    Nome: **Abrir**
    
-   Função: Abrir um arquivo de programa de usuário
+   Função: Abrir arquivos de programa do usuário e oferecer suporte à classificação por letra (A~Z ou Z~A) ou pelo horário da última modificação.
 
 .. note:: 
    .. image:: coding/007.png
@@ -294,6 +294,12 @@ Os ícones no canto superior direito são descritos a seguir:
    Nome: **Configuração do Programa Principal**
    
    Função: Configurar o programa principal
+
+.. image:: coding/625.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.3-1 Classificação de nomes de programas
 
 Comandos do Programa
 ~~~~~~~~~~~~~~~~~~~~~~~

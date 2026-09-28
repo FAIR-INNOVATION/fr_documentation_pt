@@ -51,6 +51,20 @@ Clique no botão “Renomear” para alterar o nome do sistema de coordenadas. C
 
 .. centered:: Figura 6.2‑1-2 Renomear o Sistema de Coordenadas
 
+Clique no botão de importação após "Modelo de ferramenta" para abrir a janela de importação do modelo de ferramenta, selecione o arquivo de modelo de ferramenta desejado (apenas arquivos no formato .stl e .dae são suportados) e, após confirmar a importação, o modelo de ferramenta é exibido na extremidade do robô no modelo 3D. Clique no botão de alternância do modelo de ferramenta na barra de operações da cena 3D para controlar a exibição e ocultação.
+
+.. image:: base/108.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 6.2-1-3 Importação do modelo de ferramenta
+
+.. image:: base/109.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 6.2-1-3 Carregamento do modelo de ferramenta
+
 Clique em “Modificar” para redefinir o sistema de coordenadas da ferramenta para o número selecionado, de acordo com as instruções. Os métodos de calibração da ferramenta são divididos em método de quatro pontos e método de seis pontos. O método de quatro pontos calibra apenas o TCP da ferramenta (ponto central da ferramenta), com sua postura sendo a mesma da postura da extremidade. O método de seis pontos adiciona dois pontos ao método de quatro pontos para calibrar a postura da ferramenta. Aqui, usaremos o método de seis pontos como exemplo.
 
 .. image:: base/002.png
@@ -971,6 +985,21 @@ As funções configuráveis para saída são mostradas na tabela abaixo:
    * - 47
      - Robô Habilitado
      - Estado de habilitação do robô.
+   * - 48
+     - Porta de entrada JOB 4
+     - Sinal da porta de entrada JOB 4
+   * - 49
+     - Porta de entrada JOB 5
+     - Sinal da porta de entrada JOB 5
+   * - 50
+     - Porta de entrada JOB 6
+     - Sinal da porta de entrada JOB 6
+   * - 51
+     - Porta de entrada JOB 7
+     - Sinal da porta de entrada JOB 7
+   * - 52
+     - Porta de entrada JOB 8
+     - Sinal da porta de entrada JOB 8   
   
 Função Configurável de Nível Alto/Baixo do DO da Caixa de Controle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

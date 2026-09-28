@@ -4,20 +4,37 @@ Fundamentos do Robô
 .. toctree::
     :maxdepth: 5
 
-Instanciar o Robô
-++++++++++++++++++++++++++++++++++++++
+Instanciar o robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. csv-table::
+.. csv-table:: 
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``RPC(ip)``"
+    "Protótipo", "``RPC(self, ip, tls_enable, tls_cert_path)``"
     "Descrição", "Instancia um objeto robô"
-    "Parâmetros obrigatórios", "- ``ip``: Endereço IP do robô, o IP padrão de fábrica é `192.168.58.2`"
+    "Parâmetros obrigatórios", "
+    - ``ip``: Endereço IP do robô; o IP de fábrica padrão é `192.168.58.2`
+    - ``tls_enable``: Se deve habilitar a comunicação criptografada (mTLS + DTLS); padrão False
+    - ``tls_cert_path``: Caminho da pasta de certificados; o diretório deve conter: ca.crt / client.crt / client.key; obrigatório quando tls_enable=True
+    "
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "- Sucesso: retorna um objeto robô
-    - Falha: o objeto criado é destruído"
+    - Falha: o objeto criado será destruído"
 
+Exemplo de código para instanciação
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:
+
+    from fairino import Robot
+    import time
+
+    robot = Robot.RPC(
+        '192.168.58.2',
+        tls_enable=True,
+        tls_cert_path=r"E:\certs"
+    )
 Fechar Conexão RPC
 ++++++++++++++++++++++++++++++++++++++
 

@@ -1338,15 +1338,40 @@ Exemplo de Código de Calibração TCP com Sensor Fotoelétrico
         Console.WriteLine($"Postura RPY da ferramenta: RX={TCP.rpy.rx:F3}, RY={TCP.rpy.ry:F3}, RZ={TCP.rpy.rz:F3}");
     }
 
-Definir Velocidade Global em Tempo Real
+Definir velocidade em tempo real
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief Definir velocidade global em tempo real
+    * @brief Definir velocidade (quadro de comando, baixa latência)
     * @param [in] vel Percentual de velocidade, intervalo [0~100]
     * @return Código de erro
     */
     public int SetWeaveOffsetRT(DescPose offset)
+
+Definir velocidade física em tempo real
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Definir velocidade física em tempo real
+    * @param [in] speed Valor da velocidade física, mm/s
+    * @return  Código de erro
+    */
+    public int SetPhySpeedInstant(double speed)    
+
+Exemplo de código para definir a velocidade física em tempo real
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    void SetPhySpeedInstantInput(double speed)
+    {
+        int rtn = robot.SetPhySpeedInstant(speed);
+        Console.WriteLine($"SetPhySpeedInstant({speed}) : {rtn}");
+    }

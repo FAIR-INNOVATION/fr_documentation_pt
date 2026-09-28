@@ -566,8 +566,8 @@ Vários sistemas de coordenadas 3D virtuais são criados na área virtual 3D do 
    
    Descrição: O sistema de coordenadas do eixo extensor é desativado por padrão e pode ser ativado manualmente. O processo é o mesmo que para o sistema de coordenadas da ferramenta.
 
-Trajetória Virtual 3D e Importação de Modelos de Ferramentas
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Trajetória virtual 3D e modelo de ferramenta
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. note:: 
    .. image:: teaching_pendant_software/020.png
@@ -575,9 +575,9 @@ Trajetória Virtual 3D e Importação de Modelos de Ferramentas
       :height: 0.75in
       :align: left
 
-   Nome: **Desenhar Trajetória**
+   Nome: **Desenho de trajetória**
    
-   Descrição: Clique no botão para ativar a função de desenho de trajetória. Ao executar um programa de ensinamento, o modelo 3D do robô desenha a trajetória do movimento do robô.
+   Descrição: clique no botão para abrir a função de desenho de trajetória. Durante a execução do programa de ensino, o modelo 3D do robô desenha o caminho de movimento do robô.
 
 .. note:: 
    .. image:: teaching_pendant_software/029.png
@@ -585,10 +585,10 @@ Trajetória Virtual 3D e Importação de Modelos de Ferramentas
       :height: 0.75in
       :align: left
 
-   Nome: **Importar Modelo de Ferramenta**
+   Nome: **Modelo de ferramenta**
    
-   Descrição: Clique no botão para abrir uma janela modal de importação de modelo de ferramenta. Após o upload e importação bem-sucedidos do arquivo, o modelo da ferramenta pode ser exibido na extremidade do robô. Os formatos de arquivo de modelo de ferramenta atualmente suportados são STL e DAE.
-
+   Descrição: clique no botão para abrir/fechar o modelo de ferramenta.
+   
 Barra de Operação do Corpo do Robô
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

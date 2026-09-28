@@ -478,6 +478,36 @@ Instruções de Operação do Modo Remoto do Robô
 
 .. note:: Para alternar entre diferentes protocolos, você deve primeiro clicar no botão "Desinstalar" antes de configurar outro protocolo.
 
+Atualização de Firmware da Placa
+----------------------------------------------------------------------------
+
+Placa FRH-PCIeN-EC/EIP/CC/PN-RJ-V10
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(1) Selecione o pacote de firmware a ser atualizado, nomeado BoardFirm_xxx.tar.gz, clique no botão "Atualizar" e aguarde a atualização;
+
+.. image:: remote_mode/056.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 18.3-1 Pacote de Atualização de Firmware
+
+(2) Após a conclusão da atualização, reinicie a caixa de controle;
+
+.. image:: remote_mode/057.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 18.3-2 Atualização Concluída
+   
+(3) Reinicie a caixa de controle. Se a mensagem de aviso mostrada na figura aparecer, significa que esta atualização de firmware falhou. Após limpar o aviso, execute novamente a operação de atualização.
+
+.. image:: remote_mode/058.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 18.3-3 Falha na Atualização de Firmware
+
 Apêndice
 -------------------
 

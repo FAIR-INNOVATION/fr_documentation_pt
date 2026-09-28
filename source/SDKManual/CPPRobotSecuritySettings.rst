@@ -463,3 +463,53 @@ Exemplo de Código de Verificação de Senha dos Parâmetros de Configuração d
         robot.CloseRPC();
         return 0;
     }
+
+Definir o caminho do certificado de criptografia TLS
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:   
+
+    /**
+    * @brief Definir o caminho do certificado de criptografia TLS
+    * @param [in] certPath  Caminho do certificado; se vazio, o padrão é o certificado no diretório onde o arquivo executável está localizado; nomes dos certificados: ca.crt; client.crt; client.key
+    * @return Código de erro
+    */
+    errno_t MtlsLink(std::string certPath = "");
+            
+Exemplo de código para definir o caminho do certificado de criptografia TLS
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:   
+
+    int TestSendModeTcp()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot(true);
+        int rtn = 0;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        rtn = robot.SetCmdRpyCallback(UDPFrameCallBack);
+        robot.MtlsLink("D://TLSCERTS/");
+        robot.SetReConnectParam(true, 300000, 50);
+        rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+
+        std::string mode0 = "/f/bIII52III236III7IIIMode(0)III/b/f";
+        std::string mode1 = "/f/bIII52III236III7IIIMode(1)III/b/f";
+        printf("[SEND] %s\n", mode0.c_str());
+        robot.SendTCPFrame(mode0);
+        robot.Sleep(1000);
+        printf("[SEND] %s\n", mode1.c_str());
+        robot.SendTCPFrame(mode1);
+        robot.Sleep(1000);
+        printf("[SEND] %s\n", mode0.c_str());
+        robot.SendTCPFrame(mode0);
+        robot.CloseRPC();
+        robot.Sleep(1000);
+        return 0;
+    }    

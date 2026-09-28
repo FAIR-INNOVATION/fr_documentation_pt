@@ -11,8 +11,9 @@ Instanciar o Robô
 
     /**
     * @brief Construtor da classe de interface do robô
+    * @param [in] _TLSEnable Habilita a criptografia para a comunicação do protocolo de comando integrado do SDK do robô; desabilitada por padrão
     */
-    FRRobot();
+    FRRobot(bool _TLSEnable = false);
 
 Estabelecer Comunicação com o Controlador
 +++++++++++++++++++++++++++++++++++++++++++++

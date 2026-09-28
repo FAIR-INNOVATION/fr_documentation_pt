@@ -217,6 +217,21 @@ Atualização do Arquivo Lua da Tabela de Pontos
     "Parâmetros padrão", "Nenhum"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
+Alternar e aplicar a tabela de pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``PointTableSwitch(self, point_table_name)``"
+    "Descrição", "Alternar a tabela de pontos"
+    "Parâmetros obrigatórios", "
+    - ``point_table_name``: Nome da tabela de pontos a ser alternada, 'pointTable1.db'. Quando a tabela de pontos está vazia, ou seja, '', significa atualizar o programa lua para o programa inicial sem tabela de pontos aplicada
+    "
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
+
 Exemplo de Código de Operação da Tabela de Pontos do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
@@ -658,3 +673,92 @@ Exemplo de Código SDK para Definir Cor da Luz da Extremidade do Robô Personali
         robot.CloseRPC()
 
     testled(robot)
+
+Enviar frame de comando personalizado via TCP8080
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``SendTCPFrame(self, frame):``"
+    "Descrição", "Envia um frame de comando personalizado via TCP8080 (automaticamente pelo canal criptografado no modo mTLS)"
+    "Parâmetros obrigatórios", "
+    - ``frame``: Frame de comando completo, por exemplo /f/bIII52III236III7IIIMode(0)III/b/f"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
+
+Exemplo de código para enviar um frame de comando personalizado via TCP8080
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:
+
+    from fairino import Robot
+    import time
+
+    def main():
+        # Establish connection with the robot controller (TLS enabled)
+        robot = Robot.RPC(
+            '192.168.58.2',
+            tls_enable=True,
+            tls_cert_path=r"E:\certs"
+        )
+        time.sleep(0.5)  # Wait for connection and data reception
+
+        # Set simple UDP command reply callback
+        def callback(src_type, count, cmd_id, data_len, content):
+            print("Callback: cmd_id={} count={} data_len={} content={}".format(cmd_id, count, data_len, content))
+            return 0
+
+        robot.SetUDPCmdRpyCallback(callback)
+
+        # Program name to load
+        program_name = "mtls.lua"
+        state = 0
+        line = 0
+
+        mode0 = "/f/bIII52III236III7IIIMode(0)III/b/f"
+        mode1 = "/f/bIII52III236III7IIIMode(1)III/b/f"
+
+        print(f"[SEND] {mode0}")
+        robot.SendTCPFrame(mode0)
+        time.sleep(1)
+
+        print(f"[SEND] {mode1}")
+        robot.SendTCPFrame(mode1)
+        time.sleep(1)
+
+        print(f"[SEND] {mode0}")
+        robot.SendTCPFrame(mode0)
+
+        # Set auto mode and load program
+        robot.Mode(0)
+        robot.LoadDefaultProgConfig(0, program_name)
+        robot.ProgramLoad(program_name)
+        robot.SetSpeedInstant(50)
+        robot.ProgramRun()
+        time.sleep(5)
+
+        # Pause and query program state
+        robot.PauseMotion()
+        rtn, state = robot.GetProgramState()
+        print(f"program state:{state}\n")
+
+        rtn, line = robot.GetCurrentLine()
+        print(f"current line:{line}\n")
+
+        rtn, loaded_name = robot.GetLoadedProgram()
+        print(f"program name:{loaded_name}\n")
+
+        # Resume and pause again
+        robot.ResumeMotion()
+        time.sleep(2)
+        robot.PauseMotion()
+        time.sleep(2)
+
+        # Close connection
+        robot.CloseRPC()
+        time.sleep(1)
+
+    if __name__ == "__main__":
+        main()    

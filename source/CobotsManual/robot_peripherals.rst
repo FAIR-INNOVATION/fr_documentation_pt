@@ -2036,6 +2036,17 @@ Quando não se usa a curva do processo de soldagem, ou seja, escolhendo o númer
 
 .. centered:: Figura 8.6-11 Não Usar a Curva do Processo de Soldagem
 
+Número de processo JOB da máquina de solda
+*********************************************************************************************************
+
+Selecione o sinal AO estendido e o número de processo, e insira o tempo de espera. Quando o número de processo é configurado como não negativo 1, quando o I/O do manípulo de soldagem seleciona DO estendido e o sinal configurado para o DO estendido é "início de arco da máquina de solda", o início de arco da máquina de solda selecionará o processo correspondente.
+
+.. figure:: robot_peripherals/326.png
+   :align: center
+   :width: 6in
+
+.. centered:: Figura 8.6-11-1 Número de processo JOB da máquina de solda
+
 Configuração da Relação entre Corrente/Tensão de Soldagem e Saída Analógica
 *******************************************************************************
 

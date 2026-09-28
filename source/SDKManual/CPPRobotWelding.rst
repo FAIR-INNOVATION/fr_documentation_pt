@@ -381,7 +381,7 @@ Definir Modo de Controle da Máquina de Solda
 
     /**
     * @brief Define o modo de controle da máquina de solda
-    * @param [in] mode Modo de controle da máquina de solda; 0-modo unário CC; 1-modo unário pulsado; 2-modo JOB; 3-modo controle local; 4-modo separado; 5-modo CC/CV; 6-TIG; 7-CMT
+    * @param [in] mode Modo de controle da máquina de solda; 0-modo unário CC; 1-modo unário pulsado; 2-modo JOB; 3-modo controle local; 4-modo separado; 5-modo CC/CV; 6-TIG; 7-CMT* @param [in] mode Modo de controle da máquina de solda; 0-Modo sinérgico DC; 1-Modo sinérgico por pulso; 2-Modo JOB; 3-Modo de controle local; 4-Modo separado; 5-Modo CC/CV; 6-TIG; 7-CMT; 8-Panasonic-Modo com pulso, 9-Panasonic-Modo sem pulso
     * @param [in] ioType Tipo de controle; 0-E/S da caixa de controle; 1-protocolo de comunicação digital (UDP); 2-protocolo de comunicação digital (ModbusTCP)
     * @return Código de erro
     */

@@ -363,7 +363,7 @@ Definir Modo de Controle da Fonte de Solda
 
     /**
     * @brief Define o modo de controle da fonte de solda
-    * @param [in] mode Modo de controle da fonte de solda; 0-modo CC com unidade；1-modo pulsado com unidade；2-modo JOB；3-modo painel；4-modo separado；5-modo CC/CV；6-TIG；7-CMT
+    * @param [in] mode Modo de controle da máquina de solda; 0-Modo sinérgico DC; 1-Modo sinérgico por pulso; 2-Modo JOB; 3-Modo de controle local; 4-Modo separado; 5-Modo CC/CV; 6-TIG; 7-CMT; 8-Panasonic-Modo com pulso, 9-Panasonic-Modo sem pulso
     * @param [in] ioType Tipo de controle; 0-IO do painel de controle；1-Protocolo de comunicação digital (UDP);2-Protocolo de comunicação digital (ModbusTCP)
     * @return Código de erro
     */

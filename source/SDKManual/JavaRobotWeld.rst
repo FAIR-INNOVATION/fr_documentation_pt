@@ -328,17 +328,17 @@ Obter Parâmetros de Recuperação de Interrupção de Soldagem do Robô
     */
     List<Number> WeldingGetReWeldAfterBreakOffParam();
 
-Definir Porta DO Estendida do Modo de Controle da Máquina de Solda
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Definir o modo de controle da máquina de solda
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief Define a porta DO estendida do modo de controle da máquina de solda
-    * @param [in] DONum Porta DO do modo de controle da máquina de solda (0-127)
+    * @brief Definir a porta DO de extensão do modo de controle da máquina de solda
+    * @param DONum Porta DO do modo de controle da máquina de solda (0-127)
     * @return Código de erro
     */
-    int SetWeldMachineCtrlModeExtDoNum(int DONum);
+    public int SetWeldMachineCtrlModeExtDoNum(int DONum)
 
 Definir Modo de Controle da Máquina de Solda
 +++++++++++++++++++++++++++++++++++++++++++++++++

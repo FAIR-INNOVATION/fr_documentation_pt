@@ -12,7 +12,15 @@ Notas de Atualização de Versão
    * - **Número da Versão**
      - **Data**
      - **Descrição da Atualização**
-   
+
+   * - V4.0.0
+     - 2026-09-23
+     - | 1. Modificada a interface Robot() para estabelecer uma conexão RPC e instanciar o robô, adicionando a configuração do parâmetro de ativação da criptografia TLS para a comunicação do protocolo de comando integrado no SDK. Antes do uso, é necessário instalar primeiro as bibliotecas de dependência Python; os comandos de instalação são: pip install python3-dtls, pip install python-mbedtls;
+       | 2. Modificada a descrição dos parâmetros da interface SetWeldMachineCtrlMode() para definir o modo de controle da máquina de solda, adicionando os modos com pulso e sem pulso para máquinas de solda Panasonic;
+       | 3. Adicionado o comando SendTCPFrame() para enviar quadros de comando personalizados via TCP 8080, incluindo um exemplo de código;
+       | 4. Adicionado o comando TCFToAllJoint() para obter 8 conjuntos de soluções inversas do robô, incluindo um exemplo de código;
+       | 5. Adicionado o comando SetPhySpeedInstant() para definir a velocidade física em tempo real, incluindo um exemplo de código.
+
    * - V3.9.9
      - 2026-09-01
      - | 1. Atualizada a interface GetGripperMotionDone() para obtenção do status de movimento da garra, atualizada a definição e o escopo de uso dos parâmetros de saída do status da garra;

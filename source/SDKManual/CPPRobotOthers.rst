@@ -247,6 +247,19 @@ Atualização do Arquivo Lua da Tabela de Pontos
     */
     errno_t PointTableUpdateLua(const std::string &pointTableName, const std::string &luaFileName);
 
+Alternar e aplicar a tabela de pontos
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Alternar e aplicar a tabela de pontos
+    * @param [in] pointTableName Nome da tabela de pontos a ser alternada, pointTable1.db
+    * @return Código de erro
+    */
+    errno_t PointTableSwitch(const std::string pointTableName);
+
 Exemplo de Código de Operação da Tabela de Pontos do Robô
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -671,6 +684,77 @@ Exemplo de Código para Definir Cor da Luz da Extremidade do Robô Personalizada
         robot.Sleep(1000);
         robot.SetUserLEDColor(false, false, true);
         robot.Sleep(1000);
+        robot.CloseRPC();
+        robot.Sleep(1000);
+        return 0;
+    }
+
+Enviar frame de comando personalizado via TCP8080
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:
+
+    /**
+    * @brief Envia um frame de comando personalizado via TCP8080 (automaticamente pelo canal criptografado no modo mTLS)
+    * @param [in] frame Frame de comando completo, por exemplo "/f/bIII52III236III7IIIMode(0)III/b/f"
+    * @return Código de erro
+    */
+    errno_t SendTCPFrame(std::string frame);
+                
+Exemplo de código para enviar um frame de comando personalizado via TCP8080
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+.. code-block:: c++
+    :linenos:
+
+    int TestSendModeTcp()
+    {
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot(true);
+        int rtn = 0;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        rtn = robot.SetCmdRpyCallback(UDPFrameCallBack);
+        printf("SetCmdRpyCallback rtn is %d\n", rtn);
+        robot.MtlsLink("");
+        robot.SetReConnectParam(true, 300000, 50);
+        rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        std::string program_name = "tls.lua";
+        unsigned char state = 0;
+        int line = 0;
+        std::string mode0 = "/f/bIII52III236III7IIIMode(0)III/b/f";
+        std::string mode1 = "/f/bIII52III236III7IIIMode(1)III/b/f";
+        printf("[SEND] %s\n", mode0.c_str());
+        robot.SendTCPFrame(mode0);
+        robot.Sleep(1000);
+        printf("[SEND] %s\n", mode1.c_str());
+        robot.SendTCPFrame(mode1);
+        robot.Sleep(1000);
+        printf("[SEND] %s\n", mode0.c_str());
+        robot.SendTCPFrame(mode0);
+        robot.Mode(0);
+        robot.LoadDefaultProgConfig(0, (char*)program_name.c_str());
+        robot.ProgramLoad((char*)program_name.c_str());
+        robot.SetSpeedInstant(50);
+        robot.ProgramRun();
+        robot.Sleep(5000);
+        robot.PauseMotion();
+        robot.GetProgramState(&state);
+        printf("program state:%u\n\n", state);
+        robot.GetCurrentLine(&line);
+        printf("current line:%d\n\n", line);
+        char loaded_name[256] = "";
+        robot.GetLoadedProgram(loaded_name);
+        printf("program name:%s\n\n", loaded_name);
+        robot.ResumeMotion();
+        robot.Sleep(2000);
+        robot.PauseMotion();
+        robot.Sleep(2000);
         robot.CloseRPC();
         robot.Sleep(1000);
         return 0;

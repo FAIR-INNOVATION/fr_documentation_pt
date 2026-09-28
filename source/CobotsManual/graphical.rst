@@ -21,7 +21,7 @@ A página é dividida em três áreas: "Barra de Operações", "Barra de Ferrame
 
 **Barra de Operações**
 
-1) **Carregar**: Responsável por recarregar o espaço de trabalho (workspace).
+1) **Carregar**: Responsável por recarregar a área de trabalho e oferece suporte à classificação por letra (A~Z ou Z~A) ou pelo horário da última modificação;
 2) **Importar**: Responsável por importar programas de programação gráfica relacionados.
 3) **Exportar**: Responsável por exportar o programa de programação gráfica salvo no workspace atual.
 4) **Salvar**: Responsável por salvar os blocos de código gráficos já editados.
@@ -38,6 +38,12 @@ A página é dividida em três áreas: "Barra de Operações", "Barra de Ferrame
 
 **Workspace**: A área de edição de código onde os blocos de código gráficos podem ser editados e exibidos.
 
+.. image:: graphical/151.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 10.1-2 Classificação de arquivos da área de trabalho
+   
 Comandos de Programação Gráfica - Lógica
 --------------------------------------------
 Os comandos de programação gráfica de lógica incluem comandos de lógica como laços de repetição, números, etc.

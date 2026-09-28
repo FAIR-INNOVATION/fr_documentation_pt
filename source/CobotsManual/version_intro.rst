@@ -1,3 +1,46 @@
+Versão V4.0.0
+-----------------
+
+Data: 2026-09-23
+
+- **Modo de redução de velocidade otimizado**: 
+
+    Descrição: Velocidade global otimizada após sair do modo de redução.
+
+- **Comunicação em modo remoto da placa Hilscher otimizada**: 
+    Caminho: Modo remoto -> Atualização de firmware.
+
+    Descrição: Melhorada a capacidade de tempo real e a estabilidade da comunicação.
+
+- **Problema de identificação de carga do loop de corrente otimizado**: 
+    Caminho: Configurações iniciais -> Carga -> Movimento de identificação.
+
+    Descrição: A identificação de carga para modelos grandes é ocultada. A função para modelos pequenos (FR3-FR16 e modelos correspondentes) funciona normalmente. O desvio padrão de identificação de carga para modelos pequenos é de cerca de 30%.
+
+- **Adicionada função de ajuste de velocidade em tempo real baseada na velocidade física durante a soldagem**: 
+
+    Descrição: Ajuste em tempo real da velocidade de movimento do robô.
+
+- **Adicionada função de abertura de arquivo de programa WebApp e interação com modelo de ferramenta + função de extensão JOB de soldagem**: 
+    Caminho: Programa de ensino -> Instrução de controle de força.
+
+    Descrição: 1. Os arquivos da função de abertura de programa são classificados por A-Z ou tempo para facilitar a busca; 2. Os modelos de ferramenta são vinculados às ferramentas para carregamento associado; 3. CO é estendido de 3 funções de sinal JOB para 8, suportando 256 processos; 4. A comunicação UDP da máquina de solda adiciona a configuração do número de processo JOB.
+
+- **Adicionada adaptação do modelo de bloqueio de arrasto do loop de corrente**: 
+    Caminho: Aplicação auxiliar -> Aplicação de ferramenta -> Bloqueio de arrasto.
+
+    Descrição: Estendido para quatro novos modelos: FR20, FR30, FR3WML, FR3WMS.
+
+- **Adicionada função de segurança de rede**: 
+    Caminho: Configurações iniciais -> Segurança -> Segurança de rede.
+
+    Descrição: 1. Ao acessar o webApp pelo navegador, o protocolo de comunicação muda automaticamente para HTTPS; 2. O cliente adiciona a função de certificado do protocolo de comando; 3. A verificação de integridade é adicionada na inicialização do software.
+
+- **Adicionada função de exportação de log de segurança**: 
+    Caminho: Configurações iniciais -> Segurança -> Log de segurança.
+
+    Descrição: Adicionadas as funções de exportação e exclusão de log de segurança.
+
 Versão V3.9.9
 -----------------
 

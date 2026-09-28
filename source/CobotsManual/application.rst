@@ -155,6 +155,39 @@ Uma função de bloqueio de graus de liberdade foi adicionada para o ensinamento
 
 .. centered:: Figura 14.5‑1 Configuração de Bloqueio para Ensinamento por Arrasto
 
+Função de bloqueio de arrasto FR3-WML/FR3-WMS/FR20/FR30
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão geral
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Esta função ajusta os parâmetros da função de bloqueio de arrasto do loop de corrente de acordo com as características dinâmicas dos novos modelos, de modo que durante o arrasto o efetuador final permaneça sempre estável e imóvel em um determinado grau de liberdade e não se mova com a força externa aplicada. A função de bloqueio de arrasto do loop de corrente é estendida aos modelos FR3WMS/FR3-WML/FR20/FR30.
+
+No modo de arrasto, a pose final é restringida. Quando a direção da força externa de arrasto não está no grau de liberdade restringido, a extremidade do robô pode ser arrastada normalmente; caso contrário, seu movimento é restringido.
+
+Bloqueio de arrasto
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Antes de configurar a função de bloqueio de arrasto, verifique o método de instalação do robô, a carga e as configurações do sistema de coordenadas para garantir que, no modo de arrasto normal, o braço robótico não apresente deslocamentos evidentes para cima ou para baixo sem força externa.
+
+Na barra de menus "Aplicação auxiliar" -> "Aplicação de ferramenta", clique em "Bloqueio de arrasto" para entrar na interface da função de configuração do bloqueio de ensino por arrasto. Na barra de menus "Bloqueio de arrasto do loop de corrente", quando o interruptor da função de ensino por arrasto estiver definido como habilitado e Aplicar for clicado, cada parâmetro de grau de liberdade entrará em vigor quando o usuário arrastar o robô, bloqueando o grau de liberdade correspondente.
+
+Explicação dos itens de configuração na barra de menus "Bloqueio de arrasto do loop de corrente":
+
+(1) Configurações dos parâmetros de grau de liberdade: quando os parâmetros são definidos como X:10, Y:0, Z:10, RX:10, RY:10, RZ:10, arrastar o robô no modo de arrasto pode restringir o robô a se mover apenas na direção Y. Se for necessário manter a pose do robô inalterada durante o arrasto e mover apenas nas direções X, Y, Z, defina X, Y, Z como 0 e RX, RY, RZ como 10. À medida que o parâmetro diminui, a força de restrição nesse grau de liberdade torna-se menor. O valor máximo é 10, com a força de restrição máxima; o mínimo é 0, sem força de restrição.
+
+(2) Interruptor de ensino por arrasto: habilita a função de bloqueio de arrasto no modo de arrasto.
+
+.. image:: application/050.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 14.5-1-2 Configuração do bloqueio de ensino por arrasto
+
+As configurações dos parâmetros devem atender às seguintes restrições:
+
+(1) As configurações dos parâmetros são limitadas ao intervalo 0~10. Para alguns modelos (como FR20 e FR30), as configurações dos parâmetros são limitadas ao intervalo 0~5. Portanto, se um valor fora do intervalo 0~10 for inserido, ele será alterado para o 0 ou 10 mais próximo. Por exemplo, se o parâmetro for definido como 15, ele se tornará 10.
+
 Ativação Normal da Proteção Contra Colisão com Arrasto Assistido por Sensor de Força
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -22,6 +22,12 @@ A programação com editor de nós é um software de programação desenvolvido 
 
 .. centered:: Figura 11.1-1 Interface de Programação com Editor de Nós
 
+.. image:: node_editor_software/136.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 11.1-2 Classificação da área de trabalho
+   
 Barra de Ferramentas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,7 +46,7 @@ Use a barra de ferramentas no topo do lado esquerdo da página de programação 
 
    Nome: **Abrir**
    
-   Função: Abre um arquivo de programa do usuário. Na caixa de diálogo, selecione carregar ou excluir o arquivo.
+   Função: abrir arquivos de programa do usuário, escolher carregar ou excluir arquivos na caixa de diálogo e oferecer suporte à classificação por letra (A~Z ou Z~A) ou pelo horário da última modificação
 
 .. note:: 
    .. image:: coding/010.png

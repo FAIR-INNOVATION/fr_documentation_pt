@@ -13,6 +13,16 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V4.0.0
+     - 2026-09-23
+     - | 1. Modificada a interface FRRobot() de instanciação do robô, adicionando a configuração do parâmetro de ativação da criptografia TLS para a comunicação do protocolo de comando integrado no SDK;
+       | 2. Modificada a descrição dos parâmetros da interface SetWeldMachineCtrlMode() para definir o modo de controle da máquina de solda, adicionando os modos com pulso e sem pulso para máquinas de solda Panasonic;
+       | 3. Adicionado o comando SendTCPFrame() para enviar quadros de comando personalizados via TCP 8080, incluindo um exemplo de código;
+       | 4. Adicionado o comando TCFToAllJoint() para obter 8 conjuntos de soluções inversas do robô, incluindo um exemplo de código;
+       | 5. Adicionado o comando SetPhySpeedInstant() para definir a velocidade física em tempo real, incluindo um exemplo de código;
+       | 6. Adicionado o comando MtlsLink() para definir o caminho do certificado de criptografia de comunicação TLS para o protocolo de comando integrado no SDK, incluindo um exemplo de código;
+       | 7. Adicionadas descrições de alguns códigos de erro do SDK.
+
    * - V3.9.9
      - 2026-09-01
      - | 1. Modificada a descrição dos parâmetros da interface GetGripperMotionDone() para obtenção do estado da garra, atualizada a definição do estado da garra;
