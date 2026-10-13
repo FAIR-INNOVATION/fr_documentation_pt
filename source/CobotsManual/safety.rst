@@ -387,21 +387,6 @@ Declaração de Riscos Residuais de Cibersegurança
      - Nenhuma
      - | ① Os usuários devem colocar o teach pendant do robô em uma área de trabalho segura e proibir pessoal não autorizado de entrar na área;
 
-Gerenciamento de Permissões
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. centered:: Tabela 3-1 Detalhes das Permissões
-
-.. image:: safety/069.png
-   :width: 6in
-   :align: center
-
-.. image:: safety/070.png
-   :width: 6in
-   :align: center
-
-.. centered:: Figura 7.3-24 Definir Permissões de Função
-
 Parâmetros de Configuração de Segurança
 --------------------------------------------------------------------------------------------------
 

@@ -243,7 +243,7 @@ Existem seis funções padrão. O administrador não tem restrições de funçã
 
 .. centered:: Tabela 15.2‑1 Detalhes das Permissões
 
-.. image:: system/007.png
+.. image:: safety/069.png
    :width: 6in
    :align: center
 
@@ -265,11 +265,7 @@ Existem seis funções padrão. O administrador não tem restrições de funçã
 
 -  **Definir Permissões da Função**: Clique no ícone “Definir” na coluna de operação da tabela. As permissões da função atual podem ser configuradas. Após a configuração, clique no botão “Salvar” abaixo para confirmar.
 
-.. image:: system/010.png
-   :width: 6in
-   :align: center
-
-.. image:: system/011.png
+.. image:: safety/070.png
    :width: 6in
    :align: center
 
