@@ -697,3 +697,92 @@ Exemplo de código para enviar um frame de comando personalizado via TCP 8080
             }
         }
     }    
+
+Atualização por upload do pacote de backup de dados  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Atualização por upload do pacote de backup de dados
+    * @param [in] filePath Caminho do arquivo do pacote de backup de dados a ser enviado; D://zUP/fr_user_data.tar.gz
+    * @return Código de erro
+    */
+    public int DataPackageUpgrade(string filePath)
+    
+Obter a porcentagem de progresso da atualização do pacote de backup de dados  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obter a porcentagem de progresso da atualização do pacote de backup de dados
+    * @param [out] progress Porcentagem de progresso da atualização [0-100], -1: falha na atualização
+    * @return Código de erro
+    */
+    public int GetDataPackageUpgradeProgress(ref int progress)
+    
+Obter a porcentagem de progresso da atualização de todos os parâmetros das juntas  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    /**
+    * @brief Obter a porcentagem de progresso da atualização de todos os parâmetros das juntas
+    * @param [out] progress Porcentagem de progresso da atualização [0-100], -1: falha na atualização
+    * @return Código de erro
+    */
+    public int GetJointAllParamUpgradeProgress(ref int progress)
+        
+Exemplo de código para atualização por upload do pacote de backup de dados e consulta do progresso  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+
+    public void TestDataPackageUpgrade()
+    {
+        int rtn = robot.DataPackageUpgrade("D://zUP/upgrade/FR5/fr_user_data.tar.gz");
+        Console.WriteLine($"robot DataPackageUpgrade rtn is {rtn}");
+
+        int upgradeProgress = 0;
+        while (upgradeProgress < 100)
+        {
+            int ret = robot.GetDataPackageUpgradeProgress(ref upgradeProgress);
+            Console.WriteLine($"robot data package upgrade progress : {upgradeProgress}, rtn : {ret}");
+            if (ret != 0 || upgradeProgress == -1)
+            {
+                break;
+            }
+            Thread.Sleep(200);
+        }
+    }
+            
+Exemplo de código para atualização de todos os parâmetros das juntas e consulta do progresso  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: c#
+    :linenos:
+    
+    public void TestJointAllParamUpgrade()
+    {
+        robot.RobotEnable(0);
+        Thread.Sleep(200);
+        int rtn = robot.JointAllParamUpgrade("D://zUP/upgrade/FR5/jointallparameters.db");
+        Console.WriteLine($"robot JointAllParamUpgrade rtn is {rtn}");
+
+        int upgradeProgress = 0;
+        while (upgradeProgress < 100)
+        {
+            int ret = robot.GetJointAllParamUpgradeProgress(ref upgradeProgress);
+            Console.WriteLine($"robot joint all param upgrade progress : {upgradeProgress}, rtn : {ret}");
+            if (ret != 0 || upgradeProgress == -1)
+            {
+                break;
+            }
+            Thread.Sleep(200);
+        }
+    }    

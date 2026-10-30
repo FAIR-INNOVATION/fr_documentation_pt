@@ -986,20 +986,29 @@ As funções configuráveis para saída são mostradas na tabela abaixo:
      - Robô Habilitado
      - Estado de habilitação do robô.
    * - 48
+     - Elevação automática durante quebra do arame
+     - Estado de elevação automática durante quebra do arame
+   * - 49
      - Porta de entrada JOB 4
      - Sinal da porta de entrada JOB 4
-   * - 49
+   * - 50
      - Porta de entrada JOB 5
      - Sinal da porta de entrada JOB 5
-   * - 50
+   * - 51
      - Porta de entrada JOB 6
      - Sinal da porta de entrada JOB 6
-   * - 51
+   * - 52
      - Porta de entrada JOB 7
      - Sinal da porta de entrada JOB 7
-   * - 52
+   * - 53
      - Porta de entrada JOB 8
-     - Sinal da porta de entrada JOB 8   
+     - Sinal da porta de entrada JOB 8
+   * - 59
+     - Robô na posição
+     - Emite um sinal de estado quando o servo do robô está habilitado e não há falha ou alarme
+   * - 200
+     - Ocupado
+     - A função está ocupada 
   
 Função Configurável de Nível Alto/Baixo do DO da Caixa de Controle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1478,8 +1487,20 @@ Parâmetros Admitância para Conformidade de Postura Aberta
 Configuração de Movimento
 ---------------------------------------------
 
+Clique em "Configurações iniciais" -> "Básico" na barra de menus e clique no submenu "Configuração de movimento" para entrar na interface de configuração.
+
+Modo de suavização de aceleração
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A função "Modo de suavização de aceleração" realiza principalmente blending entre os comandos PTP-PTP, LIN-LIN, ARC-ARC, LIN-ARC e ARC-LIN; o blending entre outros comandos não tem efeito.
+
+.. image:: base/110.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 6.11-4 Modo de suavização de aceleração
+
 Otimização da Característica de Velocidade em T + Função de Suavização Blending
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Visão Geral
 ++++++++++++++++++++++
@@ -1543,8 +1564,21 @@ Método com Interruptor de Configuração de Movimento
 
 .. centered:: Figura 7.13-5 Programa Típico para Blending PTP-PTP com Interruptor de Configuração
 
+Modo de tempo ótimo (configuração automática)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+O "Modo de tempo ótimo" é implementado sem a necessidade de depurar e configurar seus parâmetros. Esta função conclui adaptativamente a configuração de parâmetros do modo de tempo ótimo de acordo com o estado operacional atual do robô, melhorando a eficiência de depuração.
+
+.. note:: Nota: o modo de tempo ótimo e o modo de suavização de aceleração são mutuamente exclusivos.
+
+.. image:: base/111.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-6-1 Modo de tempo ótimo (configuração automática)
+
 Função de Parâmetros Adaptativos FIR + Função de Pausa/Retomada FIR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Visão Geral
 ++++++++++++++++++++++
@@ -1605,3 +1639,134 @@ O uso dos comandos de movimento básicos PTP, LIN e ARC do robô é semelhante. 
 
    Quando o interruptor da função "Modo de Tempo Ótimo" está ativado, os comandos de movimento básicos PTP, LIN e ARC do robô estão todos em modo de tempo ótimo. Desativando o interruptor da função "Modo de Tempo Ótimo" nesta interface, os comandos de movimento básicos PTP, LIN e ARC retornarão ao seu estado normal.
    O interruptor da função "Modo de Suavização de Aceleração" não pode ser ativado simultaneamente com o modo de tempo ótimo nesta interface.
+
+Tempo de filtragem do movimento servo e ganho de posição
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão geral
+++++++++++++++++++++++++++++++++++++
+
+O objetivo das funções de tempo de filtragem do movimento servo e ganho de posição é melhorar a suavidade e a precisão da trajetória de movimento servo do robô. Por exemplo, o parâmetro de tempo de filtragem pode suavizar uma curva de velocidade de movimento servo do tipo T em uma curva de velocidade de movimento servo do tipo S; o parâmetro de ganho de posição pode ajustar a capacidade de resposta do feedback de posição das juntas em relação ao comando no movimento servo.
+
+Fluxo de operação da função de tempo de filtragem global servo no espaço cartesiano/articular
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Step1**: Configurações de configuração de movimento. Na interface principal do WebApp, clique em "Configurações iniciais" -> "Básico" -> "Configuração de movimento" para entrar na área de comandos "Configuração de movimento".
+
+.. image:: base/112.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-11 Área de comandos "Configuração de movimento"
+
+**Step2**: Configurações de filtragem de movimento. Na área de comandos "Configuração de movimento", clique na caixa suspensa "Filtragem de movimento" para entrar na área de configuração "Configuração de parâmetros", defina o parâmetro "Tempo de filtragem" e clique no botão "Aplicar" para concluir a configuração da função de filtragem global do movimento servo.
+
+.. note:: Nota: quando os parâmetros de tempo de filtragem global e de comando existem simultaneamente, o tempo de filtragem do movimento servo é a soma dos dois.
+
+.. image:: base/113.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-12 Área de configuração "Filtragem de movimento"
+
+.. note:: Nota: o intervalo do parâmetro de tempo de filtragem global do movimento servo é 0~200 ms. Quando o padrão é 0, indica que a função de filtragem global do movimento servo está desabilitada.
+
+Fluxo de operação da função de movimento com comando servo no espaço cartesiano
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Step1**: Comando de movimento servo. Na interface principal do WebApp, clique em "Programa de ensino" -> "Programação de programa" para entrar na área de comandos "Comando de movimento".
+
+.. image:: base/114.png
+   :width: 2in
+   :align: center
+
+.. centered:: Figura 7.13-13 Área de comandos "Comando de movimento"
+
+**Step2**: Início do movimento servo. Na área de comandos "Comando de movimento", clique no botão "Movimento servo" para entrar na área de configuração do comando "servoMotion".
+
+Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Início do movimento servo", defina os parâmetros "Tempo de filtragem" e "Ganho de posição" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/115.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-14 Início do movimento servo
+
+.. note:: Nota: o intervalo do parâmetro "Tempo de filtragem" é 0~200 ms; o intervalo do parâmetro "Ganho de posição" é -1~100. Quando o padrão é -1, indica que é consistente com a configuração interna da versão atual de parâmetros completos.
+
+**Step3**: Movimento servo no espaço cartesiano. Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Movimento no espaço cartesiano" e selecione o modo de movimento na caixa suspensa "Modo de movimento".
+
+Defina os parâmetros "Pose cartesiana", "Coeficiente de escala", "Aceleração", "Velocidade", "Período do comando", "Tempo de filtragem" e "Amplificação de escala" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/116.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-15 Movimento no espaço cartesiano
+
+.. note:: Nota: o parâmetro "Tempo de filtragem" na figura permanece no valor padrão.
+
+**Step4**: Fim do movimento servo. Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Fim do movimento servo" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/117.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-16 Fim do movimento servo
+
+**Step5**: Programa LUA do movimento servo no espaço cartesiano. Clique no botão "Aplicar" para gerar automaticamente o programa LUA.
+
+.. image:: base/118.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-17 Programa LUA do movimento servo no espaço cartesiano
+
+Fluxo de operação da função de movimento com comando servo no espaço articular
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**Step1**: Comando de movimento servo. Na área de comandos "Comando de movimento", clique no botão "Movimento servo" para entrar na área de configuração do comando "servoMotion".
+
+.. image:: base/119.png
+   :width: 2in
+   :align: center
+
+.. centered:: Figura 7.13-18 Área de comandos "Comando de movimento"
+
+**Step2**: Início do movimento servo. Na área de comandos "Comando de movimento", clique no botão "Movimento servo" para entrar na área de configuração do comando "servoMotion".
+
+Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Início do movimento servo", defina os parâmetros "Tempo de filtragem" e "Ganho de posição" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/120.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-19 Início do movimento servo
+
+.. note:: Nota: o intervalo do parâmetro "Tempo de filtragem" é 0~200 ms; o intervalo do parâmetro "Ganho de posição" é -1~100. Quando o padrão é -1, indica que é consistente com a configuração interna da versão atual de parâmetros completos.
+
+**Step3**: Movimento servo no espaço articular. Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Movimento no espaço articular".
+
+Defina os parâmetros "Posição das juntas", "Posição do eixo de extensão", "Aceleração", "Velocidade" e "Período do comando" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/121.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-20 Movimento no espaço articular
+
+**Step4**: Fim do movimento servo. Na interface "Edição de comando" da área de configuração do comando "servoMotion", clique no botão "Fim do movimento servo" e clique no botão "Adicionar". O programa LUA pré-gerado será exibido na caixa "Pré-visualização do programa".
+
+.. image:: base/122.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.13-21 Fim do movimento servo
+
+**Step5**: Programa LUA do movimento servo no espaço articular. Clique no botão "Aplicar" para gerar automaticamente o programa LUA.
+
+.. image:: base/123.png
+   :width: 4in
+   :align: center
+
+.. centered:: Figura 7.13-22 Programa LUA do movimento servo no espaço articular

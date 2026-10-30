@@ -68,61 +68,72 @@ Controlar Garra
     */
     int MoveGripper(int index, int pos, int vel, int force, int max_time, int block, int type, double rotNum, int rotVel, int rotTorque); 
 
-Obter Estado de Movimento da Garra
-+++++++++++++++++++++++++++++++++++++++++++++++++++
-.. code-block:: Java
-    :linenos:
-
-    /**
-    * @brief  Obtém o estado de movimento da garra
-    * @return List[0]: Código de erro; List[1] : fault  0-sem erro, 1-com erro; List[2]: status  0-movimento não concluído, 1-movimento concluído
-    */
-    List<Integer> GetGripperMotionDone(); 
-
-Aguardar Status de Movimento da Garra
+Obter o estado de movimento da garra
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief  Aguarda o status de movimento da garra
-    * @param  [in]  status  0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
-    * @param  [in] timeout Tempo limite (ms), -1 para espera infinita
-    * @param  [in] strategy  0-parar com erro, 1-continuar executando
-    * @param  [in] type  0-garra paralela, 1-garra rotativa
+    * @brief  Obter o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param  [out] fault  0-Sem erro, outro-Com erro
+    * @param  [out] staus  0-Movimento não concluído, 1-Movimento concluído sem objeto detectado, 2-Movimento concluído com objeto detectado, 3-Movimento concluído com queda do objeto detectada
     * @return  Código de erro
     */
-    public int GripperWaitMotionDone(int status, int timeout, int strategy, int type)
-
-Exemplo de Código para Aguardar Status de Movimento da Garra
+    public List<Integer> GetGripperMotionDone()
+    
+Aguardar o estado de movimento da garra
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
-    public static void TestGripperWaitMotionDone(Robot robot)
+    /**
+    * @brief  Aguardar o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param  [in]  staus  0-Movimento não concluído, 1-Movimento concluído sem objeto detectado, 2-Movimento concluído com objeto detectado, 3-Movimento concluído com queda do objeto detectada
+    * @param  [in] timeout Tempo limite (ms), -1 significa aguardar permanentemente
+    * @param  [in] strategy  0-Parar e reportar erro, 1-Continuar a execução
+    * @param  [in] type  0-Garra paralela, 1-Garra rotativa
+    * @return  Código de erro
+    */
+    public int GripperWaitMotionDone(int staus, int timeout, int strategy, int type)
+
+Exemplo de código para aguardar o estado de movimento da garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public void TestGetGripperMotionDone()
     {
         int rtn;
+        int status = 0;
+        int fault = 0;
+        ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
 
-        // Garra aberta
-        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
-        System.out.println("MoveGripper(abrir) ret=" + rtn);
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        // Abrir a garra
+        rtn = robot.MoveGripper(2, 50, 50, 100, 30000, 0, 0, 0, 0, 0);
+        System.out.println("MoveGripper(Abrir) ret=" + rtn);
+        robot.Sleep(2000);
+        pkg = robot.GetRobotRealTimeState();
+        System.out.println(" gripper_motiondone " + pkg.gripper_motiondone);
+        // Fechar a garra
+        rtn = robot.MoveGripper(2, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
+        System.out.println("MoveGripper(Fechar) ret=" + rtn);
+        robot.Sleep(2000);
+        pkg = robot.GetRobotRealTimeState();
+        System.out.println(" gripper_motiondone " + pkg.gripper_motiondone);
+        // Aguardar a conclusão do movimento sem objeto detectado, timeout 5s, parar e reportar erro
+        rtn = robot.GripperWaitMotionDone(2, 5000, 0, 0);
+        System.out.println("GripperWaitMotionDone(aguardar conclusão sem objeto detectado) ret=" + rtn);
+
+        while (true)
+        {
+            List<Integer> result = robot.GetGripperMotionDone();
+            fault = result.get(1);
+            status = result.get(2);
+            System.out.println("motion status:" + fault + "," + status);
+            pkg = robot.GetRobotRealTimeState();
+            System.out.println(" error code " + pkg.main_code + "," + pkg.sub_code);
+            robot.Sleep(500);
         }
-
-        // Garra fechada
-        rtn = robot.MoveGripper(1, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
-        System.out.println("MoveGripper(fechar) ret=" + rtn);
-
-        // Aguardar movimento concluído sem detecção de objeto, timeout 30s, parar com erro
-        rtn = robot.GripperWaitMotionDone(2, 30000, 0, 0);
-        System.out.println("GripperWaitMotionDone(aguardar conclusão sem detecção de objeto) ret=" + rtn);
-
-        // Garra aberta
-        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
-        System.out.println("MoveGripper(abrir) ret=" + rtn);
     }
 
 Obter Estado de Ativação da Garra

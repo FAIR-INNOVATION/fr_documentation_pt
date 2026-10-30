@@ -273,6 +273,9 @@ No WebApp do robô, clique em sequência em "Configurações Iniciais", "Seguran
 - **Controle via ModbusRTU**: Quando o robô atua como escravo ModbusRTU, a saída DO do robô, início/parada do programa, comutação manual/automática, modo reduzido, etc. podem ser controlados através de "Entrada Digital Funcional (Bobina)". Após desabilitar "Controle via ModbusRTU", as funções de controle acima através de "Entrada Digital Funcional (Bobina)" são todas desabilitadas.
 - **Controle via CNDE**: A entrada CNDE do robô pode ser configurada para saída DO, saída AO, velocidade de execução e outros controles do robô. Após desabilitar "Controle via CNDE", o cliente CNDE não pode controlar as funções acima.
 - **Função de Reset de IP da Caixa de Botões**: A caixa de botões do robô V2.0 possui um botão de reset de IP. Desabilitar a "Função de Reset de IP da Caixa de Botões" impedirá que o IP do robô seja redefinido através da caixa de botões.
+- **Controle pela porta 8082**: A porta 8082 do robô é a porta de upload para arquivos LUA e arquivos de registro de trajetória TPD. Por essa porta, o conteúdo e o nome do arquivo LUA do movimento atual podem ser modificados. Quando a configuração não está habilitada, o robô não responderá às solicitações de modificação de arquivo do cliente.
+- **Controle via NTP**: A caixa de controle versão LA possui um serviço de sincronização de horário NTP. Desabilitar esta função proíbe o robô de realizar sincronização de horário NTP.
+- **Controle via DHCP**: Quando desativado, o robô desabilita o serviço DHCP.
 
 Insira a senha de segurança na página de configuração de segurança e desbloqueie-a, defina as portas de comunicação a serem habilitadas como "Ligado", clique em "Aplicar", confirme as funções habilitadas na janela de confirmação da configuração de segurança que aparece e clique no botão "Confirmar".
 
@@ -287,6 +290,20 @@ Insira a senha de segurança na página de configuração de segurança e desblo
    :align: center
 
 .. centered:: Figura 7.3-21 Portas de Comunicação Habilitadas
+
+Configuração de ativação do serviço de sincronização de horário PTP do robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+O serviço de sincronização de horário PTP do robô pode ser configurado como desabilitado, sincronização de horário por software ou sincronização de horário por hardware, e as portas de rede Eth0 e Eth1 da caixa de controle do robô para o serviço de sincronização de horário PTP podem ser definidas. As funções "Registro de log" e "Detecção de precisão de sincronização" ainda não estão disponíveis.
+
+.. image:: safety/076.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.3-21-1 Configuração do serviço de sincronização de horário PTP do robô
+
+Proteção física contra adulteração da caixa de controle do robô
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+A caixa de controle do robô possui um selo físico contra adulteração. Os usuários precisam verificar regularmente se o selo contra adulteração na caixa de controle do robô está normal.
 
 Verificação de Integridade do Software do Robô
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -427,6 +444,34 @@ Parada de Segurança
 
 Clique na barra de menu "Configuração Inicial" -> "Segurança" e clique em "Parada de Segurança" para entrar na interface de configuração para definir o modo de parada de segurança e os parâmetros da estratégia de parada de segurança.
 
+Modo de parada de segurança
+**********************************************************************
+
+Quando o modo de parada de segurança é selecionado como "Certificação CR", este modo atende principalmente aos requisitos de segurança do sistema nacional de certificação de robôs (Certificação CR) e é adequado para aceitação de projetos nacionais ou cenários de acesso ao mercado. A Certificação CR é uma certificação autoritativa para produtos robóticos chineses lançada sob a orientação de vários ministérios e comissões nacionais, com foco na avaliação da segurança e confiabilidade dos robôs.
+
+Neste modo, a função de parada de segurança do sistema é configurada e verificada de acordo com as especificações do setor de robôs colaborativos nacionais. Na prática do setor de robôs colaborativos, tais funções de segurança essenciais geralmente são projetadas e avaliadas com referência a um nível de segurança funcional mais elevado, para garantir segurança absoluta durante a colaboração humano-robô.
+
+.. image:: safety/071.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.4-2-1 Modo de certificação CR
+
+A Segurança Funcional (Functional Safety) é uma metodologia de engenharia aceita internacionalmente, cujo objetivo principal é garantir que o sistema possa entrar de forma confiável em um estado seguro quando ocorrer uma falha. Para robôs colaborativos, a segurança funcional geralmente é avaliada de acordo com ISO 13849-1 (Partes relacionadas à segurança de sistemas de controle para segurança de máquinas) & 10218, etc., para determinar o nível de desempenho dos sistemas de controle relacionados à segurança.
+
+Quando o modo "Segurança Funcional" é selecionado, a implementação e verificação da função de parada de segurança seguem o sistema internacional de normas de segurança funcional. Este modo é adequado para exportação de produtos (como conformidade com a Diretiva de Máquinas na certificação CE da UE) ou cenários em que o cliente tenha uma base clara de normas internacionais para segurança intrínseca.
+
+.. note:: Nota: após a configuração bem-sucedida do modo de segurança funcional, a caixa de controle precisa ser reiniciada para que as alterações de parâmetros do sistema de controle de segurança entrem em vigor.
+
+.. image:: safety/072.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 7.4-2-2 Modo de segurança funcional
+
+Método de acionamento
+**********************************************************************
+
 Quando o modo de acionamento da parada de segurança está definido como "Dois Canais", ambos os canais devem ser limpos e o aviso deve ser limpo manualmente na interface de operação antes que o robô possa ser reiniciado. Além disso, uma opção de modo reduzido foi adicionada na configuração da estratégia. Quando o usuário seleciona esta estratégia, o robô entrará em movimento em modo reduzido.
 
 **Passo 1**: Clique em "Configuração Inicial" -> "Segurança" -> "Parada de Segurança". O modo de acionamento pode ser selecionado como "Padrão" ou "Dois Canais". A diferença entre os dois é: no modo "Padrão", o erro da interface é automaticamente limpo após o acionamento e recuperação; no modo "Dois Canais", o erro da interface deve ser limpo manualmente após o acionamento e recuperação. "Estratégia de Parada de Segurança" pode ser selecionada como "Parar", "Pausar", "Modo Reduzido Nível 1" e "Modo Reduzido Nível 2". As descrições detalhadas são as seguintes: quando "Parar" é selecionado, o robô interromperá o movimento atual; quando "Pausar" é selecionado, o robô pausará o movimento atual, e após a recuperação e limpeza do erro, retomará a pausa; quando "Modo Reduzido Nível 1" é selecionado, o robô entrará em movimento em modo reduzido nível 1; quando "Modo Reduzido Nível 2" é selecionado, o robô entrará em movimento em modo reduzido nível 2.
@@ -473,6 +518,8 @@ Através do controlador enviando para a placa da caixa de controle, a parada de 
 - Parada de emergência tipo 1b: após a parada com desaceleração, não interrompe a alimentação do corpo do robô, mas desabilita o corpo do robô;
 - Parada de emergência tipo 2: quando a parada de emergência é acionada, o robô desacelera até parar e permanece habilitado. Após liberar a parada de emergência, o robô deve ser capaz de operar normalmente.
 
+.. note:: Nota: a parada de emergência só é suportada por hardware de tensão ampla.
+
 .. image:: safety/011.png
    :width: 4in
    :align: center
@@ -484,7 +531,11 @@ Parada Protetiva
 
 Clique na barra de menu "Configuração Inicial" -> "Segurança" e clique no submenu "Parada Protetiva" para entrar na interface de configuração.
 
-Tipos de parada protetiva 0, 1, 2. A parada protetiva tipo 0 interrompe diretamente a alimentação da placa da caixa de controle. A parada protetiva tipo 1: a placa da caixa de controle primeiro notifica o controlador para controlar a parada do robô, então o controlador fornece feedback à placa da caixa de controle para interromper a alimentação. A parada protetiva tipo 2: a placa da caixa de controle notifica o controlador para controlar a parada do robô.
+Existem três tipos de parada de proteção: 0, 1 e 2. Em qualquer modo, a função de parada de segurança é acionada de acordo com o sinal de parada de segurança da caixa de controle, e a função de parada Cat.0, Cat.1 ou Cat.2 correspondente é executada de acordo com o nível de parada de segurança configurado. Para a parada de proteção tipo 0, a placa da caixa de controle corta a alimentação diretamente. Para a parada de proteção tipo 1, a placa da caixa de controle primeiro notifica o controlador para parar o robô, e então o controlador realimenta a placa da caixa de controle para cortar a alimentação. Para a parada de proteção tipo 2, a placa da caixa de controle notifica o controlador para parar o robô.
+
+- Se o tipo de parada for 0, a alimentação do corpo é cortada e as juntas executam um freio de segurança;
+- Se o tipo de parada for 1, uma parada em desaceleração é executada, a alimentação do corpo é cortada e as juntas executam um freio de segurança;
+- Se o tipo de parada for 2, uma parada em desaceleração é executada, a alimentação do corpo é mantida e as juntas não executam freio de segurança;
 
 .. image:: safety/012.png
    :width: 4in
@@ -645,7 +696,7 @@ Detecção de Potência ServoJT (Usado apenas no sistema QX)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Clique na barra de menu "Configuração Inicial" -> "Segurança" e clique no submenu "Detecção de Potência" para entrar na interface de configuração.
 
-Quando atuando diretamente no circuito de corrente do robô (apenas servoJT), é usado para limitar o trabalho realizado pelo robô. Quando a integral da velocidade e do torque do robô é detectada como excedendo o limite, a proteção de potência é ativada.
+Quando atua diretamente no loop de corrente do robô (apenas com o comando servoJT), é usado para limitar a potência máxima do robô. Quando é detectado que a potência do robô excede o valor limite, a proteção de potência é executada.
 
 .. image:: safety/024.png
    :width: 4in
@@ -869,7 +920,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | [Resposta do robô]:
        | Se o tipo de parada for 0, a alimentação do corpo é cortada, as juntas executam um freio de segurança e a manutenção de posição é monitorada
        | Se o tipo de parada for 1, uma parada em desaceleração é executada, a alimentação do corpo é cortada, as juntas executam um freio de segurança e a manutenção de posição é monitorada	
-     - 202.0512143
+     - 202.051
 
    * - SF02
      - Safeguard Stop-Parada de proteção
@@ -881,7 +932,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Se o tipo de parada for 0, a alimentação do corpo é cortada, as juntas executam um freio de segurança e a manutenção de posição é monitorada;
        | Se o tipo de parada for 1, uma parada em desaceleração é executada, a alimentação do corpo é cortada, as juntas executam um freio de segurança e a manutenção de posição é monitorada;
        | Se o tipo de parada for 2, uma parada em desaceleração é executada, a alimentação do corpo é mantida, as juntas não executam freio de segurança e permanecem habilitadas, e são executadas detecção de repouso + distância de parada + tempo de parada;	
-     - 191.3170862
+     - 191.317
 
    * - SF03
      - Joint Position Limit-Limite de posição das juntas
@@ -890,7 +941,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | [É possível definir limites soft para cada junta. A placa de segurança detecta a posição da junta em tempo real. Se o limite for excedido, uma ação de parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada.
        | [Evento de acionamento]: A junta se move fora da faixa de posição limite;
        | [Resposta do robô]: Alarme de falha - limite soft excedido, ação de parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada;
-     - 158.5302637
+     - 158.530
 
    * - SF04
      - Joint Speed Limit-Limite de velocidade das juntas
@@ -899,7 +950,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | É possível definir um limite de velocidade para cada junta. De acordo com a velocidade de segurança correspondente do controlador, o circuito de segurança detecta se a velocidade em tempo real de cada junta do robô excede o limite. Se o limite for excedido, é executada uma parada Cat.1 com monitoramento intertravado de manutenção de posição, ou uma parada Cat.2 com detecção de repouso intertravada + distância de parada + tempo de parada.
        | [Evento de acionamento]: A velocidade da junta excede o valor definido;
        | [Resposta do robô]: Alarme de falha - velocidade excedida. Opcionalmente executar uma parada Cat.1 com monitoramento intertravado de manutenção de posição, ou por padrão executar uma parada Cat.2 com detecção de repouso intertravada + distância de parada + tempo de parada;	
-     - 158.5302637
+     - 158.530
           
    * - SF05
      - Joint Torque Limit-Limite de torque das juntas
@@ -908,7 +959,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | É possível definir um limite de torque para cada junta. De acordo com o torque de segurança correspondente do controlador, o circuito de segurança detecta se o torque em tempo real de cada junta do robô excede o limite. Se o limite for excedido, uma parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
        | [Evento de acionamento]: O torque da junta excede o valor de torque definido
        | [Resposta do robô]: Alarme de falha - torque da junta x excedido, parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
-     - 67.48193213
+     - 62.808
      	          
    * - SF06
      - | TCP Pose Limit-Limite de pose TCP (plano de segurança, direção da ferramenta)
@@ -919,7 +970,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | A faixa limite TCP e o DI correspondente (até 8 configuráveis) são definidos antecipadamente na página correspondente do controlador. Quando o DI é ativado, o limite correspondente é ativado. Quando o TCP excede a faixa limite, uma parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
        | [Evento de acionamento]: A pose TCP excede a faixa definida
        | [Resposta do robô]: Alarme de falha - plano de segurança/direção da ferramenta excedidos, ação de parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada	
-     - 70.07272665
+     - 70.072
           	          
    * - SF07
      - manual mode, reduced-speed-Modo manual, velocidade reduzida
@@ -928,7 +979,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o modo do controlador está no modo manual de velocidade reduzida, detecta se a velocidade TCP é ≤250mm/s. Se a velocidade for excedida, uma ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição.
        | [Evento de acionamento]: A velocidade TCP excede a velocidade definida
        | [Resposta do robô]: Alarme de falha - TCP em excesso de velocidade, ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição.	
-     - 70.07272665
+     - 70.072
              	          
    * - SF08
      - TCP Force Limit-Limite de força TCP
@@ -937,7 +988,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | O controlador pode configurar o limite de força TCP. O circuito de segurança monitora a força TCP do robô em tempo real. Se a força TCP exceder o valor limite, uma parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
        | [Evento de acionamento]: A força TCP excede o limite definido
        | [Resposta do robô]: Alarme de falha - falha de colisão da junta x, parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada	
-     - 124.720124  
+     - 62.808
              	          
    * - SF09
      - Momentum Limit-Limite de momento
@@ -946,7 +997,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | O controlador pode configurar o limite de momento do robô. O circuito de segurança monitora o momento do robô em tempo real. Se o momento do robô exceder o valor limite, uma parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
        | [Evento de acionamento]: O momento excede o limite de momento definido
        | [Resposta do robô]: Alarme de falha - momento excedido, parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada	
-     - 67.48193213
+     - 62.808
                 	          
    * - SF10
      - Power Limit-Limite de potência
@@ -955,7 +1006,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | O controlador pode configurar o limite de potência do robô. O circuito de segurança monitora a potência do robô em tempo real. Se a potência do robô exceder o valor limite, uma parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
        | [Evento de acionamento]: A potência excede o limite de potência definido
        | [Resposta do robô]: Alarme de falha - potência excedida, parada Cat.2 é executada, com detecção de repouso intertravada + distância de parada + tempo de parada
-     - 67.48193213
+     - 62.808
                 	          
    * - SF11
      - System Emergency Stop Output-Saída de parada de emergência do sistema
@@ -966,7 +1017,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | [Resposta do robô]:
        | Tipo de parada de emergência 0: Saída do sinal de parada de emergência do sistema
        | Tipo de parada de emergência 1: Saída do sinal de parada de emergência do sistema	
-     - 191.3170862
+     - 191.317
                    	          
    * - SF12
      - Robot Moving State Output-Saída de estado em movimento do robô
@@ -975,7 +1026,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o robô está no estado em movimento, o controlador emite um sinal DO de movimento
        | [Evento de acionamento]: O robô está no estado em movimento
        | [Resposta do robô]: Saída do sinal de robô em movimento	
-     - 68.7283255
+     - 68.728
                 	          
    * - SF13
      - Robot Not Stopping State Output-Saída de estado não parado do robô
@@ -984,7 +1035,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o robô está no estado não parado, o controlador emite um sinal DO de não parada
        | [Evento de acionamento]: O robô está no estado não parado
        | [Resposta do robô]: Saída do sinal de robô não parado	
-     - 68.7283255
+     - 68.728
 
    * - SF14
      - Reduced Mode State Output-Saída de estado do modo reduzido
@@ -993,7 +1044,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o robô está no estado reduzido, o controlador emite um sinal DO reduzido
        | [Evento de acionamento]: O robô está no modo reduzido
        | [Resposta do robô]: Saída do sinal de modo reduzido	
-     - 68.7283255
+     - 68.728
     
    * - SF15
      - Not Reduced Mode State Output-Saída de estado do modo não reduzido
@@ -1002,7 +1053,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o robô está no estado não reduzido, o controlador emite um sinal DO não reduzido
        | [Evento de acionamento]: O robô está no modo não reduzido
        | [Resposta do robô]: Saída do sinal de modo não reduzido	
-     - 68.7283255
+     - 68.728
     
    * - SF16
      - 3P enabling function-Função de habilitação de 3 posições
@@ -1012,7 +1063,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando a habilitação de 3 posições está na posição 2, o robô está habilitado, com ativação intertravada do modo manual de velocidade reduzida e da detecção manual de velocidade reduzida
        | [Evento de acionamento]: No modo do teach pendant físico, o botão de habilitação de 3 posições é pressionado até a posição intermediária (posição 2)
        | [Resposta do robô]: As juntas são habilitadas, os freios de segurança das juntas são liberados, o robô entra no modo manual de velocidade reduzida, com ativação intertravada do modo manual de velocidade reduzida e da detecção manual de velocidade reduzida	
-     - 68.7283255
+     - 68.728
          
    * - SF17
      - monitored-standstill-Repouso monitorado (após parada Cat.2)
@@ -1021,7 +1072,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Após a conclusão da parada Cat.2, o circuito de segurança detecta alterações de posição das juntas de acordo com o comando do robô e a posição real. Se o desvio exceder o limite, uma parada Cat.0 ou Cat.1 é executada
        | [Evento de acionamento]: Em repouso e não em movimento, a posição do robô se altera de forma anormal
        | [Resposta do robô]: A faixa de alteração da posição do robô excede o valor definido, uma ação de parada Cat.0 ou Cat.1 é executada	
-     - 60.05290188
+     - 47.515
             
    * - SF18
      - stopping time limiting-Limitação do tempo de parada (após parada Cat.2)
@@ -1030,7 +1081,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Após o acionamento do sinal de parada Cat.2, o circuito de segurança detecta o tempo de parada de acordo com o tempo do sinal de conclusão da parada do robô. Se o desvio exceder o limite, uma parada Cat.0 ou Cat.1 é executada
        | [Evento de acionamento]: Quando o robô aciona uma parada
        | [Resposta do robô]: Quando o robô aciona uma parada, se o tempo de parada exceder o tempo definido, uma ação de parada Cat.0 ou Cat.1 é executada	
-     - 60.05290188 
+     - 47.515
             
    * - SF19
      - stopping distance limiting-Limitação da distância de parada (após parada Cat.2)
@@ -1039,7 +1090,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o sinal de parada Cat.2 é acionado, a posição do robô é registrada. O circuito de segurança obtém a distância de parada subtraindo a posição registrada da posição real em tempo real do robô. Se o desvio exceder o limite, uma parada Cat.0 ou Cat.1 é executada
        | [Evento de acionamento]: Quando o robô aciona uma parada
        | [Resposta do robô]: Quando o robô aciona uma parada, se a distância de parada exceder a distância de parada definida, uma ação de parada Cat.0 ou Cat.1 é executada	
-     - 60.05290188
+     - 47.515
                   
    * - SF20
      - hold-to-run control-Controle hold-to-run
@@ -1051,7 +1102,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | [Resposta do robô]: O robô entra no estado de arrasto
        | [Evento de acionamento]: O interruptor de habilitação de 3 posições entra na posição intermediária, o controlador está no modo manual e o botão terminal é liberado
        | [Resposta do robô]: O robô entra em uma parada Cat.2, com detecção de repouso intertravada + distância de parada + tempo de parada
-     - 68.7283255
+     - 68.699
                       
    * - SF21
      - start/restart interlock-Intertravamento de partida/reinício
@@ -1060,7 +1111,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Na partida/reinício/troca de modo, o estado de parada de segurança Cat.2 é acionado. Após a execução da parada, o controlador não pode se mover, com detecção de repouso intertravada. O estado de parada deve ser redefinido redefinindo a parada de segurança via DI antes que outras operações possam ser executadas
        | [Evento de acionamento]: Partida/reinício/troca de modo do controlador
        | [Resposta do robô]: Intertravamento acionado, entrando na parada de segurança Cat.2	
-     - 191.3170862
+     - 191.317
                       
    * - SF22
      - reset safety-Redefinir o estado de parada de segurança
@@ -1069,7 +1120,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando estiver no estado de parada de segurança acionado, primeiro execute a redefinição de erro/falha via DI. Após a redefinição de erro/falha passar, execute novamente a redefinição do estado de parada via DI, e então o robô poderá sair do estado de parada
        | [Evento de acionamento]: DI de redefinição do estado de parada de segurança acionado
        | [Resposta do robô]: O robô sai da parada de segurança	
-     - 191.3170862
+     - 191.317
                          
    * - SF23
      - normal stop-Parada normal
@@ -1078,18 +1129,18 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Durante o movimento do robô, uma parada normal é acionada por um sinal DI. De acordo com o tipo de parada de segurança configurado, uma ação de parada Cat.0 ou Cat.1 é executada
        | [Evento de acionamento]: Parada do movimento acionada
        | [Resposta do robô]: O robô executa uma ação de parada Cat.0 ou Cat.1, com monitoramento intertravado de manutenção de posição	
-     - 191.3170862
+     - 191.317
                          
    * - SF24
      - mode activation-Ativação de modo
-     - PL a
+     - PL d
      - | Mode activation-Ativação de modo
        | O modo do controlador pode entrar em diferentes modos através do interruptor de modo da interface de software e do interruptor do botão terminal, incluindo manual de velocidade reduzida/manual de alta velocidade/automático/arrasto
        | [Evento de acionamento]: Comutação do interruptor da interface de software
        | [Resposta do robô]: O robô pode alternar entre os modos manual de velocidade reduzida/manual de alta velocidade/automático, com monitoramento intertravado manual de velocidade reduzida/monitoramento manual de alta velocidade + monitoramento de tempo manual de alta velocidade/monitoramento manual de velocidade reduzida/monitoramento de velocidade das juntas
        | [Evento de acionamento]: Comutação do interruptor de arrasto terminal
        | [Resposta do robô]: O robô pode alternar entre os modos manual de velocidade reduzida/arrasto, com monitoramento intertravado manual de velocidade reduzida/monitoramento da velocidade de arrasto/monitoramento de repouso	
-     - /
+     - 191.317
                              
    * - SF25
      - Position Holding Monitoring-Monitoramento de manutenção de posição
@@ -1098,7 +1149,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o controlador passa do estado habilitado para o estado desabilitado, a posição é registrada durante o acionamento do freio, e é detectado continuamente se a diferença entre a posição das juntas do robô e a posição registrada excede o limite. Se o limite for excedido, uma operação Cat.0 é executada
        | [Evento de acionamento]: Durante o acionamento do freio, a alteração de posição das juntas do robô excede o limite
        | [Resposta do robô]: Operação Cat.0 é executada	
-     - 60.05290188
+     - 47.515
                                 
    * - SF26
      - single-point-of-control-Ponto único de controle (modo de controle local/remoto)
@@ -1107,7 +1158,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | O modo local do controlador e o modo de controle remoto são mutuamente exclusivos. O modo é comutado manualmente na interface do controlador, e apenas um deles pode ser selecionado para controle
        | [Evento de acionamento]: Comutação manual do modo de controle na interface do controlador
        | [Resposta do robô]: O controlador pode selecionar apenas um modo por vez, mascarando a operação da outra fonte de controle	
-     - /
+     - 10.6
                                    
    * - SF27
      - external control enable-Habilitação de controle externo
@@ -1116,7 +1167,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | O controlador possui um modo de controle remoto. Entrar e sair do modo remoto são executados manualmente e localmente na interface do controlador. Nesse modo, outras funções de controle locais são mascaradas
        | [Evento de acionamento]: Comutação do modo de controle remoto na interface local
        | [Resposta do robô]: O controlador entra no modo remoto, mascarando a operação da fonte de controle local	
-     - /
+     - 10.6
                                    
    * - SF28
      - manual mode, high-speed-Modo manual, alta velocidade
@@ -1125,7 +1176,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Clique no botão de comutação manual de alta velocidade na página de velocidade reduzida manual. O controlador pode alternar do modo manual de velocidade reduzida para o modo manual de alta velocidade. O circuito de segurança detecta se a velocidade TCP é ≤1000mm/s. Se a velocidade for excedida, uma ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição
        | [Evento de acionamento]: No modo de alta velocidade, a velocidade TCP excede o limite definido
        | [Resposta do robô]: Parada em desaceleração é executada, alarme de falha - TCP em excesso de velocidade, ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição	
-     - 60.05290188
+     - 47.515
 
    * - SF29
      - manual mode, high-speed time limitation-Modo manual, limitação de tempo de alta velocidade
@@ -1134,7 +1185,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o modo do controlador está no modo manual de alta velocidade e o interruptor de 3 posições sai da posição intermediária, o circuito de segurança detecta a duração. Se exceder 5 min, a caixa de controle reduz a velocidade global manual de alta velocidade para 25% (velocidade TCP 250mm/s), com monitoramento intertravado da velocidade correspondente (velocidade TCP ≤250mm/s)
        | [Evento de acionamento]: No modo manual de alta velocidade, o interruptor 3P é liberado por mais de 5 min
        | [Resposta do robô]: A caixa de controle reduz a velocidade manual de alta velocidade para 250mm/s, com monitoramento intertravado de 250mm/s	
-     - 49.81517752
+     - 68.728
    
    * - SF30
      - hand-guided control-Controle guiado manualmente
@@ -1143,7 +1194,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o interruptor de 3 posições está na posição intermediária e o botão de arrasto terminal é pressionado, o modo do controlador entra no modo de arrasto. O circuito de segurança detecta se a velocidade TCP é ≤250mm/s (limite de velocidade configurável), a velocidade de cada junta é ≤45°/s (monitorada via SF04, limite de velocidade configurável, Cat.0/Cat.1 configurável), o limite de posição de cada junta (monitorado via SF03, faixa configurável, Cat.2), o limite de pose TCP (monitorado via SF06, faixa configurável, Cat.2). Se a velocidade for excedida, uma ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição
        | [Evento de acionamento]: A velocidade TCP excede a velocidade limite de arrasto (padrão 250mm/s, ajustável)
        | [Resposta do robô]: Parada em desaceleração é executada, alarme de falha - TCP em excesso de velocidade, ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição
-     - 49.81517752 	
+     - 68.699
    
    * - SF31
      - Speed and separation monitoring (SSM)-Monitoramento de velocidade e separação
@@ -1152,7 +1203,7 @@ Este dispositivo é submetido à avaliação de conformidade de acordo com o Reg
        | Quando o modo do controlador está no modo automático, o interruptor fotoelétrico/interruptor de sensor de distância conectado externamente via DI da caixa de controle detecta a posição relativa da máquina e do pessoal. Quando o DI de distância correspondente recebe um sinal, a caixa de controle executa uma resposta de segurança. De acordo com a distância correspondente, entra em redução de nível 1 (velocidade configurável, padrão 200mm/s), redução de nível 2 (velocidade configurável, padrão 100mm/s) ou redução de nível 3 (parada do movimento). Ao mesmo tempo, o circuito de segurança entra no monitoramento de velocidade e separação. Se a velocidade após entrar na redução exceder a velocidade correspondente ao nível de redução correspondente, uma ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição
        | [Evento de acionamento]: A velocidade TCP excede a velocidade definida
        | [Resposta do robô]: Parada em desaceleração é executada, alarme de falha - TCP em excesso de velocidade, ação de parada Cat.0 ou Cat.1 é executada, com monitoramento intertravado de manutenção de posição	
-     - 60.05290188
+     - 47.515
 
 .. note:: Nota: ***MTTFd**: Tempo médio até falha perigosa (unidade: anos).
 

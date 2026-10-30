@@ -762,3 +762,91 @@ Exemplo de código para enviar um frame de comando personalizado via TCP8080
 
     if __name__ == "__main__":
         main()    
+
+Atualização por upload do pacote de backup de dados
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``DataPackageUpgrade(self, filePath)``"
+    "Descrição", "Atualização por upload do pacote de backup de dados"
+    "Parâmetros obrigatórios", "
+    - ``filePath``: Caminho do arquivo do pacote de backup de dados a ser enviado; D://zUP/fr_user_data.tar.gz"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
+
+Obter a porcentagem de progresso da atualização do pacote de backup de dados    
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``GetDataPackageUpgradeProgress(self)``"
+    "Descrição", "Obter a porcentagem de progresso da atualização do pacote de backup de dados"
+    "Parâmetros obrigatórios", "
+    - ``progress``: Porcentagem de progresso da atualização [0-100], -1: falha na atualização"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
+
+Obter a porcentagem de progresso da atualização de todos os parâmetros das juntas    
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. csv-table:: 
+    :stub-columns: 1
+    :widths: 10 30
+
+    "Protótipo", "``GetJointAllParamUpgradeProgress(self)``"
+    "Descrição", "Obter a porcentagem de progresso da atualização de todos os parâmetros das juntas"
+    "Parâmetros obrigatórios", "
+    - ``progress``: Porcentagem de progresso da atualização [0-100], -1: falha na atualização"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
+
+Exemplo de código para atualização por upload do pacote de backup de dados e consulta do progresso
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:
+
+    def test_data_package_upgrade(robot):
+    """Data package upgrade test"""
+    print("\n========== Data Package Upgrade Test ==========")
+
+    time.sleep(0.2)  # 200ms
+
+    # Data package upgrade
+    rtn = robot.DataPackageUpgrade("D://zUP/upgrade/FR5/fr_user_data.tar.gz")
+    print(f"robot DataPackageUpgrade rtn is {rtn}")
+
+    # Poll upgrade progress until 100%
+    upgradeProgress = 0
+    while upgradeProgress < 100:
+        rtn, upgradeProgress = robot.GetDataPackageUpgradeProgress()
+        print(f"robot data package upgrade progress : {upgradeProgress}")
+        time.sleep(0.2)  # 200ms
+        
+Exemplo de código para atualização de todos os parâmetros das juntas e consulta do progresso
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: python
+    :linenos:
+
+    def test_joint_all_param_upgrade(robot):
+    """Joint all parameters upgrade test"""
+    print("\n========== Joint All Param Upgrade Test ==========")
+
+    # Disable robot before upgrading parameters
+    robot.RobotEnable(0)
+    time.sleep(0.2)  # 200ms
+
+    # Joint all parameters upgrade
+    rtn = robot.JointAllParamUpgrade("D://zUP/upgrade/FR3WMS/jointallparameters.db")
+    print(f"robot JointAllParamUpgrade rtn is {rtn}")
+
+    # Poll upgrade progress until 100%
+    upgradeProgress = 0
+    while upgradeProgress < 100:
+        rtn, upgradeProgress = robot.GetJointAllParamUpgradeProgress()
+        print(f"robot joint all param upgrade progress : {upgradeProgress}")
+        time.sleep(0.2)  # 200ms

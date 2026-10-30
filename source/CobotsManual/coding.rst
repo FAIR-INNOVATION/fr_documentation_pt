@@ -4204,20 +4204,121 @@ Ao usar um programa de fundo, ele é executado em loop continuamente do início 
 
 Após uma queda de energia, na próxima energização, o programa de fundo será carregado automaticamente e executado de acordo com o estado definido.
 
+Interface de comandos em segundo plano
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+O lado esquerdo da interface é principalmente a área de adição de comandos de programa. Clique no ícone acima de cada palavra-chave para entrar na interface detalhada de adição de comandos de programa no lado direito.
+
+.. image:: coding/253.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-1 Interface do programa em segundo plano
+
+Interface de comandos lógicos
+********************************************************************************
+
+O uso dos comandos lógicos é consistente com o dos programas em primeiro plano, incluindo julgamento, variáveis e impressão.
+
+Interface de comandos de controle
+********************************************************************************
+
+Comandos de controle de execução
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Usados para controlar programas em primeiro plano, incluindo comando de execução, comando de pausa, comando de retomada e comando de parada;
+
+.. image:: coding/626.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-2 Comandos de controle do programa em segundo plano
+
+DelayMS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+DelayMS é um comando de atraso dedicado a programas em segundo plano, cuja unidade de tempo de espera é milissegundo.
+
+.. image:: coding/627.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-3 Comando DelayMS
+
+DIO em segundo plano
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Esta parte de comandos é usada para controlar o IO da caixa de controle em programas em segundo plano, incluindo definir DO, obter DI e ler o status DO. Para garantir a execução cíclica dos programas em segundo plano, recomenda-se usar o modo não bloqueante nos comandos do programa em segundo plano.
+
+.. image:: coding/628.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-4 Interface de comandos DIO em segundo plano
+
+AIO em segundo plano
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Esta parte de comandos é usada para controlar sinais analógicos AO e AI em programas em segundo plano, incluindo definir AO, obter AI e ler o status AO. Para garantir a execução cíclica dos programas em segundo plano, recomenda-se usar o modo não bloqueante nos comandos do programa em segundo plano.
+
+.. image:: coding/629.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-5 Interface de comandos AIO em segundo plano
+
+IO estendido em segundo plano
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Esta parte de comandos é usada para controlar sinais de IO estendido em programas em segundo plano, incluindo definir ou ler AuxDO, AuxAO, AuxDI e AuxAI. Para garantir a execução cíclica dos programas em segundo plano, recomenda-se usar o modo não bloqueante nos comandos do programa em segundo plano ou aplicar threads nas opções de comando.
+
+.. image:: coding/630.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-6 Interface de comandos IO estendido em segundo plano
+
+Interface de comandos de comunicação
+********************************************************************************
+
+Comandos Modbus
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+O uso desta parte de comandos é consistente com o dos programas em primeiro plano. Com base na função de barramento do protocolo ModbusTCP/RTU, os usuários podem ler e escrever bobinas, entradas discretas e registradores por meio dos comandos relacionados.
+
+.. image:: coding/631.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-7 Interface de comandos Modbus em segundo plano
+
+Comandos de placa
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+O uso desta parte de comandos é consistente com o dos programas em primeiro plano. Após estabelecer a comunicação com a placa, o DO, AO, DI e AI do escravo podem ser definidos ou obtidos por meio dos comandos da placa em segundo plano.
+
+.. image:: coding/632.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-8 Comandos de placa
+
+Comandos Socket
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+O uso desta parte de comandos é consistente com o dos programas em primeiro plano. Em programas em segundo plano, apenas os comandos de envio e recebimento Socket podem ser usados. Ao usar, observe: os comandos de envio e recebimento Socket têm características de bloqueio: se chamados em um programa em segundo plano, bloquearão a execução de outros comandos no mesmo programa e também afetarão a operação de programas em primeiro plano nos mesmos dados Socket. Recomenda-se usar os comandos Socket separadamente no mesmo programa em primeiro plano ou em segundo plano para evitar afetar outros comandos.
+
+.. image:: coding/633.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.19-1-9 Comandos socket em segundo plano
+
 Salvando o Programa de Fundo do Robô
 ************************************
 
 A criação, edição e salvamento de programas de fundo só podem ser feitos na interface do programa de fundo.
 
 **Passo 1**: Abra a interface do programa de fundo do robô. Abra a página de ensino, clique sequencialmente em "Programa de Ensino", "Programação de Programa". Selecione a instrução "Programa de Fundo" no canto superior esquerdo para entrar na interface do programa de fundo.
-
-.. note:: Os programas de fundo contêm apenas instruções de julgamento lógico, atribuição, instruções de controle de primeiro plano, instruções de interface I/O e instruções de comunicação Modbus.
-
-.. image:: coding/253.png
-   :width: 6in
-   :align: center
-
-.. centered:: Figura 9.19-1 Interface do Programa de Fundo
 
 **Passo 2**: No modo manual, abra o arquivo do programa de ensino de fundo. Clique em "Novo" para criar um novo arquivo de programa de ensino, edite o programa e clique em "Salvar" para salvar o arquivo.
 
@@ -9246,3 +9347,81 @@ ModbusMasterWriteDO_RTU(), ModbusMasterWriteAO_RTU(), ModbusMasterReadDO_RTU(), 
 FieldBusSlaveWaitAI(), WaitToolAI(), WaitAuxAI(), SPLCSetAO(), SPLCSetToolAO(), SetToolList(), SetWObjList(), SetExToolList(), PostureAdjustOn(), RegisterVar(), SetSysVarValue(), GetSysVarValue(), MultilayerOffsetTrsfToBase(), GetSegWeldDisDir(), DMP()
 LTSearchStart(), PointTableSwitch(), GetSegmentWeldPoint(), LaserRecordPoint(), GetIntersectionThrough3Point(), GetIntersectionThrough4Point(), GetUserVal(), SetUserVal(), MoveToIntersectLineStart(), MoveIntersectLine(), OriginPointWeaveStart()
 MatrixMoveStart(), MatrixMoveEnd(), MatrixSetCountPlus(), MatrixGetCount(), MatrixSetStartCount().   
+
+Função de depuração passo a passo de programas Lua
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Contexto
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A plataforma existente dos robôs da série FR já possui capacidade completa de execução de programas Lua, e toda a cadeia funciona de forma estável. No entanto, o processo de execução é uma caixa preta para o usuário—o programa é executado até o fim, e quaisquer problemas no meio só podem ser tratados por meio de logs ou tentativa e erro.
+
+Este trabalho adiciona a capacidade de depuração passo a passo sem alterar a estrutura existente, permitindo que os usuários observem passo a passo a execução do programa, visualizem o estado de execução e localizem problemas.
+
+Introdução à função de depuração passo a passo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A entrada da função de depuração passo a passo é mantida na página web "Configurações iniciais" -> "Programa de ensino" -> "Programação de programa". O botão de entrada da função de depuração está localizado atrás do nome do programa aberto. A função de depuração passo a passo só pode ser executada no modo manual, e o robô é proibido de ser arrastado durante a depuração.
+
+.. image:: coding/634.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.41-1 Entrada da função de depuração passo a passo
+
+Após clicar em "Ativar depuração passo a passo", é possível entrar na depuração do programa lua. O programa pausará na entrada e aguardará o próximo comando. A função de depuração passo a passo oferece três comandos:
+
+Depuração passo a passo (step_over): executa a linha atual "como um todo" e depois para na próxima linha, sem entrar na função chamada pela linha atual. Se um ponto de interrupção for definido dentro da função chamada, ou uma instrução de exceção/parada for encontrada, o programa ainda pausará dentro da função em vez de pular diretamente para a próxima linha.
+
+.. image:: coding/635.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.41-2 Comando de execução passo a passo
+
+- **Continuar**: retoma a execução do programa a partir da posição atual e só pausa quando o próximo ponto de interrupção é encontrado, o programa termina ou ocorre uma exceção.
+
+.. image:: coding/636.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.41-3 Comando de continuação
+
+- **Sair**: sai da função de depuração passo a passo.
+
+.. image:: coding/637.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.41-4 Comando de saída
+
+Painel de informações de depuração passo a passo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+O painel "Depuração passo a passo" é usado para fornecer em tempo real o estado de execução subjacente quando o programa é executado linha por linha. Os operadores podem usar este painel para monitorar a trajetória de execução do programa, o ambiente de execução atual e os dados de memória, localizando com precisão erros de lógica ou exceções.
+
+- Status: exibe a situação de execução atual do programa. Incluindo ocioso, em execução, pausado e encerrado.
+- Número da linha: exibe o número da linha de código a ser executada atualmente.
+- Motivo da pausa: explica por que o programa parou aqui. Incluindo entrada, passo a passo e continuar.
+- Informações da pilha: exibe a trajetória atual da pilha de chamadas do programa.
+- Variáveis locais: exibe em tempo real todas as variáveis no escopo da linha de código atual e seus valores atuais. Em LUA, apenas variáveis definidas como local podem imprimir diretamente o nome.
+- Informações de erro da pilha: quando o programa trava ou é interrompido devido a erros de tempo de execução (como divisão por zero, referência a ponteiro nulo, índice de array fora dos limites), esta área exibirá o código de erro específico e a descrição do erro.
+
+.. image:: coding/638.png
+   :width: 3in
+   :align: center
+
+.. centered:: Figura 9.41-5 Painel de informações de depuração passo a passo
+
+Gerenciamento de pontos de interrupção
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Os pontos de interrupção pertencem ao próprio programa, não a uma sessão de depuração. Cada arquivo Lua mantém suas próprias informações de pontos de interrupção; os pontos de interrupção ainda são salvos após atualizar ou reiniciar o dispositivo.
+
+Os usuários podem clicar no número da linha de código na interface front-end para definir ou cancelar pontos de interrupção. Vários pontos de interrupção podem existir ao mesmo tempo, os pontos de interrupção podem ser definidos antes e durante a depuração, e os pontos de interrupção entram em vigor imediatamente durante a depuração.
+
+.. image:: coding/639.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 9.41-6 Gerenciamento de pontos de interrupção

@@ -688,17 +688,161 @@ Exemplo de Código de Movimento Helicoidal
         return 0;
     }
 
-Início do Movimento Servo
-+++++++++++++++++++++++++++++
+Início do movimento servo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: Java
     :linenos:
 
     /**
-    * @brief Início do movimento servo, para uso com instruções ServoJ e ServoCart
-    * @param comType Tipo de envio de instrução; 0-xmlrpc; 1-UDP (porta 20007 do robô)
-    * @return Código de erro
+    * @brief Início do movimento servo, usado em conjunto com os comandos ServoJ e ServoCart
+    * @param[in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    * @param[in] filtertime Tempo de filtragem, unidade ms, padrão 0
+    * @param[in] gain Array de ganho do loop de posição, o comprimento deve ser 6, correspondendo em sequência aos ganhos do loop de posição das juntas J1~J6; quando null é passado, o valor padrão { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 } é usado
+    * @return  Código de erro
     */
-    public int ServoMoveStart(int comType)
+    public int ServoMoveStart(int comType, int filtertime, double[] gain)
+
+Exemplo de código ServoJ para início do movimento servo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static int TestServoCartWithFiltertime(Robot robot) {
+        // ---- Pose cartesiana alvo ----
+        DescPose desc_pos_dt = new DescPose(542.1690, 34.7990, 114.4800, 169.808000, -3.600000, -133.152000);
+        ExaxisPos exaxis = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+        double[] pos_gain = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        int mode = 0;
+        float vel = 0.0f;
+        float acc = 0.0f;
+        float cmdT = 0.008f;
+        float filterT = 0.0f;
+        float gain = 0.0f;
+        int count = 5000;
+        int rtn = 0;
+
+        robot.SetSpeed(20);
+
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+        robot.MoveL(desc_pos_dt, 1, 0, 100, 100, 100, -1, 0, exaxis, 0, 0, offset_pos, -1, 0,0,0);
+
+        // ---- Parâmetros do ServoMoveStart ----
+        int filtertime = 0;
+        double[] ServoGain = { 20.0, 20.0, 20.0, 20.0, 20.0, 20.0 };
+
+        rtn = robot.ServoMoveStart(0, filtertime, ServoGain);
+        System.out.println("ServoMoveStart rtn is " + rtn);
+
+        // ---- Ler pontos do caminho cartesiano do arquivo e enviar ServoCart ponto a ponto ----
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("D://zUP/6RCARpath.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Formato de análise: ServoCart(0,x,y,z,rx,ry,rz,...
+                String prefix = "ServoCart(0,";
+                if (line.startsWith(prefix)) {
+                    String body = line.substring(prefix.length());
+                    String[] parts = body.split(",");
+                    if (parts.length >= 6) {
+                        desc_pos_dt.tran.x = Float.parseFloat(parts[0].trim());
+                        desc_pos_dt.tran.y = Float.parseFloat(parts[1].trim());
+                        desc_pos_dt.tran.z = Float.parseFloat(parts[2].trim());
+                        desc_pos_dt.rpy.rx = Float.parseFloat(parts[3].trim());
+                        desc_pos_dt.rpy.ry = Float.parseFloat(parts[4].trim());
+                        desc_pos_dt.rpy.rz = Float.parseFloat(parts[5].trim());
+                    }
+                }
+
+                rtn = robot.ServoCart(mode, desc_pos_dt, exaxis, pos_gain, acc, vel, cmdT, filterT, gain);
+                System.out.println("ServoCart rtn is " + rtn);
+                // robot.Sleep(8);
+            }
+        } catch (IOException e) {
+            System.out.println("Falha ao ler o arquivo: " + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try { reader.close(); } catch (IOException ignored) {}
+            }
+        }
+
+        // ---- Encerrar o servo ----
+        robot.ServoMoveEnd(0);
+
+        return 0;
+    }
+
+Exemplo de código ServoCart para início do movimento servo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: Java
+    :linenos:
+
+    public static int TestServoCartWithFiltertime(Robot robot) {
+        // ---- Pose cartesiana alvo ----
+        DescPose desc_pos_dt = new DescPose(542.1690, 34.7990, 114.4800, 169.808000, -3.600000, -133.152000);
+        ExaxisPos exaxis = new ExaxisPos(0.0, 0.0, 0.0, 0.0);
+
+        double[] pos_gain = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+        int mode = 0;
+        float vel = 0.0f;
+        float acc = 0.0f;
+        float cmdT = 0.008f;
+        float filterT = 0.0f;
+        float gain = 0.0f;
+        int count = 5000;
+        int rtn = 0;
+
+        robot.SetSpeed(20);
+
+        DescPose offset_pos = new DescPose(0, 0, 0, 0, 0, 0);
+        robot.MoveL(desc_pos_dt, 1, 0, 100, 100, 100, -1, 0, exaxis, 0, 0, offset_pos, -1, 0,0,0);
+
+        // ---- Parâmetros do ServoMoveStart ----
+        int filtertime = 0;
+        double[] ServoGain = { 20.0, 20.0, 20.0, 20.0, 20.0, 20.0 };
+
+        rtn = robot.ServoMoveStart(0, filtertime, ServoGain);
+        System.out.println("ServoMoveStart rtn is " + rtn);
+
+        // ---- Ler pontos do caminho cartesiano do arquivo e enviar ServoCart ponto a ponto ----
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("D://zUP/6RCARpath.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Formato de análise: ServoCart(0,x,y,z,rx,ry,rz,...
+                String prefix = "ServoCart(0,";
+                if (line.startsWith(prefix)) {
+                    String body = line.substring(prefix.length());
+                    String[] parts = body.split(",");
+                    if (parts.length >= 6) {
+                        desc_pos_dt.tran.x = Float.parseFloat(parts[0].trim());
+                        desc_pos_dt.tran.y = Float.parseFloat(parts[1].trim());
+                        desc_pos_dt.tran.z = Float.parseFloat(parts[2].trim());
+                        desc_pos_dt.rpy.rx = Float.parseFloat(parts[3].trim());
+                        desc_pos_dt.rpy.ry = Float.parseFloat(parts[4].trim());
+                        desc_pos_dt.rpy.rz = Float.parseFloat(parts[5].trim());
+                    }
+                }
+
+                rtn = robot.ServoCart(mode, desc_pos_dt, exaxis, pos_gain, acc, vel, cmdT, filterT, gain);
+                System.out.println("ServoCart rtn is " + rtn);
+                // robot.Sleep(8);
+            }
+        } catch (IOException e) {
+            System.out.println("Falha ao ler o arquivo: " + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try { reader.close(); } catch (IOException ignored) {}
+            }
+        }
+
+        // ---- Encerrar o servo ----
+        robot.ServoMoveEnd(0);
+
+        return 0;
+    }
 
 Fim do Movimento Servo
 +++++++++++++++++++++++++++++

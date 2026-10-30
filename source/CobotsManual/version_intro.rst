@@ -1,3 +1,46 @@
+Version V4.0.1
+-----------------
+
+Datum: 2026-10-27
+
+- **Optimierte Hintergrundprogrammfunktion**: 
+    Pfad: Teach-Programm -> Programmprogrammierung -> Hintergrundprogramm.
+
+    Beschreibung: 1. Hintergrundprogramme unterstützen Socket-Kommunikation, Kartenbus-Kommunikation und erweiterte IO-Interaktion; 2. Hintergrundprogramme unterstützen die printmsg-Funktion; 3. Neue DO-Ausgangskonfiguration für Roboter in Position hinzugefügt.
+
+- **Optimierte Anzeige der physischen Geschwindigkeit für Lin\Arc\Circle**: 
+
+    Beschreibung: In den Geschwindigkeitsoberflächen der Befehle lin, arc und circle, den entsprechenden Befehlsänderungsoberflächen und der smarttool-Konfigurationsoberfläche wurde eine Einheitenumrechnung hinzugefügt, um die aktuelle physische Geschwindigkeit (cm/min) anzuzeigen.
+
+- **Optimierte Servo-Befehle**: 
+    Pfad: Teach-Programm -> Programmprogrammierung -> Servo-Bewegungsbefehl.
+
+    Beschreibung: 1. Globale Filtereinstellungen ermöglichen eine einstellbare Filterzeit während der servoj-Bewegung (einschließlich servocart); 2. Filter- und Positionsverstärkungsparameter der Befehle servoj und servocart sind offen und einstellbar.
+
+- **Optimierte Greiferstatusabfragefunktion**: 
+    Pfad: Teach-Programm -> Programmprogrammierung -> Greiferbefehl.
+
+    Beschreibung: 1. Die Weboberfläche fügt einen Statusüberwachungsschalter für den Status angepasster Greifer hinzu; 2. Der Bewegungsstatus angepasster Greifer wurde erweitert, einschließlich Erkennung des Zustands "Objekt gegriffen" und "Objekt heruntergefallen", mit Unterstützung der Befehlsabfrage.
+
+- **Neue Kartenfunktion**: 
+
+    Beschreibung: Neue Funktion zur Meldung von Haupt-/Unterfehlercodes bei Wartezeitüberschreitung von FieldBusSlaveWaitDI und FieldBusSlaveWaitAI der Karte hinzugefügt.
+
+- **Neue Einzelschritt-Ausführungsdebugging-Funktion**: 
+    Pfad: Teach-Programm -> Programmprogrammierung -> Einzelschritt-Debugging.
+
+    Beschreibung: Teach-Lua-Programme unterstützen die Einzelschritt-Debugging-Ausführung im manuellen Modus, und es können Haltepunkte zum Debuggen hinzugefügt werden.
+
+- **Neue konfigurierbare Pause/Fortsetzen-Strategie für das Sicherheitsstoppsignal**: 
+    Pfad: Grundeinstellungen -> Sicherheit -> Sicherheitsstopp.
+
+    Beschreibung: Konfigurierbare Pause/Fortsetzen-Strategie hinzugefügt, mit der unabhängig zwischen manueller oder automatischer Fortsetzung der Ausführung gewählt werden kann.
+
+- **Neue PLC-automatisierte Komplettmaschinen-Werksfunktion**: 
+    Pfad: Hilfsanwendung -> Werkzeuganwendung -> Datensicherung; Grundeinstellungen -> Sicherheit -> Netzwerksicherheit.
+
+    Beschreibung: 1. Backup-Paket-Upload; 2. Abfrage des Fortschritts des Upgrades aller Parameter; 3. Befehle für Werksreset, WebApp-Spracheinstellung, SN-Code-Einstellung und Abruf des Tasterbox-Status hinzugefügt; 4. PLC ruft den Roboterstatus mit 1ms ab; 5. DHCP- und NTP-Aktivierungskonfiguration (nur LA-Version), Aktivierungskonfiguration von Port 8082.
+
 Versão V4.0.0
 -----------------
 

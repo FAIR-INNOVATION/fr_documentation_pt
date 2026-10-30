@@ -13,6 +13,13 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V4.0.1
+     - 2026-10-27
+     - | 1. Modificadas as descrições dos parâmetros do comando GetGripperMotionDone() para obter o estado de movimento da garra e do comando GripperWaitMotionDone() para aguardar a conclusão do movimento da garra; o parâmetro de estado de movimento da garra adiciona o estado de movimento concluído e queda do objeto detectada;
+       | 2. Modificado o comando ServoMoveStart() de início do movimento servo, adicionando as configurações dos parâmetros tempo de filtragem e ganho;
+       | 3. Adicionados os comandos DataPackageUpgrade() e GetDataPackageUpgradeProgress() para atualização por upload do pacote de backup de dados do robô e para obter a porcentagem de progresso da atualização, incluindo exemplos de código;
+       | 4. Adicionado o comando GetJointAllParamUpgradeProgress() para obter a porcentagem de progresso da atualização de todos os parâmetros das juntas do robô, incluindo um exemplo de código;
+
    * - V4.0.0
      - 2026-09-23
      - | 1. Modificada a interface FRRobot() de instanciação do robô, adicionando a configuração do parâmetro de ativação da criptografia TLS para a comunicação do protocolo de comando integrado no SDK;

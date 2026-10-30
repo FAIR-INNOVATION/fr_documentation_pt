@@ -496,11 +496,13 @@ Início do Movimento Servo
     :linenos:
 
     /**
-    * @brief Início do movimento servo, para uso com instruções ServoJ e ServoCart
-    * @param [in] comType Tipo de envio de instrução; 0-xmlrpc; 1-UDP (porta 20007 do robô)
+    * @brief Início do movimento servo, usado em conjunto com os comandos ServoJ e ServoCart
+    * @param [in] comType Tipo de envio do comando; 0-xmlrpc; 1-UDP (correspondente à porta 20007 do robô)
+    * @param [in] filtertime Tempo de filtragem, unidade ms, padrão 0
+    * @param [in] gain Array de ganho do loop de posição, o comprimento deve ser 6, correspondendo em sequência aos ganhos do loop de posição das juntas J1~J6; valor padrão { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 }
     * @return Código de erro
     */
-    errno_t ServoMoveStart(int comType = 0);
+    errno_t ServoMoveStart(int comType = 0, int filtertime = 0, std::vector<double> gain = { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
 
 Fim do Movimento Servo
 +++++++++++++++++++++++++++++
@@ -534,51 +536,62 @@ Movimento no Modo Servo no Espaço Articular
     */
     errno_t ServoJ(JointPos *joint_pos, ExaxisPos* axisPos, float acc, float vel, float cmdT, float filterT, float gain, int id = 0, int comType = 0);
 
-Programa de Exemplo de Movimento no Modo Servo no Espaço Articular
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de código do tempo de filtragem do movimento servo no modo espaço das juntas
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-    int TestServoJ(void)
+    int TestServoJWithFiltertime()
     {
         ROBOT_STATE_PKG pkg = {};
-        FRRobot robot;
+        FRRobot robot(false);
+        int rtn = 0;
         robot.LoggerInit();
         robot.SetLoggerLevel(1);
-        int rtn = robot.RPC("192.168.58.2");
+        rtn = robot.SetCmdRpyCallback(UDPFrameCallBack);
+        printf("SetCmdRpyCallback rtn is %d\n", rtn);
+        robot.SetReConnectParam(true, 300000, 50);
+        rtn = robot.RPC("192.168.58.2");
         if (rtn != 0)
         {
+            printf("robot RPC failed, errcode is %d\n", rtn);
             return -1;
         }
-        robot.SetReConnectParam(true, 30000, 500);
-        JointPos j(0, 0, 0, 0, 0, 0);
+        JointPos j(70.000000, -49.000000, -109.000000, -81.000000, 76.000000, 93.000000);
         ExaxisPos epos(0, 0, 0, 0);
+        DescPose offset_pos(0, 0, 0, 0, 0, 0);
+        robot.MoveJ(&j, 1, 0, 100, 100, 100, &epos, -1, 0, &offset_pos);
         float vel = 0.0;
         float acc = 0.0;
-        float cmdT = 0.008;
-        float filterT = 0.0;
+        float cmdT = 0.008f;
+        float filterT = 0.0f;
         float gain = 0.0;
         uint8_t flag = 0;
-        int count = 500;
-        float dt = 0.1;
+        float dt = 0.1f;
         int cmdID = 0;
         int ret = robot.GetActualJointPosDegree(flag, &j);
-        if (ret == 0)
-        {
-            robot.ServoMoveStart();
-            while (count)
-            {
-                robot.ServoJ(&j, &epos, acc, vel, cmdT, filterT, gain, cmdID);
-                j.jPos[0] += dt;
-                count -= 1;
-                robot.WaitMs(cmdT * 1000);
-            }
-            robot.ServoMoveEnd();
-        }
-        else
+        if (ret != 0)
         {
             printf("GetActualJointPosDegree errcode:%d\n", ret);
         }
+        int comType = 0;
+        int count = 300;
+        int filtertime = 0;
+        std::vector<double> ServoGain = { 22.0, 22.0, 22.0, 22.0, 22.0, 22.0 };
+        rtn = robot.ServoMoveStart(comType, filtertime, ServoGain);
+        printf("ServoMoveStart rtn is %d\n", rtn);
+        std::ifstream fin("D://zUP/6RPTPpath.txt");
+        std::string line;
+        while (std::getline(fin, line))
+        {
+            JointPos p = {};
+            int ret = sscanf(line.c_str(), "ServoJ(%lf,%lf,%lf,%lf,%lf,%lf,", &p.jPos[0], &p.jPos[1], &p.jPos[2], &p.jPos[3], &p.jPos[4], &p.jPos[5]);
+            rtn = robot.ServoJ(&p, &epos, acc, vel, cmdT, filterT, gain, cmdID, comType);
+        }
+        fin.close();
+        robot.ServoMoveEnd(comType);
+        printf("ServoMoveEnd rtn is %d\n", rtn);
+        robot.Sleep(4000);
         robot.CloseRPC();
         return 0;
     }
@@ -1014,12 +1027,12 @@ Movimento no Modo Servo no Espaço Cartesiano
     */
     errno_t ServoCart(int mode, DescPose *desc_pose, ExaxisPos exaxis, float pos_gain[6], float acc, float vel, float cmdT, float filterT, float gain);
 
-Exemplo de Código de Movimento no Modo Servo no Espaço Cartesiano
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exemplo de código do tempo de filtragem do movimento servo no modo espaço cartesiano
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-    int TestServoCart(void)
+    int TestServoCartWithFiltertime()
     {
         ROBOT_STATE_PKG pkg = {};
         FRRobot robot;
@@ -1031,26 +1044,34 @@ Exemplo de Código de Movimento no Modo Servo no Espaço Cartesiano
             return -1;
         }
         robot.SetReConnectParam(true, 30000, 500);
-        DescPose desc_pos_dt = { 83.00800, 50.525000 , 29.246 , 179.629 , -7.138 , -166.975 };
-        ExaxisPos exaxis = { 100.0, 0.0, 0.0, 0.0 };
+        DescPose desc_pos_dt = { 542.1690,34.7990,114.4800,169.808000,-3.600000,-133.152000 };
+        ExaxisPos exaxis = { 0.0, 0.0, 0.0, 0.0 };
         float pos_gain[6] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
         int mode = 0;
         float vel = 0.0;
         float acc = 0.0;
-        float cmdT = 0.001;
+        float cmdT = 0.008f;
         float filterT = 0.0;
         float gain = 0.0;
         uint8_t flag = 0;
         int count = 5000;
         robot.SetSpeed(20);
-        while (count)
+        DescPose offset_pos(0, 0, 0, 0, 0, 0);
+        robot.MoveL(&desc_pos_dt, 1, 0, 100, 100, 100, -1, 0, &exaxis, 0, 0, &offset_pos);
+        int filtertime = 0;
+        std::vector<double> ServoGain = { 20.0, 20.0, 20.0, 20.0, 20.0, 20.0 };
+        rtn = robot.ServoMoveStart(0, filtertime, ServoGain);
+        std::ifstream fin("D://zUP/6RCARpath.txt");
+        std::string line;
+        while (std::getline(fin, line))
         {
+            JointPos p = {};
+            int ret = sscanf(line.c_str(), "ServoCart(0,%lf,%lf,%lf,%lf,%lf,%lf,", &desc_pos_dt.tran.x, &desc_pos_dt.tran.y, &desc_pos_dt.tran.z, &desc_pos_dt.rpy.rx, &desc_pos_dt.rpy.ry, &desc_pos_dt.rpy.rz);
             rtn = robot.ServoCart(mode, &desc_pos_dt, exaxis, pos_gain, acc, vel, cmdT, filterT, gain);
             printf("ServoCart rtn is %d\n", rtn);
-            count -= 1;
-            desc_pos_dt.tran.x += 0.01;
-            exaxis.ePos[0] += 0.01;
         }
+        fin.close();
+        robot.ServoMoveEnd();
         robot.CloseRPC();
         return 0;
     }

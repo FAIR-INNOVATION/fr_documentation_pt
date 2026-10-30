@@ -607,6 +607,60 @@ Clique em "Teach Program" -> "Instruções Periféricas" -> "Garra" para adicion
 
 .. centered:: Figura 8.2-18 Programa de Exemplo de Movimento da Garra
 
+Consulta do estado da garra adaptada ao efetuador final
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visão geral
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Esta atualização adiciona funções de consulta do estado de funcionamento e da posição da garra, facilitando a obtenção do estado de conclusão do movimento da garra em programas de ensino e o monitoramento em tempo real da posição, velocidade, torque e estado de movimento da garra por meio do WebApp.
+
+Configuração do ambiente
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- Versão de firmware do efetuador final: FR_END_FV201014_MAIN_U1_T01_20260626
+- Versão de software do robô: V4.0.1 e superior
+
+Descrição da atualização dos comandos da garra
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Obter o estado de conclusão do movimento da garra
+*********************************************************************************
+
+Abra o WebApp, vá para Programa de ensino -> Interface de programação do programa e abra Comando periférico - Garra. Gere o comando Obter estado de conclusão do movimento da garra. Este comando é usado apenas para consultar o estado atual de conclusão do movimento da garra.
+
+.. image:: safety/073.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 8.2-19 Obter o estado de conclusão do movimento da garra
+
+Obter a posição atual da garra
+*********************************************************************************
+
+Abra o WebApp, vá para Programa de ensino -> Interface de programação do programa e abra Comando periférico - Garra. Gere o comando Obter posição atual da garra. Este comando é usado apenas para consultar a posição real atual da garra.
+
+.. image:: safety/074.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 8.2-20 Obter a posição atual da garra
+
+Monitoramento de dados da garra
+*********************************************************************************
+
+Abra o WebApp, vá para Configurações iniciais -> Periférico -> Garra -> interface e habilite o monitoramento de estado. Após enviar comandos de controle, na interface Gripper à direita, é possível obter dados de feedback em tempo real de posição, velocidade e torque da garra, bem como o estado de movimento da garra.
+
+Definições dos códigos de estado de movimento da garra: 0-Em movimento; 1-Movimento concluído, nenhum objeto detectado; 2-Movimento concluído, objeto detectado; 3-Peça de trabalho caiu.
+
+.. image:: safety/075.png
+   :width: 6in
+   :align: center
+
+.. centered:: Figura 8.2-21 Códigos de estado de movimento da garra
+
+.. note:: Nota: quando a peça de trabalho cai, a página do WebApp emitirá um aviso de alarme e o SDK poderá ler o código de falha correspondente. O tratamento de falhas deve ser executado na seguinte ordem: limpar alarme → redefinir garra → reativar garra, após o que os comandos de movimento podem continuar a ser enviados.
+
 Sensor de Força
 -------------------------
 

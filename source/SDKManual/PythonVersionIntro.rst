@@ -13,6 +13,17 @@ Notas de Atualização de Versão
      - **Data**
      - **Descrição da Atualização**
 
+   * - V4.0.1
+     - 2026-10-27
+     - | 1. Modificados os comentários da interface GetGripperMotionDone() para obter o estado de movimento da garra. A partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados, e status adiciona 3 = movimento concluído e queda do objeto detectada;
+       | 2. Modificados os comentários da interface GripperWaitMotionDone() para aguardar o estado de movimento da garra. A partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados, e status adiciona 3 = movimento concluído e queda do objeto detectada;
+       | 3. Modificada a descrição dos parâmetros da interface ServoMoveStart() para início do movimento servo, adicionando os parâmetros filtertime (tempo de filtragem) e gain (array de ganho do loop de posição), usados em conjunto com os comandos ServoJ e ServoCart, e complementado o exemplo de código correspondente;
+       | 4. Adicionada a interface DataPackageUpgrade() para atualização por upload do pacote de backup de dados e exemplo de código;
+       | 5. Adicionada a interface GetDataPackageUpgradeProgress() para obter a porcentagem de progresso da atualização do pacote de backup de dados;
+       | 6. Adicionada a interface GetJointAllParamUpgradeProgress() para obter a porcentagem de progresso da atualização de todos os parâmetros das juntas;
+       | 7. Adicionado um exemplo de código para atualização por upload do pacote de backup de dados e consulta do progresso;
+       | 8. Adicionado um exemplo de código para atualização de todos os parâmetros das juntas e consulta do progresso.
+       
    * - V4.0.0
      - 2026-09-23
      - | 1. Modificada a interface Robot() para estabelecer uma conexão RPC e instanciar o robô, adicionando a configuração do parâmetro de ativação da criptografia TLS para a comunicação do protocolo de comando integrado no SDK. Antes do uso, é necessário instalar primeiro as bibliotecas de dependência Python; os comandos de instalação são: pip install python3-dtls, pip install python-mbedtls;

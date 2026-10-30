@@ -68,78 +68,86 @@ Controlar Garra
     */
     int MoveGripper(int index, int pos, int vel, int force, int max_time, byte block, int type, double rotNum, int rotVel, int rotTorque);
 
-Obter Estado de Movimento da Garra
-++++++++++++++++++++++++++++++++++++++
+Obter o estado de movimento da garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  Obtém o estado de movimento da garra
-    * @param  [out] fault  0-sem erro, 1-com erro
-    * @param  [out] status  0-movimento não concluído, 1-movimento concluído
+    * @brief  Obter o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param  [out] fault  0-Sem erro, outro-Com erro
+    * @param  [out] staus  0-Movimento não concluído, 1-Movimento concluído sem objeto detectado, 2-Movimento concluído com objeto detectado, 3-Movimento concluído com queda do objeto detectada
     * @return  Código de erro
     */
     int GetGripperMotionDone(ref int fault, ref int status); 
 
-Obter Estado de Ativação da Garra
-++++++++++++++++++++++++++++++++++++++++++
+Obter o estado de ativação da garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  Obtém o estado de ativação da garra
-    * @param  [out] fault  0-sem erro, 1-com erro
-    * @param  [out] status  bit0~bit15 correspondem aos números das garras 0~15, bit=0 não ativado, bit=1 ativado
+    * @brief  Obter o estado de ativação da garra
+    * @param  [out] fault  0-Sem erro, 1-Com erro
+    * @param  [out] status  bit0~bit15 correspondem aos números da garra 0~15; bit=0 não ativada, bit=1 ativada
     * @return  Código de erro
     */
     int GetGripperActivateStatus(ref int fault, ref int status);
 
-Aguardar Status de Movimento da Garra
+Aguardar o estado de movimento da garra
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
     /**
-    * @brief  Aguarda o status de movimento da garra (definido apenas para o protocolo aberto do efetuador final; para dispositivos adaptados, a definição do status é passada para cada fabricante de garra)
-    * @param  [in] status  0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
-    * @param  [in] timeout Tempo limite (ms), -1 para espera infinita
-    * @param  [in] strategy  0-parar com erro, 1-continuar executando
-    * @param  [in] type  0-garra paralela, 1-garra rotativa
+    * @brief  Aguardar o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param  [in]  staus  0-Movimento não concluído, 1-Movimento concluído sem objeto detectado, 2-Movimento concluído com objeto detectado, 3-Movimento concluído com queda do objeto detectada
+    * @param  [in] timeout Tempo limite (ms), -1 significa aguardar permanentemente
+    * @param  [in] strategy  0-Parar e reportar erro, 1-Continuar a execução
+    * @param  [in] type  0-Garra paralela, 1-Garra rotativa
     * @return  Código de erro
     */
-    public int GripperWaitMotionDone(int status, int timeout, int strategy, int type) 
+    public int GripperWaitMotionDone(int staus, int timeout, int strategy, int type) 
     
-Exemplo de Código para Aguardar Status de Movimento da Garra
+Exemplo de código para aguardar o estado de movimento da garra
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c#
     :linenos:
 
-    public void TestGripperWaitMotionDone()
+    public void TestGetGripperMotionDone()
     {
         int rtn;
+        int status = 0;
+        int fault = 0;
         ROBOT_STATE_PKG pkg = new ROBOT_STATE_PKG();
 
-
-        // Garra aberta
-        rtn = robot.MoveGripper(1, 50, 50, 100, 30000, 0, 0, 0, 0, 0);
-        Console.WriteLine("MoveGripper(abrir) ret={0}", rtn);
+        // Abrir a garra
+        rtn = robot.MoveGripper(2, 50, 50, 100, 30000, 0, 0, 0, 0, 0);
+        Console.WriteLine("MoveGripper(Abrir) ret={0}", rtn);
         Thread.Sleep(2000);
         robot.GetRobotRealTimeState(ref pkg);
         Console.WriteLine(" gripper_motiondone {0})", pkg.gripper_motiondone);
-        // Garra fechada
-        rtn = robot.MoveGripper(1, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
-        Console.WriteLine("MoveGripper(fechar) ret={0}", rtn);
+        // Fechar a garra
+        rtn = robot.MoveGripper(2, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
+        Console.WriteLine("MoveGripper(Fechar) ret={0}", rtn);
         Thread.Sleep(2000);
         robot.GetRobotRealTimeState(ref pkg);
         Console.WriteLine(" gripper_motiondone {0}", pkg.gripper_motiondone);
-        // Aguardar movimento concluído sem detecção de objeto, timeout 30s, parar com erro
-        rtn = robot.GripperWaitMotionDone(2, -1, 0, 0);
-        Console.WriteLine("GripperWaitMotionDone(aguardar conclusão sem detecção de objeto) ret={0}", rtn);
+        // Aguardar a conclusão do movimento sem objeto detectado, timeout 5s, parar e reportar erro
+        rtn = robot.GripperWaitMotionDone(2, 5000, 0, 0);
+        Console.WriteLine("GripperWaitMotionDone(aguardar conclusão sem objeto detectado) ret={0}", rtn);
 
-        // Garra aberta
-        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0);
-        Console.WriteLine("MoveGripper(abrir) ret={0}", rtn);
-    }    
+        while (true)
+        {
+
+            robot.GetGripperMotionDone(ref fault, ref status);
+            Console.WriteLine("motion status:{0},{1}\n", fault, status);
+            robot.GetRobotRealTimeState(ref pkg);
+            Console.WriteLine(" error code {0},{1}", pkg.main_code, pkg.sub_code);
+            Thread.Sleep(500);
+
+        }
+    }
 
 Obter Posição da Garra
 ++++++++++++++++++++++++++

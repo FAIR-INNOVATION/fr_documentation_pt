@@ -336,11 +336,15 @@ Início do Movimento Servo
     :stub-columns: 1
     :widths: 10 30
 
-    "Protótipo", "``ServoMoveStart(cmdType=0)``"
-    "Descrição", "Início do movimento servo, para uso com instruções ServoJ e ServoCart"
-    "Parâmetros obrigatórios", "- ``cmdType``: Tipo de transmissão de comando, 0=XML-RPC, 1=transmissão transparente UDP"
+    "Protótipo", "``ServoMoveStart(self, cmdType=0, filtertime=0, gain=[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0])``"
+    "Descrição", "Início do movimento servo, usado em conjunto com os comandos ServoJ e ServoCart"
+    "Parâmetros obrigatórios", "
+    - ``cmdType``: Tipo de transmissão do comando, 0=XML-RPC, 1=UDP passthrough
+    - ``filtertime``: Tempo de filtragem, unidade ms, padrão 0
+    - ``gain``: Array de ganho do loop de posição, o comprimento deve ser 6, correspondendo em sequência aos ganhos do loop de posição das juntas J1~J6; quando None é passado, o valor padrão [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0] é usado
+    "
     "Parâmetros padrão", "Nenhum"
-    "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
+    "Valor de retorno", "Código de erro Sucesso-0  Falha- errcode"
 
 Fim do Movimento Servo
 ++++++++++++++++++++++++++++++++++++++
@@ -375,82 +379,152 @@ Movimento no Modo Servo no Espaço Articular
     - ``cmdType``: Tipo de transmissão de comando, 0=XML-RPC, 1=transmissão transparente UDP;"
     "Valor de retorno", "Código de erro: sucesso-0, falha-código de erro"
 
-Exemplo de Código SDK para ServoJ, ServoMoveStart, ServoMoveEnd com comunicação UDP
+Exemplo de código para início do movimento servo
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
     :linenos:
 
-    from time import sleep
-    import time
     from fairino import Robot
+    import time
 
-    # Estabelece conexão com o controlador do robô
-    robot = Robot.RPC('192.168.58.2')
 
-    def TestServoJUDP(self):
-        # Definir retorno de chamada
-        def callback(src_type, count, cmd_id, data_len, content):
-            print("Função de retorno de chamada: cmd_id={} count={} data_len={} content={}".format(cmd_id, count, data_len, content))
-            return 0
-
-        robot.SetUDPCmdRpyCallback(callback)
-        # # Inicializar posição articular e posição do eixo externo
-        j = [105, -108, 74, -66, -88.893, -1.621]
-        offset_pos = [0, 0, 0, 0, 0, 0]
-        epos = [0, 0, 0, 0]
-        # # Mover para posição inicial
-        result = robot.MoveJ(joint_pos=j, tool=0, user=0, vel=100, acc=100, ovl=100, exaxis_pos=epos, blendT=-1, offset_flag=0, offset_pos=offset_pos)
-        print("Resultado de MoveJ: {}".format(result))
-        vel = 0.0
-        acc = 0.0
-        cmdT = 0.016
-        filterT = 0.0
-        gain = 0.0
-        flag = 0
-        dt = 0.1
-        cmdID = 0
-
-        # Obter posição articular atual
-        ret, j = robot.GetActualJointPosDegree(flag)
-        if ret != 0:
-            print(f"GetActualJointPosDegree errcode:{ret}")
-        while 1:
-            count = 300
-            result = robot.ServoMoveStart(cmdType=1)
-            print("Resultado de ServoMoveStart: {}".format(result))
-            while count > 0:
-                result = robot.ServoJ(joint_pos=j, axisPos=epos, acc=acc, vel=vel, cmdT=cmdT, filterT=filterT, gain=gain, id=cmdID, cmdType=1)
-                j[0] += dt
-                j[1] += dt
-                j[2] += dt
-                j[3] += dt
-                j[4] += dt
-                j[5] += dt
-                count -= 1
-                time.sleep(0.01)
-            result = robot.ServoMoveEnd(cmdType=1)
-            print("Resultado de ServoMoveEnd: {}".format(result))
-
-            count = 300
-            result = robot.ServoMoveStart(cmdType=1)
-            print("Resultado de ServoMoveStart: {}".format(result))
-            while count > 0:
-                result = robot.ServoJ(joint_pos=j, axisPos=epos, acc=acc, vel=vel, cmdT=cmdT, filterT=filterT, gain=gain, id=cmdID, cmdType=1)
-                j[0] -= dt
-                j[1] -= dt
-                j[2] -= dt
-                j[3] -= dt
-                j[4] -= dt
-                j[5] -= dt
-                count -= 1
-                time.sleep(0.01)
-            result = robot.ServoMoveEnd(cmdType=1)
-            print("Resultado de ServoMoveEnd: {}".format(result))
-        robot.CloseRPC()
+    def udp_frame_callback(src_type, count, cmd_id, data_len, content):
+        """UDP frame receive callback"""
+        print("Callback: cmd_id={} count={} data_len={} content={}".format(cmd_id, count, data_len, content))
         return 0
 
-    TestServoJUDP(robot)
+
+    def test_servo_j_with_filtertime(robot):
+        """ServoJ with filter time and servo gain test"""
+        print("\n========== ServoJ with Filter Time Test ==========")
+
+        j = [70.000000, -49.000000, -109.000000, -81.000000, 76.000000, 93.000000]
+        epos = [0.0, 0.0, 0.0, 0.0]
+        offset_pos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        # Mover para a posição inicial das juntas
+        robot.MoveJ(joint_pos=j, tool=1, user=0, vel=100, acc=100, ovl=100,
+                    exaxis_pos=epos, blendT=-1, offset_flag=0, offset_pos=offset_pos)
+
+        vel = 0.0
+        acc = 0.0
+        cmdT = 0.008
+        filterT = 0.0
+        gain = 0.0
+        cmdID = 0
+        comType = 0
+        filtertime = 0
+        ServoGain = [22.0, 22.0, 22.0, 22.0, 22.0, 22.0]
+
+        # Obter a posição atual das juntas
+        rtn, j = robot.GetActualJointPosDegree(0)
+        if rtn != 0:
+            print(f"GetActualJointPosDegree errcode:{rtn}")
+
+        # Iniciar o movimento servo com tempo de filtragem e ganho
+        rtn = robot.ServoMoveStart(comType, filtertime, ServoGain)
+        print(f"ServoMoveStart rtn is {rtn}")
+
+        # Ler o arquivo de trajetória e enviar comandos ServoJ
+        file_path = "D://zUP/6RPTPpath.txt"
+        try:
+            with open(file_path, 'r') as fin:
+                for line in fin:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    # Formato de análise da linha: ServoJ(j1,j2,j3,j4,j5,j6,...
+                    if line.startswith("ServoJ("):
+                        values_str = line[len("ServoJ("):]
+                        parts = values_str.split(',')
+                        if len(parts) >= 6:
+                            p = [float(parts[i]) for i in range(6)]
+                            rtn = robot.ServoJ(joint_pos=p, axisPos=epos, acc=acc, vel=vel,
+                                            cmdT=cmdT, filterT=filterT, gain=gain,
+                                            id=cmdID, cmdType=comType)
+                            print(f"ServoJ rtn is {rtn}")
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+
+        # Encerrar o movimento servo
+        rtn = robot.ServoMoveEnd(comType)
+        print(f"ServoMoveEnd rtn is {rtn}")
+
+        time.sleep(4)
+
+
+    def test_servo_cart_with_filtertime(robot):
+        """ServoCart with filter time and servo gain test"""
+        print("\n========== ServoCart with Filter Time Test ==========")
+
+        desc_pos_dt = [542.1690, 34.7990, 114.4800, 169.808000, -3.600000, -133.152000]
+        exaxis = [0.0, 0.0, 0.0, 0.0]
+        pos_gain = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        mode = 0
+        vel = 0.0
+        acc = 0.0
+        cmdT = 0.008
+        filterT = 0.0
+        gain = 0.0
+        filtertime = 80
+        ServoGain = [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+
+        # Definir a velocidade e mover para o ponto inicial
+        robot.SetSpeed(20)
+        offset_pos = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        robot.MoveL(desc_pos=desc_pos_dt, tool=1, user=0, vel=100, acc=100, ovl=100,
+                    blendR=-1, blendMode=0, exaxis_pos=exaxis, search=0,
+                    offset_flag=0, offset_pos=offset_pos)
+
+        # Iniciar o movimento servo com tempo de filtragem e ganho
+        rtn = robot.ServoMoveStart(0, filtertime, ServoGain)
+        print(f"ServoMoveStart rtn is {rtn}")
+
+        # Ler o arquivo de trajetória e enviar comandos ServoCart
+        file_path = "D://zUP/6RCARpath.txt"
+        try:
+            with open(file_path, 'r') as fin:
+                for line in fin:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    # Formato de análise da linha: ServoCart(0,x,y,z,rx,ry,rz,...
+                    if line.startswith("ServoCart("):
+                        values_str = line[len("ServoCart("):]
+                        parts = values_str.split(',')
+                        # Ignorar o primeiro elemento (mode=0), pegar os próximos 6 valores
+                        if len(parts) >= 7:
+                            desc_pos_dt = [float(parts[i]) for i in range(1, 7)]
+                            rtn = robot.ServoCart(mode=mode, desc_pos=desc_pos_dt, exaxis=exaxis,
+                                                pos_gain=pos_gain, acc=acc, vel=vel,
+                                                cmdT=cmdT, filterT=filterT, gain=gain)
+                            print(f"ServoCart rtn is {rtn}")
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+
+        # Encerrar o movimento servo
+        robot.ServoMoveEnd()
+
+
+    def main():
+        # Estabelecer conexão com o controlador do robô
+        robot = Robot.RPC('192.168.58.2')
+        time.sleep(0.5)  # Aguardar conexão e recepção de dados
+
+        # Definir callback de resposta a comandos UDP
+        robot.SetUDPCmdRpyCallback(udp_frame_callback)
+
+        # Executar o teste desejado (descomentar um de cada vez)
+        # test_servo_j_with_filtertime(robot)
+        test_servo_cart_with_filtertime(robot)
+
+        # Fechar conexão
+        robot.CloseRPC()
+
+
+    if __name__ == "__main__":
+        main()
 
 Exemplo de Código de Movimento no Modo Servo no Espaço Articular
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

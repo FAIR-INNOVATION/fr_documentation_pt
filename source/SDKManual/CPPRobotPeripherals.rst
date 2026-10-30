@@ -4,35 +4,39 @@ Periféricos do Robô
 .. toctree:: 
     :maxdepth: 5
 
-Configurar Garra
-++++++++++++++++++++++++++
+Configurar a garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-    /**
-    * @brief  Configura a garra
-    * @param  [in] company  Fabricante da garra, a definir
-    * @param  [in] device  Número do dispositivo, não usado no momento, padrão 0
-    * @param  [in] softvesion  Número da versão do software, não usado no momento, padrão 0
-    * @param  [in] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
-    * @return  Código de erro
-    */
-    errno_t  SetGripperConfig(int company, int device, int softvesion, int bus);
+	/**
+	 * @brief  Configurar a garra
+	 * @param  [in] company  Fabricante da garra, 1-ROBOTIQ, 2-Huiling, 3-Tianji, 4-Dahuan, 5-Zhixing, 6-Junduo, 7-Meituan, 8-Zengguang
+	 * @param  [in] device  Número do dispositivo, ROBOTIQ (0-2F-85; 1-2F-140; 2-Garra de vácuo; 3-Garra de três dedos; 4-Hand-E),
+								   Huiling (0-Z-EFG-RNM; 1-Z-EFG-100; 2-Z-EFG-20P; 3-Z-EFG-50), Tianji (0-TEG-110), Dahuan (0-PGI-140),
+								   Zhixing (0-CTPM2F20), Junduo (0-RG, 1-REG), Meituan (0-MT-ACTUATOR), Zengguang (0-RM-GB-11-40-2-ITG)
+	 * @param  [in] softvesion  Número da versão de software, não usado no momento, padrão 0
+	 * @param  [in] bus Dispositivo montado na posição do barramento do efetuador final, não usado no momento, padrão 0
+	 * @return  Código de erro
+	 */
+	errno_t SetGripperConfig(int company, int device, int softvesion, int bus);
 
-Obter Configuração da Garra
-++++++++++++++++++++++++++++++++++
+Obter a configuração da garra
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-    /**
-    * @brief  Obtém a configuração da garra
-    * @param  [in] company  Fabricante da garra, a definir
-    * @param  [in] device  Número do dispositivo, não usado no momento, padrão 0
-    * @param  [in] softvesion  Número da versão do software, não usado no momento, padrão 0
-    * @param  [in] bus  Posição do barramento onde o dispositivo está montado, não usado no momento, padrão 0
-    * @return  Código de erro
-    */
-    errno_t  GetGripperConfig(int *company, int *device, int *softvesion, int *bus);
+	/**
+	 *@brief  Obter a configuração da garra
+	 *@param  [out] company  Fabricante da garra, 1-Robotiq, 2-Huiling, 3-Tianji, 4-Dahuan, 5-Zhixing, 6-Junduo, 7-Meituan, 8-Zengguang
+	 *@param  [out] device  Número do dispositivo, ROBOTIQ (0-2F-85; 1-2F-140; 2-Garra de vácuo; 3-Garra de três dedos; 4-Hand-E),
+								   Huiling (0-Z-EFG-RNM; 1-Z-EFG-100; 2-Z-EFG-20P; 3-Z-EFG-50), Tianji (0-TEG-110), Dahuan (0-PGI-140),
+								   Zhixing (0-CTPM2F20), Junduo (0-RG, 1-REG), Meituan (0-MT-ACTUATOR), Zengguang (0-RM-GB-11-40-2-ITG)
+	 *@param  [out] softvesion  Número da versão de software, não usado no momento, padrão 0
+	 *@param  [out] bus Dispositivo montado na posição do barramento do efetuador final, não usado no momento, padrão 0
+	 *@return  Código de erro
+	 */
+	errno_t GetGripperConfig(int *company, int *device, int *softvesion, int *bus);
 
 Ativar Garra
 ++++++++++++++++++++++++++
@@ -78,12 +82,12 @@ Obter Estado de Movimento da Garra
     :linenos:
 
     /**
-     * @brief  Obtém o estado de movimento da garra
-     * @param  [out] fault  0-sem erro, 1-com erro
-     * @param  [out] staus  0-movimento não concluído, 1-movimento concluído
-     * @return  Código de erro
-     */
-    errno_t  GetGripperMotionDone(uint16_t *fault, uint8_t *status);
+    * @brief Obter o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param [out] fault 0-Sem erro, outro-Com erro
+    * @param [out] status 0-Movimento não concluído, 1-Movimento concluído sem objeto detectado; 2-Movimento concluído com objeto detectado; 3-Movimento concluído com queda do objeto detectada;
+    * @return Código de erro
+    */
+    errno_t GetGripperMotionDone(int& fault,int& status);
 
 Obter Estado de Ativação da Garra
 ++++++++++++++++++++++++++++++++++++++++++
@@ -349,46 +353,60 @@ Aguardar Status de Movimento da Garra
     :linenos:
 
     /**
-    * @brief Aguarda o status de movimento da garra (definido apenas para o protocolo aberto do efetuador final; para dispositivos adaptados, o status de movimento obtido é um valor pass-through)
-    * @param [in] status 0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
-    * @param [in] timeout Tempo limite (ms), -1 para espera infinita
-    * @param [in] strategy 0-parar com erro, 1-continuar executando
-    * @param [in] type 0-garra paralela, 1-garra rotativa
+    * @brief Aguardar o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)
+    * @param [in] staus 0-Movimento não concluído, 1-Movimento concluído sem objeto detectado; 2-Movimento concluído com objeto detectado; 3-Movimento concluído com queda do objeto detectada
+    * @param [in] timeout Tempo limite (ms), -1 significa aguardar permanentemente
+    * @param [in] strategy 0-Parar e reportar erro, 1-Continuar a execução
+    * @param [in] type 0-Garra paralela, 1-Garra rotativa
     * @return Código de erro
     */
-    errno_t GripperWaitMotionDone(int status, int timeout, int strategy, int type);
+    errno_t GripperWaitMotionDone(int staus, int timeout, int strategy, int type);
     
 Exemplo de Código para Aguardar Status de Movimento da Garra
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: c++
     :linenos:
 
-    int TestGripperWaitMotionDone()
+    int TestGetGripperMotionDone()
     {
-    ROBOT_STATE_PKG pkg = {};
-    FRRobot robot;
-    robot.LoggerInit();
-    robot.SetLoggerLevel(1);
-    robot.SetReConnectParam(true, 30000, 500);
-    int rtn = robot.RPC("192.168.58.2");
-    if (rtn != 0)
-    {
-        return -1;
-    }
-    for (int i = 0; i < 10; i++)
-    {
-        rtn = robot.MoveGripper(1, 0, 10, 100, 30000, 0, 0, 0, 0, 0);
-        printf("MoveGripper(Open) ret=%d\n", rtn);
-        rtn = robot.GripperWaitMotionDone(1, 10000, 0, 0);
-        printf("GripperWaitMotionDone(Wait for motion completed without object detection) ret=%d\n", rtn);
-        rtn = robot.MoveGripper(1, 90, 10, 100, 30000, 0, 0, 0, 0, 0);
-        printf("MoveGripper(Close) ret=%d\n", rtn);
-        rtn = robot.GripperWaitMotionDone(1, 10000, 0, 0);
-        printf("GripperWaitMotionDone(Wait for motion completed without object detection) ret=%d\n", rtn);
-    }
-    robot.Sleep(1000);
-    robot.CloseRPC();
-    robot.Sleep(1000);
+        ROBOT_STATE_PKG pkg = {};
+        FRRobot robot;
+        robot.LoggerInit();
+        robot.SetLoggerLevel(1);
+        robot.SetReConnectParam(true, 30000, 500);
+        int rtn = robot.RPC("192.168.58.2");
+        if (rtn != 0)
+        {
+            return -1;
+        }
+        uint8_t status = 0;
+        uint16_t fault = 0;
+        // Gripper open
+        rtn = robot.MoveGripper(2, 50, 50, 100, 30000, 0, 0, 0, 0, 0);
+        printf("MoveGripper(open) ret=%d\n", rtn);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        robot.GetRobotRealTimeState(&pkg);
+        printf(" gripper_motiondone %d)\n", pkg.gripper_motiondone);
+        // Gripper close
+        rtn = robot.MoveGripper(2, 90, 100, 100, 30000, 0, 0, 0, 0, 0);
+        printf("MoveGripper(close) ret=%d\n", rtn);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        robot.GetRobotRealTimeState(&pkg);
+        printf(" gripper_motiondone %d)\n", pkg.gripper_motiondone);
+        // Wait for motion completion without object detection, timeout 5s, stop and report error
+        rtn = robot.GripperWaitMotionDone(2, 5000, 0, 0);
+        printf("GripperWaitMotionDone(wait for completion, no object detected) ret=%d\n", rtn);
+        while (true)
+        {
+            robot.GetGripperMotionDone(&fault, &status);
+            printf("motion status:%d,%d\n", fault, status);
+            robot.GetRobotRealTimeState(&pkg);
+            printf(" error code %d,%d\n", pkg.main_code, pkg.sub_code);
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        }
+        robot.CloseRPC();
+        robot.Sleep(1000);
+        return 0;
     }
 
 Iniciar/Parar Esteira Transportadora

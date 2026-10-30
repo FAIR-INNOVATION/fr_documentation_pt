@@ -72,11 +72,11 @@ Obter Estado de Movimento da Garra
     :widths: 10 30
 
     "Protótipo", "``GetGripperMotionDone()``"
-    "Descrição", "Obtém o estado de movimento da garra"
-    "Parâmetros Obrigatórios", "Nenhum"
-    "Parâmetros Padrão", "Nenhum"
-    "Valor de Retorno", "- Código de erro: Sucesso-0   Falha - errcode 
-    - ``[fault,status]``: Estado de movimento da garra, fault:0-sem erro, 1-com erro; status:0-movimento não concluído, 1-movimento concluído"
+    "Descrição", "Obter o estado de movimento da garra (a partir da versão 401, o protocolo do efetuador final e a definição do feedback do estado de movimento da garra de dispositivos adaptados são unificados)"
+    "Parâmetros obrigatórios", "Nenhum"
+    "Parâmetros padrão", "Nenhum"
+    "Valor de retorno", "- Código de erro Sucesso-0  Falha- errcode 
+    - ``[fault,status]``: Estado de movimento da garra, fault: 0-Sem erro, outro-Com erro; status: 0-Movimento não concluído, 1-Movimento concluído sem objeto detectado, 2-Movimento concluído com objeto detectado, 3-Movimento concluído com queda do objeto detectada"
 
 Obter Estado de Ativação da Garra
 +++++++++++++++++++++++++++++++++++++++++++++
@@ -2140,7 +2140,7 @@ Aguardar Status de Movimento da Garra
     "Protótipo", "``GripperWaitMotionDone(self, status, timeout, strategy, type)``"
     "Descrição", "Aguardar status de movimento da garra"
     "Parâmetros Obrigatórios", "
-    - ``status``：0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto
+    - ``status``：0-movimento não concluído, 1-movimento concluído sem detecção de objeto, 2-movimento concluído com detecção de objeto, 3-Movimento concluído com queda do objeto detectada
     - ``timeout``：Tempo limite (ms), -1 para espera infinita
     - ``strategy``：0-parar com erro, 1-continuar executando
     - ``type``：0-garra paralela, 1-garra rotativa
@@ -2156,42 +2156,49 @@ Exemplo de Código para Aguardar Status de Movimento da Garra
     from fairino import Robot
     import time
 
-
     def main():
-        # Estabelecer conexão com o controlador do robô
+        # Establish connection with the robot controller
         robot = Robot.RPC('192.168.58.2')
-        time.sleep(0.5)  # Aguardar conexão e recebimento de dados
+        time.sleep(0.5)  # Wait for connection and data reception
 
-        print("========== Teste de espera de conclusão de movimento da garra ==========")
+        print("========== Gripper Motion Done Test ==========")
 
-        # ========== Garra aberta ==========
-        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0)
-        print(f"MoveGripper(abrir) ret={rtn}")
-        time.sleep(4)
+        # Open the gripper
+        rtn = robot.MoveGripper(2, 50, 50, 100, 30000, 0, 0, 0, 0, 0)
+        print(f"MoveGripper(open) ret={rtn}")
+        time.sleep(2)
+        rtn, pkg = robot.GetRobotRealTimeState()
+        print(f"gripper_motiondone {pkg.gripper_motiondone}")
 
-        # ========== Garra fechada ==========
-        rtn = robot.MoveGripper(1, 90, 100, 100, 30000, 0, 0, 0, 0, 0)
-        print(f"MoveGripper(fechar) ret={rtn}")
+        # Close the gripper
+        rtn = robot.MoveGripper(2, 90, 100, 100, 30000, 0, 0, 0, 0, 0)
+        print(f"MoveGripper(close) ret={rtn}")
+        time.sleep(2)
+        rtn, pkg = robot.GetRobotRealTimeState()
+        print(f"gripper_motiondone {pkg.gripper_motiondone}")
 
-        # ========== Aguardar movimento concluído (nenhum objeto detectado, timeout 30s, parar com erro) ==========
-        rtn = robot.GripperWaitMotionDone(1, 30000, 0, 0)
-        print(f"GripperWaitMotionDone(aguardar conclusão sem detecção de objeto) ret={rtn}")
+        # Wait for motion done, no object detected, timeout 5s, stop with error
+        rtn = robot.GripperWaitMotionDone(2, 5000, 0, 0)
+        print(f"GripperWaitMotionDone(no object detected) ret={rtn}")
 
-        # ========== Garra aberta ==========
-        rtn = robot.MoveGripper(1, 0, 100, 100, 30000, 0, 0, 0, 0, 0)
-        print(f"MoveGripper(abrir) ret={rtn}")
+        # Loop and query gripper motion status
+        while True:
+            rtn, status = robot.GetGripperMotionDone()
+            print(f"motion status:{status[0]},{status[1]}\n")
 
-        print("========== Teste concluído ==========")
+            rtn, pkg = robot.GetRobotRealTimeState()
+            print(f"error code {pkg.main_code},{pkg.sub_code}")
 
-        # Fechar conexão
+            time.sleep(0.5)
+
+        # Close connection (never reached due to infinite loop)
         robot.CloseRPC()
-
 
     if __name__ == "__main__":
         main()
 
 Exemplo de Código de Reprodução de Gravação a Laser + Movimento Assíncrono de Eixos Estendidos + Oscilação em Pontos Fixos    
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .. code-block:: python
     :linenos:         
 
