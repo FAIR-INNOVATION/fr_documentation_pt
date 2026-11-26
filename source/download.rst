@@ -124,6 +124,18 @@ Certificados de Robôs:
      - ✅
      - :download:`Download <_static/_doc/CE-MD certification.zip>`
 
+   * - **Certificado CE-MR**
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - ✅
+     - :download:`Baixar <_static/_doc/CE-MR Certificate.pdf>`
+
    * - **Certificado de Segurança Funcional**
      - ✅
      - ✅
