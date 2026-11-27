@@ -110,7 +110,7 @@ Certificados de Robôs:
      - ✅
      - ✅
      - ✅
-     - :download:`Download <_static/_doc/CE-EMC certification.pdf>`
+     - :download:`Download <_static/_doc/CE-EMC Test Certification.pdf>`
 
    * - **Certificado CE-MD**
      - ✅
@@ -134,7 +134,7 @@ Certificados de Robôs:
      - ✅
      - ✅
      - ✅
-     - :download:`Download <_static/_doc/Functional safety certification.zip>`
+     - :download:`Download <_static/_doc/Functional safety certification.pdf>`
 
    * - **Certificados KCs**
      - ✅
